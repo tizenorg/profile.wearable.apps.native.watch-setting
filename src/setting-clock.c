@@ -21,6 +21,7 @@
 #include <pkgmgr-info.h>
 #include <feedback.h>
 #include <alarm.h>
+#include <string.h>
 
 #include "setting-clock.h"
 #include "util.h"
@@ -705,6 +706,17 @@ static Evas_Object *_create_index(Evas_Object *parent)
 	return layout;
 }
 
+int watch_metadata_func(const char *key, const char *value, void *user_data)
+{
+	Clock_Type_Data *pclockdata =(Clock_Type_Data *)user_data;
+	if (strcmp(key, (char *)pclockdata->name) == 0) {
+		pclockdata->value = value;
+		return -1;
+	}
+	else
+		return 0;
+}
+
 static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 {
 	char *appid = NULL;
@@ -749,10 +761,15 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		if (ret != PMINFO_R_OK) {
 			INFO("pkgmgrinfo_appinfo_is_preload error or 3rd party");
 		}
+/*		
+		legacy code from TIZEN 2.4
 		ret = pkgmgrinfo_appinfo_get_metadata_value(tmp_handle, "clocktype", &m_value);
 		if (ret != PMINFO_R_OK) {
 			INFO("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party");
 		}
+*/
+		static Clock_Type_Data clock_metadata = {"clocktype",0};
+		ret = pkgmgrinfo_appinfo_foreach_metadata(tmp_handle, watch_metadata_func,(void*)(&clock_metadata));
 
 		Clock_Type_Item *pitem = NULL;
 		pitem = (Clock_Type_Item *)calloc(1, sizeof(Clock_Type_Item));
@@ -764,7 +781,7 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		pitem->name = strdup(name);
 		pitem->icon = strdup(icon);
 
-		if (m_value && strlen(m_value) > 0) {
+		if (clock_metadata.value && strlen(m_value) > 0) {
 			if (!strcmp(m_value, "function")) {
 				type = CLOCKTYPE_FUNCTION;
 			} else if (!strcmp(m_value, "style")) {

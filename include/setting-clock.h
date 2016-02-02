@@ -91,6 +91,11 @@ typedef struct _clock_type_item {
 	char *icon;
 } Clock_Type_Item;
 
+typedef struct _clock_type_data {
+	char name[20];
+	char *value;
+} Clock_Type_Data;
+
 static Eina_List *g_clock_list[3];
 
 int is_alert_on_or_off;
