@@ -74,9 +74,9 @@ ENDIF(FEATURE_SETTING_EMUL)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 INCLUDE(FindPkgConfig)
-pkg_check_modules(pkgs REQUIRED elementary ecore-imf utilX appcore-common appcore-efl
+pkg_check_modules(pkgs REQUIRED elementary ecore-imf appcore-common appcore-efl
                                 dlog glib-2.0 evas eina edje vconf elementary sensor
-                                ecore-x ecore ecore-input ecore-evas capi-appfw-application
+                                ecore ecore-input ecore-evas capi-appfw-application
 				pkgmgr pkgmgr-info fontconfig
                                 feedback json-glib-1.0 deviced capi-network-bluetooth bluetooth-api
                                 capi-system-device capi-media-sound-manager capi-media-player mm-player mm-sound

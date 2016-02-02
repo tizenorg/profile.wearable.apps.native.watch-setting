@@ -897,10 +897,11 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
+/* legacy code from XWidow 
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);
-
+*/
 
 	Evas_Object *spinner = elm_spinner_add(ly);
 
@@ -1013,15 +1014,19 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
+/* legacy code from XWidow 
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);
+*/
+#ifdef ECORE_X
 	if (w == 360 && h == 480) {
 		DBG("make long height !!!!!!!!!!!!!!!!!");
 		/*elm_object_signal_emit(layout, "set,popup,long", "elm.icon.1"); */
 		elm_object_signal_emit(ly, "set,popup,long", "*");
 	}
 
+#endif
 
 	Evas_Object *spinner = elm_spinner_add(ly);
 
@@ -1147,14 +1152,18 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
+/* legacy code from XWidow 
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);
+*/
+#ifdef ECORE_X
 	if (w == 360 && h == 480) {
 		DBG("make long height !!!!!!!!!!!!!!!!!");
 		/*elm_object_signal_emit(layout, "set,popup,long", "elm.icon.1"); */
 		elm_object_signal_emit(ly, "set,popup,long", "*");
 	}
+#endif
 
 	Evas_Object *spinner = elm_spinner_add(ly);
 
@@ -1279,14 +1288,18 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
+/* legacy code from XWidow 
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);
+*/
+#ifdef ECORE_X
 	if (w == 360 && h == 480) {
 		DBG("make long height !!!!!!!!!!!!!!!!!");
 		/*elm_object_signal_emit(layout, "set,popup,long", "elm.icon.1"); */
 		elm_object_signal_emit(ly, "set,popup,long", "*");
 	}
+#endif
 
 	Evas_Object *spinner = elm_spinner_add(ly);
 
