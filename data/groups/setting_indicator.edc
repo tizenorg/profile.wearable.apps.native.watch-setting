@@ -1,0 +1,390 @@
+/*
+ * Copyright (c) 2011 Samsung Electronics Co., Ltd All Rights Reserved
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ */
+
+#define SAMSUNG_SANS "Tizen"
+#define SAMSUNG_SANS_CLASS "tizen"
+
+#define DESCRIPTION_BATTERY(num)\
+	description {\
+		state : "battery_level_"num;\
+		inherit : "default" 0.0;\
+		image.normal : "battery/battery_"num".png";\
+	}\
+
+#define DESCRIPTION_CHARGING_BATTERY(num)\
+	description {\
+		state : "battery_level_charging_"num;\
+		inherit : "default" 0.0;\
+		image.normal : "battery/battery_charge_"num".png";\
+	}\
+
+#define PROGRAM_BATTERY(num)\
+	program {\
+		name : "change_level_"num;\
+		signal : "change_level_"num;\
+		source : "img.battery";\
+		action : STATE_SET "battery_level_"num 0.0;\
+		target : "img.battery";\
+	}\
+
+#define PROGRAM_CHARGING_BATTERY(num)\
+	program {\
+		name : "change_charging_level_"num;\
+		signal : "change_charging_level_"num;\
+		source : "img.battery";\
+		action : STATE_SET "battery_level_charging_"num 0.0;\
+		target : "img.battery";\
+	}\
+
+group {
+	name : "setting/indicator/battery_icon";
+
+	images {
+		image: "battery/battery_00.png" COMP;
+		image: "battery/battery_05.png" COMP;
+		image: "battery/battery_10.png" COMP;
+		image: "battery/battery_15.png" COMP;
+		image: "battery/battery_20.png" COMP;
+		image: "battery/battery_25.png" COMP;
+		image: "battery/battery_30.png" COMP;
+		image: "battery/battery_35.png" COMP;
+		image: "battery/battery_40.png" COMP;
+		image: "battery/battery_45.png" COMP;
+		image: "battery/battery_50.png" COMP;
+		image: "battery/battery_55.png" COMP;
+		image: "battery/battery_60.png" COMP;
+		image: "battery/battery_65.png" COMP;
+		image: "battery/battery_70.png" COMP;
+		image: "battery/battery_75.png" COMP;
+		image: "battery/battery_80.png" COMP;
+		image: "battery/battery_85.png" COMP;
+		image: "battery/battery_90.png" COMP;
+		image: "battery/battery_95.png" COMP;
+		image: "battery/battery_100.png" COMP;
+
+		image: "battery/battery_charge_00.png" COMP;
+		image: "battery/battery_charge_05.png" COMP;
+		image: "battery/battery_charge_10.png" COMP;
+		image: "battery/battery_charge_15.png" COMP;
+		image: "battery/battery_charge_20.png" COMP;
+		image: "battery/battery_charge_25.png" COMP;
+		image: "battery/battery_charge_30.png" COMP;
+		image: "battery/battery_charge_35.png" COMP;
+		image: "battery/battery_charge_40.png" COMP;
+		image: "battery/battery_charge_45.png" COMP;
+		image: "battery/battery_charge_50.png" COMP;
+		image: "battery/battery_charge_55.png" COMP;
+		image: "battery/battery_charge_60.png" COMP;
+		image: "battery/battery_charge_65.png" COMP;
+		image: "battery/battery_charge_70.png" COMP;
+		image: "battery/battery_charge_75.png" COMP;
+		image: "battery/battery_charge_80.png" COMP;
+		image: "battery/battery_charge_85.png" COMP;
+		image: "battery/battery_charge_90.png" COMP;
+		image: "battery/battery_charge_95.png" COMP;
+		image: "battery/battery_charge_100.png" COMP;
+	}
+	parts {
+		part {
+			name : "img.battery";
+			type : IMAGE;
+			scale : 1;
+			description {
+				state : "default" 0.0;
+				visible : 1;
+				min: 43 60;
+				max: 43 60;
+				fixed: 1 1;
+				image.normal : "battery/battery_00.png";
+			}
+			DESCRIPTION_BATTERY(00);
+			DESCRIPTION_BATTERY(05);
+			DESCRIPTION_BATTERY(10);
+			DESCRIPTION_BATTERY(15);
+			DESCRIPTION_BATTERY(20);
+			DESCRIPTION_BATTERY(25);
+			DESCRIPTION_BATTERY(30);
+			DESCRIPTION_BATTERY(35);
+			DESCRIPTION_BATTERY(40);
+			DESCRIPTION_BATTERY(45);
+			DESCRIPTION_BATTERY(50);
+			DESCRIPTION_BATTERY(55);
+			DESCRIPTION_BATTERY(60);
+			DESCRIPTION_BATTERY(65);
+			DESCRIPTION_BATTERY(70);
+			DESCRIPTION_BATTERY(75);
+			DESCRIPTION_BATTERY(80);
+			DESCRIPTION_BATTERY(85);
+			DESCRIPTION_BATTERY(90);
+			DESCRIPTION_BATTERY(95);
+			DESCRIPTION_BATTERY(100);
+
+			DESCRIPTION_CHARGING_BATTERY(00);
+			DESCRIPTION_CHARGING_BATTERY(05);
+			DESCRIPTION_CHARGING_BATTERY(10);
+			DESCRIPTION_CHARGING_BATTERY(15);
+			DESCRIPTION_CHARGING_BATTERY(20);
+			DESCRIPTION_CHARGING_BATTERY(25);
+			DESCRIPTION_CHARGING_BATTERY(30);
+			DESCRIPTION_CHARGING_BATTERY(35);
+			DESCRIPTION_CHARGING_BATTERY(40);
+			DESCRIPTION_CHARGING_BATTERY(45);
+			DESCRIPTION_CHARGING_BATTERY(50);
+			DESCRIPTION_CHARGING_BATTERY(55);
+			DESCRIPTION_CHARGING_BATTERY(60);
+			DESCRIPTION_CHARGING_BATTERY(65);
+			DESCRIPTION_CHARGING_BATTERY(70);
+			DESCRIPTION_CHARGING_BATTERY(75);
+			DESCRIPTION_CHARGING_BATTERY(80);
+			DESCRIPTION_CHARGING_BATTERY(85);
+			DESCRIPTION_CHARGING_BATTERY(90);
+			DESCRIPTION_CHARGING_BATTERY(95);
+			DESCRIPTION_CHARGING_BATTERY(100);
+		}
+	}
+
+	programs {
+		PROGRAM_BATTERY(00);
+		PROGRAM_BATTERY(05);
+		PROGRAM_BATTERY(10);
+		PROGRAM_BATTERY(15);
+		PROGRAM_BATTERY(20);
+		PROGRAM_BATTERY(25);
+		PROGRAM_BATTERY(30);
+		PROGRAM_BATTERY(35);
+		PROGRAM_BATTERY(40);
+		PROGRAM_BATTERY(45);
+		PROGRAM_BATTERY(50);
+		PROGRAM_BATTERY(55);
+		PROGRAM_BATTERY(60);
+		PROGRAM_BATTERY(65);
+		PROGRAM_BATTERY(70);
+		PROGRAM_BATTERY(75);
+		PROGRAM_BATTERY(80);
+		PROGRAM_BATTERY(85);
+		PROGRAM_BATTERY(90);
+		PROGRAM_BATTERY(95);
+		PROGRAM_BATTERY(100);
+
+		PROGRAM_CHARGING_BATTERY(00);
+		PROGRAM_CHARGING_BATTERY(05);
+		PROGRAM_CHARGING_BATTERY(10);
+		PROGRAM_CHARGING_BATTERY(15);
+		PROGRAM_CHARGING_BATTERY(20);
+		PROGRAM_CHARGING_BATTERY(25);
+		PROGRAM_CHARGING_BATTERY(30);
+		PROGRAM_CHARGING_BATTERY(35);
+		PROGRAM_CHARGING_BATTERY(40);
+		PROGRAM_CHARGING_BATTERY(45);
+		PROGRAM_CHARGING_BATTERY(50);
+		PROGRAM_CHARGING_BATTERY(55);
+		PROGRAM_CHARGING_BATTERY(60);
+		PROGRAM_CHARGING_BATTERY(65);
+		PROGRAM_CHARGING_BATTERY(70);
+		PROGRAM_CHARGING_BATTERY(75);
+		PROGRAM_CHARGING_BATTERY(80);
+		PROGRAM_CHARGING_BATTERY(85);
+		PROGRAM_CHARGING_BATTERY(90);
+		PROGRAM_CHARGING_BATTERY(95);
+		PROGRAM_CHARGING_BATTERY(100);
+	}
+}
+
+group {
+	name : "setting/indicator";
+
+	images {
+		image : "bluetooth_off.png" COMP;
+		image : "bluetooth_on.png" COMP;
+		image : "headset.png" COMP;
+	}
+
+	parts {
+		part {
+			name : "bg";
+			type : RECT;
+			scale : 1;
+			description {
+				state : "default" 0.0;
+				min : 320 80;
+				max : 320 80;
+				fixed : 1 1;
+				color : 0 0 0 0;
+			}
+		}
+
+		part {
+			name : "img.bluetooth";
+			type : IMAGE;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				visible : 0;
+				min: 50 60;
+				max: 50 60;
+				fixed: 1 1;
+				align: 0 0.5;
+				rel1 {
+					relative: 12/320 0.0;
+				}
+				rel2 {
+					relative: 12/320 1.0;
+				}
+				image.normal: "bluetooth_off.png";
+			} description {
+				state : "unconnected" 0.0;
+				inherit : "default" 0.0;
+				visible : 1;
+				image.normal: "bluetooth_off.png";
+			} description {
+				state : "connected" 0.0;
+				inherit : "default" 0.0;
+				visible : 1;
+				image.normal: "bluetooth_on.png";
+			}
+		}
+
+		part {
+			name : "img.headset";
+			type : IMAGE;
+			scale : 1;
+			description {
+				state : "default" 0.0;
+				visible : 0;
+				min : 60 60;
+				max : 60 60;
+				fixed : 1 1;
+				align: 0 0.5;
+				rel1 {
+					relative : (8+50+8)/320 0.0;
+				}
+				rel2 {
+					relative : (8+50+8)/320 1.0;
+				}
+				image.normal : "headset.png";
+			}
+			description {
+				state : "show" 0.0;
+				inherit : "default" 0.0;
+				visible : 1;
+			}
+		}
+
+		part {
+			name: "txt.battery";
+			type: TEXT;
+			scale: 1;
+			description{
+				state: "default" 0.0;
+				visible : 1;
+				color: 255 255 255 255;
+				fixed : 1 1;
+				align : 1.0 0.5;
+				rel1 {
+					relative: (320-8-43-6)/320 0.0;
+				}
+				rel2 {
+					relative: (320-8-43-6)/320 1.0;
+				}
+				text {
+					font: SAMSUNG_SANS":style=Regular";
+					text_class: SAMSUNG_SANS_CLASS;
+					size: 36;
+					align: 1.0 0.5;
+					min : 1 1;
+					text : "100%";
+				}
+			}
+		}
+
+		part {
+			name : "sw.battery";
+			type : SWALLOW;
+			scale : 1;
+			description {
+				state : "default" 0.0;
+				visible : 1;
+				min: 43 60;
+				max: 43 60;
+				fixed: 1 1;
+				align: 1.0 0.5;
+				rel1 {
+					relative: (320-8)/320 0.0;
+				}
+				rel2 {
+					relative: (320-8)/320 1.0;
+				}
+			}
+			description {
+				state : "hide" 0.0;
+				visible : 0;
+			}
+		}
+	}
+
+	programs {
+		program {
+			name : "hideBTicon";
+			signal : "hideBTicon";
+			source : "img.bluetooth";
+			action : STATE_SET "default" 0.0;
+			target : "img.bluetooth";
+		}
+		program {
+			name : "showConnectedBTicon";
+			signal : "showConnectedBTicon";
+			source : "img.bluetooth";
+			action : STATE_SET "connected" 0.0;
+			target : "img.bluetooth";
+		}
+		program {
+			name : "showUnconnctedBTicon";
+			signal : "showUnconnctedBTicon";
+			source : "img.bluetooth";
+			action : STATE_SET "unconnected" 0.0;
+			target : "img.bluetooth";
+		}
+		program {
+			name : "showHeadset";
+			signal : "showHeadset";
+			source : "img.headset";
+			action : STATE_SET "show" 0.0;
+			target : "img.headset";
+		}
+		program {
+			name : "hideHeadset";
+			signal : "hideHeadset";
+			source : "img.headset";
+			action : STATE_SET "default" 0.0;
+			target : "img.headset";
+		}
+		program {
+			name : "hideBattery";
+			signal : "hideBattery";
+			source : "sw.battery";
+			action : STATE_SET "hide" 0.0;
+			target : "sw.battery";
+		}
+		program {
+			name : "showBattery";
+			signal : "showBattery";
+			source : "sw.battery";
+			action : STATE_SET "default" 0.0;
+			target : "sw.battery";
+		}
+	}
+}

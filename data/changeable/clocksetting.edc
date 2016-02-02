@@ -1,0 +1,42 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+
+#define FONT_BLD       "Tizen:style=Bold"
+#define FONT_MED       "Tizen:style=Medium"
+#define FONT_ROM       "Tizen:style=Roman"
+#define FONT_LIG       "Tizen:style=Roman"
+
+collections {
+#include "groups/setting_tts_macro.edc"
+#include "groups/genlist_setting.edc"
+#include "groups/edc_images.edc"
+#include "groups/edc_image_macro.edc"
+#include "groups/datefield.edc"
+#include "groups/battery.edc"
+#include "groups/index.edc"
+#include "groups/volumn_popup.edc"
+#include "groups/clock_type_layout.edc"
+#include "groups/bg_thumbnail.edc"
+#include "groups/two_finger_control.edc"
+#include "groups/genlist_layout.edc"
+#include "groups/empty_swallow.edc"
+#include "groups/thumbnail_view.edc"
+#include "groups/popup_layout.edc"
+#include "groups/gengrid_thumbnail_theme.edc"
+#include "groups/brightness_layout.edc"
+#include "groups/setting_sound.edc"
+#include "groups/setting_network_apn.edc"
+#include "groups/pinlock_layout.edc"
+#include "groups/setting_picker.edc"
+#include "groups/blockingmode_settime.edc"
+#include "groups/enhanced_pwrsaving.edc"
+#include "groups/setting_permission.edc"
+}

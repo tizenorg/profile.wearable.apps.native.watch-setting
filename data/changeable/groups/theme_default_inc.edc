@@ -1,0 +1,232 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics Co., Ltd All Rights Reserved
+ *
+ * BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *   1. Redistributions of source code must retain the above copyright notice, this
+ *      list of conditions and the following disclaimer.
+ *   2. Redistributions in binary form must reproduce the above copyright notice,
+ *      this list of conditions and the following disclaimer in the documentation
+ *      and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+
+//*** This file defines the color codes for default theme *** //
+
+// ****************************** Naming ************************************* /
+// {WIDGET}_{PART}_{TYPE}_{STATE}_COLOR
+// eg. LIST_TEXT_MAIN_NORMAL_COLOR
+
+#define TEXT_MATCH_COLOR                               "#FF9000FF"
+
+// ***************************** Background ********************************** /
+#define BG_COLOR                                       0 0 0 255
+
+// ***************************** Action bar ********************************** /
+#define ACTIONBAR_TEXT_COLOR                           "#FFFFFFFF"
+#define ACTIONBAR_BG_COLOR                             75 66 55 255
+#define ACTIONBAR_BOTTOM_LINE_COLOR                    107 86 61 255
+#define ACTIONBAR_MORE_DISABLED_COLOR                  255 255 255 51
+
+// ***************************** Scroller ************************************ /
+#define SCROLLER_BAR_COLOR                             102 102 102 255
+
+// ***************************** List *****************************************/
+#define LIST_BG_NORMAL_COLOR                           0 0 0 255
+#define LIST_BG_PRESSED_COLOR                          88 73 58 255
+#define LIST_BG_DIM_COLOR                              38 38 38 255
+#define LIST_DIVIDER_COLOR                             76 76 76 255
+#define LIST_LINE_COLOR                                64 64 64 255
+#define LIST_TEXT_GROUPINDEX_COLOR                     "#FF9000FF"
+#define LIST_TEXT_GROUPINDEX_SUB_COLOR                 "#FF9000FF"
+#define LIST_TEXT_MAIN_NORMAL_COLOR                    "#FFFFFFFF"
+#define LIST_TEXT_MAIN_DIM_COLOR                       "#333333FF"
+#define LIST_TEXT_SUB_NORMAL_COLOR                     "#BDA792FF"
+#define LIST_TEXT_SUB_DIM_COLOR                        "#333333FF"
+#define LIST_TEXT_SUB_MULTILINE_NORMAL_COLOR           "#BDA792FF"
+#define LIST_TEXT_SUB_MULTILINE_DIM_COLOR              "#333333FF"
+#define LIST_TEXT_SUB_MULTILINE_SELECTED_COLOR         "#BDA792FF"
+// Groupindex
+#define LIST_GROUPINDEX_BG_NORMAL_COLOR                39 35 33 255
+#define LIST_GROUPINDEX_BG_PRESSED_COLOR               88 74 58 255
+// Email
+#define LIST_EMAIL_NEW_TEXT_COLOR                      "#FFFFFFFF"
+#define LIST_EMAIL_ADDRESS_TEXT_COLOR                  "#FF9000FF"
+#define LIST_EMAIL_NUMBER_TEXT_COLOR                   "#FF9000FF"
+// Weahter
+#define LIST_WEATHER_TIME_TEXT_COLOR                   "#FFFFFFFF"
+// Notifications
+#define LIST_NOTI_TEXT_COLOR                           "#FFFFFFCC"
+// Swipe
+#define LIST_SWEEP_BG_NORMAL_COLOR                     53 48 44 255
+#define LIST_SWEEP_TEXT_COLOR                          "#FFFFFF7F"
+// Schedules
+#define LIST_SCHEDULES_TEXT_SUB_NORMAL_COLOR            "#FFFFFF3F"
+#define LIST_SCHEDULES_TEXT_SUB_DIM_COLOR               "#3333333F"
+#define LIST_SCHEDULES_LINE_COLOR                       96 96 96 255
+#define LIST_SCHEDULES_BG_PRESSED_COLOR                 88 76 48 255
+// logs
+#define LIST_LOGS_TEXT_MAIN_NORMAL                     "#FFFFFFFF"
+#define LIST_LOGS_TEXT_SUB_NORMAL                      "#FFFFFF7F"
+// Device_option
+#define LIST_DEVICE_OPTION_TEXT_MAIN_NORMAL_COLOR      "#FFFFFFFF"
+#define LIST_DEVICE_OPTION_TEXT_SUB_NORMAL_COLOR       "#FFFFFFFF"
+#define LIST_DEVICE_OPTION_TEXT_SUB_DIM_COLOR          "#444444FF"
+#define LIST_DEVICE_OPTION_LINE_COLOR                  34 34 34 255
+#define LIST_DEVICE_OPTION_ICON_DIVIDER_COLOR          34 34 34 255
+// Swipe
+#define LIST_SWIPE_TEXT_COLOR                          255 255 255 255
+
+// ***************************** Button ***************************************/
+#define BUTTON_TEXT_NORMAL_COLOR                       "#FFFFFFFF"
+#define BUTTON_TEXT_DIM_COLOR                          "#FFFFFF33"
+#define BUTTON_SWALLOW_DIM_COLOR                       255 255 255 51
+#define BUTTON_BOTTOM_PRESSED_COLOR                    255 255 255 255
+#define BUTTON_BOTTOM_DIM_COLOR                        255 255 255 51
+#define BUTTON_DELETE_PRESSED_COLOR                    255 255 255 255
+#define BUTTON_DELETE_DIM_COLOR                        255 255 255 127
+#define BUTTON_DIVIDER_BTN_ICON_DIM_COLOR              255 255 255 127
+#define BUTTON_ICON_CALL_MENU_NORMAL_COLOR             255 255 255 255
+#define BUTTON_ICON_CALL_MENU_PRESSED_COLOR            255 255 255 255
+#define BUTTON_ICON_CALL_MENU_DIM_COLOR                255 255 255 255
+// Controller
+#define BUTTON_CONTROLLER_NORMAL_COLOR                 51 51 51 255
+#define BUTTON_CONTROLLER_PRESS_COLOR                  99 93 89 255
+#define BUTTON_CONTROLLER_DISABLE_COLOR                51 51 51 255
+#define BUTTON_CONTROLLER_CLIP_NORMAL_COLOR            255 255 255 255
+#define BUTTON_CONTROLLER_CLIP_PRESS_COLOR             255 255 255 255
+#define BUTTON_CONTROLLER_CLIP_DISABLE_COLOR           255 255 255 51
+// Device Option
+#define BUTTON_DEVICE_OPTION_SWALLOW_DIM_COLOR         68 68 68 255
+#define BUTTON_DEFAULT_NORMAL_BG_COLOR                 75 66 55 255
+#define BUTTON_DEFAULT_PRESS_BG_COLOR                  99 93 89 255
+#define BUTTON_DEFAULT_DISABLE_BG_COLOR                29 26 24 255
+#define BUTTON_RED_NORMAL_BG_COLOR                     206 35 2 255
+#define BUTTON_RED_PRESS_BG_COLOR                      221 101 78 255
+#define BUTTON_RED_DISABLE_BG_COLOR                    78 25 16 255
+#define BUTTON_ORANGE_NORMAL_BG_COLOR                  237 134 0 255
+#define BUTTON_ORANGE_PRESS_BG_COLOR                   242 171 77 255
+#define BUTTON_ORANGE_DISABLE_BG_COLOR                 70 40 5 255
+#define BUTTON_GREEN_NORMAL_BG_COLOR                   98 164 17 255
+#define BUTTON_GREEN_PRESS_BG_COLOR                    145 191 89 255
+#define BUTTON_GREEN_DISABLE_BG_COLOR                  38 53 30 255
+#define BUTTON_POPUP_NORMAL_BG_COLOR                   75 66 55 255
+#define BUTTON_POPUP_PRESS_BG_COLOR                    99 93 89 255
+#define BUTTON_POPUP_DISABLE_BG_COLOR                  29 26 24 255
+#define BUTTON_NEXTDEPTH_PRESS_BG_COLOR                255 144 0 255
+#define BUTTON_NEXTDEPTH_DISABLE_BG_COLOR              51 51 51 255
+// Calendar
+#define BUTTON_SCHEDULE_NORMAL_COLOR                   93 169 1 255
+#define BUTTON_SCHEDULE_PRESS_COLOR                    145 191 94 255
+
+// ***************************** Check ****************************************/
+#define CHECK_TEXT_NORMAL_COLOR                        "#FFFFFFFF"
+
+// ***************************** Index ****************************************/
+// Scroll
+#define INDEX_SCROLL_BG_COLOR_INC                      34 34 34 255
+#define INDEX_SCROLL_TEXT_SELECT_COLOR                 "#FFFFFFFF"
+#define INDEX_SCROLL_TEXT_UNSELECT_COLOR               "#595959FF"
+#define INDEX_SCROLL_TEXT_SELECT1_COLOR                "#FF9000FF"
+#define INDEX_SCROLL_PADDING_COLOR                     34 34 34 255
+#define INDEX_SCROLL_HANDLE_BG_NORMAL_COLOR            34 34 34 255
+#define INDEX_SCROLL_HANDLE_BG_PRESSED_COLOR           255 144 0 255
+#define INDEX_SCROLL_HANDLE_TEXT_NORMAL_COLOR          89 89 89 255
+#define INDEX_SCROLL_HANDLE_TEXT_PRESSED_COLOR         255 144 0 255
+#define INDEX_SCROLL_HANDLE_2DEPTH_BG_NORMAL_COLOR     44 44 44 255
+#define INDEX_SCROLL_POPUP_TEXT_COLOR                  255 144 0 255
+#define INDEX_SCROLL_POPUP_BG_COLOR                    88 73 58 255
+// Tab
+#define INDEX_TAB_COLR                                 53 48 44 255
+#define INDEX_TAB_FOCUS_COLR                           249 145 7 255
+// Thumbnail
+#define INDEX_THUMBNAIL_COLOR                          26 26 26 255
+#define INDEX_THUMBNAIL_FOCUS_COLOR                    255 255 255 255
+#define INDEX_THUMBNAIL_LINE_FOCUS_COLOR               255 144 0 255
+#define INDEX_THUMBNAIL_LINE_UNFOCUS_COLOR             255 144 0 55
+
+// ***************************** GenGrid **************************************/
+#define GENGRID_BG_COLOR                               0 0 0 0
+
+// ***************************** Popup ****************************************/
+#define POPUP_TITLE_TEXT_COLOR                         "#FF9000FF"
+#define POPUP_BODY_TEXT_COLOR                          "#F5F5F5FF"
+#define POPUP_TOAST_TEXT_COLOR                         "#F5F5F5FF"
+#define POPUP_TITLE_LINE_COLOR                         67 67 67 255
+
+// ***************************** Progressbar **********************************/
+
+// ***************************** Layout ***************************************/
+// No Items
+#define NOITEM_TEXT_COLOR                              "#FFFFFF"
+// No Schdeule
+#define NOITEM_NOSCHDEULE_TEXT_COLOR                   "#FFFFFF7F"
+// Body
+#define BODY_NORMAL_TEXT_COLOR                         "#FFFFFFFF"
+#define BODY_NORMAL_TEXT_SUB_COLOR                     "#FF9000FF"
+#define BODY_THUMBNAIL_BG_COLOR                        26 26 26 255
+// Popup button controllers
+#define POPUP_BUTTON_CONTROLLER_CONTENT_BG_COLOR    51 51 51 255
+
+// ***************************** Slider ***************************************/
+
+// ***************************** Radio ****************************************/
+#define RADIO_DATETIME_TEXT_NORMAL_COLOR               255 255 255 255
+#define RADIO_DATETIME_TEXT_FOCUSED_COLOR              0 0 0 255
+#define RADIO_DATETIME_TEXT_DISABLED_COLOR             64 64 64 255
+#define RADIO_DATETIME_AM_PM_TEXT_NORMAL_COLOR         "#FFFFFF"
+#define RADIO_DATETIME_AM_PM_TEXT_SELECTED_COLOR       "#FF9000"
+
+// ***************************** Datetime *************************************/
+#define DATETIME_SEPARATOR_TEXT_COLOR                  250 250 250 255
+#define DATETIME_TEXT_SELECTED_COLOR                   255 255 255 255
+
+// ***************************** Spinner **************************************/
+#define SPINNER_EVENT_RECT_COLOR                       0 0 0 0
+#define SPINNER_DISABLED_COLOR                         0 0 0 35
+#define SPINNER_MUSIC_CONTROLLER_TEXT_COLOR            255 255 255 255
+#define SPINNER_MINUS_PLUS_NORMAL_COLOR                51 51 51 255
+#define SPINNER_MINUS_PLUS_PRESS_COLOR                 99 93 89 255
+#define SPINNER_MINUS_PLUS_DIM_COLOR                   51 51 51 255
+#define SPINNER_MINUS_PLUS_IMAGE_NORMAL_COLOR          255 255 255 255
+#define SPINNER_MINUS_PLUS_IMAGE_PRESS_COLOR           255 255 255 255
+#define SPINNER_MINUS_PLUS_IMAGE_DISABLE_COLOR         255 255 255 51
+#define SPINNER_CONTENT_BG_COLOR                       51 51 51 255
+#define SPINNER_CENTER_IMAGE_NORMAL_COLOR              255 144 0 255
+#define SPINNER_CENTER_IMAGE_FULL_COLOR                255 51 35 255
+#define SPINNER_CENTER_IMAGE_MUTE_COLOR                255 144 0 255
+#define SPINNER_CENTER_IMAGE_VIBRATE_COLOR             255 144 0 255
+#define SPINNER_TEXT_NORMAL_COLOR                      255 144 0 255
+#define SPINNER_TEXT_FULL_COLOR                        255 51 35 255
+
+// ***************************** Entry ****************************************/
+#define ENTRY_TEXT_COLOR                               "#FFFFFF"
+#define ENTRY_DISABLED_TEXT_COLOR                      "#969696"
+#define ENTRY_GUIDE_TEXT_COLOR                         "#6C6E78"
+#define ENTRY_CURSOR_COLOR                             255 255 255 255
+#define ENTRY_PREEDIT_SUB1_COLOR                       "#2EA8E1"
+#define ENTRY_PREEDIT_SUB2_COLOR                       "#9962C3"
+#define ENTRY_PREEDIT_SUB3_COLOR                       "#76DE37"
+#define ENTRY_PREEDIT_SUB4_COLOR                       "#999999"
+#define ENTRY_PREEDIT_UNDERLINE_COLOR                  "#FFFFFF"
+#define ENTRY_PREEDIT_TEXT_COLOR                       "#000000"
+#define ENTRY_PREEDIT_BACKGROUND_COLOR                 "#FFFFFF"
+#define ENTRY_SELECTION_BG_COLOR                       19 106 144 255
+#define ENTRY_SELECTION_EDGE_COLOR                     59 115 182 255
+
+// ***************************** Label ****************************************/
+#define LABEL_TEXT_BLOCK_STYLE_COLOR_INC               "#FFFFFF"

@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "විවෘත මූල බලපත්‍ර"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "චාජ් වෙමින් පවතී."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "යතුරු පුවරුව"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "නිහඬ"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "මෘදුකාංග අනුවාදය"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "සකසන්න"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "මිනිත්තු %1$d පසු, දීප්තිය පෙරනිමි මට්ටම (%2$d) වෙත යළි සැකසෙනු ඇත."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "නොමැත"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "මෝස්තරය"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "රහස්‍යතා අගුළ"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "රටාව බලන්න"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "බ්ලූටූත් විසන්ධි විට රහස්‍යතා අගුළු විකල්පය පෙන්වනු ඇත."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "සාමාන්‍ය"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "දෘශ්‍යතාව"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "බ්ලූටූත්"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "වේලාව සක."
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "ගියරය පිළිබඳ"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "ස්වයං සම්මු."
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "බැටරිය"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "බැටරි ප්‍රතිශතය"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "ඔරලෝසු ආකාරය"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "දිනය සහ වේලාව"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "අක්‍රීයයි"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "ෆොන්ට තරම"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "පැයේ නිවේදනය"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "විශාල"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "මාදිළි අංකය"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "අය නොකෙරේ."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "අක්‍රියයි"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "සක්‍රියයි"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "එළිමහන් ප්‍රකාරය"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "මිනිත්තු %d"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "තත්පර %d"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "ගියරය යළි සක."
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "තිර කාලය ඉකුත් වීම"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "අනුක්‍රමික අංකය"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "දිනය සක."
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "දුරකථනය සමග සම්මු කර."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "පද්ධතිය"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "ස්පර්ශ හඬවල්"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "කම්පනය කරන්න"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "ඔබගේ ගියරය %s සඳහා දෘශ්‍යමාන ය."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "දීප්තිය"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "අවලංගු කර."
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "ඔරලෝසුව"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "ගියර තතු"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "භාෂාව"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "දැනුම්දීම්"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "රිංග්ටෝන"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB නිදොසීම"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "කම්පනය"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "සහයවන්න"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "මධ්‍යස්ථ"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "හඬ"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "ශබ්ද ප්‍රකාරය"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "ශක්තිමත්"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "දුර්වලයි"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "USB නිදොසීම සක්‍රිය කිරීම ඔබගේ PC එක සහ ඔබගේ ගියරය අතර ගොනු පිටපත් කිරීමට, දැනුම්දීම් ලැබීමෙන් තොරව ඔබගේ ගියරය මත යෙදුම් ස්ථාපනය කිරීමට, සහ ලොග දත්ත කියවීමට ඔබට ඉඩ දෙනු ඇත. ඔබගේ පරිශීලක තොරතුරු වෙත ප්‍රවේශ වීමට අනිෂ්ට මෘදුකාංග මෙය භාවිතා කළ හැක. මෙය සංවර්ධන අරමුණු සඳහා පමණක් අරමුණු කෙරේ."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "ජංගම උපාංගය මත භාෂාව වෙනස් කරන්න"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "වේලා සහ දින සැකසුම් වෙනස් කිරීම ඇතැම් ක්‍රියාකාරිත්වයන්ට බලපෑ හැක"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT හෙඩ්සෙටය"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "වලිතයන්"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "පියවර මාන ඔරලෝසුව"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "කෙටිමං ඔරලෝසුව"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "ස්මාර්ට් රිලේ"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "අවදි කිරීමේ ඉඟිය"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "කාලගුණ ඔරලෝසුව"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "අවසන් වරට බැලූ තිරය"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "හරි"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "කුඩා"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "ද්වි ඔබන බල යතුර"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "මිනිත්තු 1"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "බිතුපත්"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "ගැලරි"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "වර්ණ පුවරුව"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "පෙරනිමිය"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° ව"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° ද"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "ක්‍රියාත්මක කරන ලදි"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "පෙරනිම් ෆොන්ට්"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "අකුරු වර්ගය"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "ෆොන්ට ශෛලය"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "කූල් ජෑශ්"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "රෝස්මෙරි"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "මුල්පිටු පසුබිම සකසන ලදී."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "උපාංග නාමය"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "බැටරි තත්ත්වය"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "නිවාස පසුබිම"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "විශාල අයිකන"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "කුඩා අයිකන"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "මධ්‍යම"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "කර්මාන්ත දත්ත නැවත සැකසීම සිදු කරමින් පවතී. කරුණාකර රැඳී සිටින්න..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "ඔරලෝසුව වෙනස් විය."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "සෙල් විකාශ පණිවිඩ"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "මෘදුකාංග අනුවාදය"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "මුල්පිටු අයිකන තරම"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "මුල්පිටු තිරය සංස්කරණය ක."
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "අධි බල සුරැකුම් ප්‍රකාරය"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "නිහඬ"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "සුරක්ෂිතතාවය"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "අත් බල සුරැකුම් ප්‍රකාරය අක්‍රිය කිරීමට, ඔබගේ උපාංගය යළි ඇරඹෙනු ඇත."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "බැටරි පාරිභෝජනය අඩු කිරීමට මුල්පිටු තිරය කලු තේමාවට වෙනස් කෙරෙනු ඇත. ඔබට පණිවිඩ සහ සබඳතා භාවිතා කිරීමට හැකිවනු ඇති නමුත්, වෙනත් යම් යෙදුම් සහ ක්‍රියාකාරිත්වයන් අවහිර කෙරෙනු ඇත."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "දැනුම්දීම් සක්‍රිය කරන්න"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "දැනුම්දීම් අක්‍රිය කරන්න"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "අ.ක."
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "ආරක්ෂක තොරතුරු"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "දෙවරක් ඔබන්න"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "මුල් තිරය සංස්කරණය ක."
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "බැටරිය %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "බැටරි තත්ත්වය"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "උපාංගයේ නම"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "මුල් පසුබිම"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "විශාල"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "%s ගෙන් තහවුරු කිරීම ලැබෙන තෙක් රැඳෙමින්..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "ගියර කළමනාකාරකය"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "ගියරය මතකය වෙතින් සියලු දත්ත මැකෙනු ඇත. අනතුරුව ඔබට ඔබගේ ගියරය එක තවත් උපාංගයක් වෙත සබැඳිය හැක."
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "මුල් තිරය"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "විවෘත මූල බලපත්‍ර"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "තිරයේ වේලාව අවසන්"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "බහුමාධ්‍යය"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "හඬ ප්‍රමාණය"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "තත්පර 10"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "තත්පර 15"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "තත්පර 30"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "විනාඩි 5"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "නොදනී"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "චොකො කූකි"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "බල සුරැකුම"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "බල සුරැකුම සක්‍රිය වනු ඇත. මෙමගින් CPU යන්ත්‍රයේ උපරිම ක්‍රියාකාරීත්වය සීමා කොට, බ්ලූටූත් ක්‍රියා විරහිත කොට අඩු තිර බලයක් භාවිතා කෙරෙනු ඇත. අවදි කිරීමේ අභිනය, කටහඬ පාලනය හා දෙදරුම් ලද නොහැකි වනු ඇත. ඔරලෝසුව හා S Health ක්‍රියාදාම තවදුරටත් ලද හැකි වනු ඇත."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "බල සුරැකුම අක්‍රියයි."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "බල සුරැකුම සක්‍රියයි."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "මෘදුකාංග අනුවාදය"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "පැතිකඩ"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "පහත පියවර අනුගමනය කිරීමෙන් ඔබට සුරක්ෂිතතා තොරතුරු පිළිබඳ නිවේදන පිරික්සා බැලිය හැක.\n\n1. සැකසුම් > ගියර තතු වෙත යන්න.\n2. USB නිදොසීම තෝරන්න.\n3. ඔබේ ගියර් 2 ඔබේ PC යන්ත්‍රයට සම්බන්ධ කරන්න.\n4. ඔබේ ගියර් 2හි දිස් වන USB නිදොසන පොළා පැනුමෙහි හරි තට්ටු කරන්න.\n5. sdb cmd භාවිතයෙන් (sdb cmd භාවිතා කිරීමට SDK ස්ථාපනය කරන්න), cmd ධාවනය කොට ආදාන ක්ෂේත්‍රයට “sdb pull /usr/share/Safety.zip c:\\Safety.zip” ඇතුළත් කිරීමෙන් ඔබේ PC යන්ත්‍රයට /usr/share/Safety.zip ගොනුව බා ගන්න.\n6. නවතම සුරක්ෂිතතා තොරතුරු කියවීම සඳහා zip ගොනුව c:\\ Safety folder වෙත විහිදුවා විහිදූ html ගොනුව විවෘත කරන්න.\n\nsdb භාවිතා කිරීමට http://developer.samsung.com වෙත පිවිස Samsung Gear SDK බා ගෙන ස්ථාපනය කරන්න."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "ශබ්ද පරිමාණය දැනට 0 ලෙස සකසා තිබේ."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "විශාල නිරූපක (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "කුඩා නිරූපක (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "යෙදුම් කළමනාකරණය ක."
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "පහත පියවර අනුගමනය කිරීමෙන් විවෘත මුලාශ්‍ර වරපත් සම්බන්ධයෙන් නිවේදන ඔබට පරික්ෂා කළ හැක.\n1. සැකසුම් වෙත යන්න > ගියර් තතු වෙත යන්න.\n2. USB නිදොසීම තෝරන්න.\n3. ඔබගේ ගියර් ඔබගේ PC එකට සම්බන්ධ කරන්න.\n4. ඔබගේ Samsung Gear දිස්වන USB නිදොසීම් උත්පතනය මත හරි තට්ටු කරන්න.\n5. sdb cmd භාවිතයෙන්, cmd ධාවනයෙන් සහ ආදාන ක්ෂේත්‍රයේ %2$s ඇතුළු කිරීමෙන් ඔබගේ PC එක වෙත %1$s ගොනුව බාගන්න.\n\nhttp://developer.samsung.com පිවිස sdb භාවිතා කිරීමට Samsung Gear SDK ස්ථාපනය කරන්න."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "මෑත යෙදුම්"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "පෙනුම"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "අක්‍රියයි"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "සැකසුම්"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "හඬ ප්‍රමාණය"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "ටින්කෙර්"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "අවදි කිරීමේ අභිනය"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "ඇමතුම් නාද"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "පැතිකඩ"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "සකසමින්..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "දෘශ්‍ය කරන්න"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "පෙළ ආදානය"

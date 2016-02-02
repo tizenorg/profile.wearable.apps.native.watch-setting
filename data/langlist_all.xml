@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<langlist>
+  <language id="az_AZ" string="Azərbaycanca" lang="Azerbaijani" mcc="400"/>
+  <language id="id_ID" string="Bahasa Indonesia" lang="Indonesian" mcc="0"/>
+  <language id="ms_MY" string="Bahasa Malaysia" lang="Malay" mcc="0"/>
+  <language id="ca_ES" string="Català" lang="Catalan" mcc=""/>
+  <language id="cs_CZ" string="Čeština" lang="Czech" mcc="230"/>
+  <language id="da_DK" string="dansk" lang="Danish" mcc="238"/>
+  <language id="de_DE" string="Deutsch (Deutschland)" lang="German" mcc="262"/>
+  <language id="de_AT" string="Deutsch (Österreich)" lang="German (Austria)" mcc="262"/>
+  <language id="de_CH" string="Deutsch (Schweiz)" lang="German (Switzerland)" mcc="262"/>
+  <language id="et_EE" string="Eesti" lang="Estonian" mcc="248"/>
+  <language id="en_AU" string="English (Australia)" lang="English (Australia)" mcc="0"/>
+  <language id="en_CA" string="English (Canada)" lang="English (Canada)" mcc="0"/>
+  <language id="en_IE" string="English (Ireland)" lang="English (Ireland)" mcc="0"/>
+  <language id="en_NZ" string="English (New Zealand)" lang="English (New Zealand)" mcc="0"/>
+  <language id="en_PH" string="English (Philippines)" lang="English(Philippines)" mcc="0"/>
+  <language id="en_ZA" string="English (South Africa)" lang="English (South Africa)" mcc="214"/>
+  <language id="en_GB" string="English (United Kingdom)" lang="English(UK)" mcc="234,235"/>
+  <language id="en_US" string="English (United States)" lang="English(US)" mcc="310,311,313,316"/>
+  <language id="es_ES" string="Español (España)" lang="Spanish" mcc="214"/>
+  <language id="es_US" string="Español (Estados Unidos)" lang="Spanish(Latin)" mcc="334"/>
+  <language id="eu_ES" string="Euskara" lang="Basque" mcc=""/>
+  <language id="tl_PH" string="Filipino" lang="Filipino" mcc="0"/>
+  <language id="fr_BE" string="Français (Belgique)" lang="French(Belgium)" mcc="0"/>
+  <language id="fr_CA" string="Français (Canada)" lang="French(Canada)" mcc="302"/>
+  <language id="fr_FR" string="Français (France)" lang="French" mcc="208"/>
+  <language id="fr_CH" string="Français (Suisse)" lang="French(Switzerland)" mcc="0"/>
+  <language id="ga_IE" string="Gaeilge" lang="Ireland" mcc="0"/>
+  <language id="gl_ES" string="galego" lang="Galician" mcc=""/>
+  <language id="hr_HR" string="Hrvatski" lang="Croatian" mcc="219"/>
+  <language id="is_IS" string="Íslenska" lang="Icelandic" mcc="274"/>
+  <language id="it_IT" string="Italiano" lang="Italian" mcc="222"/>
+  <language id="lv_LV" string="Latviešu" lang="Latvian" mcc="247"/>
+  <language id="lt_LT" string="Lietuvių" lang="Lithuanian" mcc="246"/>
+  <language id="hu_HU" string="Magyar" lang="Hungarian" mcc="216"/>
+  <language id="nl_BE" string="Nederlands (België)" lang="Dutch" mcc="204"/>
+  <language id="nl_NL" string="Nederlands (Nederland)" lang="Dutch" mcc="204"/>
+  <language id="nb_NO" string="Norsk bokmål" lang="Norwegian" mcc="242"/>
+  <language id="uz_UZ" string="O‘zbekcha" lang="Uzbek" mcc="434"/>
+  <language id="pl_PL" string="Polski" lang="Polish" mcc="260"/>
+  <language id="pt_BR" string="Português (Brasil)" lang="Portuguese(Brazil)" mcc="724"/>
+  <language id="pt_PT" string="Português (Portugal)" lang="Portuguese" mcc="268"/>
+  <language id="ru_RU" string="Pусский" lang="Russian" mcc="250"/>
+  <language id="ro_RO" string="Română" lang="Romanian" mcc="226"/>
+  <language id="sq_AL" string="Shqip" lang="Albanian" mcc="0"/>
+  <language id="sk_SK" string="Slovenčina" lang="Slovak" mcc="231"/>
+  <language id="sl_SI" string="Slovenščina" lang="Slovenian" mcc="293"/>
+  <language id="sr_RS" string="Srpski" lang="Serbian" mcc="220"/>
+  <language id="fi_FI" string="Suomi" lang="Finnish" mcc="244"/>
+  <language id="sv_SE" string="Svenska" lang="Swedish" mcc="240"/>
+  <language id="vi_VN" string="Tiếng Việt" lang="Vietnamese" mcc="0"/>
+  <language id="tr_TR" string="Türkçe" lang="Turkish" mcc="286"/>
+  <language id="el_GR" string="Ελληνικά" lang="Greek" mcc="202"/>
+  <language id="bg_BG" string="български" lang="Bulgarian" mcc="0"/>
+  <language id="kk_KZ" string="қазақ тілі" lang="Kazakh" mcc="401"/>
+  <language id="mk_MK" string="Македонски" lang="Macedonian" mcc="0"/>
+  <language id="uk_UA" string="Українська" lang="Ukrainian" mcc="255"/>
+  <language id="hy_AM" string="Հայերէն" lang="Armenian" mcc="283"/>
+  <language id="ka_GE" string="ქართული ენა" lang="Georgian" mcc="282"/>
+  <language id="he_IL" string="עברית" lang="Hebrew" mcc="0"/>
+  <language id="ur_PK" string="اردو" lang="Urdu" mcc="0"/>
+  <language id="ar_AE" string="العربية" lang="Arabic" mcc="0"/>
+  <language id="fa_IR" string="فارسی" lang="Farsi" mcc="0"/>
+  <language id="ne_NP" string="नेपाली" lang="Nepali" mcc="0"/>
+  <language id="mr_IN" string="मराठी" lang="Marathi" mcc="0"/>
+  <language id="hi_IN" string="हिंदी" lang="Hindi" mcc="0"/>
+  <language id="as_IN" string="অসমীয়া" lang="Assamese" mcc="0"/>
+  <language id="bn_IN" string="বাঙ্গালী" lang="Bengali" mcc="0"/>
+  <language id="pa_IN" string="ਪੰਜਾਬੀ ਦੇ" lang="Punjabi" mcc="0"/>
+  <language id="gu_IN" string="ગુજરાતી" lang="Gujarati" mcc="0"/>
+  <language id="or_IN" string="ওড়িয়া" lang="Oriya" mcc="0"/>
+  <language id="ta_IN" string="தமிழ்" lang="Tamil" mcc="0"/>
+  <language id="te_IN" string="తెలుగు" lang="Telugu" mcc="0"/>
+  <language id="kn_IN" string="ಕನ್ನಡ" lang="Kannada" mcc="0"/>
+  <language id="ml_IN" string="മലയാളം" lang="Malayalam" mcc="0"/>
+  <language id="si_LK" string="සිංහල" lang="Sinhala" mcc="0"/>
+  <language id="th_TH" string="ไทย" lang="Thai" mcc="0"/>
+  <language id="my_MM" string="ျမန္မာ" lang="Myanmar" mcc="0"/>
+  <language id="lo_LA" string="ລາວ" lang="Lao" mcc="0"/>
+  <language id="km_KH" string="ខ្មែរ" lang="Khmer" mcc="0"/>
+  <language id="ja_JP" string="日本語" lang="Japanese" mcc="449"/>
+  <language id="zh_CN" string="中文" lang="Chinese" mcc="0"/>
+  <language id="zh_TW" string="中文（台湾）" lang="Chinese (Taiwan)" mcc="0"/>
+  <language id="zh_HK" string="中文（香港）" lang="Chinese (HongKong)" mcc="0"/>
+  <language id="ko_KR" string="한국어" lang="Korean" mcc="450"/>
+  <!--  <language id="ar_IL" string="العربية" lang="Arabic" mcc="0"/> -->
+</langlist>

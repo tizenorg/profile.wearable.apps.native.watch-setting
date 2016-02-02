@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Άδ.χρ.ανοιχτ.κώδικα"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "Φόρτιση."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "Πληκτρολόγιο"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "Σίγαση"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "Έκδοση λογισμικού"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "Ορισμός"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "Μετά από %1$d λεπτά, η φωτεινότητα θα επανέλθει στο προεπιλεγμένο επίπεδο (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "Κανένα"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "Μοτίβο"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "Κλείδ. απορρήτου"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "Προβ. μοτ."
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "Η επιλογή κλειδώματος απορρήτου θα εμφανιστεί μόλις αποσυνδεθεί το Bluetooth."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "Κανονικό"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "Ορατότητα"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "Bluetooth"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "Ορ.ώρας"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "Πληροφ. Gear"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "Αυτ.συγχρ."
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "Μπαταρία"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "Ποσοστό μπαταρίας"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "Τύπος ρολογ."
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "Ημ/νία - ώρα"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "Απενεργοποιήθηκε"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "Μέγ. γραμματ."
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "Ωριαίες ειδοπ."
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "Μεγάλο"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "Κωδ. μοντέλου"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "Δεν φορτίζει."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "Ανενεργό"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "Ενεργό"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "Λειτ. εξ. χώρ."
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d λεπτά"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d δευτερ."
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "Επαναφ. Gear"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "Λήξη χρ.ορ.οθ."
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "Σειριακός αριθμός"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "Ρύθμ. ημ/νίας"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "Συγχρ. με τηλέφωνο."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "Σύστημα"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "Ήχοι αφής"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "Δόνηση"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "Το Gear είναι ορατό για %s."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "Φωτεινότ."
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "Ακύρωση"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "Ρολόι"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "Πληροφορίες Gear"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "Γλώσσα"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "Ειδοποιήσεις"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Ήχοι κλήσης"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "Εντ. σφαλ. USB"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "Δόνηση"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "Βοήθεια"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "Μεσαίο"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "Ήχος"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "Λειτ. ήχου"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "Αυξημένη"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "Ασθενές"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "Η ενεργοποίηση της λειτουργίας εντοπισμού σφαλμάτων USB θα σας δώσει τη δυνατότητα να αντιγράψετε αρχεία μεταξύ του υπολογιστή σας και του Gear, να εγκαταστήσετε εφαρμογές στο Gear χωρίς να εμφανίζονται ειδοποιήσεις και να διαβάσετε δεδομένα αρχείων καταγραφής. Οι κακόβουλες εφαρμογές ενδέχεται να χρησιμοποιήσουν αυτήν τη λειτουργία, για να αποκτήσουν πρόσβαση στις πληροφορίες χρήστη. Αυτή η λειτουργία προορίζεται μόνο για σκοπούς ανάπτυξης."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "Αλλάξτε γλώσσα στην κινητή συσκευή."
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "Η αλλαγή στις ρυθμίσεις ημερομηνίας και ώρας ενδέχεται να επηρεάσει κάποιες λειτουργίες."
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "Σετ ακουστικού-μικροφώνου BΤ"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "Κινήσεις"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "Ρολόι βηματόμετρου"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "Συντόμευση ρολογιού"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "Έξυπνη αναμετάδοση"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "Χειρονομία ενεργοποίησης"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "Ρολόι καιρού"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "Οθόνη που προβλήθηκε τελευταία"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "OK"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "Μικρό"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "Πλήκτρο ενεργ. διπλ. πατήματος"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 λεπτό"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "Θέματα φόντου"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "Συλλογή"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "Παλέτα χρωμάτων"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "Προεπιλογή"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° Α"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° Δ"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "Ενεργοποιήθηκε"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "Προεπιλεγμένη γραμματοσειρά"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "Γραμματοσειρά"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "Στυλ γραμματοσειράς"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Cool jazz"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rosemary"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "Ορίστηκε το φόντο αρχικής σελίδας."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "Όνομα συσκευής"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "Κατάσταση μπαταρίας"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "Φόντο αρχικής"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "Μεγ. εικον."
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "Μικρά εικον."
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "Μεσαίο"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "Γίνεται επαναφορά των εργοστασιακών δεδομένων. Περιμένετε..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "Το ρολόι άλλαξε."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Μήνυμα εκπομπής κυψέλης"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Έξυπνη αναμετάδοση"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "Software version"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "Μέγ.εικ. αρχ.οθ."
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "Επεξ. αρχικής"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "Λειτ. εξοικ. ενέργ. Ultra"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "Σίγαση"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "Ασφάλεια"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "Για την απενεργοποίηση της λειτουργίας εξοικονόμησης ενέργειας Ultra, η συσκευή θα επανεκκινηθεί."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "Η αρχική οθόνη θα αλλάξει στο μαύρο θέμα για να μειωθεί η κατανάλωση της μπαταρίας. Θα μπορείτε να χρησιμοποιείτε μηνύματα και επαφές αλλά κάποιες εφαρμογές και λειτουργίες θα έχουν περιορισμούς."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "Ενεργοποίηση ειδοποιήσεων"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "Απενεργοποίηση ειδοποιήσεων"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "Άκυρο"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "Πληροφορίες για την ασφάλεια"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "Διπλό πάτημα"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "Επεξ. αρχ. οθόν."
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "Μπαταρία %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "Κατάστ. μπαταρ."
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "Όνομα συσκ."
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "Φόντο αρχ. οθόν."
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "Τεράστιο"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "Αναμονή για επιβεβαίωση από %s..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "Διαχείριση Gear"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "Όλα τα δεδομένα θα διαγραφούν από τη μνήμη του Gear. Έπειτα θα μπορείτε να συνδέσετε το Gear σε άλλη συσκευή"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "Αρχική οθόνη"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Άδ.χρ.ανοιχτ.κώδικα"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "Λήξη χρ. ορίου οθ."
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "Πολυμέσα"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "Ένταση"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 δευτερόλεπτα"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 δευτερόλεπτα"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 δευτερόλεπτα"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 λεπτά"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "Άγνωστο"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "Εξ. ενέργ."
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "Θα ενεργοποιηθεί η λειτουργία εξοικονόμησης ενέργειας. Κατά συνέπεια, θα περιοριστεί η μέγιστη απόδοση της CPU, θα απενεργοποιηθεί το Bluetooth και θα μειωθεί ο φωτισμός της οθόνης σας. Οι λειτουργίες χειρονομίας ενεργοποίησης, φωνητικού ελέγχου και δόνησης δεν θα είναι διαθέσιμες. Το ρολόι και οι λειτουργίες του S Health θα εξακολουθήσουν να είναι διαθέσιμες."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "Η εξοικονόμηση ενέργειας απενεργοποιήθηκε."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "Η εξοικονόμηση ενέργειας ενεργοποιήθηκε."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "Έκδοση λογισμικού"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "Προφίλ"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "Μπορείτε να δείτε ανακοινώσεις σχετικά με πληροφορίες ασφάλειας, ακολουθώντας τα παρακάτω βήματα.\n\n1. Μεταβείτε στο μενού Ρυθμίσεις > Πληροφορίες Gear.\n2. Επιλέξτε τον εντοπισμό σφαλμάτων USB.\n3. Συνδέστε το Gear 2 με τον υπολογιστή σας.\n4. Πατήστε OK στο αναδυόμενο παράθυρο του εντοπισμού σφαλμάτων USB που θα εμφανιστεί στο Gear 2.\n5. Χρησιμοποιώντας την εντολή sdb cmd (εγκαταστήστε το SDK για να χρησιμοποιήσετε το sdb cmd), κάντε λήψη του αρχείου /usr/share/Safety.zip στον υπολογιστή σας εκτελώντας το cmd και πληκτρολογώντας “sdb pull /usr/share/Safety.zip c:\\Safety.zip” στο πεδίο εισαγωγής.\n6. Αποσυμπιέστε το αρχείο στο φάκελο c:\\Safety και ανοίξτε το αρχείο html που αποσυμπιέστηκε για να διαβάσετε τις πιο πρόσφατες πληροφορίες ασφάλειας.\n\nΜεταβείτε στην τοποθεσία http://developer.samsung.com και κάντε λήψη και εγκατάσταση του Samsung Gear SDK, για να χρησιμοποιήσετε το sdb."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "Η ένταση έχει οριστεί στο 0."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "Μεγ. εικον. (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "Μικ. εικον. (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "Διαχ. εφαρμ."
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "Μπορείτε να δείτε ανακοινώσεις σχετικά με τις άδειες ανοιχτού κώδικα, ακολουθώντας τα παρακάτω βήματα.\n1. Μεταβείτε στο μενού Ρυθμίσεις > Πληροφορίες Gear.\n2. Επιλέξτε «Εντοπισμός σφαλμάτων USB».\n3. Συνδέστε το Gear στον υπολογιστή σας.\n4. Πατήστε OK στο αναδυόμενο παράθυρο του εντοπισμού σφαλμάτων USB που θα εμφανιστεί στο Samsung Gear.\n5. Χρησιμοποιώντας το sdb cmd, κάντε λήψη του αρχείου %1$s στον υπολογιστή σας, εκτελώντας το cmd και καταχωρώντας την εντολή «%2$s» στο πεδίο εισόδου.\n\nΕπισκεφτείτε τη διεύθυνση http://developer.samsung.com και κάντε λήψη και εγκατάσταση του Samsung Gear SDK για να χρησιμοποιήσετε το sdb."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "Πρόσφ. εφ."
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "Οθόνη"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "Απενεργοποιήθηκε"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "Ρυθμίσεις"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "Ένταση"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "Χειρον. ενεργοπ."
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "Ήχοι κλήσης"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "Προφίλ"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "Επεξεργασία..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "Ορατό"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Εισ. κειμέν."

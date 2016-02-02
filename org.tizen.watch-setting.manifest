@@ -1,0 +1,27 @@
+<manifest>
+        <define>
+            <domain name="org.tizen.watch-setting"/>
+			<request>
+				<smack request="tizen::vconf::public::r::platform::rw" type="rw"/>
+				<smack request="tizen::vconf::public::r" type="rl"/>
+				<smack request="tizen::vconf::platform::rw" type="rl"/>
+				<smack request="tizen::vconf::setting::admin" type="rw"/>
+				<smack request="tizen::vconf::setting" type="rl"/>
+				<smack request="tizen::vconf::volume::set" type="rw"/>
+				<smack request="tizen::vconf::display" type="rl"/>
+				<smack request="tizen::vconf::camcorder" type="rl"/>
+			</request>
+        </define>
+        <assign>
+            <filesystem path="/usr/share/icons/default/small/org.tizen.watch-setting.png" label="_" />
+            <filesystem path="/opt/share/icons/default/small/org.tizen.watch-setting_small.png" label="_" />
+			<filesystem path="/usr/apps/org.tizen.watch-setting/res/locale/*" label="_" />
+			<filesystem path="/usr/share/locale/*" label="_" />
+			<filesystem path="/opt/usr/share/settings" label="_"/>
+			<filesystem path="/opt/usr/share/settings/*" label="_"/>
+			<filesystem path="/usr/share/Safety.zip" label="_"/>
+        </assign>
+        <request>
+            <domain name="org.tizen.watch-setting"/>
+        </request>
+</manifest>

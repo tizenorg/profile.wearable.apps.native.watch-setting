@@ -1,0 +1,23 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+group { name: "setting-empty/swallow";
+   parts {
+      part { name: "empty.swallow";
+         type: SWALLOW;
+         scale: 1;
+         mouse_events: 0;
+         description { state: "default" 0.0;
+         	min: 50 50;
+            max: 50 50;
+         }
+      }
+	}
+}

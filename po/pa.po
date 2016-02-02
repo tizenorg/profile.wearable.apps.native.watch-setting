@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ਓਪਨ ਸੋਰਸ ਲਾਈਸੰਸ"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "ਚਾਰਜ ਹੋ ਰਿਹਾ ਹੈ।"
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "ਕੀਬੋਰਡ"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "ਮਿਊਟ"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "ਸੌਫ਼ਟਵੇਅਰ ਸੰਸਕਰਣ"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "ਸੈੱਟ"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "%1$d ਮਿੰਟ ਦੇ ਬਾਅਦ, ਚਮਕ ਡਿਫਾੱਲਟ ਸਤਰ (%2$d) ਤੇ ਸੈੱਟ ਹੋ ਜਾਵੇਗੀ।"
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "ਕੋਈ ਨਹੀਂ"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "ਨਮੂਨਾ"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "ਪ੍ਰਾਈਵੇਸੀ ਲੌਕ"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "ਪੈਟਰਨ ਦੇਖੋ"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "ਬਲੂਟੁੱਥ ਦੇ ਡਿਸਕਨੈਕਟ ਹੋਣ ਤੇ ਪ੍ਰਾਈਵੇਸੀ ਲੌਕ ਵਿਕਲਪ ਦਿਖਾਇਆ ਜਾਵੇਗਾ।"
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "ਸਧਾਰਨ"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "ਦ੍ਰਿਸ਼ਮਾਨਤਾ"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "ਬਲੂਟੁੱਥ"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "ਸਮਾਂ ਸੈੱਟ ਕਰੋ"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "ਗੇਅਰ ਦੇ ਬਾਰੇ"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "ਸਵੈ ਸਿੰਕ"
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "ਬੈਟਰੀ"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "ਬੈਟਰੀ ਪ੍ਰਤੀਸ਼ਤ"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "ਘਡ਼ੀ ਪ੍ਰਕਾਰ"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "ਮਿਤੀ ਅਤੇ ਸਮਾਂ"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "ਅਸਮਰੱਥ"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "ਫੌਂਟ ਆਕਾਰ"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "ਹਰ ਘੰਟੇ ਅਲਰਟ"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "ਵੱਡਾ"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "ਮਾੱਡਲ ਨੰਬਰ"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "ਚਾਰਜ ਨਹੀਂ ਹੋ ਰਿਹਾ।"
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "ਬੰਦ"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "ਚਾਲੂ"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "ਆਉਟਡੋਰ ਮੋਡ"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d ਮਿੰਟ"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d ਸਕਿੰਟ"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "ਗੇਅਰ ਰੀਸੈੱਟ ਕਰੋ"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "ਸਕ੍ਰੀਨ ਸਮਾਂ-ਸਮਾਪਤ"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "ਸੀਰੀਅਲ ਨੰਬਰ"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "ਮਿਤੀ ਸੈੱਟ ਕਰੋ"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "ਫੋਨ ਨਾਲ ਸਿੰਕ ਕਰੋ।"
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "ਸਿਸਟਮ"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "ਟਚ ਧੁਨੀਆਂ"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "ਵਾਈਬ੍ਰੇਟ"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "%s ਦੇ ਲਈ ਤੁਹਾਡਾ ਗੇਅਰ ਦ੍ਰਿਸ਼ਮਾਨ ਹੈ।"
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "ਚਮਕ"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "ਰੱਦ ਕਰੋ"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "ਘਡ਼ੀ"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "ਗੇਅਰ ਜਾਣਕਾਰੀ"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "ਭਾਸ਼ਾ"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "ਸੂਚਨਾਵਾਂ"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "ਰਿੰਗਟੋਨਾਂ"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB ਡੀਬਗਿੰਗ"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "ਵਾਈਬ੍ਰੇਸ਼ਨ"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "ਮਦਦ"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "ਮੱਧਮ"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "ਧੁਨੀ"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "ਧੁਨੀ ਮੋਡ"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "ਮਜ਼ਬੂਤ"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "ਕਮਜ਼ੋਰ"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "USB ਡੀਬਗਿੰਗ ਸਮਰੱਥ ਕਰਨ ਨਾਲ ਇਹ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ PC ਅਤੇ ਤੁਹਾਡੇ ਗੇਅਰ ਦੇ ਵਿੱਚਕਾਰ ਫਾਈਲਾਂ ਕਾਪੀ ਕਰਨ, ਸੂਚਨਾਵਾਂ ਪ੍ਰਾਪਤ ਕੀਤੇ ਬਿਨਾ ਹੀ ਤੁਹਾਡੇ ਗੇਅਰ ਤੇ ਅਨੁਪ੍ਰਯੋਗ ਸਥਾਪਿਤ ਕਰਨ ਅਤੇ ਲੌਗ ਡੈਟਾ ਪੜ੍ਹਣ ਦੀ ਇਜਾਜ਼ਤ ਦੇਵੇਗਾ। ਦੋਸ਼ਪੂਰਨ ਅਨੁਪ੍ਰਯੋਗ ਇਸਦਾ ਉਪਯੋਗ ਤੁਹਾਡੀ ਉਪਯੋਗਕਰਤਾ ਜਾਣਕਾਰੀ ਨੂੰ ਐਕਸੈੱਸ ਕਰਨ ਲਈ ਕਰ ਸਕਦੇ ਹਨ। ਇਹ ਸਿਰਫ ਵਿਕਾਸ ਉਦੇਸ਼ਾਂ ਲਈ ਨੀਯਤ ਕੀਤਾ ਗਿਆ ਹੈ।"
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "ਮੋਬਾਈਲ ਡਿਵਾਈਸ ਤੇ ਭਾਸ਼ਾ ਬਦਲੋ"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "ਸਮਾਂ ਅਤੇ ਮਿਤੀ ਸੈੱਟਿੰਗਸ ਨੂੰ ਬਦਲਣ ਨਾਲ ਕੁਝ ਫੰਕਸ਼ਨ ਪ੍ਰਭਾਵਤ ਹੋ ਸਕਦੇ ਹਨ"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "ਰੱਦ"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT ਹੈੱਡਸੈੱਟ"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "ਮੋਸ਼ਨ"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "ਪੈਡੋਮੀਟਰ ਘੜੀ"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "ਸ਼ੌਰਟਕੱਟ ਘੜੀ"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "ਸਮਾਰਟ ਰਿਲੇ"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "ਵੇਕ-ਅਪ ਸੰਕੇਤ"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "ਮੌਸਮ ਘਡ਼ੀ"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "ਅੰਤਿਮ ਦੇਖੀ ਗਈ ਸਕ੍ਰੀਨ"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "ਓਕੇ"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "ਛੋਟਾ"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "ਪਾਵਰ ਬਟਨ ਦੋ ਵਾਰ ਦਬਾਉਣਾ"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 ਮਿੰਟ"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "ਵਾਲਪੇਪਰ"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "ਗੈਲਰੀ"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "ਰੰਗਦਾਰ ਪੈਲੇਟ"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "ਡਿਫਾੱਲਟ"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° L"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° R"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "ਸਮਰੱਥ"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "ਡਿਫਾੱਲਟ ਫੌਂਟ"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "ਫੌਂਟ"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "ਫੌਂਟ ਸ਼ੈਲੀ"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "ਕੂਲ ਜੈਜ਼"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "ਰੋਜ਼ਮੈਰੀ"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "ਹੋਮ ਬੈਕਗ੍ਰਾਉਂਡ ਸੈੱਟ।"
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "ਡਿਵਾਈਸ ਦਾ ਨਾਂ"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "ਬੈਟਰੀ ਦੀ ਸਥਿਤੀ"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "ਹੋਮ ਬੈਕਗ੍ਰਾਉਂਡ"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "ਵੱਡੇ ਪ੍ਰਤੀਰੂਪ"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "ਛੋਟੇ ਪ੍ਰਤੀਰੂਪ"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "ਮੱਧਮ"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "ਫੈਕਟਰੀ ਡੈਟਾ ਰੀਸੈੱਟ ਹੋ ਰਿਹਾ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਉਡੀਕ ਕਰੋ..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "ਘੜੀ ਬਦਲ ਗਈ।"
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "ਸੈਲ ਪ੍ਰਸਾਰਣ ਸੰਦੇਸ"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "ਸੌਫ਼ਟਵੇਅਰ ਸੰਸਕਰਣ"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "ਹੋਮ ਪ੍ਰਤੀਰੂਪ ਅਕਾਰ"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "ਹੋਮ ਸਕ੍ਰੀਨ ਸੰਪਾਦਿਤ ਕਰੋ"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "ਅਲਟਰਾ ਪਾਵਰ ਸੇਵਿੰਗ ਮੋਡ"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "ਮਿਊਟ"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "ਸੁਰੱਖਿਆ"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "ਅਲਟਰਾ ਪਾਵਰ ਸੇਵਿੰਗ ਮੋਡ ਨੂੰ ਅਸਮਰੱਥ ਕਰਨ ਦੇ ਲਈ, ਤੁਹਾਡਾ ਡਿਵਾਈਸ ਪੁਨਰ ਅਰੰਭ ਹੋ ਜਾਵੇਗਾ।"
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "ਬੈਟਰੀ ਖਪਤ ਨੂੰ ਘੱਟ ਕਰਨ ਦੇ ਲਈ ਹੋਮ ਸਕ੍ਰੀਨ ਨੂੰ ਬਲੈਕ ਥੀਮ ਤੇ ਬਦਲ ਦਿੱਤਾ ਜਾਵੇਗਾ। ਤੁਸੀਂ ਸੰਦੇਸ਼ਾਂ ਅਤੇ ਸੰਪਰਕਾਂ ਦਾ ਉਪਯੋਗ ਕਰਨ ਵਿੱਚ ਸਮਰੱਥ ਹੋਵੋਗੇ, ਪਰ ਕੁੱਝ ਹੋਰ ਅਨੁਪ੍ਰਯੋਗਾਂ ਅਤੇ ਫੰਕਸ਼ਨਾਂ ਨੂੰ ਪ੍ਰਤੀਬੰਧ ਕੀਤਾ ਜਾਵੇਗਾ।"
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "ਸੂਚਨਾਵਾਂ ਸਮਰੱਥ ਕਰੋ"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "ਸੂਚਨਾਵਾਂ ਅਸਮਰੱਥ ਕਰੋ"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "ਰੱਦ"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "ਸੁਰੱਖਿਆ ਜਾਣਕਾਰੀ"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "ਡਬਲ ਪ੍ਰੈਸ"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "ਹੋਮ ਸਕ੍ਰੀਨ ਸੰਪਾਦਿਤ ਕਰੋ"
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "ਬੈਟਰੀ %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "ਬੈਟਰੀ ਸਥਿਤੀ"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "ਡਿਵਾਈਸ ਨਾਂ"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "ਹੋਮ ਬੈਕਗ੍ਰਾਉਂਡ"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "ਬਹੁਤ ਵੱਡਾ"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "%s ਤੋਂ ਪੁਸ਼ਟੀ ਦੀ ਉਡੀਕ ਕਰ ਰਿਹਾ ਹੈ..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "ਗੇਅਰ ਪ੍ਰਬੰਧਕ"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "ਗੇਅਰ ਮੈਮਰੀ ਤੋਂ ਸਾਰਾ ਡੈਟਾ ਮਿਟ ਜਾਵੇਗਾ। ਤੁਸੀਂ ਫਿਰ ਆਪਣੇ ਗੇਅਰ ਨੂੰ ਦੂਜੇ ਡਿਵਾਈਸ ਤੇ ਕਨੈਕਟ ਕਰ ਸਕਦੇ ਹੋ।"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "ਹੋਮ ਸਕ੍ਰੀਨ"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ਓਪਨ ਸੋਰਸ ਲਾਈਸੰਸ"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "ਸਕ੍ਰੀਨ ਸਮਾਂ-ਸਮਾਪਤ"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "ਮਲਟੀਮੀਡੀਆ"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "ਵਾੱਲਿਊਮ"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 ਸਕਿੰਟ"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 ਸਕਿੰਟ"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 ਸਕਿੰਟ"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 ਮਿੰਟ"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "ਅਗਿਆਤ"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "ਚੋਕੋ ਕੂਕੀ"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "ਪਾਵਰ ਸੇਵਰ"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "ਪਾਵਰ ਸੇਵਰ ਨੂੰ ਸਮਰੱਥ ਕਰ ਦਿੱਤਾ ਜਾਵੇਗਾ। ਇਹ CPU ਦੇ ਅਧਿਕਤਮ ਪ੍ਰਦਰਸ਼ਨ ਨੂੰ ਸੀਮਿਤ ਕਰ ਦੇਵੇਗਾ, ਬਲੂਟੁੱਥ ਬੰਦ ਕਰ ਦੇਵੇਗਾ ਅਤੇ ਸਕ੍ਰੀਨ ਦੇ ਘੱਟ ਪਾਵਰ ਸਤਰ ਦੀ ਵਰਤੋਂ ਕੀਤੀ ਜਾਵੇਗੀ। ਵੈਕ-ਅਪ ਸੰਕੇਤ, ਵਾੱਇਸ ਨਿਯੰਤ੍ਰਣ ਅਤੇ ਕੰਪਨ ਉਪਲਬਧ ਨਹੀਂ ਹੋਣਗੇ। ਘੜੀ ਅਤੇ S Health ਫੰਕਸ਼ਨ ਤਾਂ ਵੀ ਉਪਲਬਧ ਹੋਣਗੇ।"
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "ਪਾਵਰ ਸੇਵਰ ਅਸਮਰੱਥ ਹੋਇਆ।"
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "ਪਾਵਰ ਸੇਵਰ ਸਮਰੱਥ ਹੋਇਆ।"
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "ਸੌਫ਼ਟਵੇਅਰ ਸੰਸਕਰਣ"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "ਪ੍ਰੋਫਾਈਲ"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "ਤੁਸੀਂ ਹੇਠਾਂ ਦਿੱਤੇ ਗਏ ਚਰਣਾਂ ਦਾ ਪਾਲਨ ਕਰਦੇ ਹੋਏ ਸੁਰੱਖਿਆ ਜਾਣਕਾਰੀ ਦੇ ਬਾਰੇ ਵਿੱਚ ਸੂਚਨਾਵਾਂ ਦੀ ਜਾਂਚ ਕਰ ਸਕਦੇ ਹੋ।\n\n1. ਸੈੱਟਿੰਗਸ > ਗੇਅਰ ਜਾਣਕਾਰੀ ਤੇ ਜਾਉ।\n2. USB ਡੀਬਗਿੰਗ ਦੀ ਚੋਣ ਕਰੋ।\n3. ਆਪਣੇ PC ਦੇ ਨਾਲ ਆਪਣੇ ਗੇਅਰ 2 ਨੂੰ ਕਨੈਕਟ ਕਰੋ।\n4. USB ਡੀਬਗਿੰਗ ਪੌਪ-ਅਪ ਤੇ ਓਕੇ ਟੈਪ ਕਰੋ ਜੋ ਤੁਹਾਡੇ ਗੇਅਰ 2 ਤੇ ਪ੍ਰਗਟ ਹੁੰਦਾ ਹੈ।\n5. sdb cmd ਦਾ ਉਪਯੋਗ ਕਰਦੇ ਹੋਏ (sdb cmd ਦਾ ਉਪਯੋਗ ਕਰਨ ਦੇ ਲਈ SDK ਸਥਾਪਿਤ ਕਰੋ ), ਇਨਪੁਟ ਖੇਤਰ ਵਿੱਚ “sdb pull /usr/share/Safety.zip c:\\Safety.zip” ਚਲਾਉਂਦੇ ਅਤੇ ਦਾਖਲ ਕਰਦੇ ਹੋਏ ਆਪਣੇ ਕੰਪਿਊਟਰ ਤੇ /usr/share/Safety.zip ਫਾਈਲ ਡਾਉਨਲੋਡ ਕਰੋ।\n6. zip ਫਾਈਲ c:\\Safety folder ਤੇ ਖੋਲ੍ਹੋ ਅਤੇ ਨਵੀਨਤਮ ਸੁਰੱਖਿਆ ਜਾਣਕਾਰੀ ਪੜ੍ਹਣ ਦੇ ਲਈ ਖੋਲ੍ਹੀ ਗਈ html ਫਾਈਲ ਖੋਲ੍ਹੋ।\n\nhttp://developer.samsung.com ਤੇ ਜਾਉ, sdb ਦਾ ਉਪਯੋਗ ਕਰਨ ਦੇ ਲਈ Samsung Gear SDK ਸਥਾਪਿਤ ਅਤੇ ਡਾਉਨਲੋਡ ਕਰੋ।"
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "ਵਾੱਲਿਊਮ ਵਰਤਮਾਨ ਵਿੱਚ 0 ਤੇ ਸੈੱਟ ਹੈ।"
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "ਵੱਡੇ ਪ੍ਰਤੀਰੂਪ (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "ਛੋਟੇ ਪ੍ਰਤੀਰੂਪ (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "ਐਪਸ ਪ੍ਰਬੰਧਿਤ ਕਰੋ"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "ਤੁਸੀਂ ਹੇਠਾਂ ਦਿੱਤੇ ਗਏ ਕਦਮਾਂ ਦੀ ਪਾਲਣਾ ਕਰਕੇ ਮੁਕਤ ਸ੍ਰੋਤ ਲਾਈਸੰਸ ਦੇ ਸੰਬੰਧ ਵਿੱਚ ਘੋਸ਼ਣਾਵਾਂ ਦੀ ਜਾਂਚ ਕਰ ਸਕਦੇ ਹੋ।\n1. ਸੈੱਟਿੰਗਸ > ਗੇਅਰ ਜਾਣਕਾਰੀ ਤੇ ਜਾਉ।\n2. USB ਡੀਬਗਿੰਗ ਦੀ ਚੋਣ ਕਰੋ।\n3. ਆਪਣੇ ਗੇਅਰ ਨੂੰ ਆਪਣੇ PC ਨਾਲ ਕਨੈਕਟ ਕਰੋ।\n4. ਤੁਹਾਡੇ Samsung Gear ਉੱਤੇ ਦਿਖਾਈ ਦੇਣ ਵਾਲੇ USB ਡੀਬਗਿੰਗ ਪੌਪ-ਅਪ ਉੱਤੇ ਓਕੇ ਟੈਪ ਕਰੋ।\n5. sdb cmd ਦੀ ਵਰਤੋਂ ਕਰਕੇ, cmd ਚਲਾਕੇ ਅਤੇ ਇਨਪੁਟ ਫਿਲਡ ਵਿੱਚ %2$s ਦਾਖ਼ਲ ਕਰਕੇ ਆਪਣੇ PC ਉੱਤੇ %1$s ਫਾਈਲ ਡਾਉਨਲੋਡ ਕਰੋ।\n\nsdb ਦੀ ਵਰਤੋਂ ਕਰਨ ਲਈ http://developer.samsung.com ਤੇ ਜਾਉ ਅਤੇ Samsung Gear SDK ਡਾਉਨਲੋਡ ਅਤੇ ਸਥਾਪਿਤ ਕਰੋ।"
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "ਹਾਲ ਹੀ ਦੇ ਐਪਸ"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "ਪ੍ਰਦਰਸ਼ਨ"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "ਅਸਮਰੱਥ"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "ਸੈੱਟਿੰਗਸ"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "ਵਾੱਲਿਊਮ"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "ਟਿਨਕਰਬੇਲ"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "ਐਪਲਮਿੰਟ"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "ਵੈਕ-ਅਪ ਸੰਕੇਤ"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "ਰਿੰਗਟੋਨਾਂ"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "ਪ੍ਰੋਫਾਈਲ"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "ਪ੍ਰਕਿਰਿਆ ਹੋ ਰਹੀ ਹੈ..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "ਦ੍ਰਿਸ਼ਮਾਨ ਬਣਾਉ"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "ਟੈਕਸਟ ਇਨਪੁਟ"

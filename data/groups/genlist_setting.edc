@@ -1,0 +1,143 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics Co., Ltd All Rights Reserved
+ *
+ * BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *   1. Redistributions of source code must retain the above copyright notice, this
+ *      list of conditions and the following disclaimer.
+ *   2. Redistributions in binary form must reproduce the above copyright notice,
+ *      this list of conditions and the following disclaimer in the documentation
+ *      and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * vim:ts=3
+*/
+
+#include "default_inc.edc"
+#include "theme_default_inc.edc"
+#include "genlist_macro.edc"
+
+group { name: "elm/genlist/item/setting_indicator/default";
+   PROLOG_LIST
+   data.item: "contents" "elm.icon";
+
+   parts {
+      PART_LIST_BG
+      PART_LIST_PADDINGS(
+         LIST_PADDING_LEFT_SIZE, LIST_PADDING_RIGHT_SIZE,
+         0, 2 // FIXME: arbitrary value to prevent overlap with bottom lines
+      )
+      PART_LIST_BOTTOMLINE
+      PART(SWALLOW, "elm.icon",
+         DESC_LRTB(
+            "elm.padding.left", "elm.padding.right",
+            "elm.padding.top", "elm.padding.bottom",
+            min: 0 ( LIST_1LINE_HEIGHT - 2);
+         )
+      )
+   }
+   PROGRAMS_LIST( target: "elm.icon"; )
+}
+
+
+// ***************************** LIst *****************************************/
+#define LIST_PADDING_LEFT_SIZE                         16
+#define LIST_PADDING_RIGHT_SIZE                        16
+#define LIST_PADDING_DEFAULT_SIZE                      16
+#define LIST_PADDING_R_ICON_RIGHT_SIZE                 8
+#define LIST_PADDING_R_ICON_DEFAULT_SIZE               8
+#define LIST_GROUPINDEX_PADDING_TOP_SIZE               1
+#define LIST_GROUPINDEX_PADDING_BOTTOM_SIZE            1
+#define LIST_1LINE_HEIGHT                              90
+#define LIST_1LINE_PADDING_TOP_SIZE                    22
+#define LIST_1LINE_PADDING_BOTTOM_SIZE                 23
+#define LIST_2LINE_PADDING_TOP_SIZE                    8
+#define LIST_2LINE_PADDING_BOTTOM_SIZE                 9
+#define LIST_TEXT_MAIN_SIZE                            38
+#define LIST_TEXT_SUB_SIZE                             24
+#define LIST_TEXT_SWEEP_SIZE                           32
+#define LIST_DIVIDER_HEIGHT                            50
+#define LIST_DIVIDER_PADDING_SIZE                      8
+#define LIST_GROUPINDEX_HEIGHT                         28
+#define LIST_GROUPINDEX_TEXT_SIZE                      24
+#define LIST_HIDDEN_HEIGHT                             76
+#define LIST_MULTILINE_HEIGHT                          44
+
+styles {
+  style { name: "list_text_sub_multiline_normal_setting";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_NORMAL_COLOR" text_class=tizen wrap=mixed";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_multiline_dim_setting";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_DIM_COLOR" text_class=tizen wrap=mixed";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_main_normal_setting";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_NORMAL_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_main_dim_setting";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_DIM_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+}
+
+group { name: "elm/genlist/item/multiline.2text.1icon/default";
+   PROLOG_LIST
+   data.item: "texts" "elm.text.1 elm.text.2";
+   data.item: "contents" "elm.swallow.colorbar elm.icon";
+
+   parts {
+      PART_LIST_BG
+      PART_LIST_BOTTOMLINE
+      PART_LIST_PADDINGS(
+         LIST_PADDING_LEFT_SIZE, LIST_PADDING_RIGHT_SIZE,
+         LIST_2LINE_PADDING_TOP_SIZE, LIST_2LINE_PADDING_BOTTOM_SIZE
+      )
+      PART(TEXTBLOCK, "elm.text.1",
+         DESC_LRTB("elm.padding.left", "elm.padding.icon.left", "elm.padding.top", "elm.padding.text1.bottom",
+//            min: 0 LIST_2LINE_MAIN_HEIGHT;
+            min: 0 10;
+            PARAM_TEXT("list_text_main_normal_setting",)
+         ) DESCRIPIONS_TEXT("list_text_main_dim_setting", "list_text_main_normal_setting")
+      )
+      PART(SPACER, "elm.padding.text1.bottom",
+         DESC_B("elm.text.2", min: 0 4; max: -1 4; )
+      )
+      PART(TEXTBLOCK, "elm.text.2",
+         DESC_LRB("elm.padding.left", "elm.padding.icon.left", "elm.padding.bottom",
+//            min: 0 LIST_2LINE_SUB_HEIGHT;
+            min: 0 10;
+            PARAM_TEXT("list_text_sub_multiline_normal_setting",)
+         ) DESCRIPIONS_TEXT("list_text_sub_multiline_dim_setting", "list_text_sub_multiline_normal_setting")
+      )
+      PART(SPACER, "elm.padding.icon.left",
+         DESC_R("elm.icon",
+            min: LIST_PADDING_DEFAULT_SIZE 0;  max: LIST_PADDING_DEFAULT_SIZE -1;
+         )
+       )
+      PART(SWALLOW, "elm.icon", DESC_R("elm.padding.right", ) )
+
+   }
+   PROGRAMS_LIST( target: "elm.text.1"; target: "elm.text.2";
+      target: "elm.icon"; )
+}

@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Mga lisensya ng open-source"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "Nagcha-charge"
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "Keyboard"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "I-mute"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "Bersyon ng software"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "Takda"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "Pagkalipas ng %1$d min, mare-reset ang liwanag sa default na antas (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "Wala"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "Pattern"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "Lock ng privacy"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "See pattern"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "Ipapakita ang opsyon sa lock sa privacy kapag nadiskonekta ang Bluetooth."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "Normal"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "Visibility"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "Bluetooth"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "Set time"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "Tungkol Gear"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "Auto sync"
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "Baterya"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "Porsyento ng baterya"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "Uri ng orasan"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "Petsa at oras"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "Hindi pinagana"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "Laki ng font"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "Hourly alert"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "Malaki"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "Model number"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "Hindi nagcha-charge."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "Naka-off"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "Naka-on"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "Outdoor mode"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d minuto"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d segundo"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "Reset ang Gear"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "Screen timeout"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "Serial number"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "Set date"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "I-sync sa telepono."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "System"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "Tunog touch"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "Mag-vibrate"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "Nakikita ang Gear mo nang %s."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "Liwanag"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "Kanselahin"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "Orasan"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "Impormasyon ng Gear"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "Wika"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "Notifications"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Mga Ringtone"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB debugging"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "Vibration"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "Tulong"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "Katamtaman"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "Tunog"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "Sound mode"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "Malakas"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "Mahina"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "Kapag pinagana ang USB debugging, papayagan ka nito na kumopya ng mga file sa pagitan ng PC mo at Gear mo, mag-install ng mga application sa Gear mo nang hindi tumatanggap ng mga notification, at basahin ang data ng log. Maaari itong gamitin ng mga mapanganib na application para i-access ang iyong impormasyon ng user. Nilayon ito para sa mga hangaring pang-develop lang."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "Palitan ang wika sa mobile device"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "Maaaring maapektuhan ang ilang function kapag binago ang mga setting ng oras at petsa"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Ikansela"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT headset"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "Mga Galaw"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "Orasan ng pedometer"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "Orasan sa shortcut"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "Smart relay"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "Gesture ng pag-wake-up"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "Orasan ng panahon"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "Huling pinanood na screen"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "OK"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "Maliit"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "Pagpindot sa power key 2x"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 minuto"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "Mga Wallpaper"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "Gallery"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "Paleta ng kulay"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "Default"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° L"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° R"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "Pinagana"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "Default na font"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "Font"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "Estilo ng font"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Cool jazz"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rosemary"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "Naitakda na ang home background."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "Pangalan ng device"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "Katayuan ng baterya"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "Home background"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "Malaki icon"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "Maliit icon"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "Katamtaman"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "Nagsasagawa ng pag-reset ng factory data. Mangyaring maghintay..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "Pinalitan ang orasan."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Cell Broadcast Message"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "Software version"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "Icon size, home"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "Edit home screen"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "Ultra power saving mode"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "I-mute"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "Kaligtasan"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "Upang huwag paganahin ang Ultra power saving mode, magre-restart ang iyong device."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "Ililipat sa itim na tema ang home screen upang mabawasan ang pagkonsumo ng baterya. Magagamit mo ang Mga Mensahe at Mga Contact, ngunit lilimitahan ang ilan pang mga application at function."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "Paganahin ang mga notification"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "Huwag paganahin ang mga notification"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "Knsla"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "Pangkaligtasang impormasyon"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "Double press"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "Edit home screen"
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "Baterya %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "Battery status"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "Device name"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "Home background"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "Higante"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "Naghihintay ng pagkumpirma mula sa %s..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "Gear Manager"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "Buburahin ang lahat ng data sa memory ng Gear. Maaari mong ikonekta ang iyong Gear sa ibang device"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "Home screen"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Mga lisensya ng open-source"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "Timeout ng screen"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "Multimedia"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "Volume"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 segundo"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 segundo"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 segundo"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 minuto"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "Hindi alam"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "Power saver"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "Papaganahin ang Power saver. Lilimitahan nito ang maximum na pagganap ng CPU, i-off ang Bluetooth, at gagamit ng mas mababang antas ng power para sa screen. Hindi magiging available ang gesture na Wake-up, Pagkontrol ng boses, at Pag-vibrate. Magiging available pa rin ang mga function na Orasan at S Health."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "Hindi pinagana ang Power saver."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "Pinagana ang Power saver."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "Bersyon ng software"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "Profile"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "Matitingnan mo ang mga abiso hinggil sa impormasyon sa kaligtasan sa pamamagitan ng pagsunod sa mga hakbang sa ibaba.\n\n1. Pumunta sa Mga Setting > Impormasyon sa Gear\n2. Piliin ang Pag-debug ng USB.\n3. Ikonekta ang iyong Gear 2 sa iyong PC.\n4. I-tap ang OK sa pop-up ng pag-debug ng USB na lalabas sa iyong Gear 2.\n5. Gamit ang sdb cmd (i-install ang SDK upang magamit ang sdb cmd), i-download ang file na /usr/share/Safety.zip sa iyong PC sa pamamagitan ng pagpapatakbo ng cmd at pagpasok ng “sdb pull /usr/share/Safety.zip c:\\Safety.zip” sa field ng input.\n6. I-extract ang zip file sa folder na c:\\Safety at buksan ang na-extract na html file upang basahin ang pinakabagong impormasyon sa kaligtasan.\n\nBisitahin ang http://developer.samsung.com, i-download at i-install ang Samsung Gear SDK upang magamit ang sdb."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "Kasalukuyang nakatakda sa 0 ang volume."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "Malalaking icon (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "Maliliit na icon (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "Pamahalaan apps"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "Maaari mong suriin ang mga anunsyo hinggil sa mga lisensya ng open source sa pamamagitan ng pagsunod sa mga hakbang sa ibaba.\n1. Pumunta sa Mga Setting > Impormasyon sa Gear.\n2. Piliin ang USB debugging.\n3. Ikonekta ang iyong Gear sa iyong PC.\n4. I-tap ang OK sa pop-up ng USB debugging na lumilitaw sa iyong Samsung Gear.\n5. Gamit ang sdb cmd, i-download ang %1$s file sa iyong PC sa pamamagitan ng pagpapagana sa cmd at pagpasok sa %2$s sa input field.\n\nBisitahin ang http://developer.samsung.com at i-download at i-install ang Samsung Gear SDK upang gamitin ang sdb."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "Recent apps"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "Display"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "Hindi pinagana"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "Mga Setting"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "Volume"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "Gesture na Wake-up"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "Mga Ringtone"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "Profile"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "Pinoproseso..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "Gawing nakikita"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Text input"

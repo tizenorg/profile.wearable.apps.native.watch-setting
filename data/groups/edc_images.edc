@@ -1,0 +1,34 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+#include "edc_image_macro.edc"
+
+RESOURCE_IMAGE("b_settings_change_clock.png");
+RESOURCE_IMAGE("b_settings_sound.png");
+RESOURCE_IMAGE("b_settings_volume.png");
+RESOURCE_IMAGE("b_settings_display.png");
+RESOURCE_IMAGE("b_settings_battery.png");
+RESOURCE_IMAGE("b_settings_bluetooth.png");
+RESOURCE_IMAGE("b_settings_motion.png");
+RESOURCE_IMAGE("b_settings_lockscreen.png");
+RESOURCE_IMAGE("b_settings_notifications.png");
+RESOURCE_IMAGE("b_settings_double.png");
+RESOURCE_IMAGE("b_settings_language.png");
+RESOURCE_IMAGE("b_settings_language_disabled.png");
+RESOURCE_IMAGE("b_settings_safety.png");
+RESOURCE_IMAGE("b_settings_factory_reset.png");
+RESOURCE_IMAGE("b_settings_info.png");
+RESOURCE_IMAGE("b_settings_home.png");
+RESOURCE_IMAGE("b_settings_reset.png");
+RESOURCE_IMAGE("b_setting_wallpaper.png");
+RESOURCE_IMAGE("b_setting_display.png");
+RESOURCE_IMAGE("b_setting_double-press.png");
+RESOURCE_IMAGE("b_settings_profile.png");
+RESOURCE_IMAGE2("text_input_icon.png");

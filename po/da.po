@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Open source-licenser"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "Oplader."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "Tastatur"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "Lydløs"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "Softwareversion"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "Indstil"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "Efter %1$d minutter vil lysstyrken blive nulstillet til standardniveau (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "Ingen"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "Mønster"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "Privat-lås"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "Se mønster"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "Indstillingen privat-lås vises, når Bluetooth er frakoblet."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "Normal"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "Synlighed"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "Bluetooth"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "Ind. tid"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "Om Gear"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "Auto-synk."
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "Batteri"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "Batteriprocent"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "Urtype"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "Dato og tid"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "Deaktiveret"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "Skriftstørrelse"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "Timealarm"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "Stor"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "Modelnummer"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "Oplader ikke."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "Fra"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "Til"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "Udendørs"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d min"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d sek."
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "Nulstil Gear"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "Skærmtimeout"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "Serienummer"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "Ind. dato"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "Synkr. med telefon."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "System"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "Berør.lyde"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "Vibrér"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "Gear er synlig for %s."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "Lysstyrke"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "Annullér"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "Ur"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "Gear-oplysninger"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "Sprog"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "Meddelelser"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Ringetoner"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB-fejlsøgn."
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "Vibration"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "Hjælp"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "Mellem"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "Lyd"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "Lydtilstand"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "Stærk"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "Svag"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "Aktivering af USB-fejlsøgning vil give dig mulighed for at kopiere filer mellem din pc og Gear, installere programmer på Gear uden at modtage meddelelser og læse logdata. Skadelige programmer kan bruge dette til at få adgang til dine brugeroplysninger. Dette er kun beregnet til udviklingsformål."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "Skift sprog på mobil enhed."
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "Ændring af tid og dato påvirker muligvis nogle funktioner."
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT-høretelefon"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "Bevægelser"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "Skridttæller-ur"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "Genvejs-ur"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "Smart relay"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "Vågn op-bevægelse"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "Vejrur"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "Senest viste skærm"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "OK"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "Lille"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "Dobbelttryk på tænd/sluk-tast"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 minut"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "Baggrunde"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "Galleri"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "Farvepalette"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "Standard"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° mod uret"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° med uret"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "Aktiveret"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "Standardskrifttype"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "Skrifttype"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "Typografi"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Cool jazz"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rosemary"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "Baggrund på startskærm indstillet."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN-kode"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "Enhedsnavn"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "Batteristatus"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "Startbaggrund"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "Stor ikoner"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "Små ikoner"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "Mellem"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "Udfører nulstilling til fabriksstandard. Vent ..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "Ur ændret."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Gruppemeddelelse"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "Software version"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "Ikonstørrelse"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "Red. Startskærm"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "Ultrastrømbesp. tilstand"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "Lydløs"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "Sikkerhed"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "Din enhed vil genstarte for at deaktivere Ultrastrømbesparende tilstand."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "Startskærmen vil blive ændret til et sort tema for at reducere batteriforbruget. Du kan bruge Beskeder, Kontakter, men visse programmer og funktioner vil være begrænsede."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "Aktivér meddelelser"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "Deaktivér meddelelser"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "Afbr."
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "Sikkerhedsoplysninger"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "Dobbelttryk"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "Red. startskærm"
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "Batteri %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "Batteristatus"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "Enhedsnavn"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "Startbaggrund"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "Meget stor"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "Venter på bekræftelse fra %s..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "Gear-manager"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "Alle data vil blive slettet fra Gear-hukommelsen. Du kan derefter slutte dit Gear til en anden enhed"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "Startskærm"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Open source-licenser"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "Skærm timeout"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "Multimedier"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "Lydstyrke"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 sekunder"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 sekunder"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 sekunder"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 minutter"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "Ukendt"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "Strømsparer"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "Strømbesparer vil blive aktiveret. Dette vil begrænse CPU'ens maksimale ydeevne, deaktivere Bluetooth, og der vil blive anvendt et lavere strømniveau for skærmen. Vækkebevægelse, Stemmekontrol og Vibration vil ikke være tilgængelig. Ur og funktioner i S Health vil stadig være tilgængelige."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "Strømsparer deaktiveret."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "Strømsparer aktiveret."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "Softwareversion"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "Profil"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "Du kan kontrollere meddelelser vedrørende sikkerhedsoplysninger ved at følge trinnene herunder.\n\n1. Gå til Indstillinger > Gear-oplysninger.\n2. Vælg USB-fejlsøgning.\n3. Slut Gear 2 til din pc.\n4. Tap på OK på den USB-fejlsøgnings-pop op, der vises på dit Gear 2.\n5. Brug sdb cmd (installer SDK for at bruge sdb cmd), download /usr/share/Safety.zip til din pc ved at køre cmd, og angiv “sdb pull /usr/share/Safety.zip c:\\Safety.zip” i indtastningsfeltet.\n6. Pak zip-filen ud til mappen c:\\Safety, og åbn den udpakkede html-fil for at læse de seneste sikkerhedsoplysninger.\n\nBesøg http://developer.samsung.com, download og installer Samsung Gear SDK for at bruge sdb."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "Lydstyrke er aktuelt indstillet til 0."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "Store ikon. (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "Små ikoner (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "Administr. apps"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "Du kan tjekke meddelelser vedrørende open source-licenser ved at følge trinnene herunder.\n1. Gå til Indstillinger > Gear-oplysninger.\n2. Vælg USB-fejlsøgning.\n3. Slut dit Gear til din pc.\n4. Tap på OK i den USB-fejlsøgnings-pop op, der vises på dit Samsung Gear.\n5. Download filen %1$s ved brug af sdb cmd til din pc ved at køre cmd og skrive %2$s i indtastningsfeltet.\n\nBesøg http://developer.samsung.com, og download og installér Samsung Gear SDK for at bruge sdb."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "Seneste apps"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "Skærm"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "Deaktiveret"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "Indstillinger"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "Lydstyrke"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "Vækkebevægelse"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "Ringetoner"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "Profil"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "Behandler ..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "Gør synlig"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Tekstindt."

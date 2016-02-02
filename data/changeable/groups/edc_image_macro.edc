@@ -1,0 +1,91 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+#define RESOURCE_IMAGE( FILE_NAME ) \
+   group { \
+      name: FILE_NAME; \
+      images.image: FILE_NAME COMP; \
+      parts { \
+         part { name: "image"; \
+            description { \
+               state: "default" 0.0; \
+               image.normal: FILE_NAME; \
+			   color_class: "AO012"; \
+               aspect: 1 1; \
+               aspect_preference: BOTH; \
+            } \
+         } \
+      } \
+   }
+
+#define RESOURCE_IMAGE_LOSSY( FILE_NAME ) \
+   group { \
+      name: FILE_NAME; \
+      images.image: FILE_NAME LOSSY 85; \
+      parts { \
+         part { name: "image"; \
+            description { \
+               state: "default" 0.0; \
+               image.normal: FILE_NAME; \
+			   color_class: "AO012"; \
+               aspect: 1 1; \
+               aspect_preference: BOTH; \
+            } \
+         } \
+      } \
+   }
+
+#define RESOURCE_IMAGE2( FILE_NAME ) \
+   group { \
+      name: FILE_NAME; \
+      images.image: FILE_NAME COMP; \
+      parts { \
+         part { name: "image"; \
+            description { \
+               state: "default" 0.0; \
+               image.normal: FILE_NAME; \
+               aspect: 1 1; \
+               aspect_preference: BOTH; \
+            } \
+         } \
+      } \
+   }
+   
+#define RESOURCE_IMAGE_AND_COLOR( FILE_NAME, COLOR ) \
+   group { \
+      name: FILE_NAME; \
+      images.image: FILE_NAME COMP; \
+      parts { \
+         part { name: "image"; \
+            description { \
+               state: "default" 0.0; \
+               image.normal: FILE_NAME; \
+			   color_class: COLOR; \
+               aspect: 1 1; \
+               aspect_preference: BOTH; \
+            } \
+         } \
+      } \
+   }
+   
+#define RESOURCE_IMAGE3( FILE_NAME ) \
+   group { \
+      name: FILE_NAME; \
+      images.image: FILE_NAME COMP; \
+      parts { \
+         part { name: "image"; \
+            description { \
+               state: "default" 0.0; \
+               image.normal: FILE_NAME; \
+               aspect_preference: BOTH; \
+            } \
+         } \
+      } \
+   }

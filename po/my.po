@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ရင္းျမစ္ လိုင္စင္မ်ား ဖြင့္ပါ"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "အားသြင္းေနပါသည္"
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "ကီးဘုတ္"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "အသံတိတ္"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "ေဆာ့၀ဲ ဗားရွင္း"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "သတ္မွတ္"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "%1$d မိနစ္ ၿပီးေနာက္တြင္၊ အေရာင္ေတာက္ပျခင္းကို ကိုယ္ပိုင္သံုး အဆင့္ (%2$d) သို႔ ျပန္သတ္မွတ္ေပးလိမ့္မည္။"
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "မရွိ"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "အဆင့္ဒီဇုိင္း"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "သီးသန္႔ျဖစ္မႈ ေသာ့"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "ပံုစံကြက္မ်ား ၾကည့္ပါ"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "ဘလူးတုသ္ ျဖဳတ္လိုက္သည့္အခါ သီးသန္႔ျဖစ္မႈေသာ့ ေရြးခ်ယ္ရန္ ျပမည္။"
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "ပုံမွန္"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "ျမင္ႏိုင္စြမ္း"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "ဘလူးတုသ္"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "အခ်ိန္ သတ္မွတ္ပါ"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "ဂီယာ အေၾကာင္း"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "အလိုလို ဆင့္ခ္"
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "ဘက္ထရီ"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "ဘက္ထရီ ရာခိုင္ႏႈန္း"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "နာရီ အမ်ဳိးအစား"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "ေန႔စြဲ ႏွင့္အခ်ိန္"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "ရပ္ဆုိင္းေစၿပီး"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "ေဖာင့္ ဆိုက္"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "နာရီအလိုက္ သတိေပးခ်က္"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "အႀကီး"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "ေမာ္ဒယ္ နံပါတ္"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "အားသြင္းမထားပါ"
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "ပိတ္"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "ဖြင့္"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "အျပင္ဘက္ အေနအထား"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d မိနစ္"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d စကၠန္႔"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "ဂီယာ ျပန္သတ္မွတ္ပါ"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "ဖန္သားျပင္ နားခ်ိန္"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "အစဥ္လုိက္ နံပါတ္မ်ား"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "ေန႔စြဲ သတ္မွတ္ပါ"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "ဖုန္းျဖင့္ ဆင့္ခ္လုပ္ပါ"
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "စစ္စတမ္"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "ထိျခင္း အသံမ်ား"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "တုန္ခါပါ"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "သင့္အရွိန္ကို %s အထိ ျမင္ႏိုင္သည္။"
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "အလင္း"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "ပယ္ဖ်က္ပါ"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "နာရီ"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "ဂီယာ အခ်က္အလက္"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "ဘာသာစကား"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "အေၾကာင္းၾကားခ်က္မ်ား"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Ringtones"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB အျပစ္ဖယ္ရွားျခင္း"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "တုန္ခါမႈ"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "အကူအညီ"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "အလတ္"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "အသံ"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "အသံ အေနအထား"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "အားေကာင္း"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "အားနည္း"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "USB ခၽြတ္ယြင္းခ်က္ရွာျခင္း ဖြင့္ျခင္းက သင့္ PC ႏွင့္ ဂီယာအၾကား ဖိုင္မ်ား ကူးရန္၊ အသိေပးခ်က္မ်ား လက္ခံမရဘဲ သင့္ဂီယာေပၚ အပလီေကးရွင္းမ်ား တပ္ဆင္ရန္ႏွင့္ မွတ္တမ္းေဒတာမ်ား ဖတ္ရန္ ခြင့္ျပဳမည္။ သင့္ သံုးသူအခ်က္အလက္မ်ားကို ဝင္ေရာက္ရန္ Malicious အပလီေကးရွင္းမ်ားက ဤအရာကို အသံုးျပဳႏိုင္သည္။ ဤအရာကို ဖြြံ႔ၿဖိဳးမႈ ရည္ရြယ္ခ်က္မ်ားအတြက္သာ ရည္ရြယ္သည္။"
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "မိုဘိုင္းကိရိယာေပၚတြင္ ဘာသာစကား ေျပာင္းပါ"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "အခ်ိန္ႏွင့္ ေန႔စြဲ ဆက္တင္မ်ားကို ေျပာင္းျခင္းသည္ အခ်ိဳ႕ေသာ လုပ္ဆာင္မႈမ်ားကို ထိခိုက္ေစႏိုင္ပါသည္"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT နားၾကပ္"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "ေရႊ႕လ်ားမႈမ်ား"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "ပီတိုမီတာ နာရီ"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "ျဖတ္လမ္း နာရီ"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "စမတ္ ရီေလး"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "အႏိႈး အမူအယာ"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "မိုးေလဝသ နာရီ"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "ေနာက္ဆံုး ၾကည့္ခဲ့သည့္ ဖန္သားျပင္"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "အိုေက"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "အေသး"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "ပါဝါကီးကို ႏွစ္ခ်က္ႏွိပ္ျခင္း"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "၁ မိနစ္"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "ေနာက္ခံပုံရိပ္မ်ား"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "ျပခန္း"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "အေရာင္စပ္သည့္အျပား"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "မူလသတ္မွတ္ထားေသာ"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° L"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° R"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "လုပ္ငန္း စတင္ေဆာင္ရြက္ေစၿပီး"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "စီစဥ္ထားသည့္ေဖာင့္"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "ေဖာင့္"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "ေဖာင့္ စတုိင္"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Cool jazz"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rosemary"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "မူလ ေနာက္ခံ သတ္မွတ္ထားသည္။"
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "ကိရိယာအမည္"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "ဘက္ထရီ အေျခအေန"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "မူလစာမ်က္ႏွာ၏ ေနာက္ခံ"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "သေကၤတ အႀကီး"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "သေကၤတ အေသး"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "အလတ္"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "စက္ရံု ေဒတာ ျပန္ဆင္ျခင္း ေဆာင္ရြက္ျခင္း။ ေက်းဇူးျပဳ၍ ေစာင့္ပါ..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "နာရီ ေျပာင္းထားသည္။"
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Cell Broadcast Message"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "ေဆာ့၀ဲလ္ ဗားရွင္း"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "မူလ သေကၤတ အရြယ္အစား"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "မူလ ဖန္သားျပင္ကို တည္းျဖတ္ပါ"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "အလြန္ ပါဝါေခြ်တာေရး အေနအထား"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "အသံတိတ္"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "စိတ္ခ်ရမႈ"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "အလြန္ ပါဝါေခၽြတာ အေနအထား ပိတ္ထားရန္ သင့္ကိရိယာ ျပန္စတင္မည္။"
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "ဘက္ထရီ သံုးမႈ ေလွ်ာ့ရန္ မူလဖန္သားျပင္ကို အနက္ေရာင္ အခင္းအက်င္းသို႔ ေျပာင္းမည္။ မက္ေဆ့ခ်္မ်ားႏွင့္ အဆက္အသြယ္မ်ားကို သံုးႏိုင္မည္ျဖစ္ေသာ္လည္း အျခား အပလီေကးရွင္းႏွင့္ လုပ္ေဆာင္ခ်က္အခ်ဳိ႕ကိုမူ ကန္႔သတ္ထားမည္။"
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "အသိေပးခ်က္မ်ား ရေစပါ"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "အသိေပးခ်က္မ်ား ပိတ္ထားပါ"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "ပယ္ဖ်က္ပါ"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "လံုျခံဳေရးအခ်က္အလက္မ်ား"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "ႏွစ္ႀကိမ္ဆက္ ဖိပါ"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "မူလ ဖန္သားျပင္ကို တည္းျဖတ္ပါ"
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "ဘက္ထရီ %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "ဘက္ထရီ အေျခအေန"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "ကိရိယာ အမည္"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "မူလ ေနာက္ခံျမင္ကြင္း"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "အႀကီးဆံုး"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "%s ထံမွ အတည္ျပဳမႈကို ေစာင့္ဆိုင္းေနသည္…"
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "ဂီယာ မန္ေနဂ်ာ"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "ေဒတာအားလံုးကို ဂီယာမွတ္ဥာဏ္မွ ဖ်က္ပစ္မည္။ ထို႔ေနာက္ သင့္ဂီယာကို အျခားကိရိယာသို႔ ခ်ိတ္ဆက္ႏိုင္သည္"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "မူလ ဖန္သားျပင္"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ရင္းျမစ္ လိုင္စင္မ်ား ဖြင့္ပါ"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "ဖန္သားျပင္ နားခ်ိန္"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "မာတီမီဒီယာ"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "အသံအတိုးအက်ယ္"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "၁၀ စကၠန္႔"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "၁၅ စကၠန္႔"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "၃၀ စကၠန္႔"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "၅ မိနစ္"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "မသိေသာ"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco Cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "ပါဝါ ေခၽြတာစရာ"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "ပါဝါ ေခၽြတာစရာ ရေစလိမ့္မည္။ ဤအရာက CPU အမ်ားဆံုး လုပ္ေဆာင္ႏိုင္စြမ္းကို ကန္႔သတ္၊ ဘလူးတုသ္ ပိတ္ၿပီး ဖန္သားျပင္ ပါဝါ လယ္ဗယ္ အနိမ့္တစ္ခု သံုးလိမ့္မည္။ အႏိႈး အမူအယာ၊ အသံ အထိန္းႏွင့္ တုန္ခါမႈတို႔ ရမည္မဟုတ္ပါ။ နာရီႏွင့္ S Health လုပ္ေဆာင္ခ်က္မ်ား ရႏိုင္ဦးမည္။"
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "ပါဝါ ေခၽြတာစရာ ပိတ္လိမ့္မည္။"
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "ပါဝါ ေခၽြတာစရာ ရေစလိမ့္မည္။"
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "ေဆာ့ဝဲ ဗားရွင္း"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "အေၾကာင္းအခ်က္"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "ေအာက္ပါ အဆင့္မ်ားကို လိုက္လုပ္၍ လံုျခံဳေရး အခ်က္အလက္မ်ားႏွင့္ ပတ္သက္၍ အသိေပးခ်က္မ်ားကို ရွာႏိုင္သည္။\n\n၁။ ဆက္တင္မ်ား > ဂီယာ အခ်က္အလက္ သို႔သြားပါ။\n၂။ USB ခၽြတ္ယြင္းခ်က္ရွာျခင္း ေရြးပါ။\n၃။ သင့္ ဂီယာ ၂ ကို သင့္ PC သို႔ ခ်ိတ္ဆက္ပါ။\n၄။ သင့္ ဂီယာ ၂ ေပၚ ေပၚလာေသာ USB ခၽြတ္ယြင္းခ်က္ရွာျခင္း ေပါ့-အပ္ေပၚ အိုေက ႏွိပ္ပါ။\n၅။ sdb cmd သံုး၍ (sdb cmd သံုးရန္ SDK တပ္ဆင္ပါ) cmd လုပ္ေဆာင္ၿပီး ျဖည့္သြင္း ေနရာထဲတြင္ “sdb pull /usr/share/Safety.zip c:\\Safety.zip” ထည့္၍ /usr/share/Safety.zip ဖိုင္ကို သင့္ PC သို႔ ေဒါင္းလုတ္လုပ္ပါ။\n၆။ ေနာက္ဆံုး လံုျခံဳေရး အခ်က္အလက္ ဖတ္ရန္ ဇစ္ဖိုင္ကို c:\\လံုျခံဳေရး ဖိုင္တြဲသို႔ ေကာက္ႏုတ္ၿပီး ေကာက္ႏုတ္ထားေသာ html ဖိုင္ကို ဖြင့္ပါ။\n\nsdb သံုးရန္ http://developer.samsung.com သြားၿပီး ဆမ္ေဆာင္း ဂီယာ SDK ေဒါင္းလုတ္လုပ္ၿပီး တပ္ဆင္ပါ။"
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "လက္ရွိတြင္ အသံကို ၀ သို႔ သတ္မွတ္ထားသည္။"
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "(%1$dx%2$d) အႀကီး သေကၤတမ်ား"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "(%1$dx%2$d) ငယ္ေသာ သေကၤတမ်ား"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "အက္ပ္မ်ား စီမံပါ"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "ေအာက္ပါ အဆင့္မ်ားကို လိုက္လုပ္၍ ပြင့္လင္းေသာ အရင္းအျမစ္လိုင္စင္မ်ားႏွင့္ ပတ္သက္သည့္ ေၾကညာခ်က္မ်ားကို စစ္ေဆးႏုိင္ပါသည္။\n၁။ ဆက္တင္မ်ား > ဂီယာ အင္ဖိုသို႔ သြားပါ။\n၂။ USB ခၽြတ္ယြင္းခ်က္ ရွာေဖြဖယ္ထုတ္ျခင္းကို ေရြးပါ။\n၃။ သင့္ ဂီယာကို သင့္ PC သို႔ ခ်ိတ္ဆက္ပါ။\n၄။ သင့္ Samsung Gear ေပၚ ေပၚလာသည့္ USB ခၽြတ္ယြင္းခ်က္ ရွာေဖြဖယ္ထုတ္ျခင္း ေပါ့အပ္ေပၚတြင္ အိုေက ကို ႏွိပ္ပါ။\n၅။ sdb cmd သံုး၍၊ cmd ကို အလုပ္လုပ္ေစၿပီး %2$s ကို ျဖည့္သြင္းက႑ေနရာ၌ ထည့္သြင္းျခင္းျဖင့္ %1$s ဖိုင္ကို သင့္ PC သို႔ ေဒါင္းလုတ္လုပ္ပါ။\n\nhttp://developer.samsung.com သို႔ ၀င္လည္ၿပီးေနာက္ sdb ကို သုံးရန္ Samsung Gear SDK ကို ေဒါင္းလုတ္လုပ္ပါ။"
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "လတ္တေလာ အပ္မ်ား"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "ျပသမႈ"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "ပိတ္ထားသည္"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "သတ္မွတ္ခ်က္မ်ား"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "အသံအတိုးအက်ယ္"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "အက္ပဲလ္မင့္"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "အႏိႈး အမူအယာ"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "ဖုန္းျမည္သံမ်ား"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "အေၾကာင္းအခ်က္"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "လုပ္ငန္းေဆာင္ရြက္ေနပါသည္…."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "ျမင္ႏိုင္ေအာင္ လုပ္ပါ"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "ျဖည့္ထည့္ထားေသာ စာသား"

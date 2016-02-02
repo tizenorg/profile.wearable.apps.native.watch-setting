@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<clocklist>
+  <clock package="org.tizen.w-idle-clock-analog1"  image="b_idle_clock_thumb_analog_clock_01.png"  str_id="IDS_ST_BODY_ANALOG_CLOCK1"/>
+  <clock package="org.tizen.w-idle-clock-analog2"  image="b_idle_clock_thumb_analog_clock_02.png"  str_id="IDS_ST_BODY_ANALOG_CLOCK2"/>
+  <clock package="org.tizen.w-idle-clock-analog3"  image="b_idle_clock_thumb_analog_clock_03.png"  str_id="IDS_ST_BODY_ANALOG_CLOCK3"/>
+  <clock package="org.tizen.idle-clock-digital"   image="b_idle_clock_thumb_digital_clock.png"  str_id="IDS_ST_BODY_DIGITAL_CLOCK_ABB"/>
+  <clock package="org.tizen.idle-clock-dual" 		image="b_idle_clock_thumb_dual_clock.png"  str_id="IDS_ST_BODY_DUAL_CLOCK_ABB"/>
+  <clock package="org.tizen.idle-clock-event" 	image="b_idle_clock_thumb_event_schedule.png"  str_id="IDS_ST_BODY_EVENT_CLOCK_ABB"/>
+  <clock package="org.tizen.idle-clock-pedometer" image="b_idle_clock_thumb_weather_clock_pedometers.png"  str_id="IDS_WMGR_HEADER_PEDOMETER_CLOCK"/>
+  <clock package="org.tizen.w-idle-clock-shortcut2" image="b_idle_clock_thumb_event_shortcut_clock.png"  str_id="IDS_WMGR_HEADER_SHORTCUT_CLOCK"/>
+  <clock package="org.tizen.w-idle-clock-weather2"  image="b_idle_clock_thumb_weather_clock.png"  str_id="IDS_WMGR_MBODY_WEATHER_CLOCK"/>
+</clocklist>

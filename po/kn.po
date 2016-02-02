@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ಮೂಲ ಪರವಾನಗಿಗಳನ್ನು ತೆರೆಯಿರಿ"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "ಚಾರ್ಜ್ ಮಾಡುತ್ತಿದೆ."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "ಕೀಬೋರ್ಡ್"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "ಮ್ಯುಟ್"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "ಸಾಫ್ಟ್‌ವೇರ್ ಆವೃತ್ತಿ"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "ಹೊಂದಿಸು"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "%1$d ನಿಮಿಷಗಳ ನಂತರ, ಪ್ರಕಾಶಮಾನತೆಯನ್ನು ಡೀಫಾಲ್ಟ್ ಮಟ್ಟ (%2$d) ಕ್ಕೆ ಮರುಹೊಂದಿಸಲಾಗುತ್ತದೆ."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "ಯಾವುದೂ ಇಲ್ಲ"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "ಮಾದರಿ"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "ಖಾಸಗಿತನ ಲಾಕ್"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "ಸ್ವರೂಪ ನೋಡಿ"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "ಗೌಪ್ಯತೆ ಲಾಕ್ ಆಯ್ಕೆಯನ್ನು ಬ್ಲೂಟೂಥ್ ಸಂಪರ್ಕಕಡಿತಗೊಂಡಾಗ ತೋರಿಸಲಾಗುತ್ತದೆ."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "ಸಾಮಾನ್ಯ"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "ಗೋಚರತೆ"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "ಬ್ಲೂಟೂತ್"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "ಸಮಯ ನಿಗದಿಪಡಿಸಿ"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "ಗೇರ್ ಕುರಿತು"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "ಸ್ವಯಂ ಸಿಂಕ್"
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "ಬ್ಯಾಟರಿ"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "ಬ್ಯಾಟರಿ ಪ್ರತಿಶತ"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "ಗಡಿಯಾರ ವಿಧ"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "ದಿನಾಂಕ ಮತ್ತು ಸಮಯ"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "ನಿಷ್ಕ್ರಿಯವಾಗಿದೆ"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "ಫಾಂಟ್ ಗಾತ್ರ"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "ಗಂಟೆಗೊಮ್ಮೆಯ ಎಚ್ಚರಿಕೆ"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "ದೊಡ್ಡದು"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "ಚಾರ್ಜಿಂಗ್ ಆಗುತ್ತಿಲ್ಲ."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "ಆಫ್"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "ಆನ್"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "ಹೊರಾಂಗಣ ಮೋಡ್‌"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d ನಿಮಿಷಗಳು"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d ಸೆಕೆಂಡುಗಳು"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "ಗೇರ್ ಮರುನಿಗದಿಪಡಿಸಿ"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "ಸ್ಕ್ರೀನ್ ಟೈಮ್‌ಔಟ್"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "ಕ್ರಮ ಸಂಖ್ಯೆ"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "ದಿನಾಂಕ ಹೊಂದಿಸಿ"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "ಫೋನ್ ಜೊತೆ ಸಿಂಕ್ ಮಾಡಿ."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "ವ್ಯವಸ್ಥೆ"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "ಸ್ಪರ್ಶ ಧ್ವನಿಗಳು"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "ವೈಬ್ರೇಟ್‌"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "ನಿಮ್ಮ ಗೇರ್ %s ಗೆ ಕಾಣುತ್ತದೆ."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "ಉಜ್ವಲತೆ"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "ರದ್ದು"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "ಗಡಿಯಾರ"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "ಗೇರ್ ಮಾಹಿತಿ"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "ಭಾಷೆ"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "ಪ್ರಕಟಣೆಗಳು"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "ರಿಂಗ್‌ಟೋನ್‌ಗಳು"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB ಡೀಬಗಿಂಗ್"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "ಕಂಪನ"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "ಸಹಾಯ"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "ಮಧ್ಯಮ"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "ಧ್ವನಿ"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "ಶಬ್ದ ಮೋಡ್"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "ಬಲಿಷ್ಠ"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "ದುರ್ಬಲ"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "USB ಡೀಬಗ್ಗಿಂಗ್ ಅನ್ನು ಶಕ್ತಗೊಳಿಸುವುದು ನಿಮಗೆ ನಿಮ್ಮ PC ಹಾಗೂ ನಿಮ್ಮ ಗೇರ್ ನಡುವೆ ಫೈಲ್‌ಗಳನ್ನು ನಕಲಿಸುವುದಕ್ಕೆ, ನಿಮ್ಮ ಗೇರ್‌ನಲ್ಲಿ ಪ್ರಕಟಣೆಗಳನ್ನು ಸ್ವೀಕರಿಸದೇ, ಮತ್ತು ಲಾಗ್ ಡೇಟಾ ಓದದೇ ಅನ್ವಹಿಸುವಿಕೆಗಳನ್ನು ಸ್ಥಾಪಿಸುವುದಕ್ಕೆ ಅವಕಾಶ ನೀಡುತ್ತದೆ. ದುರುದ್ದೇಶಪೂರಿತ ಅನ್ವಹಿಸುವಿಕೆಗಳು ಇದನ್ನು ನಿಮ್ಮ ಬಳಕೆದಾರ ಮಾಹಿತಿಯನ್ನು ಪ್ರವೇಶಿಸಲು ಬಳಸಬಹುದು. ಇದು ಅಭಿವೃದ್ಧಿ ಉದ್ದೇಶಗಳಿಗೆ ಮಾತ್ರ ಉದ್ದೇಶಿತವಾಗಿದೆ."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "ಮೊಬೈಲ್ ಸಾಧನದಲ್ಲಿರುವ ಭಾಷೆ ಬದಲಿಸಿ"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "ಸಮಯ ಹಾಗೂ ದಿನಾಂಕ ಸಂಯೋಜನೆಗಳನ್ನು ಬದಲಾಯಿಸುವುದು ಕೆಲವು ಕಾರ್ಯಗಳನ್ನು ಪ್ರಭಾವಿಸಬಹುದು"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "ರದ್ದು"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT ಹೆಡ್‌ಸೆಟ್"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "ಮೋಶನ್‌ಗಳು"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "ಪೆಡೋಮೀಟರ್‌ ಗಡಿಯಾರ"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "ಶಾರ್ಟ್‌ಕಟ್‌ ಗಡಿಯಾರ"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "ಸ್ಮಾರ್ಟ್ ರಿಲೇ"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "ಎಚ್ಚರಗೊಳಿಸುವ ಅಂಗಸನ್ನೆ"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "ಹವಾಮಾನ ಗಡಿಯಾರ"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "ಕೊನೆಯದಾಗಿ ವೀಕ್ಷಿಸಿದ ಪರದೆ"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "ಓಕೆ"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "ಚಿಕ್ಕದು"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "ಪವರ್‌ ಕೀಯನ್ನು ಎರಡು ಸಲ ಒತ್ತುವುದು"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 ನಿಮಿಷ"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "ವಾಲ್‌ಪೇಪರ್‌ಗಳು"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "ಗ್ಯಾಲರಿ"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "ಬಣ್ಣದ ಪ್ಯಾಲೆಟ್"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "ಡಿಫಾಲ್ಟ್"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° L"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° R"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "ಸಕ್ರಿಯಗೊಂಡಿದೆ"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "ಡಿಫಾಲ್ಟ್ ಫಾಂಟ್"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "ಫಾಂಟ್"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "ಫಾಂಟ್ ಶೈಲಿ"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "ಕೂಲ್ ಜಾಜ್ಜ್"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "ರೋಸ್ಮರಿ"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "ಹೋಮ್ ಹಿನ್ನೆಲೆ ಹೊಂದಿಸಲಾಗಿದೆ."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "ಸಾಧನದ ಹೆಸರು"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "ಬ್ಯಾಟರಿ ದರ್ಜೆ"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "ಹೋಮ್‍ ಹಿನ್ನೆಲೆ"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "ದೊಡ್ಡ ಐಕಾನ್‍ಗಳು"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "ಸಣ್ಣ ಐಕಾನ್‍ಗಳು"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "ಮಧ್ಯಮ"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "ಫ್ಯಾಕ್ಟರಿ ದತ್ತಾಂಶ ಮರುನಿಯೋಜನೆ ನಡೆಸುತ್ತಿದೆ. ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "ಗಡಿಯಾರ ಬದಲಾಯಿಸಿದೆ."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "ಸೆಲ್ ಬ್ರಾಡ್‌‌‌‌‌‌ಕಾಸ್ಟ್ Message"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "ಸಾಫ್ಟ್‌ವೇರ್ ಆವೃತ್ತಿ"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "ಹೋಮ್ ಐಕನ್ ಗಾತ್ರ"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "ಹೋಮ್‍ ಸ್ಕ್ರೀನ್‍ ತಿದ್ದಿ"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "ಅಲ್ಟ್ರಾ ಪವರ್ ಉಳಿತಾಯ ಮೋಡ್"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "ಮ್ಯುಟ್"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "ಸುರಕ್ಷತೆ"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "ಅಲ್ಟ್ರಾ ಪವರ್ ಸೇವಿಂಗ್ ಮೋಡ್ ಅನ್ನು ನಿಶಕ್ತಗೊಳಿಸಲು, ನಿಮ್ಮ ಸಾಧನವು ಪುನರಾರಂಭಗೊಳ್ಳುವುದು."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "ಬ್ಯಾಟರಿ ಬಳಕೆಯನ್ನು ತಗ್ಗಿಸಲು ಹೋಮ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ಕಪ್ಪು ಥೀಮ್‌ಗೆ ಬದಲಾಯಿಸಲಾಗುವುದು. ನೀವು ಸಂದೇಶಗಳು ಮತ್ತು ಸಂಪರ್ಕಗಳನ್ನು ಬಳಸಲು ಸಮರ್ಥರಾಗಿರುತ್ತೀರಿ, ಆದರೆ ಅವುಗಳ ಕೆಲವು ಅನ್ವಹಿಸುವಿಕೆಗಳು ಮತ್ತು ಕಾರ್ಯಗಳನ್ನು ನಿರ್ಬಂಧಿಸಲಾಗುವುದು."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "ಪ್ರಕಟಣೆಗಳನ್ನು ಶಕ್ತಗೊಳಿಸಿ"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "ಪ್ರಕಟಣೆಗಳನ್ನು ನಿಶಕ್ತಗೊಳಿಸಿ"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "ರದ್ದು"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "ಸುರಕ್ಷತೆ ಮಾಹಿತಿ"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "ಎರಡು ಸಲ ಒತ್ತಿ"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "ಹೋಮ್ ಸ್ಕ್ರೀನ್ ತಿದ್ದಿ"
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "ಬ್ಯಾಟರಿ %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "ಬ್ಯಾಟರಿ ಸ್ಥಿತಿ"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "ಸಾಧನ ಹೆಸರು"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "ಹೋಮ್ ಹಿನ್ನೆಲೆ"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "ಬೃಹತ್"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "%s ನಿಂದ ಖಚಿತತೆಗಾಗಿ ನಿರೀಕ್ಷಿಸುತ್ತಿದೆ..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "ಗೇರ್ ಮ್ಯಾನೇಜರ್"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "ಎಲ್ಲ ಡೇಟಾವನ್ನು ಗೇರ್ ಸ್ಮರಣೆಯಿಂದ ಅಳಿಸಲಾಗುವುದು. ನೀವು ನಂತರ ಗೇರ್ ಅನ್ನು ಮತ್ತೊಂದು ಸಾಧನಕ್ಕೆ ಸಂಪರ್ಕಿಸಬಹುದು."
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "ಹೋಮ್ ಸ್ಕ್ರೀನ್"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ಮೂಲ ಪರವಾನಗಿಗಳನ್ನು ತೆರೆಯಿರಿ"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "ಸ್ಕ್ರೀನ್ ಟೈಮ್‌ಔಟ್"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "ಮಲ್ಟಿಮೀಡಿಯಾ"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "ವಾಲ್ಯೂಮ್"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 ಸೆಕೆಂಡಗಳು"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 ಸೆಕೆಂಡಗಳು"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 ಸೆಕೆಂಡಗಳು"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 ನಿಮಿಷಗಳು"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "ತಿಳಿಯದ"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "ಚೋಕೋ ಕುಕೀ"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "ಪವರ್ ಸೇವರ್"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "ಪವರ್ ಸೇವರ್ ಅನ್ನು ಶಕ್ತಗೊಳಿಸಲಾಗುತ್ತದೆ. ಇದು CPU ನ ಗರಿಷ್ಠ ಕಾರ್ಯನಿರ್ವಹಣೆಯನ್ನು ಮಿತಿಗೊಳಿಸುತ್ತದೆ, ಬ್ಲೂಟೂತ್ ಆಫ್ ಮಾಡಿ ಮತ್ತು ಕಡಿಮೆ ಸ್ಕ್ರೀನ್ ಪವರ್ ಮಟ್ಟವನ್ನು ಬಳಸಲಾಗುತ್ತದೆ. ಎಚ್ಚರಗೊಳಿಸುವ ಸನ್ನೆ, ಧ್ವನಿ ನಿಯಂತ್ರಣ ಮತ್ತು ಕಂಪನವು ಲಭ್ಯವಿರುವುದಿಲ್ಲ. ಗಡಿಯಾರ ಮತ್ತು S Health ಕಾರ್ಯಗಳು ಇನ್ನೂ ಸಹ ಲಭ್ಯವಿರುತ್ತವೆ."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "ಪವರ್ ಸೇವರ್ ನಿಶಕ್ತಗೊಳಿಸಲಾಗಿದೆ."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "ಪವರ್ ಸೇವರ್ ಶಕ್ತಗೊಳಿಸಲಾಗಿದೆ."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "ಸಾಫ್ಟ್‌ವೇರ್ ಆವೃತ್ತಿ"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "ಪ್ರೊಫೈಲ್"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "ಕೆಳಗಿನ ಹಂತಗಳನ್ನು ಅನುಸರಿಸುವುದರ ಮೂಲಕ ಸುರಕ್ಷತೆ ಮಾಹಿತಿಯ ಕುರಿತಾಗಿ ನೋಟೀಸುಗಳನ್ನು ನೀವು ಪರಿಶೀಲಿಸಬಹುದು.\n\n1. ಸಂಯೋಜನೆಗಳು > ಗೇರ್ ಮಾಹಿತಿಗೆ ಹೋಗಿ.\n2. USB ಡಿಬಗ್ಗಿಂಗ್ ಆಯ್ಕೆಮಾಡಿ.\n3. ನಿಮ್ಮ ಗೇರ್ 2 ಅನ್ನು ನಿಮ್ಮ PC ಗೆ ಸಂಪರ್ಕಿಸಿ.\n4. ನಿಮ್ಮ ಗೇರ್‌ 2 ನಲ್ಲಿ ಕಂಡುಬರುವ USB ಡೀಬಗ್ಗಿಂಗ್ ಪಾಪ್-ಅಪ್‌ನಲ್ಲಿ ಓಕೆ ಅನ್ನು ತಟ್ಟಿ.\n5. sdb cmd (sdb cmd ಬಳಸಲು SDK ಸ್ಥಾಪಿಸಿ) ಬಳಸಿಕೊಂಡು, cmd ರನ್ ಮಾಡುವ ಮೂಲಕ ಮತ್ತು ಇನ್‌ಪುಟ್ ಕ್ಷೇತ್ರದಲ್ಲಿ “sdb pull /usr/share/Safety.zip c:\\Safety.zip” ನಮೂದಿಸುವ ಮೂಲಕ /usr/share/Safety.zip ಫೈಲ್ ಅನ್ನು ನಿಮ್ಮ PC ಗೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.\n6. zip ಫೈಲ್ ಅನ್ನು c:\\Safety folder ಗೆ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಇತ್ತೀಚಿನ ಸುರಕ್ಷತೆ ಮಾಹಿತಿಯನ್ನು ಓದಲು ಹಿಂಪಡೆದ html ಫೈಲ್ ಅನ್ನು ತೆರೆಯಿರಿ.\n\nhttp://developer.samsung.com ಗೆ ಭೇಟಿ ನೀಡಿ, sdb ಬಳಸಲು Samsung Gear SDK ಅನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಸ್ಥಾಪಿಸಿ."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "ಧ್ವನಿಮಟ್ಟವನ್ನು ಪ್ರಸ್ತುತ 0 ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "ದೊಡ್ಡ ಐಕನ್‌ಗಳು (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "ಚಿಕ್ಕ ಐಕನ್‌ಗಳು (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "ಅನ್ವಹಿಸುವಿಕೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "ನೀವು ಕೆಳಗಿನ ಹಂತಗಳನ್ನು ಅನುಸರಿಸುವ ಮೂಲಕ ತೆರೆದ ಮೂಲದ ಪರವಾನಗಿಗಳ ಕುರಿತು ಘೋಷಣೆಗಳನ್ನು ಪರೀಕ್ಷಿಸಬಹುದು.\n1. ಸಂಯೋಜನೆಗಳು > ಗೇರ್‌ ಮಾಹಿತಿ ಗೆ ಹೋಗಿ.\n2. USB ಡೀಬಗ್ಗಿಂಗ್ ಆಯ್ಕೆ ಮಾಡಿ.\n3. ನಿಮ್ಮ ಗೇರ್ ಅನ್ನು ನಿಮ್ಮ PC ಗೆ ಸಂಪರ್ಕಿಸಿ.\n4. ನಿಮ್ಮ Samsung Gear ನಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುವ USB ಡೀಬಗ್ಗಿಂಗ್ ಪಾಪ್‌-ಅಪ್‌ನಲ್ಲಿ ಓಕೆ ಒತ್ತಿ.\n5. sdb cmd ಬಳಸಿ, %1$s ಫೈಲ್ ಅನ್ನು ನಿಮ್ಮ PC ಗೆ cmd ರನ್ ಮಾಡುವ ಮೂಲಕ ಹಾಗೂ %2$s ಅನ್ನು ಇನ್‌ಪುಟ್ ಕ್ಷೇತ್ರದಲ್ಲಿ ನಮೂದಿಸುವ ಮೂಲಕ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.\n\nhttp://developer.samsung.com ಗೆ ಭೇಟಿ ಮಾಡಿ ಮತ್ತು Samsung Gear SDK ಯನ್ನು sdb ಬಳಸಲು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು ಸ್ಥಾಪಿಸಿ."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "ಇತ್ತೀಚಿನ ಅನ್ವಹಿಸುವಿಕೆಗಳು"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "ಪ್ರದರ್ಶನ"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "ನಿಶಕ್ತಗೊಳಿಸಲಾಗಿದೆ"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "ಸಂಯೋಜನೆಗಳು"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "ವಾಲ್ಯೂಮ್"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "ಆಪಲ್‌ಮಿಂಟ್"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "ಎಚ್ಚರಗೊಳಿಸುವ ಸನ್ನೆ"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "ರಿಂಗ್‌ಟೋನ್‌ಗಳು"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "ಪ್ರೊಫೈಲ್"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "ಪ್ರಕ್ರಿಯೆಗೊಳ್ಳುತ್ತಿದೆ..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "ಕಾಣುವಂತೆ ಮಾಡಿ"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "ಪಠ್ಯ ಇನ್‌ಪುಟ್‌"

@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+group { name: "setting-test/progress";
+   parts {
+      part { name: "base";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            color: 0 0 0 255;
+            rel1 {
+				relative: 0.0 0.0;
+			}
+			rel2 {
+				relative: 1.0 1.0;
+			}
+         }
+      }
+	  part { name: "process";
+	     type: SWALLOW;
+		 scale: 1;
+		 description { state: "default" 0.0;
+		    fixed: 0 0;
+			rel1 {
+				relative: 0.0 0.0;
+				to: "base";
+			}
+			rel2 {
+				relative: 1.0 1.0;
+				to: "base";
+			}
+			align: 0.5 0.5;
+		 }
+	  }
+      
+   }
+}

@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Av. lähdek. k.oik."
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "Latautuu."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "Näppäimistö"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "Mykistä"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "Ohjelmistoversio"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "Aseta"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "Kirkkaus palautetaan %1$d minuutin kuluttua oletustasolle (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "Ei mitään"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "Kuvio"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "Yksit.lukitus"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "Näytä kuvio"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "Yksityisyyslukitustoiminto näytetään, kun Bluetooth-yhteys on katkaistu."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "Normaali"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "Näkyvyys"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "Bluetooth"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "As. aika"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "Gearin tiedot"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "Aut. synkr."
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "Akku"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "Akun varaus"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "Kellon tyyppi"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "Päivä ja aika"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "Poistettu käytöstä"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "Fonttikoko"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "Tuntihälytys"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "Suuri"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "Mallinumero"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "Ei lataudu."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "Pois"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "Päällä"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "Ulkotila"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d min"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d s"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "Palauta Gear"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "Näytön aikak."
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "Sarjanumero"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "As. päivä"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "Synkr. puh. kanssa."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "Järjestelmä"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "Kosketusääni"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "Värinä"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "Gear on näkyvissä %s."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "Kirkkaus"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "Peruuta"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "Kello"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "Gearin tiedot"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "Kieli"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "Ilmoitukset"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Soittoäänet"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB-virheenk."
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "Värinä"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "Ohje"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "Keskitaso"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "Ääni"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "Äänitila"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "Voimakas"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "Heikko"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "Jos otat USB-virheenkorjauksen käyttöön, voit kopioida tiedostoja tietokoneen ja Gearin välillä, asentaa sovelluksia Geariin ilman ilmoitusta ja lukea lokitietoja. Haittaohjelmat voivat tällöin päästä käsiksi käyttäjätietoihin. Tämä toiminto on tarkoitettu vain kehityskäyttöön."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "Vaihda mobiililaitteen kieltä."
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "Aika- ja päivämääräasetusten muuttaminen voi vaikuttaa joihinkin toimintoihin."
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT-kuulokkeet"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "Liikkeet"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "Askelmittarin kello"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "Pikakuvakekello"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "Älykäs edelleenvälitys"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "Aktivointiele"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "Sääkello"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "Viimeksi katsottu näyttö"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "OK"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "Pieni"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "Virtanäpp. kaksoispainallus"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 minuutti"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "Taustakuvat"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "Galleria"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "Väripaletti"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "Oletus"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° vastapäivään"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° myötäpäivään"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "Käytössä"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "Oletusfontti"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "Fontti"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "Kirjasimen tyyli"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Cool jazz"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rosemary"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "Alkunäytön tausta määritetty."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "Laitteen nimi"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "Akun tila"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "Alkun. tausta"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "Suuret kuv."
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "Pienet kuv."
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "Keskikokoinen"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "Alkuperäisiä tietoja palautetaan. Odota..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "Kello vaihdettu."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Tiedotepalvelun viesti"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Älykäs heitto"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "Ohj.ver."
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "Kuvakekoko"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "Muokkaa alkun."
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "Er. teh. virransäästötila"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "Mykistä"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "Turvallisuus"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "Laite käynnistetään uudelleen erittäin tehokkaan virransäästötilan poistamiseksi käytöstä."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "Alkunäyttöön vaihdetaan musta teema akkuvirran kulutuksen vähentämiseksi. Voit käyttää Viesti- ja Yhteystiedot-toimintoja, mutta joidenkin muiden sovellusten ja toimintojen käyttö on estetty."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "Ota ilmoitukset käyttöön"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "Poista ilmoitukset käytöstä"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "Peruuta"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "Turvallisuustiedot"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "Kaksoisnapautus"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "Muokkaa alkun."
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "Akku %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "Akun tila"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "Laitt. nimi"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "Alkun. tausta"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "Valtava"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "Odotetaan vahvistusta laitteesta %s..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "Gear Manager"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "Kaikki tiedot poistetaan Gearin muistista. Voit sen jälkeen yhdistää Gearin toiseen laitteeseen"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "Alkunäyttö"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Av. lähdek. k.oik."
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "Näytön aikakatk."
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "Multimedia"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "Äänenvoimakkuus"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 sekuntia"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 sekuntia"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 sekuntia"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 minuuttia"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "Tuntematon"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "Virr.säästö"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "Virransäästö otetaan käyttöön. Tämä rajoittaa CPU:n enimmäissuorituskykyä, poistaa Bluetoothin käytöstä ja vähentää näytön tehokkuutta. Aktivointiele, puheohjaus ja värinä eivät ole käytettävissä. Kello ja S Healthin toiminnot ovat edelleen käytettävissä."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "Virransäästö on poistettu käytöstä."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "Virransäästö on käytössä."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "Ohjelmistoversio"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "Profiili"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "Voit tarkistaa turvallisuustietoja koskevat ilmoitukset toimimalla seuraavien ohjeiden mukaan.\n\n1. Valitse Asetukset > Gearin tiedot.\n2. Valitse USB-virheenkorjaus.\n3. Yhdistä Gear 2 tietokoneeseen.\n4. Napauta Gear 2:een ilmestyvästä USB-virheenkorjauksen ponnahdusikkunasta OK.\n5. Hae tiedosto /usr/share/Safety.zip komennolla sdb cmd tietokoneeseen suorittamalla komennon cmd (asenna SDK sdb cmd:n käyttöä varten) ja kirjoittamalla syöttökenttään ”sdb pull /usr/share/Safety.zip c:\\Safety.zip”.\n6. Pura zip-tiedosto kansioon c:\\Safety ja avaa purettu html-tiedosto, josta voit lukea uusimmat turvallisuustiedot.\n\nSiirry osoitteeseen http://developer.samsung.com ja lataa ja asenna Samsung Gear SDK sdb:n käyttöä varten."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "Äänenvoimakkuudeksi on tällä hetkellä asetettu 0."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "Suuret kuv. (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "Pienet kuv. (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "Sov. hallinta"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "Voit tarkistaa avoimen lähdekoodin lisenssejä koskevat ilmoitukset toimimalla seuraavien ohjeiden mukaan.\n1. Valitse Asetukset > Gearin tiedot.\n2. Valitse USB-virheenkorjaus.\n3. Yhdistä Gear tietokoneeseen.\n4. Napauta Samsung Geariin ilmestyvässä USB-virheenkorjauksen ponnahdusikkunassa OK.\n5. Hae tiedosto %1$s komennolla sdb cmd tietokoneeseen suorittamalla komennon cmd ja kirjoittamalla syöttökenttään %2$s.\n\nSiirry osoitteeseen http://developer.samsung.com ja lataa ja asenna Samsung Gear SDK sdb:n käyttöä varten."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "Viim. sov."
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "Näyttö"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "Poistettu käytöstä"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "Asetukset"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "Voimakkuus"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "Aktivointiele"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "Soittoäänet"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "Profiili"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "Käsitellään..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "Muuta näkyv."
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Tekstin syöttö"

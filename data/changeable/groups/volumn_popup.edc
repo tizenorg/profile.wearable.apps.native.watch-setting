@@ -1,0 +1,618 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+group { name: "setting/2finger_popup/default";
+  styles{
+      style { name: "custom_style";
+         base: "font=Tizen:style=Regular font_size="36" align=center color=""#FFFFFF"" wtext_class=tizen";
+         tag:  "br" "\n";
+         tag:  "hilight" "+ font_weight=Bold";
+         tag:  "b" "+ font_weight=Bold";
+         tag:  "tab" "\t";
+      }
+      style { name: "outdoor_style";
+         base: "font=Tizen:style=Regular font_size="25" align=center color=#FF9100 text_class=tizen";
+         tag:  "br" "\n";
+         tag:  "hilight" "+ font_weight=Bold";
+         tag:  "b" "+ font_weight=Bold";
+         tag:  "tab" "\t";
+      }
+  }
+  parts {
+    part { name: "bg";
+      type: RECT;
+      scale: 1;
+      description { state: "default";
+        color: 0 0 0 255;
+        rel1.relative: 0.0 0.0;
+        rel2.relative: 1.0 1.0;
+      }
+    }
+    part { name: "top_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 10;
+          max: -1 10;
+          fixed: 0 1;
+          align: 0.5 0.0;
+          rel2.relative: 1.0 0.0;
+       }
+    }
+    part { name: "bottom_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 28;
+          max: -1 28;
+          fixed: 0 1;
+          align: 0.5 1.0;
+          rel1.relative: 0.0 1.0;
+       }
+    }
+    part { name: "left_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 16 0;
+          max: 16 -1;
+          fixed: 1 0;
+          align: 0.0 0.5;
+          rel2.relative: 0.0 1.0;
+       }
+    }
+    part { name: "right_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 16 0;
+          max: 16 -1;
+          fixed: 1 0;
+          align: 1.0 0.5;
+          rel1.relative: 1.0 0.0;
+       }
+    }
+    part { name: "elm.icon.left_top";
+      type: SWALLOW;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 60 60;
+         max: 60 60;
+         fixed: 1 1;
+         align: 0 0;
+         rel1 {
+           to_x: "left_padding";
+           to_y: "top_padding";
+           relative: 1 1;
+         }
+         rel2 {
+           to_x: "left_padding";
+           to_y: "top_padding";
+           relative: 1 1;
+         }
+      }
+    }
+    part { name: "elm.icon.right_top";
+      type: SWALLOW;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 60 60;
+         max: 60 60;
+         fixed: 1 1;
+         align: 1 0;
+         rel1 {
+           to_x: "right_padding";
+           to_y: "top_padding";
+           relative: 0 1;
+         }
+         rel2 {
+           to_x: "right_padding";
+           to_y: "top_padding";
+           relative: 0 1;
+         }
+      }
+    }
+    part { name: "elm.text";
+       type: TEXTBLOCK;
+       scale: 1;
+       description { state: "default" 0.0;
+          align: 1 0;
+          rel1 {
+             to_x: "elm.icon.right_top";
+             to_y: "top_padding";
+             relative: 0 1;
+          }
+          rel2 {
+             to_x: "elm.icon.right_top";
+             to_y: "top_padding";
+             relative: 0 1;
+          }
+          text {
+             style: "custom_style";
+             align: 0 0.5;
+             min: 1 1;
+          }
+       }
+    }
+    part { name: "v_padding1";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 18;
+          max: -1 18;
+          fixed: 0 1;
+          align: 0.5 0;
+          rel1 {
+            to_y: "elm.text";
+            relative: 0.0 1.0;
+          }
+          rel1 {
+            to_y: "elm.text";
+            relative: 1.0 1.0;
+          }
+       }
+    }
+    part { name: "left_body_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 18 0;
+          max: 18 -1;
+          fixed: 1 0;
+          align: 0.0 0.5;
+          rel2.relative: 0.0 1.0;
+       }
+    }
+    part { name: "right_body_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 18 0;
+          max: 18 -1;
+          fixed: 1 0;
+          align: 1.0 0.5;
+          rel1.relative: 1.0 0.0;
+       }
+    }
+    part { name: "elm.icon.1";
+      type: SWALLOW;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 0 80;
+         fixed: 1 1;
+         align: 0.5 0.5;
+         rel1 {
+           to_x: "left_body_padding";
+           to_y: "v_padding1";
+           relative: 1 1;
+           offset: 0 52;
+         }
+         rel2 {
+           to_x: "right_body_padding";
+           to_y: "v_padding1";
+           relative: 0 1;
+         }
+      }
+    }
+    part { name: "v_padding2";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 10;
+          max: -1 10;
+          fixed: 0 1;
+          align: 0.5 0;
+          rel1 {
+            to_y: "elm.icon.1";
+            relative: 0.0 1.0;
+          }
+          rel1 {
+            to_y: "elm.icon.1";
+            relative: 1.0 1.0;
+          }
+       }
+    }
+    part { name: "elm.text.2";
+      type: TEXTBLOCK;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 0 40;
+         fixed: 1 1;
+         align: 0.5 0;
+         visible: 1;
+         rel1 {
+           to_x: "left_body_padding";
+           to_y: "v_padding2";
+           relative: 1 1;
+           offset: 0 5;
+         }
+         rel2 {
+           to_x: "right_body_padding";
+           to_y: "v_padding2";
+           relative: 0 1;
+           offset: 0 35;
+         }
+         text {
+         	style: "outdoor_style";
+            align: 0.5 0.5;
+            min: 1 1;
+         }
+      }
+      description { state: "visible" 0.0;
+      	inherit: "default" 0.0;
+        visible: 1;
+      }
+    }
+    programs {
+     program {
+        signal: "elm,state,outdoor.visible";
+        source: "*";
+        action: STATE_SET "visible" 0.0;
+        target: "elm.text.2";
+     }
+    }
+  }
+}
+
+
+group { name: "setting/2finger_popup/default2";
+  parts {
+    part { name: "bg";
+      type: RECT;
+      scale: 1;
+      description { state: "default";
+        rel1 { relative: 0.0 0.0; }
+        rel2 { relative: 1.0 1.0; }
+        color: 0 0 0 255;
+      }
+    }
+    part { name: "top_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 5;
+          max: -1 5;
+          fixed: 0 1;
+          align: 0.5 0.0;
+          rel2.relative: 1.0 0.0;
+       }
+    }
+    part { name: "bottom_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 28;
+          max: -1 28;
+          fixed: 0 1;
+          align: 0.5 1.0;
+          rel1.relative: 0.0 1.0;
+       }
+    }
+    part { name: "left_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 16 0;
+          max: 16 -1;
+          fixed: 1 0;
+          align: 0.0 0.5;
+          rel2.relative: 0.0 1.0;
+       }
+    }
+    part { name: "right_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 16 0;
+          max: 16 -1;
+          fixed: 1 0;
+          align: 1.0 0.5;
+          rel1.relative: 1.0 0.0;
+       }
+    }
+    part { name: "elm.icon.left_top";
+      type: SWALLOW;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 60 60;
+         max: 60 60;
+         fixed: 1 1;
+         align: 0 0;
+         rel1 {
+           to_x: "left_padding";
+           to_y: "top_padding";
+           relative: 1 1;
+         }
+         rel2 {
+           to_x: "left_padding";
+           to_y: "top_padding";
+           relative: 1 1;
+         }
+      }
+    }
+    part { name: "elm.icon.right_top";
+      type: SWALLOW;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 60 60;
+         max: 60 60;
+         fixed: 1 1;
+         align: 1 0;
+         rel1 {
+           to_x: "right_padding";
+           to_y: "top_padding";
+           relative: 0 1;
+         }
+         rel2 {
+           to_x: "right_padding";
+           to_y: "top_padding";
+           relative: 0 1;
+         }
+      }
+    }
+    part { name: "elm.text";
+       type: TEXTBLOCK;
+       scale: 1;
+       description { state: "default" 0.0;
+          align: 1 0;
+          max: 0 0;
+          rel1 {
+             to_x: "elm.icon.right_top";
+             to_y: "top_padding";
+             relative: 0 1;
+          }
+          rel2 {
+             to_x: "elm.icon.right_top";
+             to_y: "top_padding";
+             relative: 0 1;
+          }
+          text {
+             style: "custom_style";
+             align: 0 0.5;
+             min: 1 1;
+          }
+       }
+    }
+    part { name: "v_padding1";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 0;
+          max: -1 0;
+          fixed: 0 1;
+          align: 0.5 0;
+          rel1 {
+            to_y: "elm.text";
+            relative: 0.0 1.0;
+          }
+          rel1 {
+            to_y: "elm.text";
+            relative: 1.0 1.0;
+          }
+       }
+    }
+    part { name: "left_body_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 18 0;
+          max: 18 -1;
+          fixed: 1 0;
+          align: 0.0 0.5;
+          rel2.relative: 0.0 1.0;
+       }
+    }
+    part { name: "right_body_padding";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 18 0;
+          max: 18 -1;
+          fixed: 1 0;
+          align: 1.0 0.5;
+          rel1.relative: 1.0 0.0;
+       }
+    }
+    part { name: "elm.icon.1";
+      type: SWALLOW;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 0 80;
+         fixed: 1 1;
+         align: 0.5 0.0;
+         rel1 {
+           to_x: "left_body_padding";
+           relative: 1 0.4;
+           offset: 0 -40;
+         }
+         rel2 {
+           to_x: "right_body_padding";
+           relative: 0 0.4;
+           offset: 0 40;
+         }
+      }
+    }
+    part { name: "v_padding2";
+       type: SPACER;
+       scale: 1;
+       description { state: "default" 0.0;
+          min: 0 18;
+          max: -1 18;
+          fixed: 0 1;
+          align: 0.5 0;
+          rel1 {
+            to_y: "elm.icon.1";
+            relative: 0.0 1.0;
+          }
+          rel1 {
+            to_y: "elm.icon.1";
+            relative: 1.0 1.0;
+          }
+       }
+    }
+    part { name: "elm.text.2";
+      type: TEXTBLOCK;
+      scale: 1;
+      description { state: "default" 0.0;
+         min: 0 30;
+         fixed: 1 1;
+         align: 0.5 0;
+         visible: 1;
+         rel1 {
+           to_x: "left_body_padding";
+           to_y: "v_padding2";
+           relative: 1 1;
+           offset: 0 0;
+         }
+         rel2 {
+           to_x: "right_body_padding";
+           to_y: "v_padding2";
+           relative: 0 1;
+         }
+         text {
+         	style: "outdoor_style";
+            align: 0.5 0.0;
+            min: 1 1;
+         }
+      }
+      description { state: "visible" 0.0;
+      	inherit: "default" 0.0;
+        visible: 1;
+      }
+    }
+    
+    part { name: "lt_padding";
+        type: SPACER;
+        scale: 1;
+        description { state: "default" 0.0;
+          min: 3 3;
+          fixed: 1 1;
+          align: 0.0 0.0;
+          rel1 {
+          	relative: 0.0 0.0;
+          	offset: 0.0 180;
+          }
+          rel2.relative: 0.0 0.0;
+        }
+      }
+      part { name: "rb_padding";
+        type: SPACER;
+        scale: 1;
+        description { state: "default" 0.0;
+          min: 3 3;
+          fixed: 1 1;
+          align: 1.0 1.0;
+          rel1.relative: 1.0 1.0;
+        }
+      }
+      part { name: "c_padding";
+        type: SPACER;
+        scale: 1;
+        description { state: "default" 0.0;
+          min: 1 0;
+          max: 1 -1;
+          fixed: 1 0;
+          align: 0.5 0.5;
+        }
+      }
+      part{ name:"actionbtn1";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+         	max: 300 76;
+            rel1 {
+              to: "lt_padding";
+              relative: 1.0 1.0;
+            }
+            rel2 {
+              to_x: "c_padding";
+              to_y: "rb_padding";
+              relative: 0.0 0.0;
+            }
+         }
+      }
+      part{ name:"actionbtn2";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+         	max: 300 76;
+            rel1 {
+              to_x: "c_padding";
+              to_y: "lt_padding";
+              relative: 1.0 1.0;
+            }
+            rel2 {
+              to: "rb_padding";
+              relative: 0.0 0.0;
+            }
+         }
+      }
+    
+       part { name: "btn1";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 1;
+            rel1 {
+               relative: 0.0 1.0;
+            }
+            rel2 {
+               to_x: "padding";
+               relative: 0.0 1.0;
+            }
+            min: 0 76;
+            align: 0.5 1;
+         }
+      }
+      part { name: "padding";
+         type: SPACER;
+         scale: 1;
+         mouse_events: 0;
+         description { state: "default" 0.0;
+            rel1 {
+               relative: 0.5 1.0;
+            }
+            rel2 {
+               relative: 0.5 1.0;
+            }
+            align: 0.5 1.0;
+            min: 1 0;
+            max: 1 0;
+            fixed: 1 0;
+         }
+      }
+      part { name: "btn2";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 1;
+            rel1 {
+               to_x: "padding";
+               relative: 1.0 1.0;
+            }
+            rel2 {
+               relative: 1.0 1.0;
+            }
+            min: 0 76;
+            align: 0.5 1;
+         }
+      }
+   
+    
+    programs {
+     program {
+        signal: "elm,state,outdoor.visible";
+        source: "*";
+        action: STATE_SET "visible" 0.0;
+        target: "elm.text.2";
+     }
+    }
+  }
+}

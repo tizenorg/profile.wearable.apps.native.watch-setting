@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://tizen.org/ns/packages" package="org.tizen.watch-setting" version="0.0.1" install-location="internal-only">
+	<label>Settings</label>
+	<author email="min-ho.yun@samsung.com" href="www.samsung.com">Minho Yun</author>
+	<description>Settings</description>
+	<ui-application appid="org.tizen.watch-setting" exec="/usr/apps/org.tizen.watch-setting/bin/watch-setting" nodisplay="false" multiple="false" type="capp" taskmanage="true" indicatordisplay= "false">
+		<category name="org.tizen.wmanager.WATCH_APP"></category>
+		<icon>org.tizen.watch-setting.png</icon>
+		<icon section="small">org.tizen.watch-setting_small.png</icon>
+		<label>Settings</label>
+			<label xml:lang="ar-ae">الضبط</label>
+			<label xml:lang="ar-il">الضبط</label>
+			<label xml:lang="as-in">ছেটিংছ</label>
+			<label xml:lang="az-az">Parametrlər</label>
+			<label xml:lang="bg-bg">Настройки</label>
+			<label xml:lang="bn-in">সেটিংস</label>
+			<label xml:lang="ca-es">Ajustaments</label>
+			<label xml:lang="cs-cz">Nastavení</label>
+			<label xml:lang="da-dk">Indstillinger</label>
+			<label xml:lang="de-de">Einstellungen</label>
+			<label xml:lang="de-at">Einstellungen</label>
+			<label xml:lang="de-ch">Einstellungen</label>
+			<label xml:lang="el-gr">Ρυθμίσεις</label>
+			<label xml:lang="en-gb">Settings</label>
+			<label xml:lang="en-ph">Settings</label>
+			<label xml:lang="en-us">Settings</label>
+			<label xml:lang="en-au">Settings</label>
+			<label xml:lang="en-ca">Settings</label>
+			<label xml:lang="en-ie">Settings</label>
+			<label xml:lang="en-nz">Settings</label>
+			<label xml:lang="en-za">Settings</label>
+			<label xml:lang="es-es">Ajustes</label>
+			<label xml:lang="es-us">Configuración</label>
+			<label xml:lang="et-ee">Seaded</label>
+			<label xml:lang="eu-es">Ezarpenak</label>
+			<label xml:lang="fa-ir">تنظیمات</label>
+			<label xml:lang="fi-fi">Asetukset</label>
+			<label xml:lang="tl-ph">Mga Setting</label>
+			<label xml:lang="fr-ca">Paramètres</label>
+			<label xml:lang="fr-fr">Paramètres</label>
+			<label xml:lang="fr-be">Paramètres</label>
+			<label xml:lang="fr-ch">Paramètres</label>
+			<label xml:lang="ga-ie">Socruithe</label>
+			<label xml:lang="gl-es">Axustes</label>
+			<label xml:lang="gu-in">સેટિંગ્સ</label>
+			<label xml:lang="he-il">הגדרות</label>
+			<label xml:lang="hi-in">सेटिंग्स</label>
+			<label xml:lang="hr-hr">Postavke</label>
+			<label xml:lang="hu-hu">Beállítások</label>
+			<label xml:lang="hy-am">Դրվածքներ</label>
+			<label xml:lang="id-id">Aturan</label>
+			<label xml:lang="is-is">Stillingar</label>
+			<label xml:lang="it-it">Impostazioni</label>
+			<label xml:lang="ja-jp">設定</label>
+			<label xml:lang="ka-ge">პარამეტრები</label>
+			<label xml:lang="kk-kz">Параметрлер</label>
+			<label xml:lang="km-kh">ការកំណត់</label>
+			<label xml:lang="kn-in">ಸಂಯೋಜನೆಗಳು</label>
+			<label xml:lang="ko-kr">설정</label>
+			<label xml:lang="lo-la">ຕັ້ງຄ່າ</label>
+			<label xml:lang="lt-lt">Nustatymai</label>
+			<label xml:lang="lv-lv">Iestatījumi</label>
+			<label xml:lang="mk-mk">Опции</label>
+			<label xml:lang="ml-in">ക്രമീകരണങ്ങൾ</label>
+			<label xml:lang="mr-in">सेटिंग्स</label>
+			<label xml:lang="ms-my">Aturan</label>
+			<label xml:lang="my-mm">သတ္မွတ္ခ်က္မ်ား</label>
+			<label xml:lang="nb-no">Innstillinger</label>
+			<label xml:lang="ne-np">सेटिङहरु</label>
+			<label xml:lang="nl-be">Instellingen</label>
+			<label xml:lang="nl-nl">Instellingen</label>
+			<label xml:lang="or-in">ସେଟିଂଗୁଡିକ</label>
+			<label xml:lang="pa-in">ਸੈੱਟਿੰਗਸ</label>
+			<label xml:lang="pl-pl">Ustawienia</label>
+			<label xml:lang="pt-br">Configurações</label>
+			<label xml:lang="pt-pt">Definições</label>
+			<label xml:lang="ro-ro">Setări</label>
+			<label xml:lang="ru-ru">Параметры</label>
+			<label xml:lang="si-lk">සැකසුම්</label>
+			<label xml:lang="sk-sk">Nastavenia</label>
+			<label xml:lang="sl-si">Nastavitve</label>
+			<label xml:lang="sq-al">Cilësimet</label>
+			<label xml:lang="sr-rs">Podešavanja</label>
+			<label xml:lang="sv-se">Inställningar</label>
+			<label xml:lang="ta-in">அமைவுகள்</label>
+			<label xml:lang="te-in">సెట్టింగులు</label>
+			<label xml:lang="th-th">การตั้งค่า</label>
+			<label xml:lang="tr-tr">Ayarlar</label>
+			<label xml:lang="uk-ua">Установки</label>
+			<label xml:lang="ur-pk">سیٹنگز</label>
+			<label xml:lang="uz-uz">Parametrlar</label>
+			<label xml:lang="vi-vn">Cài đặt</label>
+			<label xml:lang="zh-cn">设定</label>
+			<label xml:lang="zh-hk">設定</label>
+			<label xml:lang="zh-tw">設定</label>
+	</ui-application>
+</manifest>

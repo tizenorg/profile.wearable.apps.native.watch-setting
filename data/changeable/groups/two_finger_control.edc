@@ -1,0 +1,207 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+group { name: "setting/layout/button_controller2/default";
+   images {
+      image: "tw_number_controller_button_bg.png" COMP;
+      image: "tw_number_controller_contents_bg.png" COMP;
+   }
+   styles{
+      style { name: "controller_style";
+         base: "font=Tizen:style=Regular font_size="20" align=center color=#FF9100 text_class=tizen";
+         tag:  "br" "\n";
+         tag:  "hilight" "+ font_weight=Bold";
+         tag:  "b" "+ font_weight=Bold";
+         tag:  "tab" "\t";
+      }
+   }
+   parts {
+      part { name: "bg";
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 284 86;
+            max: 284 86;
+            fixed: 1 1;
+            image {
+               normal: "tw_number_controller_button_bg.png";
+               border: 7 7 7 7;
+               border_scale: 1;
+            }
+         }
+      }
+      part { name: "top_left_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 6 6;
+            max: 6 6;
+            fixed: 1 1;
+            align: 0.0 0.0;
+            rel2.relative: 0.0 0.0;
+         }
+      }
+      part { name: "bottom_right_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 6 6;
+            max: 6 6;
+            fixed: 1 1;
+            align: 1.0 1.0;
+            rel1.relative: 1.0 1.0;
+         }
+      }
+      part { name: "center_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 4 84;
+            max: 4 84;
+            fixed: 1 1;
+         }
+      }
+      part { name: "elm.icon.left";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 134 74;
+            max: 134 74;
+            fixed: 1 1;
+            align: 1.0 0.5;
+            rel1 {
+               to: "top_left_padding";
+               relative: 1.0 1.0;
+            }
+            rel2 {
+               to_x: "center_padding";
+               to_y: "bottom_right_padding";
+               relative: 0.0 0.0;
+            }
+         }
+      }
+      part { name: "elm.icon.right";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 134 74;
+            max: 134 74;
+            fixed: 1 1;
+            align: 0.0 0.5;
+            rel1 {
+               to_x: "center_padding";
+               to_y: "top_left_padding";
+               relative: 1.0 1.0;
+            }
+            rel2 {
+               to: "bottom_right_padding";
+               relative: 0.0 0.0;
+            }
+         }
+      }
+      part { name: "bg_center";
+         scale: 1;
+         description { state: "default" 0.0;
+            image.normal: "tw_number_controller_contents_bg.png";
+            image.border: 6 6 6 6;
+            image.border_scale: 1;
+            min: 94 52; // FIXME: 94 is too short for text??
+            max: 94 52;
+            fixed: 1 1;
+         }
+      }
+      part { name: "elm.icon";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+         	visible: 1;
+            min: 40 40;
+            max: 40 40;
+            fixed: 1 1;
+         }
+         description { state: "1digit" 0.0;
+            inherit: "default" 0.0;
+            fixed: 1 1;
+            align: 0.5 0.5;
+            visible: 0;
+            rel1 {
+               to_y: "bg_center";
+               offset: -25 -20;
+               relative: 0.5 0.5;
+            }
+            rel2 {
+               to_y: "bg_center";
+               offset: 15 20;
+               relative: 0.5 0.5;
+            }
+         }
+         description { state: "2digit" 0.0;
+            inherit: "1digit" 0.0;
+            rel1.offset: 2 0;
+            rel2.offset: 2 0;
+         }
+      }
+      part { name: "elm.text";
+         type: TEXTBLOCK;
+         description { state: "default" 0.0;
+         	visible: 0;
+            fixed: 1 1;
+            align: 0.0 0.5;
+            rel1 {
+               to: "bg_center";
+               offset: 35 0;
+            }
+            rel2 {
+               to: "bg_center";
+               offset: 35 -1;
+               relative: 0.0 1.0;
+            }
+            text {
+               style: "controller_style";
+               min: 1 1;
+               align: 0.5 0.5;
+            }
+         }
+         description { state: "1digit" 0.0;
+            inherit: "default" 0.0;
+            visible: 1;
+         }
+         description { state: "2digit" 0.0;
+            inherit: "1digit" 0.0;
+            rel1 {
+               to: "bg_center";
+               offset: 23 0;
+            }
+         }
+      }
+   }
+   programs {
+      program {
+         signal: "elm,state,1digit";
+         source: "*";
+         action: STATE_SET "1digit" 0.0;
+         target: "elm.icon";
+         target: "elm.text";
+      }
+      program {
+         signal: "elm,state,2digit";
+         source: "*";
+         action: STATE_SET "2digit" 0.0;
+         target: "elm.icon";
+         target: "elm.text";
+      }
+      program {
+         signal: "elm,state,nodigit";
+         source: "*";
+         action: STATE_SET "default" 0.0;
+         target: "elm.icon";
+         target: "elm.text";
+      }
+   }
+}
