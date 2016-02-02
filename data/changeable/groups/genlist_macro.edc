@@ -1,0 +1,1973 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics Co., Ltd All Rights Reserved
+ *
+ * BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *   1. Redistributions of source code must retain the above copyright notice, this
+ *      list of conditions and the following disclaimer.
+ *   2. Redistributions in binary form must reproduce the above copyright notice,
+ *      this list of conditions and the following disclaimer in the documentation
+ *      and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * vim:ts=3
+*/
+
+//****************************************************************************//
+// *****************  EDJE description have 24 patterns **********************//
+ //**************************************************************************//
+// ------------------
+// | --> HERE
+// ------------------
+ #define DESC_FROM_L( PARAM ) \
+   description { state: "default" 0.0;\
+      fixed: 1 0; \
+      align: 0.0 0.5; \
+      rel2.relative: 0.0 1.0; \
+      PARAM\
+   }
+
+// ------------------
+//         HERE <-- |
+// ------------------
+ #define DESC_FROM_R( PARAM ) \
+   description { state: "default" 0.0;\
+      fixed: 1 0; \
+      align: 1.0 0.5; \
+      rel1.relative: 1 0; \
+      PARAM\
+   }
+
+// ----------
+// |  HERE  |
+// ----------
+// |        |
+// ----------
+ #define DESC_FROM_T( PARAM ) \
+   description { state: "default" 0.0;\
+      fixed: 0 1; \
+      align: 0.5 0.0; \
+      rel2.relative: 1.0 0.0; \
+      PARAM\
+   }
+
+// ----------
+// |  HERE  |
+// ----------
+// |        |
+// ----------
+ #define DESC_FROM_B( PARAM ) \
+   description { state: "default" 0.0;\
+      fixed: 0 1; \
+      rel1.relative: 0.0 1.0; \
+      align: 0.5 1.0; \
+      PARAM\
+   }
+
+// ------------------
+// |  PART == HERE  |
+// ------------------
+ #define DESC_TO( PART, PARAM ) \
+   description { state: "default" 0.0;\
+      rel1 { \
+         relative: 0 0; \
+         to: PART; \
+      }\
+      rel2 {\
+         relative: 1 1;\
+         to: PART; \
+      }\
+      PARAM\
+   }
+
+//      |   TOP  |
+// ---------------------
+// LEFT |  HERE  | RIGHT
+// ---------------------
+//      | BOTTOM |
+#define DESC_LRTB( LEFT, RIGHT, TOP, BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      rel1 { \
+         relative: 1 1; \
+         to_x: LEFT; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 0 0;\
+         to_x: RIGHT;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+// ---------------------
+// LEFT |--> HERE
+// ---------------------
+#define DESC_L( LEFT, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0 0.5; \
+      fixed: 1 0; \
+      rel1 { \
+         relative: 1 0; \
+         to_x: LEFT; \
+      }\
+      rel2 { \
+         relative: 1 1;\
+         to_x: LEFT; \
+      }\
+      PARAM\
+   }
+
+// ---------------------
+//   HERE  <--| RIGHT
+// ---------------------
+#define DESC_R( RIGHT, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 1 0.5; \
+      fixed: 1 0; \
+      rel1 { \
+         relative: 0 0; \
+         to_x: RIGHT; \
+      }\
+      rel2 {\
+         relative: 0 1;\
+         to_x: RIGHT; \
+      }\
+      PARAM\
+   }
+
+// --------------------------
+// LEFT |--> HERE  <--| RIGHT
+// --------------------------
+#define DESC_LR( LEFT, RIGHT, PARAM ) \
+   description { state: "default" 0.0;\
+      rel1 { \
+         relative: 1 0; \
+         to_x: LEFT; \
+      }\
+      rel2 {\
+         relative: 0 1;\
+         to_x: RIGHT;\
+      }\
+      PARAM\
+   }
+
+//   |  TOP     |
+// -----------------
+//  |  HERE  <--| RIGHT
+// -----------------
+//  | BOTTOM   |
+#define DESC_RTB( RIGHT, TOP, BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 1 0.5;\
+      rel1 { \
+         relative: 0 1; \
+         to_x: RIGHT; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 0 0;\
+         to_x: RIGHT;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+// LEFT |  HERE  | RIGHT
+// ---------------------
+//      | BOTTOM |
+#define DESC_LRB( LEFT, RIGHT, BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0.5 1;\
+      rel1 { \
+         relative: 1 0; \
+         to_x: LEFT; \
+         to_y: BOTTOM; \
+      }\
+      rel2 {\
+         relative: 0 0;\
+         to_x: RIGHT;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+//      |   TOP  |
+// ---------------------
+// LEFT |  HERE  | RIGHT
+#define DESC_LRT( LEFT, RIGHT, TOP, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0.5 0;\
+      rel1 { \
+         relative: 1 1; \
+         to_x: LEFT; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 0 1;\
+         to_x: RIGHT;\
+         to_y: TOP;\
+      }\
+      PARAM\
+   }
+
+//      |       TOP  |
+// ---------------------
+// LEFT | -->  HERE  |
+#define DESC_LT( LEFT, TOP, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0 0;\
+      rel1 { \
+         relative: 1 1; \
+         to_x: LEFT; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 1 1;\
+         to_x: LEFT;\
+         to_y: TOP;\
+      }\
+      PARAM\
+   }
+
+// LEFT |  --> HERE  |
+// ---------------------
+//      |     BOTTOM |
+#define DESC_LB( LEFT, BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0 1;\
+      rel1 { \
+         relative: 1 0; \
+         to_x: LEFT; \
+         to_y: BOTTOM; \
+      }\
+      rel2 {\
+         relative: 1 0;\
+         to_x: LEFT;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+//      |     TOP  |
+// ---------------------
+// LEFT |--> HERE  |
+// ---------------------
+//      |   BOTTOM |
+#define DESC_LTB( LEFT, TOP, BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0 0.5;\
+      rel1 { \
+         relative: 1 1; \
+         to_x: LEFT; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 1 0;\
+         to_x: LEFT;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+//      |   TOP  |
+// ---------------------
+//     |  HERE <--| RIGHT
+#define DESC_RT( RIGHT, TOP, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 1 0;\
+      rel1 { \
+         relative: 0 1; \
+         to_x: RIGHT; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 0 1;\
+         to_x: RIGHT;\
+         to_y: TOP;\
+      }\
+      PARAM\
+   }
+
+//  | HERE <-- | RIGHT
+// ---------------------
+//  |  BOTTOM  |
+#define DESC_RB( RIGHT, BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 1 1;\
+      rel1 { \
+         relative: 0 0; \
+         to_x: RIGHT; \
+         to_y: BOTTOM; \
+      }\
+      rel2 {\
+         relative: 0 0;\
+         to_x: RIGHT;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+// |   TOP  |
+// ----------
+// |  HERE  |
+// ----------
+// | BOTTOM |
+#define DESC_TB( TOP, BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0.5 0.5;\
+      rel1 { \
+         relative: 0 1; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 1 0;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+// |   TOP  |
+// ----------
+// |  HERE  |
+// ----------
+#define DESC_T( TOP, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0.5 0.0;\
+      rel1 { \
+         relative: 0 1; \
+         to_y: TOP; \
+      }\
+      rel2 {\
+         relative: 1 1;\
+         to_y: TOP;\
+      }\
+      PARAM\
+   }
+
+// ----------
+// |  HERE  |
+// ----------
+// | BOTTOM |
+#define DESC_B( BOTTOM, PARAM ) \
+   description { state: "default" 0.0;\
+      align: 0.5 1.0;\
+      rel1 { \
+         relative: 0 0; \
+         to_y: BOTTOM; \
+      }\
+      rel2 {\
+         relative: 1 0;\
+         to_y: BOTTOM;\
+      }\
+      PARAM\
+   }
+
+//****************************************************************************//
+//******************************* Part Macros ********************************//
+//****************************************************************************//
+#define PART(TYPE, NAME, DESCRIPION) \
+   part { name: NAME; \
+      scale: 1; \
+      type: TYPE; \
+      DESCRIPION \
+   }
+
+//****************************************************************************//
+//**************************** Genlist Macros ********************************//
+//****************************************************************************//
+
+#define PROLOG_LIST \
+   data.item: "treesize" 0; \
+   data.item: "flips" "elm.flip.icon elm.flip.content"; \
+
+#define PART_LIST_BG \
+   PART(RECT, "bg_clip", \
+      mouse_events: 0; \
+      description { state: "default" 0.0; } \
+      description { state: "decorate" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+      description { state: "reorder" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+      description { state: "decorate_reorder" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+   ) \
+   PART(RECT, "bg",  \
+      clip_to: "bg_clip"; \
+      description { state: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+      description { state: "selected" 0.0; \
+         inherit: "default" 0.0; \
+         color: 255 255 255 255; \
+         color_class: "B041P"; \
+      } \
+      description { state: "disabled" 0.0; \
+         inherit: "default" 0.0; \
+         color: 255 255 255 255; \
+         color_class: "B0211D"; \
+      } \
+   )
+
+#define PART_LIST_BOTTOMLINE \
+   PART(RECT, "bottom_line_clip", \
+      description { state: "default" 0.0; } \
+      description { state: "hide" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+      description { state: "decorate" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+      description { state: "reorder" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+      description { state: "decorate_reorder" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+      description { state: "flipped" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+   ) \
+   PART(RECT, "bottom_line", \
+      mouse_events: 0; \
+      clip_to: "bottom_line_clip"; \
+      description { state: "default" 0.0; \
+         min: 0 1; \
+         max: -1 1; \
+         fixed: 0 1; \
+         align: 0.5 1; \
+         color_class: "B0222"; \
+         rel1.offset: -1 -1; \
+      } \
+   )
+
+#define PART_LIST_BOTTOMLINE_OFF \
+   PART(RECT, "bottom_line_clip", \
+      description { state: "default" 0.0;  \
+         visible: 0; \
+      } \
+      description { state: "hide" 0.0; \
+         inherit: "default" 0.0; \
+         color: 0 0 0 0; \
+      } \
+   ) \
+   PART(RECT, "bottom_line", \
+      description { state: "default" 0.0; \
+         visible: 0; \
+      } \
+   )
+
+//**************************** Genlist PADDING *******************************//
+#define DESC_LIST_PADDINGS \
+   description { state: "decorate" 0.0; \
+      inherit: "default" 0.0; \
+      min: 0 0; \
+      max: 0 0; \
+   } \
+   description { state: "decorate_reorder" 0.0; \
+      inherit: "default" 0.0; \
+      min: 0 0; \
+      max: 0 0; \
+   } \
+   description { state: "reorder" 0.0; \
+      inherit: "default" 0.0; \
+      min: 32 0; \
+      max: 32 -1; \
+   }
+
+#define PART_LIST_PADDINGS(LEFT_SIZE, RIGHT_SIZE, TOP_SIZE, BOTTOM_SIZE) \
+   PART(SWALLOW, "elm.swallow.pad", \
+      mouse_events: 0; \
+      DESC_FROM_L( ; ) \
+   ) \
+   PART(SWALLOW, "elm.swallow.colorbar", \
+      mouse_events: 0; \
+      DESC_L("elm.swallow.pad", ) \
+   ) \
+   PART(SPACER, "elm.padding.left", \
+      DESC_L("elm.swallow.pad", \
+         min: LEFT_SIZE 0; \
+         max: LEFT_SIZE -1; \
+      ) \
+   ) \
+   PART(SPACER, "elm.padding.right", \
+      DESC_FROM_R( \
+         min: RIGHT_SIZE 0; \
+         max: RIGHT_SIZE -1; \
+      ) \
+      description { state: "decorate" 0.0; \
+         inherit: "default" 0.0; \
+         min: 0 0; \
+         max: 0 0; \
+      } \
+      description { state: "decorate_reorder" 0.0; \
+         inherit: "default" 0.0; \
+         min: 0 0; \
+         max: 0 0; \
+      } \
+      description { state: "reorder" 0.0; \
+         inherit: "default" 0.0; \
+         min: 32 0; \
+         max: 32 -1; \
+      } \
+   ) \
+   PART(SPACER, "elm.padding.top", \
+      DESC_FROM_T( \
+         min: 0 TOP_SIZE; \
+         max: -1 TOP_SIZE; \
+      ) \
+   ) \
+   PART(SPACER, "elm.padding.bottom", \
+      DESC_FROM_B( \
+         min: 0 BOTTOM_SIZE; \
+         max: -1 BOTTOM_SIZE; \
+      ) \
+   )
+
+//***************************  Genlist Programs ****************************//
+#define PROGRAM_LIST_DEFAULT( TARGET ) \
+   program { name: "default"; \
+      signal: "elm,state,default"; \
+      source: "elm"; \
+      action: STATE_SET "default" 0.0; \
+      TARGET \
+   } \
+
+#define PROGRAM_LIST_DISABLE( TARGET ) \
+   program { name: "enabled"; \
+      signal: "elm,state,enabled"; \
+      source: "elm"; \
+      action: STATE_SET "default" 0.0; \
+      TARGET \
+   } \
+   program { name: "disabled"; \
+      signal: "elm,state,disabled"; \
+      source: "elm"; \
+      action: STATE_SET "disabled" 0.0; \
+      TARGET \
+   }
+
+#define PROGRAM_LIST_SELECT( TARGET ) \
+   program { name: "selected"; \
+      signal: "elm,state,selected"; \
+      source: "elm"; \
+      action: STATE_SET "selected" 0.0; \
+      TARGET \
+   } \
+   program { name: "unselected"; \
+      signal: "elm,state,unselected"; \
+      source: "elm"; \
+      action: STATE_SET "default" 0.0; \
+      TARGET \
+   }
+
+#define PROGRAM_LIST_SOUND \
+   program { name: "play_sound"; \
+      signal: "elm,state,clicked"; \
+      source: "elm"; \
+      script { \
+         run_program(PROGRAM:"play_sample"); \
+      } \
+   } \
+   program { \
+      name: "play_sample"; \
+      action: RUN_PLUGIN "touch_sound"; \
+   }
+
+#define PROGRAM_LIST_FOCUS \
+   program { name: "focused"; \
+      signal: "elm,state,focused"; \
+      source: "elm"; \
+      action: STATE_SET "focused" 0.0; \
+      target: "focus_part"; \
+   } \
+   program { name: "unfocused"; \
+      signal: "elm,state,unfocused"; \
+      source: "elm"; \
+      action: STATE_SET "default" 0.0; \
+      target: "focus_part"; \
+   }
+
+#define PROGRAM_LIST_FLIP \
+   program { name: "flip_enabled"; \
+      signal:  "elm,state,flip,enabled"; \
+      source:  "elm"; \
+      transition: DECELERATE 0.5; \
+      action:  STATE_SET "flipped" 0.0; \
+      target: "elm.flip.content"; \
+      target: "elm.flip.icon"; \
+   } \
+   program { name: "flip_disabled"; \
+      signal:  "elm,state,flip,disabled"; \
+      source:  "elm"; \
+      transition: DECELERATE 0.5; \
+      action:  STATE_SET "default" 0.0; \
+      target: "elm.flip.content"; \
+      target: "elm.flip.icon"; \
+   } \
+   program { name: "flip_enabled_bg"; \
+      signal:  "elm,state,flip,enabled"; \
+      source:  "elm"; \
+      action:  STATE_SET "flipped" 0.0; \
+      target: "elm.flip.bg"; \
+   } \
+   program { name: "flip_disabled_bg"; \
+      signal:  "elm,state,flip,disabled"; \
+      source:  "elm"; \
+      action:  STATE_SET "default" 0.0; \
+      target: "elm.flip.bg"; \
+   }
+
+#define PROGRAM_LIST_DECORATE( TARGET ) \
+   program { name: "decorate_enabled_effect_ef"; \
+      signal: "elm,state,decorate,enabled,effect";\
+      source: "elm";\
+      action:  STATE_SET "decorate" 0.0;\
+      TARGET \
+   }\
+   program { name: "decorate_disabled_effect_ef";\
+      signal: "elm,state,decorate,disabled,effect";\
+      source: "elm";\
+      action:  STATE_SET "default" 0.0;\
+      TARGET \
+   } \
+   program { name: "decorate_enabled_ef";\
+      signal: "elm,state,decorate,enabled";\
+      source: "elm";\
+      action:  STATE_SET "decorate" 0.0;\
+      TARGET \
+   }\
+   program { name: "decorate_disabled_ef";\
+      signal: "elm,state,decorate,disabled";\
+      source: "elm";\
+      action:  STATE_SET "default" 0.0;\
+      TARGET \
+   }
+
+#define PROGRAM_LIST_DECORATE_FX( TARGET ) \
+   program { name: "decorate_enabled_effect_ef"; \
+      signal: "elm,state,decorate,enabled,effect";\
+      source: "elm";\
+      transition: DECELERATE 0.5;\
+      action:  STATE_SET "decorate" 0.0;\
+      TARGET \
+   }\
+   program { name: "decorate_disabled_effect_ef";\
+      signal: "elm,state,decorate,disabled,effect";\
+      source: "elm";\
+      transition: ACCELERATE 0.5;\
+      action:  STATE_SET "default" 0.0;\
+      TARGET \
+   } \
+   program { name: "decorate_enabled_ef";\
+      signal: "elm,state,decorate,enabled";\
+      source: "elm";\
+      action:  STATE_SET "decorate" 0.0;\
+      TARGET \
+   }\
+   program { name: "decorate_disabled_ef";\
+      signal: "elm,state,decorate,disabled";\
+      source: "elm";\
+      action:  STATE_SET "default" 0.0;\
+      TARGET \
+   }
+
+#define PROGRAM_LIST_BOTTOMLINE \
+   program { name : "hide_bottomline"; \
+      signal: "elm,state,bottomline,hide"; \
+      source: ""; \
+      action: STATE_SET "hide" 0.0; \
+      target: "bottom_line_clip"; \
+   } \
+   program { name : "show_bottomline"; \
+      signal: "elm,state,bottomline,show"; \
+      source: ""; \
+      action: STATE_SET "default" 0.0; \
+      target: "bottom_line_clip"; \
+   } \
+
+
+#define PROGRAMS_LIST( TARGET ) \
+   programs { \
+      PROGRAM_LIST_DEFAULT( TARGET \
+         target: "bg"; \
+         target: "bg_clip"; \
+         target: "bottom_line"; \
+         target: "bottom_line_clip"; \
+         target: "elm.padding.left"; \
+         target: "elm.padding.right"; \
+      ) \
+      PROGRAM_LIST_DISABLE( TARGET \
+         target: "bg"; \
+      ) \
+      PROGRAM_LIST_SELECT( TARGET \
+         target: "bg"; \
+      ) \
+      PROGRAM_LIST_SOUND \
+      PROGRAM_LIST_DECORATE( \
+         target: "bg"; \
+         target: "bg_clip"; \
+         target: "bottom_line"; \
+         target: "bottom_line_clip"; \
+         target: "elm.padding.left"; \
+         target: "elm.padding.right"; \
+      ) \
+      PROGRAM_LIST_BOTTOMLINE \
+   }
+
+//******************************* Genlist TEXT ********************************//
+#define PARAM_TEXT(STYLE, PARAM) \
+   text { \
+      min: 0 1; \
+      style: STYLE; \
+      PARAM \
+   }
+
+#define DESCRIPIONS_TEXT(DISABLED, SELECTED) \
+   description { state: "disabled" 0.0; \
+      inherit: "default" 0.0; \
+      text.style: DISABLED; \
+   } \
+   description { state: "selected" 0.0; \
+      inherit: "default" 0.0; \
+      text.style: SELECTED; \
+   }
+
+//******************************* Genlist SWIPE ********************************//
+#define SWIPE_TRANSIT       SIN_FAC 0.667 0.8
+
+#define SWIPE_THRESH_X      60
+#define SWIPE_THRESH_Y      30
+
+#define SWIPE_OVERLAP_SIZE  100
+#define SWIPE_ICON_SIZE     64 100
+
+// state: normal(0)->start,right( 1)->rollback,right ( 3), swipe,right ( 2)-> normal(0)
+//                 ->start,left (-1)->rollback,right (-3), swipe,right (-2)->
+#define SCRIPTS_LIST_SWIPE \
+   script { \
+      public _state; \
+      public x1, y1; \
+      public cleanup() { \
+         set_int(_state, 0); \
+         set_int(x1, 0); \
+         set_int(y1, 0); \
+         set_drag(PART:"drag_part", 0, 0); \
+         set_state(PART:"drag_part", "default", 0.0); \
+         set_state(PART:"drag_part_left", "default", 0.0); \
+         set_state(PART:"drag_part_right", "default", 0.0); \
+         set_state(PART:"elm.text.swipe.left", "default", 0.0); \
+         set_state(PART:"elm.text.swipe.right", "default", 0.0); \
+         set_state(PART:"elm.icon.swipe.left", "default", 0.0); \
+         set_state(PART:"elm.icon.swipe.right", "default", 0.0); \
+         set_state(PART:"swipe_temp_disabler", "default", 0.0); \
+      } \
+   }
+
+#define IMAGES_LIST_SWIPE \
+      image : "b_list_swipe_right.#.png" COMP; \
+      image : "b_list_swipe_left.#.png" COMP;
+
+#define PARTS_LIST_SWIPE \
+      part { name: "drag_part"; \
+         type: RECT; \
+         scale: 1; \
+         repeat_events: 1; \
+         dragable { \
+            x: 1 1 0; \
+            y: 0 0 0; \
+         } \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1.offset: -SWIPE_OVERLAP_SIZE 0; \
+            rel2.offset: SWIPE_OVERLAP_SIZE 0; \
+         } \
+         description { state: "disable" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            visible: 0; \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B041P"; \
+         } \
+         description { state: "right_end" 0.0; \
+            inherit: "start_right"; \
+            rel1.relative: 1 0; \
+         } \
+         description { state: "right_rollback" 0.0; \
+            inherit: "start_right" 0.0; \
+            rel1.relative: -1 0; \
+            color: 0 0 0 0; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B041P"; \
+         } \
+         description { state: "left_end" 0.0; \
+            inherit: "start_left" 0.0; \
+            rel2.relative: 0 1; \
+         } \
+         description { state: "left_rollback" 0.0; \
+            inherit: "start_left" 0.0; \
+            rel2.relative: 2 1; \
+            color: 0 0 0 0; \
+         } \
+      } \
+      part { name: "drag_part_left"; \
+         type: IMAGE; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1 { \
+               relative: -999 0; \
+            } \
+            rel2 { \
+               to_x: "drag_part"; \
+               relative: 0 1; \
+               offset: SWIPE_OVERLAP_SIZE 0; \
+            } \
+            image { \
+               normal: "b_list_swipe_left.#.png"; \
+            } \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B0242"; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B0242"; \
+         } \
+      } \
+      part { name: "drag_part_right"; \
+         type: IMAGE; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1 { \
+               to_x: "drag_part"; \
+               relative: 1 0; \
+               offset: -SWIPE_OVERLAP_SIZE 0; \
+            } \
+            rel2 { \
+               relative: 999 1; \
+            } \
+            image { \
+               normal: "b_list_swipe_right.#.png"; \
+            } \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B0241"; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B0241"; \
+         } \
+      } \
+      part { name: "swipe_temp_disabler"; \
+         type: RECT; \
+         scale:1; \
+         repeat_events: 0; \
+         description { state: "default" 0.0; \
+            visible: 0; \
+            color: 0 0 0 0; \
+         } \
+         description { state: "enable" 0.0; \
+            inherit: "default"; \
+            visible: 1; \
+         } \
+      } \
+      part { name: "elm.icon.swipe.left"; \
+         type: SWALLOW; \
+         clip_to: "elm.icon.swipe.clip"; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            visible: 0; \
+            rel1 { \
+               to_x: "elm.padding.left"; \
+               relative: 1 0; \
+            } \
+            rel2 { \
+               to_x: "elm.padding.right"; \
+               relative: 1 1; \
+            } \
+            align: 0 0.5; \
+            fixed: 1 1; \
+            min: SWIPE_ICON_SIZE; \
+            max: SWIPE_ICON_SIZE; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 1; \
+            color: 250 250 250 255; \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+         } \
+         description { state: "right_rollback" 0.0; \
+            inherit: "default" 0.0; \
+            color: 0 0 0 0; \
+         } \
+         description { state: "left_rollback" 0.0; \
+            inherit: "default" 0.0; \
+            color: 0 0 0 0; \
+         } \
+      } \
+      part { name: "elm.icon.swipe.right"; \
+         type: SWALLOW; \
+         clip_to: "elm.icon.swipe.clip"; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            visible: 0; \
+            rel1 { \
+               to_x: "elm.padding.right"; \
+               relative: 0 0; \
+            } \
+            rel2 { \
+               to_x: "elm.padding.right"; \
+               relative: 0 1; \
+            } \
+            align: 1 0.5; \
+            fixed: 1 1; \
+            min: SWIPE_ICON_SIZE; \
+            max: SWIPE_ICON_SIZE; \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 1; \
+            color: 250 250 250 255; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+         } \
+         description { state: "right_rollback" 0.0; \
+            inherit: "default" 0.0; \
+            color: 0 0 0 0; \
+         } \
+         description { state: "left_rollback" 0.0; \
+            inherit: "default" 0.0; \
+            color: 0 0 0 0; \
+         } \
+      } \
+      part { name: "elm.icon.swipe.clip"; \
+         type: RECT; \
+         scale: 1; \
+         description { state: "default" 0.0; \
+            color_class: "F071"; \
+         } \
+      } \
+      part { name: "elm.text.swipe.left"; \
+         type: TEXT; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            rel1 { \
+               relative: 1 0; \
+               to_x: "elm.icon.swipe.left"; \
+            } \
+            visible: 0; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default"; \
+            visible: 1; \
+            align: 0.5 0.5; \
+            color_class: "T025"; \
+            text { \
+               align: 0.5 0.5; \
+               min: 0 1; \
+               text_class: "T025"; \
+            } \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+         } \
+      } \
+      part { name: "elm.text.swipe.right"; \
+         type: TEXT; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            rel2 { \
+               relative: 0 1; \
+               to_x: "elm.icon.swipe.right"; \
+            } \
+            visible: 0; \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 1; \
+            align: 0.5 0.5; \
+            color_class: "T025"; \
+            text { \
+               align: 0.5 0.5; \
+               min: 0 1; \
+               text_class: "T025"; \
+               text: "Call"; \
+            } \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+         } \
+      }
+
+#define PARTS_LIST_SWIPE_RIGHT \
+      part { name: "drag_part"; \
+         type: RECT; \
+         scale: 1; \
+         repeat_events: 1; \
+         dragable { \
+            x: 1 1 0; \
+            y: 0 0 0; \
+         } \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1.offset: -SWIPE_OVERLAP_SIZE 0; \
+            rel2.offset: SWIPE_OVERLAP_SIZE 0; \
+         } \
+         description { state: "disable" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 0; \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B041P"; \
+         } \
+         description { state: "right_end" 0.0; \
+            inherit: "start_right"; \
+            rel1.relative: 1 0; \
+         } \
+         description { state: "right_rollback" 0.0; \
+            inherit: "start_right" 0.0; \
+            rel1.relative: -1 0; \
+            color: 0 0 0 0; \
+         } \
+      } \
+      part { name: "drag_part_left"; \
+         type: IMAGE; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1 { \
+               relative: -999 0; \
+            } \
+            rel2 { \
+               to_x: "drag_part"; \
+               relative: 0 1; \
+               offset: SWIPE_OVERLAP_SIZE 0; \
+            } \
+            image { \
+               normal: "b_list_swipe_left.#.png"; \
+            } \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B0242"; \
+         } \
+      } \
+      part { name: "drag_part_right"; \
+         type: IMAGE; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1 { \
+               to_x: "drag_part"; \
+               relative: 1 0; \
+               offset: -SWIPE_OVERLAP_SIZE 0; \
+            } \
+            rel2 { \
+               relative: 999 1; \
+            } \
+            image { \
+               normal: "b_list_swipe_right.#.png"; \
+            } \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B041P"; \
+         } \
+      } \
+      part { name: "swipe_temp_disabler"; \
+         type: RECT; \
+         scale:1; \
+         repeat_events: 0; \
+         description { state: "default" 0.0; \
+            visible: 0; \
+            color: 0 0 0 0; \
+         } \
+         description { state: "enable" 0.0; \
+            inherit: "default"; \
+            visible: 1; \
+         } \
+      } \
+      part { name: "elm.icon.swipe.right"; \
+         type: SWALLOW; \
+         clip_to: "elm.icon.swipe.clip"; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            visible: 0; \
+            rel1 { \
+               to_x: "elm.padding.right"; \
+               relative: 0 0; \
+            } \
+            rel2 { \
+               to_x: "elm.padding.right"; \
+               relative: 0 1; \
+            } \
+            align: 1 0.5; \
+            fixed: 1 1; \
+            min: SWIPE_ICON_SIZE; \
+            max: SWIPE_ICON_SIZE; \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 1; \
+            color: 250 250 250 255; \
+         } \
+         description { state: "right_rollback" 0.0; \
+            inherit: "default" 0.0; \
+            color: 0 0 0 0; \
+         } \
+      } \
+      part { name: "elm.icon.swipe.clip"; \
+         type: RECT; \
+         scale: 1; \
+         description { state: "default" 0.0; \
+            color_class: "F071"; \
+         } \
+      } \
+      part { name: "elm.text.swipe.right"; \
+         type: TEXT; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            rel2 { \
+               relative: 0 1; \
+               to_x: "elm.icon.swipe.right"; \
+            } \
+            visible: 0; \
+         } \
+         description { state: "start_right" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 1; \
+            align: 0.5 0.5; \
+            color_class: "T025"; \
+            text { \
+               align: 0.5 0.5; \
+               min: 0 1; \
+               text_class: "T025"; \
+               text: "Call"; \
+            } \
+         } \
+      }
+
+#define PARTS_LIST_SWIPE_LEFT \
+      part { name: "drag_part"; \
+         type: RECT; \
+         scale: 1; \
+         repeat_events: 1; \
+         dragable { \
+            x: 1 1 0; \
+            y: 0 0 0; \
+         } \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1.offset: -SWIPE_OVERLAP_SIZE 0; \
+            rel2.offset: SWIPE_OVERLAP_SIZE 0; \
+         } \
+         description { state: "disable" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 0; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B041P"; \
+         } \
+         description { state: "left_end" 0.0; \
+            inherit: "start_left" 0.0; \
+            rel2.relative: 0 1; \
+         } \
+         description { state: "left_rollback" 0.0; \
+            inherit: "start_left" 0.0; \
+            rel2.relative: 2 1; \
+            color: 0 0 0 0; \
+         } \
+      } \
+      part { name: "drag_part_left"; \
+         type: IMAGE; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1 { \
+               relative: -999 0; \
+            } \
+            rel2 { \
+               to_x: "drag_part"; \
+               relative: 0 1; \
+               offset: SWIPE_OVERLAP_SIZE 0; \
+            } \
+            image { \
+               normal: "b_list_swipe_left.#.png"; \
+            } \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B041P"; \
+         } \
+      } \
+      part { name: "drag_part_right"; \
+         type: IMAGE; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            color: 0 0 0 0; \
+            rel1 { \
+               to_x: "drag_part"; \
+               relative: 1 0; \
+               offset: -SWIPE_OVERLAP_SIZE 0; \
+            } \
+            rel2 { \
+               relative: 999 1; \
+            } \
+            image { \
+               normal: "b_list_swipe_right.#.png"; \
+            } \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            color: 255 255 255 255; \
+            color_class: "B0241"; \
+         } \
+      } \
+      part { name: "swipe_temp_disabler"; \
+         type: RECT; \
+         scale:1; \
+         repeat_events: 0; \
+         description { state: "default" 0.0; \
+            visible: 0; \
+            color: 0 0 0 0; \
+         } \
+         description { state: "enable" 0.0; \
+            inherit: "default"; \
+            visible: 1; \
+         } \
+      } \
+      part { name: "elm.icon.swipe.left"; \
+         type: SWALLOW; \
+         clip_to: "elm.icon.swipe.clip"; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            visible: 0; \
+            rel1 { \
+               to_x: "elm.padding.left"; \
+               relative: 1 0; \
+            } \
+            rel2 { \
+               to_x: "elm.padding.right"; \
+               relative: 1 1; \
+            } \
+            align: 0 0.5; \
+            fixed: 1 1; \
+            min: SWIPE_ICON_SIZE; \
+            max: SWIPE_ICON_SIZE; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default" 0.0; \
+            visible: 1; \
+            color: 250 250 250 255; \
+         } \
+         description { state: "left_rollback" 0.0; \
+            inherit: "default" 0.0; \
+            color: 0 0 0 0; \
+         } \
+      } \
+      part { name: "elm.icon.swipe.clip"; \
+         type: RECT; \
+         scale: 1; \
+         description { state: "default" 0.0; \
+            color_class: "F071"; \
+         } \
+      } \
+      part { name: "elm.text.swipe.left"; \
+         type: TEXT; \
+         scale: 1; \
+         mouse_events: 0; \
+         description { state: "default" 0.0; \
+            rel1 { \
+               relative: 1 0; \
+               to_x: "elm.icon.swipe.left"; \
+            } \
+            visible: 0; \
+         } \
+         description { state: "start_left" 0.0; \
+            inherit: "default"; \
+            visible: 1; \
+            align: 0.5 0.5; \
+            color_class: "T025"; \
+            text { \
+               align: 0.5 0.5; \
+               min: 0 1; \
+               text_class: "T025"; \
+            } \
+         } \
+      } \
+
+#define PROGRAMS_LIST_SWIPE \
+   program { name: "drag_up"; \
+      signal: "mouse,up,1"; \
+      source: "drag_part"; \
+      script { \
+         new x, y, w, h, ww, hh; \
+         get_geometry(PART:"bg", x, y, ww, hh); \
+         get_geometry(PART:"drag_part", x, y, w, h); \
+         x = x + SWIPE_OVERLAP_SIZE; \
+         if (get_int(_state) == 1) { \
+            if (x >= (ww/2)) { \
+               set_int(_state, 3); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               run_program(PROGRAM:"end_move_right"); \
+            } else { \
+               set_int(_state, 2); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               set_state(PART:"elm.text.swipe.right", "default", 0.0); \
+               set_state(PART:"elm.text.swipe.left", "default", 0.0); \
+               run_program(PROGRAM:"end_rollback_right"); \
+            } \
+         } else if (get_int(_state) == -1) { \
+            if (-x >= (ww/2)) { \
+               set_int(_state, -3); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               run_program(PROGRAM:"end_move_left"); \
+            } else { \
+               set_int(_state, -2); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               set_state(PART:"elm.text.swipe.right", "default", 0.0); \
+               set_state(PART:"elm.text.swipe.left", "default", 0.0); \
+               run_program(PROGRAM:"end_rollback_left"); \
+            } \
+         } else cleanup(); \
+      } \
+   } \
+   program { name: "drag_down"; \
+      signal: "mouse,down,1"; \
+      source: "drag_part"; \
+      script { \
+         new x, y; \
+         get_mouse(x, y); \
+         set_int(_state, 0); \
+         set_int(x1, x); \
+         set_int(y1, y); \
+      } \
+   } \
+   program { name: "drag"; \
+      signal: "drag"; \
+      source: "drag_part"; \
+      script { \
+         new x2, y2; \
+         get_mouse(x2, y2); \
+         if (((y2 - get_int(y1)) >= SWIPE_THRESH_Y) || \
+             ((y2 - get_int(y1)) <= -SWIPE_THRESH_Y)) \
+               return; \
+         if (get_int(_state) == 0) { \
+            if ((x2 - get_int(x1)) >= SWIPE_THRESH_X) { \
+               emit("elm,swipe,start", ""); \
+               set_int(_state, 1); \
+               run_program(PROGRAM:"start_right");  \
+            } else if ((x2 - get_int(x1)) <= -SWIPE_THRESH_X) { \
+               emit("elm,swipe,start", ""); \
+               set_int(_state, -1); \
+               run_program(PROGRAM:"start_left");  \
+            } \
+         } else if (get_int(_state) == -1) { \
+            if (x2 > get_int(x1)) { \
+               set_int(_state, 1); \
+               run_program(PROGRAM:"start_right");  \
+            }\
+         } else if (get_int(_state) == 1) { \
+            if (x2 < get_int(x1)) { \
+               set_int(_state, -1); \
+               run_program(PROGRAM:"start_left");  \
+            } \
+         } \
+      } \
+   } \
+   program { name: "start_right"; \
+      action:  STATE_SET "start_right" 0.0; \
+      target: "elm.icon.swipe.right"; \
+      target: "elm.icon.swipe.left"; \
+      target: "elm.text.swipe.right"; \
+      target: "elm.text.swipe.left"; \
+      target: "drag_part"; \
+      target: "drag_part_left"; \
+      target: "drag_part_right"; \
+   } \
+   program { name: "start_left"; \
+      action:  STATE_SET "start_left" 0.0; \
+      target: "elm.icon.swipe.right"; \
+      target: "elm.icon.swipe.left"; \
+      target: "elm.text.swipe.right"; \
+      target: "elm.text.swipe.left"; \
+      target: "drag_part"; \
+      target: "drag_part_left"; \
+      target: "drag_part_right"; \
+   } \
+   program { name: "end_move_right"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "right_end" 0.0; \
+      target: "drag_part"; \
+      after: "right_ender"; \
+   } \
+   program { name: "end_move_left"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "left_end" 0.0; \
+      target: "drag_part"; \
+      after: "left_ender"; \
+   } \
+   program { name: "end_rollback_right"; \
+      action:  STATE_SET "right_rollback" 0.0; \
+      target: "elm.icon.swipe.right"; \
+      target: "elm.icon.swipe.left"; \
+      after: "end_rollback_right_transit"; \
+   } \
+   program { name: "end_rollback_right_transit"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "right_rollback" 0.0; \
+      target: "drag_part"; \
+      after: "rollback_ender"; \
+   } \
+   program { name: "end_rollback_left"; \
+      action:  STATE_SET "left_rollback" 0.0; \
+      target: "elm.icon.swipe.right"; \
+      target: "elm.icon.swipe.left"; \
+      after: "end_rollback_left_transit"; \
+   } \
+   program { name: "end_rollback_left_transit"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "left_rollback" 0.0; \
+      target: "drag_part"; \
+      after: "rollback_ender"; \
+   } \
+   program { name: "right_ender"; \
+      script { \
+         emit("elm,swipe,stop,right", ""); \
+         cleanup(); \
+      } \
+   } \
+   program { name: "left_ender"; \
+      script { \
+         emit("elm,swipe,stop,left", ""); \
+         cleanup(); \
+      } \
+   } \
+   program { name: "rollback_ender"; \
+      source: ""; \
+      script { \
+         emit("elm,swipe,stop", ""); \
+         cleanup(); \
+      } \
+   } \
+   program { name: "swipe_revert"; \
+      signal: "elm,swipe,revert"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+         }\
+         cleanup(); \
+      } \
+   } \
+   program { name: "swipe_disable"; \
+      signal: "elm,swipe,disabled"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+            cleanup(); \
+         }\
+         set_state(PART:"drag_part", "disable", 0.0); \
+      } \
+   } \
+   program { name: "swipe_enable"; \
+      signal: "elm,swipe,enabled"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+            cleanup(); \
+         }\
+         set_state(PART:"drag_part", "default", 0.0); \
+      } \
+   } \
+   program { name: "swipe_default"; \
+      signal: "elm,state,default"; \
+      source: "elm"; \
+      script { \
+         run_program(PROGRAM:"swipe_enable"); \
+      } \
+   } \
+   program { name: "swipe_disable_state"; \
+      signal: "elm,state,disabled"; \
+      source: "elm"; \
+      script { \
+         run_program(PROGRAM:"swipe_disable"); \
+      } \
+   } \
+
+#define PROGRAMS_LIST_SWIPE_RIGHT \
+   program { name: "drag_up"; \
+      signal: "mouse,up,1"; \
+      source: "drag_part"; \
+      script { \
+         new x, y, w, h, ww, hh; \
+         get_geometry(PART:"bg", x, y, ww, hh); \
+         get_geometry(PART:"drag_part", x, y, w, h); \
+         x = x + SWIPE_OVERLAP_SIZE; \
+         if (get_int(_state) == 1) { \
+            if (x >= (ww/2)) { \
+               set_int(_state, 3); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               run_program(PROGRAM:"end_move_right"); \
+            } else { \
+               set_int(_state, 2); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               set_state(PART:"elm.text.swipe.right", "default", 0.0); \
+               set_state(PART:"elm.text.swipe.left", "default", 0.0); \
+               run_program(PROGRAM:"end_rollback_right"); \
+            } \
+         } else cleanup(); \
+      } \
+   } \
+   program { name: "drag_down"; \
+      signal: "mouse,down,1"; \
+      source: "drag_part"; \
+      script { \
+         new x, y; \
+         get_mouse(x, y); \
+         set_int(_state, 0); \
+         set_int(x1, x); \
+         set_int(y1, y); \
+      } \
+   } \
+   program { name: "drag"; \
+      signal: "drag"; \
+      source: "drag_part"; \
+      script { \
+         new x2, y2; \
+         get_mouse(x2, y2); \
+         if (((y2 - get_int(y1)) >= SWIPE_THRESH_Y) || \
+             ((y2 - get_int(y1)) <= -SWIPE_THRESH_Y)) \
+               return; \
+         if (get_int(_state) == 0) { \
+            if ((x2 - get_int(x1)) >= SWIPE_THRESH_X) { \
+               emit("elm,swipe,start", ""); \
+               set_int(_state, 1); \
+               run_program(PROGRAM:"start_right");  \
+            } \
+         } \
+      } \
+   } \
+   program { name: "start_right"; \
+      action:  STATE_SET "start_right" 0.0; \
+      target: "elm.icon.swipe.right"; \
+      target: "elm.text.swipe.right"; \
+      target: "drag_part"; \
+      target: "drag_part_left"; \
+      target: "drag_part_right"; \
+   } \
+   program { name: "end_move_right"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "right_end" 0.0; \
+      target: "drag_part"; \
+      after: "right_ender"; \
+   } \
+   program { name: "end_rollback_right"; \
+      action:  STATE_SET "right_rollback" 0.0; \
+      target: "elm.icon.swipe.right"; \
+      after: "end_rollback_right_transit"; \
+   } \
+   program { name: "end_rollback_right_transit"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "right_rollback" 0.0; \
+      target: "drag_part"; \
+      after: "rollback_ender"; \
+   } \
+   program { name: "right_ender"; \
+      script { \
+         emit("elm,swipe,stop,right", ""); \
+         cleanup(); \
+      } \
+   } \
+   program { name: "rollback_ender"; \
+      source: ""; \
+      script { \
+         emit("elm,swipe,stop", ""); \
+         cleanup(); \
+      } \
+   } \
+   program { name: "swipe_revert"; \
+      signal: "elm,swipe,revert"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+         }\
+         cleanup(); \
+      } \
+   } \
+   program { name: "swipe_disable"; \
+      signal: "elm,swipe,disabled"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+            cleanup(); \
+         }\
+         set_state(PART:"drag_part", "disable", 0.0); \
+      } \
+   } \
+   program { name: "swipe_enable"; \
+      signal: "elm,swipe,enabled"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+            cleanup(); \
+         }\
+         set_state(PART:"drag_part", "default", 0.0); \
+      } \
+   } \
+   program { name: "swipe_default"; \
+      signal: "elm,state,default"; \
+      source: "elm"; \
+      script { \
+         run_program(PROGRAM:"swipe_enable"); \
+      } \
+   } \
+   program { name: "swipe_disable_state"; \
+      signal: "elm,state,disabled"; \
+      source: "elm"; \
+      script { \
+         run_program(PROGRAM:"swipe_disable"); \
+      } \
+   } \
+
+#define PROGRAMS_LIST_SWIPE_LEFT \
+   program { name: "drag_up"; \
+      signal: "mouse,up,1"; \
+      source: "drag_part"; \
+      script { \
+         new x, y, w, h, ww, hh; \
+         get_geometry(PART:"bg", x, y, ww, hh); \
+         get_geometry(PART:"drag_part", x, y, w, h); \
+         x = x + SWIPE_OVERLAP_SIZE; \
+         if (get_int(_state) == -1) { \
+            if (-x >= (ww/2)) { \
+               set_int(_state, -3); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               run_program(PROGRAM:"end_move_left"); \
+            } else { \
+               set_int(_state, -2); \
+               set_state(PART:"swipe_temp_disabler", "enable", 0.0); \
+               set_state(PART:"elm.text.swipe.left", "default", 0.0); \
+               run_program(PROGRAM:"end_rollback_left"); \
+            } \
+         } else cleanup(); \
+      } \
+   } \
+   program { name: "drag_down"; \
+      signal: "mouse,down,1"; \
+      source: "drag_part"; \
+      script { \
+         new x, y; \
+         get_mouse(x, y); \
+         set_int(_state, 0); \
+         set_int(x1, x); \
+         set_int(y1, y); \
+      } \
+   } \
+   program { name: "drag"; \
+      signal: "drag"; \
+      source: "drag_part"; \
+      script { \
+         new x2, y2; \
+         get_mouse(x2, y2); \
+         if (((y2 - get_int(y1)) >= SWIPE_THRESH_Y) || \
+             ((y2 - get_int(y1)) <= -SWIPE_THRESH_Y)) \
+               return; \
+         if (get_int(_state) == 0) { \
+            if ((x2 - get_int(x1)) <= -SWIPE_THRESH_X) { \
+               emit("elm,swipe,start", ""); \
+               set_int(_state, -1); \
+               run_program(PROGRAM:"start_left");  \
+            } \
+         } \
+      } \
+   } \
+   program { name: "start_left"; \
+      action:  STATE_SET "start_left" 0.0; \
+      target: "elm.icon.swipe.left"; \
+      target: "elm.text.swipe.left"; \
+      target: "drag_part"; \
+      target: "drag_part_left"; \
+   } \
+   program { name: "end_move_left"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "left_end" 0.0; \
+      target: "drag_part"; \
+      after: "left_ender"; \
+   } \
+   program { name: "end_rollback_left"; \
+      action:  STATE_SET "left_rollback" 0.0; \
+      target: "elm.icon.swipe.left"; \
+      after: "end_rollback_left_transit"; \
+   } \
+   program { name: "end_rollback_left_transit"; \
+      transition: SWIPE_TRANSIT; \
+      action:  STATE_SET "left_rollback" 0.0; \
+      target: "drag_part"; \
+      after: "rollback_ender"; \
+   } \
+   program { name: "left_ender"; \
+      script { \
+         emit("elm,swipe,stop,left", ""); \
+         cleanup(); \
+      } \
+   } \
+   program { name: "rollback_ender"; \
+      source: ""; \
+      script { \
+         emit("elm,swipe,stop", ""); \
+         cleanup(); \
+      } \
+   } \
+   program { name: "swipe_revert"; \
+      signal: "elm,swipe,revert"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+         }\
+         cleanup(); \
+      } \
+   } \
+   program { name: "swipe_disable"; \
+      signal: "elm,swipe,disabled"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+            cleanup(); \
+         }\
+         set_state(PART:"drag_part", "disable", 0.0); \
+      } \
+   } \
+   program { name: "swipe_enable"; \
+      signal: "elm,swipe,enabled"; \
+      source: ""; \
+      script { \
+         if (get_int(_state) != 0) { \
+            emit("elm,swipe,stop", ""); \
+            cleanup(); \
+         }\
+         set_state(PART:"drag_part", "default", 0.0); \
+      } \
+   } \
+   program { name: "swipe_default"; \
+      signal: "elm,state,default"; \
+      source: "elm"; \
+      script { \
+         run_program(PROGRAM:"swipe_enable"); \
+      } \
+   } \
+   program { name: "swipe_disable_state"; \
+      signal: "elm,state,disabled"; \
+      source: "elm"; \
+      script { \
+         run_program(PROGRAM:"swipe_disable"); \
+      } \
+   } \
+
+
+
+#define SCRIPTS_LIST_SWEEP \
+   script { \
+      public dir_right; \
+   }
+
+#define PARTS_LIST_SWEEP \
+   PART(RECT, "bg.sweep",\
+      description { state: "default" 0.0;\
+         color_class: "B0232";\
+         rel1.relative: -1.0 0.0;\
+         rel2.relative: 0.0 1.0;\
+         visible: 0;\
+      }\
+      description { state: "default_r" 0.0;\
+         inherit: "default" 0.0;\
+         rel1.relative: 1.0 0.0;\
+         rel2.relative: 2.0 1.0;\
+         visible: 0;\
+      }\
+      description { state: "visible" 0.0;\
+         inherit: "default" 0.0;\
+         rel1.relative: 0.0 0.0;\
+         rel2.relative: 1.0 1.0;\
+         visible: 1;\
+      }\
+   )\
+   PART(TEXTBLOCK, "elm.text.sweep",\
+      description { state: "default" 0.0;\
+         rel1.to_x: "bg.sweep";\
+         rel2.to_x: "elm.divider.sweep.left.padding";\
+         rel2.relative: 0.0 1.0;\
+         PARAM_TEXT("list_sweep_style",)\
+         visible: 0;\
+      }\
+      description { state: "visible" 0.0;\
+         inherit: "default" 0.0;\
+         visible: 1;\
+      }\
+   )\
+   PART(SPACER, "elm.divider.sweep.left.padding",\
+      DESC_R("elm.divider.sweep",\
+         min: LIST_DIVIDER_PADDING_SIZE 0;\
+         max: LIST_DIVIDER_PADDING_SIZE -1;\
+      )\
+   )\
+   PART(SWALLOW, "elm.icon.sweep",\
+      DESC_FROM_R(\
+         min: BUTTON_DIVIDER_BTN_SIZE 0;\
+         max: BUTTON_DIVIDER_BTN_SIZE -1;\
+         rel1.to: "bg.sweep";\
+         rel2.to: "bg.sweep";\
+         visible: 0;\
+      )\
+      description { state: "visible" 0.0;\
+         inherit: "default" 0.0;\
+         visible: 1;\
+      }\
+   )\
+   PART(RECT, "elm.divider.sweep",\
+      DESC_R("elm.icon.sweep",\
+         visible: 0;\
+         align: 0.0 0.5;\
+         min: 2 LIST_DIVIDER_HEIGHT;\
+         max: 2 LIST_DIVIDER_HEIGHT;\
+         color: 0 0 0 0; \
+      )\
+      description { state: "visible" 0.0;\
+         inherit: "default" 0.0;\
+         visible: 1;\
+      }\
+   )
+
+#define PROGRAMS_LIST_SWEEP \
+   program { name: "sweep_default"; \
+      signal: "elm,state,default"; \
+      source: "elm"; \
+      action: STATE_SET "default" 0.0;\
+      target: "bg.sweep";\
+      target: "elm.icon.sweep";\
+      target: "elm.text.sweep";\
+      target: "elm.divider.sweep";\
+   } \
+   program { name: "sweep_right_show";\
+      signal: "elm,state,sweep,right";\
+      source: "";\
+      script {\
+         set_int(dir_right, 1);\
+         set_state(PART:"bg.sweep", "default", 0.0);\
+         run_program(PROGRAM:"sweep_show");\
+      }\
+   }\
+   program { name: "sweep_left_show";\
+      signal: "elm,state,sweep,left";\
+      source: "";\
+      script {\
+         set_int(dir_right, 0);\
+         set_state(PART:"bg.sweep", "default_r", 0.0);\
+         run_program(PROGRAM:"sweep_show");\
+      }\
+   }\
+   program { name: "sweep_show";\
+      action: STATE_SET "visible" 0.0;\
+      transition: DECELERATE 0.5;\
+      target: "bg.sweep";\
+      target: "elm.icon.sweep";\
+      target: "elm.text.sweep";\
+      target: "elm.divider.sweep";\
+   }\
+   program { name: "sweep_hide";\
+      signal: "elm,state,sweep,hide";\
+      source: "";\
+      script {\
+         if (get_int(dir_right)) {\
+            run_program(PROGRAM:"sweep_left_hide");\
+         } else {\
+            run_program(PROGRAM:"sweep_right_hide");\
+         }\
+      }\
+   }\
+   program { name: "sweep_left_hide"; \
+      action: STATE_SET "default" 0.0;\
+      transition: DECELERATE 0.5;\
+      target: "bg.sweep";\
+      target: "elm.icon.sweep";\
+      target: "elm.text.sweep";\
+      target: "elm.divider.sweep";\
+   }\
+   program { name: "sweep_right_hide"; \
+      action: STATE_SET "default_r" 0.0;\
+      transition: DECELERATE 0.5;\
+      target: "bg.sweep";\
+      target: "elm.icon.sweep";\
+      target: "elm.text.sweep";\
+      target: "elm.divider.sweep";\
+   }

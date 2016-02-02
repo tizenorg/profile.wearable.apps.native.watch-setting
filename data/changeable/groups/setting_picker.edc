@@ -1,0 +1,178 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+
+#define UP_SWALLOW_BTN(_to_part, _visibility) \
+   part { \
+      name: "btn.up"; \
+      type: SWALLOW; \
+      scale: 1; \
+      description { state: "default" 0.0; \
+         align: 0.5 0.0; \
+         min: 84 92; \
+         max: 84 92; \
+         fixed: 1 1; \
+         visible: _visibility; \
+         rel1 { \
+            to: _to_part; \
+         } \
+         rel2 { \
+            to: _to_part; \
+         } \
+      } \
+   }
+
+#define DOWN_SWALLOW_BTN(_to_part, _visibility) \
+   part { \
+      name: "btn.down"; \
+      type: SWALLOW; \
+      scale: 1; \
+      description { state: "default" 0.0; \
+         align: 0.5 1.0; \
+         min: 84 92; \
+         max: 84 92; \
+         fixed: 1 1; \
+         visible: _visibility; \
+         rel1 { \
+            to: _to_part; \
+         } \
+         rel2 { \
+            to: _to_part; \
+         } \
+      } \
+   }
+
+
+group { name: "setting/picker/layout";
+    parts {
+      part { name: "bg";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 360 290;
+			max: 360 290;
+         }
+      }
+      UP_SWALLOW_BTN(field0.padding, 1)
+      part { name: "field0.padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 84 0;
+			max: 84 -1;
+            rel1.to: "bg";
+            rel2 {
+               relative: 1.0 1.0;
+               to: "bg";
+            }
+            align: 0.5 0.5;
+         }
+      }
+      part { name: "date";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 0 106;
+            max: -1 106;
+            fixed: 0 1;
+            rel1.to: "field0.padding";
+            rel2.to: "field0.padding";
+         }
+      }
+      DOWN_SWALLOW_BTN(field0.padding, 1)
+   }
+}
+
+group { name: "setting/limit_picker/layout";
+    parts {
+      part { name: "bg";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 360 290;
+			max: 360 290;
+         }
+      }
+      UP_SWALLOW_BTN(field0.padding, 1)
+      part { name: "field0.padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 164 0;
+			max: 164 -1;
+            rel1.to: "bg";
+            rel2 {
+               relative: 1.0 1.0;
+               to: "bg";
+            }
+            align: 0.25 0.5;
+         }
+      }
+      part { name: "size";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 0 106;
+            max: -1 106;
+            fixed: 0 1;
+            rel1.to: "field0.padding";
+            rel2.to: "field0.padding";
+         }
+      }
+      DOWN_SWALLOW_BTN(field0.padding, 1)
+
+      part { name: "field.padding0";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 0;
+            min: 8 0;
+            rel1 {
+               relative: 1.0 0.0;
+               to: "field0.padding";
+            }
+            rel2 {
+               relative: 1.0 1.0;
+               to: "field0.padding";
+            }
+            align: 0.0 0.5;
+         }
+      }
+
+	  part { name: "field1.padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 94 0;
+            rel1 {
+               relative: 1.0 0.0;
+               to: "field.padding0";
+            }
+            rel2 {
+               relative: 1.0 1.0;
+               to: "field.padding0";
+            }
+            align: 0.0 0.5;
+         }
+      }
+      part { name: "unit";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 0 106;
+            max: -1 106;
+            fixed: 0 1;
+            rel1.to: "field1.padding";
+            rel2.to: "field1.padding";
+         }
+      }
+
+   }
+}

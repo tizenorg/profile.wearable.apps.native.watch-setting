@@ -1,0 +1,240 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+group { name: "setting/genlist/layout";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				color_class: B011;
+				rel1 {
+					relative: 0.0 0.0; 
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+				}
+			}
+		}
+		part {
+			name: "elm.genlist";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0; 
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+					to: "bg";
+				}
+			}
+		}
+	}
+}
+
+group { name: "setting/genlist/2button-layout";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				color_class : B011;
+				rel1 {
+					relative: 0.0 0.0; 
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+				}
+			}
+		}
+		part {
+			name: "elm.genlist";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0; 
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+					to: "bg";
+					offset: 0 -87;
+				}
+			}
+		}
+		part{ name:"btn.left";
+         	type: SWALLOW;
+        	scale: 1;
+         	description { state: "default" 0.0;
+         		max: -1 85;
+            	rel1 {
+              		to: "bg";
+              		relative: 0.0 1.0;
+              		offset: 0 -85;
+            	}
+            	rel2 {
+              		to: "bg";
+             	 	relative: 0.5 1.0;
+             	 	offset: -1 0;
+            	}
+         	}
+      	}
+      	part{ name:"btn.right";
+         	type: SWALLOW;
+        	scale: 1;
+         	description { state: "default" 0.0;
+         		max: -1 85;
+            	rel1 {
+              		to: "bg";
+              		relative: 0.5 1.0;
+              		offset: 1 -85;
+            	}
+            	rel2 {
+              		to: "bg";
+             	 	relative: 1.0 1.0;
+            	}
+         	}
+      	}
+	}
+}
+
+group { name: "setting/genlist/1button-layout";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				color_class : B011;
+				rel1 {
+					relative: 0.0 0.0; 
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+				}
+			}
+		}
+		part {
+			name: "elm.genlist";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0; 
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+					to: "bg";
+					offset: 0 -87;
+				}
+			}
+		}
+		part{ name:"btn";
+         	type: SWALLOW;
+        	scale: 1;
+         	description { state: "default" 0.0;
+         		max: -1 85;
+            	rel1 {
+              		to: "bg";
+              		relative: 0.0 1.0;
+              		offset: 0 -85;
+            	}
+            	rel2 {
+              		to: "bg";
+             	 	relative: 1.0 1.0;
+             	 	offset: -1 0;
+            	}
+         	}
+      	}
+      	}
+}
+
+group { name: "setting/genlist/2button-gallery-layout";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				color: 0 0 0 255;
+				rel1 {
+					relative: 0.0 0.0; 
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+				}
+			}
+		}
+		part {
+			name: "elm.genlist";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0; 
+					to: "bg";
+					offset: 3 2;
+				}
+				rel2 {
+					relative: 1.0 1.0; 
+					to: "bg";
+					offset: -3 -85;
+				}
+			}
+		}
+		part{ name:"btn.left";
+         	type: SWALLOW;
+        	scale: 1;
+         	description { state: "default" 0.0;
+         		max: -1 85;
+            	rel1 {
+              		to: "bg";
+              		relative: 0.0 1.0;
+              		offset: 0 -85;
+            	}
+            	rel2 {
+              		to: "bg";
+             	 	relative: 0.5 1.0;
+             	 	offset: -1 0;
+            	}
+         	}
+      	}
+      	part{ name:"btn.right";
+         	type: SWALLOW;
+        	scale: 1;
+         	description { state: "default" 0.0;
+         		max: -1 85;
+            	rel1 {
+              		to: "bg";
+              		relative: 0.5 1.0;
+              		offset: 1 -85;
+            	}
+            	rel2 {
+              		to: "bg";
+             	 	relative: 1.0 1.0;
+            	}
+         	}
+      	}
+	}
+}

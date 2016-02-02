@@ -1,0 +1,103 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+
+
+/* Edit */
+group
+{
+	name: "setting/network_apn/edit";
+
+	parts
+	{
+		part
+		{
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description
+			{
+				state: "default" 0.0;
+				rel1.relative: 0.0 0.0;
+				rel2.relative: 1.0 1.0;
+				color_class: "B011";
+			}
+		}
+
+		part
+		{
+			name: "setting.swallow.content";
+			type: SWALLOW;
+			scale: 1;
+			description
+			{
+				state: "default" 0.0;
+				fixed: 1 1;
+				rel1
+				{
+					to: "bg";
+					relative: 0.0 0.0;
+				}
+				rel2
+				{
+					to: "bg";
+					relative: 1.0 1.0;
+					offset: 0 -87;
+				}
+			}
+		}
+
+		part
+		{
+			name: "setting.swallow.title";
+			type: SWALLOW;
+			scale: 1;
+			description
+			{
+				state: "default" 0.0;
+				min: 0 48;
+				fixed: 0 1;
+				align: 0.0 0.0;
+				rel1
+				{
+					to: "setting.swallow.content";
+					relative: 0.0 0.0;
+					offset: 15 0;
+				}
+			}
+		}
+
+		part
+		{
+			name: "setting.swallow.editfield";
+			type: SWALLOW;
+			scale: 1;
+			description
+			{
+				state: "default" 0.0;
+				min: 0 48;
+				fixed: 0 1;
+				align: 0.0 0.0;				
+				rel1
+				{
+					to: "setting.swallow.title";
+					relative: 0.0 1.0;
+					offset: 15 15;
+				}
+				rel2
+				{
+					to: "setting.swallow.content";
+					relative: 1.0 1.0;
+					offset: -15 0;
+				}
+			}
+		}
+	}
+}

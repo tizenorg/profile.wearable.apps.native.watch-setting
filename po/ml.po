@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ഓപ്പണ്‍ സോഴ്സ് ലൈസന്‍സുകള്‍"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "ചാര്‍ജ്ജ് ചെയ്യുന്നു."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "കീബോര്‍ഡ്"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "നിശബ്‌ദ‌മാക്കുക"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "സോഫ്റ്റ്‌വെയര്‍ പതിപ്പ്"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "ക്രമീ"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "%1$d മിനിറ്റിന് ശേഷം, തെളിച്ചം ഡിഫോൾട്ട് നിലയിലേക്ക് പുനഃക്രമീകരിക്കപ്പെടും (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "ഒന്നുമില്ല"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "മാതൃക"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "സ്വകാര്യതാ ലോക്ക്"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "പാറ്റേൺ കാണുക"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "ബ്ലൂടൂത്ത് വിച്ഛേദിക്കപ്പെടുമ്പോൾ സ്വകാര്യ ലോക്ക് ഐച്ഛികം പ്രദർശിപ്പിക്കപ്പെടും."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "നോര്‍മല്‍"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "ദൃശ്യപരത"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "ബ്ലൂടൂത്ത്"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "സമയം ക്രമീകരിക്കുക"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "വിവരങ്ങള്‍"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "യാന്ത്രിക സമന്വയം"
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "ബാറ്ററി"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "ബാറ്ററി ശതമാനം"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "ക്ലോക്ക് തരം"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "തീയതിയും സമയവും"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "നിഷ്ക്രിയമാക്കി"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "ഫോണ്ട് വലിപ്പം"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "മണിക്കൂർ തോറുമുള്ള സൂചന"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "വലുത്"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "മോഡല്‍ നമ്പര്‍"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "ചാര്‍ജുചെയ്യുന്നില്ല."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "ഓഫ്"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "ഓണ്‍‌"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "പുറംവേദി മോഡ്"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d മിനിറ്റ്"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d സെക്കൻറ്"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "റിസെറ്റ്‌"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "സ്ക്രീൻ ഇടവേള"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "സീരിയല്‍ നമ്പര്‍"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "തീയതി സജ്ജമാക്കുക"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "ഫോണുമായി സമന്വയിപ്പിക്കുക."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "സിസ്റ്റം"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "സ്പർശന ശബ്ദങ്ങൾ"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "വൈബ്രേറ്റ്"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "നിങ്ങളുടെ ഗിയർ %s -ന് ദൃശ്യമാണ്."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "തെളിച്ചം"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "റദ്ദാക്കുക"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "ക്ലോക്ക്"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "ഇന്‍ഫോ"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "ഭാഷ"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "അറിയിപ്പുകള്‍"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "റിംഗ്ടോണുകള്‍"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB പ്രശ്നപരിഹാരം"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "വൈബ്രേഷൻ"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "സഹായം"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "ഇടത്തരം"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "ശബ്ദം"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "ശബ്ദ മോഡ്"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "ശക്തം"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "ദുർബലം"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "നിങ്ങളുടെ PC-യും നിങ്ങളുടെ ഗിയറും തമ്മിൽ ഫയലുകൾ പകർത്തുന്നതിനും, അറിയിപ്പുകൾ സ്വീകരിക്കാതെ നിങ്ങളുടെ ഗിയറിൽ ആപ്ലിക്കേഷനുകൾ ഇൻസ്റ്റാൾ ചെയ്യുന്നതിനും, ലോഗ് ഡാറ്റ വായിക്കുന്നതിനും USB പ്രശ്നപരിഹാരം പ്രാപ്തമാക്കുന്നതിലൂടെ നിങ്ങളെ അനുവദിക്കും. നിങ്ങളുടെ ഉപയോക്തൃ വിവരങ്ങൾ ആക്സസ് ചെയ്യുന്നതിന് ഹാനികരമായ ആപ്ലിക്കേഷനുകൾ ഇതിനെ ഉപയോഗിച്ചേക്കാം. വികസന ലക്ഷ്യങ്ങൾക്ക് മാത്രമായാണ് ഇത് ഉദ്ദേശിക്കപ്പെടുന്നത്."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "മൊബൈൽ ഉപകരണത്തിലെ ഭാഷ മാറ്റുക"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "സമയ, തീയതി ക്രമീകരണങ്ങൾ മാറ്റുന്നത് ഏതാനും സവിശേഷതകളെ ബാധിച്ചേക്കാം"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "റദ്ദാക്കുക"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT ഹെഡ്സെറ്റ്"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "ചലനങ്ങൾ"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "പെഡോമീറ്റർ ക്ലോക്ക്"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "കുറുക്കുവഴി ക്ലോക്ക്"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "സ്മാര്‍ട്ട് റിലെ"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "വെയ്ക്ക്-അപ് ആംഗ്യം"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "കാലാവസ്ഥാ ക്ലോക്ക്"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "അവസാനം കണ്ട സ്ക്രീൻ"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "ശരി"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "ചെറുത്"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "പവർ കീ രണ്ടുതവണ അമർത്തൽ"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 മിനിറ്റ്"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "ചുമര്‍ചിത്രങ്ങള്‍"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "ഗാലറി"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "കളര്‍ പാലറ്റ്"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "സ്ഥിരസ്ഥിതി"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° L"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° R"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "പ്രാപ്‌തമാക്കി"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "ഡിഫോള്‍ട്ട് ഫോണ്ട്"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "ഫോണ്ട്"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "അക്ഷര ശൈലി"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "കൂള്‍ ജാസ്"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "റോസ്മേരി"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "ഹോം പശ്ചാത്തലം സജ്ജമാക്കി."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "സാമഗ്രി നാമം"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "ബാറ്ററി അവസ്ഥ"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "ഹോം പശ്ചാത്തലം"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "വലിയ ഐക്കണുകൾ"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "ചെറിയ ഐക്കണുകൾ"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "ഇടത്തരം"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "ഫാക്ടറി ഡാറ്റാ പുനസജ്ജീകരണം നിര്‍വഹിക്കുക. ദയവായി കാത്തിരിക്കുക..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "ക്ലോക്ക് മാറ്റി."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "സെല്‍ ബ്രോഡ്കാസ്റ്റ് message"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "സോഫ്റ്റ്‌വെയര്‍ പതിപ്പ്"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "ഹോം ഐക്കൺ വലുപ്പം"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "ഹോം സ്ക്രീൻ എഡിറ്റ് ചെയ്യുക"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "അൾട്രാ പവർ സേവിംഗ് മോഡ്"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "നിശബ്‌ദ‌മാക്കുക"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "സുരക്ഷ"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "അൾട്രാ പവർ സംരക്ഷണ മോഡ് അപ്രാപ്തമാക്കുന്നതിന്, നിങ്ങളുടെ ഉപകരണം പുനഃരാരംഭിക്കും."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "ബാറ്ററി ഉപഭോഗം കുറയ്ക്കുന്നതിനായി ഹോം സ്ക്രീൻ ബ്ലാക്ക് തീമിലേക്ക് മാറും. സന്ദേശങ്ങൾ, സമ്പർക്കങ്ങൾ എന്നിവ നിങ്ങൾക്ക് ഉപയോഗിക്കാൻ സാധിക്കുമെങ്കിലും മറ്റ് ചില ആപ്ലിക്കേഷനുകളും പ്രവർത്തനങ്ങളും നിയന്ത്രിക്കപ്പെടുന്നതാണ്."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "അറിയിപ്പുകൾ പ്രാപ്തമാക്കുക"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "അറിയിപ്പുകൾ അപ്രാപ്തമാക്കുക"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "റദ്ദാ."
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "സുരക്ഷാ വിവരം"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "ഇരട്ട അമർത്തൽ"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "ഹോം സ്ക്രീൻ എഡിറ്റ് ചെയ്യുക"
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "ബാറ്ററി %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "ബാറ്ററി നില"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "ഉപകരണ പേര്"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "ഹോം പശ്ചാത്തലം"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "കൂറ്റൻ"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "%s-ല്‍ നിന്നുള്ള സ്ഥിരീകരണത്തിനായി കാത്തിരിക്കുന്നു..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "ഗിയര്‍ മാനേജര്‍"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "ഗിയർ മെമ്മറിയിലെ എല്ലാ ഡാറ്റയും മായ്ക്കപ്പെടും. അതിനുശേഷം നിങ്ങളുടെ ഗിയർ മറ്റൊരു ഉപകരണത്തിൽ നിങ്ങൾക്ക് ബന്ധിപ്പിക്കാവുന്നതാണ്."
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "ഹോം സ്ക്രീൻ"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "ഓപ്പണ്‍ സോഴ്സ് ലൈസന്‍സുകള്‍"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "സ്ക്രീന്‍ ടൈംഔട്ട്"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "മള്‍ട്ടിമീഡിയ"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "വോളിയം"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 സെക്കന്‍റ്"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 സെക്കന്‍റ്"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 സെക്കന്‍റ്"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 മിനിട്ട്"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "അജ്ഞാതം"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "ചോകോ കുക്കി"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "പവർ സേവർ"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "പവർ സേവർ പ്രാപ്തമാക്കപ്പെടും. ഇത് CPU-ന്‍റെ പ്രകടനം പരമാവധി പരിമിതപ്പെടുത്തുകയും ബ്ലൂടൂത്ത് ഓഫ് ചെയ്യുകയും, കൂടാതെ കുറഞ്ഞ നിലയിലുള്ള സ്ക്രീൻ പവർ ഉപയോഗിക്കുകയും ചെയ്യും. വെയ്ക്ക്-അപ് ആംഗ്യം, ശബ്ദ നിയന്ത്രണം, വൈബ്രേഷൻ എന്നിവ ലഭ്യമാവുന്നതല്ല. ക്ലോക്ക്, S Health പ്രവർത്തനങ്ങൾ ഇപ്പോഴും ലഭ്യമാവും."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "പവർ സേവർ അപ്രാപ്തമാണ്."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "പവർ സേവർ പ്രാപ്തമാണ്."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "സോഫ്റ്റ്‌വെയര്‍ പതിപ്പ്"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "പ്രൊഫൈൽ"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "താഴെപ്പറയുന്ന ഘട്ടങ്ങൾ പാലിച്ചുകൊണ്ട് സുരക്ഷാ വിവരത്തേക്കുറിച്ചുള്ള അറിയിപ്പുകൾ നിങ്ങൾക്ക് പരിശോധിക്കാം.\n\n1. ക്രമീകരണങ്ങൾ > ഗിയർ വിവരം എന്നതിലേക്ക് പോകുക.\n2. USB ഡീബഗ്ഗിംഗ് തിരഞ്ഞെടുക്കുക.\n3. നിങ്ങളുടെ PC-യിലേക്ക് നിങ്ങളുടെ ഗിയർ 2 ബന്ധിപ്പിക്കുക.\n4. നിങ്ങളുടെ ഗിയർ 2-ൽ ദൃശ്യമാകുന്ന USB ഡീബഗ്ഗിംഗ് പോപ്പപ്പിൽ ശരി ടാപ്പുചെയ്യുക.\n5. sdb cmd ഉപയോഗിച്ച് (sdb cmd ഉപയോഗിക്കാൻ SDK ഇൻസ്റ്റാൾ ചെയ്യുക), cmd റൺ ചെയ്തുകൊണ്ടും ഇൻപുട്ട് ഫീൽഡിലേക്ക് “sdb pull /usr/share/Safety.zip c:\\Safety.zip” നൽകിക്കൊണ്ടും നിങ്ങളുടെ PC-യിലേക്ക് /usr/share/Safety.zip ഫയൽ ഡൗൺലോഡ് ചെയ്യുക.\n6. c:\\Safety folder-റിലേക്ക് zip ഫയൽ എക്സ്ട്രാക്റ്റ് ചെയ്ത് പുതിയ സുരക്ഷാ വിവരം വായിക്കാനായി എക്സ്ട്രാക്റ്റ് ചെയ്ത html ഫയൽ തുറക്കുക.\n\nhttp://developer.samsung.com സന്ദർശിച്ച്, sdb ഉപയോഗിക്കാനായി Samsung Gear SDK ഡൗൺലോഡുചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്യുക."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "നിലവിൽ ശബ്ദം 0 ആയി ക്രമീകരിച്ചു."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "വലിയ ഐക്കണുകൾ (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "ചെറിയ ഐക്കണുകൾ (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "ആപ്ലിക്കേഷനുകൾ മാനേജ് ചെയ്യുക"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "താഴെയുള്ള ചുവടുകൾ പിന്തുടരുക വഴി, ഓപ്പൺ സോഴ്സ് ലൈസൻസുകളുമായി ബന്ധപ്പെട്ട അറിയിപ്പുകൾ നിങ്ങൾക്ക് പരിശോധിക്കാവുന്നതാണ്.\n1. ക്രമീകരണങ്ങൾ > ഗിയർ വിവരം എന്നിവയിലേക്ക് പോവുക.\n2. USB ഡീബഗ്ഗിംഗ് തിരഞ്ഞെടുക്കുക.\n3. നിങ്ങളുടെ ഗിയർ നിങ്ങളുടെ PC-യിലേക്ക് ബന്ധിപ്പിക്കുക.\n4. നിങ്ങളുടെ Samsung Gear ദൃശ്യമാകുന്ന USB ഡീബഗ്ഗിംഗ് പോപ്-അപ്പിലെ ശരി എന്നതിൽ സ്പർശിക്കുക.\n5. sdb cmd ഉപയോഗിച്ച്, cmd റൺ ചെയ്യുകയും ഇൻപുട്ട് ഫീൽഡിൽ %2$s നൽകുകയും ചെയ്തുകൊണ്ട്, നിങ്ങളുടെ PC-യിലേക്ക് %1$s ഫയൽ ഡൗൺലോഡ് ചെയ്യുക.\n\nsdb ഉപയോഗിക്കുന്നതിന്, http://developer.samsung.com സന്ദർശിച്ച് Samsung Gear SDK ഡൗൺലോഡ് ചെയ്ത ശേഷം ഇൻസ്റ്റാൾ ചെയ്യുക."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "അടുത്തിടെ ഉപയോഗിച്ച ആപ്ലിക്കേഷനുകൾ"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "ഡിസ്പ്ലേ"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "അപ്രാപ്തമാണ്"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "ക്രമീകരണങ്ങൾ"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "വോളിയം"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "ടിന്കര്‍ബെല്‍"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "ആപ്പിള്‍മിന്‍റ്"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "വെയ്ക്ക്-അപ് ആംഗ്യം"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "റിംഗ്ടോണുകള്‍"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "പ്രൊഫൈൽ"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "പ്രോസസ്സുചെയ്യുന്നു..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "ദൃശ്യമാക്കുക"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "ടെക്സ്റ്റ്‌ ഇന്‍പുട്ട്"

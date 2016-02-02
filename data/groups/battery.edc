@@ -1,0 +1,99 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+group { name: "setting-test/battery";
+   parts {
+      part { name: "base";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            color: 0 0 0 255;
+            rel1 {
+				relative: 0.0 0.0;
+			}
+			rel2 {
+				relative: 1.0 1.0;
+			}
+         }
+      }
+	  part { name: "image";
+	     type: SWALLOW;
+		 scale: 1;
+		 description { state: "default" 0.0;
+		    fixed: 0 1;
+            min: 96 146;
+			rel1 {
+				relative: 0.0 0.0;
+				to: "base";
+				offset: 0 40;
+			}
+			rel2 {
+				relative: 1.0 0.0;
+				to: "base";
+			}
+			align: 0.5 0.0;
+		 }
+	  }
+      part { name: "text1";
+         type: TEXT;
+         mouse_events: 0;
+         scale: 1;
+         description { state: "default" 0.0;
+         	min: 320 42;
+            fixed: 1 0;
+            rel1 {
+               relative: 0.0 1.0;
+               to_y: "image";
+               offset: 0 22;
+            }
+            rel2 {
+               relative: 1.0 1.0;
+               to_y: "image";
+               offset: 0 64;
+            }
+            color: 255 255 255 255;
+			text {
+				font: "Tizen:style=Regular";
+				text_class:"tizen";
+				size: 38;
+				min: 0 0;
+				align: 0.5 0.5;
+			}
+         }
+      }
+      part { name: "text2";
+         type: TEXT;
+         mouse_events: 0;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 0;
+            rel1 {
+               to_y: "text1";
+               relative: 0.0 1.0;
+               offset: 0 8;
+            }
+            rel2 {
+               relative: 1.0 1.0;
+               to_y: "text1";
+               offset: 0 39;
+            }
+            color: 255 145 0 255;
+			text {
+				font: "Tizen:style=Regular";
+				text_class:"tizen";
+				size: 30;
+				min: 0 0;
+				align: 0.5 0.5;
+			}
+            min: 320 28;
+         }
+      }
+   }
+}

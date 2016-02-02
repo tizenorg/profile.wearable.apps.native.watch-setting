@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "فتح تراخيص المصدر"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "جاري الشحن."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "لوحة المفاتيح"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "كتم"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "نسخة البرنامج"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "ضبط"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "بعد مرور %1$d دقائق، ستتم إعادة ضبط السطوع إلى المستوى الافتراضي (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "لا شيء"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "نموذج"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "تأمين الخصوصية"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "عرض النمط"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "سيتم عرض خيار قفل الخصوصية عند فصل البلوتوث."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "عادي"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "الرؤية"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "بلوتوث"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "ضبط الوقت"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "حول Gear"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "مزامنة تلقائية"
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "البطارية"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "نسبة الشحن بالبطارية"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "نوع الساعة"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "التاريخ والوقت"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "غير مفعل"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "حجم الخط"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "تنبيه كل ساعة"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "كبير"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "رقم الطراز"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "لا يتم الشحن."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "غير مفعل"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "مفعل"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "وضع بالخارج"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d دقائق"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "d% ثواني"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "إعادة ضبط Gear"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "مهلة الشاشة"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "الرقم التسلسلي"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "تعيين تاريخ"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "مزامنة مع الهاتف"
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "نظام"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "أصوات اللمس"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "اهتزاز"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "الساعة Gear مرئية أثناء %s."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "السطوع"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "إلغاء"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "الساعة"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "معلومات عن الساعة Gear"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "اللغة"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "إشعارات"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "نغمات الرنين"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "تصحيح USB"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "اهتزاز"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "مساعدة"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "متوسطة"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "الصوت"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "وضع الصوت"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "قوي"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "ضعيف"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "يؤدي تفعيل وضع تصحيح أخطاء USB إلى السماح بنسخ الملفات بين الكمبيوتر والساعة Gear وتثبيت التطبيقات على الساعة Gear بدون استلام إخطارات وقراءة بيانات السجل. قد تستخدم التطبيقات الضارة هذا للوصول إلى معلومات المستخدم. ويتم ذلك بغرض التطوير فقط."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "تغيير اللغة في جهاز محمول"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "قد يؤثر تغيير إعدادات الوقت والتاريخ على بعض الوظائف"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "سماعة BT"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "الحركات"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "ساعة مقياس الخطوات‬"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "اختصار الساعة"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "الترحيل الذكي"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "إشارة التنبيه"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "ساعة الطقس"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "آخر شاشة تم عرضها"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "موافق"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "صغير"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "اضغط مرتين على ‏‫مفتاح التشغيل"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "دقيقة واحدة"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "خلفيات الشاشة"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "استوديو"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "لوحة الألوان"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "إفتراضي"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "٩٠درجة يسار"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "٩٠درجة يمين"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "مفعل"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "الخط الافتراضي"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "الخط"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "أسلوب الخط"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "جاز هادئ"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "إكليل الجبل"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "تمّ تعيين خلفية الشاشة الرئيسية."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "اسم الجهاز"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "حالة البطارية"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "خلفية الشاشة الرئيسية"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "رموز كبيرة"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "رموز صغيرة"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "متوسط"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "جار تنفيذ إعادة ضبط بيانات المصنع‬. الرجاء الانتظار..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "تم تغيير الساعة."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "رسالة بث الخلية"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Smart toss"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "إصدار البرنامج"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "حجم رمز الصفحة الرئيسية"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "تحرير الشاشة الرئيسية"
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "وضع التوفير الفائق للطاقة"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "كتم"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "السلامة"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "لإلغاء تفعيل وضع توفير الطاقة الفائق، سيُعاد تشغيل الجهاز."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "سيتم تغيير الشاشة الرئيسية إلى السمة السوداء لخفض استهلاك طاقة البطارية. ستتمكن من استخدام الرسائل وجهات الاتصال، ولكن سيتم تقييد بعض التطبيقات والوظائف الأخرى."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "تفعيل الإشعارات"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "إلغاء تفعيل الإشعارات"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "إلغاء"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "معلومات الأمان"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "ضغط مزدوج"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "تحرير الشاشة الرئيسية"
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "البطارية %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "حالة البطارية"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "اسم الجهاز"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "خلفية الشاشة الرئيسية"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "ضخم"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "جاري انتظار التأكيد من %s..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "إدارة Gear"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "سيتم مسح جميع البيانات من ذاكرة Gear. وبعدئذ، يمكنك توصيل Gear بجهاز آخر"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "الشاشة الرئيسية"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "فتح تراخيص المصدر"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "زمن توقف الشاشة"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "وسائط متعددة"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "درجة الصوت"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180 درجة"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "١٠ ثوان"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "١٥ ثانية"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "٣٠ ثانية"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "٥ دقائق"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "غير معروف"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "موفر الطاقة"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "سيتم تفعيل موفر الطاقة. سيؤدي ذلك إلى الحد من أداء وحدة المعالجة المركزية الأقصى وإيقاف تشغيل Bluetooth وسيتم استخدام مستوى أقل من طاقة الشاشة. لن تتوفر إشارة الاستيقاظ والتحكم الصوتي والاهتزاز. ستظل وظائف الساعة وS Health متوفرة."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "تم إلغاء تفعيل موفر الطاقة."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "تم تفعيل موفر الطاقة."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "إصدار البرنامج"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "ملف التعريف"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "يمكن مراجعة الملاحظات ذات الصلة بمعلومات الأمان باتباع الخطوات أدناه.\n\n‏1. انتقل إلى الضبط > معلومات حول الساعة Gear.‏\n‏2. حدد تصحيح أخطاء USB.‏\n‏3. صل الساعة Gear 2 بالكمبيوتر.‏\n‏4. انقر فوق موافق في إطار تصحيح أخطاء USB المنبثق الذي يظهر على الساعة Gear 2.‏\n‏5. باستخدام sdb cmd، (قم بتنزيل حزمة أدوات تطوير البرامج لاستخدام sdb cmd) قم بتنزيل الملف ‎/usr/share/Safety.zip على الكمبيوتر عن طريق تشغيل موجه أوامر cmd وإدخال ’’sdb pull /usr/share/Safety.zip c:\\Safety.zip‘‘ في حقل الإدخال.\n‏6. استخرج ملف zip إلى c:\\مجلد الأمان وافتح ملف html المستخرج لقراءة أحدث معلومات الأمان.\n\nقم زيارة http://developer.samsung.com، وقم بتنزيل حزمة أدوات تطوير البرامج لـ Samsung Gear وبتثبيتها لاستخدام sdb."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "تم تعيين الصوت حاليا إلى ٠."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "أيقونات كبيرة (%1$d‏x‏%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "أيقونات صغيرة (%1$d‏x‏%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "إدارة التطبيقات"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "يمكنك مراجعة الإعلانات المتعلقة بالتراخيص مفتوحة المصدر باتباع الخطوات أدناه.‎\n1. انتقل إلى الضبط > معلومات عن الساعة Gear‏.‎\n2. حدد تصحيح أخطاء USB.‏‎\n3. صل الساعة Gear بالكمبيوتر.‎\n4. انقر فوق موافق في إطار تصحيح أخطاء USB المنبثق الذي يظهر على الساعة Samsung Gear‏.‎\n5. باستخدام sdb cmd، قم بتنزيل الملف ‎%1$s على الكمبيوتر عن طريق تشغيل الأمر وإدخال ‎%2$s في حقل الإدخال.‎\n\nقم بزيارة http://developer.samsung.com، وتنزيل حزمة أدوات تطوير البرامج لـ Samsung Gear وتثبيتها لاستخدام sdb."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "تطبيقات حديثة"
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "الشاشة"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "غير مفعل"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "الضبط"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "مستوى صوت"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "نعناع بالتفاح"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "إشارة الاستيقاظ"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "نغمات الرنين"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "ملف التعريف"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "جاري المعالجة..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "جعله مرئيًا"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "إدخال النص"

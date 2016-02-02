@@ -1,0 +1,639 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics Co., Ltd All Rights Reserved
+ *
+ * BSD 2-Clause License (http://www.opensource.org/licenses/bsd-license.php)
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *   1. Redistributions of source code must retain the above copyright notice, this
+ *      list of conditions and the following disclaimer.
+ *   2. Redistributions in binary form must reproduce the above copyright notice,
+ *      this list of conditions and the following disclaimer in the documentation
+ *      and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+
+//*** This file defines the width, height (not color!) for W widgets *** //
+
+// ************* Naming ************ //
+// {WIDGET}_{PART}_{TYPE}_{STATE}_COLOR
+
+
+// ***************************** Action bar ***********************************/
+#define ACTIONBAR_PADDING_SIZE                         16
+#define ACTIONBAR_HEIGHT                               52
+#define ACTIONBAR_TEXT_SIZE                            30
+#define ACTIONBAR_ICON_SIZE                            34 34
+#define ACTIONBAR_NEXT_BTN_SIZE                        68 52
+#define ACTIONBAR_FADE_WIDTH                           14
+// Logs
+#define ACTIONBAR_LOGS_HEIGHT                          87
+#define ACTIONBAR_LOGS_NEXT_BTN_SIZE                   64 87
+
+// ***************************** Sroller **************************************/
+#define SCROLLER_VBAR_MIN_SIZE                         4 16
+#define SCROLLER_VBAR_MAX_SIZE                         4 99999
+#define SCROLLER_HBAR_MIN_SIZE                         16 4
+#define SCROLLER_HBAR_MAX_SIZE                         99999 4
+#define SCROLLER_VBAR_PADDING_TOP_SIZE                 2
+#define SCROLLER_VBAR_PADDING_BOTTOM_SIZE              2
+#define SCROLLER_VBAR_PADDING_LEFT_SIZE                2
+#define SCROLLER_VBAR_PADDING_RIGHT_SIZE               2
+#define SCROLLER_HBAR_PADDING_TOP_SIZE                 2
+#define SCROLLER_HBAR_PADDING_BOTTOM_SIZE              2
+#define SCROLLER_HBAR_PADDING_LEFT_SIZE                2
+#define SCROLLER_HBAR_PADDING_RIGHT_SIZE               2
+
+// ***************************** LIst *****************************************/
+#define LIST_PADDING_LEFT_SIZE                         0
+#define LIST_PADDING_RIGHT_SIZE                        0
+#define LIST_PADDING_DEFAULT_SIZE                      16
+#define LIST_PADDING_R_ICON_RIGHT_SIZE                 8
+#define LIST_PADDING_R_ICON_DEFAULT_SIZE               8
+#define LIST_GROUPINDEX_PADDING_TOP_SIZE               1
+#define LIST_GROUPINDEX_PADDING_BOTTOM_SIZE            1
+#define LIST_1LINE_HEIGHT                              82 
+#define LIST_1LINE_PADDING_TOP_SIZE                    22
+#define LIST_1LINE_PADDING_BOTTOM_SIZE                 23
+#define LIST_2LINE_PADDING_TOP_SIZE                    8
+#define LIST_2LINE_PADDING_BOTTOM_SIZE                 9
+#define LIST_TEXT_MAIN_SIZE                            38
+#define LIST_TEXT_SUB_SIZE                             24
+#define LIST_TEXT_SWEEP_SIZE                           32
+#define LIST_DIVIDER_HEIGHT                            50
+#define LIST_DIVIDER_PADDING_SIZE                      8
+#define LIST_GROUPINDEX_HEIGHT                         28
+#define LIST_GROUPINDEX_TEXT_SIZE                      24
+#define LIST_HIDDEN_HEIGHT                             76
+#define LIST_MULTILINE_HEIGHT                          44
+// Email
+#define LIST_EMAIL_NEW_TEXT_SIZE                       20
+#define LIST_EMAIL_ADDRESS_TEXT_SIZE                   24
+#define LIST_EMAIL_NUMBER_TEXT_SIZE                    24
+#define LIST_EMAIL_GROUP_PADDING_TOP_SIZE              9
+#define LIST_EMAIL_GROUP_PADDING_BOTTOM_SIZE           9
+#define LIST_EMAIL_GROUP_PADDING_RIGHT_SIZE            7
+#define LIST_EMAIL_GROUP_HEIGHT                        34
+#define LIST_EMAIL_GROUP_PADDING_SIZE                  3
+// Weather
+#define LIST_WEATHER_PADDING_LEFT_SIZE                 12
+#define LIST_WEATHER_PADDING_RIGHT_SIZE                15
+#define LIST_WEATHER_TIME_HEIGHT                       59
+#define LIST_WEATHER_TIME_TEXT_SIZE                    20
+// Notification
+#define LIST_NOTI_ICON_SIZE                            52 52
+#define LIST_NOTI_NUMBER_ICON_HEIGHT                   30
+#define LIST_NOTI_TEXT_SIZE                            24
+// Svoice
+#define LIST_SVOICE_TIME_TEXT_WIDTH                    94
+// Logs
+#define LIST_LOGS_ICON_SIZE                            50 38
+#define LIST_LOGS1_ICON_SIZE                           33 33
+#define LIST_LOGS_TEXT_MAIN_SIZE                       34 // 38 NOT USED
+#define LIST_LOGS_TEXT_SUB_SIZE                        20 // 24 NOT USED
+#define LIST_LOGS_TEXT_ACTIONBAR_MAIN_SIZE             34 // 38 NOT USED
+#define LIST_LOGS_TEXT_ACTIONBAR_SUB_SIZE              22 // 24 NOT USED
+#define LIST_LOGS_PADDING_TOP_SIZE                     24 // 22 NOT USED
+#define LIST_LOGS_PADDING_BOTTOM_SIZE                  25 // 23 NOT USED
+#define LIST_LOGS_PADDING_DEFAULT_SIZE                 16
+#define LIST_LOGS1_PADDING_DEFAULT_SIZE                8  // 0 NOT USED
+#define LIST_LOGS1_PADDING_TOP_SIZE                    12 // 8 NOT USED
+#define LIST_LOGS1_PADDING_BOTTOM_SIZE                 6  // 9 NOT USED
+#define LIST_LOGS1_TEXT_RIGHT_PADDING_SIZE             20
+#define LIST_LOGS_HEIGHT                               38 // 45 NOT USED
+#define LIST_LOGS_SUB_HEIGHT                           24 // 28 NOT USED
+#define LIST_LOGS1_SUB_MAX_WIDTH                       118 // NOT USED
+// Device option
+#define LIST_DEVICE_OPTION_PADDING_LEFT_SIZE           25 // NOT USED
+#define LIST_DEVICE_OPTION_PADDING_RIGHT_SIZE          25 // NOT USED
+#define LIST_DEVICE_OPTION_PADDING_TOP_SIZE            26 // NOT USED
+#define LIST_DEVICE_OPTION_PADDING_BOTTOM_SIZE         26 // NOT USED
+#define LIST_DEVICE_OPTION_ICON_MIN_MAX_SIZE           50 50
+#define LIST_DEVICE_OPTION_PADDING_DEFAULT_SIZE        12 // NOT USED
+#define LIST_DEVICE_OPTION_HEIGHT                      102
+#define LIST_DEVICE_OPTION_TEXT_MAIN_SIZE              34
+#define LIST_DEVICE_OPTION_TEXT_SUB_SIZE               22
+#define LIST_DEVICE_OPTION_ICON1_MIN_MAX_SIZE          154 101
+#define LIST_DEVICE_OPTION_ICON_DIVIDER_MIN_MAX_INC    1 64
+// Swipe
+#define LIST_SWIPE_TEXT_SIZE                           38
+
+
+// ***************************** Button ***************************************/
+#define BUTTON_TEXT_SIZE                               31
+#define BUTTON_HEIGHT                                  76
+#define BUTTON_NEXTDEPTH_SIZE                          50 50
+#define BUTTON_PLUS_SIZE                               68 68
+#define BUTTON_BOTTOM_SIZE_LEFT                        160 74
+#define BUTTON_BOTTOM_SIZE_RIGHT                       159 74
+#define BUTTON_DELETE_SIZE                             50 50
+#define BUTTON_PADDING_SIZE                            1 0
+#define BUTTON_ICON_SIZE                               60 60
+// Naviframe
+#define BUTTON_NAVIFRAME_BG_BORDER_SIZE                15 15 15 15
+// Contoller
+#define BUTTON_CONTROLLER_SIZE                         70 76
+// Mini
+#define BUTTON_MINI_ICON_SIZE                          110 110
+#define BUTTON_MINI_ICON_ICON_SIZE                     68 68
+#define BUTTON_MINI_ICON_TOP_LEFT_PADDING_SIZE         21 21
+#define BUTTON_MINI_ICON_BOTTOM_RIGHT_PADDING_SIZE     21 21
+// Divider
+#define BUTTON_DIVIDER_BTN_SIZE                        67 // ( 1 + 8 + 50 + 8 )
+#define BUTTON_DIVIDER_BTN_ICON_SIZE                   50
+#define BUTTON_DIVIDER_BTN_PADDING_LEFT_SIZE           9 // LEFT PADDING + DIVIDER LINE ( 8 + 1 )
+#define BUTTON_DIVIDER_BTN_PADDING_RIGHT_SIZE          8
+// Call
+#define BUTTON_CALL_MENU_SIZE                          72 72
+// Calendar
+#define BUTTON_SCHEDULE_SIZE                           52 52
+#define BUTTON_NAVIFRAME_SCHEDULE_SIZE                 52 52
+// Device_option
+#define BUTTON_DEVICE_OPTION_SIZE                      154 0
+#define BUTTON_DEVICE_OPTION_TOP_PADDING_SIZE          8
+#define BUTTON_DEVICE_OPTION_ICON_SIZE                 50 36
+#define BUTTON_DEVICE_OPTION_TEXT_PART_SIZE            134 57
+#define BUTTON_DEVICE_OPTION_LR_PADDING_SIZE           10
+
+// ***************************** Check ****************************************/
+#define CHECK_SIZE                                     50 50
+#define CHECK_TOGGLE_SIZE                              140 70
+#define CHECK_TOGGLE_THUMB_SIZE                        86 70
+// popup
+#define CHECK_TEXT_SIZE                                34
+#define CHECK_PADDING_SIZE                             10 0
+// Mini
+#define CHECK_MINI_ICON_SIZE                           110 110
+#define CHECK_MINI_ICON_ICON_SIZE                      68 68
+#define CHECK_MINI_ICON_TOP_LEFT_PADDING_SIZE          21 21
+#define CHECK_MINI_ICON_BOTTOM_RIGHT_PADDING_SIZE      21 21
+// Email
+#define CHECK_EMAIL_ICON_NEW_SIZE                      32 32
+
+// ***************************** Index ****************************************/
+// Scroll
+#define INDEX_SCROLL_PADDING_SIZE                      2
+#define INDEX_SCROLL_HANDLE_ITEM_TEXT_SIZE             22
+#define INDEX_SCROLL_HANDLE_ITEM_WIDTH                 40
+#define INDEX_SCROLL_HANDLE_ITEM_HEIGHT                36
+#define INDEX_SCROLL_POPUP_TEXT_SIZE                   70
+#define INDEX_SCROLL_2DEPTH_FOCUS_SIZE                 34
+#define INDEX_SCROLL_DRAG_PART_SIZE                    20 40
+#define INDEX_SCROLL_REF_RECT_SIZE                     40 0
+#define INDEX_SCROLL_TEXT1_DEFAULT_SIZE                140 87
+#define INDEX_SCROLL_TEXT1_ACTIVE_SIZE                 70 87
+#define INDEX_SCROLL_POPUP_TEXT_SIZE                   70
+#define INDEX_SCROLL_POPUP_SIZE                        140 87
+// Tab
+#define INDEX_TAB_HEIGHT                               6
+// Thumbnail
+#define INDEX_THUMBNAIL_BG_SIZE                        17 14
+#define INDEX_THUMBNAIL_IND_SIZE                       14 14
+#define INDEX_THUMBNAIL_IMAGE_BORDER_SIZE              6 6 5 7
+
+// ***************************** Gengrid **************************************/
+#define GENGRID_DEFAULT_PADDING_LT_SIZE                0 0
+#define GENGRID_DEFAULT_PADDING_RB_SIZE                0 0
+#define GENGRID_DEFAULT_PADDING_ITEM_BG_LT_SIZE        0 0
+#define GENGRID_DEFAULT_PADDING_ITEM_BG_RB_SIZE        0 0
+#define GENGRID_GALLERY_PADDING_LT_SIZE                1 1
+#define GENGRID_GALLERY_PADDING_RB_SIZE                1 1
+#define GENGRID_GALLERY_ICON_PADDING_LT_SIZE           8 8
+#define GENGRID_GALLERY_ICON_TOP_SIZE                  38 38
+#define GENGRID_GALLERY_ICON_CENTER_SIZE               72 72
+#define GENGRID_GALLERY_ICON_PADDING_LT_SIZE           8 8
+#define GENGRID_IMAGE_VIEWER_PADDING_LT_SIZE           2 2
+#define GENGRID_IMAGE_VIEWER_PADDING_RB_SIZE           2 2
+#define GENGRID_IMAGE_VIEWER_SELECT_LINE_BORDER        4 4 4 4;
+
+// ***************************** Popup ****************************************/
+#define NOTIFY_SIZE                                    320 320
+#define POPUP_PADDING_LT_SIZE                          0 0
+#define POPUP_PADDING_RB_SIZE                          0 0
+#define POPUP_IMAGE_BORDER_SIZE                        6 6 6 6
+#define POPUP_IMAGE_OFFSET_SIZE                        6
+#define POPUP_TEXT_PADDING_LEFT_SIZE                   22
+#define POPUP_TEXT_PADDING_RIGHT_SIZE                  22
+#define POPUP_TITLE_HEIGHT                             60
+#define POPUP_TITLE_TEXT_SIZE                          30
+#define POPUP_BUTTON_HEIGHT                            70
+#define POPUP_BUTTON_CENTER_PADDING_SIZE               1
+#define POPUP_BODY_TEXT_SIZE                           34
+#define POPUP_BODY_TEXT_PADDING_TOP_SIZE               (10-POPUP_IMAGE_OFFSET_SIZE)
+#define POPUP_BODY_TEXT_PADDING_BOTTOM_SIZE            (10-POPUP_IMAGE_OFFSET_SIZE)
+#define POPUP_BODY_TEXT_PADDING_LEFT_SIZE              (POPUP_TEXT_PADDING_LEFT_SIZE-POPUP_IMAGE_OFFSET_SIZE)
+#define POPUP_BODY_TEXT_PADDING_RIGHT_SIZE             (POPUP_TEXT_PADDING_RIGHT_SIZE-POPUP_IMAGE_OFFSET_SIZE)
+// Popup -Toast
+#define POPUP_TOAST_BG_WIDTH                           320
+#define POPUP_TOAST_PADDING_BOTTOM_SIZE                0
+#define POPUP_TOAST_PADDING_LEFT_SIZE                  22
+#define POPUP_TOAST_PADDING_RIGHT_SIZE                 22
+#define POPUP_TOAST_PADDING_TOP_SIZE                   16
+#define POPUP_TOAST_TEXT_PADDING_BOTTOM_SIZE           16
+#define POPUP_TOAST_TEXT_WIDTH                         280
+#define POPUP_TOAST_TEXT_SIZE                          34
+// Popup - 2 Finger
+#define POPUP_2FINGER_BG_MIN_SIZE                      320 320
+#define POPUP_2FINGER_INDI_MIN_MAX_SIZE                52
+#define POPUP_2FINGER_INDI_PADDING_SIZE                3
+#define POPUP_2FINGER_CONTENT_PADDING_WIDTH            15
+#define POPUP_2FINGER_CONTENT_PADDING_HEIGHT           16
+
+// ***************************** Progressbar **********************************/
+#define PROGRESS_BG_BORDER_SIZE                        6 6 2 2
+#define PROGRESS_BAR_IMAGE_BORDER_SIZE                 6 6 2 2
+#define PROGRESSBAR_HEIGHT                             6
+#define PROGRESSBAR_PENDING_SIZE                       288 6
+#define PROGRESSBAR_POPUP_PENDING_SIZE                 258 6
+#define PROGRESSBAR_ACTIVITY_IMAGE_SIZE                80 80
+#define PROGRESSBAR_ACTIVITY_GROUPINDEX_IMAGE_SIZE     28 28
+
+// ***************************** Layout ***************************************/
+#define BUTTON_CONTROLLER_PADDING_LT_SIZE              8 8
+#define BUTTON_CONTROLLER_PADDING_RB_SIZE              8 8
+#define BUTTON_CONTROLLER_ICON_CENTER_SIZE             168 168
+#define BUTTON_CONTROLLER_ICON_SIZE                    68 68
+#define POPUP_BUTTON_CONTROLLER_BG_SIZE                256 76
+#define POPUP_BUTTON_CONTROLLER_LR_PADDING_SIZE        1 76
+#define POPUP_BUTTON_CONTROLLER_CONTENT_BG_SIZE        114 76
+#define POPUP_BUTTON_CONTROLLER_ICON_SIZE              48 48
+// Layout - Body
+#define BODY_ICON_SIZE                                 206 187
+#define BODY_NORMAL_PADDING_LEFT_SIZE                  10
+#define BODY_NORMAL_PADDING_RIGHT_SIZE                 10
+#define BODY_NORMAL_PADDING_TOP_SIZE                   26
+#define BODY_NORMAL_PADDING_BOTTOM_SIZE                23
+#define BODY_NORMAL_PADDING_MIDDLE_SIZE                3
+#define BODY_NORMAL_TEXT_SIZE                          34
+#define BODY_NORMAL_TEXT_SUB_SIZE                      24
+#define BODY_NORMAL_1LINE_TEXT_HEIGHT                  84
+#define BODY_NORMAL_2LINE_TEXT_HEIGHT                  42
+#define BODY_NORMAL_2LINE_TEXT_SUB_HEIGHT              30
+#define BODY_THUMBNAIL_SIZE                            240 240
+#define BODY_THUMBNAIL_LINE_SIZE                       3
+// Layout - No Item
+#define NOITEM_TEXT_SIZE                               32
+// Layout - No Item - Schedule
+#define NOSCHEDULE_ITEM_TEXT_SIZE                      24
+
+// ***************************** Slider ***************************************/
+#define SLIDER_IND_WIDTH                               46
+#define SLIDER_IND_HEIGHT                              46
+#define SLIDER_PADDING_LEFT                            16
+#define SLIDER_PADDING_RIGHT                           16
+
+// ***************************** Radio ****************************************/
+// Date Time
+#define RADIO_TIME_PICKER_AM_PM_TEXT_SIZE              34
+#define RADIO_TIME_PICKER_AM_PM_MIN_SIZE               102 102
+#define RADIO_TIME_PICKER_DAY_TEXT_SIZE                42
+#define RADIO_TIME_PICKER_DATE_TEXT_SIZE               40
+
+// ***************************** Datetime *************************************/
+#define DATETIME_WIDGET_HEIGHT                         74
+#define DATETIME_FIELD_LEFT_PADDING_SIZE               5 74
+#define DATETIME_FIELD_RIGHT_PADDING_SIZE              5 74
+#define DATETIME_FIELD_PICKER_PADDING_SIZE             40 74
+#define DATETIME_FIELD_MIN_SIZE                        0 74
+#define DATETIME_SEPARATOR_MIN_SIZE                    10 74
+#define DATETIME_WIDGET_PADDING_SIZE                   36 74
+#define DATETIME_SEPARATOR_TEXT_FONT_SIZE              44
+#define DATETIME_PICKER_BG_PADDING_SIZE                12 0
+#define DATETIME_DEFAULT_BG_SIZE                       320 230
+#define DATETIME_DATE_TOP_PADDING_HEIGHT               56
+#define DATETIME_TIME_TOP_PADDING_HEIGHT               56
+#define DATETIME_DEFAULT_BOTTOM_PADDING_HEIGHT         35
+#define DATETIME_DEFAULT_CONTENT_BOTTOM_PADDING_HEIGHT 29
+#define DATETIME_TIME_CONTENT_BOTTOM_AMPM_PADDING_HEIGHT 12
+#define DATETIME_DATE_CONTENT_FIELD_HEIGHT             52
+#define DATETIME_TIME_CONTENT_FIELD_HEIGHT             52
+#define DATETIME_DEFAULT_BUTTON_LEFT_PADDING_WIDTH     21
+#define DATETIME_DEFAULT_BUTTON_RIGHT_PADDING_WIDTH    21
+#define DATETIME_DEFAULT_BUTTON_FIELD_HEIGHT           72
+#define DATETIME_AMPM_BUTTON_FIELD_HEIGHT              102
+#define DATETIME_DATE_LEFT_PADDING_WIDTH               12
+#define DATETIME_DATE_MONTH_FIELD_WIDTH                102
+#define DATETIME_DATE_DATE_FIELD_WIDTH                 68
+#define DATETIME_DATE_YEAR_FIELD_WIDTH                 114
+#define DATETIME_DATE_FIELD_PADDING_WIDTH              6
+#define DATETIME_TIME_LEFT_PADDING_WIDTH               35
+#define DATETIME_TIME_AMPM_HIDE_LEFT_PADDING_WIDTH     80
+#define DATETIME_TIME_HOUR_FIELD_WIDTH                 74
+#define DATETIME_TIME_MINUTE_FIELD_WIDTH               74
+#define DATETIME_TIME_AMPM_FIELD_WIDTH                 84
+#define DATETIME_TIME_SEPARATOR_WIDTH                  12
+#define DATETIME_TIME_SEPARATOR_PADDING_WIDTH          0
+#define DATETIME_TIME_FIELD_PADDING_WIDTH              6
+
+// ***************************** Spiiner **************************************/
+#define SPINNER_HORIZONTAL_DEFAULT_BG_SIZE             256 76
+#define SPINNER_VERTICAL_DEFAULT_BG_SIZE               168 304
+#define SPINNER_ICON_LEFT_RIGHT_SIZE                   70 76
+#define SPINNER_ICON_TOP_BOTTOM_SIZE                   68 68
+#define SPINNER_BUTTON_CONTROLLER_IMAGE_SIZE           168 168
+#define SPINNER_DRAGABLE_PART_MIN_SIZE                 90 180
+#define SPINNER_MUSIC_CONTROLLER_TEXT_SIZE             70
+#define SPINNER_IMAGE_LEFT_RIGHT_PADDING_SIZE          1 76
+#define SPINNER_CONTENT_BG_SIZE                        114 76
+#define SPINNER_CENTER_IMAGE_SIZE                      48 48
+#define SPINNER_TEXT_TOP_PADDING_HEIGHT                2
+#define SPINNER_TEXT_SIZE                              40
+#define SPINNER_BOTTOM_PADDING_SIZE                    114 14
+
+// ***************************** Entry ****************************************/
+#define ENTRY_TEXT_SIZE                                34
+#define MAGNIFIER_HEIGHT_FIXED                         164
+#define MAGNIFIER_WIDTH_FIXED                          325
+#define ENTRY_SELECTION_BLOCK_HANDLE_MIN_SIZE          51 79
+#define ENTRY_SELECTION_BLOCK_HANDLE_EDGE_WIDTH        4
+
+// ***************************** Label ****************************************/
+#define LABEL_FONT_SIZE_INC 34
+
+// PRESS
+#define PRESS_TIMER_VAL 0.1
+
+#define STYLE_TAG \
+   tag:  "br" "\n";\
+   tag:  "ps" "ps";\
+   tag:  "tab" "\t";\
+   tag:  "b" "+ font_weight=Bold";
+
+#define STYLE_TAG_MATCH \
+      tag:  "match" "+ color="TEXT_MATCH_COLOR;
+
+#define STYLE_TAG_MATCH_FOCUS \
+      tag:  "match" ;
+
+styles {
+  // Index_Scroller Styles
+  style { name: "Index_scroll_bar_select";
+    base: "font=Tizen:style=Regular font_size="INDEX_SCROLL_HANDLE_ITEM_TEXT_SIZE" align=center color="INDEX_SCROLL_TEXT_SELECT_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "Index_scroll_bar_unselect";
+    base: "font=Tizen:style=Regular font_size="INDEX_SCROLL_HANDLE_ITEM_TEXT_SIZE" align=center color="INDEX_SCROLL_TEXT_UNSELECT_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "Index_scroll_1depth_popup";
+    base: "font=Tizen:style=Regular font_size="INDEX_SCROLL_POPUP_TEXT_SIZE" align=center color="INDEX_SCROLL_TEXT_SELECT1_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "Index_scroll_1depth_popup_left_align";
+    base: "font=Tizen:style=Regular font_size="INDEX_SCROLL_POPUP_TEXT_SIZE" align=left color="INDEX_SCROLL_TEXT_SELECT1_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "Index_scroll_bar_2depth_focus";
+    base: "font=Tizen:style=Regular font_size="INDEX_SCROLL_2DEPTH_FOCUS_SIZE" color="INDEX_SCROLL_TEXT_SELECT1_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "Index_scroll_bar_2depth_popup";
+    base: "font=Tizen:style=Regular font_size="INDEX_SCROLL_POPUP_TEXT_SIZE" align=right color="INDEX_SCROLL_TEXT_SELECT_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "Index_scroll_bar_2depth_focus_bar";
+    base: "font=Tizen:style=Regular font_size="INDEX_SCROLL_HANDLE_ITEM_TEXT_SIZE" align=center color="INDEX_SCROLL_TEXT_SELECT1_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  // Naviframe Style
+  style { name: "action_bar_title";
+    base: "font=Tizen:style=Bold font_size="ACTIONBAR_TEXT_SIZE" color="ACTIONBAR_TEXT_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  // List Style
+  style { name: "list_text_groupindex_normal";
+    base: "font=Tizen:style=Regular font_size="LIST_GROUPINDEX_TEXT_SIZE" color="LIST_TEXT_GROUPINDEX_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+   style { name: "list_text_groupindex_sub_normal";
+    base: "font=Tizen:style=Regular font_size="LIST_GROUPINDEX_TEXT_SIZE" color="LIST_TEXT_GROUPINDEX_SUB_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_main_normal";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_NORMAL_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_main_dim";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_DIM_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_normal";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_NORMAL_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_dim";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_DIM_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_multiline_normal";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_MULTILINE_NORMAL_COLOR" text_class=tizen wrap=mixed";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_multiline_dim";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_MULTILINE_DIM_COLOR" text_class=tizen wrap=mixed";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_multiline_selected";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_MULTILINE_SELECTED_COLOR" text_class=tizen wrap=mixed";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_multiline";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_NORMAL_COLOR" text_class=list_item wrap=mixed";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_email_new_style";
+    base: "font=Tizen:style=Bold font_size="LIST_EMAIL_NEW_TEXT_SIZE" align=center color="LIST_EMAIL_NEW_TEXT_COLOR" ellipsis=1.0 text_class=tizen";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_email_address_style";
+    base: "font=Tizen:style=Regular font_size="LIST_EMAIL_ADDRESS_TEXT_SIZE" align=center color="LIST_EMAIL_ADDRESS_TEXT_COLOR" ellipsis=1.0 text_class=tizen align=left";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_email_number_style";
+    base: "font=Tizen:style=Regular font_size="LIST_EMAIL_NUMBER_TEXT_SIZE" align=center color="LIST_EMAIL_NUMBER_TEXT_COLOR" ellipsis=1.0 text_class=tizen";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_weather_time_style";
+    base: "font=Tizen:style=Regular font_size="LIST_WEATHER_TIME_TEXT_SIZE" align=center color="LIST_WEATHER_TIME_TEXT_COLOR" wrap=mixed ellipsis=1.0 text_class=tizen";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_noti_style";
+    base: "font=Tizen:style=Bold font_size="LIST_NOTI_TEXT_SIZE" align=center color="LIST_NOTI_TEXT_COLOR" wrap=mixed ellipsis=1.0 text_class=tizen";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_sweep_style";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SWEEP_SIZE" align=center color="LIST_SWEEP_TEXT_COLOR" ellipsis=1.0 text_class=tizen align=center";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  // shealth
+  style { name: "list_text_shealth_normal";
+    base: "font=Tizen:style=Regular align=right font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_NORMAL_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_shealth_dim";
+    base: "font=Tizen:style=Regular align=right font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_DIM_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+    style { name: "list_text_sub_shealth_normal";
+    base: "font=Tizen:style=Regular align=right font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_NORMAL_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_shealth_dim";
+    base: "font=Tizen:style=Regular align=right font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_DIM_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  // logs
+  style { name: "list_logs_style";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_LOGS_TEXT_MAIN_NORMAL" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_logs2_style";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_LOGS_TEXT_MAIN_NORMAL" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_logs_sub_style";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_LOGS_TEXT_SUB_NORMAL" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_logs_action_bar_style";
+    base: "font=Tizen:style=Bold font_size="LIST_TEXT_MAIN_SIZE" color="ACTIONBAR_TEXT_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_logs_action_bar_sub_style";
+    base: "font=Tizen:style=Bold font_size="LIST_TEXT_SUB_SIZE" color="ACTIONBAR_TEXT_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  // device_option
+  style { name: "list_device_option_main_normal";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_NORMAL_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+   }
+  style { name: "button_popup_device_option_2_text_normal";
+    base: "font=Tizen:style=Regular align=center font_size="LIST_DEVICE_OPTION_TEXT_SUB_SIZE" color="LIST_DEVICE_OPTION_TEXT_SUB_NORMAL_COLOR" text_class=tizen wrap=mixed ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "button_popup_device_option_2_text_dim";
+    base: "font=Tizen:style=Regular align=center font_size="LIST_DEVICE_OPTION_TEXT_SUB_SIZE" align=center color="LIST_DEVICE_OPTION_TEXT_SUB_DIM_COLOR" text_class=tizen ellipsis=1.0 wrap=mixed";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  // Nocontent styles
+  style { name: "nocontent_style";
+    base: "font=Tizen:style=Regular font_size="NOITEM_TEXT_SIZE" align=center color="NOITEM_TEXT_COLOR" text_class=label wrap=mixed ";
+    STYLE_TAG
+  }
+  // Noschedule Nocontent
+  style { name: "nocontent_noschedule_style";
+    base: "font=Tizen:style=Regular font_size="NOSCHEDULE_ITEM_TEXT_SIZE" align=center color="NOITEM_NOSCHDEULE_TEXT_COLOR" text_class=label wrap=mixed ";
+    STYLE_TAG
+  }
+  // Button styles
+  style { name: "button_general_text_normal";
+    base: "font=Tizen:style=Regular font_size="BUTTON_TEXT_SIZE" align=center color="BUTTON_TEXT_NORMAL_COLOR" ellipsis=1.0 wrap=mixed text_class=button";
+    STYLE_TAG
+  }
+  style { name: "button_general_text_dim";
+    base: "font=Tizen:style=Regular font_size="BUTTON_TEXT_SIZE" align=center color="BUTTON_TEXT_DIM_COLOR" ellipsis=1.0 wrap=mixed text_class=button";
+    STYLE_TAG
+  }
+  style { name: "check_text_normal";
+     base: "font=Tizen:style=Regular font_size="CHECK_TEXT_SIZE" align=left color="CHECK_TEXT_NORMAL_COLOR" wrap=mixed ellipsis=1.0 text_class=tizen";
+  }
+  style { name: "popup_title_style";
+    base: "font=Tizen:style=Bold align=left font_size="POPUP_TITLE_TEXT_SIZE" color="POPUP_TITLE_TEXT_COLOR" ellipsis=1.0 text_class=label";
+    STYLE_TAG
+  }
+  style { name: "popup_body_default_font_style";
+    base: "font=Tizen:style=Regular font_size="POPUP_BODY_TEXT_SIZE" align=left color="POPUP_BODY_TEXT_COLOR" wrap=mixed text_class=label";
+    STYLE_TAG
+  }
+  style { name: "popup_toast_style";
+    base: "font=Tizen:style=Regular font_size="POPUP_TOAST_TEXT_SIZE" align=left color="POPUP_TOAST_TEXT_COLOR" wrap=mixed text_class=label";
+    STYLE_TAG
+  }
+  style { name: "body_normal_1line_style";
+     base: "font=Tizen:style=Bold font_size="BODY_NORMAL_TEXT_SIZE" align=center color="BODY_NORMAL_TEXT_COLOR" wrap=mixed ellipsis=1.0 text_class=tizen";
+     STYLE_TAG
+  }
+  style { name: "body_normal_2line_style";
+    base: "font=Tizen:style=Regular font_size="BODY_NORMAL_TEXT_SUB_SIZE" align=center color="BODY_NORMAL_TEXT_SUB_COLOR" wrap=mixed ellipsis=1.0 text_class=tizen";
+    STYLE_TAG
+  }
+  style { name: "list_text_main_normal_schedules";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_NORMAL_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_normal_schedules";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_SCHEDULES_TEXT_SUB_NORMAL_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_main_dim_schedules";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_MAIN_SIZE" color="LIST_TEXT_MAIN_DIM_COLOR" text_class=list_item ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_dim_schedules";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_SCHEDULES_TEXT_SUB_DIM_COLOR" text_class=tizen ellipsis=1.0";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_svoice";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_NORMAL_COLOR" text_class=tizen ellipsis=1.0 align=right";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+  style { name: "list_text_sub_dim_svoice";
+    base: "font=Tizen:style=Regular font_size="LIST_TEXT_SUB_SIZE" color="LIST_TEXT_SUB_DIM_COLOR" text_class=tizen ellipsis=1.0 align=right";
+    STYLE_TAG
+    STYLE_TAG_MATCH
+  }
+}

@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Atkl.pirmk.licences"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "Uzlādēšana."
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "Tastatūra"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "Bez skaņas"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "Programmatūras versija"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "Iestatīt"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "Pēc %1$d minūtēm tiks atjaunots spilgtuma noklusējuma līmenis (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "Nav"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "Shēma"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "Privātuma bloķ."
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "Sk. rakstu"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "Kad tiks atvienots Bluetooth, tiks parādīta privātuma bloķēšanas iespēja."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "Parasts"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "Uztveramība"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "Bluetooth"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "Laiks"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "Par Gear"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "Aut.sinhr."
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "Akumulators"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "Akum. uzlādes līm."
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "Pulkst. veids"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "Dat. un laiks"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "Deaktivizēts"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "Fonta lielums"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "Stundas brīd."
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "Liels"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "Modeļa numurs"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "Netiek uzlādēts."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "Izslēgt"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "Ieslēgt"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "Āra režīms"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d minūtes"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d sek."
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "Atiest. Gear"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "Ekr. taimauts"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "Sērijas numurs"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "Iest. dat."
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "Sinhr. ar tālruni."
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "Sistēma"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "Piesk.skaņas"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "Vibrēt"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "Ierīce Gear ir redzama %s."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "Spilgtums"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "Atcelt"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "Pulkstenis"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "Gear informācija"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "Valoda"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "Paziņojumi"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Zvana signāli"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB atkļūd."
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "Vibrācija"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "Palīdzība"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "Vidēja"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "Skaņa"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "Skaņas režīms"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "Spēcīgs"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "Vāja"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "Aktivizējot USB atkļūdošanu, varēsit kopēt failus no datora uz Gear un pretēji, instalēt programmas ierīcē Gear, nesaņemot paziņojumus, un lasīt žurnāla datus. Ļaunprātīgas programmas to var izmantot, lai piekļūtu jūsu lietotāja informācijai. USB atkļūdošana ir paredzēta tikai izstrādes nolūkiem."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "Mainīt mobilās ierīces valodu"
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "Laika un datuma iestatījumu maiņa var ietekmēt dažas funkcijas"
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT austiņas"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "Kustības"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "Soļu skaitītāja pulkstenis"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "Īsceļa pulkstenis"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "Smart Relay"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "Aktivizēšanas žests"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "Laika ziņu pulkstenis"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "Pēdējais skatītais ekrāns"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "Labi"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "Mazs"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "Iesl/izsl.taus.nosp.divr."
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 minūte"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "Fona attēli"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "Galerija"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "Krāsu palete"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "Noklusējums"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° pretēji pulksteņrādītāja virzienam"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° pulksteņrādītāja virzienā"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "Aktivizēts"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "Noklusējuma fonts"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "Fonts"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "Fonta stils"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Nomierinošs džezs"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rozmarīns"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "Sākuma fons ir iestatīts."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "Ierīces nosaukums"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "Akumulatora statuss"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "Sākuma ekr. fons"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "Lielas ikon."
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "Mazas ikonas"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "Vidējs"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "Veic sākotnējo datu atiestati. Lūdzu, uzgaidiet..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "Pulkstenis ir mainīts."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Šūnu apraides ziņa"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Viedais grūdiens"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "Program. vers."
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "Sāk.ikonas liel."
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "Rediģ. sāk. ekr."
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "Īpašais enerģ. taup. rež."
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "Bez skaņas"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "Drošība"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "Lai deaktivizētu īpašo enerģijas taupīšanas režīmu, ierīce tiks restartēta."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "Sākuma ekrāns tiks mainīts uz melnu motīvu, lai samazinātu akumulatora enerģijas patēriņu. Jūs varēsit izmantot ziņas un kontaktus, bet citas programmas un funkcijas būs ierobežotas."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "Aktivizēt paziņojumus"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "Deaktivizēt paziņojumus"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "Atcelt"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "Informācija par drošību"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "Nosp. divr."
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "Rediģ. sāk. ekr."
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "Akumul. %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "Akumul. statuss"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "Ier. nosauk."
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "Sāk. ekr. fons"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "Milzīgs"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "Gaida apstiprinājumu no %s..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "Gear Manager"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "Visi Gear atmiņā esošie dati tiks izdzēsti. Pēc tam varēsit savienot Gear ar citu ierīci"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "Sākuma ekrāns"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Atkl.pirmk.licences"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "Ekrāna taimauts"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "Multivide"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "Skaļums"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180°"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 sekundes"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 sekundes"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 sekundes"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 minūtes"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "Nezināms"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "Enerģ.taup."
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "Tiks aktivizēts enerģijas taupīšanas režīms. Šādi tiks ierobežota centrālā procesora maksimālā veiktspēja, izslēgts Bluetooth savienojums un izmantots mazāks ekrāna jaudas līmenis. Aktivizēšanas žests, balss vadība un vibrācija nebūs pieejama. Joprojām būs pieejamas pulksteņa un S Health funkcijas."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "Enerģijas taupīšana deaktivizēta."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "Enerģijas taupīšana aktivizēta."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "Programmatūras versija"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "Profils"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "Lai skatītu paziņojumus par drošības informāciju, rīkojieties šādi:\n\n1. Atveriet Iestatījumi > Gear informācija.\n2. Izvēlieties USB atkļūdošana.\n3. Savienojiet ierīci Gear 2 ar datoru.\n4. USB atkļūdošanas uznirstošajā logā, kas tiek parādīts jūsu Gear 2 ekrānā, pieskarieties pie Labi.\n5. Izmantojot komandu sdb (instalējiet SDK, lai lietotu komandu sdb), lejupielādējiet failu /usr/share/Safety.zip savā datorā, palaižot komandu un ierakstot ievades laukā “sdb pull /usr/share/Safety.zip c:\\Safety.zip”.\n6. Izvelciet zip failu mapē c:\\Safety un atveriet izvilkto html failu, lai lasītu jaunāko drošības informāciju.\n\nApmeklējiet vietni http://developer.samsung.com, lejupielādējiet un instalējiet Samsung Gear SDK, lai izmantotu komandu sdb."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "Pašreizējais skaļuma iestatījums ir 0."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "Lielas ik. (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "Mazas ik. (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "Pārvald. progr."
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "Lai skatītu paziņojumus par atklātā pirmkoda licencēm, rīkojieties šādi.\n1. Atveriet sadaļu Iestatījumi > Gear informācija.\n2. Izvēlieties USB atkļūdošana.\n3. Savienojiet ierīci Gear ar datoru.\n4. Ierīcē Samsung Gear redzamajā USB atkļūdošanas uznirstošajā logā pieskarieties pie Labi.\n5. Izmantojot komandu sdb, lejupielādējiet datorā failu %1$s un ievades laukā ierakstiet “%2$s”.\n\nLai izmantotu komandu sdb, apmeklējiet vietni http://developer.samsung.com un lejupielādējiet, un instalējiet Samsung Gear SDK."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "Nes. progr."
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "Displejs"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "Deaktivizēts"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "Iestatījumi"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "Skaļums"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "Aktivizēš. žests"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "Zvana signāli"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "Profils"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "Notiek apstrāde..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "Redzama"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Teksta iev."

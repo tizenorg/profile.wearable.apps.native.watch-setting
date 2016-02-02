@@ -1,0 +1,46 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+#include "edc_image_macro.edc"
+
+RESOURCE_IMAGE("b_settings_change_clock.png");
+RESOURCE_IMAGE("b_settings_volume.png");
+RESOURCE_IMAGE("b_settings_display.png");
+RESOURCE_IMAGE("b_settings_text_input.png");
+RESOURCE_IMAGE("b_settings_power_saving.png");
+RESOURCE_IMAGE("b_settings_bluetooth.png");
+RESOURCE_IMAGE("b_settings_lockscreen.png");
+RESOURCE_IMAGE("b_settings_notifications.png");
+RESOURCE_IMAGE("b_settings_language.png");
+RESOURCE_IMAGE("b_settings_language_disabled.png");
+RESOURCE_IMAGE("b_settings_info.png");
+RESOURCE_IMAGE("b_settings_reset.png");
+RESOURCE_IMAGE("b_settings_double_press.png");
+RESOURCE_IMAGE("b_settings_profile.png");
+RESOURCE_IMAGE("b_settings_connections.png");
+RESOURCE_IMAGE("b_settings_call.png");
+RESOURCE_IMAGE("b_settings_messages.png");
+RESOURCE_IMAGE("b_settings_manner_mode.png");
+RESOURCE_IMAGE("b_setting_accessibility.png");
+RESOURCE_IMAGE("b_settings_motion.png");
+RESOURCE_IMAGE("b_settings_system_update.png");
+RESOURCE_IMAGE("b_settings_style.png");
+RESOURCE_IMAGE3("settings_preview_light.png");
+RESOURCE_IMAGE3("settings_preview_dark.png");
+RESOURCE_IMAGE3("settings_preview_dark_blue.png");
+RESOURCE_IMAGE3("settings_preview_light_blue.png");
+RESOURCE_IMAGE2("b_gallery_icon_select_all.png");
+RESOURCE_IMAGE_AND_COLOR("tw_number_controller_icon_brightness.png", "W173L1");
+RESOURCE_IMAGE_AND_COLOR("tw_number_controller_icon_brightness_1.png", "W173L1");
+RESOURCE_IMAGE_AND_COLOR("tw_number_controller_icon_brightness_2.png", "W173L1");
+RESOURCE_IMAGE_AND_COLOR("tw_number_controller_icon_brightness_3.png", "W173L1");
+RESOURCE_IMAGE_AND_COLOR("tw_number_controller_icon_brightness_4.png", "W173L1");
+RESOURCE_IMAGE_AND_COLOR("tw_number_controller_icon_brightness_5.png", "W173L1");
+RESOURCE_IMAGE_AND_COLOR("edit_clock_btn_icon.png", "AO0101");

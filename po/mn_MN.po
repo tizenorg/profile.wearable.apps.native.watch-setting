@@ -1,0 +1,3 @@
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Бичвэр оруул"

@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Nyílt f.kód licencek"
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "Töltés"
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "Billentyűzet"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "Néma"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "Szoftververzió"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "Beállít"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "%1$d perc elteltével visszaáll a fényerő alapértelmezett szintje (%2$d)."
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "Nincs"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "Mintázat"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "Védett ü.m. zár."
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "Mintát mut."
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "A Bluetooth-kapcsolat bontása után megjelenik a védett üzemmód zárolása lehetőség."
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "Normál"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "Láthatóság"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "Bluetooth"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "Időbeá."
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "Gear névjegye"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "Aut. szink."
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "Akkumulátor"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "Akku töltöttsége"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "Óra típusa"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "Dátum és idő"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "Letiltva"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "Betűméret"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "Jelz. óránként"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "Nagy"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "Modellszám"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "Nem töltődik."
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "Ki"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "Be"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "Utcai üzemmód"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d perc"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d mp"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "Gear alaph."
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "Képernyő idők."
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "Sorozatszám"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "Dátum beá."
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "Szinkr. telefonnal"
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "Rendszer"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "Érin. hangok"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "Rezgés"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "A Gear %s-ig látható."
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "Fényerő"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "Mégse"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "Óra"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "Gear adatai"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "Nyelv"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "Értesítések"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Csengőhangok"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB-hibakeres."
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "Rezgés"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "Súgó"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "Közepes"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "Hang"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "Hangmód"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "Erős"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "Gyenge"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "Az USB-hibakeresés engedélyezése lehetővé teszi fájlok másolását a számítógép és a Gear között, alkalmazások értesítés nélküli telepítését a Gearre, valamint a naplóadatok olvasását. Rosszindulatú alkalmazások ezt kihasználva jogosulatlanul férhetnek hozzá felhasználói adatokhoz. Ez a funkció csak fejlesztési célokat szolgál."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "Módosítsa a mobileszköz nyelvét."
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "Az idő- és dátumbeállítások módosítása hatással lehet bizonyos funkciókra."
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT-fejhallgató"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "Mozdulatok"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "Lépésszámláló óra"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "Parancsikonóra"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "Intelligens átjátszás"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "Ébresztési mozdulat"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "Időjárásóra"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "Legutóbb megtekintett képernyő"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "OK"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "Kicsi"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "Bekapcsolás g. kétszeri megny."
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "1 perc"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "Háttérképek"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "Galéria"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "Színpaletta"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "Alapértelmezett"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° balra"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° jobbra"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "Engedélyezve"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "Alapértelmezett betűtípus"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "Betűtípus"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "Betűstílus"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Cool jazz"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rosemary"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "Kezdőképernyő háttere beállítva."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "Eszköz neve"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "Akkumulátor állapota"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "Kez.kép. háttere"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "Nagy ikonok"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "Kis ikonok"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "Közepes"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "Gyári adatok visszaállítása. Kis türelmet..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "Módosította az órát."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Hírszolgálati üzenet"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Intelligens átadás"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "Szoftver verziója"
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "Ikonok mérete"
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "Kez.kép. szerk."
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "Ultratakarékos mód"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "Néma"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "Biztonság"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "Az ultratakarékos mód letiltásához újraindul az eszköz."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "A kezdőképernyő az akkumulátor kímélése érdekében fekete témára vált. Az Üzeneteket és a Névjegyzéket használhatja, de néhány egyéb alkalmazás és funkció korlátozva lesz."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "Értesítések engedélyezése"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "Értesítések letiltása"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "Mégse"
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "Biztonsági információk"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "Dupla megny."
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "Kezdőkép. szerk."
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "Akku. %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "Akku. állapota"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "Eszköz neve"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "Kez.kép. háttere"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "Nagyon nagy"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "Várakozás jóváhagyásra a(z) %s eszközről..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "Gear-kezelő"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "Minden adatot törölni fog a Gear memóriájából. Utána másik eszközhöz csatlakoztathatja a Geart"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "Kezdőképernyő"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Nyílt f.kód licencek"
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "Képernyő időkorl."
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "Multimédia"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "Hangerő"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 másodperc"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 másodperc"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 másodperc"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 perc"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "Ismeretlen"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "Energiatak."
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "Engedélyezi az energiatakarékosságot. Ezzel korlátozni fogja a CPU maximális teljesítményét, kikapcsolja a Bluetooth-t, és a kisebb képernyő-teljesítmény fog használni. Nem lesz elérhető az ébresztési mozdulat, a hangvezérlés és a rezgés. Az Óra és az S Health funkciói azonban elérhetők maradnak."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "Energiatakarékosság letiltva."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "Energiatakarékosság engedélyezve."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "Szoftver verziója"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "Profil"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "Az alábbi eljárással tekintheti meg a biztonsággal kapcsolatos tájékoztatást.\n\n1. Válassza a Beállítások > Gear adatai menüpontot.\n2. Válassza az USB-hibakeresés lehetőséget.\n3. Kapcsolódjon a Gear 2 órával a számítógéphez.\n4. A Gear 2-n, az USB-hibakeresés előugró ablakában érintse meg az OK gombot.\n5. Az sdb cmd segítségével (az sdb cmd használatához telepítse az SDK-t) töltse le a számítógépre az /usr/share/Safety.zip fájlt a cmd futtatásával és az „sdb pull /usr/share/Safety.zip c:\\Safety.zip” beírásával a beviteli mezőbe.\n6. Bontsa ki a zip-fájlt a c:\\Safety mappába, és nyissa meg a kibontott html-fájlt a legfrissebb biztonsági információk megtekintéséhez.\n\nAz sdb használatához látogasson el a http://developer.samsung.com címre, töltse le, és telepítse az Samsung Gear SDK-t."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "A hangerő jelenlegi beállítása 0."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "Nagy ikonok (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "Kis ikonok (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "Alk.kezelés"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "Az alábbi eljárással tekintheti meg a nyílt forráskód licenccel kapcsolatos tájékoztatást.\n1. Válassza a Beállítások > Gear adatai menüpontot.\n2. Válassza az USB-hibakeresés lehetőséget.\n3. Kapcsolódjon számítógéphez a Gearrel.\n4. A Samsung Gearen, az USB-hibakeresés előugró ablakában érintse meg az OK gombot.\n5. Az sdb cmd segítségével töltse le a számítógépre a(z) %1$s fájlt a cmd futtatásával és a(z) %2$s beírásával a beviteli mezőbe.\n\nAz sdb használatához látogasson el a http://developer.samsung.com címre, töltse le és telepítse az Samsung Gear SDK-t."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "Legut. alk."
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "Megjelenítés"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "Letiltva"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "Beállítások"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "Hangerő"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "Ébr. mozdulat"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "Csengőhangok"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "Profil"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "Feldolgozás folyamatban"
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "Legyen láth."
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Szöv.bevitel"

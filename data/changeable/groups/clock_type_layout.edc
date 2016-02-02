@@ -1,0 +1,734 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+group {
+	name: "setting-test/clock-type";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {relative: 0.0 0.0; }
+				rel2 {relative: 1.0 1.0; }
+				color_class: "B101";
+			}
+		}
+		part {
+			name: "clock-wallpaper";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0;
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0;
+					to: "bg";
+				}
+			}
+		}
+		part {
+			name: "clock-color";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0;
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0;
+					to: "bg";
+				}
+			}
+		}
+		part {
+			name: "clock-image";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0;
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0;
+					to: "bg";
+				}
+			}
+		}
+	}
+}
+
+group {
+	name: "setting-test/clock-type-home";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {relative: 0.0 0.0; }
+				rel2 {relative: 1.0 1.0; }
+				color_class: "B101";
+				visible: 1;
+			}
+			description {
+				state: "image" 0.0;
+				rel1 {relative: 0.0 0.0; }
+				rel2 {relative: 1.0 1.0; }
+				color_class: "B101";
+				visible: 0;
+			}
+		}
+		part {
+			name: "bg/image";
+			type: IMAGE;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {relative: 0.0 0.0; }
+				rel2 {relative: 1.0 1.0; }
+				visible: 0;
+			}
+			description {
+				state: "image" 0.0;
+				rel1 {relative: 0.0 0.0; }
+				rel2 {relative: 1.0 1.0; }
+				visible: 1;
+			}
+		}
+		part {
+			name: "clock-wallpaper";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0;
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0;
+					to: "bg";
+				}
+			}
+		}
+		part {
+			name: "clock-color";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0;
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0;
+					to: "bg";
+				}
+			}
+		}
+		part {
+			name: "clock-image";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					relative: 0.0 0.0;
+					to: "bg";
+				}
+				rel2 {
+					relative: 1.0 1.0;
+					to: "bg";
+				}
+			}
+		}
+	}
+	
+}
+
+group {
+	name: "setting-test/index-home";
+	parts {
+		part {
+			name: "bg/image";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {relative: 0.0 0.0; }
+				rel2 {relative: 1.0 1.0; }
+			}
+		}
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {relative: 0.0 0.0; }
+				rel2 {relative: 1.0 1.0; }
+				color: 0 0 0 50;
+			}
+		}
+		
+		part {
+			name: "scroller";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				rel1 {relative: 0.0 0.0; to: "bg";}
+				rel2 {relative: 1.0 1.0; to: "bg";}
+			}
+		}
+	}
+}
+
+// Layout - thumbnail
+#define BODY_THUMBNAIL_SIZE                            216 288
+#define BODY_THUMBNAIL_LAYOUT_SIZE                     248 480
+#define BODY_THUMBNAIL_LAYOUT_WIDTH                      248
+#define BODY_THUMBNAIL_PADDING_TOP_SIZE                   66
+#define BODY_THUMBNAIL_PADDING_LEFT_SIZE                  16
+#define BODY_THUMBNAIL_PADDING_RIGHT_SIZE                 16
+#define BODY_THUMBNAIL_PADDING_CENTER_SIZE                14
+#define BODY_THUMBNAIL_TEXT_SIZE                          36
+#define BODY_THUMBNAIL_TEXT_SUB_SIZE                      28
+#define BODY_THUMBNAIL_1LINE_TEXT_HEIGHT                  88
+#define BODY_THUMBNAIL_2LINE_TEXT_HEIGHT                  44
+#define BODY_THUMBNAIL_2LINE_TEXT_SUB_HEIGHT              32
+#define BODY_THUMBNAIL_LINE_SIZE                          2
+
+group { name: "setting/layout/body_thumbnail/default";
+	images {
+  		image: "edit_clock_btn_bg.#.png" COMP;
+  		image: "edit_clock_btn_icon.png" COMP;
+  		image: "edit_clock_btn_line.#.png" COMP;
+  	}
+  	
+   parts {
+      part { name: "bg";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: BODY_THUMBNAIL_LAYOUT_SIZE;
+            max: BODY_THUMBNAIL_LAYOUT_SIZE;
+            color_class: "W131";
+         }
+      }
+      part { name: "top_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            align: 0.5 0.0;
+            rel2.relative: 1.0 0.0;
+            min: 0 BODY_THUMBNAIL_PADDING_TOP_SIZE;
+            max: -1 BODY_THUMBNAIL_PADDING_TOP_SIZE;
+         }
+      }
+      part { name: "left_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: BODY_THUMBNAIL_PADDING_LEFT_SIZE 0;
+            max: BODY_THUMBNAIL_PADDING_LEFT_SIZE -1;
+            fixed: 1 0;
+            align: 0.0 0.5;
+            rel2.relative: 0.0 1.0;
+         }
+      }
+      part { name: "right_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: BODY_THUMBNAIL_PADDING_RIGHT_SIZE 0;
+            max: BODY_THUMBNAIL_PADDING_RIGHT_SIZE -1;
+            fixed: 1 0;
+            align: 1.0 0.5;
+            rel1.relative: 1.0 0.0;
+         }
+      }
+      part { name: "elm.icon";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            rel1.to: "top_padding";
+            rel1.relative: 0.0 1.0;
+            rel2.to: "top_padding";
+            rel2.relative: 1.0 1.0;
+            align: 0.5 0.0;
+            min: BODY_THUMBNAIL_SIZE;
+            max: BODY_THUMBNAIL_SIZE;
+            fixed: 1 1;
+         }
+      }
+      part { name: "left_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 0;
+            align: 0.0 0.5;
+            min: BODY_THUMBNAIL_LINE_SIZE 0;
+            max: BODY_THUMBNAIL_LINE_SIZE -1;
+            color_class: "W132";
+            rel1.to: "elm.icon";
+            rel2.to: "elm.icon";
+            rel2.relative: 0.0 1.0;
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color_class: "W132D";
+         }
+      }
+      part { name: "right_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 0;
+            align: 1.0 0.5;
+            min: BODY_THUMBNAIL_LINE_SIZE 0;
+            max: BODY_THUMBNAIL_LINE_SIZE -1;
+            color_class: "W132";
+            rel1.to: "elm.icon";
+            rel1.relative: 1.0 0.0;
+            rel2.to: "elm.icon";
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color_class: "W132D";
+         }
+      }
+      part { name: "top_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 0 1;
+            align: 0.5 0.0;
+            min: 0 BODY_THUMBNAIL_LINE_SIZE;
+            max: -1 BODY_THUMBNAIL_LINE_SIZE;
+            color_class: "W132";
+            rel1.to: "left_line";
+            rel1.relative: 1.0 0.0;
+            rel2.to: "right_line";
+            rel2.relative: 0.0 0.0;
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color_class: "W132D";
+         }
+      }
+      part { name: "bottom_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 0 1;
+            align: 0.5 1.0;
+            min: 0 BODY_THUMBNAIL_LINE_SIZE;
+            max: -1 BODY_THUMBNAIL_LINE_SIZE;
+            color_class: "W132";
+            rel1.to: "left_line";
+            rel1.relative: 1.0 1.0;
+            rel2.to: "right_line";
+            rel2.relative: 0.0 1.0;
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color_class: "W132D";
+         }
+      }
+      part { name: "center_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            align: 0.5 0.0;
+            min: 0 BODY_THUMBNAIL_PADDING_CENTER_SIZE;
+            max: -1 BODY_THUMBNAIL_PADDING_CENTER_SIZE;
+            rel1.to: "bottom_line";
+            rel1.relative: 0.0 1.0;
+            rel2.to: "bottom_line";
+            rel2.relative: 1.0 1.0;
+         }
+      }
+      part { name: "edit.btn.bg";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 55 55;
+            max: 55 55;
+            align: 0.5 0.0;
+            rel1 {
+               to: "center_padding";
+               relative: 0.0 1.0;
+            }
+            rel2 {
+               to: "center_padding";
+               relative: 1.0 1.0;
+            }
+            color: 8 8 8 125;
+            visible: 0;
+         }
+         description {
+        	 state: "show" 0.0;
+        	 inherit: "default" 0.0;
+        	 visible: 1;
+         }
+      }
+      part { name: "edit.btn.line";
+         type: IMAGE;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 55 55;
+            max: 55 55;
+            align: 0.5 0.0;
+            rel1 {
+               to: "center_padding";
+               relative: 0.0 1.0;
+            }
+            rel2 {
+               to: "center_padding";
+               relative: 1.0 1.0;
+            }
+            color: 80 80 80 80;
+            image{
+            	normal: "edit_clock_btn_line.#.png";
+            }
+            visible: 0;
+         }
+         description {
+        	 state: "show" 0.0;
+        	 inherit: "default" 0.0;
+        	 visible: 1;
+         }
+      }
+      part { name: "edit.btn";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 55 55;
+            max: 55 55;
+            align: 0.5 0.0;
+            rel1 {
+               to: "center_padding";
+               relative: 0.0 1.0;
+            }
+            rel2 {
+               to: "center_padding";
+               relative: 1.0 1.0;
+            }
+            visible: 0;
+         }
+         description {
+        	 state: "show" 0.0;
+        	 inherit: "default" 0.0;
+        	 visible: 1;
+         }
+      }
+   }
+   programs {
+      program {
+         name: "focus";
+         signal: "elm,state,thumbnail,focus";
+         source: "*";
+         action: STATE_SET "default" 0.0;
+         target: "left_line";
+         target: "right_line";
+         target: "top_line";
+         target: "bottom_line";
+      }
+      program {
+         name: "unfocus";
+         signal: "elm,state,thumbnail,unfocus";
+         source: "*";
+         action: STATE_SET "unfocus" 0.0;
+         target: "left_line";
+         target: "right_line";
+         target: "top_line";
+         target: "bottom_line";
+      }
+      program {
+         name: "edit/btn/show";
+         signal: "edit,btn,show";
+         source: "*";
+         action: STATE_SET "show" 0.0;
+         target: "edit.btn.bg";
+         target: "edit.btn.line";
+         target: "edit.btn";
+      }
+   }
+}
+
+group { name: "setting/layout/body_thumbnail/home";
+	images {
+  		image: "edit_clock_btn_bg.#.png" COMP;
+  		image: "edit_clock_btn_icon.png" COMP;
+  		image: "edit_clock_btn_line.#.png" COMP;
+  	}
+  	
+   parts {
+      part { name: "bg";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: BODY_THUMBNAIL_LAYOUT_SIZE;
+            max: BODY_THUMBNAIL_LAYOUT_SIZE;
+            color: 0 0 0 0;
+         }
+      }
+      part { name: "top_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            align: 0.5 0.0;
+            rel2.relative: 1.0 0.0;
+            min: 0 BODY_THUMBNAIL_PADDING_TOP_SIZE;
+            max: -1 BODY_THUMBNAIL_PADDING_TOP_SIZE;
+         }
+      }
+      part { name: "left_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: BODY_THUMBNAIL_PADDING_LEFT_SIZE 0;
+            max: BODY_THUMBNAIL_PADDING_LEFT_SIZE -1;
+            fixed: 1 0;
+            align: 0.0 0.5;
+            rel2.relative: 0.0 1.0;
+         }
+      }
+      part { name: "right_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: BODY_THUMBNAIL_PADDING_RIGHT_SIZE 0;
+            max: BODY_THUMBNAIL_PADDING_RIGHT_SIZE -1;
+            fixed: 1 0;
+            align: 1.0 0.5;
+            rel1.relative: 1.0 0.0;
+         }
+      }
+      part { name: "elm.icon";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            rel1.to: "top_padding";
+            rel1.relative: 0.0 1.0;
+            rel2.to: "top_padding";
+            rel2.relative: 1.0 1.0;
+            align: 0.5 0.0;
+            min: BODY_THUMBNAIL_SIZE;
+            max: BODY_THUMBNAIL_SIZE;
+            fixed: 1 1;
+         }
+      }
+      part { name: "left_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 0;
+            align: 0.0 0.5;
+            min: BODY_THUMBNAIL_LINE_SIZE 0;
+            max: BODY_THUMBNAIL_LINE_SIZE -1;
+            color_class: "AO033";
+            rel1.to: "elm.icon";
+            rel2.to: "elm.icon";
+            rel2.relative: 0.0 1.0;
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color: 255 255 255 80;
+         }
+      }
+      part { name: "right_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 1 0;
+            align: 1.0 0.5;
+            min: BODY_THUMBNAIL_LINE_SIZE 0;
+            max: BODY_THUMBNAIL_LINE_SIZE -1;
+            color_class: "AO033";
+            rel1.to: "elm.icon";
+            rel1.relative: 1.0 0.0;
+            rel2.to: "elm.icon";
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color: 255 255 255 80;
+         }
+      }
+      part { name: "top_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 0 1;
+            align: 0.5 0.0;
+            min: 0 BODY_THUMBNAIL_LINE_SIZE;
+            max: -1 BODY_THUMBNAIL_LINE_SIZE;
+            color_class: "AO033";
+            rel1.to: "left_line";
+            rel1.relative: 1.0 0.0;
+            rel2.to: "right_line";
+            rel2.relative: 0.0 0.0;
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color: 255 255 255 80;
+         }
+      }
+      part { name: "bottom_line";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            fixed: 0 1;
+            align: 0.5 1.0;
+            min: 0 BODY_THUMBNAIL_LINE_SIZE;
+            max: -1 BODY_THUMBNAIL_LINE_SIZE;
+            color_class: "AO033";
+            rel1.to: "left_line";
+            rel1.relative: 1.0 1.0;
+            rel2.to: "right_line";
+            rel2.relative: 0.0 1.0;
+         }
+         description { state: "unfocus" 0.0;
+            inherit: "default" 0.0;
+            color: 255 255 255 80;
+         }
+      }
+      part { name: "center_padding";
+         type: SPACER;
+         scale: 1;
+         description { state: "default" 0.0;
+            align: 0.5 0.0;
+            min: 0 BODY_THUMBNAIL_PADDING_CENTER_SIZE;
+            max: -1 BODY_THUMBNAIL_PADDING_CENTER_SIZE;
+            rel1.to: "bottom_line";
+            rel1.relative: 0.0 1.0;
+            rel2.to: "bottom_line";
+            rel2.relative: 1.0 1.0;
+         }
+      }
+      part { name: "edit.btn.bg";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 55 55;
+            max: 55 55;
+            align: 0.5 0.0;
+            rel1 {
+               to: "center_padding";
+               relative: 0.0 1.0;
+            }
+            rel2 {
+               to: "center_padding";
+               relative: 1.0 1.0;
+            }
+            color: 8 8 8 125;
+            visible: 0;
+         }
+         description {
+        	 state: "show" 0.0;
+        	 inherit: "default" 0.0;
+        	 visible: 1;
+         }
+      }
+      part { name: "edit.btn.line";
+         type: IMAGE;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 55 55;
+            max: 55 55;
+            align: 0.5 0.0;
+            rel1 {
+               to: "center_padding";
+               relative: 0.0 1.0;
+            }
+            rel2 {
+               to: "center_padding";
+               relative: 1.0 1.0;
+            }
+            color: 80 80 80 80;
+            image{
+            	normal: "edit_clock_btn_line.#.png";
+            }
+            visible: 0;
+         }
+         description {
+        	 state: "show" 0.0;
+        	 inherit: "default" 0.0;
+        	 visible: 1;
+         }
+      }
+      part { name: "edit.btn";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            min: 55 55;
+            max: 55 55;
+            align: 0.5 0.0;
+            rel1 {
+               to: "center_padding";
+               relative: 0.0 1.0;
+            }
+            rel2 {
+               to: "center_padding";
+               relative: 1.0 1.0;
+            }
+            visible: 0;
+         }
+         description {
+        	 state: "show" 0.0;
+        	 inherit: "default" 0.0;
+        	 visible: 1;
+         }
+      }
+   }
+   programs {
+      program {
+         name: "focus";
+         signal: "elm,state,thumbnail,focus";
+         source: "*";
+         action: STATE_SET "default" 0.0;
+         target: "left_line";
+         target: "right_line";
+         target: "top_line";
+         target: "bottom_line";
+      }
+      program {
+         name: "unfocus";
+         signal: "elm,state,thumbnail,unfocus";
+         source: "*";
+         action: STATE_SET "unfocus" 0.0;
+         target: "left_line";
+         target: "right_line";
+         target: "top_line";
+         target: "bottom_line";
+      }
+      program {
+         name: "edit/btn/show";
+         signal: "edit,btn,show";
+         source: "*";
+         action: STATE_SET "show" 0.0;
+         target: "edit.btn.bg";
+         target: "edit.btn.line";
+         target: "edit.btn";
+      }
+   }
+}

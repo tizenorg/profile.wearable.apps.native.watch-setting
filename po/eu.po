@@ -1,0 +1,480 @@
+msgid "IDS_CHATON_BODY_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Open Source lizentz."
+
+msgid "IDS_COM_BODY_CHARGING_GA"
+msgstr "Kargatzen"
+
+msgid "IDS_IME_HEADER_KEYBOARD"
+msgstr "Teklatua"
+
+msgid "IDS_COM_POP_MESSAGETONE_MUTE"
+msgstr "Isilarazi"
+
+msgid "IDS_COM_POP_SOFTWARE_VERSION"
+msgstr "Software bertsioa"
+
+msgid "IDS_COM_SK_SET_ABB"
+msgstr "Ezarri"
+
+msgid "IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"
+msgstr "%1$d minutu ondoren, argitasuna lehenetsitako mailan berrezarriko da (%2$d)"
+
+msgid "IDS_LCKSCN_BODY_NONE"
+msgstr "Bat ere ez"
+
+msgid "IDS_LCKSCN_BODY_PATTERN"
+msgstr "Eredua"
+
+msgid "IDS_LCKSCN_BODY_PRIVACY_LOCK_ABB"
+msgstr "Pribat. blokeoa"
+
+msgid "IDS_LCKSCN_BODY_SEE_PATTERN_ABB"
+msgstr "Ikusi diseinua"
+
+msgid "IDS_LCKSCN_BODY_THE_PRIVACY_LOCK_OPTION_WILL_BE_SHOWN_WHEN_BLUETOOTH_IS_DISCONNECTED"
+msgstr "Pribatutasun blokeoaren aukera erakutsiko da Bluetootha deskonektatzen denean"
+
+msgid "IDS_MSGC_BODY_TEXTSTYLETEXTMODENORMAL"
+msgstr "Arrunta"
+
+msgid "IDS_OP_BODY_VISIBILITY"
+msgstr "Ikusgaitasuna"
+
+msgid "IDS_QP_BUTTON_BLUETOOTH"
+msgstr "Bluetootha"
+
+msgid "IDS_SMEMO_BUTTON_SET_TIME_ABB"
+msgstr "Ez. ordua"
+
+msgid "IDS_ST_BODY_ABOUT_GEAR_ABB"
+msgstr "Gear-i buruz"
+
+msgid "IDS_ST_BODY_AUTO_SYNC_ABB2"
+msgstr "Sink. aut."
+
+msgid "IDS_ST_BODY_BATTERY_ABB"
+msgstr "Bateria"
+
+msgid "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB"
+msgstr "Bateria ehunekotan"
+
+msgid "IDS_ST_BODY_CLOCK_TYPE_ABB"
+msgstr "Erloju mota"
+
+msgid "IDS_ST_BODY_DATE_AND_TIME_ABB"
+msgstr "Data eta ordua"
+
+msgid "IDS_ST_BODY_DISABLED_M_STATUS"
+msgstr "Ezgaituta"
+
+msgid "IDS_ST_BODY_FONT_SIZE_ABB"
+msgstr "Letraren neurria"
+
+msgid "IDS_ST_BODY_HOURLY_ALERT_ABB"
+msgstr "Alerta orduro"
+
+msgid "IDS_ST_BODY_LARGE_M_FONT_SIZE_ABB2"
+msgstr "Handia"
+
+msgid "IDS_ST_BODY_MODEL_NUMBER_ABB"
+msgstr "Mod. zenbakia"
+
+msgid "IDS_ST_BODY_NOT_CHARGING_ABB"
+msgstr "Ez dago kargatzen"
+
+msgid "IDS_ST_BODY_OFF_M_STATUS"
+msgstr "Desaktibatuta"
+
+msgid "IDS_ST_BODY_ON_M_STATUS"
+msgstr "Aktibatuta"
+
+msgid "IDS_ST_BODY_OUTDOOR_MODE_ABB"
+msgstr "Air. li. modua"
+
+msgid "IDS_ST_BODY_PD_MINUTES_ABB"
+msgstr "%d minutu"
+
+msgid "IDS_ST_BODY_PD_SECONDS_ABB2"
+msgstr "%d segundo"
+
+msgid "IDS_ST_BODY_RESET_GEAR_ABB"
+msgstr "Berrez. Gear"
+
+msgid "IDS_ST_BODY_SCREEN_TIMEOUT_ABB2"
+msgstr "Pantaila denbora muga"
+
+msgid "IDS_ST_BODY_SERIAL_NUMBER"
+msgstr "Serie zenbakia"
+
+msgid "IDS_ST_BODY_SET_DATE_ABB2"
+msgstr "Ezarri data"
+
+msgid "IDS_ST_BODY_SYNC_WITH_PHONE_ABB"
+msgstr "Sink. Telefonoaz"
+
+msgid "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB"
+msgstr "Sistema"
+
+msgid "IDS_ST_BODY_TOUCH_SOUNDS_ABB"
+msgstr "Ukim. soinuak"
+
+msgid "IDS_ST_BODY_VIBRATE_ABB2"
+msgstr "Bibratu"
+
+msgid "IDS_ST_BODY_YOUR_GEAR_IS_VISIBLE_FOR_PS_ABB"
+msgstr "Zure Gear ikusgai dago %s-(e)n"
+
+msgid "IDS_ST_BUTTON_BRIGHTNESS"
+msgstr "Argitasuna"
+
+msgid "IDS_ST_BUTTON_CANCEL_ABB2"
+msgstr "Utzi"
+
+msgid "IDS_ST_BUTTON_CLOCK"
+msgstr "Erlojua"
+
+msgid "IDS_ST_BUTTON_GEAR_INFO"
+msgstr "Gear informazioa"
+
+msgid "IDS_ST_BUTTON_LANGUAGE"
+msgstr "Hizkuntza"
+
+msgid "IDS_ST_BUTTON_NOTIFICATIONS"
+msgstr "Jakinarazpenak"
+
+msgid "IDS_ST_HEADER_RINGTONES_ABB"
+msgstr "Deitonuak"
+
+msgid "IDS_ST_HEADER_USB_DEBUGGING_ABB"
+msgstr "USB arazketa"
+
+msgid "IDS_ST_HEADER_VIBRATION_ABB"
+msgstr "Bibrazioa"
+
+msgid "IDS_ST_MBODY_HELP"
+msgstr "Laguntza"
+
+msgid "IDS_ST_OPT_MEDIUM_M_INTENSITY"
+msgstr "Ertaina"
+
+msgid "IDS_ST_OPT_SOUND_ABB2"
+msgstr "Soinua"
+
+msgid "IDS_ST_OPT_SOUND_MODE_ABB"
+msgstr "Soinu modua"
+
+msgid "IDS_ST_OPT_STRONG_M_INTENSITY"
+msgstr "Indartsua"
+
+msgid "IDS_ST_OPT_WEAK_M_INTENSITY"
+msgstr "Ahula"
+
+msgid "IDS_ST_POP_ENABLING_USB_DEBUGGING_WILL_ALLOW_YOU_TO_COPY_FILES_BETWEEN_YOUR_PC_AND_YOUR_GEAR_INSTALL_APPLICATIONS_ON_YOUR_GEAR_WITHOUT_RECEIVING_MSG"
+msgstr "USB arazketa gaitzeak aukera ematen du ordenagailuaren eta Gear-en artean fitxategiak kopiatzeko, Gear-en aplikazioak jakinarazpenik jaso gabe instalatzeko eta erregistroko datuak irakurtzeko. Baliteke aplikazio maltzurrek erabiltzea, zure erabiltzaile informaziora sartzeko. Garapen helburuetarako bakarrik egiten da."
+
+msgid "IDS_ST_TPOP_CHANGE_LANGUAGE_ON_MOBILE_DEVICE"
+msgstr "Aldatu gailu mugikorreko hizkuntza."
+
+msgid "IDS_ST_TPOP_CHANGING_TIME_AND_DATE_SETTINGS_MAY_AFFECT_SOME_FUNCTIONS"
+msgstr "Ordu eta data ezarpenak aldatzeak funtzio batzuei eragin diezaieke."
+
+msgid "IDS_SYS_SK_CANCEL"
+msgstr "Cancel"
+
+msgid "IDS_VCALL_BODY_BT_HEADSET"
+msgstr "BT aurikularrak"
+
+msgid "IDS_WMGR_HEADER_MOTIONS"
+msgstr "Mugimenduak"
+
+msgid "IDS_WMGR_HEADER_PEDOMETER_CLOCK"
+msgstr "Podometroaren ordularia"
+
+msgid "IDS_WMGR_HEADER_SHORTCUT_CLOCK"
+msgstr "Lasterbidearen erlojua"
+
+msgid "IDS_WMGR_MBODY_SMART_RELAY"
+msgstr "Transmisio adimenduna"
+
+msgid "IDS_WMGR_MBODY_WAKE_UP_GESTURE"
+msgstr "Esnatze keinua"
+
+msgid "IDS_WMGR_MBODY_WEATHER_CLOCK"
+msgstr "Eguraldi erlojua"
+
+msgid "IDS_WMGR_OPT_LAST_VIEWED_SCREEN"
+msgstr "Ikusitako azken pantaila"
+
+msgid "IDS_WNOTI_BUTTON_OK_ABB2"
+msgstr "Ados"
+
+msgid "IDS_EMAIL_OPT_SMALL_M_FONT_SIZE"
+msgstr "Txikia"
+
+msgid "IDS_ST_HEADER_DOUBLE_PRESSING_POWER_KEY_ABB"
+msgstr "Bi aldiz sakatzea ener. tekla"
+
+msgid "IDS_ST_BODY_1_MINUTE_ABB2"
+msgstr "minutu 1"
+
+msgid "IDS_ST_BODY_WALLPAPERS"
+msgstr "Pantaila atzealdea"
+
+msgid "IDS_ST_BODY_GALLERY"
+msgstr "Galeria"
+
+msgid "IDS_COM_MBODY_COLOUR_PALETTE"
+msgstr "Kolore paleta"
+
+msgid "IDS_COM_BODY_DEFAULT"
+msgstr "Lehenetsia"
+
+msgid "IDS_COM_OPT_ROTATE_CCW"
+msgstr "90° Ezk"
+
+msgid "IDS_COM_OPT_ROTATE_CW"
+msgstr "90° Esk"
+
+msgid "IDS_EMAIL_BODY_ENABLED_M_STATUS"
+msgstr "Gaituta"
+
+msgid "IDS_ST_BODY_DEFAULT_FONT"
+msgstr "Lehenetsitako letra mota"
+
+msgid "IDS_ST_BODY_FONT"
+msgstr "Letra"
+
+msgid "IDS_ST_BODY_FONT_STYLE"
+msgstr "Letra estiloa"
+
+msgid "IDS_ST_BODY_COOL_JAZZ"
+msgstr "Cool jazz"
+
+msgid "IDS_ST_BODY_FONTSTYLE_ROSEMARY"
+msgstr "Rosemary"
+
+msgid "IDS_GALLERY_TPOP_HOME_BACKGROUND_SET"
+msgstr "Atzealde nagusia ezarri da."
+
+msgid "IDS_LCKSCN_HEADER_PIN"
+msgstr "PIN"
+
+msgid "IDS_ST_HEADER_DEVICE_NAME_ABB"
+msgstr "Gailuaren izena"
+
+msgid "IDS_ST_BODY_BATTERY_STATUS"
+msgstr "Bateriaren egoera"
+
+msgid "IDS_HS_BODY_HOME_BACKGROUND_ABB"
+msgstr "Atzealde nagusia"
+
+msgid "IDS_HS_OPT_LARGE_ICONS_ABB"
+msgstr "Ikono handiak"
+
+msgid "IDS_HS_OPT_SMALL_ICONS_ABB"
+msgstr "Ikono txikiak"
+
+msgid "IDS_ST_OPT_MEDIUM_M_FONT_SIZE"
+msgstr "Ertaina"
+
+msgid "IDS_ST_BODY_PERFORMING_FACTORY_DATA_RESET_PLEASE_WAIT_ING"
+msgstr "Fabrikako datu berrezarpena egiten. Itxaron mesedez..."
+
+msgid "IDS_ST_TPOP_CLOCK_CHANGED"
+msgstr "Erlojua aldatu da."
+
+msgid "IDS_COM_BODY_CELL_BROADCAST_MESSAGE"
+msgstr "Cell Broadcast mezua"
+
+msgid "IDS_WMGR_MBODY_SMART_TOSS_JPN"
+msgstr "Transmisio adimenduna"
+
+msgid "IDS_SM_TAB4_SOFTWARE_VERSION"
+msgstr "Software berts."
+
+msgid "IDS_HS_MBODY_HOME_ICON_SIZE_ABB"
+msgstr "Ikono nag. neur."
+
+msgid "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB"
+msgstr "Edit. pant. nag."
+
+msgid "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE"
+msgstr "Bat. aurrezt. ultramodua"
+
+msgid "IDS_ST_OPT_MUTE"
+msgstr "Isilarazi"
+
+msgid "IDS_ST_MBODY_SAFETY_ABB"
+msgstr "Segurtasuna"
+
+msgid "IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"
+msgstr "Bateria aurrezteko ultramodua ezgaitzeko, zure gailua berrabiaraziko da."
+
+msgid "IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"
+msgstr "Pantaila nagusiaren gaia beltzera aldatuko da bateria kontsumoa txikitzeko. Mezuak eta Kontaktuak erabili ahalko dituzu, baina baliteke beste zenbait aplikazio eta funtzio mugatuta egotea."
+
+msgid "IDS_ST_HEADER_ENABLE_NOTIFICATIONS"
+msgstr "Gaitu jakinarazpenak"
+
+msgid "IDS_ST_HEADER_DISABLE_NOTIFICATIONS"
+msgstr "Ezgaitu jakinarazpenak"
+
+msgid "IDS_COM_SK_CANCEL_A"
+msgstr "Ezez."
+
+msgid "IDS_ST_OPT_SAFETY_INFORMATION"
+msgstr "Segurtasun informazioa"
+
+msgid "IDS_ST_MBODY_DOUBLE_PRESS_ABB"
+msgstr "Double press"
+
+msgid "IDS_ST_MBODY_EDIT_HOME_SCREEN_ABB"
+msgstr "Edit. pant. nag."
+
+msgid "IDS_ST_MBODY_BATTERY_P_ABB"
+msgstr "Bateria %"
+
+msgid "IDS_ST_MBODY_BATTERY_STATUS_ABB"
+msgstr "Bateria egoera"
+
+msgid "IDS_ST_MBODY_DEVICE_NAME_ABB"
+msgstr "Gailu izena"
+
+msgid "IDS_ST_MBODY_HOME_BACKGROUND_ABB"
+msgstr "Atzealde nagusia"
+
+msgid "IDS_ST_OPT_HUGE_M_FONT_SIZE"
+msgstr "Erraldoia"
+
+msgid "IDS_KW_BODY_WAITING_FOR_CONFIRMATION_FROM_PS_ING"
+msgstr "%s-ren baieztapenaren zain..."
+
+msgid "IDS_WMGR_HEADER_GEAR_MANAGER_M_APPLICATION_NAME_ABB"
+msgstr "Gear Manager"
+
+msgid "IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE"
+msgstr "Datu guztiak ezabatuko dira Gear memoriatik. Orduan, zure Gear beste gailu batera konektatu ahalko duzu"
+
+msgid "IDS_ST_MBODY_HOME_SCREEN_ABB"
+msgstr "Pantaila nagusia"
+
+msgid "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"
+msgstr "Open Source lizentz."
+
+msgid "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"
+msgstr "Pant. denbora muga"
+
+msgid "IDS_ST_BUTTON_MULTIMEDIA"
+msgstr "Multimedia"
+
+msgid "IDS_ST_OPT_VOLUME"
+msgstr "Bolumena"
+
+msgid "IDS_ST_SBODY_180_DEGREE"
+msgstr "180º"
+
+msgid "IDS_ST_BODY_10SEC"
+msgstr "10 segundo"
+
+msgid "IDS_ST_BODY_15SEC"
+msgstr "15 segundo"
+
+msgid "IDS_ST_BODY_30SEC"
+msgstr "30 segundo"
+
+msgid "IDS_ST_BODY_5_MINUTES"
+msgstr "5 minutu"
+
+msgid "IDS_ST_BODY_UNKNOWN"
+msgstr "Ezezaguna"
+
+msgid "IDS_LCKSCN_BODY_CHOCO_COOKY_M_FONT"
+msgstr "Choco cooky"
+
+msgid "IDS_ST_MBODY_POWER_SAVER_ABB"
+msgstr "Bat. aurrezlea"
+
+msgid "IDS_ST_POP_POWER_SAVER_WILL_BE_ENABLED_THIS_WILL_LIMIT_THE_MAXIMUM_PERFORMANCE_OF_THE_CPU_TURN_OFF_BLUETOOTH_AND_A_LOWER_SCREEN_POWER_LEVEL_WILL_BE_USED_MSG"
+msgstr "Bateria aurrezlea gaituko da. Horrek CPUaren gehieneko errendimendua murriztuko du, Bluetootha itzaliko du eta pantailan indar maila txikiagoa erabiliko du. Esnatze keinua, Ahots kontrola eta Bibrazioa ez dira erabilgarri egongo. Erlojua eta S Health funtzioak erabilgarri egongo dira."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_DISABLED"
+msgstr "Bateria aurrezlea ezgaitu da."
+
+msgid "IDS_ST_TPOP_POWER_SAVER_ENABLED"
+msgstr "Bateria aurrezlea gaitu da."
+
+msgid "IDS_ST_MBODY_SOFTWARE_VERSION"
+msgstr "Software bertsioa"
+
+msgid "IDS_HEALTH_OPT_PROFILE_ABB"
+msgstr "Profila"
+
+msgid "IDS_ST_BODY_YOU_CAN_CHECK_NOTICES_REGARDING_SAFETY_INFORMATION_BY_FOLLOWING_THE_STEPS_BELOW_N_N1_GO_TO_SETTINGS_MSG"
+msgstr "Segurtasuneko informazioari buruzko jakinarazpenak egiazta ditzakezu beheko pausoei jarraituz.\n\n1. Joan Ezarpenak > Gear informazioa.\n2. Hautatu USB arazketa.\n3. Konektatu Gear 2 zure ordenagailura.\n4. Ukitu Ados Gear 2-n agertuko den USB arazketa agerkarian.\n5. sdb cmd erabiltzeko (instalatu SDK sdb cmd erabiltzeko), deskargatu /usr/share/Safety.zip fitxategia ordenagailura cmd abiaraziz eta “sdb pull /usr/share/Safety.zip c:\\Safety.zip” idatziz idazteko eremuan.\n6. Atera zip fitxategia c:\\Safety folder karpetara eta ireki ateratako html fitxategia, segurtasunari buruzko informazio berriena irakurtzeko.\n\nBisitatu http://developer.samsung.com eta Samsung Gear SDK deskargatu eta instalatu sdb erabiltzeko."
+
+msgid "IDS_ST_TPOP_VOLUME_CURRENTLY_SET_TO_0"
+msgstr "Orain, bolumena 0-n ezarrita dago."
+
+msgid "IDS_ST_BODY_LARGE_ICONS_HP1SDXP2SD_ABB"
+msgstr "Ikono handiak (%1$dx%2$d)"
+
+msgid "IDS_ST_BODY_SMALL_ICONS_HP1SDXP2SD_ABB"
+msgstr "Ikono txikiak (%1$dx%2$d)"
+
+msgid "IDS_ST_MBODY_MANAGE_APPS_ABB"
+msgstr "Kud. aplikazioak"
+
+msgid "IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"
+msgstr "Iturburu irekiko lizentziei buruzko jakinarazpenak egiazta ditzakezu beheko pausoei jarraiki.\n1. Joan Ezarpenetara > Gear informazioa.\n2. Hautatu USB arazketa.\n3. Konektatu zure Gear zure ordenagailura.\n4. Ukitu Ados zure Samsung Gear-en aterako den USB arazketaren agerkarian.\n5. sdb cmd erabiltzeko, deskargatu %1$s fitxategia zure ordenagailura, cmd abiaraziz eta %2$s idatziz idazteko eremuan.\n\nBisitatu http://developer.samsung.com eta deskargatu eta instalatu Samsung Gear SDK sdb erabiltzeko."
+
+msgid "IDS_ST_OPT_RECENT_APPS_ABB"
+msgstr "Berr. aplik."
+
+msgid "IDS_ST_MBODY_DISPLAY_ABB"
+msgstr "Pantaila"
+
+msgid "IDS_ST_MBODY_DISABLED_ABB"
+msgstr "Ezgaituta"
+
+msgid "IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"
+msgstr "Ezarpenak"
+
+msgid "IDS_ST_HEADER_VOLUME_ABB"
+msgstr "Bolumena"
+
+msgid "IDS_ST_MBODY_TINKERBELL"
+msgstr "Tinkerbell"
+
+msgid "IDS_ST_BODY_KAITI_M_FONT"
+msgstr "Kaiti"
+
+msgid "IDS_ST_BODY_POP_JPN_DCM"
+msgstr "POP"
+
+msgid "IDS_ST_BODY_UDMINCHO_JPN"
+msgstr "UDMincho"
+
+msgid "IDS_ST_BODY_UDRGOTHICM_JPN"
+msgstr "UDRGothicM"
+
+msgid "IDS_RH_BUTTON2_APPLEMINT_M_FONT"
+msgstr "AppleMint"
+
+msgid "IDS_ST_MBODY_WAKE_UP_GESTURE_ABB"
+msgstr "Esnatze keinua"
+
+msgid "IDS_CST_MBODY_RINGTONES"
+msgstr "Dei tonuak"
+
+
+msgid "IDS_HEALTH_MBODY_PROFILE"
+msgstr "Profila"
+
+msgid "IDS_COM_POP_PROCESSING"
+msgstr "Prozesatzen..."
+
+msgid "IDS_ST_MBODY_MAKE_VISIBLE_ABB"
+msgstr "Jarri ikusgai"
+
+msgid "IDS_ST_MBODY_TEXT_INPUT_ABB"
+msgstr "Tes. idaztea"
