@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns="http://tizen.org/ns/packages" package="org.tizen.watch-setting" version="0.0.1" install-location="internal-only">
+<manifest xmlns="http://tizen.org/ns/packages" package="org.tizen.watch-setting" api-version="3.0" version="0.0.1" install-location="internal-only">
 	<label>Settings</label>
 	<author email="min-ho.yun@samsung.com" href="www.samsung.com">Minho Yun</author>
 	<description>Settings</description>
