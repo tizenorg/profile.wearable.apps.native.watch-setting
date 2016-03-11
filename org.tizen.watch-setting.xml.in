@@ -3,7 +3,7 @@
 	<label>Settings</label>
 	<author email="min-ho.yun@samsung.com" href="www.samsung.com">Minho Yun</author>
 	<description>Settings</description>
-	<ui-application appid="org.tizen.watch-setting" exec="/usr/apps/org.tizen.watch-setting/bin/watch-setting" nodisplay="false" multiple="false" type="capp" taskmanage="true" indicatordisplay= "false">
+	<ui-application appid="org.tizen.watch-setting" exec="@TZ_SYS_RO_APP@/org.tizen.watch-setting/bin/watch-setting" nodisplay="false" multiple="false" type="capp" taskmanage="true" indicatordisplay= "false">
 		<category name="org.tizen.wmanager.WATCH_APP"></category>
 		<icon>org.tizen.watch-setting.png</icon>
 		<icon section="small">org.tizen.watch-setting_small.png</icon>

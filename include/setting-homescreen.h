@@ -30,8 +30,8 @@
 #define NUM_DEFAULT_THUMB_BUTTON 2
 #define DEFAULT_WALLPAPER_COUNT 6
 #define WALLPAPER_CNT_PER_PAGE 4
-#define SETTING_DEFAULT_WALLPAPER_PATH	"/opt/share/settings/Wallpapers"
-#define CROPPED_GALLERY_DEFAULT_WALLPAPER_PATH		"/opt/usr/media/.bgwallpaper.jpg"
+#define SETTING_DEFAULT_WALLPAPER_PATH	TZ_SYS_SHARE_D"/settings/Wallpapers"
+#define CROPPED_GALLERY_DEFAULT_WALLPAPER_PATH		TZ_USER_CONTENT_D"/.bgwallpaper.jpg"
 
 struct _homescreen_menu_item {
 	char *name;

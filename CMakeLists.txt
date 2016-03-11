@@ -32,7 +32,7 @@ SET(VENDOR "samsung")
 SET(PACKAGE ${PROJECT_NAME})
 SET(PKGNAME "com.${VENDOR}.${PACKAGE}")
 SET(PREFIX ${CMAKE_INSTALL_PREFIX})
-#SET(INSTALL_DIR_APPS "/usr/apps/${PKGNAME}")
+#SET(INSTALL_DIR_APPS "${TZ_SYS_RO_APP}/${PKGNAME}")
 SET(INSTALL_DIR_PRE "/usr")
 
 SET(BINDIR "${PREFIX}/bin")
@@ -45,7 +45,7 @@ SET(EDJ_PATH "${RESDIR}/edje")
 #SET(EDJ_PATH ".")
 SET(IMGDIR "./data/images")
 SET(IMG_PATH "data/images-b2")
-SET(FAKE_IMG_PATH "/usr/apps/${PKGNAME}/shared/res")
+SET(FAKE_IMG_PATH "${TZ_SYS_RO_APP}/${PKGNAME}/shared/res")
 
 #IF(FEATURE_SETTING_CHANGEABLE)
 SET(CHANGEABLE_PATH "${PREFIX}/shared/res/tables")
@@ -85,6 +85,7 @@ pkg_check_modules(pkgs REQUIRED elementary ecore-imf appcore-common appcore-efl
 				capi-content-media-content aul ail
 				capi-appfw-app-manager
 				alarm-service
+				libtzplatform-config
 )
 
 #??
@@ -154,6 +155,11 @@ ADD_DEFINITIONS("-DLOCALEDIR=\"${LOCALEDIR}\"")
 ADD_DEFINITIONS("-DICON_DIR=\"${ICONDIR}\"")
 #ADD_DEFINITIONS("-DEDJDIR=\"${EDJDIR}\"")
 ADD_DEFINITIONS("-DELM_DEMO_EDJ=\"${EDJ_PATH}/${PROJECT_NAME}.edj\"")
+ADD_DEFINITIONS("-DTZ_SYS_RO_APP_D=\"${TZ_SYS_RO_APP}\"")
+ADD_DEFINITIONS("-DTZ_SYS_DATA_D=\"${TZ_SYS_DATA}\"")
+ADD_DEFINITIONS("-DTZ_SYS_ETC_D=\"${TZ_SYS_ETC}\"")
+ADD_DEFINITIONS("-DTZ_SYS_SHARE_D=\"${TZ_SYS_SHARE}\"")
+ADD_DEFINITIONS("-DTZ_USER_CONTENT_D=\"${TZ_USER_CONTENT}\"")
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS})
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${pkgs_LDFLAGS} "-pie" ${LIB_M})
@@ -191,18 +197,18 @@ INSTALL(FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.edj DESTINATION ${EDJ_PATH})
 
 # install application HOME directory
 INSTALL(DIRECTORY DESTINATION ${DATADIR})
-
 #ADD_SUBDIRECTORY(po)
 
 # desktop icon
-set(PREFIX ${CMAKE_INSTALL_PREFIX})
-install(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.xml DESTINATION /usr/share/packages)
-install(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.png DESTINATION  /usr/share/icons/default/small)
-install(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting_small.png DESTINATION  /usr/share/icons/default/small)
-install(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.efl DESTINATION  /etc/smack/accesses.d/)
-#install(FILES ${CMAKE_SOURCE_DIR}/history DESTINATION /opt/usr/apps/org.tizen.watch-setting/data)
+SET(PREFIX ${CMAKE_INSTALL_PREFIX})
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.xml.in ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.xml)
+INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.xml DESTINATION /usr/share/packages)
+INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.png DESTINATION  /usr/share/icons/default/small)
+INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting_small.png DESTINATION  /usr/share/icons/default/small)
+INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.efl DESTINATION  /etc/smack/accesses.d/)
+#INSTALL(FILES ${CMAKE_SOURCE_DIR}/history DESTINATION /opt/usr/apps/org.tizen.watch-setting/data)
 
-#install fake image
-#install(FILES ${CMAKE_SOURCE_DIR}/images/fake/calc_por.jpg DESTINATION /usr/apps/org.tizen.watch-setting/res/images)
+#INSTALL fake image
+#INSTALL(FILES ${CMAKE_SOURCE_DIR}/images/fake/calc_por.jpg DESTINATION /${TZ_SYS_RO_APP}/org.tizen.watch-setting/res/images)
 
 ADD_SUBDIRECTORY(po)

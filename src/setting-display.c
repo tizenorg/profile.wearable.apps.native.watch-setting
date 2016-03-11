@@ -959,7 +959,7 @@ char *_get_default_font()
 	struct _xmlAttr *properties = NULL;
 	char *default_font_name = NULL;
 
-	doc = xmlParseFile("/usr/opt/etc/fonts/conf.avail/99-slp.conf");
+	doc = xmlParseFile(TZ_SYS_DATA_D"/etc/fonts/conf.avail/99-slp.conf");
 
 	cur = xmlDocGetRootElement(doc);
 

@@ -1757,7 +1757,7 @@ static int _clock_type_compare_cb(const void *d1, const void *d2)
 static char *get_timezone_str()
 {
 	char buf[1024];
-	ssize_t len = readlink("/opt/etc/localtime", buf, sizeof(buf) - 1);
+	ssize_t len = readlink(TZ_SYS_ETC_D"/localtime", buf, sizeof(buf) - 1);
 
 	if (len != -1) {
 		buf[len] = '\0';

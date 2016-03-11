@@ -25,9 +25,9 @@
 /*#include <player_product.h> */
 
 
-#define SETTING_DEFAULT_RINGTONE_PATH	"/opt/share/settings/Ringtones"
-#define SETTING_DEFAULT_ALERT_PATH		"/opt/share/settings/Alerts"
-#define SETTING_DEFAULT_PREVIEW_PATH	"/opt/share/settings/Previews"
+#define SETTING_DEFAULT_RINGTONE_PATH	TZ_SYS_SHARE_D"/settings/Ringtones"
+#define SETTING_DEFAULT_ALERT_PATH		TZ_SYS_SHARE_D"/settings/Alerts"
+#define SETTING_DEFAULT_PREVIEW_PATH	TZ_SYS_SHARE_D"/settings/Previews"
 
 #define DELIM		"/"
 
@@ -40,7 +40,7 @@
 #define SETTING_RINGTONE_VOLUME_BACKUP	"db/setting/sound/call/rmd_ringtone_volume"
 
 /* test code */
-#define PREVIEW_TEMP_PATH	"/opt/usr/media/Sounds/Over the horizon.mp3"
+#define PREVIEW_TEMP_PATH	TZ_USER_CONTENT_D"/Sounds/Over the horizon.mp3"
 
 enum {
     SOUND_MODE_SOUND,

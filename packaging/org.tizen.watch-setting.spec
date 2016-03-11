@@ -1,4 +1,3 @@
-%define PREFIX /usr/apps/org.tizen.watch-setting
 Name: org.tizen.watch-setting
 Version:    0.0.1
 Release:    1
@@ -53,12 +52,15 @@ BuildRequires: pkgconfig(capi-media-wav-player)
 BuildRequires: pkgconfig(ail)
 BuildRequires: pkgconfig(aul)
 BuildRequires: pkgconfig(alarm-service)
+BuildRequires: pkgconfig(libtzplatform-config)
 
 %description
 W watch-setting application
 
 %prep
 %setup -q
+
+%define PREFIX %{TZ_SYS_RO_APP}/org.tizen.watch-setting
 
 %build
 #%if 0export CFLAGS="${CFLAGS} -fPIC -fvisibility=hidden -fvisibility-inlines-hidden"
@@ -79,6 +81,11 @@ export FFLAGS="$FFLAGS -DTIZEN_DEBUG_ENABLE"
 
 LDFLAGS+="-Wl,--rpath=%{PREFIX}/lib -Wl,--as-needed -Wl,--hash-style=both"; export LDFLAGS
 cmake . -DCMAKE_INSTALL_PREFIX=%{PREFIX} \
+	-DTZ_SYS_RO_APP=%{TZ_SYS_RO_APP} \
+	-DTZ_SYS_DATA=%{TZ_SYS_DATA} \
+	-DTZ_SYS_ETC=%{TZ_SYS_ETC} \
+	-DTZ_SYS_SHARE=%{TZ_SYS_SHARE} \
+	-DTZ_USER_CONTENT=%{TZ_USER_CONTENT} \
 %if 0%{?sec_build_binary_sdk}
 	-DFEATURE_SETTING_SDK=YES \
 %endif
@@ -96,8 +103,8 @@ make %{?jobs:-j%jobs}
 rm -rf %{buildroot}
 
 %make_install
-mkdir -p %{buildroot}/opt/usr/apps/org.tizen.watch-setting
-mkdir -p %{buildroot}/opt/usr/apps/org.tizen.watch-setting/data/images
+mkdir -p %{buildroot}/%{TZ_SYS_RW_APPS}/org.tizen.watch-setting
+mkdir -p %{buildroot}/%{TZ_SYS_RW_APPS}/org.tizen.watch-setting/data/images
 
 %clean
 
@@ -148,19 +155,19 @@ GOPTION="-g 6514"
 
 #resetSound
 %ifarch %{arm}
-	DEFAULT_CALL_TONE="/opt/share/settings/Ringtones/Twinkle.ogg"
-	#DEFAULT_CALL_TONE="/opt/share/settings/Ringtones/Ringtone1.ogg"
+	DEFAULT_CALL_TONE="%{TZ_SYS_SHARE}/settings/Ringtones/Twinkle.ogg"
+	#DEFAULT_CALL_TONE="%{TZ_SYS_SHARE}/settings/Ringtones/Ringtone1.ogg"
 %else
-	DEFAULT_CALL_TONE="/opt/share/settings/Ringtones/Ringtone.ogg"
-	#DEFAULT_CALL_TONE="/opt/share/settings/Ringtones/Ringtone1.ogg"
+	DEFAULT_CALL_TONE="%{TZ_SYS_SHARE}/settings/Ringtones/Ringtone.ogg"
+	#DEFAULT_CALL_TONE="%{TZ_SYS_SHARE}/settings/Ringtones/Ringtone1.ogg"
 %endif
 
 %ifarch %{arm}
-	DEFAULT_NOTI_TONE="/opt/share/settings/Alerts/Flicker.ogg"
-	#DEFAULT_NOTI_TONE="/opt/share/settings/Alerts/Notification1.ogg"
+	DEFAULT_NOTI_TONE="%{TZ_SYS_SHARE}/settings/Alerts/Flicker.ogg"
+	#DEFAULT_NOTI_TONE="%{TZ_SYS_SHARE}/settings/Alerts/Notification1.ogg"
 %else
-	DEFAULT_NOTI_TONE="/opt/share/settings/Alerts/Notification.ogg"
-	#DEFAULT_NOTI_TONE="/opt/share/settings/Alerts/Notification1.ogg"
+	DEFAULT_NOTI_TONE="%{TZ_SYS_SHARE}/settings/Alerts/Notification.ogg"
+	#DEFAULT_NOTI_TONE="%{TZ_SYS_SHARE}/settings/Alerts/Notification1.ogg"
 %endif
 
 	#vconftool $GOPTION set -t bool db/setting/sound/sound_on "0" -s system::vconf_inhouse
@@ -336,10 +343,10 @@ GOPTION="-g 6514"
 
 	#vconftool $GOPTION set -t string db/setting/timezone_id "Asia/Seoul" -s system::vconf_inhouse
 
-	rm -f /opt/etc/localtime
-	ln -s /usr/share/zoneinfo/Asia/Seoul /opt/etc/localtime
+	rm -f %{TZ_SYS_ETC}/localtime
+	ln -s /usr/share/zoneinfo/Asia/Seoul %{TZ_SYS_ETC}/localtime
 	rm -f /etc/localtime
-	ln -s /opt/etc/localtime /etc/localtime
+	ln -s %{TZ_SYS_ETC}/localtime /etc/localtime
 
 #resetAccessibility
 	#vconftool $GOPTION set -t bool db/setting/accessibility/high_contrast "0" -s system::vconf_system
@@ -455,7 +462,7 @@ GOPTION="-g 6514"
         #vconftool $GOPTION set -t bool db/setting/ticker_noti/badge/facebook "1" -s org.tizen.setting::private
 
 #resetSecurity
-	rm -rf /opt/usr/data/setting/set_info
+	rm -rf %{TZ_SYS_DATA}/setting/set_info
 	##vconftool $GOPTION set -t string db/setting/privacy_passwd ""
 
 	#vconftool $GOPTION set -t bool db/setting/power_on_lock "0" -s system::vconf_setting
@@ -581,18 +588,19 @@ GOPTION="-g 6514"
 	# Idle clock edit mode ( with Home )
     #vconftool $GOPTION set -t int db/setting/idle_clock_show "0" -s system::vconf_inhouse
 
-if [ -d /opt/share/settings ]
+if [ -d %{TZ_SYS_SHARE}/settings ]
 then
-	rm -rf /opt/share/settings
+	rm -rf %{TZ_SYS_SHARE}/settings
 fi
 
-ln -s /opt/usr/share/settings /opt/share/settings
+#ln -s /opt/usr/share/settings /opt/share/settings
+#+ln -s %{TZ_SYS_SHARE}/settings %{TZ_SYS_SHARE}/settings
 
 # shared dir
-mkdir -p /usr/apps/org.tizen.watch-setting/shared
-mkdir -p /usr/apps/org.tizen.watch-setting/shared/res
+mkdir -p %{TZ_SYS_RO_APP}/org.tizen.watch-setting/shared
+mkdir -p %{TZ_SYS_RO_APP}/org.tizen.watch-setting/shared/res
 
-mkdir -p /opt/usr/data/setting
+mkdir -p %{TZ_SYS_DATA}/setting
 
 %files
 %manifest %{name}.manifest
@@ -606,7 +614,7 @@ mkdir -p /opt/usr/data/setting
 /usr/share/icons/default/small/*
 #/usr/share/packages/%{name}.xml
 #/usr/apps/org.tizen.watch-setting/data/images/*
-/usr/apps/org.tizen.watch-setting/*
+%{TZ_SYS_RO_APP}/org.tizen.watch-setting/*
 #/usr/apps/org.tizen.watch-setting/shared/res/*
 /opt/usr/share/settings/*
 /usr/share/Safety.zip

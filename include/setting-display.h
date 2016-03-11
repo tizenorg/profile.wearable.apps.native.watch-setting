@@ -27,7 +27,7 @@
 #define SCREEN_TIME_COUNT	5
 #define ROTATE_SCREEN_COUNT		4
 #define SETTING_FONT_PRELOAD_FONT_PATH "/usr/share/fonts"
-#define SETTING_FONT_DOWNLOADED_FONT_PATH "/opt/share/fonts"
+#define SETTING_FONT_DOWNLOADED_FONT_PATH TZ_SYS_SHARE_D"/fonts"
 
 struct _display_menu_item {
 	char *name;

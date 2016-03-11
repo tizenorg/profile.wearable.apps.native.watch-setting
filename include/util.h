@@ -16,15 +16,15 @@
 
 #include "setting_debug.h"
 
-#define IMG_DIR		"/usr/apps/org.tizen.watch-setting/data/images/"
-#define EDJE_PATH 	"/usr/apps/org.tizen.watch-setting/res/edje/watch-setting.edj"
+#define IMG_DIR		TZ_SYS_RO_APP_D"/org.tizen.watch-setting/data/images/"
+#define EDJE_PATH	TZ_SYS_RO_APP_D"/org.tizen.watch-setting/res/edje/watch-setting.edj"
 
 #ifndef FEATURE_SETTING_CHANGEABLE
 #define FEATURE_SETTING_CHANGEABLE
 #endif
 
 #ifdef FEATURE_SETTING_CHANGEABLE
-#define	COLOR_INFO_TABLE "/usr/apps/org.tizen.watch-setting/shared/res/tables/org.tizen.watch-setting_ChangeableColorInfo.xml"
+#define	COLOR_INFO_TABLE TZ_SYS_RO_APP_D"/org.tizen.watch-setting/shared/res/tables/org.tizen.watch-setting_ChangeableColorInfo.xml"
 #endif
 
 #define TRUE	1

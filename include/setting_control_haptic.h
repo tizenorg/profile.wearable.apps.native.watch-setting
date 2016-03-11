@@ -14,9 +14,9 @@
 #include <Elementary.h>
 #include <dd-haptic.h>
 
-#define SETTING_DEFAULT_HAPTIC_PREVIEW_VIB		"/opt/share/settings/Vibrations/B2_System_Vibration_Preview_140221.ivt"
-#define SETTING_DEFAULT_SYSTEM_HAPTIC_PREVIEW_VIB		"/opt/share/settings/Vibrations/B2_System_Long_v2_140221.ivt"
-#define SETTING_DEFAULT_NOTIFICATION_GENERAL_PREVIEW_VIB		"/opt/usr/share/settings/Vibrations/B2_Notification_General_v5_140306.ivt"
+#define SETTING_DEFAULT_HAPTIC_PREVIEW_VIB		TZ_SYS_SHARE_D"/settings/Vibrations/B2_System_Vibration_Preview_140221.ivt"
+#define SETTING_DEFAULT_SYSTEM_HAPTIC_PREVIEW_VIB		TZ_SYS_SHARE_D"/settings/Vibrations/B2_System_Long_v2_140221.ivt"
+#define SETTING_DEFAULT_NOTIFICATION_GENERAL_PREVIEW_VIB		TZ_SYS_SHARE_D"/settings/Vibrations/B2_Notification_General_v5_140306.ivt"
 #define SETTING_VIB_FEEDBACK_RATE				20
 
 #define SETTING_VIB_STRONG_RATE			49	/* 70 */
