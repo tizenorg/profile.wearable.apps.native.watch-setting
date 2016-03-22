@@ -174,7 +174,7 @@ int profile_play_sound(void *data, void *cb, char *ringtone_file, float vol, sou
 	err = player_create(&player);
 	if (err != PLAYER_ERROR_NONE) {
 		DBG("Setting - creating the player handle failed[%d]", err);
-		return NULL;
+		return 0;
 	}
 
 	DBG("Setting - profile_play_sound is setting sound type.");
@@ -287,11 +287,11 @@ void play_sound(char *file_path, float volume, sound_type_e sound_type)
 	}
 }
 
-void play_sound_for_sound_mode(char *file_path, float volume, sound_type_e sound_type)
+void play_sound_for_sound_mode_setting(char *file_path, float volume, sound_type_e sound_type)
 {
-	DBG("Setting - play_sound_for_sound_mode function start ...");
+	DBG("Setting - play_sound_for_sound_mode_setting function start ...");
 	if (!is_created_player()) {
-		DBG("Setting - play_sound_for_sound_mode)");
+		DBG("Setting - play_sound_for_sound_mode_setting)");
 		profile_play_sound(NULL, NULL, file_path, volume, sound_type, FALSE);
 		set_looping(TRUE);
 	} else {

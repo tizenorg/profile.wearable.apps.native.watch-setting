@@ -23,16 +23,21 @@
  *      Author: min-hoyun
  */
 
-#include <vconf.h>
-#include <vconf-keys.h>
+#include "setting_data_vconf.h"
 #include <unicode/ustring.h>
 #include <unicode/udat.h>
 #include <unicode/udatpg.h>
+
+#include <glib.h>
 
 #include "setting-language.h"
 #include "setting_view_toast.h"
 #include "util.h"
 
+static Eina_List *s_langlist;
+static void (*lang_update_cb)(void *);
+static void _parseLangListXML(char *docname);
+static void _tree_walk_langlist(xmlNodePtr cur);
 
 static struct _lang_menu_item lang_menu_its[LANGUAGE_ITEM_COUNT];
 static Evas_Object *g_lang_radio = NULL;
@@ -116,8 +121,34 @@ void _clear_lang_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_DISPLAY;
 }
 
+Eina_Bool _clear_lang_navi_cb(void *data , Elm_Object_Item *it)
+{
+	DBG("_clear_lang_cb");
+
+	appdata *ad = data;
+	if (ad == NULL) {
+		return EINA_FALSE;
+	}
+
+	if (ad->language_rdg) {
+		ad->language_rdg = NULL;
+	}
+
+	g_lang_radio = NULL;
+
+	_langlist_destroy();
+
+	_clear_g_lang_menu_items();
+
+	unregister_vconf_changing(VCONFKEY_WMS_WMANAGER_CONNECTED, change_language_enabling);
+
+	ad->MENU_TYPE = SETTING_DISPLAY;
+	return EINA_TRUE;
+}
+
 Ecore_Timer *lang_timer = NULL;
 
+#if 0 // _NOT_USED_
 static Eina_Bool _update_language(void *data)
 {
 	char *locale = vconf_get_str(VCONFKEY_LANGSET);
@@ -132,6 +163,7 @@ static Eina_Bool _update_language(void *data)
 
 	return ECORE_CALLBACK_CANCEL;
 }
+#endif
 
 static int _set_dateformat(const char *region)
 {
@@ -146,6 +178,7 @@ static int _set_dateformat(const char *region)
 	char *skeleton = "yMd";
 
 	uret = u_uastrncpy(customSkeleton, skeleton, strlen(skeleton));
+	DBG("u_uastrncpy ret =%d", uret);
 
 	pattern_generator = udatpg_open(region, &status);
 
@@ -156,6 +189,7 @@ static int _set_dateformat(const char *region)
 	                            bestPatternCapacity, &status);
 
 	ret_str = u_austrcpy(bestPatternString, bestPattern);
+	DBG("u_uastrncpy ret_str=%d", ret_str);
 
 	int i = 0;
 	int j = 0;
@@ -253,7 +287,6 @@ Evas_Object *_gl_lang_ridio_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *radio = NULL;
 	Evas_Object *radio_main = evas_object_data_get(obj, "radio_main");
-	appdata *ad = data;
 
 	Item_Data *id = data;
 	int index = id->index;
@@ -323,7 +356,6 @@ Evas_Object *_create_lang_list(void *data)
 	}
 	Evas_Object *genlist  = NULL;
 	Elm_Genlist_Item_Class *itc_temp = NULL;
-	struct _lang_menu_item *menu_its = NULL;
 	int idx = 0;
 
 	Evas_Object *layout = elm_layout_add(ad->nf);
@@ -346,7 +378,6 @@ Evas_Object *_create_lang_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 
-	menu_its = lang_menu_its;
 
 	Eina_List *lang_list = _get_language_list();
 	struct _lang_menu_item *node = NULL;
@@ -500,11 +531,10 @@ static void _tree_walk_langlist(xmlNodePtr cur)
 	char *id = NULL;			/* ex. ko_KR */
 	char *name = NULL;
 	char *sub_name = NULL;
-	const char *dim = "(";
 
 	for (cur_node = cur; cur_node; cur_node = cur_node->next) {
 		if (cur_node->type == XML_ELEMENT_NODE) {
-			id 	 = (char *)g_strdup((char *)xmlGetProp(cur_node, (const xmlChar *)"id"));
+			id	 = (char *)g_strdup((char *)xmlGetProp(cur_node, (const xmlChar *)"id"));
 			name = (char *)g_strdup((char *)xmlGetProp(cur_node, (const xmlChar *)"string"));
 			/*mcc  = (char *)g_strdup((char*) xmlGetProp(cur_node, (const xmlChar *)"mcc")); */
 
@@ -530,14 +560,11 @@ const char *setting_get_lang_title(void)
 {
 	DBG("%s", __func__);
 
-	int ret = 0;
-
 	if (s_langlist == NULL) {
 		_langlist_load();
 	}
 
 	Eina_List *lang_list = s_langlist;
-	Eina_List *elist = NULL;
 
 	struct _lang_menu_item *lang_entry;
 

@@ -14,6 +14,9 @@
 #include "setting-profile.h"
 #include "util.h"
 
+/*This function will be deprecated..*/
+int app_control_set_package(app_control_h app_control, const char *package);
+
 /* profile(s-health) */
 void _create_profile(void *data, Evas_Object *obj, void *event_info)
 {

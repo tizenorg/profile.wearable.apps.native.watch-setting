@@ -17,9 +17,13 @@
 
 #include <string.h>
 #include <vconf.h>
-#include <unicode/unum.h>
 #include <fcntl.h>
 #include "util.h"
+#include <unicode/unum.h>
+#include <unicode/ustring.h>
+#include <unicode/udat.h>
+#include <unicode/udatpg.h>
+
 
 
 char *setting_gettext(const char *s)
@@ -89,7 +93,7 @@ bool colorstr_to_decimal(char *color, int *R, int *G, int *B)
 	return true;
 }
 
-char *_get_strnum_from_icu(int number)
+char* _get_strnum_from_icu(int number)
 {
 	char *locale_tmp = vconf_get_str(VCONFKEY_REGIONFORMAT);
 	char locale[32] = {0,};

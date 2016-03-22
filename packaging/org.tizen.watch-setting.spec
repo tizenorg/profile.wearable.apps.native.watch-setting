@@ -53,7 +53,7 @@ BuildRequires: pkgconfig(ail)
 BuildRequires: pkgconfig(aul)
 BuildRequires: pkgconfig(alarm-service)
 BuildRequires: pkgconfig(libtzplatform-config)
-
+BuildRequires: pkgconfig(glib-2.0)
 %description
 W watch-setting application
 

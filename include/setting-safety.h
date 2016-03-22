@@ -63,18 +63,6 @@ typedef struct _safety_data {
 Evas_Object *create_safety_list(void *data);
 Eina_Bool clear_safety_cb(void *data, Elm_Object_Item *it);
 
-static void _emergency_mode_cb(void *data, Evas_Object *obj, void *event_info);
-static void _trauma_cb(void *data, Evas_Object *obj, void *event_info);
-static void _no_activity_cb(void *data, Evas_Object *obj, void *event_info);
-static void _set_interval_cb(void *data, Evas_Object *obj, void *event_info);
-static void _help_cb(void *data, Evas_Object *obj, void *event_info);
-
-static void show_interval_list(void *data);
-static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info);
-static void _no_activity_interval_cb(void *data, Evas_Object *obj, void *event_info);
-
-static void _show_interval_trauma_list(void *data);
-static void _show_interval_no_activity_list(void *data);
 void _help_popup_cb(void *data, Evas_Object *obj, void *event_info);
 void _disable_emergency_popup_cb(void *data, Evas_Object *obj, void *event_info);
 

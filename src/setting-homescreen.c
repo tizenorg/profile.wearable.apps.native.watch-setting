@@ -95,6 +95,8 @@ static Evas_Object *g_gallery_prv = NULL;
 static Evas_Object *g_wallpaper_box = NULL;
 static bool wallpaper_touched = false;
 
+
+#if 0  // _NOT_USED_
 static int _chk_pkg_install(const char *pkgid)
 {
 	int ret = 0;
@@ -125,10 +127,13 @@ _gallery_item_cb(media_info_h item, void *user_data)
 
 	return false;
 }
+#endif
 
 static void _get_last_img_path()
 {
+	#if 0
 	Eina_List *item_list = NULL;
+	#endif
 	filter_h media_filter;
 
 	int ret;
@@ -506,6 +511,7 @@ static void _layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_i
 	free(pd);
 }
 
+#if 0 // _NOT_USED_
 static Eina_Bool animator_cb(void *data)
 {
 	page_data *pd = (page_data *)data;
@@ -517,6 +523,7 @@ static Eina_Bool animator_cb(void *data)
 	}
 	return ECORE_CALLBACK_CANCEL;
 }
+#endif
 
 static int _set_bg_color_type(int type_num)
 {
@@ -672,9 +679,9 @@ static void _mouse_up_wallpaper_cb(void *data, Evas *evas, Evas_Object *obj, voi
 
 static void _page_show(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
-	int idx = 0;
 	int page;
 #if 0
+	int idx = 0;
 	vconf_get_int(VCONFKEY_SETAPPL_HOME_BG_COLOR_TYPE_INT, &idx);
 	page = (idx - 1) / WALLPAPER_CNT_PER_PAGE;
 #endif
@@ -685,7 +692,7 @@ static void _page_show(void *data, Evas *e, Evas_Object *obj, void *event_info)
 
 static Evas_Object *_create_index(Evas_Object *parent)
 {
-	Evas_Object *layout, *scroller, *box, *page_layout, *page, *mapbuf;
+	Evas_Object *layout, *scroller, *box, *page_layout, *page;
 	int index;
 
 	if (parent == NULL)
@@ -780,6 +787,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 	return layout;
 }
 
+#if 0 // _NOT_USED_
 static void
 _wallpaper_layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 {
@@ -799,6 +807,7 @@ wallpaper_animator_cb(void *data)
 	}
 	return ECORE_CALLBACK_CANCEL;
 }
+#endif
 
 static void _wallpaper_page_show(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
@@ -917,8 +926,6 @@ static void _update_wallpaper()
 				vconf_get_int("db/wms/home_bg_mode", &bg_mode);
 
 				if (bg_mode) {
-					char *sel_wallpaper = NULL;
-					sel_wallpaper = vconf_get_str("db/menu_widget/bgset");
 					Evas_Object *selected_rect = elm_image_add(page_layout);
 					elm_image_file_set(selected_rect, SETTING_DEFAULT_WALLPAPER_PATH"/btn_icons/settings_wallpaper_selected.png", NULL);
 					elm_image_aspect_fixed_set(selected_rect, EINA_FALSE);
@@ -959,10 +966,12 @@ static void _update_wallpaper()
 }
 
 
+#if 0 // _NOT_USED_
 static void _wallpaper_page_refresh(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	DBG("is_prev_update , %d", is_prev_update);
 }
+#endif
 
 bool _is_file_exist(const char *filepath)
 {
@@ -1015,7 +1024,7 @@ static void _wallpaper_vconf_wallpaper_changed_cb(keynode_t *node, void *data)
 
 static Evas_Object *_create_wallpaper_thumbnail(Evas_Object *parent)
 {
-	Evas_Object *layout, *scroller, *box, *page_layout, *thumbnail, *mapbuf, *color_page, *gallery_page;
+	Evas_Object *layout, *scroller, *box, *page_layout, *thumbnail, *color_page, *gallery_page;
 	int index;
 
 	Evas_Object *touch_eo = NULL;
@@ -1149,8 +1158,6 @@ static Evas_Object *_create_wallpaper_thumbnail(Evas_Object *parent)
 			vconf_get_int("db/wms/home_bg_mode", &bg_mode);
 
 			if (bg_mode) {
-				char *sel_wallpaper = NULL;
-				sel_wallpaper = vconf_get_str("db/menu_widget/bgset");
 				Evas_Object *selected_rect = elm_image_add(page_layout);
 				elm_image_file_set(selected_rect, SETTING_DEFAULT_WALLPAPER_PATH"/btn_icons/settings_wallpaper_selected.png", NULL);
 				elm_image_aspect_fixed_set(selected_rect, EINA_FALSE);
@@ -1226,7 +1233,6 @@ Evas_Object *create_wallpaper_list(void *data)
 {
 	appdata *ad;
 	Evas_Object *layout_inner;
-	Elm_Object_Item *it;
 
 	ad = (appdata *)data;
 	if (ad == NULL)
@@ -1270,8 +1276,6 @@ void _gallery_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	DBG("_gallery_gl_cb");
 
 	appdata *ad;
-	Evas_Object *layout_inner;
-	Elm_Object_Item *it;
 
 	ad = (appdata *)data;
 	if (ad == NULL)

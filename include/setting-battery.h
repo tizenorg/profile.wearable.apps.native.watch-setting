@@ -48,18 +48,14 @@ struct _battery_info {
 
 Ecore_Timer *battery_timer;
 
-int percent;
-bool is_charging;
-bool prev_charging_state;
-int image_index;
-int is_alive;
 
 
 /* ----------------method----------------------// */
 
 Evas_Object *_create_battery_list(void *data);
 
-Evas_Object *_battery_status_cb(void *data);
+void _battery_status_cb_gen_item(void *data, Evas_Object *obj, void *event_info);
+Evas_Object* _battery_status_cb(void *data);
 void _clear_battery_cb(void *data , Evas *e, Evas_Object *obj, void *event_info);
 Eina_Bool _clear_battery_list_cb(void *data, Elm_Object_Item *it);
 void _start_timer_for_update(Evas_Object *obj);

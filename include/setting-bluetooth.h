@@ -22,6 +22,7 @@
 #include <libintl.h>
 #include <string.h>
 #include <bluetooth-api.h>
+#include <bluetooth-audio-api.h>
 #include <bluetooth.h>
 #include <vconf.h>
 
@@ -53,23 +54,19 @@ typedef struct Bt_Item_Data {
 	Evas_Object *state_label;
 } Bt_Item_Data;
 
-static char *_gl_bt_title_get(void *data, Evas_Object *obj, const char *part);
-static Evas_Object *_gl_bt_check_get(void *data, Evas_Object *obj, const char *part);
 Evas_Object *_create_bt_list(void *data);
-static void _bt_chk_changed_cb(void *data, Evas_Object *obj, void *event_info);
-static void _blutooth_cb(void *data, Evas_Object *obj, void *event_info);
-static void _visibility_cb(void *data, Evas_Object *obj, void *event_info);
-static void _alternate_bt_mode(void *data);
-static void _deamon_cb(void *data, Evas_Object *obj, void *event_info);
 
-static void _BT_headset_cb(void *data, Evas_Object *obj, void *event_info);
 
 void initialize_bt();
 void clear_bt_resource();
 Eina_Bool _clear_bluetooth_cb(void *data, Elm_Object_Item *it);
 void _update_visibility_item_view(int is_hf_connected);
 
-static void bt_state_vconf_change_cb(keynode_t *key, void *data);
-static void hf_event_handler(int event, void *data, void *user_data);
+
+
+/*Added for bluetooth internal API*/
+int bt_adapter_enable(void);
+int bt_adapter_disable(void);
+int bt_adapter_set_visibility(bt_adapter_visibility_mode_e discoverable_mode, int duration);
 
 #endif /* SETTING_BLUETOOTH_H_ */

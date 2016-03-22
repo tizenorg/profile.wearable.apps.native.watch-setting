@@ -21,7 +21,6 @@
 #include "util.h"
 
 static void _privacy_lock_cb(void *data, Evas_Object *obj, void *event_info);
-static void _privacy_see_pattern_cb(void *data, Evas_Object *obj, void *event_info);
 static void _privacy_help_cb(void *data, Evas_Object *obj, void *event_info);
 static void _privacy_pattern_enable_cb(void *data, Evas_Object *obj, void *event_info);
 static void _privacy_pattern_disable_cb(void *data, Evas_Object *obj, void *event_info);
@@ -124,7 +123,6 @@ char *_gl_privacy_pattern_title_get(void *data, Evas_Object *obj, const char *pa
 	char buf[1024] = {0,};
 	Item_Data *id = data;
 	int index = id->index;
-	char *device_info = NULL;
 
 	if (!strcmp(part, "elm.text")) {
 		snprintf(buf, sizeof(buf) - 1, "%s", _(privacy_pattern_menu_list[index].name));
@@ -227,7 +225,6 @@ char *_gl_privacy_title_get(void *data, Evas_Object *obj, const char *part)
 	char buf[1024] = {0,};
 	Item_Data *id = data;
 	int index = id->index;
-	char *device_info = NULL;
 
 	if (!strcmp(part, "elm.text.1") || !strcmp(part, "elm.text")) {
 		snprintf(buf, sizeof(buf) - 1, "%s", _(privacy_menu_list[index].name));
@@ -282,7 +279,6 @@ static void _privacy_lock_cb(void *data, Evas_Object *obj, void *event_info)
 void _create_help_popup(void *data)
 {
 	Evas_Object *popup = NULL;
-	Evas_Object *btn = NULL;
 	Evas_Object *scroller = NULL;
 	Evas_Object *label = NULL;
 

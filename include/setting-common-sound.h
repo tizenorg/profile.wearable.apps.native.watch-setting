@@ -55,9 +55,11 @@ enum {
 
 int get_sound_mode();
 int is_created_player();
+int is_player_paused();
 void set_looping(int);
 
 void play_sound(char *file_path, float volume, sound_type_e sound_type);
+void play_sound_for_sound_mode_setting(char *file_path, float volume, sound_type_e sound_type);
 int profile_play_sound(void *data, void *cb, char *ringtone_file, float vol, sound_type_e sound_type, int prelistening_enable);
 int _close_player(void *data, sound_type_e type);
 int _profile_stop_sound(void *data);

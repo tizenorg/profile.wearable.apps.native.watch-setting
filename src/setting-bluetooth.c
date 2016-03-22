@@ -23,6 +23,9 @@
 #include "setting-common-sound.h"
 #include "util.h"
 
+static void _blutooth_cb(void *data, Evas_Object *obj, void *event_info);
+static void _visibility_cb(void *data, Evas_Object *obj, void *event_info);
+static void _BT_headset_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _bt_menu_item bt_menu_its[] = {
 	{ "IDS_QP_BUTTON_BLUETOOTH", 		DISABLE, _blutooth_cb   	},
@@ -68,6 +71,12 @@ static int is_handsfree_connected();
 static void _bt_genlist_update();
 static int is_disable_visibility_item_view();
 static void _update_visibility_view();
+static void _alternate_bt_mode(void *data);
+
+static char *_gl_bt_title_get(void *data, Evas_Object *obj, const char *part);
+static Evas_Object *_gl_bt_check_get(void *data, Evas_Object *obj, const char *part);
+static void hf_event_handler(int event,  bt_hf_event_param_t *data, void *user_data);
+
 
 
 static void sap_state_vconf_change_cb(keynode_t *key, void *data)
@@ -139,7 +148,7 @@ static void _disable_visibility_item_view()
 	_update_visibility_view();
 }
 
-static void hf_event_handler(int event, void *data, void *user_data)
+static void hf_event_handler(int event,  bt_hf_event_param_t *data, void *user_data)
 {
 	switch (event) {
 		case BLUETOOTH_EVENT_HF_CONNECTED:
@@ -498,7 +507,7 @@ static void _visibility_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *it = (Elm_Object_Item *)event_info;
 	elm_genlist_item_selected_set(it, EINA_FALSE);
 
-	bool touch_sound_enable = false;
+	int touch_sound_enable = false;
 	if (get_sound_mode() == SOUND_MODE_SOUND) {
 		vconf_get_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, &touch_sound_enable);
 		if (touch_sound_enable) {
@@ -721,7 +730,7 @@ static int is_add_BT_headset()
 
 static int is_BT_enable()
 {
-	int enable = DISABLE;
+	bt_adapter_state_e enable = BT_ADAPTER_DISABLED;
 
 	if (bt_adapter_get_state(&enable) != BT_ERROR_NONE) {
 		ERR("Setting - bt_adapter_get_state() is failed ");
@@ -742,7 +751,6 @@ Evas_Object *_create_bt_list(void *data)
 
 	Evas_Object *genlist  = NULL;
 	struct _bt_menu_item *menu_its = NULL;
-	Elm_Genlist_Item_Class *temp_itc = NULL;
 	int idx = 0;
 
 	init_values();

@@ -30,6 +30,7 @@
 
 #include "setting_data_vconf.h"
 
+static Eina_List *g_clock_list[3];
 static void _datetime_auto_sync_cb(void *data, Evas_Object *obj, void *event_info);
 static void _datetime_date_cb(void *data, Evas_Object *obj, void *event_info);
 static void _datetime_time_cb(void *data, Evas_Object *obj, void *event_info);
@@ -41,9 +42,11 @@ static void _mouse_down_cb(void *data, Evas *evas, Evas_Object *obj, void *event
 static void _mouse_up_cb(void *data, Evas *evas, Evas_Object *obj, void *event_info);
 static void _mouse_move_cb(void *data, Evas *evas, Evas_Object *obj, void *event_info);
 static void _page_show(void *data, Evas *e, Evas_Object *obj, void *event_info);
+Evas_Object *_clock_type_cb(void *data, Evas_Object *obj, void *event_info);
+void _clock_type_cb_gen_item(void *data, Evas_Object *obj, void *event_info);
 
 static struct _clock_menu_item clock_menu_its[] = {
-	{ "IDS_ST_BODY_CLOCK_TYPE_ABB", 	1, 		_clock_type_cb },
+	{ "IDS_ST_BODY_CLOCK_TYPE_ABB", 	1, 		_clock_type_cb_gen_item },
 #ifndef FEATURE_SETTING_SDK
 	{ "IDS_ST_BODY_DATE_AND_TIME_ABB", 	0,	_dt_cb },
 	{ "IDS_ST_BODY_HOURLY_ALERT_ABB", 	0,		_hourly_alert_cb },
@@ -97,7 +100,6 @@ static Clock_Type_Item *_get_selected_clock()
 {
 	Clock_Type_Item *pitem = NULL;
 	char *pkgid = NULL;
-	char *p = NULL;
 	int i = 0;
 
 	pkgid = vconf_get_str(VCONFKEY_WMS_CLOCKS_SET_IDLE);
@@ -211,7 +213,7 @@ static void update_clock_list(void *data, Eina_Bool reload, Eina_Bool show)
 		_page_show(NULL, NULL, g_clock_scroller, NULL);
 	}
 }
-
+#if 0 // _NOT_USED_
 static int _clock_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 {
 	appdata *ad = data;
@@ -223,7 +225,7 @@ static int _clock_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 	char *appid = NULL;
 	int r;
 	pkgmgrinfo_appinfo_h tmp_handle;
-	int clockapp = 0;
+	bool clockapp = 0;
 
 	r = pkgmgrinfo_appinfo_get_appid(handle, &appid);
 	if (r < 0 || !appid) {
@@ -257,7 +259,9 @@ static int _clock_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 
 	return 0;
 }
+#endif
 
+#if 0 // _NOT_USED_
 static int _clock_app_event_cb(int req_id, const char *pkg_type, const char *pkgid,
                                const char *key, const char *val, const void *pmsg, void *data)
 {
@@ -308,13 +312,13 @@ static int _clock_app_uninstall_event_cb(int req_id, const char *pkg_type, const
 		return -1;
 	}
 
-	int ret = 0;
 	if (!strncmp(key, "end", 3) && !strncmp(val, "ok", 2)) {
 		DBG("end uninstall for some pkgid");
 		update_clock_list(ad, EINA_TRUE, EINA_TRUE);
 	}
 	return 0;
 }
+#endif
 
 static void update_clock_list_cb(keynode_t *key, void *data)
 {
@@ -335,6 +339,7 @@ static void update_clock_list_cb(keynode_t *key, void *data)
 	}
 }
 
+#if 0 // _NOT_USED_
 static int _clock_check_appinfo(void *data, char *appid)
 {
 	appdata *ad = data;
@@ -345,7 +350,7 @@ static int _clock_check_appinfo(void *data, char *appid)
 	}
 	int r;
 	pkgmgrinfo_appinfo_h tmp_handle;
-	int clockapp = 0;
+	bool clockapp = 0;
 
 	r = pkgmgrinfo_appinfo_get_appinfo(appid, &tmp_handle);
 	if (r != PMINFO_R_OK) {
@@ -373,6 +378,7 @@ static int _clock_check_appinfo(void *data, char *appid)
 
 	return 0;
 }
+#endif
 
 void initialize_clock(void *data)
 {
@@ -390,9 +396,9 @@ void initialize_clock(void *data)
 	const char *lang = vconf_get_str(VCONFKEY_LANGSET);
 	coll = ucol_open(lang, &status);
 
-	int event_type = PMINFO_CLIENT_STATUS_INSTALL | PMINFO_CLIENT_STATUS_UPGRADE;
 
 #if 0
+	int event_type = PMINFO_CLIENT_STATUS_INSTALL | PMINFO_CLIENT_STATUS_UPGRADE;
 	if (pc_clock) {
 		pkgmgr_client_free(pc_clock);
 		pc_clock = NULL;
@@ -472,6 +478,7 @@ static void _layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_i
 	}
 }
 
+#if 0 // _NOT_USED_
 static Eina_Bool animator_cb(void *data)
 {
 	clock_page_data *pd = (clock_page_data *)data;
@@ -480,6 +487,7 @@ static Eina_Bool animator_cb(void *data)
 
 	return ECORE_CALLBACK_CANCEL;
 }
+#endif
 
 static int _set_clock_type(char *pkgid)
 {
@@ -569,8 +577,7 @@ static void _page_show(void *data, Evas *e, Evas_Object *obj, void *event_info)
 
 static Evas_Object *_create_index(Evas_Object *parent)
 {
-	Evas_Object *layout, *scroller, *box, *page_layout, *mapbuf, *table;
-	Evas_Coord w = 0, h = 0;
+	Evas_Object *layout, *scroller, *box, *page_layout;
 
 	if (parent == NULL)
 		return NULL;
@@ -676,6 +683,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			elm_object_part_content_set(page_layout, "elm.icon", clock_layout);
 
 #if 0
+			Evas_Object  *mapbuf, *table;
 			/* mapbuf for page 1 */
 			mapbuf = elm_mapbuf_add(box);
 			evas_object_size_hint_weight_set(mapbuf, 0, 0);
@@ -684,12 +692,16 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			elm_object_content_set(mapbuf, page_layout);
 			pd->mapbuf[pitem->index] = mapbuf;
 #endif
+
+#if 0
+			Evas_Coord w = 0, h = 0;
 			elm_win_screen_size_get(elm_widget_top_get(parent), NULL, NULL, &w, &h);
 			table = _elm_min_set(page_layout, box, w, h);
 			evas_object_size_hint_weight_set(table, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 			evas_object_size_hint_align_set(table, EVAS_HINT_FILL, EVAS_HINT_FILL);
 			evas_object_show(table);
 			elm_box_pack_end(box, table);
+#endif
 		}
 	}
 
@@ -710,7 +722,8 @@ int watch_metadata_func(const char *key, const char *value, void *user_data)
 {
 	Clock_Type_Data *pclockdata =(Clock_Type_Data *)user_data;
 	if (strcmp(key, (char *)pclockdata->name) == 0) {
-		pclockdata->value = value;
+		//pclockdata->value = value;
+		pclockdata->value = strdup(value);
 		return -1;
 	}
 	else
@@ -724,7 +737,7 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 	char *pkgid = NULL;
 	char *icon = NULL;
 	int ret = 0;
-	int preload = 0;
+	_Bool preload = 0;
 	char *m_value = NULL;
 	int type = CLOCKTYPE_INVALID;
 
@@ -768,13 +781,14 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 			INFO("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party");
 		}
 */
-		static Clock_Type_Data clock_metadata = {"clocktype",0};
-		ret = pkgmgrinfo_appinfo_foreach_metadata(tmp_handle, watch_metadata_func,(void*)(&clock_metadata));
 
 		Clock_Type_Item *pitem = NULL;
 		pitem = (Clock_Type_Item *)calloc(1, sizeof(Clock_Type_Item));
 		setting_retvm_if(NULL == pitem, SETTING_RETURN_FAIL, "pitem is NULL");
 		memset(pitem, 0x0, sizeof(Clock_Type_Item));
+
+		static Clock_Type_Data clock_metadata = {"clocktype",0};
+		ret = pkgmgrinfo_appinfo_foreach_metadata(tmp_handle, watch_metadata_func,(void*)(&clock_metadata));
 
 		pitem->appid = strdup(appid);
 		pitem->pkgid = strdup(pkgid);
@@ -790,6 +804,9 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		} else {
 			type = CLOCKTYPE_3RD;
 		}
+
+		if(clock_metadata.value)
+			free(clock_metadata.value);
 
 		if (preload) {
 			switch (type) {
@@ -811,13 +828,12 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 	return 0;
 }
 
-Evas_Object *_clock_type_cb(void *data)
+Evas_Object *_clock_type_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	/*elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE); */
 
 	appdata *ad = NULL;
 	Evas_Object *layout_inner = NULL;
-	Elm_Object_Item *it = NULL;
 
 	ad = (appdata *)data;
 	if (ad == NULL)
@@ -826,10 +842,32 @@ Evas_Object *_clock_type_cb(void *data)
 	temp_ad = ad;
 
 	layout_inner = _create_index(ad->nf);
+	/*	Elm_Object_Item *it = NULL; */
 	/*it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout_inner, NULL); */
 	/*elm_naviframe_item_title_enabled_set(it, EINA_FALSE, EINA_FALSE); */
 
 	return layout_inner;
+}
+
+void _clock_type_cb_gen_item(void *data, Evas_Object *obj, void *event_info)
+{
+	/*elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE); */
+
+	appdata *ad = NULL;
+
+	ad = (appdata *)data;
+	if (ad == NULL)
+		return;
+
+	temp_ad = ad;
+
+	/* 	Evas_Object *layout_inner = NULL; */
+	/* layout_inner = _create_index(ad->nf); */
+	/*	Elm_Object_Item *it = NULL; */
+	/*it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout_inner, NULL); */
+	/*elm_naviframe_item_title_enabled_set(it, EINA_FALSE, EINA_FALSE); */
+
+	return;
 }
 
 void _hourly_alert_cb(void *data, Evas_Object *obj, void *event_info)
@@ -847,6 +885,7 @@ static char *_date_format_get()
 	char *date_fmt[] = { "%d%m%Y", "%m%d%Y", "%Y%m%d", "%Y%d%m" };
 
 	ret = vconf_get_int(VCONFKEY_SETAPPL_DATE_FORMAT_INT, &date_val);
+	DBG("ret = %d", ret);
 
 	return strdup(date_fmt[date_val]);
 }
@@ -868,6 +907,7 @@ static char *_time_format_get()
 	return strdup(time_fmt[is_hour24]);
 }
 
+#if 0 // _NOT_USED_
 static char *_datetime_format_get()
 {
 	char *dt_fmt, *region_fmt, *lang, *temp_fmt = NULL;
@@ -905,6 +945,7 @@ static char *_datetime_format_get()
 
 	return strdup(dt_fmt);
 }
+#endif
 
 static void _vconf_date_format_changed_cb(keynode_t *node, void *data)
 {
@@ -924,6 +965,7 @@ static void _vconf_time_format_changed_cb(keynode_t *node, void *data)
 	free(dt_fmt);
 }
 
+#if 0 // _NOT_USED_
 static void _vconf_datetime_format_changed_cb(keynode_t *node, void *data)
 {
 	Evas_Object *datetime = (Evas_Object *) data;
@@ -931,6 +973,7 @@ static void _vconf_datetime_format_changed_cb(keynode_t *node, void *data)
 	elm_datetime_format_set(datetime, dt_fmt);
 	free(dt_fmt);
 }
+#endif
 
 static Eina_Bool _clear_date_changed_cb(void *data, Elm_Object_Item *it)
 {
@@ -1110,6 +1153,7 @@ char *_get_date_str()
 	char *date_fmt[] = { "dd/MM/y", "MM/dd/y", "y/MM/dd", "y/dd/MM" };
 
 	ret = vconf_get_int(VCONFKEY_SETAPPL_DATE_FORMAT_INT, &date_val);
+	DBG("ret = %d", ret);
 
 	return _get_str_from_icu(date_fmt[date_val]);
 }
@@ -1182,7 +1226,6 @@ char *_gl_date_and_time_title_get(void *data, Evas_Object *obj, const char *part
 static Evas_Object *_gl_dt_auto_sync_check_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *check = NULL;
-	appdata *ad = data;
 	int is_auto_update = 0;
 
 	DT_Item_Data *id = data;
@@ -1343,6 +1386,7 @@ static void _set_clicked_cb(void *data, Evas_Object *obj, void *event_info)
 	time_t t = mktime(&currtime);
 
 	int ret = alarmmgr_set_systime(t);
+	DBG("ret = %d", ret);
 
 	elm_naviframe_item_pop(ad->nf);
 
@@ -1415,7 +1459,7 @@ static void _datetime_date_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Evas_Object *scroller;
 	Evas_Object *layout, *btn;
-	Evas_Object *datetime, *datetime_field, *datetime_button;
+	Evas_Object *datetime;
 	Elm_Object_Item *it;
 	char *dt_fmt;
 	appdata *ad = (appdata *)data;
@@ -1477,8 +1521,7 @@ static void _datetime_time_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Evas_Object *scroller;
 	Evas_Object *layout, *btn;
-	Evas_Object *datetime, *datetime_field, *datetime_button;
-	Evas_Object *radio, *rdg;
+	Evas_Object *datetime;
 	Elm_Object_Item *it;
 	char *dt_fmt;
 	appdata *ad = (appdata *)data;

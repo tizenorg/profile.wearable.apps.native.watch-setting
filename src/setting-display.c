@@ -30,6 +30,7 @@
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
 #include <fontconfig/fontconfig.h>
+#include <glib.h>
 
 #include "setting_data_vconf.h"
 #include "setting-display.h"
@@ -40,16 +41,16 @@
 #include "util.h"
 
 static struct _display_menu_item display_menu_its[] = {
-	{ "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB",  	SETTING_DISPLAY_SCREEN_TIME, 	_display_gl_screen_timeout_cb  	},
-	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT, 	_display_gl_font_cb	    	},
+	{ "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB",	SETTING_DISPLAY_SCREEN_TIME,	_display_gl_screen_timeout_cb	},
+	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT,	_display_gl_font_cb		},
 	{ "IDS_ST_BUTTON_LANGUAGE",				SETTING_DISPLAY_LANG,	_display_gl_language_cb	},
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_MBODY_MANAGE_APPS_ABB", 	SETTING_DISPLAY_EDIT_APPS, 	_homescreen_gl_edit_apps_cb	},
+	{ "IDS_ST_MBODY_MANAGE_APPS_ABB",	SETTING_DISPLAY_EDIT_APPS,	_homescreen_gl_edit_apps_cb	},
 #endif
 };
 
 static struct _font_menu_item font_menu_its[] = {
-	{ "IDS_ST_BODY_FONT_STYLE",  		SETTING_DISPLAY_FONT_STYLE, _display_gl_font_style_cb },
+	{ "IDS_ST_BODY_FONT_STYLE",			SETTING_DISPLAY_FONT_STYLE, _display_gl_font_style_cb },
 	{ "IDS_ST_BODY_FONT_SIZE_ABB",		SETTING_DISPLAY_FONT_SIZE,	_display_gl_font_size_cb },
 };
 
@@ -105,7 +106,8 @@ static void change_screen_time_cb(keynode_t *key, void *data);
 static void change_language_cb(keynode_t *key, void *data);
 static Eina_Bool setting_font_list_pop_cb(void *data, Elm_Object_Item *it);
 static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *event_info);
-
+static void _set_rotate_screen(const int rotation);
+static int _get_rotate_screen();
 
 
 void _init_display()
@@ -152,7 +154,7 @@ void _update_menu_text_when_lang_changed()
 	}
 }
 
-Eina_Bool _clear_display_cb(void *data, Elm_Object_Item *it)
+void _clear_display_cb(void *data, Evas *e, Elm_Object_Item *it, void *event_info)
 {
 	temp_ad = NULL;
 	g_screen_time_genlist = NULL;
@@ -166,7 +168,7 @@ Eina_Bool _clear_display_cb(void *data, Elm_Object_Item *it)
 	unregister_vconf_changing(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, change_screen_time_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
 
-	return EINA_TRUE;
+	return ;
 }
 
 void _display_gl_font_cb(void *data, Evas_Object *obj, void *event_info)
@@ -1091,7 +1093,7 @@ static Eina_List *_get_available_font_list()
 						/* I will set english as default family language. */
 						/* If there is no proper family language for current locale, */
 						/* we have to show the english family name. */
-						if (!strcmp(lang, "en")) {
+						if (!strcmp((const char *)lang, "en")) {
 							family_result = (char *)family;
 						}
 						id++;
@@ -1125,7 +1127,7 @@ static Eina_List *_get_available_font_list()
 						/* I will set english as default family language. */
 						/* If there is no proper family language for current locale, */
 						/* we have to show the english family name. */
-						if (!strcmp(lang, "en")) {
+						if (!strcmp((const char *)lang, "en")) {
 							family_result = (char *)family;
 						}
 						id++;
@@ -1161,7 +1163,6 @@ int _show_font_style_list(void *data)
 		return -1;
 	}
 	Evas_Object *genlist  = NULL;
-	Evas_Object *btn  = NULL;
 	Elm_Object_Item *nf_it = NULL;
 	char *default_font_name = NULL;
 	char *tmp_name = NULL;
@@ -1365,7 +1366,6 @@ void _show_font_size_list(void *data)
 	}
 	Evas_Object *genlist  = NULL;
 	Elm_Object_Item *nf_it = NULL;
-	struct _dt_menu_item *menu_its = NULL;
 	int idx;
 
 	temp_ad = ad;
@@ -1507,7 +1507,6 @@ void _show_rotate_screen_list(void *data)
 	}
 	Evas_Object *genlist  = NULL;
 	Elm_Object_Item *nf_it = NULL;
-	struct _dt_menu_item *menu_its = NULL;
 	int idx;
 
 	temp_ad = ad;

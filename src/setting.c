@@ -17,6 +17,7 @@
 #include <fcntl.h>
 #include <appcore-efl.h>
 #include <system_settings.h>
+#include <app_control.h>
 
 #include "setting-sound.h"
 #include "setting-volume.h"
@@ -41,6 +42,8 @@
 #include "setting_view_toast.h"
 #include "setting_indicator_util.h"
 
+/*This function will be deprecated..*/
+int app_control_set_package(app_control_h app_control, const char *package);
 
 #define LANGUAGE_ICON_DISABLED		"b_settings_language_disabled.png"
 #define LANGUAGE_ICON_ENABLED		"b_settings_language.png"
@@ -82,7 +85,6 @@ static struct _menu_item setting_menu_its[] = {
 };
 
 static int is_emergency;
-static Elm_Object_Item *lang_item = NULL;
 static bool running = false;
 static Ecore_Timer *running_timer = NULL;
 static Ecore_Timer *scrl_timer = NULL;
@@ -94,7 +96,7 @@ static void _create_view_layout(appdata *ad);
 static int init_watch_setting(appdata *ad);
 static Eina_Bool _app_ctrl_timer_cb(void *data);
 static Eina_Bool _scroller_timer_cb(void *data);
-
+static void _update_main_menu_title(void *data);
 
 void clock_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -120,7 +122,7 @@ void clock_cb(void *data, Evas_Object *obj, void *event_info)
 	initialize_clock(data);
 
 	/*genlist = _create_clock_list(data); */
-	layout = _clock_type_cb(data);
+	layout = _clock_type_cb(data, obj, event_info);
 	if (layout == NULL) {
 		DBG("%s", "clock cb - layout is null");
 		return;
@@ -526,7 +528,7 @@ void language_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_cb, ad);
+	elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_navi_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_LANGUAGE;
@@ -758,11 +760,13 @@ static void _lang_changed(app_event_info_h event_info, void *data)
 	}
 }
 
+#if 0 // _NOT_USED_
 static void _window_resize_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = (appdata *)data;
 	evas_object_geometry_get(ad->win_main, NULL, NULL, &ad->root_w, &ad->root_h);
 }
+#endif
 
 static void init_values(appdata *ad)
 {
@@ -854,6 +858,7 @@ static char *_gl_text_get(void *data, Evas_Object *obj, const char *part)
 
 static Evas_Object *_gl_icon_get(void *data, Evas_Object *obj, const char *part)
 {
+#if 0
 	char buf[1024];
 	Item_Data *id = data;
 	int index = id->index;
@@ -872,6 +877,7 @@ static Evas_Object *_gl_icon_get(void *data, Evas_Object *obj, const char *part)
 
 		return icon;
 	}
+	#endif
 	return NULL;
 }
 
@@ -926,7 +932,7 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 	elm_genlist_realization_mode_set(genlist, EINA_TRUE);
 #endif
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-
+#if 0
 	Item_Data *id_indi = calloc(sizeof(Item_Data), 1);
 	if (id_indi) {
 		id_indi->index = idx;
@@ -939,6 +945,8 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 				NULL, NULL);
 		elm_genlist_item_select_mode_set(id_indi->item, ELM_OBJECT_SELECT_MODE_DISPLAY_ONLY);
 	}
+
+#endif
 
 #if 0
 	vconf_get_bool(VCONFKEY_SETAPPL_EMERGENCY_STATUS_BOOL, &is_emergency);
@@ -996,6 +1004,7 @@ static void _update_main_menu_title(void *data)
 	}
 }
 
+#if 0 // _NOT_USED_
 static void _naviframe_back_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
@@ -1019,8 +1028,9 @@ static void _naviframe_back_cb(void *data, Evas_Object *obj, void *event_info)
 		ad->MENU_TYPE = SETTING_SOUND;
 	}
 
-	ea_naviframe_back_cb(data, obj, event_info);
+	elm_naviframe_item_pop(obj);
 }
+#endif
 
 static void _create_view_layout(appdata *ad)
 {
@@ -1119,8 +1129,9 @@ bool app_create(void *data)
 
 	evas_object_show(ad->win_main);
 
-	int ret = system_settings_set_changed_cb(SYSTEM_SETTINGS_KEY_LOCALE_TIMEZONE, _time_cb, NULL);
-	DBG("ret = %d", ret);
+	//int ret = system_settings_set_changed_cb(SYSTEM_SETTINGS_KEY_LOCALE_TIMEZONE, _time_cb, NULL);
+	//DBG("ret = %d", ret);
+	DBG("app_create finish. with skip locale");
 
 	return true;
 }
@@ -1194,8 +1205,6 @@ void app_resume(void *data)
 {
 	DBG("Setting - app_resume()");
 
-	appdata *ad = data;
-
 	if (running)
 		running = false;
 }
@@ -1251,6 +1260,11 @@ void app_reset(app_control_h service, void *data)
 	/*return TRUE; */
 }
 
+void app_temp_(void *data)
+{
+	DBG("Setting - temp()");
+}
+
 int main(int argc, char *argv[])
 {
 	DBG("%s,%d", __func__, __LINE__);
@@ -1261,7 +1275,13 @@ int main(int argc, char *argv[])
 	app_event_handler_h handlers[5] = {NULL, };
 
 	int ret = 0;
-
+#if 0
+	event_callback.create = app_temp_;
+	event_callback.terminate = app_temp_;
+	event_callback.pause = app_temp_;
+	event_callback.resume = app_temp_;
+	event_callback.app_control = app_temp_;
+#else
 	event_callback.create = app_create;
 	event_callback.terminate = app_terminate;
 	event_callback.pause = app_pause;
@@ -1273,7 +1293,7 @@ int main(int argc, char *argv[])
 	ui_app_add_event_handler(&handlers[APP_EVENT_LANGUAGE_CHANGED], APP_EVENT_LANGUAGE_CHANGED, _lang_changed, NULL);
 	ui_app_add_event_handler(&handlers[APP_EVENT_REGION_FORMAT_CHANGED], APP_EVENT_REGION_FORMAT_CHANGED, NULL, NULL);
 	ui_app_add_event_handler(&handlers[APP_EVENT_DEVICE_ORIENTATION_CHANGED], APP_EVENT_DEVICE_ORIENTATION_CHANGED, NULL, NULL);
-
+#endif
 	memset(&ad, 0x0, sizeof(appdata));
 
 	ret = ui_app_main(argc, argv, &event_callback, &ad);

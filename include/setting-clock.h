@@ -96,8 +96,6 @@ typedef struct _clock_type_data {
 	char *value;
 } Clock_Type_Data;
 
-static Eina_List *g_clock_list[3];
-
 int is_alert_on_or_off;
 int is_running_clock;
 
@@ -115,7 +113,7 @@ Evas_Object *_gl_alert_ridio_get(void *data, Evas_Object *obj, const char *part)
 char *_gl_alert_title_get(void *data, Evas_Object *obj, const char *part);
 void _show_hourly_alert_list(void *data);
 
-Evas_Object *_clock_type_cb(void *data);
+Evas_Object *_clock_type_cb(void *data, Evas_Object *obj, void *event_info);
 
 void initialize_clock(void *data);
 

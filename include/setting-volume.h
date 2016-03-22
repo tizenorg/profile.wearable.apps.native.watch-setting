@@ -44,8 +44,6 @@ int curr_sound_type;
 int is_wav_playing_vol;
 int sound_id_vol;
 
-static appdata *g_ad;
-static Evas_Object *g_volume_spinner = NULL;
 
 /*--------------------------------------------------------------// */
 
@@ -56,12 +54,6 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info);
 void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info);
 void _show_notification_popup(void *data, Evas_Object *obj, void *event_info);
 void _show_system_popup(void *data, Evas_Object *obj, void *event_info);
-
-
-static void _gl_multimedia_cb(void *data, Evas_Object *obj, void *event_info);
-static void _gl_ringtone_cb(void *data, Evas_Object *obj, void *event_info);
-static void _gl_notification_cb(void *data, Evas_Object *obj, void *event_info);
-static void _gl_system_cb(void *data, Evas_Object *obj, void *event_info);
 
 void _initialize_volume();
 void _clear_volume_resources();

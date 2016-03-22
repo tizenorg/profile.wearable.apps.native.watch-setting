@@ -37,7 +37,6 @@ static struct _double_menu_item *_get_selected_app()
 {
 	struct _double_menu_item *pitem = NULL;
 	char *appid = NULL;
-	char *p = NULL;
 
 	appid = vconf_get_str(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING);
 
@@ -433,6 +432,7 @@ static void change_language_cb(keynode_t *key, void *data)
 	update_double_app_list(ad);
 }
 
+#if 0 // _NOT_USED_
 static int _double_press_check_appinfo(void *data, char *appid)
 {
 	appdata *ad = data;
@@ -443,7 +443,7 @@ static int _double_press_check_appinfo(void *data, char *appid)
 	}
 	int r;
 	pkgmgrinfo_appinfo_h tmp_handle;
-	int nodisplay = 0;
+	_Bool nodisplay = 0;
 
 	DBG("appid:%s", appid);
 	r = pkgmgrinfo_appinfo_get_appinfo(appid, &tmp_handle);
@@ -464,6 +464,7 @@ static int _double_press_check_appinfo(void *data, char *appid)
 
 	return 0;
 }
+#endif
 
 void clear_double_app_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 {
@@ -501,7 +502,6 @@ Evas_Object *create_double_app_list(void *data)
 
 	Evas_Object *layout = NULL;
 	Evas_Object *genlist = NULL;
-	Elm_Object_Item *nf_it = NULL;
 	Elm_Object_Item *sel_it = NULL;
 
 	struct _double_menu_item *selected_app = NULL;
@@ -582,6 +582,7 @@ Evas_Object *create_double_app_list(void *data)
 	return layout;
 }
 
+#if 0 // _NOT_USED_
 static int _double_press_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 {
 	appdata *ad = data;
@@ -593,7 +594,7 @@ static int _double_press_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 	char *appid = NULL;
 	int r;
 	pkgmgrinfo_appinfo_h tmp_handle;
-	int nodisplay = 0;
+	_Bool nodisplay = 0;
 
 	r = pkgmgrinfo_appinfo_get_appid(handle, &appid);
 	if (r < 0 || !appid) {
@@ -620,8 +621,8 @@ static int _double_press_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 	return 0;
 }
 
-static int _double_press_app_event_cb(int req_id, const char *pkg_type, const char *pkgid,
-                                      const char key, const char *val, const void *pmsg, void *data)
+static int _double_press_app_event_cb(uid_t target_uid, int req_id, const char *pkg_type, const char *pkgid,
+                                      const char *key, const char *val, const void *pmsg, void *data)
 {
 	appdata *ad = data;
 
@@ -656,7 +657,7 @@ static int _double_press_app_event_cb(int req_id, const char *pkg_type, const ch
 }
 
 static int _double_press_app_uninstall_event_cb(int req_id, const char *pkg_type, const char *pkgid,
-                                                const char key, const char *val, const void *pmsg, void *data)
+                                                const char *key, const char *val, const void *pmsg, void *data)
 {
 	appdata *ad = data;
 
@@ -677,6 +678,7 @@ static int _double_press_app_uninstall_event_cb(int req_id, const char *pkg_type
 	}
 	return 0;
 }
+#endif
 
 void init_double_pressing(void *data)
 {
@@ -684,7 +686,7 @@ void init_double_pressing(void *data)
 
 	if (!ad) {
 		ERR("appdata is null!!");
-		return NULL;
+		return;
 	}
 
 	FREE(pitem_none);
@@ -715,9 +717,9 @@ void init_double_pressing(void *data)
 	const char *lang = vconf_get_str(VCONFKEY_LANGSET);
 	coll = ucol_open(lang, &status);
 
-	int event_type = PMINFO_CLIENT_STATUS_INSTALL | PMINFO_CLIENT_STATUS_UPGRADE;
 
 #if 0
+	int event_type = PMINFO_CLIENT_STATUS_INSTALL | PMINFO_CLIENT_STATUS_UPGRADE;
 	if (pc) {
 		pkgmgr_client_free(pc);
 		pc = NULL;
@@ -740,57 +742,57 @@ void init_double_pressing(void *data)
 			pkgmgr_client_set_status_type(ad->pc2, event_type2);
 			pkgmgr_client_listen_status(ad->pc2, _double_press_app_uninstall_event_cb, ad);
 		}
+	}
 #endif
 
-		_make_app_list(ad);
+	_make_app_list(ad);
 
-		register_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb, ad);
-		register_vconf_changing(VCONFKEY_LANGSET, change_language_cb, ad);
+	register_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb, ad);
+	register_vconf_changing(VCONFKEY_LANGSET, change_language_cb, ad);
+}
+
+Evas_Object *create_double_list(void * data) {
+	appdata *ad = data;
+
+	if (!ad) {
+		ERR("appdata is null!!");
+		return NULL;
 	}
 
-	Evas_Object *create_double_list(void * data) {
-		appdata *ad = data;
+	Evas_Object *genlist = NULL;
+	Evas_Object *layout = NULL;
 
-		if (!ad) {
-			ERR("appdata is null!!");
-			return NULL;
-		}
+	Elm_Genlist_Item_Class *itc = elm_genlist_item_class_new();
+	itc->item_style = "2text";
+	itc->func.text_get = _gl_double_title_get;
 
-		Evas_Object *genlist = NULL;
-		Evas_Object *layout = NULL;
-		int idx = 0;
+	layout = elm_layout_add(ad->nf);
+	elm_layout_file_set(layout, EDJE_PATH, "setting/genlist/layout");
+	evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
-		Elm_Genlist_Item_Class *itc = elm_genlist_item_class_new();
-		itc->item_style = "2text";
-		itc->func.text_get = _gl_double_title_get;
+	genlist = elm_genlist_add(layout);
+	elm_genlist_block_count_set(genlist, 14);
+	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
-		layout = elm_layout_add(ad->nf);
-		elm_layout_file_set(layout, EDJE_PATH, "setting/genlist/layout");
-		evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	/*elm_genlist_item_append(genlist, itc, NULL, NULL, */
+	/*		ELM_GENLIST_ITEM_NONE, _double_app_list_cb, ad); */
 
-		genlist = elm_genlist_add(layout);
-		elm_genlist_block_count_set(genlist, 14);
-		elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-		evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_genlist_item_class_free(itc);
 
-		/*elm_genlist_item_append(genlist, itc, NULL, NULL, */
-		/*		ELM_GENLIST_ITEM_NONE, _double_app_list_cb, ad); */
+	g_double_genlist = genlist;
 
-		elm_genlist_item_class_free(itc);
+	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
-		g_double_genlist = genlist;
+	return layout;
+}
 
-		elm_object_part_content_set(layout, "elm.genlist", genlist);
-
-		return layout;
-	}
-
-	void clear_double_cb(void * data , Evas * e, Evas_Object * obj, void * event_info) {
-		FREE(pitem_none);
-		FREE(pitem_recent);
-		g_double_genlist = NULL;
-		g_double_app_genlist = NULL;
-		unregister_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb);
-		unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
-	}
+void clear_double_cb(void * data , Evas * e, Evas_Object * obj, void * event_info) {
+	FREE(pitem_none);
+	FREE(pitem_recent);
+	g_double_genlist = NULL;
+	g_double_app_genlist = NULL;
+	unregister_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb);
+	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
+}
 

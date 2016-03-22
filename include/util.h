@@ -27,11 +27,20 @@
 #define	COLOR_INFO_TABLE TZ_SYS_RO_APP_D"/org.tizen.watch-setting/shared/res/tables/org.tizen.watch-setting_ChangeableColorInfo.xml"
 #endif
 
+#undef TRUE
+#undef FALSE
+
 #define TRUE	1
 #define FALSE	0
 
 #define SETTING_PACKAGE			"watch-setting"
 #define SYSTEM_PACKAGE			"sys-string"
+
+#ifdef _
+#undef _
+#endif
+
+char *_get_strnum_from_icu(int number);
 
 #define _(s)			setting_gettext(s)
 #define REPL(s,o,r)	replace(s,o,r)

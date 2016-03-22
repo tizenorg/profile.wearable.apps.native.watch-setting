@@ -14,20 +14,28 @@
  *  Created on: Oct 12, 2013
  *      Author: min-hoyun
  */
-#include <vconf-keys.h>
 #include <ail.h>
 #include <aul.h>
-#include <vconf.h>
+#include "setting_data_vconf.h"
 
 #include "setting-battery.h"
 #include "util.h"
 
+int percent;
+bool is_charging;
+bool prev_charging_state;
+int image_index;
+int is_alive;
+
 Evas_Object *_create_battery_content2(void *data);
+#if 0 // _NOT_USED_
 static void _battery_percent_cb(void *data, Evas_Object *obj, void *event_info);
+#endif
 static void _power_saving_cb(void *data, Evas_Object *obj, void *event_info);
+void _pws_popup_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _battery_menu_item battery_menu_list[] = {
-	{ "IDS_ST_BODY_BATTERY_STATUS",			DISABLE, _battery_status_cb },
+	{ "IDS_ST_BODY_BATTERY_STATUS",			DISABLE, _battery_status_cb_gen_item },
 	/*{ "IDS_ST_BODY_BATTERY_PERCENTAGE_ABB",	DISABLE,	_battery_percent_cb }, */
 	{ "IDS_ST_MBODY_POWER_SAVER_ABB",	DISABLE,	_power_saving_cb }
 };
@@ -65,6 +73,8 @@ static appdata *temp_ad = NULL;
 static Ecore_Timer *pws_timer = NULL;
 static Evas_Object *g_pws_check = NULL;
 static Elm_Object_Item *pws_it = NULL;
+
+int _power_saving_terminate_app(void *data);
 
 static Eina_Bool _delete_timer(void *data)
 {
@@ -164,7 +174,6 @@ static int is_updated_battery_state()
 {
 	int current_percent = 0;
 	bool current_charging_state = false;
-	char buf[1024];
 
 	if (device_battery_get_percent(&current_percent) != DEVICE_ERROR_NONE) {
 		DBG("Setting - Battery percent get error");
@@ -280,7 +289,7 @@ void _battery_lang_changed(void *data, Evas_Object *obj, void *event_info)
 
 	char buf[512];
 	char *ret_str = NULL;
-	ret_str = _get_strnum_from_icu(percent);
+	ret_str = (char *)_get_strnum_from_icu(percent);
 	if (obj) {
 		snprintf(buf, sizeof(buf) - 1, "%s%c", ret_str, '\%');
 		char *temp_percent = strdup(buf);
@@ -301,9 +310,8 @@ void _battery_lang_changed(void *data, Evas_Object *obj, void *event_info)
 
 Evas_Object *_create_battery_content2(void *data)
 {
-	Evas_Object *layout, *icon;
+	Evas_Object *layout;
 	char buf[1024];
-	int img_index = 0;
 	appdata *ad = (appdata *)data;
 	if (ad == NULL)
 		return NULL;
@@ -348,10 +356,24 @@ Evas_Object *_create_battery_content2(void *data)
 	return layout;
 }
 
+void _battery_status_cb_gen_item(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	_initialize_battery();
+
+	return;
+}
+
 Evas_Object *_battery_status_cb(void *data)
 {
 	Evas_Object *layout = NULL;
-	Elm_Object_Item *nf_it = NULL;
+	/* Elm_Object_Item *nf_it = NULL; */
 	appdata *ad = data;
 
 	if (ad == NULL) {
@@ -390,6 +412,7 @@ int _set_battery_percent_value(int value)
 	return TRUE;
 }
 
+#if 0 // _NOT_USED_
 void _battery_percent_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -398,6 +421,7 @@ void _battery_percent_cb(void *data, Evas_Object *obj, void *event_info)
 
 	elm_genlist_item_update((Elm_Object_Item *)event_info);
 }
+#endif
 
 int _power_saving_runapp_info_get(const aul_app_info *ainfo, void *data)
 {

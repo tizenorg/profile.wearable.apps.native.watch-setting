@@ -631,8 +631,6 @@ static void _sound_mode_gl_cb(void *data, Evas_Object *obj, void *event_info)
 
 	int ringtone_level = 0;
 	int prev_sound_mode = get_sound_mode();
-	int err = -1;
-	int enable = FALSE;
 
 	switch (sound_mode) {
 		case SOUND_MODE_SOUND:
@@ -652,7 +650,7 @@ static void _sound_mode_gl_cb(void *data, Evas_Object *obj, void *event_info)
 				if (is_created_player()) {
 					_close_player(NULL, SOUND_TYPE_RINGTONE);
 				}
-				play_sound_for_sound_mode(SETTING_DEFAULT_SILENT_OFF_TONE, 0.0, SOUND_TYPE_RINGTONE);
+				play_sound_for_sound_mode_setting(SETTING_DEFAULT_SILENT_OFF_TONE, 0.0, SOUND_TYPE_RINGTONE);
 				set_looping(FALSE);
 
 				sound_manager_get_volume(SOUND_TYPE_RINGTONE, &ringtone_level);
@@ -947,6 +945,7 @@ static void _ringtone_type_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_realized_items_update(g_ringtone_type_genlist);
 }
 
+#if 0 // _NOT_USED_
 static void _ringtone_back_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
@@ -959,6 +958,7 @@ static void _ringtone_back_cb(void *data, Evas_Object *obj, void *event_info)
 
 	unregister_vconf_changing(VCONFKEY_PM_STATE, pm_state_vconf_changed_cb);
 }
+#endif
 
 
 static void pm_state_vconf_changed_cb(keynode_t *key, void *data)
@@ -1005,7 +1005,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	popup = elm_layout_add(ad->win_main);
 
-	EAPI Eina_Bool bret = elm_layout_file_set(popup, EDJE_PATH, "setting/genlist/2button-layout");
+	Eina_Bool bret = elm_layout_file_set(popup, EDJE_PATH, "setting/genlist/2button-layout");
 	if (bret == EINA_FALSE) {
 		DBG("elm_layout_file_set FAILED with setting/genlist/2button-layout");
 	} else {
@@ -1078,6 +1078,8 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	DBG("LEAVE _show_ringtone_popup_cb");
 }
 
+
+#if 0 // _NOT_USED_
 static void _notification_back_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
@@ -1090,6 +1092,7 @@ static void _notification_back_cb(void *data, Evas_Object *obj, void *event_info
 
 	unregister_vconf_changing(VCONFKEY_PM_STATE, pm_state_vconf_changed_cb);
 }
+#endif
 
 static void _response_notification_ok_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -1423,7 +1426,7 @@ static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_realized_items_update(g_vibration_type_genlist);
 }
 
-static void _vibration_layout_del_cb(void *data, Evas_Object *obj, void *event_info)
+static void _vibration_layout_del_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - _vibration_layout_del_cb() is called!");
 

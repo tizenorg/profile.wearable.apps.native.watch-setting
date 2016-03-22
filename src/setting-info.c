@@ -664,7 +664,6 @@ static void _usb_debug_popup_cb(void *data, Evas_Object *obj, void *event_info)
 static Eina_Bool _get_imei_serial_info(char *pszBuf, int bufSize)
 {
 	FILE		*pFile = NULL;
-	int			fileReadByte = 0;
 	Eina_Bool	bResult;
 
 	pFile = fopen("/csa/imei/serialno.dat", "r");

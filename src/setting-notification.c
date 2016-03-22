@@ -87,8 +87,6 @@ char *_gl_noti_title_get(void *data, Evas_Object *obj, const char *part)
 Evas_Object *_gl_noti_check_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *check = NULL;
-	Noti_Item_Data *id = data;
-	int index = id->index;
 
 	if (!strcmp(part, "elm.icon")) {
 		check = elm_check_add(obj);

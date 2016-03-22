@@ -47,8 +47,6 @@ struct _lang_menu_item {
 };
 
 appdata *tmp_ad;
-static Eina_List *s_langlist;
-static void (*lang_update_cb)(void *);
 
 
 char *_gl_lang_title_get(void *data, Evas_Object *obj, const char *part);
@@ -57,15 +55,15 @@ Evas_Object *_create_lang_list(void *data);
 void _lang_sel_changed_cb(void *data, Evas_Object *obj, void *event_info);
 void _gl_lang_sel_cb(void *data, Evas_Object *obj, void *event_info);
 void _clear_lang_cb(void *data , Evas *e, Evas_Object *obj, void *event_info);
+Eina_Bool _clear_lang_navi_cb(void *data , Elm_Object_Item *it);
 void _initialize_language(void *data);
 void _set_launguage_update_cb(void (*cb)(void *));
 
 void _langlist_load();
 Eina_List *_get_language_list();
 void _langlist_destroy();
-static void _parseLangListXML(char *docname);
-static void _tree_walk_langlist(xmlNodePtr cur);
 
+const char *setting_get_lang_title(void);
 
 
 #endif /* SETTING_LANGUAGE_H_ */

@@ -53,6 +53,5 @@ void reset_gear_cb(void *data, Evas_Object *obj, void *event_info);
 void gear_info_cb(void *data, Evas_Object *obj, void *event_info);
 void keyboard_cb(void *data, Evas_Object *obj, void *event_info);
 
-static void _update_main_menu_title(void *data);
 
 #endif

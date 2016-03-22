@@ -15,7 +15,13 @@
 #include "setting_control_haptic.h"
 #include "setting-common-sound.h"
 #include "util.h"
+#include "setting_data_vconf.h"
 
+
+static void _gl_multimedia_cb(void *data, Evas_Object *obj, void *event_info);
+static void _gl_ringtone_cb(void *data, Evas_Object *obj, void *event_info);
+static void _gl_notification_cb(void *data, Evas_Object *obj, void *event_info);
+static void _gl_system_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _volume_menu_item volume_menu_its[] = {
 	{ "IDS_ST_BUTTON_MULTIMEDIA", 			_gl_multimedia_cb   },
@@ -32,6 +38,9 @@ static void sound_vconf_changed_cb(keynode_t *key, void *data);
 static void _play_sound_all_type(int sound_type, float volume);
 static void _update_volume_circle(Evas_Object *spiner);
 
+
+static appdata *g_ad;
+static Evas_Object *g_volume_spinner = NULL;
 
 static int is_changing_level_by_vconf = 0;
 static int is_changed = 0;
@@ -116,8 +125,6 @@ void _clear_volume_resources()
 static void _update_volume_popup_for_changing_sound_mode()
 {
 	DBG("_update_volume_popup_for_changing_sound_mode is called!!");
-
-	int temp_volume_index = 0;
 
 	is_sound_changed = is_vibrate_changed = 0;
 

@@ -20,6 +20,25 @@
 #include "setting_debug.h"
 #include "setting_data_vconf.h"
 
+/*  */
+static void _emergency_mode_vconf_changed_cb(keynode_t *key, void *data);
+static void _emergency_mode_cb(void *data, Evas_Object *obj, void *event_info);
+#if 0 // _NOT_USED_
+static void _trauma_cb(void *data, Evas_Object *obj, void *event_info);
+static void _no_activity_cb(void *data, Evas_Object *obj, void *event_info);
+static void _set_interval_cb(void *data, Evas_Object *obj, void *event_info);
+#endif
+static void _help_cb(void *data, Evas_Object *obj, void *event_info);
+
+#if 0 // _NOT_USED 
+static void show_interval_list(void *data);
+static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info);
+static void _no_activity_interval_cb(void *data, Evas_Object *obj, void *event_info);
+static void _show_interval_trauma_list(void *data);
+static void _show_interval_no_activity_list(void *data);
+#endif
+
+
 
 static struct _safety_menu_item safety_menu_list[] = {
 	{ "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE",		NULL,   _emergency_mode_cb },
@@ -29,6 +48,7 @@ static struct _safety_menu_item safety_menu_list[] = {
 	{ "IDS_ST_MBODY_HELP",					NULL,		  _help_cb		   }
 };
 
+#if 0 // _NOT_USED 
 static struct _set_interval_menu_item interval_menu_list[] = {
 	{ "Trauma", 		"Warning %s", 		_trauma_interval_cb 	 },
 	{ "No activity", 	"Warning %s", 		_no_activity_interval_cb }
@@ -46,12 +66,10 @@ static char *interval_no_activity_hour_arr[] = {
 	"6", "12", "24", "48"
 };
 
+#endif
 
 static Safety_Data safety_data;
 static Evas_Object *g_safety_genlist = NULL;
-
-/*  */
-static void _emergency_mode_vconf_changed_cb(keynode_t *key, void *data);
 
 
 void initialize_safety()
@@ -125,6 +143,7 @@ static void _emergency_mode_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 }
 
+#if 0 // _NOT_USED_
 static void _trauma_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("trauma_cb() is called.");
@@ -175,6 +194,7 @@ static void _set_interval_cb(void *data, Evas_Object *obj, void *event_info)
 
 	show_interval_list(ad);
 }
+#endif
 
 static void _help_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -229,7 +249,6 @@ static char *_gl_safety_title_get(void *data, Evas_Object *obj, const char *part
 Evas_Object *_gl_safety_check_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *check = NULL;
-	appdata *ad = data;
 
 	Safety_Item_Data *id = data;
 	int index = id->index;
@@ -264,7 +283,6 @@ Evas_Object *create_safety_list(void *data)
 
 	Evas_Object *genlist = NULL;
 	Evas_Object *layout = NULL;
-	Elm_Object_Item *nf_it = NULL;
 	Elm_Genlist_Item_Class *itc_temp = NULL;
 	struct _safety_menu_item *menu_list = NULL;
 	int idx = 0;
@@ -341,6 +359,7 @@ Evas_Object *create_safety_list(void *data)
 	return layout;
 }
 
+#if 0 // _NOT_USED 
 static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("_trauma_interval_cb() is called.");
@@ -627,11 +646,11 @@ static void _show_interval_no_activity_list(void *data)
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
+#endif
 
 void _help_popup_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	Evas_Object *popup = NULL;
-	Evas_Object *btn = NULL;
 	Evas_Object *scroller = NULL;
 	Evas_Object *label = NULL;
 
