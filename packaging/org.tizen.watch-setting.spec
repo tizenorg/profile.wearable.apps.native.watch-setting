@@ -4,7 +4,7 @@ Release:    1
 Summary: Tizen watch-setting application
 URL: http://slp-source.sec.samsung.net
 Source: %{name}-%{version}.tar.gz
-License: SAMSUNG
+License: Flora-1.1
 Group: TO_BE/FILLED_IN
 
 %if "%{?tizen_profile_name}" == "tv"
