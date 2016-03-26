@@ -615,7 +615,7 @@ mkdir -p %{TZ_SYS_DATA}/setting
 #/usr/share/packages/%{name}.xml
 #/usr/apps/org.tizen.watch-setting/data/images/*
 %{TZ_SYS_RO_APP}/org.tizen.watch-setting/*
-#/usr/apps/org.tizen.watch-setting/shared/res/*
-/opt/usr/share/settings/*
+/usr/apps/org.tizen.watch-setting/shared/res/*
+#/opt/usr/share/settings/*
 /usr/share/Safety.zip
 /opt/usr/data/setting/*
