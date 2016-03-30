@@ -30,7 +30,7 @@ static void _set_interval_cb(void *data, Evas_Object *obj, void *event_info);
 #endif
 static void _help_cb(void *data, Evas_Object *obj, void *event_info);
 
-#if 0 // _NOT_USED 
+#if 0 // _NOT_USED
 static void show_interval_list(void *data);
 static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info);
 static void _no_activity_interval_cb(void *data, Evas_Object *obj, void *event_info);
@@ -48,7 +48,7 @@ static struct _safety_menu_item safety_menu_list[] = {
 	{ "IDS_ST_MBODY_HELP",					NULL,		  _help_cb		   }
 };
 
-#if 0 // _NOT_USED 
+#if 0 // _NOT_USED
 static struct _set_interval_menu_item interval_menu_list[] = {
 	{ "Trauma", 		"Warning %s", 		_trauma_interval_cb 	 },
 	{ "No activity", 	"Warning %s", 		_no_activity_interval_cb }
@@ -359,7 +359,7 @@ Evas_Object *create_safety_list(void *data)
 	return layout;
 }
 
-#if 0 // _NOT_USED 
+#if 0 // _NOT_USED
 static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("_trauma_interval_cb() is called.");
