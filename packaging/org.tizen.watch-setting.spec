@@ -343,10 +343,10 @@ GOPTION="-g 6514"
 
 	#vconftool $GOPTION set -t string db/setting/timezone_id "Asia/Seoul" -s system::vconf_inhouse
 
-#	rm -f %{TZ_SYS_ETC}/localtime
-#	ln -s /usr/share/zoneinfo/Asia/Seoul %{TZ_SYS_ETC}/localtime
-#	rm -f /etc/localtime
-#	ln -s %{TZ_SYS_ETC}/localtime /etc/localtime
+	rm -f %{TZ_SYS_ETC}/localtime
+	ln -s /usr/share/zoneinfo/Asia/Seoul %{TZ_SYS_ETC}/localtime
+	rm -f /etc/localtime
+	ln -s %{TZ_SYS_ETC}/localtime /etc/localtime
 
 #resetAccessibility
 	#vconftool $GOPTION set -t bool db/setting/accessibility/high_contrast "0" -s system::vconf_system
