@@ -1226,7 +1226,7 @@ int _show_font_style_list(void *data)
 	font_list = _get_available_font_list();
 	EINA_LIST_FOREACH(font_list, l, font_data) {
 		if (!default_font_name || strcmp((const char *)default_font_name, (const char *)font_data)) {
-			Font_Style_Item_Data *id = calloc(sizeof(Item_Data), 1);
+			Font_Style_Item_Data *id = calloc(sizeof(Font_Style_Item_Data), 1);
 			if (tmp_name && !strcmp((const char *)tmp_name, (const char *)font_data)) {
 				matched_idx = idx;
 				font_name = strdup(tmp_name);
@@ -1319,7 +1319,7 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 		font_list = _get_available_font_list();
 		EINA_LIST_FOREACH(font_list, l, font_data) {
 			if (!default_font_name || strcmp((const char *)default_font_name, (const char *)font_data)) {
-				Font_Style_Item_Data *id = calloc(sizeof(Item_Data), 1);
+				Font_Style_Item_Data *id = calloc(sizeof(Font_Style_Item_Data), 1);
 				if (tmp_name && !strcmp((const char *)tmp_name, (const char *)font_data)) {
 					matched_idx = idx;
 					font_name = strdup(tmp_name);
