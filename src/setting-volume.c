@@ -567,16 +567,16 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 
 	switch (curr_sound_type) {
 		case SOUND_TYPE_MEDIA:
-			strcpy(vconf_key, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT);
+			strncpy(vconf_key, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT, 512);
 			break;
 		case SOUND_TYPE_RINGTONE:
-			strcpy(vconf_key, VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT);
+			strncpy(vconf_key, VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, 512);
 			break;
 		case SOUND_TYPE_SYSTEM:
-			strcpy(vconf_key, VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT);
+			strncpy(vconf_key, VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT, 512);
 			break;
 		case SOUND_TYPE_NOTIFICATION:
-			strcpy(vconf_key, VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT);
+			strncpy(vconf_key, VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT, 512);
 			break;
 	}
 
@@ -1033,7 +1033,7 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
-/* legacy code from XWidow 
+/* legacy code from XWidow
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);
@@ -1154,7 +1154,7 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
-/* legacy code from XWidow 
+/* legacy code from XWidow
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);
@@ -1296,7 +1296,7 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
-/* legacy code from XWidow 
+/* legacy code from XWidow
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);
@@ -1436,7 +1436,7 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
-/* legacy code from XWidow 
+/* legacy code from XWidow
 	int w, h;
 	ecore_x_window_size_get(ecore_x_window_root_first_get(), &w, &h);
 	DBG("    ----> width : %d,  height : %d ", w, h);

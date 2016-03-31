@@ -609,7 +609,7 @@ static char *_gl_bt_title_get(void *data, Evas_Object *obj, const char *part)
 			snprintf(buf, sizeof(buf) - 1, "%s", subtitle);
 		} else if (index == BT_MENU_TYPE_VISIBLE_ON_OFF) {
 			if (is_disable_visibility_item_view()) {
-				strcpy(expression, "<font color=#515151>%s</font>");
+				strncpy(expression, "<font color=#515151>%s</font>", 32);
 
 				if (g_device_name == NULL) {
 					g_device_name = _get_device_name();

@@ -198,7 +198,8 @@ void _stop_player()
 static void get_sound_file_list(char *dir, int type)
 {
 	DIR *dp;
-	struct dirent *dirp;
+	struct dirent entry;
+	struct dirent *result = NULL;
 	char *cur_ring_path = NULL;
 
 	if ((dp = opendir(dir)) == NULL) {
@@ -220,16 +221,16 @@ static void get_sound_file_list(char *dir, int type)
 		notification_count = 0;
 	}
 
-	while ((dirp = readdir(dp))) {
-		if (strncmp(dirp->d_name, ".", 1)
+	while (!readdir_r(dp, &entry, &result) && result) {
+		if (strncmp(result->d_name, ".", 1)
 				&& strlen(dir) < 1024
-				&& strlen(replace(dirp->d_name, ".ogg", "")) <1024
+				&& strlen(replace(result->d_name, ".ogg", "")) <1024
 				&& strlen(replace(notification_name_arr[notification_count], "_", " ")) < 1024) {
 			if (type) {
-				strcpy(ringtone_arr[ringtone_count], dir);
-				strcat(ringtone_arr[ringtone_count], dirp->d_name);
+				strncpy(ringtone_arr[ringtone_count], dir, 1024);
+				strncat(ringtone_arr[ringtone_count], result->d_name, 1024);
 
-				strcpy(ringtone_name_arr[ringtone_count], replace(dirp->d_name, ".ogg", ""));
+				strcpy(ringtone_name_arr[ringtone_count], replace(result->d_name, ".ogg", ""));
 
 				/*DBG("Setting - %s", ringtone_arr[ringtone_count]); */
 
@@ -242,9 +243,9 @@ static void get_sound_file_list(char *dir, int type)
 				ringtone_count++;
 			} else {
 				strcpy(notification_arr[notification_count], dir);
-				strcat(notification_arr[notification_count], dirp->d_name);
+				strcat(notification_arr[notification_count], result->d_name);
 
-				strcpy(notification_name_arr[notification_count], replace(dirp->d_name, ".ogg", ""));
+				strcpy(notification_name_arr[notification_count], replace(result->d_name, ".ogg", ""));
 				strcpy(notification_name_arr[notification_count], replace(notification_name_arr[notification_count], "_", " "));
 
 				/*DBG("Setting - %s", notification_arr[notification_count]); */
@@ -372,13 +373,14 @@ static char *_get_sound_file_name(char *full_name)
 	char *token = NULL;
 	char *temp_token = NULL;
 	char sep[] = "*/*";
+	char *saveptr = NULL;
 
 	DBG("Setting - %s, %s", token, full_name);
 
-	strtok(full_name, sep);
+	strtok_r(full_name, sep, &saveptr);
 
 	do {
-		token = strtok(NULL, sep);
+		token = strtok_r(NULL, sep, &saveptr);
 		if (token != NULL) {
 			temp_token = token;
 		}
