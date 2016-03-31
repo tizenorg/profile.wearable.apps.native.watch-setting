@@ -578,7 +578,7 @@ static void _play_sound_all_type(int sound_type, float volume)
 
 			sound_path = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
 			if (sound_path) {
-				sprintf(buf, "%s", sound_path);
+				snprintf(buf, "%s", sound_path, 1023);
 			} else {
 				sprintf(buf, "%s", VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
 			}
