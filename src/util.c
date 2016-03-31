@@ -47,12 +47,16 @@ char *replace(char *str, char *orig, char *repl)
 {
 	static char buffer[124];
 	char *ch;
+	int len;
 	if (!(ch = strstr(str, orig))) {
 		return str;
 	}
-	strncpy(buffer, str, ch - str);
-	buffer[ch - str] = 0;
-	sprintf(buffer + (ch - str), "%s%s", repl, ch + strlen(orig));
+	len = ch - str;
+	if (len > 123)
+		len = 123;
+	strncpy(buffer, str, len);
+	buffer[len] = 0;
+	snprintf(buffer + len, "%s%s", repl, ch + strlen(orig), 123 - len);
 
 	return buffer;
 }
@@ -129,14 +133,12 @@ char* _get_strnum_from_icu(int number)
 
 bool is_file_exist(char *file_path)
 {
-	int fd;
-
 	if (!file_path) {
 		DBG("Setting - file path is wrong!!");
 		return false;
 	}
 
-	if ((fd = open(file_path, O_RDONLY)) == -1) {
+	if ((open(file_path, O_RDONLY)) == -1) {
 		DBG("Setting - file(%s) do not exist!!", file_path);
 		return false;
 	}
