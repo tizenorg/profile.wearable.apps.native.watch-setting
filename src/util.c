@@ -99,7 +99,7 @@ char* _get_strnum_from_icu(int number)
 	char locale[32] = {0,};
 	char *p = NULL;
 	if (strlen(locale_tmp) < 32)
-		strcpy(locale, locale_tmp);
+		strncpy(locale, locale_tmp, 32);
 
 	if (locale[0] != '\0') {
 		p = strstr(locale, ".UTF-8");

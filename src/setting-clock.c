@@ -774,7 +774,7 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		if (ret != PMINFO_R_OK) {
 			INFO("pkgmgrinfo_appinfo_is_preload error or 3rd party");
 		}
-/*		
+/*
 		legacy code from TIZEN 2.4
 		ret = pkgmgrinfo_appinfo_get_metadata_value(tmp_handle, "clocktype", &m_value);
 		if (ret != PMINFO_R_OK) {
@@ -1190,9 +1190,9 @@ char *_gl_date_and_time_title_get(void *data, Evas_Object *obj, const char *part
 			snprintf(buf, sizeof(buf) - 1, "%s", _(dt_menu_its[index % 3].name));
 		} else {
 			if (auto_update) {
-				strcpy(expression, "<font color=#515151>%s</font>");
+				strncpy(expression, "<font color=#515151>%s</font>", 32);
 			} else {
-				strcpy(expression, "%s");
+				strncpy(expression, "%s", 32);
 			}
 			snprintf(buf, sizeof(buf) - 1, expression, _(dt_menu_its[index % 3].name));
 		}
@@ -1201,9 +1201,9 @@ char *_gl_date_and_time_title_get(void *data, Evas_Object *obj, const char *part
 			snprintf(buf, sizeof(buf) - 1, "%s", _(dt_menu_its[index % 3].date_or_time));
 		} else {
 			if (auto_update) {
-				strcpy(expression, "<font color=#515151>%s</font>");
+				strncpy(expression, "<font color=#515151>%s</font>", 32);
 			} else {
-				strcpy(expression, "%s");
+				strncpy(expression, "%s", 32);
 			}
 
 			if (index == 1) {	/* Date */
