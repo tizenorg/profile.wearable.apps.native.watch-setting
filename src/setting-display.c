@@ -542,10 +542,10 @@ void _show_screen_timeout_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist, itc, id, NULL, ELM_GENLIST_ITEM_NONE, _screen_timeout_gl_cb, (void *)idx);
-		}
 
-		if (idx == screen_time_index) {
-			curr_item = id->item;
+			if (idx == screen_time_index) {
+				curr_item = id->item;
+			}
 		}
 	}
 
