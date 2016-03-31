@@ -510,21 +510,6 @@ static void _parseLangListXML(char *docname)
 	return;
 }
 
-static char * setting_language_string_replace( char * str, char * orig, char * repl)
-{
-	static char buffer[124];
-	char * ch;
-	if( !(ch = strstr(str, orig)))
-	{
-		return str;
-	}
-	strncpy(buffer, str, ch - str);
-	buffer[ch - str] = 0;
-	sprintf(buffer + (ch - str), "%s%s", repl, ch + strlen(orig));
-
-	return buffer;
-}
-
 static void _tree_walk_langlist(xmlNodePtr cur)
 {
 	xmlNode *cur_node = NULL;
@@ -545,13 +530,13 @@ static void _tree_walk_langlist(xmlNodePtr cur)
 
 				sub_name = strdup(name);
 				if (sub_name && pitem->name)
-					pitem->sub_name = (char *)g_strdup(setting_language_string_replace(sub_name, pitem->name, ""));
+					pitem->sub_name = (char *)g_strdup(replace(sub_name, pitem->name, ""));
 
-				free(name);
 				free(sub_name);
 
 				s_langlist = eina_list_append(s_langlist, pitem);
 			}
+			free(name);
 		}
 	}
 }
