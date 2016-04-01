@@ -999,7 +999,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_SOUND_RINGTONE;
 
 	if (is_loaded_ringtone_data == 0) {
-		get_sound_file_list(TZ_SYS_SHARE_D"/settings/Ringtones/", 1);
+		get_sound_file_list(TZ_SYS_RO_APP_D"/org.tizen.setting/shared/res/settings/Ringtones/", 1);
 		is_loaded_ringtone_data = 1;
 
 		/* @todo apply eina_sort */
@@ -1232,7 +1232,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_SOUND_NOTIFICATION;
 
 	if (is_loaded_noti_data == 0) {
-		get_sound_file_list(TZ_SYS_SHARE_D"/settings/Alerts/", 0);
+		get_sound_file_list(TZ_SYS_RO_APP_D"/org.tizen.setting/shared/res/settings/Alerts/", 0);
 		is_loaded_noti_data = 1;
 
 		/*sorting_file_list(0); */
