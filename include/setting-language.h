@@ -28,8 +28,8 @@
 #include "util.h"
 
 #define LANGLIST_FILE_PATH_IN_RW		TZ_SYS_DATA_D"/setting/langlist.xml"
-#define LANGLIST_FILE_PATH_IN_RO		TZ_SYS_RO_APP_D"/org.tizen.watch-setting/data/langlist.xml"
-/*#define LANGLIST_FILE_PATH		"/usr/apps/org.tizen.watch-setting/data/langlist_all.xml" */
+#define LANGLIST_FILE_PATH_IN_RO		TZ_SYS_RO_APP_D"/org.tizen.setting/data/langlist.xml"
+/*#define LANGLIST_FILE_PATH		"/usr/apps/org.tizen.setting/data/langlist_all.xml" */
 
 #define ITEM_COUNT				2
 

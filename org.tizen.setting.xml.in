@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns="http://tizen.org/ns/packages" package="org.tizen.watch-setting" api-version="3.0" version="0.0.1" install-location="internal-only">
+<manifest xmlns="http://tizen.org/ns/packages" package="org.tizen.setting" api-version="3.0" version="0.0.1" install-location="internal-only">
 	<label>Settings</label>
 	<author email="min-ho.yun@samsung.com" href="www.samsung.com">Minho Yun</author>
 	<description>Settings</description>
-	<ui-application appid="org.tizen.watch-setting" exec="@TZ_SYS_RO_APP@/org.tizen.watch-setting/bin/watch-setting" nodisplay="false" multiple="false" type="capp" taskmanage="true" indicatordisplay= "false">
+	<ui-application appid="org.tizen.setting" exec="@TZ_SYS_RO_APP@/org.tizen.setting/bin/setting" nodisplay="false" multiple="false" type="capp" taskmanage="true" indicatordisplay= "false">
 		<category name="org.tizen.wmanager.WATCH_APP"></category>
-		<icon>org.tizen.watch-setting.png</icon>
-		<icon section="small">org.tizen.watch-setting_small.png</icon>
+		<icon>org.tizen.setting.png</icon>
+		<icon section="small">org.tizen.setting_small.png</icon>
 		<label>Settings</label>
 			<label xml:lang="ar-ae">الضبط</label>
 			<label xml:lang="ar-il">الضبط</label>

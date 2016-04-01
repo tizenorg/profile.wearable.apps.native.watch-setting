@@ -30,7 +30,7 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 
-#define CLOCK_LIST_XML_FILE_PATH	TZ_SYS_RO_APP_D"/org.tizen.watch-setting/data/clocklist.xml"
+#define CLOCK_LIST_XML_FILE_PATH	TZ_SYS_RO_APP_D"/org.tizen.setting/data/clocklist.xml"
 #define WALLPAPER_PATH_PREFIX	TZ_SYS_SHARE_D"/settings/Wallpapers"
 
 #define CLOCK_DATE_AND_TIME_COUNT	3

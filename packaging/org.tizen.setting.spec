@@ -1,7 +1,7 @@
-Name: org.tizen.watch-setting
+Name: org.tizen.setting
 Version:    0.0.1
 Release:    1
-Summary: Tizen watch-setting application
+Summary: Tizen setting application
 URL: http://slp-source.sec.samsung.net
 Source: %{name}-%{version}.tar.gz
 License: Flora-1.1
@@ -56,12 +56,12 @@ BuildRequires: pkgconfig(libtzplatform-config)
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(efl-extension)
 %description
-W watch-setting application
+W setting application
 
 %prep
 %setup -q
 
-%define PREFIX %{TZ_SYS_RO_APP}/org.tizen.watch-setting
+%define PREFIX %{TZ_SYS_RO_APP}/org.tizen.setting
 
 %build
 #%if 0export CFLAGS="${CFLAGS} -fPIC -fvisibility=hidden -fvisibility-inlines-hidden"
@@ -104,8 +104,8 @@ make %{?jobs:-j%jobs}
 rm -rf %{buildroot}
 
 %make_install
-mkdir -p %{buildroot}/%{TZ_SYS_RW_APPS}/org.tizen.watch-setting
-mkdir -p %{buildroot}/%{TZ_SYS_RW_APPS}/org.tizen.watch-setting/data/images
+mkdir -p %{buildroot}/%{TZ_SYS_RW_APPS}/org.tizen.setting
+mkdir -p %{buildroot}/%{TZ_SYS_RW_APPS}/org.tizen.setting/data/images
 
 %clean
 
@@ -598,14 +598,14 @@ fi
 #+ln -s %{TZ_SYS_SHARE}/settings %{TZ_SYS_SHARE}/settings
 
 # shared dir
-mkdir -p %{TZ_SYS_RO_APP}/org.tizen.watch-setting/shared
-mkdir -p %{TZ_SYS_RO_APP}/org.tizen.watch-setting/shared/res
+mkdir -p %{TZ_SYS_RO_APP}/org.tizen.setting/shared
+mkdir -p %{TZ_SYS_RO_APP}/org.tizen.setting/shared/res
 
 mkdir -p %{TZ_SYS_DATA}/setting
 
 %files
 %manifest %{name}.manifest
-/etc/smack/accesses.d/org.tizen.watch-setting.efl
+/etc/smack/accesses.d/org.tizen.setting.efl
 %defattr(-,root,root,-)
 %attr(-,inhouse,inhouse)
 %dir %{PREFIX}/data
@@ -614,9 +614,9 @@ mkdir -p %{TZ_SYS_DATA}/setting
 /usr/share/packages/*
 /usr/share/icons/default/small/*
 #/usr/share/packages/%{name}.xml
-#/usr/apps/org.tizen.watch-setting/data/images/*
-%{TZ_SYS_RO_APP}/org.tizen.watch-setting/*
-/usr/apps/org.tizen.watch-setting/shared/res/*
+#/usr/apps/org.tizen.setting/data/images/*
+%{TZ_SYS_RO_APP}/org.tizen.setting/*
+/usr/apps/org.tizen.setting/shared/res/*
 #/opt/usr/share/settings/*
 /usr/share/Safety.zip
 /opt/usr/data/setting/*
