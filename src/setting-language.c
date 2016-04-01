@@ -377,6 +377,7 @@ Evas_Object *_create_lang_list(void *data)
 
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 
 	Eina_List *lang_list = _get_language_list();

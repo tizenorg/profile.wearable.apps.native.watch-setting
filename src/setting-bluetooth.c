@@ -794,6 +794,7 @@ Evas_Object *_create_bt_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	menu_its = bt_menu_its;
 

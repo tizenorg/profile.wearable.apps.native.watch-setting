@@ -220,6 +220,8 @@ void _show_wake_up_guesture_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
+	connect_to_wheel_with_genlist(genlist,ad);
+
 	int idx;
 	for (idx = 0; idx < MOTION_WAKE_UP_ITEM_COUNT; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
@@ -366,6 +368,7 @@ Evas_Object *_create_motion_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 
+	connect_to_wheel_with_genlist(genlist,ad);
 	menu_its = motion_menu_its;
 
 	char *val = NULL;

@@ -54,6 +54,7 @@ BuildRequires: pkgconfig(aul)
 BuildRequires: pkgconfig(alarm-service)
 BuildRequires: pkgconfig(libtzplatform-config)
 BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(efl-extension)
 %description
 W watch-setting application
 

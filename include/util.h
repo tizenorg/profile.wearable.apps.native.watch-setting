@@ -12,6 +12,7 @@
 #define _UTIL_H_
 
 #include <Elementary.h>
+#include <efl_extension.h>
 #include <app.h>
 
 #include "setting_debug.h"
@@ -128,6 +129,7 @@ typedef struct _appdata {
 
 	int MENU_TYPE;
 
+	Eext_Circle_Surface *circle_surface;
 	Evas_Object *indicator_layout;
 
 } appdata;
@@ -155,5 +157,7 @@ int is_connected_GM();
 bool colorstr_to_decimal(char *color, int *R, int *G, int *B);
 
 bool is_file_exist(char *file_path);
+
+void connect_to_wheel_with_genlist(Evas_Object *genlist, appdata *ad);
 
 #endif

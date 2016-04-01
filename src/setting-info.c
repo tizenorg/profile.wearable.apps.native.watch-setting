@@ -168,6 +168,7 @@ Evas_Object *_create_info_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	menu_its = info_menu_its;
 
@@ -497,6 +498,7 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	menu_its = _info_detail_menu_list;
 

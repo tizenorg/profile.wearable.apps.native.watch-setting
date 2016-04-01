@@ -136,6 +136,7 @@ Evas_Object *_create_noti_list(void *data)
 
 	menu_its = noti_menu_its;
 
+	connect_to_wheel_with_genlist(genlist,ad);
 #if 0
 	device_info_h *device_info = NULL;
 	bundle *b = NULL;

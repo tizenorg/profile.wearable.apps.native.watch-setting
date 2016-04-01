@@ -52,6 +52,133 @@ static int is_sound_changed = 0;
 static int is_vibrate_changed = 0;
 static int is_play_media_sound = 0;
 
+typedef void
+(*system_part_volume_cb)(void *data, Evas_Object *obj, void *event_info);
+
+static void
+multimedia_value_changed(void *data, Evas_Object *obj, void *event_info)
+{
+	DBG("Setting - multimedia_value_changed() is called!");
+	char buf[PATH_MAX];
+	Evas_Object *label = data;
+
+	snprintf(buf, sizeof(buf), "%.0lf", eext_circle_object_value_get(obj));
+	DBG(">>>>>>>>>>>>>>>>>>>>>>>>>>> Slider value = %s", buf);
+	elm_object_text_set(label, buf);
+
+	if (curr_sound_type != SOUND_TYPE_MEDIA) {
+		if (is_changing_level_by_vconf) {
+			DBG("Setting - is_changing_level_by_vconf!!!!");
+
+			is_changing_level_by_vconf = 0;
+			return;
+		}
+	}
+
+	Evas_Coord w;
+
+	double min, max;
+	int idx = (int) eext_circle_object_value_get(obj);
+
+	is_changed = 1;		/* changed flag!! */
+
+	volume_index = idx;
+
+	DBG("Setting - volume_index : %d", volume_index);
+
+	if (curr_sound_type == SOUND_TYPE_MEDIA) {
+		if (!is_play_media_sound) {
+			_play_sound_all_type(curr_sound_type, 0.0);
+			is_play_media_sound = 0;
+		} else {
+			is_play_media_sound = 0;
+		}
+	} else {
+		_play_sound_all_type(curr_sound_type, 0.0);
+	}
+
+	double posx = 0.0;
+	posx = (double)(w / max) * idx;
+}
+
+static void
+ringtone_value_changed(void *data, Evas_Object *obj, void *event_info)
+{
+	DBG("Setting - ringtone_value_changed() is called!");
+	char buf[PATH_MAX];
+	Evas_Object *label = data;
+
+	snprintf(buf, sizeof(buf), "%.0lf", eext_circle_object_value_get(obj));
+	DBG(">>>>>>>>>>>>>>>>>>>>>>>>>>> Slider value = %s", buf);
+	if (get_sound_mode() == SOUND_MODE_SOUND) {
+		elm_object_text_set(label, buf);
+
+		if (curr_sound_type != SOUND_TYPE_MEDIA) {
+			if (is_changing_level_by_vconf) {
+				DBG("Setting - is_changing_level_by_vconf!!!!");
+
+				is_changing_level_by_vconf = 0;
+				return;
+			}
+		}
+
+		Evas_Coord w;
+
+		double min, max;
+		int idx = (int) eext_circle_object_value_get(obj);
+
+		is_changed = 1;		/* changed flag!! */
+
+		volume_index = idx;
+
+		DBG("Setting - volume_index : %d", volume_index);
+
+		if (curr_sound_type == SOUND_TYPE_MEDIA) {
+			if (!is_play_media_sound) {
+				_play_sound_all_type(curr_sound_type, 0.0);
+				is_play_media_sound = 0;
+			} else {
+				is_play_media_sound = 0;
+			}
+		} else {
+			_play_sound_all_type(curr_sound_type, 0.0);
+		}
+
+		/*edje_object_part_geometry_get(elm_layout_edje_get(obj), "center.image2", NULL, NULL, &w, NULL); */
+		/*elm_spinner_min_max_get(obj, &min, &max); */
+		/*DBG("Setting - min: %i, max: %i, idx: %d", (int)min, (int)max, idx); */
+		double posx = 0.0;
+		posx = (double)(w / max) * idx;
+		/*edje_object_part_drag_value_set(elm_layout_edje_get(obj), "elm.dragable.slider", posx, 0); */
+	}
+}
+static void volume_circle_system_part(appdata *ad, Evas_Object *ly, system_part_volume_cb changed_callback, int is_multimedia)
+{
+	Evas_Object *label = elm_label_add(ly);
+	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
+
+	char *tempbuf[128];
+	snprintf(tempbuf, sizeof(tempbuf) - 1, "%d", volume_index);
+	elm_object_text_set(label, tempbuf);
+	elm_object_part_content_set(ly, "elm.icon.2", label);
+	if(!is_multimedia)
+	{
+		evas_object_resize(label, 200, 200);
+		if (get_sound_mode() != SOUND_MODE_SOUND)
+			evas_object_color_set(label, 83, 94, 102, 255);
+	}
+	evas_object_show(label);
+
+	Evas_Object *slider = eext_circle_object_slider_add(ly, ad->circle_surface);
+
+	eext_circle_object_value_min_max_set(slider, 0.0, 15.0);
+	eext_circle_object_value_set(slider, volume_index);
+
+	eext_rotary_object_event_activated_set(slider, EINA_TRUE);
+	eext_circle_object_slider_step_set(slider, 1);
+	evas_object_smart_callback_add(slider, "value,changed", changed_callback, label);
+}
 
 
 void _initialize_volume()
@@ -374,6 +501,7 @@ Evas_Object *_create_volume_list(void *data)
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	menu_its = volume_menu_its;
 
@@ -900,7 +1028,8 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 
 
 	ly = elm_layout_add(ad->nf);
-	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default3");
+	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default2");
+	/*elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default3");*/
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
@@ -910,6 +1039,8 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	DBG("    ----> width : %d,  height : %d ", w, h);
 */
 
+	volume_circle_system_part(ad, ly, multimedia_value_changed, 1 /*is_multimedia == 1*/);
+#if 0
 	Evas_Object *spinner = elm_spinner_add(ly);
 
 	g_volume_spinner = spinner;
@@ -921,6 +1052,7 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(spinner, "changed", _on_media_volume_spinner_change_cb, ly);
 	elm_object_part_content_set(ly, "elm.icon.1", spinner);
 
+#endif
 	Evas_Object *btn_cancel;
 	btn_cancel = elm_button_add(ly);
 	elm_object_style_set(btn_cancel, "default");
@@ -1017,7 +1149,8 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_VOLUME_2_DEPTH;
 
 	ly = elm_layout_add(ad->nf);
-	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default3");
+	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default2");
+	/*elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default3");*/
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
@@ -1035,6 +1168,8 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 
 #endif
 
+	volume_circle_system_part(ad, ly, ringtone_value_changed, 0 /*is_multimedia == 0*/);
+#if 0
 	Evas_Object *spinner = elm_spinner_add(ly);
 
 	g_volume_spinner = spinner;
@@ -1060,6 +1195,7 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	}
 	evas_object_smart_callback_add(spinner, "changed", _on_volume_spinner_change_cb, ly);
 	elm_object_part_content_set(ly, "elm.icon.1", spinner);
+#endif
 
 	btn = elm_button_add(ly);
 	elm_object_style_set(btn, "default");
@@ -1156,6 +1292,7 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 
 	ly = elm_layout_add(ad->nf);
 	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default2");
+	/*elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default3");*/
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
@@ -1172,6 +1309,8 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	}
 #endif
 
+	volume_circle_system_part(ad, ly, ringtone_value_changed, 0 /*is_multimedia == 0*/);
+#if 0
 	Evas_Object *spinner = elm_spinner_add(ly);
 
 	g_volume_spinner = spinner;
@@ -1198,6 +1337,7 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	}
 	evas_object_smart_callback_add(spinner, "changed", _on_media_volume_spinner_change_cb, ly);
 	elm_object_part_content_set(ly, "elm.icon.1", spinner);
+#endif
 
 	btn = elm_button_add(ly);
 	elm_object_style_set(btn, "default");
@@ -1291,7 +1431,8 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_VOLUME_2_DEPTH;
 
 	ly = elm_layout_add(ad->nf);
-	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default3");
+	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default2");
+	/*elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default3");*/
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
@@ -1308,6 +1449,10 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	}
 #endif
 
+
+	volume_circle_system_part(ad, ly, ringtone_value_changed, 0 /*is_multimedia == 0*/);
+
+#if 0
 	Evas_Object *spinner = elm_spinner_add(ly);
 
 	g_volume_spinner = spinner;
@@ -1334,6 +1479,7 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	}
 	evas_object_smart_callback_add(spinner, "changed", _on_media_volume_spinner_change_cb, ly);
 	elm_object_part_content_set(ly, "elm.icon.1", spinner);
+#endif
 
 	btn = elm_button_add(ly);
 	elm_object_style_set(btn, "default");

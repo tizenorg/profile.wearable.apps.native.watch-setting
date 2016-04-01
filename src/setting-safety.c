@@ -311,6 +311,7 @@ Evas_Object *create_safety_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	menu_list = safety_menu_list;
 
@@ -524,6 +525,7 @@ static void _show_interval_trauma_list(void *data)
 
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	const int count = sizeof(interval_trauma_time_arr) / sizeof(interval_trauma_time_arr[0]);
 	for (idx = 0; idx < count; idx++) {
@@ -619,6 +621,7 @@ static void _show_interval_no_activity_list(void *data)
 
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	const int count = sizeof(interval_no_activity_hour_arr) / sizeof(interval_no_activity_hour_arr[0]);
 	for (idx = 0; idx < count; idx++) {

@@ -620,6 +620,7 @@ Evas_Object *_create_battery_list(void *data)
 
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	menu_list = battery_menu_list;
 

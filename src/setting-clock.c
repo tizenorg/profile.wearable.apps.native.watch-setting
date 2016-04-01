@@ -1071,6 +1071,7 @@ Evas_Object *_create_clock_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 
+	connect_to_wheel_with_genlist(genlist,ad);
 	menu_its = clock_menu_its;
 
 	int count = 0;
@@ -1327,6 +1328,7 @@ void _show_date_and_time_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
+	connect_to_wheel_with_genlist(genlist,ad);
 	menu_its = dt_menu_its;
 
 	for (idx = 0; idx < CLOCK_DATE_AND_TIME_COUNT; idx++) {
@@ -1671,6 +1673,7 @@ void _show_hourly_alert_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	Alert_Item_Data *id = calloc(sizeof(Alert_Item_Data), 1);
 	if (id) {
