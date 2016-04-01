@@ -195,6 +195,7 @@ static void _create_privacy_pattern_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
 
+	connect_to_wheel_with_genlist(genlist,ad);
 	menu_list = privacy_pattern_menu_list;
 
 	for (idx = 0; idx < sizeof(privacy_pattern_menu_list) / sizeof(struct _privacy_menu_item); idx++) {
@@ -363,6 +364,7 @@ Evas_Object *create_privacy_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	/*elm_genlist_block_count_set(genlist, 14); */
 
+	connect_to_wheel_with_genlist(genlist,ad);
 	menu_list = privacy_menu_list;
 
 	for (idx = 0; idx < sizeof(privacy_menu_list) / sizeof(struct _privacy_menu_item); idx++) {

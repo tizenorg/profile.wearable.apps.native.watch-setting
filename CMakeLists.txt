@@ -86,6 +86,7 @@ pkg_check_modules(pkgs REQUIRED elementary ecore-imf appcore-common appcore-efl
 				capi-appfw-app-manager
 				alarm-service
 				libtzplatform-config
+				efl-extension
 )
 
 #??

@@ -145,3 +145,14 @@ bool is_file_exist(char *file_path)
 
 	return true;
 }
+
+
+
+void connect_to_wheel_with_genlist(Evas_Object *genlist, appdata *ad)
+{
+	Evas_Object *circle_genlist = eext_circle_object_genlist_add(genlist, ad->circle_surface);
+	eext_circle_object_genlist_scroller_policy_set(circle_genlist, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
+	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
+}
+
+

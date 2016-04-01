@@ -365,6 +365,7 @@ Evas_Object *_create_display_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	menu_its = display_menu_its;
 
@@ -530,6 +531,7 @@ void _show_screen_timeout_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	int timeout = 0;
 	vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &timeout);
@@ -921,6 +923,7 @@ void _show_font_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	for (idx = 0; idx < 1; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
@@ -1185,6 +1188,7 @@ int _show_font_style_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	FREE(font_name);
 	ret = system_settings_get_value_string(SYSTEM_SETTINGS_KEY_FONT_TYPE, &tmp_name);
@@ -1384,6 +1388,7 @@ void _show_font_size_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	for (idx = 0; idx < FONT_SIZE_COUNT; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
@@ -1520,6 +1525,7 @@ void _show_rotate_screen_list(void *data)
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_block_count_set(genlist, 14);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	for (idx = 0; idx < ROTATE_SCREEN_COUNT; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);

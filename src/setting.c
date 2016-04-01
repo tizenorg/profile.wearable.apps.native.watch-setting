@@ -1045,6 +1045,8 @@ static void _create_view_layout(appdata *ad)
 	//ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _naviframe_back_cb, ad);
 	//ea_object_event_callback_add(ad->nf, EA_CALLBACK_MORE, ea_naviframe_more_cb, NULL);
 
+	connect_to_wheel_with_genlist(genlist,ad);
+
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, btn, NULL, genlist, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -1104,6 +1106,8 @@ bool app_create(void *data)
 #ifdef ECORE_X
 	evas_object_resize(ad->win_main, ad->root_w, ad->root_h);
 #endif
+
+	ad->circle_surface = eext_circle_surface_conformant_add(ad->conform);
 
 	double scale = elm_config_scale_get();
 	if (scale < 1.0) {
@@ -1177,6 +1181,8 @@ void app_terminate(void *data)
 
 	/* unregister motion vconf changed callback */
 	/*unregister_vconf_changing(VCONFKEY_WMS_WMANAGER_CONNECTED, change_language_enabling); */
+
+	eext_circle_surface_del(ad->circle_surface);
 
 	int ret = system_settings_unset_changed_cb(SYSTEM_SETTINGS_KEY_LOCALE_TIMEZONE);
 	DBG("222222ret = %d", ret);

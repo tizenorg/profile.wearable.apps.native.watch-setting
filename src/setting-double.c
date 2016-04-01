@@ -521,6 +521,7 @@ Evas_Object *create_double_app_list(void *data)
 	genlist = elm_genlist_add(layout);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
+	connect_to_wheel_with_genlist(genlist,ad);
 	selected_app = _get_selected_app();
 
 	Double_Item_Data *id_none = calloc(sizeof(Double_Item_Data), 1);
@@ -774,6 +775,8 @@ Evas_Object *create_double_list(void * data) {
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	/*elm_genlist_item_append(genlist, itc, NULL, NULL, */
 	/*		ELM_GENLIST_ITEM_NONE, _double_app_list_cb, ad); */

@@ -420,6 +420,50 @@ group { name: "setting/2finger_popup/default2";
           rel1.relative: 1.0 0.0;
        }
     }
+    part { name: "elm.icon.2"; 	/* O type */
+      type: SWALLOW;
+      scale: 1;
+      description { 
+		state: "default" 0.0;
+         min: 0 80;
+         fixed: 1 1;
+         align: 0.5 0.0;
+		#if 1
+         rel1 {
+           to_x: "left_body_padding";
+           to_y: "v_padding1";
+           relative: 1 1;
+           //offset: 0 52; // CHANGE
+           offset: 150 30;
+           //offset: 0 10;
+         }
+         rel2 {
+           to_x: "right_body_padding";
+           to_y: "v_padding1";
+           relative: 0 1;
+         }
+		#endif
+		}
+
+      description { 
+		state: "default_long" 0.0;
+         min: 0 80;
+         fixed: 1 1;
+         align: 0.5 0.0;
+         rel1 {
+           to_x: "left_body_padding";
+           to_y: "v_padding1";
+           relative: 1 1;
+           offset: 0 65; // CHANGE
+           //offset: 0 10;
+         }
+         rel2 {
+           to_x: "right_body_padding";
+           to_y: "v_padding1";
+           relative: 0 1;
+         }
+      }
+   	} 
     part { name: "elm.icon.1";
       type: SWALLOW;
       scale: 1;

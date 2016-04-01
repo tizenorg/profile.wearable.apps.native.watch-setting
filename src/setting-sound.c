@@ -532,6 +532,8 @@ Evas_Object *_create_sound_list(void *data)
 
 	menu_its = sound_menu_its;
 
+	connect_to_wheel_with_genlist(genlist,ad);
+
 	for (idx = 0; idx < ITEM_SIZE; idx++) {
 		if (idx == 0) {
 			itc_tmp = itc_1text;
@@ -782,6 +784,7 @@ void _show_sound_mode_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	Item_Data *id = calloc(sizeof(Item_Data), 1);
 	if (id) {
@@ -1026,6 +1029,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	genlist = elm_genlist_add(popup);
 	elm_object_style_set(genlist, "popup");
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	DBG("---> ringtone_count %d  to GENLIST", ringtone_count);
 	for (index = 0; index < ringtone_count; index++) {
@@ -1250,6 +1254,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	genlist = elm_genlist_add(popup);
 	elm_object_style_set(genlist, "popup");
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 
 	for (index = 0; index < notification_count; index++) {
@@ -1482,6 +1487,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_style_set(genlist, "popup");
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	int count = sizeof(vibration_str) / sizeof(vibration_str[0]);
 
@@ -1633,6 +1639,7 @@ void _show_pref_arm_mode_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist,ad);
 
 	Item_Data *id = calloc(sizeof(Item_Data), 1);
 	if (id) {
