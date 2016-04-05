@@ -10,8 +10,6 @@
  */
 
 #include <dlog.h>
-//#include <Ecore_X.h>            /* ecore_x_window_size_get */
-//#include <utilX.h>              /* KEY_END */
 #include <vconf.h>
 #include <vconf-keys.h>
 #include <fcntl.h>
@@ -928,9 +926,7 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 		elm_genlist_item_class_free(itc_tmp);
 		return NULL;
 	}
-#ifdef ECORE_X
-	elm_genlist_realization_mode_set(genlist, EINA_TRUE);
-#endif
+
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 #if 0
 	Item_Data *id_indi = calloc(sizeof(Item_Data), 1);
@@ -1093,19 +1089,15 @@ bool app_create(void *data)
 
 	DBG("app_create start.");
 
-#ifdef ECORE_X
-	ecore_x_window_size_get(ecore_x_window_root_first_get(), &ad->root_w, &ad->root_h);
-#endif
-
 	ad->win_main = create_win(PACKAGE);
 	if (ad->win_main == NULL)
 		return false;
 
+	elm_win_screen_size_get(ad->win_main, NULL, NULL, &ad->root_w, &ad->root_h);
+
 	ad->conform = _create_conform(ad->win_main);
 
-#ifdef ECORE_X
 	evas_object_resize(ad->win_main, ad->root_w, ad->root_h);
-#endif
 
 	ad->circle_surface = eext_circle_surface_conformant_add(ad->conform);
 
