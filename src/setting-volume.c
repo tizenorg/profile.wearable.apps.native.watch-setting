@@ -22,6 +22,7 @@ static void _gl_multimedia_cb(void *data, Evas_Object *obj, void *event_info);
 static void _gl_ringtone_cb(void *data, Evas_Object *obj, void *event_info);
 static void _gl_notification_cb(void *data, Evas_Object *obj, void *event_info);
 static void _gl_system_cb(void *data, Evas_Object *obj, void *event_info);
+static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _volume_menu_item volume_menu_its[] = {
 	{ "IDS_ST_BUTTON_MULTIMEDIA", 			_gl_multimedia_cb   },
@@ -41,6 +42,7 @@ static void _update_volume_circle(Evas_Object *spiner);
 
 static appdata *g_ad;
 static Evas_Object *g_volume_spinner = NULL;
+static Evas_Object *g_volume_genlist = NULL;
 
 static int is_changing_level_by_vconf = 0;
 static int is_changed = 0;
@@ -243,6 +245,7 @@ void _clear_volume_resources()
 	stop_wav();
 
 	g_ad = NULL;
+	g_volume_genlist = NULL;
 	g_volume_spinner = NULL;
 	is_myself_changing = 0;
 	is_myself_ringtone_changing = 0;
@@ -502,7 +505,6 @@ Evas_Object *_create_volume_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	connect_to_wheel_with_genlist(genlist,ad);
-
 	menu_its = volume_menu_its;
 
 	for (idx = 0; idx < VOLUMN_ITEM_COUNT; idx++) {
@@ -521,6 +523,8 @@ Evas_Object *_create_volume_list(void *data)
 		}
 	}
 	elm_genlist_item_class_free(itc);
+
+	g_volume_genlist = genlist;
 
 	return genlist;
 }
@@ -601,6 +605,10 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 
 static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
 {
+	appdata *ad = data;
+	if (ad == NULL)
+		return;
+
 	DBG("Setting - _back_volume_naviframe_cb is called");
 	DBG("Setting - original volume : %d", original_volume);
 	DBG("Setting -    volume index : %d", volume_index);
@@ -627,6 +635,8 @@ static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
 	/* Unregister sound mode vconf callback */
 	unregister_vconf_changing(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, vibrate_vconf_changed_cb);
 	unregister_vconf_changing(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL , sound_vconf_changed_cb);
+
+	eext_rotary_object_event_activated_set(g_volume_genlist, EINA_TRUE);
 
 	return EINA_TRUE;
 }
