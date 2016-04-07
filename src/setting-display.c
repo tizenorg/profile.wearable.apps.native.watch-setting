@@ -108,7 +108,7 @@ static Eina_Bool setting_font_list_pop_cb(void *data, Elm_Object_Item *it);
 static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *event_info);
 static void _set_rotate_screen(const int rotation);
 static int _get_rotate_screen();
-
+static Eina_Bool _back_display_naviframe_cb(void *data, Elm_Object_Item *it);
 
 void _init_display()
 {
@@ -152,6 +152,15 @@ void _update_menu_text_when_lang_changed()
 	if (temp_ad && temp_ad->main_genlist) {
 		elm_genlist_realized_items_update(temp_ad->main_genlist);
 	}
+}
+
+static Eina_Bool _back_display_naviframe_cb(void *data, Elm_Object_Item *it)
+{
+	appdata *ad = data;
+	if (ad == NULL)
+		return EINA_FALSE;
+
+	eext_rotary_object_event_activated_set(g_display_genlist, EINA_TRUE);
 }
 
 void _clear_display_cb(void *data, Evas *e, Elm_Object_Item *it, void *event_info)
@@ -260,6 +269,7 @@ void _display_gl_language_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BUTTON_LANGUAGE", NULL, NULL, genlist, NULL);
+	elm_naviframe_item_pop_cb_set(nf_it, _back_display_naviframe_cb, ad);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_lang_cb, ad);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -1546,6 +1556,7 @@ void _show_rotate_screen_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	elm_naviframe_item_pop_cb_set(nf_it, _back_display_naviframe_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
 
@@ -1628,6 +1639,8 @@ static Eina_Bool setting_font_list_pop_cb(void *data, Elm_Object_Item *it)
 	if (system_settings_unset_changed_cb(SYSTEM_SETTINGS_KEY_FONT_TYPE) != 0) {
 		ERR("system_settings_unset_changed_cb failed!!");
 	}
+
+	eext_rotary_object_event_activated_set(g_display_genlist, EINA_TRUE);
 
 	return EINA_TRUE;
 }

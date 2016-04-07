@@ -22,6 +22,7 @@ static void _gl_multimedia_cb(void *data, Evas_Object *obj, void *event_info);
 static void _gl_ringtone_cb(void *data, Evas_Object *obj, void *event_info);
 static void _gl_notification_cb(void *data, Evas_Object *obj, void *event_info);
 static void _gl_system_cb(void *data, Evas_Object *obj, void *event_info);
+static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _volume_menu_item volume_menu_its[] = {
 	{ "IDS_ST_BUTTON_MULTIMEDIA", 			_gl_multimedia_cb   },
@@ -37,10 +38,12 @@ static void vibrate_vconf_changed_cb(keynode_t *key, void *data);
 static void sound_vconf_changed_cb(keynode_t *key, void *data);
 static void _play_sound_all_type(int sound_type, float volume);
 static void _update_volume_circle(Evas_Object *spiner);
+static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it);
 
 
 static appdata *g_ad;
 static Evas_Object *g_volume_spinner = NULL;
+static Evas_Object *g_volume_genlist = NULL;
 
 static int is_changing_level_by_vconf = 0;
 static int is_changed = 0;
@@ -158,7 +161,7 @@ static void volume_circle_system_part(appdata *ad, Evas_Object *ly, system_part_
 	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
-	char *tempbuf[128];
+	char tempbuf[128];
 	snprintf(tempbuf, sizeof(tempbuf) - 1, "%d", volume_index);
 	elm_object_text_set(label, tempbuf);
 	elm_object_part_content_set(ly, "elm.icon.2", label);
@@ -243,6 +246,7 @@ void _clear_volume_resources()
 	stop_wav();
 
 	g_ad = NULL;
+	g_volume_genlist = NULL;
 	g_volume_spinner = NULL;
 	is_myself_changing = 0;
 	is_myself_ringtone_changing = 0;
@@ -502,7 +506,6 @@ Evas_Object *_create_volume_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	connect_to_wheel_with_genlist(genlist,ad);
-
 	menu_its = volume_menu_its;
 
 	for (idx = 0; idx < VOLUMN_ITEM_COUNT; idx++) {
@@ -521,6 +524,8 @@ Evas_Object *_create_volume_list(void *data)
 		}
 	}
 	elm_genlist_item_class_free(itc);
+
+	g_volume_genlist = genlist;
 
 	return genlist;
 }
@@ -601,6 +606,10 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 
 static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
 {
+	appdata *ad = data;
+	if (ad == NULL)
+		return EINA_FALSE;
+
 	DBG("Setting - _back_volume_naviframe_cb is called");
 	DBG("Setting - original volume : %d", original_volume);
 	DBG("Setting -    volume index : %d", volume_index);
@@ -627,6 +636,8 @@ static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
 	/* Unregister sound mode vconf callback */
 	unregister_vconf_changing(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, vibrate_vconf_changed_cb);
 	unregister_vconf_changing(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL , sound_vconf_changed_cb);
+
+	eext_rotary_object_event_activated_set(g_volume_genlist, EINA_TRUE);
 
 	return EINA_TRUE;
 }
@@ -706,16 +717,16 @@ static void _play_sound_all_type(int sound_type, float volume)
 
 			sound_path = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
 			if (sound_path) {
-				snprintf(buf, "%s", sound_path, 1023);
+				snprintf(buf, sizeof(buf)-1, "%s", sound_path);
 			} else {
-				sprintf(buf, "%s", VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
+				snprintf(buf, sizeof(buf)-1, "%s", VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
 			}
 
 			break;
 		case SOUND_TYPE_MEDIA:
 			_set_volumn(sound_type, volume_index, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT);
 
-			sprintf(buf, "%s", SETTING_DEFAULT_MEDIA_TONE);
+			snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MEDIA_TONE);
 			break;
 		case SOUND_TYPE_NOTIFICATION:
 			vconf_set_int(VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT, volume_index);
@@ -723,15 +734,15 @@ static void _play_sound_all_type(int sound_type, float volume)
 
 			sound_path = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
 			if (sound_path) {
-				sprintf(buf, "%s", sound_path);
+				snprintf(buf, sizeof(buf)-1,  "%s", sound_path);
 			} else {
-				sprintf(buf, "%s", SETTING_DEFAULT_MSG_TONE);
+				snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MSG_TONE);
 			}
 			break;
 		case SOUND_TYPE_SYSTEM:
 			vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT, volume_index);
 
-			sprintf(buf, "%s", SETTING_DEFAULT_SYS_TONE);
+			snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_SYS_TONE);
 			break;
 	}
 
