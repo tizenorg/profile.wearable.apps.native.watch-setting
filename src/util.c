@@ -24,7 +24,37 @@
 #include <unicode/udat.h>
 #include <unicode/udatpg.h>
 
+typedef struct {
+	back_btn_cb_ptr cb;
+	void *data;
+	Evas_Object *obj;
+} back_button_cb_data;
 
+static Eina_List *back_button_cb_stack = NULL;
+
+void back_button_cb_push(back_btn_cb_ptr *cb, void *data, Evas_Object *obj)
+{
+	back_button_cb_data *cb_data = malloc(sizeof(*cb_data));
+	cb_data->cb = cb;
+	cb_data->data = data;
+	cb_data->obj = obj;
+	back_button_cb_stack = eina_list_prepend(back_button_cb_stack, cb_data);
+}
+
+void back_button_cb_pop(void)
+{
+	back_button_cb_data *cb_data = NULL;
+	cb_data = eina_list_data_get(back_button_cb_stack);
+	back_button_cb_stack = eina_list_remove(back_button_cb_stack, cb_data);
+	free(cb_data);
+}
+
+void back_button_cb_call(void)
+{
+	back_button_cb_data *cb_data = NULL;
+	cb_data = eina_list_data_get(back_button_cb_stack);
+	cb_data->cb(cb_data->data, cb_data->obj, NULL);
+}
 
 char *setting_gettext(const char *s)
 {
