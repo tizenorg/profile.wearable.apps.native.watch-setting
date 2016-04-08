@@ -1077,6 +1077,20 @@ int _time_cb(system_settings_key_e key, system_settings_changed_cb callback, voi
 	return 0;
 }
 
+static void _exit_app(void *data, Evas_Object *obj, void *event_info)
+{
+	back_button_cb_pop();
+	ui_app_exit();
+}
+
+
+static Eina_Bool _hw_back_key_cb(void *data, int type, void *event)
+{
+	back_button_cb_call();
+	return ECORE_CALLBACK_RENEW;
+}
+
+
 bool app_create(void *data)
 {
 	/*DBG("[TIME] 3. it taked %d msec from main to setting_main_app_create ", appcore_measure_time()); */
@@ -1129,6 +1143,9 @@ bool app_create(void *data)
 	//DBG("ret = %d", ret);
 	DBG("app_create finish. with skip locale");
 
+	back_button_cb_push(&_exit_app, NULL, NULL);
+	ecore_event_handler_add(ECORE_EVENT_KEY_DOWN, _hw_back_key_cb, NULL);
+
 	return true;
 }
 
@@ -1177,7 +1194,7 @@ void app_terminate(void *data)
 	eext_circle_surface_del(ad->circle_surface);
 
 	int ret = system_settings_unset_changed_cb(SYSTEM_SETTINGS_KEY_LOCALE_TIMEZONE);
-	DBG("222222ret = %d", ret);
+	DBG("222222ret = %s", get_error_message(ret));
 }
 
 void app_pause(void *data)

@@ -466,6 +466,7 @@ static void _screen_timeout_gl_cb(void *data, Evas_Object *obj, void *event_info
 
 	elm_genlist_realized_items_update(g_screen_time_genlist);
 
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 	if (!temp_ad->screen_timeout_rdg) {
 		evas_object_del(temp_ad->screen_timeout_rdg);
@@ -827,6 +828,7 @@ static void _font_style_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	/*elm_genlist_realized_items_update(g_font_style_genlist); */
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 
 	if (font_style_item) {
@@ -877,7 +879,7 @@ static void _font_size_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	DBG("Setting - Curr font size is %d.", font_size_index);
 
 	/*elm_genlist_realized_items_update(g_font_size_genlist); */
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 
 	if (!temp_ad->font_size_rdg) {
@@ -1495,7 +1497,7 @@ static void _rotate_screen_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	_set_rotate_screen(rotate_screen_rot);
 
 	elm_genlist_realized_items_update(g_rotate_screen_genlist);
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 	if (!temp_ad->rotate_screen_rdg) {
 		evas_object_del(temp_ad->rotate_screen_rdg);

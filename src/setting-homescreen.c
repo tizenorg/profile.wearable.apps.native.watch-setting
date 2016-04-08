@@ -173,6 +173,7 @@ void _clear_homescreen_cb(void *data , Evas *e, Evas_Object *obj, void *event_in
 		Evas_Object *layout = NULL;
 		Elm_Object_Item *nf_it = NULL;
 		layout = create_wallpaper_list(temp_ad);
+		back_button_cb_pop();
 		elm_naviframe_item_pop(temp_ad->nf);
 		nf_it = elm_naviframe_item_push(temp_ad->nf, NULL, NULL, NULL, layout, NULL);
 		elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -381,6 +382,7 @@ static void _viewtype_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	vconf_set_int(VCONFKEY_SETAPPL_HOMESCREEN_TYPE_INT, idx);
 
 	/*elm_genlist_realized_items_update(g_screen_time_genlist); */
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 	if (!temp_ad->homescreen_rdg) {
 		evas_object_del(temp_ad->homescreen_rdg);
@@ -602,6 +604,7 @@ static void _mouse_up_cb(void *data, Evas *evas, Evas_Object *obj, void *event_i
 	/* set gb vconf */
 	if (_set_bg_color_type(type)) {
 		if (temp_ad != NULL) {
+			back_button_cb_pop();
 			elm_naviframe_item_pop(temp_ad->nf);
 		}
 
@@ -666,6 +669,7 @@ static void _mouse_up_wallpaper_cb(void *data, Evas *evas, Evas_Object *obj, voi
 		feedback_play(FEEDBACK_PATTERN_TAP);
 		wallpaper_touched = true;
 		if (temp_ad != NULL) {
+			back_button_cb_pop();
 			elm_naviframe_item_pop(temp_ad->nf);
 		}
 
