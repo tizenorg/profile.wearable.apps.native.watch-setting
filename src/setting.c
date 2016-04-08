@@ -44,6 +44,7 @@
 
 /*This function will be deprecated..*/
 int app_control_set_package(app_control_h app_control, const char *package);
+static void wifi_cb(void *data, Evas_Object *obj, void *event_info);
 
 #define LANGUAGE_ICON_DISABLED		"b_settings_language_disabled.png"
 #define LANGUAGE_ICON_ENABLED		"b_settings_language.png"
@@ -72,6 +73,7 @@ static struct _menu_item setting_menu_its[] = {
 	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
 	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb 	  		},
 	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
+	{ "WIFI",					"text_input_icon.png",			wifi_cb 	  		},
 #ifndef FEATURE_SETTING_EMUL
 	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
 #endif
@@ -298,6 +300,33 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_DISPLAY;
+}
+
+static void wifi_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+
+	DBG("wifi_cb in");
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	app_control_h service;
+	app_control_create(&service);
+	app_control_set_package(service, "org.tizen.w-wifi");
+	app_control_send_launch_request(service, NULL, NULL);
+	app_control_destroy(service);
+
+	running = true;
+
+	if (running_timer) {
+		ecore_timer_del(running_timer);
+		running_timer = NULL;
+	}
+	running_timer = ecore_timer_add(0.5, (Ecore_Task_Cb)_app_ctrl_timer_cb, NULL);
 }
 
 void keyboard_cb(void *data, Evas_Object *obj, void *event_info)
