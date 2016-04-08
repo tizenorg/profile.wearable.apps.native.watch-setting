@@ -110,7 +110,6 @@ static void pm_state_vconf_changed_cb(keynode_t *key, void *data);
 static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info);
 static void stop_wav();
 
-
 void _initialize()
 {
 	/* touch sound */
@@ -572,6 +571,7 @@ Evas_Object *_create_sound_list(void *data)
 	register_vconf_changing(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, sound_vconf_changed_cb, NULL);
 	register_vconf_changing(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, vibrate_vconf_changed_cb, NULL);
 
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 	return genlist;
 }
 
@@ -704,6 +704,7 @@ static void _sound_mode_gl_cb(void *data, Evas_Object *obj, void *event_info)
 			break;
 	}
 
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 	if (!temp_ad->sound_mode_rdg) {
 		evas_object_del(temp_ad->sound_mode_rdg);
@@ -822,6 +823,7 @@ void _show_sound_mode_list(void *data)
 
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 	elm_naviframe_item_pop_cb_set(nf_it, _sound_mode_back_cb, ad);
@@ -851,6 +853,7 @@ static void _response_ringtone_ok_cb(void *data, Evas_Object *obj, void *event_i
 	}
 
 	if (ad != NULL) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 	}
 
@@ -870,6 +873,7 @@ static void _response_ringtone_cancel_cb(void *data, Evas_Object *obj, void *eve
 
 	appdata *ad = (appdata *)data;
 	if (ad != NULL) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 	}
 
@@ -1069,6 +1073,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_text_set(btn, _("IDS_ST_BUTTON_CANCEL_ABB2"));
 	elm_object_part_content_set(popup, "btn.left", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_ringtone_cancel_cb, ad);
+	back_button_cb_push(&_response_ringtone_cancel_cb, data, btn);
 
 	btn = elm_button_add(popup);
 	evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -1081,6 +1086,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	/*VCONFKEY_PM_STATE */
 	register_vconf_changing(VCONFKEY_PM_STATE, pm_state_vconf_changed_cb, NULL);
+
 	DBG("LEAVE _show_ringtone_popup_cb");
 }
 
@@ -1125,6 +1131,7 @@ static void _response_notification_ok_cb(void *data, Evas_Object *obj, void *eve
 
 	appdata *ad = (appdata *)data;
 	if (ad != NULL) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 	}
 
@@ -1142,6 +1149,7 @@ static void _response_notification_cancel_cb(void *data, Evas_Object *obj, void 
 
 	appdata *ad = (appdata *)data;
 	if (ad != NULL) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 	}
 
@@ -1291,6 +1299,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_text_set(btn, _("IDS_ST_BUTTON_CANCEL_ABB2"));
 	elm_object_part_content_set(popup, "btn.left", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_notification_cancel_cb, ad);
+	back_button_cb_push(&_response_notification_cancel_cb, data, btn);
 
 	btn = elm_button_add(popup);
 	evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -1340,6 +1349,7 @@ static void _response_vibration_ok_cb(void *data, Evas_Object *obj, void *event_
 
 	appdata *ad = (appdata *)data;
 	if (ad != NULL) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 	}
 
@@ -1363,6 +1373,7 @@ static void _response_vibration_cancel_cb(void *data, Evas_Object *obj, void *ev
 
 	appdata *ad = (appdata *)data;
 	if (ad != NULL) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 	}
 }
@@ -1525,6 +1536,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_text_set(btn, _("IDS_ST_BUTTON_CANCEL_ABB2"));
 	elm_object_part_content_set(popup, "btn.left", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_vibration_cancel_cb, ad);
+	back_button_cb_push(&_response_vibration_cancel_cb, data, btn);
 
 	btn = elm_button_add(popup);
 	elm_object_style_set(btn, "default");
@@ -1593,6 +1605,7 @@ static void _pref_arm_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_realized_items_update(g_pref_arm_type_genlist);
 
 	if (temp_ad) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(temp_ad->nf);
 		if (!temp_ad->pref_arm_rdg) {
 			evas_object_del(temp_ad->pref_arm_rdg);

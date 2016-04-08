@@ -528,6 +528,7 @@ static void _mouse_up_cb(void *data, Evas *evas, Evas_Object *obj, void *event_i
 	/* set gb vconf */
 	if (_set_clock_type(pkgid)) {
 		if (temp_ad != NULL) {
+			back_button_cb_pop();
 			elm_naviframe_item_pop(temp_ad->nf);
 		}
 
@@ -1390,6 +1391,7 @@ static void _set_clicked_cb(void *data, Evas_Object *obj, void *event_info)
 	int ret = alarmmgr_set_systime(t);
 	DBG("ret = %d", ret);
 
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 
 	/* automatic freed!! */
@@ -1410,6 +1412,7 @@ static void _cancle_clicked_cb(void *data, Evas_Object *obj, void *event_info)
 	if (!ad)
 		return;
 
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 
 	if (ad->dt_genlist_item_of_time != NULL) {
@@ -1630,6 +1633,7 @@ static void _hourly_gl_cb(void *data, Evas_Object *obj, void *event_info)
 
 	is_alert_mode_type = (int)data;
 
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 	if (!temp_ad->alert_rdg) {
 		evas_object_del(temp_ad->alert_rdg);

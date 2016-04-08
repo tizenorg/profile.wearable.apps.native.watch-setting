@@ -521,7 +521,7 @@ Evas_Object *_create_volume_list(void *data)
 		}
 	}
 	elm_genlist_item_class_free(itc);
-
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 	return genlist;
 }
 
@@ -556,7 +556,7 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 
 	if (!is_changed) {
-		DBG("not changed");
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 		return;
 	}
@@ -595,7 +595,7 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	stop_wav();
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 }
 
@@ -668,7 +668,7 @@ static void _set_multimedia_clicked_cb(void *data, Evas_Object *obj, void *event
 		return;
 
 	if (!is_changed) {
-		DBG("not changed");
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 		return;
 	}
@@ -682,7 +682,7 @@ static void _set_multimedia_clicked_cb(void *data, Evas_Object *obj, void *event
 	}
 
 	stop_wav();
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 }
 
@@ -1054,6 +1054,7 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_translatable_text_set(btn_cancel, "IDS_ST_BUTTON_CANCEL_ABB2");
 	elm_object_part_content_set(ly, "btn1", btn_cancel);
 	evas_object_smart_callback_add(btn_cancel, "clicked", _set_cancel_cb, ad);
+	back_button_cb_push(&_set_cancel_cb, data, btn_cancel);
 
 	Evas_Object *btn_ok;
 	btn_ok = elm_button_add(ly);
@@ -1087,7 +1088,7 @@ static void _set_ringtone_clicked_cb(void *data, Evas_Object *obj, void *event_i
 		return;
 
 	if (!is_changed) {
-		DBG("not changed");
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 		return;
 	}
@@ -1100,7 +1101,7 @@ static void _set_ringtone_clicked_cb(void *data, Evas_Object *obj, void *event_i
 	}
 
 	stop_wav();
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 }
 
@@ -1188,6 +1189,7 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_translatable_text_set(btn, "IDS_ST_BUTTON_CANCEL_ABB2");
 	elm_object_part_content_set(ly, "btn1", btn);
 	evas_object_smart_callback_add(btn, "clicked", _set_cancel_cb, ad);
+	back_button_cb_push(&_set_cancel_cb, data, btn);
 
 	btn = elm_button_add(ly);
 	elm_object_style_set(btn, "default");
@@ -1220,7 +1222,7 @@ static void _set_notification_clicked_cb(void *data, Evas_Object *obj, void *eve
 		return;
 
 	if (!is_changed) {
-		DBG("not changed");
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 		return;
 	}
@@ -1232,7 +1234,7 @@ static void _set_notification_clicked_cb(void *data, Evas_Object *obj, void *eve
 	}
 
 	stop_wav();
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 }
 
@@ -1322,6 +1324,7 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_translatable_text_set(btn, "IDS_ST_BUTTON_CANCEL_ABB2");
 	elm_object_part_content_set(ly, "btn1", btn);
 	evas_object_smart_callback_add(btn, "clicked", _set_cancel_cb, ad);
+	back_button_cb_push(&_set_cancel_cb, data, btn);
 
 	btn = elm_button_add(ly);
 	elm_object_style_set(btn, "default");
@@ -1352,7 +1355,7 @@ static void _set_system_clicked_cb(void *data, Evas_Object *obj, void *event_inf
 		return;
 
 	if (!is_changed) {
-		DBG("not changed");
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 		return;
 	}
@@ -1365,7 +1368,7 @@ static void _set_system_clicked_cb(void *data, Evas_Object *obj, void *event_inf
 	}
 
 	stop_wav();
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 }
 
@@ -1455,6 +1458,7 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_translatable_text_set(btn, "IDS_ST_BUTTON_CANCEL_ABB2");
 	elm_object_part_content_set(ly, "btn1", btn);
 	evas_object_smart_callback_add(btn, "clicked", _set_cancel_cb, ad);
+	back_button_cb_push(&_set_cancel_cb, data, btn);
 
 	btn = elm_button_add(ly);
 	elm_object_style_set(btn, "default");

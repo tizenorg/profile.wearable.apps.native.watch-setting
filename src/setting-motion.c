@@ -124,7 +124,7 @@ void _motion_gl_wake_up_guesture_radio_cb(void *data, Evas_Object *obj, void *ev
 	vconf_set_int(VCONFKEY_WMS_WAKEUP_BY_GESTURE_SETTING, wake_up_mode);
 
 	elm_genlist_item_update(it);
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(motion_data.temp_ad->nf);
 	if (motion_data.temp_ad && motion_data.temp_ad->wake_up_guesture_rdg) {
 		evas_object_del(motion_data.temp_ad->wake_up_guesture_rdg);

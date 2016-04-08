@@ -90,6 +90,7 @@ static void _privacy_lock_setting_cb(app_control_h service, app_control_h reply,
 
 	if (result == APP_CONTROL_RESULT_SUCCEEDED) {
 		_set_lock_type_value(1);
+		back_button_cb_pop();
 		elm_naviframe_item_pop(ad->nf);
 
 		if (g_privacy_genlist) {
@@ -161,6 +162,7 @@ static void _privacy_pattern_disable_cb(void *data, Evas_Object *obj, void *even
 	}
 
 	_set_lock_type_value(0);
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 
 	if (g_privacy_genlist) {

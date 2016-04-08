@@ -286,7 +286,7 @@ static void _gl_double_app_sel_cb(void *data, Evas_Object *obj, void *event_info
 		snprintf(buf, sizeof(buf) - 1, "%s/%s", id->pitem->pkgid, id->pitem->appid);
 		vconf_set_str(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, buf);
 	}
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(ad->nf);
 
 	if (!ad->double_rdg) {

@@ -60,6 +60,15 @@ void back_button_cb_call(void)
 	}
 }
 
+void back_key_generic_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = (appdata *)data;
+	if (ad) {
+		back_button_cb_pop();
+		elm_naviframe_item_pop(ad->nf);
+	}
+}
+
 char *setting_gettext(const char *s)
 {
 	/* fisrt find in app pg */

@@ -53,6 +53,7 @@ static void change_language_enabling(keynode_t *key, void *data)
 			_show_toast(tmp_ad, toast);
 		}
 		if (tmp_ad) {
+			back_button_cb_pop();
 			elm_naviframe_item_pop(tmp_ad->nf);
 
 		}
@@ -260,6 +261,7 @@ void _gl_lang_sel_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	if (tmp_ad) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(tmp_ad->nf);
 	}
 }
@@ -435,6 +437,7 @@ Evas_Object *_create_lang_list(void *data)
 	elm_genlist_item_class_free(itc_1line);
 
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 
 	return layout;
 }

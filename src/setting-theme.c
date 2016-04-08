@@ -365,6 +365,7 @@ static void setting_theme_mouse_up_cb(void *data, Evas *evas, Evas_Object *obj, 
 	}
 
 	if (g_ad) {
+		back_button_cb_pop();
 		elm_naviframe_item_pop(g_ad->nf);
 	}
 }

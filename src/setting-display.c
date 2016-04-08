@@ -413,6 +413,7 @@ Evas_Object *_create_display_list(void *data)
 	elm_genlist_item_class_free(itc2);
 
 	g_display_genlist = genlist;
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 
 	return genlist;
 }
@@ -466,6 +467,7 @@ static void _screen_timeout_gl_cb(void *data, Evas_Object *obj, void *event_info
 
 	elm_genlist_realized_items_update(g_screen_time_genlist);
 
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 	if (!temp_ad->screen_timeout_rdg) {
 		evas_object_del(temp_ad->screen_timeout_rdg);
@@ -565,6 +567,7 @@ void _show_screen_timeout_list(void *data)
 
 	elm_genlist_item_class_free(itc);
 
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB", NULL, NULL, genlist, NULL);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -827,6 +830,7 @@ static void _font_style_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	/*elm_genlist_realized_items_update(g_font_style_genlist); */
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 
 	if (font_style_item) {
@@ -877,7 +881,7 @@ static void _font_size_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	DBG("Setting - Curr font size is %d.", font_size_index);
 
 	/*elm_genlist_realized_items_update(g_font_size_genlist); */
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 
 	if (!temp_ad->font_size_rdg) {
@@ -942,6 +946,7 @@ void _show_font_list(void *data)
 
 	elm_genlist_item_class_free(itc);
 
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT", NULL, NULL, layout, NULL);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -1262,6 +1267,7 @@ int _show_font_style_list(void *data)
 
 	evas_object_smart_callback_add(genlist, "language,changed", _lang_update_font_style_list, ad);
 
+	back_button_cb_push(&back_key_generic_cb, data, NULL);
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT_STYLE", NULL, NULL, layout, NULL);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -1495,7 +1501,7 @@ static void _rotate_screen_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	_set_rotate_screen(rotate_screen_rot);
 
 	elm_genlist_realized_items_update(g_rotate_screen_genlist);
-
+	back_button_cb_pop();
 	elm_naviframe_item_pop(temp_ad->nf);
 	if (!temp_ad->rotate_screen_rdg) {
 		evas_object_del(temp_ad->rotate_screen_rdg);
