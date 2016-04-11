@@ -628,6 +628,8 @@ static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
 	unregister_vconf_changing(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, vibrate_vconf_changed_cb);
 	unregister_vconf_changing(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL , sound_vconf_changed_cb);
 
+	back_button_cb_pop();
+
 	return EINA_TRUE;
 }
 
@@ -1063,6 +1065,7 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(ly, "btn2", btn_ok);
 	evas_object_smart_callback_add(btn_ok, "clicked", _set_multimedia_clicked_cb, ad);
 
+	back_button_cb_push(&_set_cancel_cb, data, btn_cancel);
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
 	                                                 "IDS_ST_BUTTON_MULTIMEDIA",
 	                                                 NULL, NULL,
@@ -1196,6 +1199,7 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(ly, "btn2", btn);
 	evas_object_smart_callback_add(btn, "clicked", _set_ringtone_clicked_cb, ad);
 
+	back_button_cb_push(&_set_cancel_cb, data, btn);
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
 	                                                 "IDS_ST_HEADER_RINGTONES_ABB",
 	                                                 NULL, NULL,
@@ -1330,6 +1334,7 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(ly, "btn2", btn);
 	evas_object_smart_callback_add(btn, "clicked", _set_notification_clicked_cb, ad);
 
+	back_button_cb_push(&_set_cancel_cb, data, btn);
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
 	                                                 "IDS_ST_BUTTON_NOTIFICATIONS",
 	                                                 NULL, NULL,
@@ -1463,6 +1468,7 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(ly, "btn2", btn);
 	evas_object_smart_callback_add(btn, "clicked", _set_system_clicked_cb, ad);
 
+	back_button_cb_push(&_set_cancel_cb, data, btn);
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
 	                                                 "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB",
 	                                                 NULL, NULL,
