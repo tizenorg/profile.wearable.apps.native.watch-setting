@@ -31,14 +31,17 @@ typedef struct {
 } back_button_cb_data;
 
 static Eina_List *back_button_cb_stack = NULL;
+static Eina_Bool _nf_item_pop_cb(void *data, Elm_Object_Item *it);
 
-void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj)
+void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Elm_Naviframe_Item *navi_item)
 {
 	back_button_cb_data *cb_data = malloc(sizeof(*cb_data));
 	cb_data->cb = cb;
 	cb_data->data = data;
 	cb_data->obj = obj;
 	back_button_cb_stack = eina_list_prepend(back_button_cb_stack, cb_data);
+
+	elm_naviframe_item_pop_cb_set(navi_item, _nf_item_pop_cb, data);
 }
 
 void back_button_cb_pop(void)
@@ -57,6 +60,16 @@ void back_button_cb_call(void)
 		cb_data->cb(cb_data->data, cb_data->obj, NULL);
 	} else {
 		ERR("No callback data!");
+	}
+}
+
+void back_key_generic_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = (appdata *)data;
+	if (ad) {
+		elm_naviframe_item_pop(ad->nf);
+	} else {
+		ERR("data ptr is NULL");
 	}
 }
 
@@ -182,8 +195,6 @@ bool is_file_exist(char *file_path)
 	return true;
 }
 
-
-
 void connect_to_wheel_with_genlist(Evas_Object *genlist, appdata *ad)
 {
 	Evas_Object *circle_genlist = eext_circle_object_genlist_add(genlist, ad->circle_surface);
@@ -191,4 +202,8 @@ void connect_to_wheel_with_genlist(Evas_Object *genlist, appdata *ad)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 }
 
-
+static Eina_Bool _nf_item_pop_cb(void *data, Elm_Object_Item *it)
+{
+	back_button_cb_pop();
+	return EINA_TRUE;
+}

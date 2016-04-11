@@ -109,7 +109,6 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 static void _set_rotate_screen(const int rotation);
 static int _get_rotate_screen();
 
-
 void _init_display()
 {
 	register_vconf_changing(VCONFKEY_WMS_WMANAGER_CONNECTED, change_language_enabling, NULL);
@@ -168,7 +167,7 @@ void _clear_display_cb(void *data, Evas *e, Elm_Object_Item *it, void *event_inf
 	unregister_vconf_changing(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, change_screen_time_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
 
-	return ;
+	return;
 }
 
 void _display_gl_font_cb(void *data, Evas_Object *obj, void *event_info)
@@ -259,7 +258,9 @@ void _display_gl_language_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "language cb - genlist is null");
 		return;
 	}
+
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BUTTON_LANGUAGE", NULL, NULL, genlist, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_lang_cb, ad);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -566,6 +567,7 @@ void _show_screen_timeout_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB", NULL, NULL, genlist, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -943,6 +945,7 @@ void _show_font_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT", NULL, NULL, layout, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1263,6 +1266,7 @@ int _show_font_style_list(void *data)
 	evas_object_smart_callback_add(genlist, "language,changed", _lang_update_font_style_list, ad);
 
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT_STYLE", NULL, NULL, layout, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
