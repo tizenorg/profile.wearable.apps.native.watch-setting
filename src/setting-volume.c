@@ -1067,6 +1067,7 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_BUTTON_MULTIMEDIA",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
+	back_button_cb_push(&_set_cancel_cb, data, btn_cancel, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 
@@ -1200,7 +1201,7 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_HEADER_RINGTONES_ABB",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
-
+	back_button_cb_push(&_set_cancel_cb, data, btn, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 
@@ -1334,6 +1335,7 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_BUTTON_NOTIFICATIONS",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
+	back_button_cb_push(&_set_cancel_cb, data, btn, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 	register_vconf_changing(VCONFKEY_PM_STATE, pm_state_vconf_changed_cb_for_volume, NULL);
@@ -1467,6 +1469,7 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
+	back_button_cb_push(&_set_cancel_cb, data, btn, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 
