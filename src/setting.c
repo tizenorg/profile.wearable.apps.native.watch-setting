@@ -228,8 +228,8 @@ void sound_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
-	elm_naviframe_item_pop_cb_set(nf_it, _clear_sound_cb, ad);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
+	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _clear_sound_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -293,7 +293,7 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_display_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -557,7 +557,7 @@ void language_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_navi_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -588,7 +588,7 @@ void safety_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	elm_naviframe_item_pop_cb_set(nf_it, clear_safety_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -1175,7 +1175,7 @@ bool app_create(void *data)
 	//DBG("ret = %d", ret);
 	DBG("app_create finish. with skip locale");
 
-	back_button_cb_push(&_exit_app, NULL, NULL, NULL);
+	back_button_cb_push(&_exit_app, NULL, NULL, NULL, NULL);
 	ecore_event_handler_add(ECORE_EVENT_KEY_DOWN, _hw_back_key_cb, NULL);
 
 	return true;

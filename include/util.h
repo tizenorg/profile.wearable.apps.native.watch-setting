@@ -149,7 +149,7 @@ struct _spin_date {
 
 typedef void (*back_btn_cb_ptr)(void *data, Evas_Object *obj, void *event_info);
 
-void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Elm_Naviframe_Item *navi_item);
+void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Evas_Object *genlist_obj, Elm_Naviframe_Item *navi_item);
 void back_button_cb_pop(void);
 void back_button_cb_call(void);
 void back_key_generic_cb(void *data, Evas_Object *obj, void *event_info);
