@@ -41,6 +41,7 @@ static void _update_volume_circle(Evas_Object *spiner);
 
 static appdata *g_ad;
 static Evas_Object *g_volume_spinner = NULL;
+static Evas_Object *g_volume_genlist = NULL;
 
 static int is_changing_level_by_vconf = 0;
 static int is_changed = 0;
@@ -75,9 +76,8 @@ multimedia_value_changed(void *data, Evas_Object *obj, void *event_info)
 		}
 	}
 
-	Evas_Coord w;
-
-	double min, max;
+	/*Evas_Coord w;*/
+	/*double min, max; */
 	int idx = (int) eext_circle_object_value_get(obj);
 
 	is_changed = 1;		/* changed flag!! */
@@ -97,8 +97,9 @@ multimedia_value_changed(void *data, Evas_Object *obj, void *event_info)
 		_play_sound_all_type(curr_sound_type, 0.0);
 	}
 
-	double posx = 0.0;
-	posx = (double)(w / max) * idx;
+
+	/*double posx = 0.0; */
+	/*posx = (double)(w / max) * idx; */
 }
 
 static void
@@ -122,9 +123,8 @@ ringtone_value_changed(void *data, Evas_Object *obj, void *event_info)
 			}
 		}
 
-		Evas_Coord w;
-
-		double min, max;
+		/*Evas_Coord w; */
+		/*double min, max; */
 		int idx = (int) eext_circle_object_value_get(obj);
 
 		is_changed = 1;		/* changed flag!! */
@@ -147,18 +147,19 @@ ringtone_value_changed(void *data, Evas_Object *obj, void *event_info)
 		/*edje_object_part_geometry_get(elm_layout_edje_get(obj), "center.image2", NULL, NULL, &w, NULL); */
 		/*elm_spinner_min_max_get(obj, &min, &max); */
 		/*DBG("Setting - min: %i, max: %i, idx: %d", (int)min, (int)max, idx); */
-		double posx = 0.0;
-		posx = (double)(w / max) * idx;
+		/*double posx = 0.0; */
+		/* posx = (double)(w / max) * idx; */
 		/*edje_object_part_drag_value_set(elm_layout_edje_get(obj), "elm.dragable.slider", posx, 0); */
 	}
 }
+
 static void volume_circle_system_part(appdata *ad, Evas_Object *ly, system_part_volume_cb changed_callback, int is_multimedia)
 {
 	Evas_Object *label = elm_label_add(ly);
 	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
-	char *tempbuf[128];
+	char tempbuf[128];
 	snprintf(tempbuf, sizeof(tempbuf) - 1, "%d", volume_index);
 	elm_object_text_set(label, tempbuf);
 	elm_object_part_content_set(ly, "elm.icon.2", label);
@@ -243,6 +244,7 @@ void _clear_volume_resources()
 	stop_wav();
 
 	g_ad = NULL;
+	g_volume_genlist = NULL;
 	g_volume_spinner = NULL;
 	is_myself_changing = 0;
 	is_myself_ringtone_changing = 0;
@@ -522,6 +524,8 @@ Evas_Object *_create_volume_list(void *data)
 	}
 	elm_genlist_item_class_free(itc);
 
+	g_volume_genlist = genlist;
+
 	return genlist;
 }
 
@@ -706,16 +710,16 @@ static void _play_sound_all_type(int sound_type, float volume)
 
 			sound_path = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
 			if (sound_path) {
-				snprintf(buf, "%s", sound_path, 1023);
+				snprintf(buf, sizeof(buf)-1, "%s", sound_path);
 			} else {
-				sprintf(buf, "%s", VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
+				snprintf(buf, sizeof(buf)-1, "%s", VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
 			}
 
 			break;
 		case SOUND_TYPE_MEDIA:
 			_set_volumn(sound_type, volume_index, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT);
 
-			sprintf(buf, "%s", SETTING_DEFAULT_MEDIA_TONE);
+			snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MEDIA_TONE);
 			break;
 		case SOUND_TYPE_NOTIFICATION:
 			vconf_set_int(VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT, volume_index);
@@ -723,15 +727,15 @@ static void _play_sound_all_type(int sound_type, float volume)
 
 			sound_path = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
 			if (sound_path) {
-				sprintf(buf, "%s", sound_path);
+				snprintf(buf, sizeof(buf)-1, "%s", sound_path);
 			} else {
-				sprintf(buf, "%s", SETTING_DEFAULT_MSG_TONE);
+				snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MSG_TONE);
 			}
 			break;
 		case SOUND_TYPE_SYSTEM:
 			vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT, volume_index);
 
-			sprintf(buf, "%s", SETTING_DEFAULT_SYS_TONE);
+			snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_SYS_TONE);
 			break;
 	}
 
@@ -1067,7 +1071,7 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_BUTTON_MULTIMEDIA",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
-	back_button_cb_push(&_set_cancel_cb, data, btn_cancel, nf_it);
+	back_button_cb_push(&_set_cancel_cb, data, btn_cancel, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 
@@ -1201,7 +1205,7 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_HEADER_RINGTONES_ABB",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
-	back_button_cb_push(&_set_cancel_cb, data, btn, nf_it);
+	back_button_cb_push(&_set_cancel_cb, data, btn, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 
@@ -1335,7 +1339,7 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_BUTTON_NOTIFICATIONS",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
-	back_button_cb_push(&_set_cancel_cb, data, btn, nf_it);
+	back_button_cb_push(&_set_cancel_cb, data, btn, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 	register_vconf_changing(VCONFKEY_PM_STATE, pm_state_vconf_changed_cb_for_volume, NULL);
@@ -1469,7 +1473,7 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	                                                 "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB",
 	                                                 NULL, NULL,
 	                                                 ly, NULL);
-	back_button_cb_push(&_set_cancel_cb, data, btn, nf_it);
+	back_button_cb_push(&_set_cancel_cb, data, btn, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	elm_naviframe_item_pop_cb_set(nf_it, _back_volume_naviframe_cb, ad);
 

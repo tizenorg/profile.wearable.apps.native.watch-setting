@@ -28,17 +28,19 @@ typedef struct {
 	back_btn_cb_ptr cb;
 	void *data;
 	Evas_Object *obj;
+	Evas_Object *genlist_obj;
 } back_button_cb_data;
 
 static Eina_List *back_button_cb_stack = NULL;
 static Eina_Bool _nf_item_pop_cb(void *data, Elm_Object_Item *it);
 
-void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Elm_Naviframe_Item *navi_item)
+void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Evas_Object *genlist_obj, Elm_Naviframe_Item *navi_item)
 {
 	back_button_cb_data *cb_data = malloc(sizeof(*cb_data));
 	cb_data->cb = cb;
 	cb_data->data = data;
 	cb_data->obj = obj;
+	cb_data->genlist_obj = genlist_obj;
 	back_button_cb_stack = eina_list_prepend(back_button_cb_stack, cb_data);
 
 	elm_naviframe_item_pop_cb_set(navi_item, _nf_item_pop_cb, data);
@@ -48,6 +50,8 @@ void back_button_cb_pop(void)
 {
 	back_button_cb_data *cb_data = NULL;
 	cb_data = eina_list_data_get(back_button_cb_stack);
+	DBG("####### back btn pop cb - genlist ptr is %p", cb_data->genlist_obj);
+	eext_rotary_object_event_activated_set(cb_data->genlist_obj, EINA_TRUE);
 	back_button_cb_stack = eina_list_remove(back_button_cb_stack, cb_data);
 	free(cb_data);
 }
