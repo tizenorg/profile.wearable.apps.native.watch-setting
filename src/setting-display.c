@@ -260,7 +260,7 @@ void _display_gl_language_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BUTTON_LANGUAGE", NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_lang_cb, ad);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -567,7 +567,7 @@ void _show_screen_timeout_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB", NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -945,12 +945,12 @@ void _show_font_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT", NULL, NULL, layout, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
-	elm_naviframe_item_pop_cb_set(nf_it, setting_font_list_pop_cb, ad);
+	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, setting_font_list_pop_cb, ad);
 
 	if (system_settings_set_changed_cb(SYSTEM_SETTINGS_KEY_FONT_TYPE, settings_font_style_changed_cb, ad) != 0) {
 		ERR("system_settings_set_changed_cb failed!!");
@@ -1266,12 +1266,12 @@ int _show_font_style_list(void *data)
 	evas_object_smart_callback_add(genlist, "language,changed", _lang_update_font_style_list, ad);
 
 	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT_STYLE", NULL, NULL, layout, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
-	elm_naviframe_item_pop_cb_set(nf_it, setting_font_style_pop_cb, ad);
+	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, setting_font_list_pop_cb, ad);
 
 	return 0;
 }
