@@ -39,9 +39,9 @@
 #define IDLE_CLOCK_CATEGROY	"http://tizen.org/category/wearable_clock"
 
 enum {
-    HOURLY_ALERT_OFF,
-    HOURLY_ALERT_SOUND,
-    HOURLY_ALERT_VIBRATION
+	HOURLY_ALERT_OFF,
+	HOURLY_ALERT_SOUND,
+	HOURLY_ALERT_VIBRATION
 };
 
 
@@ -77,10 +77,10 @@ struct _clock_page_data {
 };
 
 enum {
-    CLOCKTYPE_INVALID = -1,
-    CLOCKTYPE_FUNCTION,
-    CLOCKTYPE_STYLE,
-    CLOCKTYPE_3RD
+	CLOCKTYPE_INVALID = -1,
+	CLOCKTYPE_FUNCTION,
+	CLOCKTYPE_STYLE,
+	CLOCKTYPE_3RD
 };
 
 typedef struct _clock_type_item {

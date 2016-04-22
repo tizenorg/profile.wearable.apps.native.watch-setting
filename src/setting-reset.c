@@ -53,7 +53,7 @@ void _reset_lange_changed(void *data, Evas_Object *obj, void *event_info)
 
 	char buf[1024];
 	snprintf(buf, sizeof(buf), "<font_size=34>%s</font_size>",
-	         elm_entry_utf8_to_markup(_("IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE")));
+			 elm_entry_utf8_to_markup(_("IDS_ST_POP_ALL_DATA_WILL_BE_ERASED_FROM_GEAR_MEMORY_YOU_CAN_THEN_CONNECT_YOUR_GEAR_TO_ANOTHER_DEVICE")));
 	elm_object_text_set(obj, strdup(buf));
 }
 
@@ -101,7 +101,7 @@ void _reset_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	evas_object_show(label);
 
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	btn = elm_button_add(popup);
 	elm_object_style_set(btn, "default");

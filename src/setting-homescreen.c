@@ -96,7 +96,7 @@ static Evas_Object *g_wallpaper_box = NULL;
 static bool wallpaper_touched = false;
 
 
-#if 0  // _NOT_USED_
+#if 0  /* _NOT_USED_ */
 static int _chk_pkg_install(const char *pkgid)
 {
 	int ret = 0;
@@ -131,9 +131,9 @@ _gallery_item_cb(media_info_h item, void *user_data)
 
 static void _get_last_img_path()
 {
-	#if 0
+#if 0
 	Eina_List *item_list = NULL;
-	#endif
+#endif
 	filter_h media_filter;
 
 	int ret;
@@ -301,13 +301,13 @@ Evas_Object *_create_homescreen_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,			/* genlist object */
-					itc,				/* item class */
-					id,		            /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,			/* genlist object */
+						   itc,				/* item class */
+						   id,		            /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 		}
 	}
 	elm_genlist_item_class_free(itc);
@@ -421,7 +421,7 @@ void _show_viewtype_list(void *data)
 
 	for (idx = 0; idx < VIEWTYPE_COUNT; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
-		if (id){
+		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist, itc, id, NULL, ELM_GENLIST_ITEM_NONE, _viewtype_gl_cb, (void *)idx);
 		}
@@ -514,7 +514,7 @@ static void _layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_i
 	free(pd);
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static Eina_Bool animator_cb(void *data)
 {
 	page_data *pd = (page_data *)data;
@@ -767,12 +767,12 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			evas_object_show(page);
 
 			switch (thumbIdx % NUM_MAX_THUMB_IN_PAGES) {
-				case 0:
-					elm_object_part_content_set(page_layout, "thumb1", thumbnail_layout);
-					break;
-				case 1:
-					elm_object_part_content_set(page_layout, "thumb2", thumbnail_layout);
-					break;
+			case 0:
+				elm_object_part_content_set(page_layout, "thumb1", thumbnail_layout);
+				break;
+			case 1:
+				elm_object_part_content_set(page_layout, "thumb2", thumbnail_layout);
+				break;
 			}
 
 			/* touch event */
@@ -790,7 +790,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 	return layout;
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void
 _wallpaper_layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 {
@@ -938,12 +938,12 @@ static void _update_wallpaper()
 				}
 
 				switch (thumbIdx % NUM_MAX_THUMB_IN_PAGES) {
-					case 0:
-						elm_object_part_content_set(page_layout, "thumb1", thumbnail_layout);
-						break;
-					case 1:
-						elm_object_part_content_set(page_layout, "thumb2", thumbnail_layout);
-						break;
+				case 0:
+					elm_object_part_content_set(page_layout, "thumb1", thumbnail_layout);
+					break;
+				case 1:
+					elm_object_part_content_set(page_layout, "thumb2", thumbnail_layout);
+					break;
 				}
 
 				/* touch event */
@@ -969,7 +969,7 @@ static void _update_wallpaper()
 }
 
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _wallpaper_page_refresh(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	DBG("is_prev_update , %d", is_prev_update);
@@ -1170,12 +1170,12 @@ static Evas_Object *_create_wallpaper_thumbnail(Evas_Object *parent)
 			}
 
 			switch (thumbIdx % NUM_MAX_THUMB_IN_PAGES) {
-				case 0:
-					elm_object_part_content_set(page_layout, "thumb1", thumbnail_layout);
-					break;
-				case 1:
-					elm_object_part_content_set(page_layout, "thumb2", thumbnail_layout);
-					break;
+			case 0:
+				elm_object_part_content_set(page_layout, "thumb1", thumbnail_layout);
+				break;
+			case 1:
+				elm_object_part_content_set(page_layout, "thumb2", thumbnail_layout);
+				break;
 			}
 
 			/* touch event */

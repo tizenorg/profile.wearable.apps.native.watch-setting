@@ -280,10 +280,10 @@ char *_gl_display_title_get(void *data, Evas_Object *obj, const char *part)
 		if (id->item == lang_item) {
 			if (is_connected_GM()) {
 				snprintf(buf, sizeof(buf) - 1, "<font color=#515151>%s</font>",
-				         _(display_menu_its[index].name));
+						 _(display_menu_its[index].name));
 			} else {
 				snprintf(buf, sizeof(buf) - 1, "%s",
-				         _(display_menu_its[index].name));
+						 _(display_menu_its[index].name));
 			}
 			DBG("buf --->%s", buf);
 		} else {
@@ -308,21 +308,21 @@ char *_gl_display_title_get(void *data, Evas_Object *obj, const char *part)
 			int time = 10;
 			vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &time);
 			switch (time) {
-				case 10:
-					snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"), screen_time_str[0]);
-					break;
-				case 15:
-					snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"), screen_time_str[1]);
-					break;
-				case 30:
-					snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"), screen_time_str[2]);
-					break;
-				case 60:
-					snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"), screen_time_str[3]);
-					break;
-				case 300:
-					snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"), screen_time_str[4]);
-					break;
+			case 10:
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"), screen_time_str[0]);
+				break;
+			case 15:
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"), screen_time_str[1]);
+				break;
+			case 30:
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"), screen_time_str[2]);
+				break;
+			case 60:
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"), screen_time_str[3]);
+				break;
+			case 300:
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"), screen_time_str[4]);
+				break;
 			}
 		} else {
 			/*snprintf(buf, sizeof(buf) - 1, "%s", _get_wake_up_gesture_sub_title()); */
@@ -376,9 +376,9 @@ Evas_Object *_create_display_list(void *data)
 		Elm_Genlist_Item_Class *itc_tmp = NULL;
 
 		if (menu_its[idx].type == SETTING_DISPLAY_GESTURE
-		    || menu_its[idx].type == SETTING_DISPLAY_ICON_SIZE
-		    || menu_its[idx].type == SETTING_DISPLAY_LANG
-		    || menu_its[idx].type == SETTING_DISPLAY_SCREEN_TIME) {
+			|| menu_its[idx].type == SETTING_DISPLAY_ICON_SIZE
+			|| menu_its[idx].type == SETTING_DISPLAY_LANG
+			|| menu_its[idx].type == SETTING_DISPLAY_SCREEN_TIME) {
 			itc_tmp = itc2;
 		} else {
 			itc_tmp = itc;
@@ -388,13 +388,13 @@ Evas_Object *_create_display_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,		/* genlist object */
-					itc_tmp,		/* item class */
-					id,			/* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,		/* genlist object */
+						   itc_tmp,		/* item class */
+						   id,			/* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 
 			if (menu_its[idx].type == SETTING_DISPLAY_LANG) {
 				lang_item = id->item;
@@ -585,7 +585,7 @@ static char *_gl_font_title_get(void *data, Evas_Object *obj, const char *part)
 		if (id->index == SETTING_DISPLAY_FONT_STYLE) {
 			char *font_name = NULL;
 			if (system_settings_get_value_string(SYSTEM_SETTINGS_KEY_FONT_TYPE, &font_name)
-			    != SYSTEM_SETTINGS_ERROR_NONE) {
+				!= SYSTEM_SETTINGS_ERROR_NONE) {
 				ERR("failed to call system_setting_get_value_string with err");
 			}
 
@@ -626,7 +626,7 @@ static char *_gl_font_title_get(void *data, Evas_Object *obj, const char *part)
 		} else if (id->index == SETTING_DISPLAY_FONT_SIZE) {
 			int font_size = -1;
 			if (system_settings_get_value_int(SYSTEM_SETTINGS_KEY_FONT_SIZE, &font_size)
-			    != SYSTEM_SETTINGS_ERROR_NONE) {
+				!= SYSTEM_SETTINGS_ERROR_NONE) {
 				DBG("Setting - system_settings_get_value_int() is failed.");
 			}
 
@@ -706,7 +706,7 @@ static char *_gl_font_size_title_get(void *data, Evas_Object *obj, const char *p
 {
 	int old_font_size = -1;
 	if (system_settings_get_value_int(SYSTEM_SETTINGS_KEY_FONT_SIZE, &old_font_size)
-	    != SYSTEM_SETTINGS_ERROR_NONE) {
+		!= SYSTEM_SETTINGS_ERROR_NONE) {
 		DBG("Setting - system_settings_get_value_int() is failed.");
 	}
 	char buf[1024] = {0,};
@@ -732,7 +732,7 @@ static Evas_Object *_gl_font_size_ridio_get(void *data, Evas_Object *obj, const 
 
 	int old_font_size = -1;
 	if (system_settings_get_value_int(SYSTEM_SETTINGS_KEY_FONT_SIZE, &old_font_size)
-	    != SYSTEM_SETTINGS_ERROR_NONE) {
+		!= SYSTEM_SETTINGS_ERROR_NONE) {
 		DBG("Setting - system_settings_get_value_int() is failed.");
 	}
 
@@ -868,7 +868,7 @@ static void _font_size_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	if (system_settings_get_value_int(SYSTEM_SETTINGS_KEY_FONT_SIZE, &old_font_size)
-	    != SYSTEM_SETTINGS_ERROR_NONE) {
+		!= SYSTEM_SETTINGS_ERROR_NONE) {
 		DBG("Setting - system_settings_get_value_int() is failed.");
 		return;
 	}
@@ -932,7 +932,7 @@ void _show_font_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist, itc, id, NULL,
-					ELM_GENLIST_ITEM_NONE, _display_gl_font_style_cb, ad);
+											   ELM_GENLIST_ITEM_NONE, _display_gl_font_style_cb, ad);
 
 			if (idx == 0) {
 				font_style_item = id->item;
@@ -1220,7 +1220,7 @@ int _show_font_style_list(void *data)
 			id_default->index = idx++;
 			id_default->font_name = strdup(default_font_name);
 			id_default->item = elm_genlist_item_append(genlist, itc, id_default, NULL, ELM_GENLIST_ITEM_NONE,
-					_font_style_gl_cb, (void *)id_default);
+													   _font_style_gl_cb, (void *)id_default);
 		}
 	} else {
 		ERR("default_font_name is NULL");
@@ -1245,7 +1245,7 @@ int _show_font_style_list(void *data)
 				id->index = idx++;
 				id->font_name = (char *)strdup((char *)font_data);
 				id->item = elm_genlist_item_append(genlist, itc, id, NULL, ELM_GENLIST_ITEM_NONE,
-						_font_style_gl_cb, (void *)id);
+												   _font_style_gl_cb, (void *)id);
 			}
 		}
 	}
@@ -1318,7 +1318,7 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 			id_default->index = idx++;
 			id_default->font_name = (default_font_name != NULL) ? strdup(default_font_name) : NULL;
 			id_default->item = elm_genlist_item_append(g_font_style_genlist, itc, id_default, NULL, ELM_GENLIST_ITEM_NONE,
-					_font_style_gl_cb, (void *)id_default);
+													   _font_style_gl_cb, (void *)id_default);
 		}
 
 		Eina_List *font_list = NULL;
@@ -1338,7 +1338,7 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 					id->index = idx++;
 					id->font_name = (char *)strdup((char *)font_data);
 					id->item = elm_genlist_item_append(g_font_style_genlist, itc, id, NULL, ELM_GENLIST_ITEM_NONE,
-							_font_style_gl_cb, (void *)id);
+													   _font_style_gl_cb, (void *)id);
 				}
 			}
 		}
@@ -1579,7 +1579,7 @@ static void settings_font_style_changed_cb(system_settings_key_e key, void *user
 		font_style_radio = evas_object_data_get(g_font_style_genlist, "radio_main");
 		if (font_style_radio) {
 			if (system_settings_get_value_string(SYSTEM_SETTINGS_KEY_FONT_TYPE, &font_name)
-			    != SYSTEM_SETTINGS_ERROR_NONE) {
+				!= SYSTEM_SETTINGS_ERROR_NONE) {
 				ERR("failed to call system_setting_get_value_string with err");
 				return;
 			}
@@ -2021,21 +2021,21 @@ static int _change_bright_index_to_level(int index)
 	int level = 1;
 	if (index > 0 && index < 6) {
 		switch (index) {
-			case 1:
-				level = 20;
-				break;
-			case 2:
-				level = 40;
-				break;
-			case 3:
-				level = 60;
-				break;
-			case 4:
-				level = 80;
-				break;
-			case 5:
-				level = 100;
-				break;
+		case 1:
+			level = 20;
+			break;
+		case 2:
+			level = 40;
+			break;
+		case 3:
+			level = 60;
+			break;
+		case 4:
+			level = 80;
+			break;
+		case 5:
+			level = 100;
+			break;
 		}
 	}
 

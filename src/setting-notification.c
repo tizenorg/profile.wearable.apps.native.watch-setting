@@ -79,7 +79,7 @@ char *_gl_noti_title_get(void *data, Evas_Object *obj, const char *part)
 	} else if (!strcmp(part, "elm.text.1")) {
 		vconf_get_int(VCONF_WMS_NOTIFICATION_KEY, &g_noti_data.is_enable_noti);
 		snprintf(buf, sizeof(buf) - 1, "%s", (g_noti_data.is_enable_noti) ? _("IDS_EMAIL_BODY_ENABLED_M_STATUS")
-		         : _("IDS_ST_MBODY_DISABLED_ABB"));
+				 : _("IDS_ST_MBODY_DISABLED_ABB"));
 	}
 	return strdup(buf);
 }
@@ -152,13 +152,13 @@ Evas_Object *_create_noti_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,				/* genlist object */
-					itc,				/* item class */
-					id,		            	/* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,				/* genlist object */
+						   itc,				/* item class */
+						   id,		            	/* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 		}
 	}
 	elm_genlist_item_class_free(itc);

@@ -23,14 +23,14 @@
 /*  */
 static void _emergency_mode_vconf_changed_cb(keynode_t *key, void *data);
 static void _emergency_mode_cb(void *data, Evas_Object *obj, void *event_info);
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _trauma_cb(void *data, Evas_Object *obj, void *event_info);
 static void _no_activity_cb(void *data, Evas_Object *obj, void *event_info);
 static void _set_interval_cb(void *data, Evas_Object *obj, void *event_info);
 #endif
 static void _help_cb(void *data, Evas_Object *obj, void *event_info);
 
-#if 0 // _NOT_USED 
+#if 0 /* _NOT_USED  */
 static void show_interval_list(void *data);
 static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info);
 static void _no_activity_interval_cb(void *data, Evas_Object *obj, void *event_info);
@@ -48,7 +48,7 @@ static struct _safety_menu_item safety_menu_list[] = {
 	{ "IDS_ST_MBODY_HELP",					NULL,		  _help_cb		   }
 };
 
-#if 0 // _NOT_USED 
+#if 0 /* _NOT_USED  */
 static struct _set_interval_menu_item interval_menu_list[] = {
 	{ "Trauma", 		"Warning %s", 		_trauma_interval_cb 	 },
 	{ "No activity", 	"Warning %s", 		_no_activity_interval_cb }
@@ -143,7 +143,7 @@ static void _emergency_mode_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _trauma_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("trauma_cb() is called.");
@@ -214,20 +214,20 @@ static int _is_enable(int index)
 {
 	int enable = DISABLE;
 	switch (index) {
-		case 0:
-			vconf_get_bool(VCONFKEY_SETAPPL_EMERGENCY_STATUS_BOOL, &safety_data.is_enable_emergency_mode);
-			enable = safety_data.is_enable_emergency_mode;
-			break;
-		case 1:
-			enable = safety_data.is_enable_trauma;
-			break;
-		case 2:
-			enable = safety_data.is_enable_no_activity;
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
+	case 0:
+		vconf_get_bool(VCONFKEY_SETAPPL_EMERGENCY_STATUS_BOOL, &safety_data.is_enable_emergency_mode);
+		enable = safety_data.is_enable_emergency_mode;
+		break;
+	case 1:
+		enable = safety_data.is_enable_trauma;
+		break;
+	case 2:
+		enable = safety_data.is_enable_no_activity;
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
 	}
 	return enable;
 }
@@ -335,13 +335,13 @@ Evas_Object *create_safety_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,		/* genlist object */
-					itc_temp,		/* item class */
-					id,		        /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_list[idx].func,	/* call back */
-					ad);
+						   genlist,		/* genlist object */
+						   itc_temp,		/* item class */
+						   id,		        /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_list[idx].func,	/* call back */
+						   ad);
 			if (idx == 0) {
 				vconf_get_bool("db/setting/support_emergency", &safety_data.is_support_emergency);
 				/*not support list for emergency mode */
@@ -360,7 +360,7 @@ Evas_Object *create_safety_list(void *data)
 	return layout;
 }
 
-#if 0 // _NOT_USED 
+#if 0 /* _NOT_USED  */
 static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("_trauma_interval_cb() is called.");
@@ -434,13 +434,13 @@ static void show_interval_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,		/* genlist object */
-					itc_2text,		/* item class */
-					id,		        /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_list[idx].func,	/* call back */
-					ad);
+						   genlist,		/* genlist object */
+						   itc_2text,		/* item class */
+						   id,		        /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_list[idx].func,	/* call back */
+						   ad);
 		}
 	}
 
@@ -462,7 +462,7 @@ static char *_gl_interval_trauma_title_get(void *data, Evas_Object *obj, const c
 
 	if (!strcmp(part, "elm.text")) {
 		snprintf(buf, sizeof(buf) - 1, interval_trauma_time_arr[id->index].str,
-		         interval_trauma_time_arr[id->index].time);
+				 interval_trauma_time_arr[id->index].time);
 	}
 	return strdup(buf);
 }
@@ -533,12 +533,12 @@ static void _show_interval_trauma_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist,
-					itc,
-					id,
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_trauma_interval_radio_cb,
-					(void *)idx);
+											   itc,
+											   id,
+											   NULL,
+											   ELM_GENLIST_ITEM_NONE,
+											   _trauma_interval_radio_cb,
+											   (void *)idx);
 		}
 	}
 
@@ -629,12 +629,12 @@ static void _show_interval_no_activity_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist,
-					itc,
-					id,
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_no_activity_interval_radio_cb,
-					(void *)idx);
+											   itc,
+											   id,
+											   NULL,
+											   ELM_GENLIST_ITEM_NONE,
+											   _no_activity_interval_radio_cb,
+											   (void *)idx);
 		}
 	}
 
@@ -685,7 +685,7 @@ void _help_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_content_set(scroller, label);
 	evas_object_show(label);
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	evas_object_show(popup);
 }
@@ -754,7 +754,7 @@ void _disable_emergency_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_content_set(scroller, label);
 	evas_object_show(label);
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	btn = elm_button_add(popup);
 	elm_object_style_set(btn, "default");

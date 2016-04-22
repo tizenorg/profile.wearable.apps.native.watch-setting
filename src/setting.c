@@ -71,7 +71,9 @@ static struct _menu_item setting_menu_its[] = {
 	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
 	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb 	  		},
 	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
+#ifndef FEATURE_SETTING_EMUL
 	{ "WIFI",					"text_input_icon.png",			wifi_cb 	  		},
+#endif
 #ifndef FEATURE_SETTING_EMUL
 	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
 #endif
@@ -790,7 +792,7 @@ static void _lang_changed(app_event_info_h event_info, void *data)
 	}
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _window_resize_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = (appdata *)data;
@@ -907,7 +909,7 @@ static Evas_Object *_gl_icon_get(void *data, Evas_Object *obj, const char *part)
 
 		return icon;
 	}
-	#endif
+#endif
 	return NULL;
 }
 
@@ -965,12 +967,12 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 	if (id_indi) {
 		id_indi->index = idx;
 		id_indi->item = elm_genlist_item_append(
-				genlist,
-				itc_tmp,
-				id_indi,
-				NULL,
-				ELM_GENLIST_ITEM_NONE,
-				NULL, NULL);
+							genlist,
+							itc_tmp,
+							id_indi,
+							NULL,
+							ELM_GENLIST_ITEM_NONE,
+							NULL, NULL);
 		elm_genlist_item_select_mode_set(id_indi->item, ELM_OBJECT_SELECT_MODE_DISPLAY_ONLY);
 	}
 
@@ -998,13 +1000,13 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,			/* genlist object */
-					itc,				/* item class */
-					id,	            	/* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,
-					ad);
+						   genlist,			/* genlist object */
+						   itc,				/* item class */
+						   id,	            	/* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,
+						   ad);
 		}
 	}
 	elm_genlist_item_class_free(itc);
@@ -1032,7 +1034,7 @@ static void _update_main_menu_title(void *data)
 	}
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _naviframe_back_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
@@ -1070,8 +1072,8 @@ static void _create_view_layout(appdata *ad)
 	if (ad->nf == NULL) return;
 
 	genlist = _create_mainlist_winset(ad->win_main, ad);
-	//ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _naviframe_back_cb, ad);
-	//ea_object_event_callback_add(ad->nf, EA_CALLBACK_MORE, ea_naviframe_more_cb, NULL);
+	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _naviframe_back_cb, ad); */
+	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_MORE, ea_naviframe_more_cb, NULL); */
 
 	connect_to_wheel_with_genlist(genlist,ad);
 
@@ -1171,8 +1173,8 @@ bool app_create(void *data)
 
 	evas_object_show(ad->win_main);
 
-	//int ret = system_settings_set_changed_cb(SYSTEM_SETTINGS_KEY_LOCALE_TIMEZONE, _time_cb, NULL);
-	//DBG("ret = %d", ret);
+	/*int ret = system_settings_set_changed_cb(SYSTEM_SETTINGS_KEY_LOCALE_TIMEZONE, _time_cb, NULL); */
+	/*DBG("ret = %d", ret); */
 	DBG("app_create finish. with skip locale");
 
 	back_button_cb_push(&_exit_app, NULL, NULL, NULL, NULL);
@@ -1238,7 +1240,7 @@ void app_pause(void *data)
 		if (ad->MENU_TYPE == SETTING_VOLUME_2_DEPTH) {
 			_stop_all_volume_sound();
 		} else if (ad->MENU_TYPE == SETTING_SOUND_RINGTONE ||
-		           ad->MENU_TYPE == SETTING_SOUND_NOTIFICATION) {
+				   ad->MENU_TYPE == SETTING_SOUND_NOTIFICATION) {
 			_stop_all_sound_play();
 		} else if (ad->MENU_TYPE == SETTING_BATTERY) {
 			_clear_battery_cb(NULL, NULL, NULL, NULL);
@@ -1282,7 +1284,7 @@ void app_reset(app_control_h service, void *data)
 
 			if (ad->main_genlist) {
 				elm_genlist_item_show(elm_genlist_first_item_get(ad->main_genlist),
-				                      ELM_GENLIST_ITEM_SCROLLTO_TOP);
+									  ELM_GENLIST_ITEM_SCROLLTO_TOP);
 				elm_layout_signal_emit(ad->main_genlist, "do-show-vbar", "");
 
 				if (scrl_timer) {

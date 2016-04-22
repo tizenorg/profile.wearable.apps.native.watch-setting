@@ -52,17 +52,17 @@
 #define FREE(arg) __FREE(free, arg)
 
 #define setting_retvm_if(expr, val, fmt, arg...) do { \
-	if(expr) { \
-		ERR(fmt, ##arg); \
-		return (val); \
-	} \
-} while (0);
+		if(expr) { \
+			ERR(fmt, ##arg); \
+			return (val); \
+		} \
+	} while (0);
 
 #define setting_retm_if(expr, fmt, arg...) do { \
-	if(expr) { \
-		ERR(fmt, ##arg); \
-		return; \
-	} \
-} while (0);
+		if(expr) { \
+			ERR(fmt, ##arg); \
+			return; \
+		} \
+	} while (0);
 
 #endif

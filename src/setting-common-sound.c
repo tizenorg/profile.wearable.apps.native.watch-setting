@@ -151,15 +151,15 @@ player_prelistening_mode_e _get_prelistening_mode(sound_type_e sound_type)
 {
 	player_prelistening_mode_e mode = mode = PLAYER_PRELISTENING_MODE_RINGTONE;
 	switch (sound_type) {
-		case SOUND_TYPE_MEDIA:
-			mode = PLAYER_PRELISTENING_MODE_MEDIA;
-			break;
-		case SOUND_TYPE_RINGTONE:
-			mode = PLAYER_PRELISTENING_MODE_RINGTONE;
-			break;
-		case SOUND_TYPE_NOTIFICATION:
-			mode = PLAYER_PRELISTENING_MODE_NOTIFICATION;
-			break;
+	case SOUND_TYPE_MEDIA:
+		mode = PLAYER_PRELISTENING_MODE_MEDIA;
+		break;
+	case SOUND_TYPE_RINGTONE:
+		mode = PLAYER_PRELISTENING_MODE_RINGTONE;
+		break;
+	case SOUND_TYPE_NOTIFICATION:
+		mode = PLAYER_PRELISTENING_MODE_NOTIFICATION;
+		break;
 	}
 
 	return mode;

@@ -28,7 +28,7 @@ int image_index;
 int is_alive;
 
 Evas_Object *_create_battery_content2(void *data);
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _battery_percent_cb(void *data, Evas_Object *obj, void *event_info);
 #endif
 static void _power_saving_cb(void *data, Evas_Object *obj, void *event_info);
@@ -412,7 +412,7 @@ int _set_battery_percent_value(int value)
 	return TRUE;
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 void _battery_percent_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -444,7 +444,7 @@ int _power_saving_runapp_info_get(const aul_app_info *ainfo, void *data)
 		return -1;
 	}
 
-	if(taskmanage != 0)
+	if (taskmanage != 0)
 		aul_terminate_pid(ainfo->pid);
 
 	pkgmgrinfo_appinfo_destroy_appinfo(handle);
@@ -624,13 +624,13 @@ Evas_Object *_create_battery_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,		/* genlist object */
-					itc,			/* item class */
-					id,		        /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_list[idx].func,	/* call back */
-					ad);
+						   genlist,		/* genlist object */
+						   itc,			/* item class */
+						   id,		        /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_list[idx].func,	/* call back */
+						   ad);
 
 			if (idx == BATT_MENU_POWER_SAVING) {
 				pws_it = id->item;
@@ -722,7 +722,7 @@ void _pws_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_content_set(scroller, label);
 	evas_object_show(label);
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	btn = elm_button_add(popup);
 	elm_object_style_set(btn, "default");

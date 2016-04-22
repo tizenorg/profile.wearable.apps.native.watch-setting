@@ -148,7 +148,7 @@ bool colorstr_to_decimal(char *color, int *R, int *G, int *B)
 	return true;
 }
 
-char* _get_strnum_from_icu(int number)
+char *_get_strnum_from_icu(int number)
 {
 	char *locale_tmp = vconf_get_str(VCONFKEY_REGIONFORMAT);
 	char locale[32] = {0,};

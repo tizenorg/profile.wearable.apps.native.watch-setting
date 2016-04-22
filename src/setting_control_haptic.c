@@ -65,7 +65,7 @@ void _start_vibration(int level, int feedback_rate, char *res_path)
 		DBG("Setting - duration : %d", duration);
 
 		err = haptic_vibrate_file_with_detail(hnd_hpt, res_path,
-		                                      HAPTIC_ITERATION_ONCE, feedback_rate, HAPTIC_PRIORITY_HIGH, NULL);
+											  HAPTIC_ITERATION_ONCE, feedback_rate, HAPTIC_PRIORITY_HIGH, NULL);
 		if (err != 0)
 			DBG("Setting - haptic_vibrate_file_with_detail() failed");
 

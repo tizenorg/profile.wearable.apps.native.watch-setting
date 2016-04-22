@@ -163,8 +163,7 @@ static void volume_circle_system_part(appdata *ad, Evas_Object *ly, system_part_
 	snprintf(tempbuf, sizeof(tempbuf) - 1, "%d", volume_index);
 	elm_object_text_set(label, tempbuf);
 	elm_object_part_content_set(ly, "elm.icon.2", label);
-	if(!is_multimedia)
-	{
+	if (!is_multimedia) {
 		evas_object_resize(label, 200, 200);
 		if (get_sound_mode() != SOUND_MODE_SOUND)
 			evas_object_color_set(label, 83, 94, 102, 255);
@@ -278,7 +277,7 @@ static void _update_volume_popup_for_changing_sound_mode()
 			edje_object_signal_emit(elm_layout_edje_get(g_volume_spinner), "elm,spinner,vibrate", "elm");
 
 			if (curr_sound_type == SOUND_TYPE_NOTIFICATION ||
-			    curr_sound_type == SOUND_TYPE_SYSTEM) {
+				curr_sound_type == SOUND_TYPE_SYSTEM) {
 				DBG("current_sound_type!!");
 
 				elm_object_disabled_set(g_volume_spinner, EINA_TRUE);
@@ -301,7 +300,7 @@ static void _update_volume_popup_for_changing_sound_mode()
 			DBG("Setting - Mute!!!");
 
 			if (curr_sound_type == SOUND_TYPE_NOTIFICATION ||
-			    curr_sound_type == SOUND_TYPE_SYSTEM) {
+				curr_sound_type == SOUND_TYPE_SYSTEM) {
 				elm_object_disabled_set(g_volume_spinner, EINA_FALSE);
 
 				edje_object_signal_emit(elm_layout_edje_get(g_volume_spinner), "elm,spinner,min", "elm");
@@ -512,13 +511,13 @@ Evas_Object *_create_volume_list(void *data)
 		if (id) {
 			id->index = idx;
 			item = elm_genlist_item_append(
-					genlist,			/* genlist object */
-					itc,				/* item class */
-					id,		            /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+					   genlist,			/* genlist object */
+					   itc,				/* item class */
+					   id,		            /* data */
+					   NULL,
+					   ELM_GENLIST_ITEM_NONE,
+					   menu_its[ idx ].func,	/* call back */
+					   ad);
 			id->item = item;
 		}
 	}
@@ -532,24 +531,24 @@ Evas_Object *_create_volume_list(void *data)
 static void change_sound_mode(int mode)
 {
 	switch (mode) {
-		case SOUND_MODE_SOUND:
-			DBG("Setting - Change sound mode to Sound!");
+	case SOUND_MODE_SOUND:
+		DBG("Setting - Change sound mode to Sound!");
 
-			vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, TRUE);
-			vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
-			break;
-		case SOUND_MODE_VIBRATE:
-			DBG("Setting - Change sound mode to Sound!");
+		vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, TRUE);
+		vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
+		break;
+	case SOUND_MODE_VIBRATE:
+		DBG("Setting - Change sound mode to Sound!");
 
-			vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
-			vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, TRUE);
-			break;
-		case SOUND_MODE_MUTE:
-			DBG("Setting - Change sound mode to Sound!");
+		vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
+		vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, TRUE);
+		break;
+	case SOUND_MODE_MUTE:
+		DBG("Setting - Change sound mode to Sound!");
 
-			vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
-			vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
-			break;
+		vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
+		vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
+		break;
 	}
 }
 
@@ -570,18 +569,18 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 	char vconf_key[512] = {0,};
 
 	switch (curr_sound_type) {
-		case SOUND_TYPE_MEDIA:
-			strncpy(vconf_key, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT, 512);
-			break;
-		case SOUND_TYPE_RINGTONE:
-			strncpy(vconf_key, VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, 512);
-			break;
-		case SOUND_TYPE_SYSTEM:
-			strncpy(vconf_key, VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT, 512);
-			break;
-		case SOUND_TYPE_NOTIFICATION:
-			strncpy(vconf_key, VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT, 512);
-			break;
+	case SOUND_TYPE_MEDIA:
+		strncpy(vconf_key, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT, 512);
+		break;
+	case SOUND_TYPE_RINGTONE:
+		strncpy(vconf_key, VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, 512);
+		break;
+	case SOUND_TYPE_SYSTEM:
+		strncpy(vconf_key, VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT, 512);
+		break;
+	case SOUND_TYPE_NOTIFICATION:
+		strncpy(vconf_key, VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT, 512);
+		break;
 	}
 
 	/* restore original vulume value */
@@ -702,41 +701,41 @@ static void _play_sound_all_type(int sound_type, float volume)
 	const char *sound_path = NULL;
 	int temp_volume_index = 0;
 	switch (sound_type) {
-		case SOUND_TYPE_RINGTONE :
-			temp_volume_index = volume_index;
+	case SOUND_TYPE_RINGTONE :
+		temp_volume_index = volume_index;
 
-			vconf_set_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, temp_volume_index);
-			vconf_set_int("db/setting/sound/call/rmd_ringtone_volume", temp_volume_index);	/* backup ringtone volume */
+		vconf_set_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, temp_volume_index);
+		vconf_set_int("db/setting/sound/call/rmd_ringtone_volume", temp_volume_index);	/* backup ringtone volume */
 
-			sound_path = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
-			if (sound_path) {
-				snprintf(buf, sizeof(buf)-1, "%s", sound_path);
-			} else {
-				snprintf(buf, sizeof(buf)-1, "%s", VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
-			}
+		sound_path = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
+		if (sound_path) {
+			snprintf(buf, sizeof(buf)-1, "%s", sound_path);
+		} else {
+			snprintf(buf, sizeof(buf)-1, "%s", VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
+		}
 
-			break;
-		case SOUND_TYPE_MEDIA:
-			_set_volumn(sound_type, volume_index, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT);
+		break;
+	case SOUND_TYPE_MEDIA:
+		_set_volumn(sound_type, volume_index, VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT);
 
-			snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MEDIA_TONE);
-			break;
-		case SOUND_TYPE_NOTIFICATION:
-			vconf_set_int(VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT, volume_index);
-			temp_volume_index = volume_index;
+		snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MEDIA_TONE);
+		break;
+	case SOUND_TYPE_NOTIFICATION:
+		vconf_set_int(VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT, volume_index);
+		temp_volume_index = volume_index;
 
-			sound_path = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
-			if (sound_path) {
-				snprintf(buf, sizeof(buf)-1, "%s", sound_path);
-			} else {
-				snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MSG_TONE);
-			}
-			break;
-		case SOUND_TYPE_SYSTEM:
-			vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT, volume_index);
+		sound_path = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
+		if (sound_path) {
+			snprintf(buf, sizeof(buf)-1, "%s", sound_path);
+		} else {
+			snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_MSG_TONE);
+		}
+		break;
+	case SOUND_TYPE_SYSTEM:
+		vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT, volume_index);
 
-			snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_SYS_TONE);
-			break;
+		snprintf(buf, sizeof(buf)-1, "%s", SETTING_DEFAULT_SYS_TONE);
+		break;
 	}
 
 	int err = -1;
@@ -765,35 +764,39 @@ static void _play_sound_all_type(int sound_type, float volume)
 		is_myself_ringtone_changing = 1;
 	}
 #if 0
-	} else if (sound_type == SOUND_TYPE_MEDIA) {
-		int music_state = 0;
-		int err = vconf_get_int("memory/private/org.tizen.w-music-player/player_state", &music_state);
+}
+else if (sound_type == SOUND_TYPE_MEDIA)
+{
+	int music_state = 0;
+	int err = vconf_get_int("memory/private/org.tizen.w-music-player/player_state", &music_state);
 
-		DBG("Setting - music state: %d, err: %d", music_state, err);
+	DBG("Setting - music state: %d, err: %d", music_state, err);
 
-		if (music_state == VCONFKEY_MUSIC_PLAY) {
-			DBG("Setting - media is playing...");
-			return;
-		}
-
-		if (!is_created_player() || is_player_paused()) {
-			play_sound(buf, volume, SOUND_TYPE_MEDIA);
-			set_looping(TRUE);
-		}
+	if (music_state == VCONFKEY_MUSIC_PLAY) {
+		DBG("Setting - media is playing...");
+		return;
 	}
+
+	if (!is_created_player() || is_player_paused()) {
+		play_sound(buf, volume, SOUND_TYPE_MEDIA);
+		set_looping(TRUE);
+	}
+}
 #endif
-	else if (sound_type == SOUND_TYPE_SYSTEM) {
-		stop_wav();
+else if (sound_type == SOUND_TYPE_SYSTEM)
+{
+	stop_wav();
 
-		is_wav_playing_vol = SOUND_STATE_PLAY;
-		wav_player_start(buf, sound_type, NULL, NULL, &sound_id_vol);
-		return;
-	} else if (sound_type == SOUND_TYPE_NOTIFICATION) {
-		play_sound(buf, 0.0, SOUND_TYPE_NOTIFICATION);
-		set_looping(FALSE);
+	is_wav_playing_vol = SOUND_STATE_PLAY;
+	wav_player_start(buf, sound_type, NULL, NULL, &sound_id_vol);
+	return;
+} else if (sound_type == SOUND_TYPE_NOTIFICATION)
+{
+	play_sound(buf, 0.0, SOUND_TYPE_NOTIFICATION);
+	set_looping(FALSE);
 
-		return;
-	}
+	return;
+}
 }
 
 static void _change_to_vibrate_mode()
@@ -1068,9 +1071,9 @@ void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(btn_ok, "clicked", _set_multimedia_clicked_cb, ad);
 
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-	                                                 "IDS_ST_BUTTON_MULTIMEDIA",
-	                                                 NULL, NULL,
-	                                                 ly, NULL);
+													 "IDS_ST_BUTTON_MULTIMEDIA",
+													 NULL, NULL,
+													 ly, NULL);
 	back_button_cb_push(&_set_cancel_cb, data, btn_cancel, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _back_volume_naviframe_cb, ad);
@@ -1202,9 +1205,9 @@ void _show_ringtone_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(btn, "clicked", _set_ringtone_clicked_cb, ad);
 
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-	                                                 "IDS_ST_HEADER_RINGTONES_ABB",
-	                                                 NULL, NULL,
-	                                                 ly, NULL);
+													 "IDS_ST_HEADER_RINGTONES_ABB",
+													 NULL, NULL,
+													 ly, NULL);
 	back_button_cb_push(&_set_cancel_cb, data, btn, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _back_volume_naviframe_cb, ad);
@@ -1336,9 +1339,9 @@ void _show_notification_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(btn, "clicked", _set_notification_clicked_cb, ad);
 
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-	                                                 "IDS_ST_BUTTON_NOTIFICATIONS",
-	                                                 NULL, NULL,
-	                                                 ly, NULL);
+													 "IDS_ST_BUTTON_NOTIFICATIONS",
+													 NULL, NULL,
+													 ly, NULL);
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _back_volume_naviframe_cb, ad);
@@ -1470,9 +1473,9 @@ void _show_system_popup(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(btn, "clicked", _set_system_clicked_cb, ad);
 
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-	                                                 "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB",
-	                                                 NULL, NULL,
-	                                                 ly, NULL);
+													 "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB",
+													 NULL, NULL,
+													 ly, NULL);
 	back_button_cb_push(&_set_cancel_cb, data, btn, g_volume_genlist, nf_it);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _back_volume_naviframe_cb, ad);

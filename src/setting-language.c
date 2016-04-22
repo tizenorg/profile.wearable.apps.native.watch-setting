@@ -148,7 +148,7 @@ Eina_Bool _clear_lang_navi_cb(void *data , Elm_Object_Item *it)
 
 Ecore_Timer *lang_timer = NULL;
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static Eina_Bool _update_language(void *data)
 {
 	char *locale = vconf_get_str(VCONFKEY_LANGSET);
@@ -183,10 +183,10 @@ static int _set_dateformat(const char *region)
 	pattern_generator = udatpg_open(region, &status);
 
 	int32_t bestPatternCapacity =
-	    (int32_t)(sizeof(bestPattern) / sizeof((bestPattern)[0]));
+		(int32_t)(sizeof(bestPattern) / sizeof((bestPattern)[0]));
 	(void)udatpg_getBestPattern(pattern_generator, customSkeleton,
-	                            u_strlen(customSkeleton), bestPattern,
-	                            bestPatternCapacity, &status);
+								u_strlen(customSkeleton), bestPattern,
+								bestPatternCapacity, &status);
 
 	ret_str = u_austrcpy(bestPatternString, bestPattern);
 	DBG("u_uastrncpy ret_str=%d", ret_str);
@@ -223,7 +223,7 @@ static int _set_dateformat(const char *region)
 	}
 
 	DBG("bestPatternString : %s, format: %s, index: %d",
-	    bestPatternString, region_format, date_format_vconf_value);
+		bestPatternString, region_format, date_format_vconf_value);
 
 	vconf_set_int(VCONFKEY_SETAPPL_DATE_FORMAT_INT, date_format_vconf_value);
 
@@ -413,13 +413,13 @@ Evas_Object *_create_lang_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,				/* genlist object */
-					itc_temp,				/* item class */
-					id,		            	/* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_gl_lang_sel_cb, 		/* call back */
-					(const void *)idx);
+						   genlist,				/* genlist object */
+						   itc_temp,				/* item class */
+						   id,		            	/* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   _gl_lang_sel_cb, 		/* call back */
+						   (const void *)idx);
 		}
 	}
 

@@ -223,9 +223,9 @@ static void get_sound_file_list(char *dir, int type)
 
 	while (!readdir_r(dp, &entry, &result) && result) {
 		if (strncmp(result->d_name, ".", 1)
-				&& strlen(dir) < 1024
-				&& strlen(replace(result->d_name, ".ogg", "")) <1024
-				&& strlen(replace(notification_name_arr[notification_count], "_", " ")) < 1024) {
+			&& strlen(dir) < 1024
+			&& strlen(replace(result->d_name, ".ogg", "")) <1024
+			&& strlen(replace(notification_name_arr[notification_count], "_", " ")) < 1024) {
 			if (type) {
 				strncpy(ringtone_arr[ringtone_count], dir, 1024);
 				strncat(ringtone_arr[ringtone_count], result->d_name, 1024);
@@ -272,15 +272,15 @@ static int get_vibration_level()
 	vconf_get_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, &level);
 
 	switch (level) {
-		case VIBRATION_LEVEL_LOW_INT :
-			mode = VIBRATION_LEVEL_LOW;
-			break;
-			/*	case VIBRATION_LEVEL_MID_INT : */
-			/*		mode = VIBRATION_LEVEL_MID; */
-			/*		break; */
-		case VIBRATION_LEVEL_HIGH_INT :
-			mode = VIBRATION_LEVEL_HIGH;
-			break;
+	case VIBRATION_LEVEL_LOW_INT :
+		mode = VIBRATION_LEVEL_LOW;
+		break;
+	/*	case VIBRATION_LEVEL_MID_INT : */
+	/*		mode = VIBRATION_LEVEL_MID; */
+	/*		break; */
+	case VIBRATION_LEVEL_HIGH_INT :
+		mode = VIBRATION_LEVEL_HIGH;
+		break;
 	}
 	return mode;
 }
@@ -406,45 +406,45 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 		snprintf(buf, sizeof(buf) - 1, "%s", _(sound_menu_its[index % ITEM_SIZE].name));
 	} else if (!strcmp(part, "elm.text.1")) {
 		switch (index) {
-			case 1 :
-				sound_mode = get_sound_mode();
-				snprintf(buf, sizeof(buf) - 1, "%s", _(sound_mode_str[sound_mode % 3]));
-				break;
-			case 3 :
-				pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
-				if (pa_cur_ringtone == NULL) {
-					pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
-				}
-				if (strlen(pa_cur_ringtone) < 1024) {
-					strcpy(curr_ringtone_file_path, pa_cur_ringtone);
-					DBG("Setting - ringtone path : %s", pa_cur_ringtone);
+		case 1 :
+			sound_mode = get_sound_mode();
+			snprintf(buf, sizeof(buf) - 1, "%s", _(sound_mode_str[sound_mode % 3]));
+			break;
+		case 3 :
+			pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
+			if (pa_cur_ringtone == NULL) {
+				pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
+			}
+			if (strlen(pa_cur_ringtone) < 1024) {
+				strcpy(curr_ringtone_file_path, pa_cur_ringtone);
+				DBG("Setting - ringtone path : %s", pa_cur_ringtone);
 
-					snprintf(buf, sizeof(buf) - 1, "%s", _get_sound_file_name(pa_cur_ringtone));
-				}
-				break;
-			case 4 :
-				pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
-				if (pa_cur_ringtone == NULL) {
-					pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_RINGTONE_DEFAULT_PATH_STR);
-				}
-				if (strlen(pa_cur_ringtone) < 1024) {
-					strcpy(curr_noti_file_path, pa_cur_ringtone);
-					DBG("Setting - noti's ringtone path : %s", pa_cur_ringtone);
+				snprintf(buf, sizeof(buf) - 1, "%s", _get_sound_file_name(pa_cur_ringtone));
+			}
+			break;
+		case 4 :
+			pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
+			if (pa_cur_ringtone == NULL) {
+				pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_RINGTONE_DEFAULT_PATH_STR);
+			}
+			if (strlen(pa_cur_ringtone) < 1024) {
+				strcpy(curr_noti_file_path, pa_cur_ringtone);
+				DBG("Setting - noti's ringtone path : %s", pa_cur_ringtone);
 
-					snprintf(buf, sizeof(buf) - 1, "%s", _get_sound_file_name(pa_cur_ringtone));
-				}
-				break;
-			case 5 :
-				vibrate_type = get_vibration_level();
-				snprintf(buf, sizeof(buf) - 1, "%s", _(vibration_str[vibrate_type % 2]));
-				break;
-				/*
-				   case 5 :
-				   vconf_get_bool(VCONFKEY_SETAPPL_PERFERED_ARM_LEFT_BOOL, &pref_arm_type);
-				   pref_arm_type = (pref_arm_type == TRUE) ? 0 : 1;
-				   snprintf(buf, sizeof(buf)-1, "%s", _(pref_arm_str[pref_arm_type % 2]));
-				   break;
-				 */
+				snprintf(buf, sizeof(buf) - 1, "%s", _get_sound_file_name(pa_cur_ringtone));
+			}
+			break;
+		case 5 :
+			vibrate_type = get_vibration_level();
+			snprintf(buf, sizeof(buf) - 1, "%s", _(vibration_str[vibrate_type % 2]));
+			break;
+			/*
+			   case 5 :
+			   vconf_get_bool(VCONFKEY_SETAPPL_PERFERED_ARM_LEFT_BOOL, &pref_arm_type);
+			   pref_arm_type = (pref_arm_type == TRUE) ? 0 : 1;
+			   snprintf(buf, sizeof(buf)-1, "%s", _(pref_arm_str[pref_arm_type % 2]));
+			   break;
+			 */
 		}
 		index++;
 	}
@@ -550,13 +550,13 @@ Evas_Object *_create_sound_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,			/* genlist object */
-					itc_tmp,			/* item class */
-					id,		            /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,			/* genlist object */
+						   itc_tmp,			/* item class */
+						   id,		            /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 
 			if (idx == ITEM_SIZE - 1) {
 				g_vib_item = id->item;
@@ -638,71 +638,71 @@ static void _sound_mode_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	int prev_sound_mode = get_sound_mode();
 
 	switch (sound_mode) {
-		case SOUND_MODE_SOUND:
-			if (get_sound_mode() != SOUND_MODE_SOUND) {
-				DBG("Setting - current sound mode is not sound!! Change sound mode to sound!!");
+	case SOUND_MODE_SOUND:
+		if (get_sound_mode() != SOUND_MODE_SOUND) {
+			DBG("Setting - current sound mode is not sound!! Change sound mode to sound!!");
 
-				vconf_get_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, &curr_touch_sound);
-				if (curr_touch_sound) {
-					vconf_set_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, FALSE);
-				}
-
-				vconf_get_int(SETTING_RINGTONE_VOLUME_BACKUP, &ringtone_level);
-				DBG("Setting - ringtone backup level: %d", ringtone_level);
-
-				vconf_set_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, ringtone_level);
-
-				if (is_created_player()) {
-					_close_player(NULL, SOUND_TYPE_RINGTONE);
-				}
-				play_sound_for_sound_mode_setting(SETTING_DEFAULT_SILENT_OFF_TONE, 0.0, SOUND_TYPE_RINGTONE);
-				set_looping(FALSE);
-
-				sound_manager_get_volume(SOUND_TYPE_RINGTONE, &ringtone_level);
-				if (ringtone_level == 0) {
-					DBG("Setting - Ringtone volume is 0!! Restore to 1!!");
-					sound_manager_set_volume(SOUND_TYPE_RINGTONE, 1);
-				}
-
-				vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, TRUE);
-				vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
-
-				vconf_set_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, curr_touch_sound);
-				curr_touch_sound = 0;
+			vconf_get_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, &curr_touch_sound);
+			if (curr_touch_sound) {
+				vconf_set_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, FALSE);
 			}
-			break;
-		case SOUND_MODE_VIBRATE:
-			if (prev_sound_mode != SOUND_MODE_VIBRATE) {
-				DBG("Setting - current sound mode is not vibration. Change sound mode to vibration!!");
 
-				vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
-				vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, TRUE);
+			vconf_get_int(SETTING_RINGTONE_VOLUME_BACKUP, &ringtone_level);
+			DBG("Setting - ringtone backup level: %d", ringtone_level);
 
-				vconf_get_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, &ringtone_level);
-				DBG("Setting - ringtone original level: %d", ringtone_level);
+			vconf_set_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, ringtone_level);
 
-				vconf_set_int(SETTING_RINGTONE_VOLUME_BACKUP, ringtone_level);
-				/*sound_manager_set_muteall(TRUE);	// mute!! */
+			if (is_created_player()) {
+				_close_player(NULL, SOUND_TYPE_RINGTONE);
 			}
-			_start_vibration(5, SETTING_VIB_STRONG_RATE, SETTING_DEFAULT_SYSTEM_HAPTIC_PREVIEW_VIB);
-			break;
-		case SOUND_MODE_MUTE:
-			if (prev_sound_mode != SOUND_MODE_MUTE) {
-				DBG("Setting - current sound mode is not mute. Change sound mode to mute!!");
+			play_sound_for_sound_mode_setting(SETTING_DEFAULT_SILENT_OFF_TONE, 0.0, SOUND_TYPE_RINGTONE);
+			set_looping(FALSE);
 
-				vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
-				vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
-
-				vconf_get_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, &ringtone_level);
-				DBG("Setting - ringtone original level: %d", ringtone_level);
-
-				vconf_set_int(SETTING_RINGTONE_VOLUME_BACKUP, ringtone_level);
-				/*sound_manager_set_muteall(TRUE);	// mute!! */
+			sound_manager_get_volume(SOUND_TYPE_RINGTONE, &ringtone_level);
+			if (ringtone_level == 0) {
+				DBG("Setting - Ringtone volume is 0!! Restore to 1!!");
+				sound_manager_set_volume(SOUND_TYPE_RINGTONE, 1);
 			}
-			break;
-		default:
-			ERR("Setting - wrong sound mode value!!");
-			break;
+
+			vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, TRUE);
+			vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
+
+			vconf_set_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, curr_touch_sound);
+			curr_touch_sound = 0;
+		}
+		break;
+	case SOUND_MODE_VIBRATE:
+		if (prev_sound_mode != SOUND_MODE_VIBRATE) {
+			DBG("Setting - current sound mode is not vibration. Change sound mode to vibration!!");
+
+			vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
+			vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, TRUE);
+
+			vconf_get_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, &ringtone_level);
+			DBG("Setting - ringtone original level: %d", ringtone_level);
+
+			vconf_set_int(SETTING_RINGTONE_VOLUME_BACKUP, ringtone_level);
+			/*sound_manager_set_muteall(TRUE);	// mute!! */
+		}
+		_start_vibration(5, SETTING_VIB_STRONG_RATE, SETTING_DEFAULT_SYSTEM_HAPTIC_PREVIEW_VIB);
+		break;
+	case SOUND_MODE_MUTE:
+		if (prev_sound_mode != SOUND_MODE_MUTE) {
+			DBG("Setting - current sound mode is not mute. Change sound mode to mute!!");
+
+			vconf_set_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, FALSE);
+			vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
+
+			vconf_get_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, &ringtone_level);
+			DBG("Setting - ringtone original level: %d", ringtone_level);
+
+			vconf_set_int(SETTING_RINGTONE_VOLUME_BACKUP, ringtone_level);
+			/*sound_manager_set_muteall(TRUE);	// mute!! */
+		}
+		break;
+	default:
+		ERR("Setting - wrong sound mode value!!");
+		break;
 	}
 
 	elm_naviframe_item_pop(temp_ad->nf);
@@ -952,7 +952,7 @@ static void _ringtone_type_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_realized_items_update(g_ringtone_type_genlist);
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _ringtone_back_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
@@ -1042,12 +1042,12 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 		if (item) {
 			item->index = index;
 			item->item = elm_genlist_item_append(genlist,
-					itc,
-					item,
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_ringtone_type_gl_cb,
-					(void *)index);
+												 itc,
+												 item,
+												 NULL,
+												 ELM_GENLIST_ITEM_NONE,
+												 _ringtone_type_gl_cb,
+												 (void *)index);
 		}
 	}
 
@@ -1080,7 +1080,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_RINGTONES_ABB"), NULL, NULL, popup, NULL);
 	back_button_cb_push(&_response_ringtone_cancel_cb, data, btn, g_sound_genlist, nf_it);
-	//ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _ringtone_back_cb, ad);
+	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _ringtone_back_cb, ad); */
 
 	/*VCONFKEY_PM_STATE */
 	register_vconf_changing(VCONFKEY_PM_STATE, pm_state_vconf_changed_cb, NULL);
@@ -1088,7 +1088,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 }
 
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _notification_back_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
@@ -1267,12 +1267,12 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 		if (item) {
 			item->index = index;
 			item->item = elm_genlist_item_append(genlist,
-					itc,
-					item,
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_notification_gl_cb,
-					(void *)index);
+												 itc,
+												 item,
+												 NULL,
+												 ELM_GENLIST_ITEM_NONE,
+												 _notification_gl_cb,
+												 (void *)index);
 		}
 	}
 
@@ -1303,7 +1303,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Elm_Widget_Item *nf_it = elm_naviframe_item_push(ad->nf, _("IDS_ST_BUTTON_NOTIFICATIONS"), NULL, NULL, popup, NULL);
 	back_button_cb_push(&_response_notification_cancel_cb, data, btn, g_sound_genlist, nf_it);
-	//ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _notification_back_cb, ad);
+	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _notification_back_cb, ad); */
 
 	/*VCONFKEY_PM_STATE */
 	register_vconf_changing(VCONFKEY_PM_STATE, pm_state_vconf_changed_cb, NULL);
@@ -1317,16 +1317,16 @@ static void _response_vibration_ok_cb(void *data, Evas_Object *obj, void *event_
 	_haptic_close();
 
 	switch (vibrate_type) {
-		case VIBRATION_LEVEL_LOW:
-			vconf_set_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_LOW_INT);
-			vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_LOW_INT);
-			break;
-		case VIBRATION_LEVEL_HIGH:
-			vconf_set_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_HIGH_INT);
-			vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_HIGH_INT);
-			break;
-		default:
-			break;
+	case VIBRATION_LEVEL_LOW:
+		vconf_set_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_LOW_INT);
+		vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_LOW_INT);
+		break;
+	case VIBRATION_LEVEL_HIGH:
+		vconf_set_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_HIGH_INT);
+		vconf_set_int(VCONFKEY_SETAPPL_TOUCH_FEEDBACK_VIBRATION_LEVEL_INT, VIBRATION_LEVEL_HIGH_INT);
+		break;
+	default:
+		break;
 	}
 
 	vconf_get_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, &level);
@@ -1416,18 +1416,18 @@ static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	int level = VIBRATION_LEVEL_LOW_INT;
 	int feedback_rate = SETTING_VIB_MEDIUM_RATE;
 	switch (vibrate_type) {
-			/*	case 2: */
-			/*		level = VIBRATION_LEVEL_LOW_INT; */
-			/*		feedback_rate = SETTING_VIB_WEAK_RATE; */
-			/*		break; */
-		case 1:
-			level = VIBRATION_LEVEL_LOW_INT;
-			feedback_rate = SETTING_VIB_WEAK_RATE;
-			break;
-		case 0:
-			level = VIBRATION_LEVEL_HIGH_INT;
-			feedback_rate = SETTING_VIB_STRONG_RATE;
-			break;
+	/*	case 2: */
+	/*		level = VIBRATION_LEVEL_LOW_INT; */
+	/*		feedback_rate = SETTING_VIB_WEAK_RATE; */
+	/*		break; */
+	case 1:
+		level = VIBRATION_LEVEL_LOW_INT;
+		feedback_rate = SETTING_VIB_WEAK_RATE;
+		break;
+	case 0:
+		level = VIBRATION_LEVEL_HIGH_INT;
+		feedback_rate = SETTING_VIB_STRONG_RATE;
+		break;
 	}
 
 	DBG("Setting - feedback level: %d, rate: %d", level, feedback_rate);
@@ -1454,15 +1454,15 @@ static int get_vibration_type()
 
 	vconf_get_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, &origin_vibration_level);
 	switch (origin_vibration_level) {
-		case VIBRATION_LEVEL_LOW_INT:
-			type = 1;
-			break;
-			/*	case VIBRATION_LEVEL_MID_INT: */
-			/*		type = 1; */
-			/*		break; */
-		case VIBRATION_LEVEL_HIGH_INT:
-			type = 0;
-			break;
+	case VIBRATION_LEVEL_LOW_INT:
+		type = 1;
+		break;
+	/*	case VIBRATION_LEVEL_MID_INT: */
+	/*		type = 1; */
+	/*		break; */
+	case VIBRATION_LEVEL_HIGH_INT:
+		type = 0;
+		break;
 	}
 
 	return type;
@@ -1502,12 +1502,12 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 		if (item) {
 			item->index = index;
 			item->item = elm_genlist_item_append(genlist,
-					itc,
-					item,
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_vibration_gl_cb,
-					(void *)index);
+												 itc,
+												 item,
+												 NULL,
+												 ELM_GENLIST_ITEM_NONE,
+												 _vibration_gl_cb,
+												 (void *)index);
 		}
 	}
 
@@ -1538,7 +1538,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(btn, "clicked", _response_vibration_ok_cb, ad);
 
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-							_("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, popup, NULL);
+													 _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, popup, NULL);
 	back_button_cb_push(&_response_vibration_cancel_cb, data, btn, g_sound_genlist, nf_it);
 }
 

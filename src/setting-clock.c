@@ -213,7 +213,7 @@ static void update_clock_list(void *data, Eina_Bool reload, Eina_Bool show)
 		_page_show(NULL, NULL, g_clock_scroller, NULL);
 	}
 }
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static int _clock_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 {
 	appdata *ad = data;
@@ -261,9 +261,9 @@ static int _clock_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 }
 #endif
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static int _clock_app_event_cb(int req_id, const char *pkg_type, const char *pkgid,
-                               const char *key, const char *val, const void *pmsg, void *data)
+							   const char *key, const char *val, const void *pmsg, void *data)
 {
 	appdata *ad = data;
 
@@ -298,7 +298,7 @@ static int _clock_app_event_cb(int req_id, const char *pkg_type, const char *pkg
 }
 
 static int _clock_app_uninstall_event_cb(int req_id, const char *pkg_type, const char *pkgid,
-                                         const char *key, const char *val, const void *pmsg, void *data)
+										 const char *key, const char *val, const void *pmsg, void *data)
 {
 	appdata *ad = data;
 
@@ -339,7 +339,7 @@ static void update_clock_list_cb(keynode_t *key, void *data)
 	}
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static int _clock_check_appinfo(void *data, char *appid)
 {
 	appdata *ad = data;
@@ -478,7 +478,7 @@ static void _layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_i
 	}
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static Eina_Bool animator_cb(void *data)
 {
 	clock_page_data *pd = (clock_page_data *)data;
@@ -722,11 +722,10 @@ int watch_metadata_func(const char *key, const char *value, void *user_data)
 {
 	Clock_Type_Data *pclockdata =(Clock_Type_Data *)user_data;
 	if (strcmp(key, (char *)pclockdata->name) == 0) {
-		//pclockdata->value = value;
+		/*pclockdata->value = value; */
 		pclockdata->value = strdup(value);
 		return -1;
-	}
-	else
+	} else
 		return 0;
 }
 
@@ -774,13 +773,13 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		if (ret != PMINFO_R_OK) {
 			INFO("pkgmgrinfo_appinfo_is_preload error or 3rd party");
 		}
-/*
-		legacy code from TIZEN 2.4
-		ret = pkgmgrinfo_appinfo_get_metadata_value(tmp_handle, "clocktype", &m_value);
-		if (ret != PMINFO_R_OK) {
-			INFO("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party");
-		}
-*/
+		/*
+				legacy code from TIZEN 2.4
+				ret = pkgmgrinfo_appinfo_get_metadata_value(tmp_handle, "clocktype", &m_value);
+				if (ret != PMINFO_R_OK) {
+					INFO("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party");
+				}
+		*/
 
 		Clock_Type_Item *pitem = NULL;
 		pitem = (Clock_Type_Item *)calloc(1, sizeof(Clock_Type_Item));
@@ -788,7 +787,7 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		memset(pitem, 0x0, sizeof(Clock_Type_Item));
 
 		static Clock_Type_Data clock_metadata = {"clocktype",0};
-		ret = pkgmgrinfo_appinfo_foreach_metadata(tmp_handle, watch_metadata_func,(void*)(&clock_metadata));
+		ret = pkgmgrinfo_appinfo_foreach_metadata(tmp_handle, watch_metadata_func,(void *)(&clock_metadata));
 
 		pitem->appid = strdup(appid);
 		pitem->pkgid = strdup(pkgid);
@@ -805,19 +804,19 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 			type = CLOCKTYPE_3RD;
 		}
 
-		if(clock_metadata.value)
+		if (clock_metadata.value)
 			free(clock_metadata.value);
 
 		if (preload) {
 			switch (type) {
-				case CLOCKTYPE_FUNCTION:
-					g_clock_list[0] = eina_list_sorted_insert(g_clock_list[0], _clock_type_compare_cb, pitem);
-					break;
-				case CLOCKTYPE_STYLE:
-					g_clock_list[1] = eina_list_sorted_insert(g_clock_list[1], _clock_type_compare_cb, pitem);
-					break;
-				default:
-					g_clock_list[2] = eina_list_sorted_insert(g_clock_list[2], _clock_type_compare_cb, pitem);
+			case CLOCKTYPE_FUNCTION:
+				g_clock_list[0] = eina_list_sorted_insert(g_clock_list[0], _clock_type_compare_cb, pitem);
+				break;
+			case CLOCKTYPE_STYLE:
+				g_clock_list[1] = eina_list_sorted_insert(g_clock_list[1], _clock_type_compare_cb, pitem);
+				break;
+			default:
+				g_clock_list[2] = eina_list_sorted_insert(g_clock_list[2], _clock_type_compare_cb, pitem);
 			}
 		} else {
 			g_clock_list[2] = eina_list_sorted_insert(g_clock_list[2], _clock_type_compare_cb, pitem);
@@ -907,7 +906,7 @@ static char *_time_format_get()
 	return strdup(time_fmt[is_hour24]);
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static char *_datetime_format_get()
 {
 	char *dt_fmt, *region_fmt, *lang, *temp_fmt = NULL;
@@ -965,7 +964,7 @@ static void _vconf_time_format_changed_cb(keynode_t *node, void *data)
 	free(dt_fmt);
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _vconf_datetime_format_changed_cb(keynode_t *node, void *data)
 {
 	Evas_Object *datetime = (Evas_Object *) data;
@@ -1087,13 +1086,13 @@ Evas_Object *_create_clock_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,			/* genlist object */
-					itc_tmp,				/* item class */
-					id,		            /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,			/* genlist object */
+						   itc_tmp,				/* item class */
+						   id,		            /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 		}
 	}
 	elm_genlist_item_class_free(itc);
@@ -1112,7 +1111,7 @@ char *_get_str_from_icu(const char *pattern)
 	char locale[32] = {0,};
 	char *p = NULL;
 
-	if(strlen(locale_tmp) < 32)
+	if (strlen(locale_tmp) < 32)
 		strcpy(locale, locale_tmp);
 
 	if (locale[0] != '\0') {
@@ -1134,7 +1133,7 @@ char *_get_str_from_icu(const char *pattern)
 
 	UDate date = ucal_getNow();
 	formatter =
-	    udat_open(UDAT_IGNORE, UDAT_IGNORE, locale_tmp, NULL, -1, Pattern, -1, &status);
+		udat_open(UDAT_IGNORE, UDAT_IGNORE, locale_tmp, NULL, -1, Pattern, -1, &status);
 	int32_t formattedCapacity = (int32_t)(sizeof(formatted) / sizeof((formatted)[0]));
 	(void)udat_format(formatter, date, formatted, formattedCapacity, NULL, &status);
 	u_austrcpy(formattedString, formatted);
@@ -1336,24 +1335,24 @@ void _show_date_and_time_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,			/* genlist object */
-					itc,				/* item class */
-					id,		            /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,			/* genlist object */
+						   itc,				/* item class */
+						   id,		            /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 
 			switch (idx) {
-				case 0:
-					auto_sync_item = id->item;
-					break;
-				case 1:
-					date_item = id->item;
-					break;
-				case 2:
-					time_item = id->item;
-					break;
+			case 0:
+				auto_sync_item = id->item;
+				break;
+			case 1:
+				date_item = id->item;
+				break;
+			case 2:
+				time_item = id->item;
+				break;
 			}
 		}
 	}
@@ -1716,21 +1715,21 @@ void _clocklist_load()
 	}
 
 	if (pkgmgrinfo_appinfo_filter_add_string(handle, PMINFO_APPINFO_PROP_APP_CATEGORY, IDLE_CLOCK_CATEGROY)
-	    != PMINFO_R_OK) {
+		!= PMINFO_R_OK) {
 		ERR("pkgmgrinfo_appinfo_filter_add_string error");
 		pkgmgrinfo_appinfo_filter_destroy(handle);
 		return;
 	}
 
 	if (pkgmgrinfo_appinfo_filter_add_string(handle, PMINFO_APPINFO_PROP_APP_CATEGORY, IDLE_CLOCK_CATEGROY2)
-	    != PMINFO_R_OK) {
+		!= PMINFO_R_OK) {
 		ERR("pkgmgrinfo_appinfo_filter_add_string error");
 		pkgmgrinfo_appinfo_filter_destroy(handle);
 		return;
 	}
 
 	if (pkgmgrinfo_appinfo_filter_foreach_appinfo(handle, _category_app_list_cb, NULL)
-	    != PMINFO_R_OK) {
+		!= PMINFO_R_OK) {
 		ERR("pkgmgrinfo_appinfo_filter_foreach_appinfo error");
 		pkgmgrinfo_appinfo_filter_destroy(handle);
 		return;
@@ -1789,14 +1788,14 @@ static int _clock_type_compare_cb(const void *d1, const void *d2)
 	/*ucol_close(coll); */
 
 	switch (ret) {
-		case UCOL_EQUAL:
-			return 0;
-		case UCOL_GREATER:
-			return 1;
-		case UCOL_LESS:
-			return -1;
-		default:
-			return 0;
+	case UCOL_EQUAL:
+		return 0;
+	case UCOL_GREATER:
+		return 1;
+	case UCOL_LESS:
+		return -1;
+	default:
+		return 0;
 	}
 }
 

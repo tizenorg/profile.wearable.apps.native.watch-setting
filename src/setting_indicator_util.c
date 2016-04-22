@@ -85,7 +85,7 @@ void _indicator_set_battery_icon(keynode_t *node, void *data)
 	vconf_get_int(VCONFKEY_SYSMAN_BATTERY_CAPACITY, &battery_level);
 	vconf_get_bool(VCONFKEY_SETAPPL_BATTERY_PERCENTAGE_BOOL, &is_battery_display);
 	if (is_battery_display) {
-		char *level = (char*)_get_strnum_from_icu(battery_level);
+		char *level = (char *)_get_strnum_from_icu(battery_level);
 		if (level) {
 			DBG("%s %d", level, strlen(level));
 			if (strlen(level) > 6) {

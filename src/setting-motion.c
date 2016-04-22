@@ -228,8 +228,8 @@ void _show_wake_up_guesture_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist,	itc, id, NULL, ELM_GENLIST_ITEM_NONE,
-					_motion_gl_wake_up_guesture_radio_cb,
-					(void *)idx);
+											   _motion_gl_wake_up_guesture_radio_cb,
+											   (void *)idx);
 		}
 	}
 	motion_data.g_motion_genlist = genlist;
@@ -384,13 +384,13 @@ Evas_Object *_create_motion_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,				/* genlist object */
-					temp_itc,				/* item class */
-					id,		            	/* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,				/* genlist object */
+						   temp_itc,				/* item class */
+						   id,		            	/* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 		}
 	}
 	elm_genlist_item_class_free(itc);

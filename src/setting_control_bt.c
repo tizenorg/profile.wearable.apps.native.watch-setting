@@ -43,7 +43,7 @@ int hf_is_connected()
 		}
 
 		ret = bluetooth_is_device_connected(&dev->device_address,
-		                                    BLUETOOTH_HFG_SERVICE, &is_connected);
+											BLUETOOTH_HFG_SERVICE, &is_connected);
 		if (ret == BLUETOOTH_ERROR_NONE && is_connected) {
 			break;
 		}

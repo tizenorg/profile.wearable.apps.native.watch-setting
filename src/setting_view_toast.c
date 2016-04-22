@@ -60,7 +60,7 @@ void _show_toast(void *data, Toast_Data *toast)
 	elm_object_style_set(toast->toast_popup, "toast");
 	elm_popup_orient_set(toast->toast_popup, ELM_POPUP_ORIENT_BOTTOM);
 	evas_object_size_hint_weight_set(toast->toast_popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	//ea_object_event_callback_add(toast->toast_popup, EA_CALLBACK_BACK, ea_popup_back_cb, NULL);
+	/*ea_object_event_callback_add(toast->toast_popup, EA_CALLBACK_BACK, ea_popup_back_cb, NULL); */
 	elm_object_part_text_set(toast->toast_popup, "elm.text", toast->str);
 	elm_popup_timeout_set(toast->toast_popup, 2.0);
 

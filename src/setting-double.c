@@ -82,14 +82,14 @@ static int _sort_app_list_cb(const void *d1, const void *d2)
 	/*ucol_close(coll); */
 
 	switch (ret) {
-		case UCOL_EQUAL:
-			return 0;
-		case UCOL_GREATER:
-			return 1;
-		case UCOL_LESS:
-			return -1;
-		default:
-			return 0;
+	case UCOL_EQUAL:
+		return 0;
+	case UCOL_GREATER:
+		return 1;
+	case UCOL_LESS:
+		return -1;
+	default:
+		return 0;
 	}
 }
 
@@ -185,14 +185,14 @@ static void _make_app_list(void *data)
 	}
 
 	if (pkgmgrinfo_appinfo_filter_add_bool(handle, PMINFO_APPINFO_PROP_APP_NODISPLAY, 0)
-	    != PMINFO_R_OK) {
+		!= PMINFO_R_OK) {
 		ERR("pkgmgrinfo_appinfo_filter_add_bool error");
 		pkgmgrinfo_appinfo_filter_destroy(handle);
 		return;
 	}
 
 	if (pkgmgrinfo_appinfo_filter_foreach_appinfo(handle, _app_list_cb, ad)
-	    != PMINFO_R_OK) {
+		!= PMINFO_R_OK) {
 		ERR("pkgmgrinfo_appinfo_filter_foreach_appinfo error");
 		pkgmgrinfo_appinfo_filter_destroy(handle);
 		return;
@@ -365,8 +365,8 @@ static void update_double_app_list(void *data)
 		if (id_none) {
 			id_none->pitem = pitem_none;
 			id_none->item = elm_genlist_item_append(g_double_app_genlist, itc, id_none, NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_gl_double_app_sel_cb, ad);
+													ELM_GENLIST_ITEM_NONE,
+													_gl_double_app_sel_cb, ad);
 
 			if (id_none->pitem == selected_app) {
 				sel_it = id_none->item;
@@ -377,8 +377,8 @@ static void update_double_app_list(void *data)
 		if (id_recent) {
 			id_recent->pitem = pitem_recent;
 			id_recent->item = elm_genlist_item_append(g_double_app_genlist, itc, id_recent, NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_gl_double_app_sel_cb, ad);
+													  ELM_GENLIST_ITEM_NONE,
+													  _gl_double_app_sel_cb, ad);
 
 			if (id_recent->pitem == selected_app) {
 				sel_it = id_recent->item;
@@ -390,8 +390,8 @@ static void update_double_app_list(void *data)
 			if (id) {
 				id->pitem = pitem;
 				id->item = elm_genlist_item_append(g_double_app_genlist, itc, id, NULL,
-						ELM_GENLIST_ITEM_NONE,
-						_gl_double_app_sel_cb, ad);
+												   ELM_GENLIST_ITEM_NONE,
+												   _gl_double_app_sel_cb, ad);
 
 				if (id->pitem == selected_app) {
 					sel_it = id->item;
@@ -432,7 +432,7 @@ static void change_language_cb(keynode_t *key, void *data)
 	update_double_app_list(ad);
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static int _double_press_check_appinfo(void *data, char *appid)
 {
 	appdata *ad = data;
@@ -528,8 +528,8 @@ Evas_Object *create_double_app_list(void *data)
 	if (id_none) {
 		id_none->pitem = pitem_none;
 		id_none->item = elm_genlist_item_append(genlist, itc, id_none, NULL,
-				ELM_GENLIST_ITEM_NONE,
-				_gl_double_app_sel_cb, ad);
+												ELM_GENLIST_ITEM_NONE,
+												_gl_double_app_sel_cb, ad);
 
 		if (id_none->pitem == selected_app) {
 			sel_it = id_none->item;
@@ -540,8 +540,8 @@ Evas_Object *create_double_app_list(void *data)
 	if (id_recent) {
 		id_recent->pitem = pitem_recent;
 		id_recent->item = elm_genlist_item_append(genlist, itc, id_recent, NULL,
-				ELM_GENLIST_ITEM_NONE,
-				_gl_double_app_sel_cb, ad);
+												  ELM_GENLIST_ITEM_NONE,
+												  _gl_double_app_sel_cb, ad);
 
 		if (id_recent->pitem == selected_app) {
 			sel_it = id_recent->item;
@@ -553,8 +553,8 @@ Evas_Object *create_double_app_list(void *data)
 		if (id) {
 			id->pitem = pitem;
 			id->item = elm_genlist_item_append(genlist, itc, id, NULL,
-					ELM_GENLIST_ITEM_NONE,
-					_gl_double_app_sel_cb, ad);
+											   ELM_GENLIST_ITEM_NONE,
+											   _gl_double_app_sel_cb, ad);
 
 			if (id->pitem == selected_app) {
 				sel_it = id->item;
@@ -583,7 +583,7 @@ Evas_Object *create_double_app_list(void *data)
 	return layout;
 }
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static int _double_press_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 {
 	appdata *ad = data;
@@ -623,7 +623,7 @@ static int _double_press_appinfo_cb(pkgmgrinfo_appinfo_h handle, void *data)
 }
 
 static int _double_press_app_event_cb(uid_t target_uid, int req_id, const char *pkg_type, const char *pkgid,
-                                      const char *key, const char *val, const void *pmsg, void *data)
+									  const char *key, const char *val, const void *pmsg, void *data)
 {
 	appdata *ad = data;
 
@@ -658,7 +658,7 @@ static int _double_press_app_event_cb(uid_t target_uid, int req_id, const char *
 }
 
 static int _double_press_app_uninstall_event_cb(int req_id, const char *pkg_type, const char *pkgid,
-                                                const char *key, const char *val, const void *pmsg, void *data)
+												const char *key, const char *val, const void *pmsg, void *data)
 {
 	appdata *ad = data;
 
@@ -752,7 +752,8 @@ void init_double_pressing(void *data)
 	register_vconf_changing(VCONFKEY_LANGSET, change_language_cb, ad);
 }
 
-Evas_Object *create_double_list(void * data) {
+Evas_Object *create_double_list(void *data)
+{
 	appdata *ad = data;
 
 	if (!ad) {
@@ -790,7 +791,8 @@ Evas_Object *create_double_list(void * data) {
 	return layout;
 }
 
-void clear_double_cb(void * data , Evas * e, Evas_Object * obj, void * event_info) {
+void clear_double_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
+{
 	FREE(pitem_none);
 	FREE(pitem_recent);
 	g_double_genlist = NULL;

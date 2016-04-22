@@ -203,13 +203,13 @@ static void _create_privacy_pattern_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,		/* genlist object */
-					itc,			/* item class */
-					id,		        /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_list[idx].func,	/* call back */
-					ad);
+						   genlist,		/* genlist object */
+						   itc,			/* item class */
+						   id,		        /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_list[idx].func,	/* call back */
+						   ad);
 		}
 	}
 
@@ -312,7 +312,7 @@ void _create_help_popup(void *data)
 	elm_object_content_set(scroller, label);
 	evas_object_show(label);
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	evas_object_show(popup);
 }
@@ -378,13 +378,13 @@ Evas_Object *create_privacy_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,		/* genlist object */
-					itc,			/* item class */
-					id,		        /* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_list[idx].func,	/* call back */
-					ad);
+						   genlist,		/* genlist object */
+						   itc,			/* item class */
+						   id,		        /* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_list[idx].func,	/* call back */
+						   ad);
 		}
 	}
 

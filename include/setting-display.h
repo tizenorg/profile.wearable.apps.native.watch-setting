@@ -53,19 +53,19 @@ typedef struct _Font_Style_Item_Data {
 } Font_Style_Item_Data;
 
 enum {
-    SETTING_DISPLAY_BRIGTHNESS,
-    SETTING_DISPLAY_SCREEN_TIME,
-    SETTING_DISPLAY_FONT,
-    SETTING_DISPLAY_LANG,
-    SETTING_DISPLAY_GESTURE,
-    SETTING_DISPLAY_ICON_SIZE,
-    SETTING_DISPLAY_EDIT_HOME,
-    SETTING_DISPLAY_EDIT_APPS
+	SETTING_DISPLAY_BRIGTHNESS,
+	SETTING_DISPLAY_SCREEN_TIME,
+	SETTING_DISPLAY_FONT,
+	SETTING_DISPLAY_LANG,
+	SETTING_DISPLAY_GESTURE,
+	SETTING_DISPLAY_ICON_SIZE,
+	SETTING_DISPLAY_EDIT_HOME,
+	SETTING_DISPLAY_EDIT_APPS
 };
 
 enum {
-    SETTING_DISPLAY_FONT_STYLE,
-    SETTING_DISPLAY_FONT_SIZE
+	SETTING_DISPLAY_FONT_STYLE,
+	SETTING_DISPLAY_FONT_SIZE
 };
 
 
@@ -85,7 +85,7 @@ void _show_font_size_list(void *data);
 void _display_gl_rotate_screen_cb(void *data, Evas_Object *obj, void *event_info);
 void _show_rotate_screen_list(void *data);
 
-#if 0 // _NOT_USED_
+#if 0 /* _NOT_USED_ */
 static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_info);
 #endif
 Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_info);

@@ -151,15 +151,15 @@ static void _disable_visibility_item_view()
 static void hf_event_handler(int event,  bt_hf_event_param_t *data, void *user_data)
 {
 	switch (event) {
-		case BLUETOOTH_EVENT_HF_CONNECTED:
-			DBG("Setting - BLUETOOTH_EVENT_HF_CONNECTED");
-			_update_visibility_item_view(TRUE);
-			break;
+	case BLUETOOTH_EVENT_HF_CONNECTED:
+		DBG("Setting - BLUETOOTH_EVENT_HF_CONNECTED");
+		_update_visibility_item_view(TRUE);
+		break;
 
-		case BLUETOOTH_EVENT_HF_DISCONNECTED:
-			DBG("Setting - BLUETOOTH_EVENT_HF_DISCONNECTED");
-			_update_visibility_item_view(is_handsfree_connected());
-			break;
+	case BLUETOOTH_EVENT_HF_DISCONNECTED:
+		DBG("Setting - BLUETOOTH_EVENT_HF_DISCONNECTED");
+		_update_visibility_item_view(is_handsfree_connected());
+		break;
 	}
 }
 
@@ -369,7 +369,7 @@ static void _update_visibility_view()
 		elm_genlist_item_fields_update(vb_it, "elm.text.2", ELM_GENLIST_ITEM_FIELD_TEXT);
 
 		elm_check_state_set(g_vb_check, (bt_menu_its[BT_MENU_TYPE_VISIBLE_ON_OFF].is_enable == TRUE)
-		                    ? EINA_TRUE : EINA_FALSE);
+							? EINA_TRUE : EINA_FALSE);
 
 		if (is_disable_visibility_item_view()) {
 			edje_object_signal_emit(elm_layout_edje_get(g_vb_check), "elm,state,disabled", "elm");
@@ -809,13 +809,13 @@ Evas_Object *_create_bt_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,				/* genlist object */
-					itc_arr[idx],			/* item class */
-					id,		            	/* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,				/* genlist object */
+						   itc_arr[idx],			/* item class */
+						   id,		            	/* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 
 			if (idx == BT_MENU_TYPE_BT_ON_OFF) {
 				bt_it = id->item;

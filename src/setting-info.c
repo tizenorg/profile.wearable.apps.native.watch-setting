@@ -177,13 +177,13 @@ Evas_Object *_create_info_list(void *data)
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(
-					genlist,				/* genlist object */
-					itc,					/* item class */
-					id,		            	/* data */
-					NULL,
-					ELM_GENLIST_ITEM_NONE,
-					menu_its[ idx ].func,	/* call back */
-					ad);
+						   genlist,				/* genlist object */
+						   itc,					/* item class */
+						   id,		            	/* data */
+						   NULL,
+						   ELM_GENLIST_ITEM_NONE,
+						   menu_its[ idx ].func,	/* call back */
+						   ad);
 		}
 	}
 	elm_genlist_item_class_free(itc);
@@ -226,72 +226,72 @@ char *_gl_info__detail_title_get(void *data, Evas_Object *obj, const char *part)
 		index++;
 	} else if (!strcmp(part, "elm.text.1")) {
 		switch (index) {
-			case 0:
+		case 0:
 #ifndef FEATURE_SETTING_SDK
-				if (system_info_get_platform_string("http://tizen.org/system/model_name", &device_info)
-				    != SYSTEM_INFO_ERROR_NONE) {
-					DBG("Setting - Model number do not get!! error!!");
-					snprintf(buf, sizeof(buf) - 1, "%s", "SM-V700");
-				} else {
-					snprintf(buf, sizeof(buf) - 1, "%s", device_info);
-				}
-				break;
-			case 1:
+			if (system_info_get_platform_string("http://tizen.org/system/model_name", &device_info)
+				!= SYSTEM_INFO_ERROR_NONE) {
+				DBG("Setting - Model number do not get!! error!!");
+				snprintf(buf, sizeof(buf) - 1, "%s", "SM-V700");
+			} else {
+				snprintf(buf, sizeof(buf) - 1, "%s", device_info);
+			}
+			break;
+		case 1:
 #endif
-				if (system_info_get_platform_string("http://tizen.org/system/build.string", &device_info)
-				    != SYSTEM_INFO_ERROR_NONE) {
-					DBG("Setting - Version name do not get!! error!!");
-					snprintf(buf, sizeof(buf) - 1, "%s", "V700XXUAMJ1");
-				} else {
-					snprintf(buf, sizeof(buf) - 1, "%s", device_info);
-				}
-				break;
+			if (system_info_get_platform_string("http://tizen.org/system/build.string", &device_info)
+				!= SYSTEM_INFO_ERROR_NONE) {
+				DBG("Setting - Version name do not get!! error!!");
+				snprintf(buf, sizeof(buf) - 1, "%s", "V700XXUAMJ1");
+			} else {
+				snprintf(buf, sizeof(buf) - 1, "%s", device_info);
+			}
+			break;
 #ifndef FEATURE_SETTING_SDK
-			case 2:
-				memset(buf, '\0', sizeof(buf));
-				if (_get_imei_serial_info(szSerialNum, sizeof(szSerialNum)) == EINA_TRUE) {
-					if (kor) {
-						char *p = NULL;
-						p = strstr(szSerialNum, ",");
-						if (p) {
-							*p = '\0';
-						}
-					}
-					if (strlen(szSerialNum)) {
-						snprintf(buf, sizeof(buf) - 1, "%s", szSerialNum);
-					} else {
-						snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UNKNOWN"));
-					}
-				} else {
-					snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UNKNOWN"));
-				}
-
-				break;
-			case 3:
-				memset(buf, '\0', sizeof(buf));
-				if (_get_imei_serial_info(szSerialNum, sizeof(szSerialNum)) == EINA_TRUE) {
+		case 2:
+			memset(buf, '\0', sizeof(buf));
+			if (_get_imei_serial_info(szSerialNum, sizeof(szSerialNum)) == EINA_TRUE) {
+				if (kor) {
 					char *p = NULL;
 					p = strstr(szSerialNum, ",");
 					if (p) {
-						p++;
-						p = strstr(p, ",");
-						if (p) {
-							p++;
-						}
+						*p = '\0';
 					}
-					if (p && strlen(p)) {
-						snprintf(buf, sizeof(buf) - 1, "%s", p);
-					} else {
-						snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UNKNOWN"));
-					}
+				}
+				if (strlen(szSerialNum)) {
+					snprintf(buf, sizeof(buf) - 1, "%s", szSerialNum);
 				} else {
 					snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UNKNOWN"));
 				}
+			} else {
+				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UNKNOWN"));
+			}
 
-				break;
+			break;
+		case 3:
+			memset(buf, '\0', sizeof(buf));
+			if (_get_imei_serial_info(szSerialNum, sizeof(szSerialNum)) == EINA_TRUE) {
+				char *p = NULL;
+				p = strstr(szSerialNum, ",");
+				if (p) {
+					p++;
+					p = strstr(p, ",");
+					if (p) {
+						p++;
+					}
+				}
+				if (p && strlen(p)) {
+					snprintf(buf, sizeof(buf) - 1, "%s", p);
+				} else {
+					snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UNKNOWN"));
+				}
+			} else {
+				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UNKNOWN"));
+			}
+
+			break;
 #endif
-			default:
-				break;
+		default:
+			break;
 		}
 	}
 	return strdup(buf);
@@ -302,7 +302,7 @@ static void open_sources_licences_lange_changed(void *data, Evas_Object *obj, vo
 	DBG("Setting - open_sources_licences_lange_changed() is called!");
 
 	char *license_str = elm_entry_utf8_to_markup(
-	                        _("IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"));
+							_("IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"));
 
 	char buf[1024];
 
@@ -360,7 +360,7 @@ void _open_source_licences_popup_cb(void *data, Evas_Object *obj, void *event_in
 	/*							"<br>Please visit<br>http://developer. samsung.com/, download and install Samsung Gear SDK for using sdb."; */
 
 	char *license_str = elm_entry_utf8_to_markup(
-	                        _("IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"));
+							_("IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"));
 
 	char buf[1536];
 
@@ -387,7 +387,7 @@ void _open_source_licences_popup_cb(void *data, Evas_Object *obj, void *event_in
 	elm_object_content_set(scroller, label);
 	evas_object_show(label);
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	evas_object_show(popup);
 }
@@ -456,7 +456,7 @@ void _safety_inform_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(label, "language,changed", safety_inform_lange_changed, NULL);
 	evas_object_show(label);
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	evas_object_show(popup);
 }
@@ -519,13 +519,13 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 			if (id) {
 				id->index = idx;
 				id->item = elm_genlist_item_append(
-						genlist,			/* genlist object */
-						itc_tmp,			/* item class */
-						id,		            /* data */
-						NULL,
-						ELM_GENLIST_ITEM_NONE,
-						menu_its[ idx ].func,	/* call back */
-						ad);
+							   genlist,			/* genlist object */
+							   itc_tmp,			/* item class */
+							   id,		            /* data */
+							   NULL,
+							   ELM_GENLIST_ITEM_NONE,
+							   menu_its[ idx ].func,	/* call back */
+							   ad);
 #ifndef FEATURE_SETTING_SDK
 				if (itc_tmp == itc) {
 					elm_genlist_item_select_mode_set(id->item, ELM_OBJECT_SELECT_MODE_DISPLAY_ONLY);
@@ -641,7 +641,7 @@ static void _usb_debug_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_content_set(scroller, label);
 	evas_object_show(label);
 
-	//ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad);
+	/*ea_object_event_callback_add(popup, EA_CALLBACK_BACK, setting_popup_back_cb, ad); */
 
 	btn = elm_button_add(popup);
 	elm_object_style_set(btn, "default");
