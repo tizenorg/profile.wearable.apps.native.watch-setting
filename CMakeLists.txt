@@ -82,7 +82,7 @@ pkg_check_modules(pkgs REQUIRED elementary ecore-imf appcore-common appcore-efl
                                 capi-system-device capi-media-sound-manager capi-media-player mm-player mm-sound
                                 capi-system-system-settings capi-system-info libxml-2.0 capi-media-wav-player
 				#capability-manager
-				capi-content-media-content aul ail
+				capi-content-media-content aul icu-i18n icu-io icu-le icu-lx icu-uc
 				capi-appfw-app-manager
 				alarm-service
 				libtzplatform-config

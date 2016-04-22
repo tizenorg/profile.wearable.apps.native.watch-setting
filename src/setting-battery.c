@@ -14,7 +14,7 @@
  *  Created on: Oct 12, 2013
  *      Author: min-hoyun
  */
-#include <ail.h>
+#include <pkgmgr-info.h>
 #include <aul.h>
 #include "setting_data_vconf.h"
 
@@ -426,39 +426,28 @@ void _battery_percent_cb(void *data, Evas_Object *obj, void *event_info)
 int _power_saving_runapp_info_get(const aul_app_info *ainfo, void *data)
 {
 	DBG("_power_saving_runapp_info_get");
-	ail_appinfo_h handle;
-	ail_error_e ret;
 
-	bool valb;
+	int ret = 0;
+	bool taskmanage = false;
+	pkgmgrinfo_appinfo_h handle;
 
-	if (ainfo == NULL)
-		return -1;
-	if (ainfo->pid <= 0)
-		return -1;
-	if (ainfo->pkg_name == NULL)
-		return 0;
-
-	/* �� PID ���͸� */
-	/*
-	if(ainfo->pid == getpid()) {
-		return 0;
-	}
-	*/
-	ret = ail_get_appinfo(ainfo->pkg_name, &handle);
-
-	if (ret != AIL_ERROR_OK) {
+	ret = pkgmgrinfo_appinfo_get_appinfo(ainfo->appid, &handle);
+	if (ret != PMINFO_R_OK) {
+		ERR("pkgmgrinfo_appinfo_get_appinfo error");
 		return -1;
 	}
-	/* APP�� TASKMANAGE üũ */
-	ret = ail_appinfo_get_bool(handle, AIL_PROP_X_SLP_TASKMANAGE_BOOL, &valb);
-	if (valb == 0) {
-		ret = ail_destroy_appinfo(handle);
-		return 0;
-	}
-	/* ���� */
-	aul_terminate_pid(ainfo->pid);
 
-	ret = ail_destroy_appinfo(handle);
+	ret = pkgmgrinfo_appinfo_is_taskmanage(handle, &taskmanage);
+	if (ret != PMINFO_R_OK) {
+		ERR("pkgmgrinfo_appinfo_is_taskmanage error");
+		pkgmgrinfo_appinfo_destroy_appinfo(handle);
+		return -1;
+	}
+
+	if(taskmanage != 0)
+		aul_terminate_pid(ainfo->pid);
+
+	pkgmgrinfo_appinfo_destroy_appinfo(handle);
 	return 0;
 }
 /*
