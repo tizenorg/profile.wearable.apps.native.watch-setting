@@ -395,6 +395,7 @@ void battery_cb(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_BATTERY;
 }
 
+#if 0
 void bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -425,6 +426,36 @@ void bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
 
 	ad->MENU_TYPE = SETTING_BLUETOOTH;
 }
+#else
+void bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+
+	DBG("bluetooth_cb in");
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	app_control_h service;
+	app_control_create(&service);
+	app_control_set_package(service, "org.tizen.bluetooth");
+	app_control_add_extra_data(service, "launch-type", "setting");
+	app_control_send_launch_request(service, NULL, NULL);
+	app_control_destroy(service);
+
+	running = true;
+
+	if (running_timer) {
+		ecore_timer_del(running_timer);
+		running_timer = NULL;
+	}
+	running_timer = ecore_timer_add(0.5, (Ecore_Task_Cb)_app_ctrl_timer_cb, NULL);
+}
+#endif
+
 #if 0
 void motion_cb(void *data, Evas_Object *obj, void *event_info)
 {
