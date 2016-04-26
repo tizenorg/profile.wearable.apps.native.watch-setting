@@ -8,7 +8,7 @@ SET(SRCS
     src/setting-homescreen.c
     src/setting-volume.c
     src/setting-info.c
-    src/setting-bluetooth.c
+#    src/setting-bluetooth.c
 #    src/setting-motion.c
     src/setting-display.c
     src/setting-privacy.c

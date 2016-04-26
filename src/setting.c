@@ -399,8 +399,7 @@ void bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
-	Evas_Object *genlist = NULL;
-	Elm_Object_Item *nf_it = NULL;
+	DBG("bluetooth_cb in");
 	appdata *ad = data;
 
 	if (ad == NULL) {
@@ -408,23 +407,22 @@ void bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	if (running) {
-		return;
+	app_control_h service;
+	app_control_create(&service);
+	app_control_set_package(service, "org.tizen.bluetooth");
+	app_control_add_extra_data(service, "launch-type", "setting");
+	app_control_send_launch_request(service, NULL, NULL);
+	app_control_destroy(service);
+
+	running = true;
+
+	if (running_timer) {
+		ecore_timer_del(running_timer);
+		running_timer = NULL;
 	}
-
-	initialize_bt();
-
-	genlist = _create_bt_list(data);
-	if (genlist == NULL) {
-		DBG("%s", "bluetooth cb - genlist is null");
-		return;
-	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_bluetooth_cb, ad); */
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-
-	ad->MENU_TYPE = SETTING_BLUETOOTH;
+	running_timer = ecore_timer_add(0.5, (Ecore_Task_Cb)_app_ctrl_timer_cb, NULL);
 }
+
 #if 0
 void motion_cb(void *data, Evas_Object *obj, void *event_info)
 {
