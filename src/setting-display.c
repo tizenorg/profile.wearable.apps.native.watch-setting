@@ -54,11 +54,8 @@ static struct _font_menu_item font_menu_its[] = {
 	{ "IDS_ST_BODY_FONT_SIZE_ABB",		SETTING_DISPLAY_FONT_SIZE,	_display_gl_font_size_cb },
 };
 
-static int screen_time_str[] = {
-	10, 15, 30, 1, 5
-};
 static int timeout_arr[] = {
-	10, 15, 30, 60, 300
+	0, 10, 15, 30, 60, 300
 };
 
 static char *font_size_str[] = {
@@ -305,23 +302,26 @@ char *_gl_display_title_get(void *data, Evas_Object *obj, const char *part)
 			}
 			FREE(curr_lang);
 		} else if (id->item == screen_time_item) {
-			int time = 10;
+			int time = 0;
 			vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &time);
 			switch (time) {
+			case 0:
+				snprintf(buf, sizeof(buf) - 1, "No off");
+				break;
 			case 10:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"), screen_time_str[0]);
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"));
 				break;
 			case 15:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"), screen_time_str[1]);
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"));
 				break;
 			case 30:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"), screen_time_str[2]);
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"));
 				break;
 			case 60:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"), screen_time_str[3]);
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"));
 				break;
 			case 300:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"), screen_time_str[4]);
+				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"));
 				break;
 			}
 		} else {
@@ -422,18 +422,25 @@ static char *_gl_screen_timeout_title_get(void *data, Evas_Object *obj, const ch
 {
 	char buf[1024] = {0,};
 	Item_Data *id = data;
+#ifdef FEATURE_SETTING_EMUL
+	int emul_val = 1;
+#else
+	int emul_val = 0;
+#endif
 
 	if (!strcmp(part, "elm.text")) {
-		if (id->index == 0) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"), screen_time_str[id->index]);
-		} else if (id->index == 1) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"), screen_time_str[id->index]);
-		} else if (id->index == 2) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"), screen_time_str[id->index]);
-		} else if (id->index == 3) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"), screen_time_str[id->index]);
+		if (emul_val == 1 && id->index == 0) {
+			snprintf(buf, sizeof(buf) - 1, "No off");
+		} else if (id->index == (0 + emul_val)) {
+			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"));
+		} else if (id->index == (1 + emul_val)) {
+			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"));
+		} else if (id->index == (2 + emul_val)) {
+			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"));
+		} else if (id->index == (3 + emul_val)) {
+			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"));
 		} else {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"), screen_time_str[id->index]);
+			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"));
 		}
 	}
 	return strdup(buf);
@@ -480,6 +487,11 @@ static Evas_Object *_gl_screen_timeout_ridio_get(void *data, Evas_Object *obj, c
 	Evas_Object *radio_main = evas_object_data_get(obj, "radio_main");
 	Item_Data *id = data;
 	static int timeout = -1;
+#ifdef FEATURE_SETTING_EMUL
+	int emul_minus = 0;
+#else
+	int emul_minus = 1;
+#endif
 
 	if (!strcmp(part, "elm.icon")) {
 		radio = elm_radio_add(obj);
@@ -492,7 +504,7 @@ static Evas_Object *_gl_screen_timeout_ridio_get(void *data, Evas_Object *obj, c
 
 		if (timeout == -1) {
 			vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &timeout);
-			screen_time_index = _get_timeout_index(timeout);
+			screen_time_index = _get_timeout_index(timeout) - emul_minus;
 		}
 
 		if (screen_time_index == id->index) {
@@ -540,7 +552,13 @@ void _show_screen_timeout_list(void *data)
 
 	Elm_Object_Item *curr_item = NULL;
 
-	for (idx = 0; idx < SCREEN_TIME_COUNT; idx++) {
+#ifdef FEATURE_SETTING_EMUL
+       int emul_end = 0;
+#else
+       int emul_end = 1;
+#endif
+
+	for (idx = 0; idx < SCREEN_TIME_COUNT - emul_end; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
 			id->index = idx;
