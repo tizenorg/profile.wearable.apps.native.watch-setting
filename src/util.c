@@ -184,15 +184,20 @@ char *_get_strnum_from_icu(int number)
 
 bool is_file_exist(char *file_path)
 {
+	int fd = 0;
 	if (!file_path) {
 		DBG("Setting - file path is wrong!!");
 		return false;
 	}
 
-	if ((open(file_path, O_RDONLY)) == -1) {
+	fd = open(file_path, O_RDONLY);
+	if (fd == -1) {
 		DBG("Setting - file(%s) do not exist!!", file_path);
 		return false;
 	}
+
+	if(fd)
+		close(fd);
 
 	DBG("Setting - file exist!!");
 

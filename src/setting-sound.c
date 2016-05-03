@@ -64,10 +64,10 @@ char *pref_arm_toast_msg[] = {
 	"IDS_ST_TPOP_MAIN_MIC_ADJUSTED_FOR_RIGHT_ARM"
 };
 
-static char ringtone_arr[RINGTONE_MAX_COUNT][1024];
-static char ringtone_name_arr[RINGTONE_MAX_COUNT][1024];
-static char notification_arr[RINGTONE_MAX_COUNT][1024];
-static char notification_name_arr[RINGTONE_MAX_COUNT][1024];
+static char ringtone_arr[RINGTONE_MAX_COUNT][1025];
+static char ringtone_name_arr[RINGTONE_MAX_COUNT][1025];
+static char notification_arr[RINGTONE_MAX_COUNT][1025];
+static char notification_name_arr[RINGTONE_MAX_COUNT][1025];
 
 static appdata *temp_ad 					= NULL;
 static Evas_Object *g_sound_genlist 			= NULL;

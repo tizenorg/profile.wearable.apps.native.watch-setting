@@ -482,7 +482,7 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	struct _info_menu_item *menu_its = NULL;
 	int idx = 0;
 
-	Elm_Genlist_Item_Class *itc_tmp;
+	Elm_Genlist_Item_Class *itc_tmp = NULL;
 
 	Elm_Genlist_Item_Class *itc = elm_genlist_item_class_new();
 	itc->item_style = "2text";
@@ -527,7 +527,7 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 							   menu_its[ idx ].func,	/* call back */
 							   ad);
 #ifndef FEATURE_SETTING_SDK
-				if (itc_tmp == itc) {
+				if (itc_tmp  && (itc_tmp == itc)) {
 					elm_genlist_item_select_mode_set(id->item, ELM_OBJECT_SELECT_MODE_DISPLAY_ONLY);
 				}
 #else
