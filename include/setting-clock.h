@@ -34,9 +34,7 @@
 #define WALLPAPER_PATH_PREFIX	TZ_SYS_SHARE_D"/settings/Wallpapers"
 
 #define CLOCK_DATE_AND_TIME_COUNT	3
-
-#define IDLE_CLOCK_CATEGROY2	"org.tizen.wmanager.WATCH_CLOCK"
-#define IDLE_CLOCK_CATEGROY	"http://tizen.org/category/wearable_clock"
+#define WATCH_COMPONENT_NAME "watchapp"
 
 enum {
 	HOURLY_ALERT_OFF,

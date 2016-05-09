@@ -497,7 +497,7 @@ static int _set_clock_type(char *pkgid)
 	}
 	unregister_vconf_changing(VCONFKEY_WMS_CLOCKS_SET_IDLE, update_clock_list_cb);
 	vconf_set_str(VCONFKEY_WMS_CLOCKS_SET_IDLE, pkgid);
-	/*DBG("Setting - package name: %s", pkgid); */
+	/* ERR("Setting - package name: %s", pkgid); */
 
 	return TRUE;
 }
@@ -638,29 +638,19 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			evas_object_size_hint_align_set(clock_layout, EVAS_HINT_FILL, EVAS_HINT_FILL);
 			evas_object_show(clock_layout);
 
-			/*clock bg wallpaper */
-			int bg_mode;
-			vconf_get_int("db/wms/home_bg_mode", &bg_mode);
-			if (!bg_mode) {
-				char *bg_color = NULL;
-				int R = 0x00, G = 0x00, B = 0x00;
-				bg_color = vconf_get_str("db/wms/home_bg_palette");
-				colorstr_to_decimal(bg_color, &R, &G, &B);
-				DBG("R : [%d] G : [%d] B : [%d]", R, G, B);
-				Evas_Object *color_page = evas_object_rectangle_add(evas_object_evas_get(page_layout));
-				evas_object_color_set(color_page, R, G, B, 255);
-				evas_object_size_hint_weight_set(color_page, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-				evas_object_size_hint_align_set(color_page, EVAS_HINT_FILL, EVAS_HINT_FILL);
-				elm_object_part_content_set(clock_layout, "clock-color", color_page);
-			} else {
-				char *bg_wallpaper = NULL;
-				bg_wallpaper = vconf_get_str(VCONFKEY_BGSET);
-				Evas_Object *wall_page = elm_image_add(clock_layout);
-				elm_image_file_set(wall_page, bg_wallpaper, NULL);
-				evas_object_size_hint_weight_set(wall_page, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-				evas_object_size_hint_align_set(wall_page, EVAS_HINT_FILL, EVAS_HINT_FILL);
-				elm_object_part_content_set(clock_layout, "clock-wallpaper", wall_page);
-			}
+			char *bg_color = NULL;
+			char *bg_color_default = "000000";
+			int R = 0x00, G = 0x00, B = 0x00;
+			bg_color = vconf_get_str("db/wms/home_bg_palette");
+			if(bg_color == NULL)
+				bg_color = bg_color_default;
+			colorstr_to_decimal(bg_color, &R, &G, &B);
+			DBG("R : [%d] G : [%d] B : [%d]", R, G, B);
+			Evas_Object *color_page = evas_object_rectangle_add(evas_object_evas_get(page_layout));
+			evas_object_color_set(color_page, R, G, B, 255);
+			evas_object_size_hint_weight_set(color_page, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+			evas_object_size_hint_align_set(color_page, EVAS_HINT_FILL, EVAS_HINT_FILL);
+			elm_object_part_content_set(clock_layout, "clock-color", color_page);
 
 			/*clock image */
 			Evas_Object *page = elm_image_add(clock_layout);
@@ -693,7 +683,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			pd->mapbuf[pitem->index] = mapbuf;
 #endif
 
-#if 0
+			Evas_Object  *table;
 			Evas_Coord w = 0, h = 0;
 			elm_win_screen_size_get(elm_widget_top_get(parent), NULL, NULL, &w, &h);
 			table = _elm_min_set(page_layout, box, w, h);
@@ -701,7 +691,6 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			evas_object_size_hint_align_set(table, EVAS_HINT_FILL, EVAS_HINT_FILL);
 			evas_object_show(table);
 			elm_box_pack_end(box, table);
-#endif
 		}
 	}
 
@@ -773,13 +762,13 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		if (ret != PMINFO_R_OK) {
 			INFO("pkgmgrinfo_appinfo_is_preload error or 3rd party");
 		}
-		/*
-				legacy code from TIZEN 2.4
-				ret = pkgmgrinfo_appinfo_get_metadata_value(tmp_handle, "clocktype", &m_value);
-				if (ret != PMINFO_R_OK) {
-					INFO("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party");
-				}
-		*/
+
+		ret = pkgmgrinfo_appinfo_get_metadata_value(tmp_handle, "clocktype", &m_value);
+		if (ret != PMINFO_R_OK) {
+			ERR("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party");
+		} else {
+			ERR("pkgmgrinfo_appinfo_get_metadata_value NOT error or 3rd party");
+		}
 
 		Clock_Type_Item *pitem = NULL;
 		pitem = (Clock_Type_Item *)calloc(1, sizeof(Clock_Type_Item));
@@ -1714,14 +1703,7 @@ void _clocklist_load()
 		return;
 	}
 
-	if (pkgmgrinfo_appinfo_filter_add_string(handle, PMINFO_APPINFO_PROP_APP_CATEGORY, IDLE_CLOCK_CATEGROY)
-		!= PMINFO_R_OK) {
-		ERR("pkgmgrinfo_appinfo_filter_add_string error");
-		pkgmgrinfo_appinfo_filter_destroy(handle);
-		return;
-	}
-
-	if (pkgmgrinfo_appinfo_filter_add_string(handle, PMINFO_APPINFO_PROP_APP_CATEGORY, IDLE_CLOCK_CATEGROY2)
+	if (pkgmgrinfo_appinfo_filter_add_string(handle, PMINFO_APPINFO_PROP_APP_COMPONENT, WATCH_COMPONENT_NAME)
 		!= PMINFO_R_OK) {
 		ERR("pkgmgrinfo_appinfo_filter_add_string error");
 		pkgmgrinfo_appinfo_filter_destroy(handle);
