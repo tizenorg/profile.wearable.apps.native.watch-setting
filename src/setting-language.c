@@ -19,8 +19,8 @@
 /*
  * setting-language.c
  *
- *  Created on: Oct 9, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 9, 2013
+ *		Author: min-hoyun
  */
 
 #include "setting_data_vconf.h"
@@ -196,7 +196,7 @@ static int _set_dateformat(const char *region)
 	int len = strlen(bestPatternString);
 	char region_format[4] = {0, };
 	int ymd[3] = {0, };
-	/*  only save 'y', 'M', 'd' charactor */
+	/*	only save 'y', 'M', 'd' charactor */
 	for (; i < len; i++) {
 		if (bestPatternString[i] == 'y' && ymd[0] == 0) {
 			region_format[j++] = bestPatternString[i];
@@ -215,7 +215,7 @@ static int _set_dateformat(const char *region)
 	char *date_format_str[4] = {
 		"dMy", "Mdy", "yMd", "ydM"
 	};
-	int date_format_vconf_value = 1;	/*  default is "Mdy" */
+	int date_format_vconf_value = 1;	/*	default is "Mdy" */
 	for (i = 0; i < 4; i++) {
 		if (strlen(region_format) != 0 && !strcmp(region_format, date_format_str[i])) {
 			date_format_vconf_value = i;
@@ -377,7 +377,7 @@ Evas_Object *_create_lang_list(void *data)
 
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 
 	Eina_List *lang_list = _get_language_list();
@@ -391,7 +391,7 @@ Evas_Object *_create_lang_list(void *data)
 	while (lang_list) {
 		node = (struct _lang_menu_item *) eina_list_data_get(lang_list);
 		if (node) {
-			lang_menu_its[index].name     = strdup(node->name);
+			lang_menu_its[index].name	  = strdup(node->name);
 			if (strlen(node->sub_name) > 0)
 				lang_menu_its[index].sub_name = strdup(node->sub_name);
 			else
@@ -415,10 +415,10 @@ Evas_Object *_create_lang_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,				/* genlist object */
 						   itc_temp,				/* item class */
-						   id,		            	/* data */
+						   id,						/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   _gl_lang_sel_cb, 		/* call back */
+						   _gl_lang_sel_cb,			/* call back */
 						   (const void *)idx);
 		}
 	}

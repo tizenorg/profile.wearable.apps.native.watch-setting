@@ -11,8 +11,8 @@
 /*
  * setting-motion.h
  *
- *  Created on: Oct 9, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 9, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_MOTION_H_

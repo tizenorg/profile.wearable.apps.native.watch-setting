@@ -9,7 +9,7 @@
  * you entered into with Samsung Electronics.
  */
 #define _DLOG_USED
-#ifdef 	_DLOG_USED
+#ifdef	_DLOG_USED
 
 #include <dlog.h>
 
@@ -43,7 +43,7 @@
 
 
 #define __FREE(del, arg) do { \
-		if(arg) { \
+		if (arg) { \
 			del((void *)(arg)); /*cast any argument to (void*) to avoid build warring*/\
 			arg = NULL; \
 		} \
@@ -52,14 +52,14 @@
 #define FREE(arg) __FREE(free, arg)
 
 #define setting_retvm_if(expr, val, fmt, arg...) do { \
-		if(expr) { \
+		if (expr) { \
 			ERR(fmt, ##arg); \
 			return (val); \
 		} \
 	} while (0);
 
 #define setting_retm_if(expr, fmt, arg...) do { \
-		if(expr) { \
+		if (expr) { \
 			ERR(fmt, ##arg); \
 			return; \
 		} \

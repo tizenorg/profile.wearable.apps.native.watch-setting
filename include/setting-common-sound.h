@@ -11,8 +11,8 @@
 /*
  * setting-common-sound.h
  *
- *  Created on: Oct 16, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 16, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_COMMON_SOUND_H_

@@ -37,7 +37,7 @@ int hf_is_connected()
 		is_connected = FALSE;
 
 		dev = g_ptr_array_index(dev_list, i);
-		if (dev  == NULL) {
+		if (dev	 == NULL) {
 			printf("Setting - Invalid bluetooth device\n");
 			break;
 		}

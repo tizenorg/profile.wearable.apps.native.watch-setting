@@ -11,8 +11,8 @@
 /*
  * setting-bluetooth.h
  *
- *  Created on: Oct 9, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 9, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_BLUETOOTH_H_
@@ -26,7 +26,7 @@
 #include <bluetooth.h>
 #include <vconf.h>
 
-#define VISIBILITY_TIMEOUT 		120
+#define VISIBILITY_TIMEOUT		120
 #define BT_LIST_ITEM_COUNT		3
 
 

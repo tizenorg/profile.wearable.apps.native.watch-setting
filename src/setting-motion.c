@@ -11,8 +11,8 @@
 /*
  * setting-motion.c
  *
- *  Created on: Oct 9, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 9, 2013
+ *		Author: min-hoyun
  */
 
 /*#include <capability_manager.h> */
@@ -20,8 +20,8 @@
 
 
 static struct _motion_menu_item motion_menu_its[] = {
-	{ "IDS_WMGR_MBODY_SMART_RELAY", 	 0, _motion_gl_smart_relay_cb },
-	{ "IDS_WMGR_MBODY_WAKE_UP_GESTURE",  0, _motion_gl_wake_up_cb     },
+	{ "IDS_WMGR_MBODY_SMART_RELAY",		 0, _motion_gl_smart_relay_cb },
+	{ "IDS_WMGR_MBODY_WAKE_UP_GESTURE",	 0, _motion_gl_wake_up_cb	  },
 	{ NULL, 0, NULL }
 };
 
@@ -220,7 +220,7 @@ void _show_wake_up_guesture_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	int idx;
 	for (idx = 0; idx < MOTION_WAKE_UP_ITEM_COUNT; idx++) {
@@ -368,7 +368,7 @@ Evas_Object *_create_motion_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 	menu_its = motion_menu_its;
 
 	char *val = NULL;
@@ -386,10 +386,10 @@ Evas_Object *_create_motion_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,				/* genlist object */
 						   temp_itc,				/* item class */
-						   id,		            	/* data */
+						   id,						/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 		}
 	}

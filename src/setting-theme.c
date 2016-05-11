@@ -1,8 +1,8 @@
 /*
  * setting-theme.c
  *
- *  Created on: Aug 7, 2014
- *      Author: min-hoyun
+ *	Created on: Aug 7, 2014
+ *		Author: min-hoyun
  */
 
 #include <feedback.h>
@@ -12,10 +12,10 @@
 
 
 static Thumbnail_Data thumbnail_arr[COLOR_THEME_COUNT] = {
-	{ EA_THEME_COLOR_TABLE_1, EA_THEME_STYLE_DARK,  "settings_preview_dark.png" 	},
-	{ EA_THEME_COLOR_TABLE_1, EA_THEME_STYLE_LIGHT, "settings_preview_light.png" 	},
-	{ EA_THEME_COLOR_TABLE_1 + 1, EA_THEME_STYLE_DARK, "settings_preview_dark_blue.png" 	},
-	{ EA_THEME_COLOR_TABLE_1 + 1, EA_THEME_STYLE_LIGHT, "settings_preview_light_blue.png" 	}
+	{ EA_THEME_COLOR_TABLE_1, EA_THEME_STYLE_DARK,	"settings_preview_dark.png"		},
+	{ EA_THEME_COLOR_TABLE_1, EA_THEME_STYLE_LIGHT, "settings_preview_light.png"	},
+	{ EA_THEME_COLOR_TABLE_1 + 1, EA_THEME_STYLE_DARK, "settings_preview_dark_blue.png"		},
+	{ EA_THEME_COLOR_TABLE_1 + 1, EA_THEME_STYLE_LIGHT, "settings_preview_light_blue.png"	}
 };
 
 int center_item = 0;
@@ -223,7 +223,7 @@ static void	setting_theme_index_sync(void *data)
 	if (it) {
 		elm_index_item_selected_set(it, EINA_TRUE);
 		td->last_it = it;
-		td->new_it  = it;
+		td->new_it	= it;
 	} else {
 		setting_theme_index_refresh(td);
 	}

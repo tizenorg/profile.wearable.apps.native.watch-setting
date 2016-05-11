@@ -11,8 +11,8 @@
 /*
  * setting-double.h
  *
- *  Created on: Jan 8, 2014
- *      Author: Sunyeop Hwang
+ *	Created on: Jan 8, 2014
+ *		Author: Sunyeop Hwang
  */
 
 #ifndef SETTING_DOUBLE_H_

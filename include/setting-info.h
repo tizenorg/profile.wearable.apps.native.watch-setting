@@ -13,8 +13,8 @@
 /*
  * setting-info.h
  *
- *  Created on: Oct 8, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 8, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_INFO_H_

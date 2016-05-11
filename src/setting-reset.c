@@ -11,8 +11,8 @@
 /*
  * setting-reset.c
  *
- *  Created on: Oct 10, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 10, 2013
+ *		Author: min-hoyun
  */
 
 #include "setting.h"

@@ -44,7 +44,7 @@
 char *_get_strnum_from_icu(int number);
 
 #define _(s)			setting_gettext(s)
-#define REPL(s,o,r)	replace(s,o,r)
+#define REPL(s, o, r)	replace(s, o, r)
 #define ICU_NUM(n)	_get_strnum_from_icu(n)
 
 #define WIN_SIZE	320

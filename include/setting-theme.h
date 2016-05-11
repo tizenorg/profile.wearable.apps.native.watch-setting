@@ -1,8 +1,8 @@
 /*
  * setting-theme.h
  *
- *  Created on: Aug 7, 2014
- *      Author: min-hoyun
+ *	Created on: Aug 7, 2014
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_THEME_H_

@@ -30,6 +30,8 @@
 
 #include "setting_data_vconf.h"
 
+EAPI Evas_Object	 *elm_widget_top_get(const Evas_Object *obj);
+
 static Eina_List *g_clock_list[3];
 static void _datetime_auto_sync_cb(void *data, Evas_Object *obj, void *event_info);
 static void _datetime_date_cb(void *data, Evas_Object *obj, void *event_info);
@@ -46,17 +48,17 @@ Evas_Object *_clock_type_cb(void *data, Evas_Object *obj, void *event_info);
 void _clock_type_cb_gen_item(void *data, Evas_Object *obj, void *event_info);
 
 static struct _clock_menu_item clock_menu_its[] = {
-	{ "IDS_ST_BODY_CLOCK_TYPE_ABB", 	1, 		_clock_type_cb_gen_item },
+	{ "IDS_ST_BODY_CLOCK_TYPE_ABB",		1,		_clock_type_cb_gen_item },
 #ifndef FEATURE_SETTING_SDK
-	{ "IDS_ST_BODY_DATE_AND_TIME_ABB", 	0,	_dt_cb },
-	{ "IDS_ST_BODY_HOURLY_ALERT_ABB", 	0,		_hourly_alert_cb },
+	{ "IDS_ST_BODY_DATE_AND_TIME_ABB",	0,	_dt_cb },
+	{ "IDS_ST_BODY_HOURLY_ALERT_ABB",	0,		_hourly_alert_cb },
 #endif
 };
 
 static struct _dt_menu_item dt_menu_its[] = {
-	{ "IDS_ST_BODY_AUTO_SYNC_ABB2", 		"IDS_ST_BODY_SYNC_WITH_PHONE_ABB", 	_datetime_auto_sync_cb   },
-	{ "IDS_ST_BODY_SET_DATE_ABB2", 			"", 								_datetime_date_cb 		 },
-	{ "IDS_SMEMO_BUTTON_SET_TIME_ABB", 		"", 								_datetime_time_cb 		 },
+	{ "IDS_ST_BODY_AUTO_SYNC_ABB2",			"IDS_ST_BODY_SYNC_WITH_PHONE_ABB",	_datetime_auto_sync_cb	 },
+	{ "IDS_ST_BODY_SET_DATE_ABB2",			"",									_datetime_date_cb		 },
+	{ "IDS_SMEMO_BUTTON_SET_TIME_ABB",		"",									_datetime_time_cb		 },
 };
 
 static Elm_Object_Item *auto_sync_item = NULL;
@@ -642,7 +644,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			char *bg_color_default = "000000";
 			int R = 0x00, G = 0x00, B = 0x00;
 			bg_color = vconf_get_str("db/wms/home_bg_palette");
-			if(bg_color == NULL)
+			if (bg_color == NULL)
 				bg_color = bg_color_default;
 			colorstr_to_decimal(bg_color, &R, &G, &B);
 			DBG("R : [%d] G : [%d] B : [%d]", R, G, B);
@@ -673,7 +675,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			elm_object_part_content_set(page_layout, "elm.icon", clock_layout);
 
 #if 0
-			Evas_Object  *mapbuf, *table;
+			Evas_Object	 *mapbuf, *table;
 			/* mapbuf for page 1 */
 			mapbuf = elm_mapbuf_add(box);
 			evas_object_size_hint_weight_set(mapbuf, 0, 0);
@@ -683,9 +685,9 @@ static Evas_Object *_create_index(Evas_Object *parent)
 			pd->mapbuf[pitem->index] = mapbuf;
 #endif
 
-			Evas_Object  *table;
+			Evas_Object	 *table;
 			Evas_Coord w = 0, h = 0;
-			elm_win_screen_size_get(elm_widget_top_get(parent), NULL, NULL, &w, &h);
+			elm_win_screen_size_get((const Elm_Win *)elm_widget_top_get(parent), NULL, NULL, &w, &h);
 			table = _elm_min_set(page_layout, box, w, h);
 			evas_object_size_hint_weight_set(table, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 			evas_object_size_hint_align_set(table, EVAS_HINT_FILL, EVAS_HINT_FILL);
@@ -709,7 +711,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 
 int watch_metadata_func(const char *key, const char *value, void *user_data)
 {
-	Clock_Type_Data *pclockdata =(Clock_Type_Data *)user_data;
+	Clock_Type_Data *pclockdata = (Clock_Type_Data *)user_data;
 	if (strcmp(key, (char *)pclockdata->name) == 0) {
 		/*pclockdata->value = value; */
 		pclockdata->value = strdup(value);
@@ -775,8 +777,8 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		setting_retvm_if(NULL == pitem, SETTING_RETURN_FAIL, "pitem is NULL");
 		memset(pitem, 0x0, sizeof(Clock_Type_Item));
 
-		static Clock_Type_Data clock_metadata = {"clocktype",0};
-		ret = pkgmgrinfo_appinfo_foreach_metadata(tmp_handle, watch_metadata_func,(void *)(&clock_metadata));
+		static Clock_Type_Data clock_metadata = {"clocktype", 0};
+		ret = pkgmgrinfo_appinfo_foreach_metadata(tmp_handle, watch_metadata_func, (void *)(&clock_metadata));
 
 		pitem->appid = strdup(appid);
 		pitem->pkgid = strdup(pkgid);
@@ -849,7 +851,7 @@ void _clock_type_cb_gen_item(void *data, Evas_Object *obj, void *event_info)
 
 	temp_ad = ad;
 
-	/* 	Evas_Object *layout_inner = NULL; */
+	/*	Evas_Object *layout_inner = NULL; */
 	/* layout_inner = _create_index(ad->nf); */
 	/*	Elm_Object_Item *it = NULL; */
 	/*it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout_inner, NULL); */
@@ -1059,7 +1061,7 @@ Evas_Object *_create_clock_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 	menu_its = clock_menu_its;
 
 	int count = 0;
@@ -1077,10 +1079,10 @@ Evas_Object *_create_clock_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,			/* genlist object */
 						   itc_tmp,				/* item class */
-						   id,		            /* data */
+						   id,					/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 		}
 	}
@@ -1316,7 +1318,7 @@ void _show_date_and_time_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 	menu_its = dt_menu_its;
 
 	for (idx = 0; idx < CLOCK_DATE_AND_TIME_COUNT; idx++) {
@@ -1326,10 +1328,10 @@ void _show_date_and_time_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,			/* genlist object */
 						   itc,				/* item class */
-						   id,		            /* data */
+						   id,					/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 
 			switch (idx) {
@@ -1661,7 +1663,7 @@ void _show_hourly_alert_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	Alert_Item_Data *id = calloc(sizeof(Alert_Item_Data), 1);
 	if (id) {
@@ -1764,7 +1766,7 @@ static int _clock_type_compare_cb(const void *d1, const void *d2)
 
 	/*const char *lang = vconf_get_str(VCONFKEY_LANGSET); */
 	/*UErrorCode status = U_ZERO_ERROR; */
-	/*UCollator *coll = ucol_open(lang,  &status); */
+	/*UCollator *coll = ucol_open(lang,	 &status); */
 	UCollationResult ret = ucol_strcoll(coll, clock1, -1, clock2, -1);
 
 	/*ucol_close(coll); */

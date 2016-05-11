@@ -11,8 +11,8 @@
 /*
  * setting-common-sound.c
  *
- *  Created on: Oct 16, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 16, 2013
+ *		Author: min-hoyun
  */
 
 #include <vconf.h>
@@ -34,7 +34,7 @@ static sound_type_e _sound_type;
 int get_sound_mode()
 {
 	int mode = 1;
-	int is_enable_sound   = 0;
+	int is_enable_sound	  = 0;
 	int is_enable_vibrate = 0;
 
 	vconf_get_bool(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, &is_enable_sound);
@@ -94,21 +94,21 @@ static int _profile_restart_player(void *data, char *ringtone_file, sound_type_e
 {
 	player_state_e state = -1;
 	int ret = TRUE;
-	int prev_behavior = 0;	/*  instead of do_while(0) and break */
+	int prev_behavior = 0;	/*	instead of do_while(0) and break */
 
 	player_get_state(player, &state);
 	if (state == PLAYER_STATE_PLAYING) {
 		if (player_stop(player) != PLAYER_ERROR_NONE) {
 			DBG("Setting - mm player stop failed");
 			ret = -1;
-			prev_behavior++;	/*  instead of do_while(0) and break */
+			prev_behavior++;	/*	instead of do_while(0) and break */
 		}
 	}
 
 	if ((prev_behavior == 0) && (player_unprepare(player) != PLAYER_ERROR_NONE)) {
 		DBG("Setting - mm player unrealize failed");
 		ret = -1;
-		prev_behavior++;	/*  instead of do_while(0) and break */
+		prev_behavior++;	/*	instead of do_while(0) and break */
 	}
 
 	if (prev_behavior == 0) {
@@ -220,14 +220,14 @@ int _profile_stop_sound(void *data)
 {
 	player_state_e state = -1;
 	int ret = TRUE;
-	int prev_behavior = 0;	/*  instead of do_while(0) and break */
+	int prev_behavior = 0;	/*	instead of do_while(0) and break */
 
 	player_get_state(player, &state);
 	if (state == PLAYER_STATE_PLAYING) {
 		if (player_stop(player) != PLAYER_ERROR_NONE) {
 			DBG("Setting - mm player stop failed");
 			ret = -1;
-			prev_behavior++;	/*  instead of do_while(0) and break */
+			prev_behavior++;	/*	instead of do_while(0) and break */
 		}
 	}
 
@@ -237,7 +237,7 @@ int _profile_stop_sound(void *data)
 	if ((prev_behavior == 0) && (player_unprepare(player) != PLAYER_ERROR_NONE)) {
 		DBG("Setting - mm player unrealize failed");
 		ret = -1;
-		prev_behavior++;	/*  instead of do_while(0) and break */
+		prev_behavior++;	/*	instead of do_while(0) and break */
 	}
 
 	if ((prev_behavior == 0) && (player_destroy(player) != PLAYER_ERROR_NONE)) {
