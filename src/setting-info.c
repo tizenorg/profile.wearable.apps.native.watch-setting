@@ -11,8 +11,8 @@
 /*
  * setting-info.c
  *
- *  Created on: Oct 8, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 8, 2013
+ *		Author: min-hoyun
  */
 
 #include <vconf.h>
@@ -24,7 +24,7 @@
 
 
 static struct _info_menu_item info_menu_its[] = {
-	{ "IDS_ST_BODY_ABOUT_GEAR_ABB",		0,    	 _gl_info_cb },
+	{ "IDS_ST_BODY_ABOUT_GEAR_ABB",		0,		 _gl_info_cb },
 #ifndef FEATURE_SETTING_SDK
 	{ "IDS_ST_HEADER_USB_DEBUGGING_ABB",	0,	 _gl_usb_debug_cb },
 #endif
@@ -39,7 +39,7 @@ static struct _info_menu_item _info_detail_menu_list[] = {
 	{ "IDS_ST_BODY_SERIAL_NUMBER",		2,	NULL },
 	{ "Barcode Number",			3,	NULL },
 	{ "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB",	4,	_info_open_src_gl_cb },
-	{ "IDS_ST_OPT_SAFETY_INFORMATION", 	4,	_info_safety_inform_gl_cb }
+	{ "IDS_ST_OPT_SAFETY_INFORMATION",	4,	_info_safety_inform_gl_cb }
 #endif
 };
 
@@ -168,7 +168,7 @@ Evas_Object *_create_info_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_its = info_menu_its;
 
@@ -179,10 +179,10 @@ Evas_Object *_create_info_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,				/* genlist object */
 						   itc,					/* item class */
-						   id,		            	/* data */
+						   id,						/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 		}
 	}
@@ -498,13 +498,13 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_its = _info_detail_menu_list;
 
 	for (idx = 0; idx < sizeof(_info_detail_menu_list) / sizeof(struct _info_menu_item); idx++) {
 #ifndef FEATURE_SETTING_SDK
-		if (menu_its[ idx ].type == 4) {
+		if (menu_its[idx].type == 4) {
 			itc_tmp = itc_open_src_info;
 		} else {
 			itc_tmp = itc;
@@ -521,13 +521,13 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 				id->item = elm_genlist_item_append(
 							   genlist,			/* genlist object */
 							   itc_tmp,			/* item class */
-							   id,		            /* data */
+							   id,					/* data */
 							   NULL,
 							   ELM_GENLIST_ITEM_NONE,
-							   menu_its[ idx ].func,	/* call back */
+							   menu_its[idx].func,	/* call back */
 							   ad);
 #ifndef FEATURE_SETTING_SDK
-				if (itc_tmp  && (itc_tmp == itc)) {
+				if (itc_tmp	 && (itc_tmp == itc)) {
 					elm_genlist_item_select_mode_set(id->item, ELM_OBJECT_SELECT_MODE_DISPLAY_ONLY);
 				}
 #else

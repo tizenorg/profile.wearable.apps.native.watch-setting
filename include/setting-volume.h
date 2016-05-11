@@ -11,8 +11,8 @@
 /*
  * setting-volume.h
  *
- *  Created on: Oct 8, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 8, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_VOLUME_H_

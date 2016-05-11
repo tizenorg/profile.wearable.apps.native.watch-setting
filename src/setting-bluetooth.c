@@ -11,8 +11,8 @@
 /*
  * setting-bluetooth.c
  *
- *  Created on: Oct 9, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 9, 2013
+ *		Author: min-hoyun
  */
 
 #include <feedback.h>
@@ -28,9 +28,9 @@ static void _visibility_cb(void *data, Evas_Object *obj, void *event_info);
 static void _BT_headset_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _bt_menu_item bt_menu_its[] = {
-	{ "IDS_QP_BUTTON_BLUETOOTH", 		DISABLE, _blutooth_cb   	},
-	{ "IDS_VCALL_BODY_BT_HEADSET", 		DISABLE, _BT_headset_cb   	},
-	{ "IDS_ST_MBODY_MAKE_VISIBLE_ABB", 	DISABLE, _visibility_cb 	},	/* "IDS_OP_BODY_VISIBILITY" */
+	{ "IDS_QP_BUTTON_BLUETOOTH",		DISABLE, _blutooth_cb		},
+	{ "IDS_VCALL_BODY_BT_HEADSET",		DISABLE, _BT_headset_cb		},
+	{ "IDS_ST_MBODY_MAKE_VISIBLE_ABB",	DISABLE, _visibility_cb		},	/* "IDS_OP_BODY_VISIBILITY" */
 	{ NULL, DISABLE, NULL }
 };
 
@@ -75,7 +75,7 @@ static void _alternate_bt_mode(void *data);
 
 static char *_gl_bt_title_get(void *data, Evas_Object *obj, const char *part);
 static Evas_Object *_gl_bt_check_get(void *data, Evas_Object *obj, const char *part);
-static void hf_event_handler(int event,  bt_hf_event_param_t *data, void *user_data);
+static void hf_event_handler(int event,	 bt_hf_event_param_t *data, void *user_data);
 
 
 
@@ -148,7 +148,7 @@ static void _disable_visibility_item_view()
 	_update_visibility_view();
 }
 
-static void hf_event_handler(int event,  bt_hf_event_param_t *data, void *user_data)
+static void hf_event_handler(int event,	 bt_hf_event_param_t *data, void *user_data)
 {
 	switch (event) {
 	case BLUETOOTH_EVENT_HF_CONNECTED:
@@ -794,7 +794,7 @@ Evas_Object *_create_bt_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_its = bt_menu_its;
 
@@ -811,10 +811,10 @@ Evas_Object *_create_bt_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,				/* genlist object */
 						   itc_arr[idx],			/* item class */
-						   id,		            	/* data */
+						   id,						/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 
 			if (idx == BT_MENU_TYPE_BT_ON_OFF) {

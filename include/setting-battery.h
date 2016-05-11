@@ -11,8 +11,8 @@
 /*
  * setting-battery.h
  *
- *  Created on: Oct 12, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 12, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_BATTERY_H_

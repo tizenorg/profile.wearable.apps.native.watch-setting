@@ -11,8 +11,8 @@
 /*
  * setting-display.h
  *
- *  Created on: Oct 9, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 9, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_HOMESCREEN_H_

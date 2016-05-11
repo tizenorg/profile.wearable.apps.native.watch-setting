@@ -11,8 +11,8 @@
 /*
  * setting-safety.c
  *
- *  Created on: Jan 14, 2014
- *      Author: min-hoyun
+ *	Created on: Jan 14, 2014
+ *		Author: min-hoyun
  */
 
 #include "setting-safety.h"
@@ -20,7 +20,7 @@
 #include "setting_debug.h"
 #include "setting_data_vconf.h"
 
-/*  */
+/*	*/
 static void _emergency_mode_vconf_changed_cb(keynode_t *key, void *data);
 static void _emergency_mode_cb(void *data, Evas_Object *obj, void *event_info);
 #if 0 /* _NOT_USED_ */
@@ -30,7 +30,7 @@ static void _set_interval_cb(void *data, Evas_Object *obj, void *event_info);
 #endif
 static void _help_cb(void *data, Evas_Object *obj, void *event_info);
 
-#if 0 /* _NOT_USED  */
+#if 0 /* _NOT_USED	*/
 static void show_interval_list(void *data);
 static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info);
 static void _no_activity_interval_cb(void *data, Evas_Object *obj, void *event_info);
@@ -41,17 +41,17 @@ static void _show_interval_no_activity_list(void *data);
 
 
 static struct _safety_menu_item safety_menu_list[] = {
-	{ "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE",		NULL,   _emergency_mode_cb },
+	{ "IDS_ST_MBODY_ULTRA_POWER_SAVING_MODE",		NULL,	_emergency_mode_cb },
 	/*	{ "Trauma",				NULL,		  _trauma_cb		   }, */
-	/*	{ "No activity",		NULL,		  _no_activity_cb    }, */
-	/*	{ "Set interval",		NULL,		  _set_interval_cb   }, */
+	/*	{ "No activity",		NULL,		  _no_activity_cb	 }, */
+	/*	{ "Set interval",		NULL,		  _set_interval_cb	 }, */
 	{ "IDS_ST_MBODY_HELP",					NULL,		  _help_cb		   }
 };
 
-#if 0 /* _NOT_USED  */
+#if 0 /* _NOT_USED	*/
 static struct _set_interval_menu_item interval_menu_list[] = {
-	{ "Trauma", 		"Warning %s", 		_trauma_interval_cb 	 },
-	{ "No activity", 	"Warning %s", 		_no_activity_interval_cb }
+	{ "Trauma",			"Warning %s",		_trauma_interval_cb		 },
+	{ "No activity",	"Warning %s",		_no_activity_interval_cb }
 };
 
 static struct _interval_trauma_menu_item interval_trauma_time_arr[] = {
@@ -311,7 +311,7 @@ Evas_Object *create_safety_list(void *data)
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_list = safety_menu_list;
 
@@ -337,7 +337,7 @@ Evas_Object *create_safety_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,		/* genlist object */
 						   itc_temp,		/* item class */
-						   id,		        /* data */
+						   id,				/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
 						   menu_list[idx].func,	/* call back */
@@ -360,7 +360,7 @@ Evas_Object *create_safety_list(void *data)
 	return layout;
 }
 
-#if 0 /* _NOT_USED  */
+#if 0 /* _NOT_USED	*/
 static void _trauma_interval_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("_trauma_interval_cb() is called.");
@@ -436,7 +436,7 @@ static void show_interval_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,		/* genlist object */
 						   itc_2text,		/* item class */
-						   id,		        /* data */
+						   id,				/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
 						   menu_list[idx].func,	/* call back */
@@ -525,7 +525,7 @@ static void _show_interval_trauma_list(void *data)
 
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	const int count = sizeof(interval_trauma_time_arr) / sizeof(interval_trauma_time_arr[0]);
 	for (idx = 0; idx < count; idx++) {
@@ -621,7 +621,7 @@ static void _show_interval_no_activity_list(void *data)
 
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	const int count = sizeof(interval_no_activity_hour_arr) / sizeof(interval_no_activity_hour_arr[0]);
 	for (idx = 0; idx < count; idx++) {

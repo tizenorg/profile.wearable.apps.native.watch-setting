@@ -11,8 +11,8 @@
 /*
  * util.c
  *
- *  Created on: Nov 21, 2013
- *      Author: min-hoyun
+ *	Created on: Nov 21, 2013
+ *		Author: min-hoyun
  */
 
 #include <string.h>
@@ -107,7 +107,7 @@ char *replace(char *str, char *orig, char *repl)
 		len = 123;
 	strncpy(buffer, str, len);
 	buffer[len] = 0;
-	snprintf(buffer + len, "%s%s", repl, ch + strlen(orig), 123 - len);
+	snprintf(buffer + len, 123 - len, "%s%s", repl, ch + strlen(orig));
 
 	return buffer;
 }
@@ -196,7 +196,7 @@ bool is_file_exist(char *file_path)
 		return false;
 	}
 
-	if(fd)
+	if (fd)
 		close(fd);
 
 	DBG("Setting - file exist!!");

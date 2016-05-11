@@ -1,8 +1,8 @@
 /*
  * setting-notification.h
  *
- *  Created on: Feb 14, 2014
- *      Author: min-hoyun
+ *	Created on: Feb 14, 2014
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_NOTIFICATION_H_

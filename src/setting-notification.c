@@ -1,15 +1,15 @@
 /*
  * setting-notification.c
  *
- *  Created on: Feb 14, 2014
- *      Author: min-hoyun
+ *	Created on: Feb 14, 2014
+ *		Author: min-hoyun
  */
 
 #include "setting-notification.h"
 
 
 static struct _noti_menu_item noti_menu_its[] = {
-	{ "IDS_ST_BUTTON_NOTIFICATIONS", 	 1, _noti_gl_enabling_noti_cb },
+	{ "IDS_ST_BUTTON_NOTIFICATIONS",	 1, _noti_gl_enabling_noti_cb },
 	{ NULL, 0, NULL }
 };
 
@@ -136,7 +136,7 @@ Evas_Object *_create_noti_list(void *data)
 
 	menu_its = noti_menu_its;
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 #if 0
 	device_info_h *device_info = NULL;
 	bundle *b = NULL;
@@ -154,10 +154,10 @@ Evas_Object *_create_noti_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,				/* genlist object */
 						   itc,				/* item class */
-						   id,		            	/* data */
+						   id,						/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 		}
 	}

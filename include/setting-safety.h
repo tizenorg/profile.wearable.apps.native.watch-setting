@@ -11,8 +11,8 @@
 /*
  * setting-safety.h
  *
- *  Created on: Jan 14, 2014
- *      Author: min-hoyun
+ *	Created on: Jan 14, 2014
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_SAFETY_H_

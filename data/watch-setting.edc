@@ -58,6 +58,83 @@ base_scale: 1.4;
 	   }
 	}
 
+	group { name: "setting/2finger_popup/default5";
+	  styles{
+		  style { name: "usb_outdoor_style";
+			 base: "font=Tizen:style=Condensed font_size="25" align=center color=#FFFFFF text_class=tizen wrap=mixed";
+			 tag:  "br" "\n";
+			 tag:  "hilight" "+ font_weight=Bold";
+			 tag:  "b" "+ font_weight=Bold";
+			 tag:  "tab" "\t";
+		  }
+	  }
+	  parts {
+		part { name: "bg";
+		  type: RECT;
+		  scale: 1;
+		  description { state: "default";
+			rel1 { relative: 0.0 0.0; }
+			rel2 { relative: 1.0 1.0; }
+			color: 0 0 0 255;
+		  }
+		}
+		part {
+			name: "watch_on_text.text1";
+			type: TEXTBLOCK;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				fixed: 1 1;
+				rel1 {
+					relative: 0.0 0.0;
+				}
+				rel2 {
+					relative: 1.0 1.0;
+				}
+				text {
+					style: "usb_outdoor_style";
+					align: 0.5 0.4;
+				}
+			}
+		}
+		   part { name: "btn1";
+			 type: SWALLOW;
+			 scale: 1;
+			 description {
+				state: "default" 0.0;
+				fixed: 1 1;
+				rel1 {
+				   relative: 0.0 1.0;
+				   offset: 0 -80;
+				}
+				rel2 {
+				   relative: 0.5 1.0;
+				}
+				min: 0 76;
+				align: 0.5 1;
+			 }
+		  }
+
+		  part { name: "btn2";
+			 type: SWALLOW;
+			 scale: 1;
+			 description { state: "default" 0.0;
+				fixed: 1 1;
+				rel1 {
+				   relative: 0.5 1.0;
+				   offset: 0 -80;
+				}
+				rel2 {
+				   relative: 1.0 1.0;
+				}
+				min: 0 76;
+				align: 0.5 1;
+			 }
+		  }
+
+
+	  }
+	}
 
 
 

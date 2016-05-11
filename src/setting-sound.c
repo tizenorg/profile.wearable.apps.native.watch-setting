@@ -1,5 +1,4 @@
-/*
- * Copyright (c) 2010 Samsung Electronics, Inc.
+/* * Copyright (c) 2010 Samsung Electronics, Inc.
  * All rights reserved.
  *
  * This software is a confidential and proprietary information
@@ -15,6 +14,7 @@
 #include <vconf-keys.h>
 
 #include "setting-sound.h"
+#include "setting-vibration.h"
 #include "util.h"
 #include "setting-common-sound.h"
 #include "setting_control_haptic.h"
@@ -26,13 +26,13 @@
 #define AUDIO_RESOURCE_EXTENSION	".ogg"
 
 static struct _sound_menu_item sound_menu_its[] = {
-	{ "IDS_ST_OPT_VOLUME",					0,		_volume_cb 	},
-	{ "IDS_ST_OPT_SOUND_MODE_ABB", 			0, 		_sound_mode_cb  },
-	{ "IDS_ST_BODY_TOUCH_SOUNDS_ABB", 		0,		_touch_sound_cb },
-	{ "IDS_CST_MBODY_RINGTONES", 		0,		_ringtone_cb 	},
-	{ "IDS_ST_BUTTON_NOTIFICATIONS", 		0,		_noti_cb 		},
-	{ "IDS_ST_HEADER_VIBRATION_ABB", 		0,		_vibrate_cb 	},
-	/*	{ "IDS_ST_BODY_PREFERRED_ARM_ABB", 	0,		_preferred_cb 	}, */
+	{ "IDS_ST_OPT_SOUND_MODE_ABB",			0,		_sound_mode_cb	},
+	{ "IDS_ST_OPT_VOLUME",					0,		_volume_cb	},
+	{ "IDS_ST_HEADER_VIBRATION_ABB",		0,		_vibrate_cb		},
+	{ "IDS_ST_BODY_TOUCH_SOUNDS_ABB",		0,		_touch_sound_cb },
+	/*	{ "IDS_CST_MBODY_RINGTONES",		0,		_ringtone_cb	}, */
+	/*	{ "IDS_ST_BUTTON_NOTIFICATIONS",		0,		_noti_cb		}, */
+	/*	{ "IDS_ST_BODY_PREFERRED_ARM_ABB",	0,		_preferred_cb	}, */
 	{ NULL, 0, NULL }
 };
 
@@ -69,22 +69,22 @@ static char ringtone_name_arr[RINGTONE_MAX_COUNT][1025];
 static char notification_arr[RINGTONE_MAX_COUNT][1025];
 static char notification_name_arr[RINGTONE_MAX_COUNT][1025];
 
-static appdata *temp_ad 					= NULL;
-static Evas_Object *g_sound_genlist 			= NULL;
-static Evas_Object *g_sound_mode_genlist 		= NULL;
-static Evas_Object *g_ringtone_type_genlist 	= NULL;
+static appdata *temp_ad						= NULL;
+static Evas_Object *g_sound_genlist				= NULL;
+static Evas_Object *g_sound_mode_genlist		= NULL;
+static Evas_Object *g_ringtone_type_genlist		= NULL;
 static Evas_Object *g_notification_type_genlist = NULL;
-static Evas_Object *g_vibration_type_genlist 	= NULL;
-static Evas_Object *g_pref_arm_type_genlist 	= NULL;
+static Evas_Object *g_vibration_type_genlist	= NULL;
+static Evas_Object *g_pref_arm_type_genlist		= NULL;
 static Elm_Object_Item *g_vib_item = NULL;
 
-static int sound_mode 	     = 1;			/* Vibrate */
-static int ringtone_type 	 = 0;			/* Rigntone type */
-static int confirmed_ringtone_type 	 = 0;			/* setted Rigntone type */
+static int sound_mode		 = 1;			/* Vibrate */
+static int ringtone_type	 = 0;			/* Rigntone type */
+static int confirmed_ringtone_type	 = 0;			/* setted Rigntone type */
 static int notification_type = 0;			/* Notification type */
-static int confirmed_Notification_type 	 = 0;			/* setted Notification type */
-static int vibrate_type 	 = 0;			/* Vibration type */
-static int pref_arm_type 	 = 0;			/* Pref_arm_type */
+static int confirmed_Notification_type	 = 0;			/* setted Notification type */
+static int vibrate_type		 = 0;			/* Vibration type */
+static int pref_arm_type	 = 0;			/* Pref_arm_type */
 static int changing_sound_mode_myself = 0;
 
 static int ringtone_count = 0;
@@ -117,11 +117,11 @@ void _initialize()
 	/*effect_playsound_init(); */
 }
 
-Eina_Bool _clear_sound_cb(void *data, Elm_Object_Item *it)
+void _clear_sound_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	_clear_sound_resource();
 
-	return EINA_TRUE;
+	return;
 }
 
 void _clear_sound_resource()
@@ -224,7 +224,7 @@ static void get_sound_file_list(char *dir, int type)
 	while (!readdir_r(dp, &entry, &result) && result) {
 		if (strncmp(result->d_name, ".", 1)
 			&& strlen(dir) < 1024
-			&& strlen(replace(result->d_name, ".ogg", "")) <1024
+			&& strlen(replace(result->d_name, ".ogg", "")) < 1024
 			&& strlen(replace(notification_name_arr[notification_count], "_", " ")) < 1024) {
 			if (type) {
 				strncpy(ringtone_arr[ringtone_count], dir, 1024);
@@ -272,13 +272,13 @@ static int get_vibration_level()
 	vconf_get_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, &level);
 
 	switch (level) {
-	case VIBRATION_LEVEL_LOW_INT :
+	case VIBRATION_LEVEL_LOW_INT:
 		mode = VIBRATION_LEVEL_LOW;
 		break;
 	/*	case VIBRATION_LEVEL_MID_INT : */
 	/*		mode = VIBRATION_LEVEL_MID; */
 	/*		break; */
-	case VIBRATION_LEVEL_HIGH_INT :
+	case VIBRATION_LEVEL_HIGH_INT:
 		mode = VIBRATION_LEVEL_HIGH;
 		break;
 	}
@@ -355,12 +355,46 @@ void _noti_cb(void *data, Evas_Object *obj, void *event_info)
 	_show_notification_popup_cb(data, obj, event_info);
 }
 
+
 void _vibrate_cb(void *data, Evas_Object *obj, void *event_info)
 {
+	Evas_Object *genlist = NULL;
+	Elm_Object_Item *nf_it = NULL;
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+
+	_initialize();
+
+	genlist = _create_vibration_list(data);
+	if (genlist == NULL) {
+		DBG("%s", "sound cb - genlist is null");
+		return;
+	}
+#if 0
+	nf_it = elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, genlist, NULL);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_TRUE, EINA_FALSE);
+#else
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+#endif
+
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
-	_show_vibration_popup_cb(data, obj, event_info);
+	ad->MENU_TYPE = SETTING_SOUND;
 }
+
+
+/*void _vibrate_cb(void *data, Evas_Object *obj, void *event_info) */
+/*{ */
+/*	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE); */
+/* */
+/*	_show_vibration_popup_cb(data, obj, event_info); */
+/*} */
 
 void _preferred_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -406,11 +440,11 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 		snprintf(buf, sizeof(buf) - 1, "%s", _(sound_menu_its[index % ITEM_SIZE].name));
 	} else if (!strcmp(part, "elm.text.1")) {
 		switch (index) {
-		case 1 :
+		case 1:
 			sound_mode = get_sound_mode();
 			snprintf(buf, sizeof(buf) - 1, "%s", _(sound_mode_str[sound_mode % 3]));
 			break;
-		case 3 :
+		case 3:
 			pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
 			if (pa_cur_ringtone == NULL) {
 				pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_DEFAULT_PATH_STR);
@@ -422,7 +456,7 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 				snprintf(buf, sizeof(buf) - 1, "%s", _get_sound_file_name(pa_cur_ringtone));
 			}
 			break;
-		case 4 :
+		case 4:
 			pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
 			if (pa_cur_ringtone == NULL) {
 				pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_RINGTONE_DEFAULT_PATH_STR);
@@ -434,17 +468,17 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 				snprintf(buf, sizeof(buf) - 1, "%s", _get_sound_file_name(pa_cur_ringtone));
 			}
 			break;
-		case 5 :
+		case 5:
 			vibrate_type = get_vibration_level();
 			snprintf(buf, sizeof(buf) - 1, "%s", _(vibration_str[vibrate_type % 2]));
 			break;
-			/*
-			   case 5 :
-			   vconf_get_bool(VCONFKEY_SETAPPL_PERFERED_ARM_LEFT_BOOL, &pref_arm_type);
-			   pref_arm_type = (pref_arm_type == TRUE) ? 0 : 1;
-			   snprintf(buf, sizeof(buf)-1, "%s", _(pref_arm_str[pref_arm_type % 2]));
-			   break;
-			 */
+#if 0
+		case 5:
+		vconf_get_bool(VCONFKEY_SETAPPL_PERFERED_ARM_LEFT_BOOL, &pref_arm_type);
+		pref_arm_type = (pref_arm_type == TRUE) ? 0 : 1;
+		snprintf(buf, sizeof(buf)-1, "%s", _(pref_arm_str[pref_arm_type % 2]));
+		break;
+#endif
 		}
 		index++;
 	}
@@ -482,7 +516,7 @@ Evas_Object *_gl_sound_check_get(void *data, Evas_Object *obj, const char *part)
 		check = elm_check_add(obj);
 
 		if (vconf_get_bool(VCONFKEY_SETAPPL_TOUCH_SOUNDS_BOOL, &sound_menu_its[2].is_enable_touch_sound) < 0) {
-			sound_menu_its[2].is_enable_touch_sound = TOUCH_SOUND_ENABLE;	/*  default value of touch sounds : on */
+			sound_menu_its[2].is_enable_touch_sound = TOUCH_SOUND_ENABLE;	/*	default value of touch sounds : on */
 		}
 		elm_check_state_set(check, (sound_menu_its[2].is_enable_touch_sound) ? EINA_TRUE : EINA_FALSE);
 		evas_object_smart_callback_add(check, "changed", _sound_chk_changed_cb, (void *)1);
@@ -535,12 +569,12 @@ Evas_Object *_create_sound_list(void *data)
 
 	menu_its = sound_menu_its;
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	for (idx = 0; idx < ITEM_SIZE; idx++) {
 		if (idx == 0) {
 			itc_tmp = itc_1text;
-		} else if (idx == 2) {
+		} else if (idx == 3) {
 			itc_tmp = itc_touch_snd;
 		} else {
 			itc_tmp = itc;
@@ -552,10 +586,10 @@ Evas_Object *_create_sound_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,			/* genlist object */
 						   itc_tmp,			/* item class */
-						   id,		            /* data */
+						   id,					/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 
 			if (idx == ITEM_SIZE - 1) {
@@ -753,11 +787,11 @@ static void vibrate_vconf_changed_cb(keynode_t *key, void *data)
 	}
 }
 
-Eina_Bool _sound_mode_back_cb(void *data, Elm_Object_Item *it)
+void _sound_mode_back_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	g_sound_mode_genlist = NULL;
 
-	return EINA_TRUE;
+	return;
 }
 
 void _show_sound_mode_list(void *data)
@@ -787,7 +821,7 @@ void _show_sound_mode_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	Item_Data *id = calloc(sizeof(Item_Data), 1);
 	if (id) {
@@ -1033,11 +1067,11 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	genlist = elm_genlist_add(popup);
 	elm_object_style_set(genlist, "popup");
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
-	DBG("---> ringtone_count %d  to GENLIST", ringtone_count);
+	DBG("---> ringtone_count %d	 to GENLIST", ringtone_count);
 	for (index = 0; index < ringtone_count; index++) {
-		/*DBG("---> add item to list %d  to GENLIST", index); */
+		/*DBG("---> add item to list %d	 to GENLIST", index); */
 		Item_Data *item = (Item_Data *)calloc(sizeof(Item_Data), 1);
 		if (item) {
 			item->index = index;
@@ -1259,7 +1293,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	genlist = elm_genlist_add(popup);
 	elm_object_style_set(genlist, "popup");
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 
 	for (index = 0; index < notification_count; index++) {
@@ -1493,7 +1527,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_style_set(genlist, "popup");
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	int count = sizeof(vibration_str) / sizeof(vibration_str[0]);
 
@@ -1647,7 +1681,7 @@ void _show_pref_arm_mode_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	Item_Data *id = calloc(sizeof(Item_Data), 1);
 	if (id) {

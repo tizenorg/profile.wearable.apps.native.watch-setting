@@ -11,8 +11,8 @@
 /*
  * setting-double.c
  *
- *  Created on: Jan 8, 2014
- *      Author: Sunyeop Hwang
+ *	Created on: Jan 8, 2014
+ *		Author: Sunyeop Hwang
  */
 #include <unicode/ustring.h>
 #include <unicode/ucol.h>
@@ -29,6 +29,7 @@ static Eina_List *app_list = NULL;
 static int list_index = 1;
 struct _double_menu_item *pitem_none = NULL;
 struct _double_menu_item *pitem_recent = NULL;
+struct _double_menu_item *pitem_last = NULL;
 /*pkgmgr_client *pc = NULL; */
 /*pkgmgr_client *pc2 = NULL; */
 static UCollator *coll = NULL;
@@ -45,6 +46,8 @@ static struct _double_menu_item *_get_selected_app()
 			return pitem_none;
 		} else if (!strcmp(appid, "recent")) {
 			return pitem_recent;
+		} else if (!strcmp(appid, "last")) {
+			return pitem_last;
 		} else {
 			Eina_List *list = NULL;
 			EINA_LIST_FOREACH(app_list, list, pitem) {
@@ -239,6 +242,7 @@ static char *_gl_double_app_title_get(void *data, Evas_Object *obj, const char *
 	return NULL;
 }
 
+
 static Evas_Object *_gl_double_app_radio_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *radio = NULL;
@@ -347,8 +351,6 @@ static void update_double_app_list(void *data)
 
 	if (g_double_app_genlist) {
 		struct _double_menu_item *selected_app = NULL;
-		struct _double_menu_item *pitem = NULL;
-		Eina_List *list = NULL;
 		Elm_Object_Item *sel_it = NULL;
 
 		elm_genlist_clear(g_double_app_genlist);
@@ -385,19 +387,31 @@ static void update_double_app_list(void *data)
 			}
 		}
 
-		EINA_LIST_FOREACH(app_list, list, pitem) {
-			Double_Item_Data *id = calloc(sizeof(Double_Item_Data), 1);
-			if (id) {
-				id->pitem = pitem;
-				id->item = elm_genlist_item_append(g_double_app_genlist, itc, id, NULL,
-												   ELM_GENLIST_ITEM_NONE,
-												   _gl_double_app_sel_cb, ad);
+		Double_Item_Data *id_last = calloc(sizeof(Double_Item_Data), 1);
+		if (id_last) {
+			id_last->pitem = pitem_last;
+			id_last->item = elm_genlist_item_append(g_double_app_genlist, itc, id_last, NULL,
+													ELM_GENLIST_ITEM_NONE,
+													_gl_double_app_sel_cb, ad);
 
-				if (id->pitem == selected_app) {
-					sel_it = id->item;
-				}
+			if (id_last->pitem == selected_app) {
+				sel_it = id_last->item;
 			}
 		}
+		/*		struct _double_menu_item *pitem = NULL; */
+		/*		EINA_LIST_FOREACH(app_list, list, pitem) { */
+		/*			Double_Item_Data *id = calloc(sizeof(Double_Item_Data), 1); */
+		/*			if (id) { */
+		/*				id->pitem = pitem; */
+		/*				id->item = elm_genlist_item_append(g_double_app_genlist, itc, id, NULL, */
+		/*												   ELM_GENLIST_ITEM_NONE, */
+		/*												   _gl_double_app_sel_cb, ad); */
+		/* */
+		/*				if (id->pitem == selected_app) { */
+		/*					sel_it = id->item; */
+		/*				} */
+		/*			} */
+		/*		} */
 
 		if (selected_app) {
 			elm_radio_value_set(ad->double_rdg, selected_app->index);
@@ -486,6 +500,7 @@ void clear_double_app_cb(void *data , Evas *e, Evas_Object *obj, void *event_inf
 
 	FREE(pitem_none);
 	FREE(pitem_recent);
+	FREE(pitem_last);
 	g_double_app_genlist = NULL;
 	unregister_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
@@ -505,8 +520,6 @@ Evas_Object *create_double_app_list(void *data)
 	Elm_Object_Item *sel_it = NULL;
 
 	struct _double_menu_item *selected_app = NULL;
-	struct _double_menu_item *pitem = NULL;
-	Eina_List *list = NULL;
 
 	Elm_Genlist_Item_Class *itc = elm_genlist_item_class_new();
 	itc->item_style = "1text.1icon.1";
@@ -521,7 +534,7 @@ Evas_Object *create_double_app_list(void *data)
 	genlist = elm_genlist_add(layout);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 	selected_app = _get_selected_app();
 
 	Double_Item_Data *id_none = calloc(sizeof(Double_Item_Data), 1);
@@ -548,19 +561,32 @@ Evas_Object *create_double_app_list(void *data)
 		}
 	}
 
-	EINA_LIST_FOREACH(app_list, list, pitem) {
-		Double_Item_Data *id = calloc(sizeof(Double_Item_Data), 1);
-		if (id) {
-			id->pitem = pitem;
-			id->item = elm_genlist_item_append(genlist, itc, id, NULL,
-											   ELM_GENLIST_ITEM_NONE,
-											   _gl_double_app_sel_cb, ad);
+	Double_Item_Data *id_last = calloc(sizeof(Double_Item_Data), 1);
+	if (id_last) {
+		id_last->pitem = pitem_last;
+		id_last->item = elm_genlist_item_append(genlist, itc, id_last, NULL,
+												ELM_GENLIST_ITEM_NONE,
+												_gl_double_app_sel_cb, ad);
 
-			if (id->pitem == selected_app) {
-				sel_it = id->item;
-			}
+		if (id_last->pitem == selected_app) {
+			sel_it = id_last->item;
 		}
 	}
+
+	/*	Eina_List *list = NULL; */
+	/*	EINA_LIST_FOREACH(app_list, list, pitem) { */
+	/*		Double_Item_Data *id = calloc(sizeof(Double_Item_Data), 1); */
+	/*		if (id) { */
+	/*			id->pitem = pitem; */
+	/*			id->item = elm_genlist_item_append(genlist, itc, id, NULL, */
+	/*											   ELM_GENLIST_ITEM_NONE, */
+	/*											   _gl_double_app_sel_cb, ad); */
+	/* */
+	/*			if (id->pitem == selected_app) { */
+	/*				sel_it = id->item; */
+	/*			} */
+	/*		} */
+	/*	} */
 
 	ad->double_rdg = elm_radio_add(genlist);
 	elm_radio_state_value_set(ad->double_rdg, -1);
@@ -710,6 +736,14 @@ void init_double_pressing(void *data)
 		pitem_recent->name = strdup("IDS_ST_OPT_RECENT_APPS_ABB");
 	}
 
+	FREE(pitem_last);
+	pitem_last = calloc(sizeof(struct _double_menu_item), 1);
+	if (pitem_last) {
+		pitem_last->index = 2;
+		pitem_last->appid = strdup("last");
+		pitem_last->pkgid = strdup("last");
+		pitem_last->name = strdup("Last app");
+	}
 	UErrorCode status = U_ZERO_ERROR;
 	if (coll) {
 		ucol_close(coll);
@@ -777,7 +811,7 @@ Evas_Object *create_double_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	/*elm_genlist_item_append(genlist, itc, NULL, NULL, */
 	/*		ELM_GENLIST_ITEM_NONE, _double_app_list_cb, ad); */
@@ -795,9 +829,11 @@ void clear_double_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 {
 	FREE(pitem_none);
 	FREE(pitem_recent);
+	FREE(pitem_last);
 	g_double_genlist = NULL;
 	g_double_app_genlist = NULL;
 	unregister_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
 }
+
 

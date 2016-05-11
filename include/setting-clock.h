@@ -11,8 +11,8 @@
 /*
  * setting-clock.h
  *
- *  Created on: Oct 8, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 8, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_CLOCK_H_

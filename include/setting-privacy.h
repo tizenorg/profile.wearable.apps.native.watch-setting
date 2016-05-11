@@ -11,8 +11,8 @@
 /*
  * setting-privacy.h
  *
- *  Created on: Jan 7, 2014
- *      Author: Sunyeop Hwang
+ *	Created on: Jan 7, 2014
+ *		Author: Sunyeop Hwang
  */
 
 #ifndef SETTING_PRIVACY_H_

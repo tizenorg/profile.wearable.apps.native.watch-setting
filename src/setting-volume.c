@@ -24,15 +24,15 @@ static void _gl_notification_cb(void *data, Evas_Object *obj, void *event_info);
 static void _gl_system_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _volume_menu_item volume_menu_its[] = {
-	{ "IDS_ST_BUTTON_MULTIMEDIA", 			_gl_multimedia_cb   },
-	{ "IDS_ST_HEADER_RINGTONES_ABB", 		_gl_ringtone_cb     },
-	{ "IDS_ST_BUTTON_NOTIFICATIONS", 		_gl_notification_cb },
-	{ "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB",	_gl_system_cb       },
+	{ "IDS_ST_BUTTON_MULTIMEDIA",			_gl_multimedia_cb	},
+	{ "IDS_ST_HEADER_RINGTONES_ABB",		_gl_ringtone_cb		},
+	{ "IDS_ST_BUTTON_NOTIFICATIONS",		_gl_notification_cb },
+	{ "IDS_ST_BODY_SYSTEM_M_VOLUME_ABB",	_gl_system_cb		},
 	{ NULL, NULL }
 };
 
 static void _set_volumn(sound_type_e type, int volume_index, char *vconf_key);
-static void _change_to_vibrate_mode();
+/*static void _change_to_vibrate_mode(); */
 static void vibrate_vconf_changed_cb(keynode_t *key, void *data);
 static void sound_vconf_changed_cb(keynode_t *key, void *data);
 static void _play_sound_all_type(int sound_type, float volume);
@@ -502,7 +502,7 @@ Evas_Object *_create_volume_list(void *data)
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_its = volume_menu_its;
 
@@ -513,10 +513,10 @@ Evas_Object *_create_volume_list(void *data)
 			item = elm_genlist_item_append(
 					   genlist,			/* genlist object */
 					   itc,				/* item class */
-					   id,		            /* data */
+					   id,					/* data */
 					   NULL,
 					   ELM_GENLIST_ITEM_NONE,
-					   menu_its[ idx ].func,	/* call back */
+					   menu_its[idx].func,	/* call back */
 					   ad);
 			id->item = item;
 		}
@@ -602,11 +602,11 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_naviframe_item_pop(ad->nf);
 }
 
-static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
+static void _back_volume_naviframe_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - _back_volume_naviframe_cb is called");
 	DBG("Setting - original volume : %d", original_volume);
-	DBG("Setting -    volume index : %d", volume_index);
+	DBG("Setting -	  volume index : %d", volume_index);
 
 	if (original_sound_mode != get_sound_mode()) {
 		/* restore sound mode */
@@ -631,7 +631,7 @@ static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
 	unregister_vconf_changing(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, vibrate_vconf_changed_cb);
 	unregister_vconf_changing(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL , sound_vconf_changed_cb);
 
-	return EINA_TRUE;
+	return;
 }
 
 static void _set_volumn(sound_type_e type, int volume_index, char *vconf_key)
@@ -660,7 +660,7 @@ static void _set_volumn(sound_type_e type, int volume_index, char *vconf_key)
 			DBG("current sound mode is %d, not type_ringtone", curr_sound_type);
 		}
 	} else {
-		DBG("Setting - ringtone value is not saved...   %d", volume_index);
+		DBG("Setting - ringtone value is not saved...	%d", volume_index);
 	}
 }
 
@@ -701,7 +701,7 @@ static void _play_sound_all_type(int sound_type, float volume)
 	const char *sound_path = NULL;
 	int temp_volume_index = 0;
 	switch (sound_type) {
-	case SOUND_TYPE_RINGTONE :
+	case SOUND_TYPE_RINGTONE:
 		temp_volume_index = volume_index;
 
 		vconf_set_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, temp_volume_index);
@@ -762,43 +762,21 @@ static void _play_sound_all_type(int sound_type, float volume)
 			set_looping(TRUE);
 		}
 		is_myself_ringtone_changing = 1;
-	}
-#if 0
-}
-else if (sound_type == SOUND_TYPE_MEDIA)
-{
-	int music_state = 0;
-	int err = vconf_get_int("memory/private/org.tizen.w-music-player/player_state", &music_state);
+	} else if (sound_type == SOUND_TYPE_SYSTEM)	{
+		stop_wav();
 
-	DBG("Setting - music state: %d, err: %d", music_state, err);
+		is_wav_playing_vol = SOUND_STATE_PLAY;
+		wav_player_start(buf, sound_type, NULL, NULL, &sound_id_vol);
+		return;
+	} else if (sound_type == SOUND_TYPE_NOTIFICATION) {
+		play_sound(buf, 0.0, SOUND_TYPE_NOTIFICATION);
+		set_looping(FALSE);
 
-	if (music_state == VCONFKEY_MUSIC_PLAY) {
-		DBG("Setting - media is playing...");
 		return;
 	}
-
-	if (!is_created_player() || is_player_paused()) {
-		play_sound(buf, volume, SOUND_TYPE_MEDIA);
-		set_looping(TRUE);
-	}
-}
-#endif
-else if (sound_type == SOUND_TYPE_SYSTEM)
-{
-	stop_wav();
-
-	is_wav_playing_vol = SOUND_STATE_PLAY;
-	wav_player_start(buf, sound_type, NULL, NULL, &sound_id_vol);
-	return;
-} else if (sound_type == SOUND_TYPE_NOTIFICATION)
-{
-	play_sound(buf, 0.0, SOUND_TYPE_NOTIFICATION);
-	set_looping(FALSE);
-
-	return;
-}
 }
 
+#if 0 /* NOT USED */
 static void _change_to_vibrate_mode()
 {
 	DBG("Setting - _change_to_vibrate_mode() is called!");
@@ -838,6 +816,7 @@ static void _change_to_sound_mode()
 		vconf_set_bool(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, FALSE);
 	}
 }
+#endif
 
 static int sync_volume(int vconf_vol, int real_vol)
 {
@@ -876,6 +855,8 @@ static void _update_volume_circle(Evas_Object *spiner)
 	edje_object_part_drag_value_set(elm_layout_edje_get(spiner), "elm.dragable.slider", posx, 0);
 }
 
+
+#if 0 /* NOT USED */
 static void _on_volume_spinner_change_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - _on_volume_spinner_change_cb() is called!");
@@ -946,7 +927,9 @@ static void _on_volume_spinner_change_cb(void *data, Evas_Object *obj, void *eve
 
 	edje_object_part_drag_value_set(elm_layout_edje_get(obj), "elm.dragable.slider", posx, 0);
 }
+#endif
 
+#if 0 /* NOT USED */
 static void _on_media_volume_spinner_change_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - _on_media_volume_spinner_change_cb() is called!");
@@ -1005,6 +988,7 @@ static void _on_media_volume_spinner_change_cb(void *data, Evas_Object *obj, voi
 
 	edje_object_part_drag_value_set(elm_layout_edje_get(obj), "elm.dragable.slider", posx, 0);
 }
+#endif
 
 void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 {

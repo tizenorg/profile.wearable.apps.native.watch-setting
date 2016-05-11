@@ -11,8 +11,8 @@
 /*
  * setting-battery.c
  *
- *  Created on: Oct 12, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 12, 2013
+ *		Author: min-hoyun
  */
 #include <pkgmgr-info.h>
 #include <aul.h>
@@ -609,7 +609,7 @@ Evas_Object *_create_battery_list(void *data)
 
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_list = battery_menu_list;
 
@@ -626,7 +626,7 @@ Evas_Object *_create_battery_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,		/* genlist object */
 						   itc,			/* item class */
-						   id,		        /* data */
+						   id,				/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
 						   menu_list[idx].func,	/* call back */

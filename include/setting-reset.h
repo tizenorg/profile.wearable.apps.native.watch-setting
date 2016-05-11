@@ -11,8 +11,8 @@
 /*
  * setting-reset.h
  *
- *  Created on: Oct 10, 2013
- *      Author: min-hoyun
+ *	Created on: Oct 10, 2013
+ *		Author: min-hoyun
  */
 
 #ifndef SETTING_RESET_H_

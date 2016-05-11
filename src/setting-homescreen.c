@@ -26,16 +26,16 @@
 #include "util.h"
 
 static struct _homescreen_menu_item homescreen_menu_its[] = {
-	{ "IDS_HS_MBODY_HOME_ICON_SIZE_ABB",							0, 0, 	_homescreen_gl_viewtype_cb      },
-	{ "IDS_ST_MBODY_HOME_BACKGROUND_ABB",  	0, 0, 	_wallpaper_gl_cb		},
-	{ "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB",  							0, 0, 	_homescreen_gl_edit_home_cb		},
+	{ "IDS_HS_MBODY_HOME_ICON_SIZE_ABB",							0, 0,	_homescreen_gl_viewtype_cb		},
+	{ "IDS_ST_MBODY_HOME_BACKGROUND_ABB",	0, 0,	_wallpaper_gl_cb		},
+	{ "IDS_ST_OPT_EDIT_HOME_SCREEN_ABB",							0, 0,	_homescreen_gl_edit_home_cb		},
 	{ NULL, 0, 0, NULL }
 };
 
 static struct _homebg_menu_item homebg_menu_its[] = {
-	{ "IDS_COM_MBODY_COLOUR_PALETTE",		_show_bg_slide_cb      },
-	{ "IDS_ST_BODY_WALLPAPERS", 	 		_wallpaper_gl_cb         },
-	{ "IDS_ST_BODY_GALLERY",  				_gallery_gl_cb  },
+	{ "IDS_COM_MBODY_COLOUR_PALETTE",		_show_bg_slide_cb	   },
+	{ "IDS_ST_BODY_WALLPAPERS",				_wallpaper_gl_cb		 },
+	{ "IDS_ST_BODY_GALLERY",				_gallery_gl_cb	},
 	{ NULL, NULL }
 };
 
@@ -44,7 +44,7 @@ static struct _color color[] = {
 	{ 244, 102, 141, "F4668D" },
 	{ 249, 55, 66, "F93742" },
 	{ 167, 63, 149, "A73F95" },
-	{ 132, 0, 196, "8400C4"  },
+	{ 132, 0, 196, "8400C4"	 },
 	{ 3, 54, 224, "0336E0" },
 	{ 0, 175, 164, "00AFA4" },
 	{ 96, 192, 30, "60C01E" },
@@ -292,7 +292,7 @@ Evas_Object *_create_homescreen_list(void *data)
 
 	genlist = elm_genlist_add(layout);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_its = homescreen_menu_its;
 
@@ -303,10 +303,10 @@ Evas_Object *_create_homescreen_list(void *data)
 			id->item = elm_genlist_item_append(
 						   genlist,			/* genlist object */
 						   itc,				/* item class */
-						   id,		            /* data */
+						   id,					/* data */
 						   NULL,
 						   ELM_GENLIST_ITEM_NONE,
-						   menu_its[ idx ].func,	/* call back */
+						   menu_its[idx].func,	/* call back */
 						   ad);
 		}
 	}
@@ -337,7 +337,7 @@ static char *_gl_viewtype_title_get(void *data, Evas_Object *obj, const char *pa
 			char buf[1024];
 			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_HS_OPT_LARGE_ICONS_ABB"));
 			title = strdup(buf);
-		} else 	{
+		} else	{
 			char buf[1024];
 			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_HS_OPT_SMALL_ICONS_ABB"));
 			title = strdup(buf);
@@ -417,7 +417,7 @@ void _show_viewtype_list(void *data)
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	for (idx = 0; idx < VIEWTYPE_COUNT; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
@@ -486,7 +486,7 @@ static void _show_homebg_list(void *data)
 
 	genlist = elm_genlist_add(layout);
 	elm_genlist_block_count_set(genlist, 14);
-	connect_to_wheel_with_genlist(genlist,ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 
 	menu_its = homebg_menu_its;
 
@@ -494,7 +494,7 @@ static void _show_homebg_list(void *data)
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
 			id->index = idx;
-			id->item = elm_genlist_item_append(genlist, itc, id, NULL, ELM_GENLIST_ITEM_NONE, menu_its[ idx ].func, ad);
+			id->item = elm_genlist_item_append(genlist, itc, id, NULL, ELM_GENLIST_ITEM_NONE, menu_its[idx].func, ad);
 		}
 	}
 
