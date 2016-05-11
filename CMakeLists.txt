@@ -4,12 +4,14 @@ PROJECT(watch-setting C)
 SET(SRCS
     src/setting.c
     src/setting-sound.c
+    src/setting-vibration.c
     src/setting-clock.c
     src/setting-homescreen.c
     src/setting-volume.c
     src/setting-info.c
 #    src/setting-bluetooth.c
 #    src/setting-motion.c
+    src/setting-device.c
     src/setting-display.c
     src/setting-privacy.c
     src/setting-double.c
