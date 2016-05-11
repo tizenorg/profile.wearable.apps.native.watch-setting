@@ -63,26 +63,24 @@ static struct _menu_item setting_emergency_menu_its[] = {
 };
 
 static struct _menu_item setting_menu_its[] = {
-	{ "IDS_ST_BUTTON_CLOCK", 							"b_settings_change_clock.png", 	clock_cb 	  		},
+//	{ "IDS_ST_BUTTON_CLOCK", 							"b_settings_change_clock.png", 	clock_cb 	  		},
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_BODY_WALLPAPERS", 						"b_setting_wallpaper.png", 			homescreen_cb 	  	},
-	{ "IDS_ST_BUTTON_NOTIFICATIONS", 					"b_settings_notifications.png", notification_cb		},
+//	{ "IDS_ST_BODY_WALLPAPERS", 						"b_setting_wallpaper.png", 			homescreen_cb 	  	},
+//	{ "IDS_ST_BUTTON_NOTIFICATIONS", 					"b_settings_notifications.png", notification_cb		},
 #endif
-	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
-	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb 	  		},
-	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
+//	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
+//	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
 #ifndef FEATURE_SETTING_EMUL
-	{ "WIFI",					"text_input_icon.png",			wifi_cb 	  		},
+//	{ "WIFI",					"text_input_icon.png",			wifi_cb 	  		},
 #endif
 #ifndef FEATURE_SETTING_EMUL
-	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
+//	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
 #endif
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_MBODY_DOUBLE_PRESS_ABB",					"b_setting_double-press.png",		double_pressing_cb 	},
+//	{ "IDS_ST_MBODY_DOUBLE_PRESS_ABB",					"b_setting_double-press.png",		double_pressing_cb 	},
 #endif
-#ifndef FEATURE_SETTING_EMUL
-	{ "IDS_ST_BUTTON_GEAR_INFO", 						"b_settings_info.png",			gear_info_cb  		},
-#endif
+	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb			},
+	{ "IDS_ST_BUTTON_GEAR_INFO",						"b_settings_info.png",			gear_info_cb		},
 	{ NULL, NULL, NULL }
 };
 
