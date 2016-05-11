@@ -4,6 +4,7 @@ PROJECT(watch-setting C)
 SET(SRCS
     src/setting.c
     src/setting-sound.c
+    src/setting-vibration.c
     src/setting-clock.c
     src/setting-homescreen.c
     src/setting-volume.c

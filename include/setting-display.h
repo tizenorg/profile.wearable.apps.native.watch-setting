@@ -44,6 +44,7 @@ struct _font_menu_item {
 typedef struct _Display_Item_Data {
 	int index;
 	Elm_Object_Item *item;
+	Evas_Object *check;
 } Display_Item_Data;
 
 typedef struct _Font_Style_Item_Data {
@@ -53,6 +54,9 @@ typedef struct _Font_Style_Item_Data {
 } Font_Style_Item_Data;
 
 enum {
+	SETTING_DISPLAY_WATCH_FACE,
+	SETTING_DISPLAY_WATCH_ALWAYS_ON,
+	SETTING_DISPLAY_NOTIFICATION_INDICATOR,
 	SETTING_DISPLAY_BRIGTHNESS,
 	SETTING_DISPLAY_SCREEN_TIME,
 	SETTING_DISPLAY_FONT,

@@ -25,7 +25,7 @@
 #include <player.h>
 #include <sound_manager.h>
 
-#define ITEM_SIZE			6
+#define ITEM_SIZE			4
 /*#define RINGTONE_MAX_COUNT		5 */
 #define RINGTONE_MAX_COUNT		6
 
