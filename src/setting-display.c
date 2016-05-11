@@ -39,9 +39,29 @@
 #include "setting-homescreen.h"
 #include "setting-motion.h"
 #include "util.h"
+#include "setting-clock.h"
+
+
+// temporary source code
+#define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
+
+static int is_changed = 0;
+static bool running = false;
+
+static Evas_Object *_gl_display_watch_always_check_get(void *data, Evas_Object *obj, const char *part);
+static void _display_watch_always_check_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
+static void _clock_cb(void *data, Evas_Object *obj, void *event_info);
+static void _display_gl_watch_always_on_cb(void *data, Evas_Object *obj, void *event_info);
+static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_info);
+static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object *obj, const char *part);
+static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, void *event_info);
 
 static struct _display_menu_item display_menu_its[] = {
+	{ "Watch face",				SETTING_DISPLAY_WATCH_FACE,	_clock_cb},
 	{ "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB",	SETTING_DISPLAY_SCREEN_TIME,	_display_gl_screen_timeout_cb	},
+	{ "watch always on",	SETTING_DISPLAY_WATCH_ALWAYS_ON,	_display_gl_watch_always_on_cb	},
+	{ "Notification indicator",	SETTING_DISPLAY_NOTIFICATION_INDICATOR,	_display_gl_display_noti_indicator_cb },
+	{ "IDS_ST_BUTTON_BRIGHTNESS",   SETTING_DISPLAY_BRIGTHNESS, _display_brightness_cb   },
 	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT,	_display_gl_font_cb		},
 	{ "IDS_ST_BUTTON_LANGUAGE",				SETTING_DISPLAY_LANG,	_display_gl_language_cb	},
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
@@ -101,7 +121,7 @@ static void settings_font_style_changed_cb(system_settings_key_e key, void *user
 static void change_language_enabling(keynode_t *key, void *data);
 static void change_screen_time_cb(keynode_t *key, void *data);
 static void change_language_cb(keynode_t *key, void *data);
-static Eina_Bool setting_font_list_pop_cb(void *data, Elm_Object_Item *it);
+static Eina_Bool setting_font_list_pop_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *event_info);
 static void _set_rotate_screen(const int rotation);
 static int _get_rotate_screen();
@@ -309,19 +329,19 @@ char *_gl_display_title_get(void *data, Evas_Object *obj, const char *part)
 				snprintf(buf, sizeof(buf) - 1, "No off");
 				break;
 			case 10:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"));
+				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_10SEC"));
 				break;
 			case 15:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"));
+				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_15SEC"));
 				break;
 			case 30:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"));
+				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_30SEC"));
 				break;
 			case 60:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"));
+				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_1_MINUTE_ABB2"));
 				break;
 			case 300:
-				snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"));
+				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_5_MINUTES"));
 				break;
 			}
 		} else {
@@ -362,6 +382,18 @@ Evas_Object *_create_display_list(void *data)
 	itc2->func.text_get = _gl_display_title_get;
 	itc2->func.del = _display_gl_del;
 
+	Elm_Genlist_Item_Class *itc3 = elm_genlist_item_class_new();
+	itc3->item_style = "1text.1icon.1";
+	itc3->func.text_get = _gl_display_title_get;
+	itc3->func.content_get = _gl_display_watch_always_check_get;
+	itc3->func.del = _display_gl_del;
+
+	Elm_Genlist_Item_Class *itc4 = elm_genlist_item_class_new();
+	itc4->item_style = "1text.1icon.1";
+	itc4->func.text_get = _gl_display_title_get;
+	itc4->func.content_get = _gl_display_noti_indicator_check_get;
+	itc4->func.del = _display_gl_del;
+
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
@@ -382,6 +414,12 @@ Evas_Object *_create_display_list(void *data)
 			itc_tmp = itc2;
 		} else {
 			itc_tmp = itc;
+		}
+		if(menu_its[idx].type == SETTING_DISPLAY_WATCH_ALWAYS_ON) {
+			itc_tmp = itc3;
+		}
+		if(menu_its[idx].type == SETTING_DISPLAY_NOTIFICATION_INDICATOR) {
+			itc_tmp = itc4;
 		}
 
 		Display_Item_Data *id = calloc(sizeof(Display_Item_Data), 1);
@@ -412,6 +450,8 @@ Evas_Object *_create_display_list(void *data)
 	}
 	elm_genlist_item_class_free(itc);
 	elm_genlist_item_class_free(itc2);
+	elm_genlist_item_class_free(itc3);
+	elm_genlist_item_class_free(itc4);
 
 	g_display_genlist = genlist;
 
@@ -432,15 +472,15 @@ static char *_gl_screen_timeout_title_get(void *data, Evas_Object *obj, const ch
 		if (emul_val == 1 && id->index == 0) {
 			snprintf(buf, sizeof(buf) - 1, "No off");
 		} else if (id->index == (0 + emul_val)) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_10SEC"));
+			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_10SEC"));
 		} else if (id->index == (1 + emul_val)) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_15SEC"));
+			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_15SEC"));
 		} else if (id->index == (2 + emul_val)) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_30SEC"));
+			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_30SEC"));
 		} else if (id->index == (3 + emul_val)) {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_1_MINUTE_ABB2"));
+			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_1_MINUTE_ABB2"));
 		} else {
-			snprintf(buf, sizeof(buf) - 1, _("IDS_ST_BODY_5_MINUTES"));
+			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_5_MINUTES"));
 		}
 	}
 	return strdup(buf);
@@ -945,12 +985,12 @@ void _show_font_list(void *data)
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist,ad);
 
-	for (idx = 0; idx < 1; idx++) {
+	for (idx = 0; idx < 2; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist, itc, id, NULL,
-											   ELM_GENLIST_ITEM_NONE, _display_gl_font_style_cb, ad);
+											   ELM_GENLIST_ITEM_NONE, font_menu_its[idx].func, ad);
 
 			if (idx == 0) {
 				font_style_item = id->item;
@@ -1640,7 +1680,7 @@ static Eina_Bool setting_font_style_pop_cb(void *data, Elm_Object_Item *it)
 	return EINA_TRUE;
 }
 
-static Eina_Bool setting_font_list_pop_cb(void *data, Elm_Object_Item *it)
+static Eina_Bool setting_font_list_pop_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	DBG("setting_font_list_pop_cb");
 
@@ -1692,7 +1732,44 @@ static void change_language_cb(keynode_t *key, void *data)
 	}
 }
 
-#if 0
+
+
+int brightness_index = 0;
+int brightness_origin_level = 0;
+Evas_Object *brightness_layout = NULL;
+
+Evas_Object *g_slider = NULL;
+spin_date *pd = NULL;
+
+static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
+static void _on_spinner_change_cb(void *data, Evas_Object *obj, void *event_info);
+static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
+static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
+static void brightness_vconf_changed_cb(keynode_t *key, void *data);
+static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info);
+static void _set_brightness_clicked_cb(void *data, Evas_Object *obj, void *event_info);
+static void sync_brightness(int real_brightness);
+static int _change_bright_lovel_to_index(int level);
+#if defined(FEATURE_SETTING_EMUL)
+static void _set_HBM_mode(int enable);
+#endif
+static int _change_bright_index_to_level(int index);
+
+int hbm_mode_on_original = 0;	/* backup for cancel */
+
+//#if defined(FEATURE_SETTING_EMUL)
+int  display_get_hbm()
+{
+	/* DUMMY FUNCTION FOR EMULATOR */
+	return 0;
+}
+int display_enable_hbm(int enable, int timeout )
+{
+	/* after timeout(sec) minutes, HBM mode will be off! */
+	return 0;
+}
+//#endif
+
 static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -1709,7 +1786,8 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 	if (layout) {
 		evas_object_event_callback_add(layout, EVAS_CALLBACK_MOUSE_IN, _power_off_popup_dismiss_cb, NULL);
 
-		navi_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BUTTON_BRIGHTNESS", NULL, NULL, layout, NULL);
+		navi_it = elm_naviframe_item_push(ad->nf, "Brightness", NULL, NULL, layout, NULL);
+		elm_naviframe_item_title_enabled_set(navi_it, EINA_TRUE, EINA_FALSE);
 		elm_object_item_domain_text_translatable_set(navi_it, SETTING_PACKAGE, EINA_TRUE);
 		elm_naviframe_item_pop_cb_set(navi_it, _brightness_pop_cb, NULL);
 
@@ -1719,9 +1797,7 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 
 Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_info)
 {
-	Evas_Object *icon;
 	Evas_Object *ly;
-	Evas_Object *vol;
 	Evas_Object *btn;
 	appdata *ad = data;
 	int brightness_level = 0;
@@ -1763,21 +1839,34 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	brightness_origin_level = brightness_level;
 
 	ly = elm_layout_add(ad->nf);
+
 	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default2");
+
 	evas_object_size_hint_min_set(ly, 320, 200);
 	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
 
 	brightness_layout = ly;
 
-	pd->spinner = elm_spinner_add(ly);
-	elm_object_style_set(pd->spinner, "brightnessstyle");
-	elm_spinner_editable_set(pd->spinner, EINA_TRUE);
-	elm_spinner_min_max_set(pd->spinner, 1, 6);
-	evas_object_smart_callback_add(pd->spinner, "changed", _on_spinner_change_cb, pd);
-	elm_object_part_content_set(ly, "elm.icon.1", pd->spinner);
-	elm_spinner_value_set(pd->spinner, brightness_index);
-	_update_brightness_circle(pd->spinner);
+	Evas_Object *label = elm_label_add(ly);
+	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
+
+	char tempbuf[128];
+	snprintf(tempbuf, sizeof(tempbuf) - 1, "%d", brightness_index);
+	elm_object_text_set(label, tempbuf);
+	elm_object_part_content_set(ly, "elm.icon.2", label);
+	evas_object_resize(label, 200, 200);
+	evas_object_show(label);
+
+	Evas_Object *slider = eext_circle_object_slider_add(ly, ad->circle_surface);
+
+	eext_circle_object_value_min_max_set(slider, 0.0, 10.0);
+	eext_circle_object_value_set(slider, brightness_index);
+
+	eext_rotary_object_event_activated_set(slider, EINA_TRUE);
+	eext_circle_object_slider_step_set(slider, 1);
+	evas_object_smart_callback_add(slider, "value,changed", _on_spinner_change_cb, label);
 
 	btn = elm_button_add(ly);
 	evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -1793,7 +1882,7 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 
 	hbm_mode_on_original = enable;	/* backup for cancel */
 
-	g_spinner = pd->spinner;
+	pd->spinner = g_slider = slider ;
 
 	return ly;
 }
@@ -1802,29 +1891,26 @@ static void _on_spinner_change_cb(void *data, Evas_Object *obj, void *event_info
 {
 	DBG("Setting - _on_spinner_change_cb() is called!");
 
-	Evas_Coord w;
+	char buf[PATH_MAX];
+	Evas_Object *label = data;
 
-	static int  prev = 0;
-	double min, max;
-	int idx = (int) elm_spinner_value_get(obj);
+	snprintf(buf, sizeof(buf), "%.0lf", eext_circle_object_value_get(obj));
+	DBG(">>>>>>>>>>>>>>>>>>>>>>>>>>> Slider value = %s", buf);
+	elm_object_text_set(label, buf);
 
-	edje_object_part_geometry_get(elm_layout_edje_get(obj), "center.image2", NULL, NULL, &w, NULL);
-	elm_spinner_min_max_get(obj, &min, &max);
 
-	DBG("Setting - min: %i, max: %i, idx: %d", (int)min, (int)max, idx);
+	/*Evas_Coord w;*/
+	/*double min, max; */
+	int idx = (int) eext_circle_object_value_get(obj);
 
-	if (idx == max)
-		edje_object_signal_emit(elm_layout_edje_get(obj), "elm,spinner,full", "elm");
-	else if (idx < max)
-		edje_object_signal_emit(elm_layout_edje_get(obj), "elm,spinner,default", "elm");
-	if (idx == min)
-		edje_object_signal_emit(elm_layout_edje_get(obj), "elm,spinner,min", "elm");
-	if (idx > min)
-		edje_object_signal_emit(elm_layout_edje_get(obj), "elm,spinner,normal", "elm");
-
+	is_changed = 1;		/* changed flag!! */
 
 	brightness_index = idx;
 
+	DBG("Setting - brightness_index : %d", brightness_index);
+
+	brightness_index = idx;
+#if !defined(FEATURE_SETTING_EMUL)
 	if (brightness_index > 0 && brightness_index < 6) {
 		int enable = display_get_hbm();
 		if (enable < 0) {
@@ -1847,11 +1933,12 @@ static void _on_spinner_change_cb(void *data, Evas_Object *obj, void *event_info
 
 		elm_object_translatable_part_text_set(brightness_layout, "elm.text.2", "IDS_ST_BODY_OUTDOOR_MODE_ABB");
 	}
+#else
+	int brightness_level = _change_bright_index_to_level(brightness_index);
+	device_set_brightness_to_settings(0, brightness_level);
+	vconf_set_int("db/setting/Brightness", brightness_level);
+#endif
 
-	double posx2 = (double)(w / max) * brightness_index;
-
-	prev = idx;
-	edje_object_part_drag_value_set(elm_layout_edje_get(obj), "elm.dragable.slider", posx2, 0);
 }
 
 static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it)
@@ -1868,7 +1955,7 @@ static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it)
 	return EINA_TRUE;
 }
 
-static void _power_off_popup_dismiss_cb(void *data, Evas_Object *obj, void *event_info)
+static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - _power_off_popup_dismiss_cb() is called!");
 
@@ -1876,13 +1963,13 @@ static void _power_off_popup_dismiss_cb(void *data, Evas_Object *obj, void *even
 	vconf_get_int(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, &brightness_level);
 	brightness_index = _change_bright_lovel_to_index(brightness_level);
 
-	if (g_spinner) {
+	if (g_slider) {
 		int enable = display_get_hbm();
 		if (enable) {
 			brightness_index = 6;
 		}
-		elm_spinner_value_set(g_spinner, brightness_index);
-		_update_brightness_circle(g_spinner);
+		eext_circle_object_value_set(g_slider, brightness_index);
+		//elm_spinner_value_set(g_slider, brightness_index);
 	}
 }
 
@@ -1894,13 +1981,13 @@ static void brightness_vconf_changed_cb(keynode_t *key, void *data)
 	brightness_level = vconf_keynode_get_int(key);
 	brightness_index = _change_bright_lovel_to_index(brightness_level);
 
-	if (g_spinner) {
+	if (g_slider) {
 		int enable = display_get_hbm();
 		if (enable) {
 			brightness_index = 6;
 		}
-		elm_spinner_value_set(g_spinner, brightness_index);
-		_update_brightness_circle(g_spinner);
+		eext_circle_object_value_set(g_slider, brightness_index);
+		//elm_spinner_value_set(g_slider, brightness_index);
 	}
 }
 
@@ -1910,6 +1997,7 @@ static void _set_brightness_clicked_cb(void *data, Evas_Object *obj, void *event
 	if (ad == NULL)
 		return;
 
+#if !defined(FEATURE_SETTING_EMUL)
 	int enable = display_get_hbm();
 	if (enable == TRUE) {
 		char buf[1024];
@@ -1925,9 +2013,13 @@ static void _set_brightness_clicked_cb(void *data, Evas_Object *obj, void *event
 
 		device_set_brightness_to_settings(0, brightness_level);
 	}
+#else
+	int brightness_level = _change_bright_index_to_level(brightness_index);
+	device_set_brightness_to_settings(0, brightness_level);
+	vconf_set_int("db/setting/Brightness", brightness_level);
+#endif
 
 	brightness_layout = NULL;
-	g_brightness_controller = NULL;
 
 	if (ad->nf) {
 		elm_naviframe_item_pop(ad->nf);
@@ -1941,69 +2033,12 @@ static void sync_brightness(int real_brightness)
 	vconf_set_int(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, real_brightness);
 }
 
-static void _update_brightness_circle(Evas_Object *spiner)
-{
-	if (spiner == NULL)
-		return;
-
-	Evas_Coord w;
-	double min, max, posx2;
-	int idx = (int) elm_spinner_value_get(spiner);
-
-	edje_object_part_geometry_get(elm_layout_edje_get(spiner), "center.image2", NULL, NULL, &w, NULL);
-	elm_spinner_min_max_get(spiner, &min, &max);
-
-	int enable = display_get_hbm();
-	if (enable < 0) {
-		DBG("Setting - dispaly_get_hbm() is fail!!");
-	}
-
-	if (enable == TRUE) {
-		edje_object_signal_emit(elm_layout_edje_get(spiner), "elm,spinner,full1", "elm");
-
-		elm_object_part_text_set(brightness_layout, "elm.text.2", _("IDS_ST_BODY_OUTDOOR_MODE_ABB"));
-	} else {
-		if (idx == min)
-			edje_object_signal_emit(elm_layout_edje_get(spiner), "elm,spinner,min", "elm");
-		if (idx == max)
-			edje_object_signal_emit(elm_layout_edje_get(spiner), "elm,spinner,full1", "elm");
-		if (idx < max)
-			edje_object_signal_emit(elm_layout_edje_get(spiner), "elm,spinner,default1", "elm");
-
-		brightness_index = idx;
-
-		posx2 = (double)(w / max) * brightness_index;
-
-		edje_object_part_drag_value_set(elm_layout_edje_get(spiner), "elm.dragable.slider", posx2, 0);
-
-		elm_object_part_text_set(brightness_layout, "elm.text.2", "");
-	}
-}
-
-static void wake_up_vconf_changed_cb(keynode_t *key, void *data)
-{
-	DBG("Setting - motion_vconf_changed_cb() is called!");
-
-	if (wake_up_item) {
-		elm_genlist_item_update(wake_up_item);
-	}
-}
-
-static void icon_size_vconf_changed_cb(keynode_t *key, void *data)
-{
-	DBG("Setting - icon_size_vconf_changed_cb() is called!");
-
-	if (edit_icon_item) {
-		elm_genlist_item_update(edit_icon_item);
-	}
-}
-
 static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
 	if (ad == NULL)
 		return;
-
+#if !defined(FEATURE_SETTING_EMUL)
 	int enable = display_get_hbm();
 	if (hbm_mode_on_original) {
 		if (enable == DISABLE) {
@@ -2014,11 +2049,11 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 			_set_HBM_mode(FALSE);
 		}
 	}
+#endif
 
 	device_set_brightness_to_settings(0, brightness_origin_level);
 
 	brightness_layout = NULL;
-	g_brightness_controller = NULL;
 
 	elm_naviframe_item_pop(ad->nf);
 }
@@ -2027,8 +2062,8 @@ static int _change_bright_lovel_to_index(int level)
 {
 	int index = 0;
 
-	if (level >= 20 && level <= 100) {
-		index = (level / 20);
+	if (level >=0 && level <= 100) {
+		index = (level / 10);
 		DBG("Setting - level -> index : %d", index);
 	}
 	return index;
@@ -2037,21 +2072,36 @@ static int _change_bright_lovel_to_index(int level)
 static int _change_bright_index_to_level(int index)
 {
 	int level = 1;
-	if (index > 0 && index < 6) {
+	if (index > 0 && index < 11) {
 		switch (index) {
 		case 1:
-			level = 20;
+			level = 10;
 			break;
 		case 2:
-			level = 40;
+			level = 20;
 			break;
 		case 3:
-			level = 60;
+			level = 30;
 			break;
 		case 4:
-			level = 80;
+			level = 40;
 			break;
 		case 5:
+			level = 50;
+			break;
+		case 6:
+			level = 60;
+			break;
+		case 7:
+			level = 70;
+			break;
+		case 8:
+			level = 80;
+			break;
+		case 9:
+			level = 90;
+			break;
+		case 10:
 			level = 100;
 			break;
 		}
@@ -2062,6 +2112,7 @@ static int _change_bright_index_to_level(int index)
 	return level;
 }
 
+#if defined(FEATURE_SETTING_EMUL)
 static void _set_HBM_mode(int enable)
 {
 	if (display_enable_hbm(enable, 300) == 0) {	/* after 5 minutes, HBM mode will be off! */
@@ -2070,5 +2121,213 @@ static void _set_HBM_mode(int enable)
 		DBG("Setting - HBM api failed!!");
 	}
 }
-
 #endif
+
+
+
+
+
+
+static void _clock_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Evas_Object *layout = NULL;
+	Elm_Object_Item *nf_it = NULL;
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	if (running) {
+		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+		return;
+	}
+
+	if (is_running_clock) {
+		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+		return;
+	}
+
+	initialize_clock(data);
+
+	layout = _clock_type_cb(data, obj, event_info);
+	if (layout == NULL) {
+		DBG("%s", "clock cb - layout is null");
+		return;
+	}
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_clock_cb, ad);
+	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_clock_cb, ad); */
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+	is_running_clock = 1;
+
+	ad->MENU_TYPE = SETTING_CLOCK;
+}
+
+static Evas_Object *_gl_display_watch_always_check_get(void *data, Evas_Object *obj, const char *part)
+{
+	Evas_Object *check = NULL;
+
+	Display_Item_Data *id = data;
+	int index = id->index;
+
+	if (!strcmp(part, "elm.icon")) {
+		check = elm_check_add(obj);
+
+		int timeout=-1;
+		vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &timeout);
+		if (timeout)
+			vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON, timeout);
+
+		elm_check_state_set(check, (timeout==0)?EINA_TRUE : EINA_FALSE);
+
+		elm_object_style_set(check, "on&off");
+		/*		evas_object_smart_callback_add(check, "changed", _display_watch_always_check_cb, (void *)check); */
+		evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _display_watch_always_check_cb, (void *)check);
+		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
+		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		evas_object_propagate_events_set(check, EINA_TRUE);
+
+		id->check = check;
+
+		index++;
+	}
+
+	return check;
+}
+
+static void _set_watch_always_on_cancel_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	int timeout=-1;
+	appdata *ad = temp_ad;
+	Evas_Object *check = (Evas_Object *)data;
+
+	vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON, &timeout);
+	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
+
+	elm_check_state_set(check,  EINA_FALSE);
+
+	elm_naviframe_item_pop(ad->nf);
+}
+
+static void _set_watch_always_on_ok_clicked_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	int timeout=0;
+	appdata *ad = temp_ad;
+	Evas_Object *check = (Evas_Object *)data;
+
+	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
+	elm_check_state_set(check,  EINA_TRUE);
+
+	elm_naviframe_item_pop(ad->nf);
+}
+
+static Eina_Bool _back_watch_always_on_naviframe_cb(void *data, Elm_Object_Item *it)
+{
+	return EINA_TRUE;
+}
+
+static void _display_watch_always_check_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = temp_ad;
+	Evas_Object *ly;
+	Evas_Object *check = (Evas_Object *)data;
+	int timeout = 0;
+
+	if (ad == NULL) {
+		DBG("%s", "_display_watch_always_check_cb - appdata or check is null");
+		return;
+	}
+
+	DBG("_display_watch_always_check_cb is called!!!!!!!");
+
+	vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &timeout);
+	DBG("timeout:%d ", timeout);
+
+	//if (timeout) {
+	if (1) {
+		ly = elm_layout_add(ad->nf);
+		elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default5");
+		evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
+
+		elm_object_part_text_set(ly, "watch_on_text.text1", "Enabling watch always on will siginificantly increase battery consumption.");
+
+		Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
+														 NULL,
+														 NULL, NULL,
+														 ly, NULL);
+
+		Evas_Object *btn_cancel;
+		btn_cancel = elm_button_add(ly);
+		elm_object_style_set(btn_cancel, "default");
+		evas_object_size_hint_weight_set(btn_cancel, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_translatable_text_set(btn_cancel, "IDS_ST_BUTTON_CANCEL_ABB2");
+		elm_object_part_content_set(ly, "btn1", btn_cancel);
+		evas_object_smart_callback_add(btn_cancel, "clicked", _set_watch_always_on_cancel_cb, check);
+
+		Evas_Object *btn_ok;
+		btn_ok = elm_button_add(ly);
+		elm_object_style_set(btn_ok, "default");
+		evas_object_size_hint_weight_set(btn_ok, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_translatable_text_set(btn_ok, "IDS_WNOTI_BUTTON_OK_ABB2");
+		elm_object_part_content_set(ly, "btn2", btn_ok);
+		evas_object_smart_callback_add(btn_ok, "clicked", _set_watch_always_on_ok_clicked_cb, check);
+
+		elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
+		elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+		elm_naviframe_item_pop_cb_set(nf_it, _back_watch_always_on_naviframe_cb, ad);
+	} else {
+		/* disable watch always off with out popup */
+
+		DBG("Cancel watch always on!", timeout);
+		//vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON, &timeout);
+		vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
+
+		/*		elm_check_state_set(check,  EINA_FALSE); */
+	}
+
+}
+
+static void _display_gl_watch_always_on_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+	DBG("_display_gl_watch_always_on_cb is called!!!!!!!");
+}
+
+
+static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+	DBG("_display_gl_display_noti_indicator_cb is called!!!!!!!");
+}
+
+static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object *obj, const char *part)
+{
+	Evas_Object *check = NULL;
+
+	//Sound_Item_Data *id = data;
+	//int index = id->index;
+
+	if (!strcmp(part, "elm.icon")) {
+		check = elm_check_add(obj);
+
+		//elm_check_state_set(check, (sound_menu_its[2].is_enable_touch_sound) ? EINA_TRUE : EINA_FALSE);
+		//evas_object_smart_callback_add(check, "changed", _sound_chk_changed_cb, (void *)1);
+		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
+		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		evas_object_propagate_events_set(check, EINA_FALSE);
+
+		//id->check = check;
+
+		//index++;
+	}
+
+	return check;
+}
+
+
+

@@ -602,7 +602,7 @@ static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_naviframe_item_pop(ad->nf);
 }
 
-static Eina_Bool _back_volume_naviframe_cb(void *data, Elm_Object_Item *it)
+static Eina_Bool _back_volume_naviframe_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - _back_volume_naviframe_cb is called");
 	DBG("Setting - original volume : %d", original_volume);
@@ -947,6 +947,7 @@ static void _on_volume_spinner_change_cb(void *data, Evas_Object *obj, void *eve
 	edje_object_part_drag_value_set(elm_layout_edje_get(obj), "elm.dragable.slider", posx, 0);
 }
 
+#if 0 /* NOT USED */
 static void _on_media_volume_spinner_change_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - _on_media_volume_spinner_change_cb() is called!");
@@ -1005,6 +1006,7 @@ static void _on_media_volume_spinner_change_cb(void *data, Evas_Object *obj, voi
 
 	edje_object_part_drag_value_set(elm_layout_edje_get(obj), "elm.dragable.slider", posx, 0);
 }
+#endif
 
 void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info)
 {

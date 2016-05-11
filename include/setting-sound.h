@@ -25,7 +25,7 @@
 #include <player.h>
 #include <sound_manager.h>
 
-#define ITEM_SIZE			6
+#define ITEM_SIZE			4
 /*#define RINGTONE_MAX_COUNT		5 */
 #define RINGTONE_MAX_COUNT		6
 
@@ -35,13 +35,15 @@
 
 enum {
 	VIBRATION_LEVEL_HIGH,
-	VIBRATION_LEVEL_LOW
+	VIBRATION_LEVEL_LOW,
+	VIBRATION_LEVEL_NONE
 };
 
 enum {
 	VIBRATION_LEVEL_LOW_INT  = 1,
 	VIBRATION_LEVEL_MID_INT  = 2,
-	VIBRATION_LEVEL_HIGH_INT = 3
+	VIBRATION_LEVEL_HIGH_INT = 3,
+	VIBRATION_LEVEL_NONE_INT = 0
 };
 
 struct _sound_menu_item {
@@ -75,7 +77,7 @@ void _show_pref_arm_mode_list(void *data);
 
 void _initialize();
 void _clear_sound_resource();
-Eina_Bool _clear_sound_cb(void *data, Elm_Object_Item *it);
+Eina_Bool _clear_sound_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 void _stop_player();
 void _stop_wav_player();
 void _stop_all_sound_play();

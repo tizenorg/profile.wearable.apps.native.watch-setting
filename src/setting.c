@@ -28,8 +28,10 @@
 #include "setting-language.h"
 #include "setting-reset.h"
 #include "setting-battery.h"
+#include "setting-device.h"
 #include "setting-privacy.h"
 #include "setting-double.h"
+#include "setting-connection.h"
 #include "setting-safety.h"
 #include "setting-notification.h"
 #include "setting-profile.h"
@@ -42,7 +44,8 @@
 
 /*This function will be deprecated..*/
 int app_control_set_package(app_control_h app_control, const char *package);
-static void wifi_cb(void *data, Evas_Object *obj, void *event_info);
+void device_cb(void *data, Evas_Object *obj, void *event_info);
+void connection_cb(void *data, Evas_Object *obj, void *event_info);
 
 #define LANGUAGE_ICON_DISABLED		"b_settings_language_disabled.png"
 #define LANGUAGE_ICON_ENABLED		"b_settings_language.png"
@@ -63,26 +66,27 @@ static struct _menu_item setting_emergency_menu_its[] = {
 };
 
 static struct _menu_item setting_menu_its[] = {
-	{ "IDS_ST_BUTTON_CLOCK", 							"b_settings_change_clock.png", 	clock_cb 	  		},
+//	{ "IDS_ST_BUTTON_CLOCK", 							"b_settings_change_clock.png", 	clock_cb 	  		},
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_BODY_WALLPAPERS", 						"b_setting_wallpaper.png", 			homescreen_cb 	  	},
-	{ "IDS_ST_BUTTON_NOTIFICATIONS", 					"b_settings_notifications.png", notification_cb		},
+//	{ "IDS_ST_BODY_WALLPAPERS", 						"b_setting_wallpaper.png", 			homescreen_cb 	  	},
+//	{ "IDS_ST_BUTTON_NOTIFICATIONS", 					"b_settings_notifications.png", notification_cb		},
 #endif
-	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
-	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb 	  		},
-	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
+//	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
+//	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
 #ifndef FEATURE_SETTING_EMUL
-	{ "WIFI",					"text_input_icon.png",			wifi_cb 	  		},
 #endif
 #ifndef FEATURE_SETTING_EMUL
-	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
+//	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
 #endif
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_MBODY_DOUBLE_PRESS_ABB",					"b_setting_double-press.png",		double_pressing_cb 	},
+//	{ "IDS_ST_MBODY_DOUBLE_PRESS_ABB",					"b_setting_double-press.png",		double_pressing_cb 	},
 #endif
-#ifndef FEATURE_SETTING_EMUL
-	{ "IDS_ST_BUTTON_GEAR_INFO", 						"b_settings_info.png",			gear_info_cb  		},
-#endif
+	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb			},
+	{ "IDS_ST_OPT_SOUND_ABB2",							"b_settings_volume.png",			sound_cb			},
+	{ "Device",							"b_settings_volume.png",			device_cb			},
+	{ "Connection",					"b_settings_volume.png",		connection_cb	},
+	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb			},
+	{ "IDS_ST_BUTTON_GEAR_INFO",						"b_settings_info.png",			gear_info_cb		},
 	{ NULL, NULL, NULL }
 };
 
@@ -239,6 +243,38 @@ void sound_cb(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_SOUND;
 }
 
+void device_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Evas_Object *genlist = NULL;
+	Elm_Object_Item *nf_it = NULL;
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	if (running) {
+		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+		return;
+	}
+
+
+	genlist = _create_device_action_list(data);
+	if (genlist == NULL) {
+		DBG("%s", "sound cb - genlist is null");
+		return;
+	}
+
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+
+	ad->MENU_TYPE = SETTING_SOUND;
+}
+
 void volume_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	Evas_Object *genlist = NULL;
@@ -304,33 +340,6 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_DISPLAY;
 }
 
-static void wifi_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-	DBG("wifi_cb in");
-	appdata *ad = data;
-
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
-
-	app_control_h service;
-	app_control_create(&service);
-	app_control_set_package(service, "org.tizen.w-wifi");
-	app_control_send_launch_request(service, NULL, NULL);
-	app_control_destroy(service);
-
-	running = true;
-
-	if (running_timer) {
-		ecore_timer_del(running_timer);
-		running_timer = NULL;
-	}
-	running_timer = ecore_timer_add(0.5, (Ecore_Task_Cb)_app_ctrl_timer_cb, NULL);
-}
-
 void keyboard_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -349,7 +358,8 @@ void keyboard_cb(void *data, Evas_Object *obj, void *event_info)
 	if (!running) {
 		app_control_h service;
 		app_control_create(&service);
-		app_control_set_package(service, "org.tizen.w-text-input-setting");
+		app_control_add_extra_data(service, "caller", "settings");
+		app_control_set_package(service, "org.tizen.inputmethod-setting-list");
 		app_control_send_launch_request(service, NULL, NULL);
 		app_control_destroy(service);
 
@@ -483,6 +493,39 @@ void lockscreen_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_SCREEN_LOCK;
+}
+
+void connection_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Evas_Object *layout = NULL;
+	Elm_Object_Item *nf_it = NULL;
+
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	if (running) {
+		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+		return;
+	}
+
+	layout = _create_connection_list(data);
+	if (layout == NULL) {
+		DBG("%s", "connection_cb - genlist is null");
+		return;
+	}
+
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_connection_resource, ad);
+	//elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_navi_cb, ad);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+
+	ad->MENU_TYPE = SETTING_DOUBLE_PRESSING;
 }
 
 void double_pressing_cb(void *data, Evas_Object *obj, void *event_info)

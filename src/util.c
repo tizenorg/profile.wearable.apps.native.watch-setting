@@ -107,7 +107,7 @@ char *replace(char *str, char *orig, char *repl)
 		len = 123;
 	strncpy(buffer, str, len);
 	buffer[len] = 0;
-	snprintf(buffer + len, "%s%s", repl, ch + strlen(orig), 123 - len);
+	snprintf(buffer + len, 123 - len, "%s%s", repl, ch + strlen(orig));
 
 	return buffer;
 }

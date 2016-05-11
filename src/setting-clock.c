@@ -685,7 +685,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 
 			Evas_Object  *table;
 			Evas_Coord w = 0, h = 0;
-			elm_win_screen_size_get(elm_widget_top_get(parent), NULL, NULL, &w, &h);
+			elm_win_screen_size_get((const Elm_Win *)elm_widget_top_get(parent), NULL, NULL, &w, &h);
 			table = _elm_min_set(page_layout, box, w, h);
 			evas_object_size_hint_weight_set(table, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 			evas_object_size_hint_align_set(table, EVAS_HINT_FILL, EVAS_HINT_FILL);
