@@ -43,6 +43,7 @@
 /*This function will be deprecated..*/
 int app_control_set_package(app_control_h app_control, const char *package);
 static void wifi_cb(void *data, Evas_Object *obj, void *event_info);
+void device_cb(void *data, Evas_Object *obj, void *event_info);
 
 #define LANGUAGE_ICON_DISABLED		"b_settings_language_disabled.png"
 #define LANGUAGE_ICON_ENABLED		"b_settings_language.png"
@@ -63,26 +64,28 @@ static struct _menu_item setting_emergency_menu_its[] = {
 };
 
 static struct _menu_item setting_menu_its[] = {
-	{ "IDS_ST_BUTTON_CLOCK", 							"b_settings_change_clock.png", 	clock_cb 	  		},
+//	{ "IDS_ST_BUTTON_CLOCK", 							"b_settings_change_clock.png", 	clock_cb 	  		},
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_BODY_WALLPAPERS", 						"b_setting_wallpaper.png", 			homescreen_cb 	  	},
-	{ "IDS_ST_BUTTON_NOTIFICATIONS", 					"b_settings_notifications.png", notification_cb		},
+//	{ "IDS_ST_BODY_WALLPAPERS", 						"b_setting_wallpaper.png", 			homescreen_cb 	  	},
+//	{ "IDS_ST_BUTTON_NOTIFICATIONS", 					"b_settings_notifications.png", notification_cb		},
 #endif
-	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
-	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb 	  		},
-	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
+//	{ "IDS_ST_OPT_SOUND_ABB2", 							"b_settings_volume.png",			sound_cb 	  		},
+//	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb 	  		},
 #ifndef FEATURE_SETTING_EMUL
-	{ "WIFI",					"text_input_icon.png",			wifi_cb 	  		},
+//	{ "WIFI",					"text_input_icon.png",			wifi_cb 	  		},
 #endif
 #ifndef FEATURE_SETTING_EMUL
-	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
+//	{ "IDS_QP_BUTTON_BLUETOOTH",  						"b_settings_bluetooth.png",		bluetooth_cb  		},
 #endif
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_MBODY_DOUBLE_PRESS_ABB",					"b_setting_double-press.png",		double_pressing_cb 	},
+//	{ "IDS_ST_MBODY_DOUBLE_PRESS_ABB",					"b_setting_double-press.png",		double_pressing_cb 	},
 #endif
-#ifndef FEATURE_SETTING_EMUL
-	{ "IDS_ST_BUTTON_GEAR_INFO", 						"b_settings_info.png",			gear_info_cb  		},
-#endif
+	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb			},
+	{ "IDS_ST_OPT_SOUND_ABB2",							"b_settings_volume.png",			sound_cb			},
+	{ "Device",							"b_settings_volume.png",			device_cb			},
+	{ "IDS_ST_MBODY_DOUBLE_PRESS_ABB",					"b_setting_double-press.png",		double_pressing_cb	},
+	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb			},
+	{ "IDS_ST_BUTTON_GEAR_INFO",						"b_settings_info.png",			gear_info_cb		},
 	{ NULL, NULL, NULL }
 };
 
@@ -232,6 +235,38 @@ void sound_cb(void *data, Evas_Object *obj, void *event_info)
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _clear_sound_cb, ad);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+
+	ad->MENU_TYPE = SETTING_SOUND;
+}
+
+void device_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Evas_Object *genlist = NULL;
+	Elm_Object_Item *nf_it = NULL;
+	appdata *ad = data;
+
+	if (ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	if (running) {
+		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+		return;
+	}
+
+
+	genlist = _create_device_action_list(data);
+	if (genlist == NULL) {
+		DBG("%s", "sound cb - genlist is null");
+		return;
+	}
+
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);

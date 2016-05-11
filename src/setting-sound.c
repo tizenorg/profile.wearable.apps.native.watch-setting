@@ -1,5 +1,4 @@
-/*
- * Copyright (c) 2010 Samsung Electronics, Inc.
+/* * Copyright (c) 2010 Samsung Electronics, Inc.
  * All rights reserved.
  *
  * This software is a confidential and proprietary information
@@ -26,12 +25,12 @@
 #define AUDIO_RESOURCE_EXTENSION	".ogg"
 
 static struct _sound_menu_item sound_menu_its[] = {
-	{ "IDS_ST_OPT_VOLUME",					0,		_volume_cb 	},
 	{ "IDS_ST_OPT_SOUND_MODE_ABB", 			0, 		_sound_mode_cb  },
-	{ "IDS_ST_BODY_TOUCH_SOUNDS_ABB", 		0,		_touch_sound_cb },
-	{ "IDS_CST_MBODY_RINGTONES", 		0,		_ringtone_cb 	},
-	{ "IDS_ST_BUTTON_NOTIFICATIONS", 		0,		_noti_cb 		},
+	{ "IDS_ST_OPT_VOLUME",					0,		_volume_cb 	},
 	{ "IDS_ST_HEADER_VIBRATION_ABB", 		0,		_vibrate_cb 	},
+	{ "IDS_ST_BODY_TOUCH_SOUNDS_ABB", 		0,		_touch_sound_cb },
+//	{ "IDS_CST_MBODY_RINGTONES", 		0,		_ringtone_cb 	},
+//	{ "IDS_ST_BUTTON_NOTIFICATIONS", 		0,		_noti_cb 		},
 	/*	{ "IDS_ST_BODY_PREFERRED_ARM_ABB", 	0,		_preferred_cb 	}, */
 	{ NULL, 0, NULL }
 };
@@ -355,12 +354,46 @@ void _noti_cb(void *data, Evas_Object *obj, void *event_info)
 	_show_notification_popup_cb(data, obj, event_info);
 }
 
+
 void _vibrate_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+    Evas_Object *genlist = NULL;
+    Elm_Object_Item *nf_it = NULL;
+    appdata *ad = data;
 
-	_show_vibration_popup_cb(data, obj, event_info);
+    if (ad == NULL) {
+        DBG("Setting - ad is null");
+        return;
+    }
+
+
+    _initialize();
+
+    genlist = _create_vibration_list(data);
+    if (genlist == NULL) {
+        DBG("%s", "sound cb - genlist is null");
+        return;
+    }
+#if 0
+    nf_it = elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, genlist, NULL);
+    elm_naviframe_item_title_enabled_set(nf_it, EINA_TRUE, EINA_FALSE);
+#else
+    nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+    elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+#endif
+
+    elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+
+    ad->MENU_TYPE = SETTING_SOUND;
 }
+
+
+//void _vibrate_cb(void *data, Evas_Object *obj, void *event_info)
+//{
+//	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+//
+//	_show_vibration_popup_cb(data, obj, event_info);
+//}
 
 void _preferred_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -540,7 +573,7 @@ Evas_Object *_create_sound_list(void *data)
 	for (idx = 0; idx < ITEM_SIZE; idx++) {
 		if (idx == 0) {
 			itc_tmp = itc_1text;
-		} else if (idx == 2) {
+		} else if (idx == 3) {
 			itc_tmp = itc_touch_snd;
 		} else {
 			itc_tmp = itc;
