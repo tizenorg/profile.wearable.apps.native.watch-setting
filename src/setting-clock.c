@@ -491,15 +491,15 @@ static Eina_Bool animator_cb(void *data)
 }
 #endif
 
-static int _set_clock_type(char *pkgid)
+static int _set_clock_type(char *appid)
 {
-	if (!pkgid || !strlen(pkgid)) {
-		ERR("pkgid is NULL");
+	if (!appid || !strlen(appid)) {
+		ERR("appid is NULL");
 		return FALSE;
 	}
 	unregister_vconf_changing(VCONFKEY_WMS_CLOCKS_SET_IDLE, update_clock_list_cb);
-	vconf_set_str(VCONFKEY_WMS_CLOCKS_SET_IDLE, pkgid);
-	/* ERR("Setting - package name: %s", pkgid); */
+	vconf_set_str(VCONFKEY_WMS_CLOCKS_SET_IDLE, appid);
+	/* ERR("Setting - package name: %s", appid); */
 
 	return TRUE;
 }
@@ -520,7 +520,7 @@ static void _mouse_up_cb(void *data, Evas *evas, Evas_Object *obj, void *event_i
 	if (touch_mode == TOUCH_MOVE)
 		return;
 
-	char *pkgid = (char *)data;
+	char *appid = (char *)data;
 
 	prev_x = 0;
 	touch_mode = NONE;
@@ -528,7 +528,7 @@ static void _mouse_up_cb(void *data, Evas *evas, Evas_Object *obj, void *event_i
 	feedback_play(FEEDBACK_PATTERN_TAP);
 
 	/* set gb vconf */
-	if (_set_clock_type(pkgid)) {
+	if (_set_clock_type(appid)) {
 		if (temp_ad != NULL) {
 			elm_naviframe_item_pop(temp_ad->nf);
 		}
@@ -662,7 +662,7 @@ static Evas_Object *_create_index(Evas_Object *parent)
 
 			/* touch event */
 			evas_object_event_callback_add(page, EVAS_CALLBACK_MOUSE_DOWN, _mouse_down_cb, NULL);
-			evas_object_event_callback_add(page, EVAS_CALLBACK_MOUSE_UP, _mouse_up_cb, (void *)pitem->pkgid);
+			evas_object_event_callback_add(page, EVAS_CALLBACK_MOUSE_UP, _mouse_up_cb, (void *)pitem->appid);
 			evas_object_event_callback_add(page, EVAS_CALLBACK_MOUSE_MOVE, _mouse_move_cb, NULL);
 
 			elm_object_part_content_set(clock_layout, "clock-image", page);

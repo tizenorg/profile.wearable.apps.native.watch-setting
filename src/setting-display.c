@@ -51,7 +51,7 @@ static bool running = false;
 static Evas_Object *_gl_display_watch_always_check_get(void *data, Evas_Object *obj, const char *part);
 static void _display_watch_always_check_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 static void _clock_cb(void *data, Evas_Object *obj, void *event_info);
-static void _display_gl_watch_always_on_cb(void *data, Evas_Object *obj, void *event_info);
+/* static void _display_gl_watch_always_on_cb(void *data, Evas_Object *obj, void *event_info); */
 static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_info);
 static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object *obj, const char *part);
 static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, void *event_info);
@@ -59,7 +59,7 @@ static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, 
 static struct _display_menu_item display_menu_its[] = {
 	{ "Watch face",				SETTING_DISPLAY_WATCH_FACE,	_clock_cb},
 	{ "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB",	SETTING_DISPLAY_SCREEN_TIME,	_display_gl_screen_timeout_cb	},
-	{ "watch always on",	SETTING_DISPLAY_WATCH_ALWAYS_ON,	_display_gl_watch_always_on_cb	},
+/*	{ "watch always on",	SETTING_DISPLAY_WATCH_ALWAYS_ON,	_display_gl_watch_always_on_cb	}, */
 	{ "Notification indicator",	SETTING_DISPLAY_NOTIFICATION_INDICATOR,	_display_gl_display_noti_indicator_cb },
 	{ "IDS_ST_BUTTON_BRIGHTNESS",	SETTING_DISPLAY_BRIGTHNESS, _display_brightness_cb	 },
 	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT,	_display_gl_font_cb		},
@@ -414,9 +414,11 @@ Evas_Object *_create_display_list(void *data)
 		} else {
 			itc_tmp = itc;
 		}
+		/*
 		if (menu_its[idx].type == SETTING_DISPLAY_WATCH_ALWAYS_ON) {
 			itc_tmp = itc3;
 		}
+		*/
 		if (menu_its[idx].type == SETTING_DISPLAY_NOTIFICATION_INDICATOR) {
 			itc_tmp = itc4;
 		}
@@ -2281,13 +2283,13 @@ static void _display_watch_always_check_cb(void *data, Evas *e, Evas_Object *obj
 	}
 
 }
-
+/*
 static void _display_gl_watch_always_on_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 	DBG("_display_gl_watch_always_on_cb is called!!!!!!!");
 }
-
+*/
 
 static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, void *event_info)
 {
