@@ -25,30 +25,37 @@
 
 static struct _info_menu_item info_menu_its[] = {
 	{ "IDS_ST_BODY_ABOUT_GEAR_ABB",		0,		 _gl_info_cb },
-#ifndef FEATURE_SETTING_SDK
+//#ifndef FEATURE_SETTING_SDK
 	{ "IDS_ST_HEADER_USB_DEBUGGING_ABB",	0,	 _gl_usb_debug_cb },
-#endif
+//#endif
 };
 
 static struct _info_menu_item _info_detail_menu_list[] = {
-#ifndef FEATURE_SETTING_SDK
-	{ "IDS_ST_BODY_MODEL_NUMBER_ABB",	0,	NULL },
-#endif
-	{ "IDS_SM_TAB4_SOFTWARE_VERSION",	1,	NULL },
-#ifndef FEATURE_SETTING_SDK
-	{ "IDS_ST_BODY_SERIAL_NUMBER",		2,	NULL },
-	{ "Barcode Number",			3,	NULL },
-	{ "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB",	4,	_info_open_src_gl_cb },
-	{ "IDS_ST_OPT_SAFETY_INFORMATION",	4,	_info_safety_inform_gl_cb }
-#endif
+//#ifndef FEATURE_SETTING_SDK
+	{ "IDS_ST_BODY_MODEL_NUMBER_ABB",	ABOUT_DEVICE_MODEL_NUMBER,	NULL },
+//#endif
+	{ "Wi-Fi MAC address",		ABOUT_DEVICE_WIFI_ADDRESS,	NULL },
+	{ "Bluetooth MAC address",		ABOUT_DEVICE_BLUETOOTH_ADDRESS,	NULL },
+	{ "Tizen version",		ABOUT_DEVICE_TIZEN_VERSION,	NULL },
+	{ "IDS_SM_TAB4_SOFTWARE_VERSION",	ABOUT_DEVICE_SOFTWARE_VERSION,	NULL },
+//#ifndef FEATURE_SETTING_SDK
+	{ "IDS_ST_BODY_SERIAL_NUMBER",		ABOUT_DEVICE_SERIAL_NUMBER,	NULL },
+	{ "Battery capacity",		ABOUT_DEVICE_BATTERY_CAPACITY,	NULL },
+	{ "IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB",	ABOUT_DEVICE_OPEN_SOURCE_LICENSES,	_info_open_src_gl_cb },
+//	{ "Barcode Number",			4,	NULL },
+//	{ "IDS_ST_OPT_SAFETY_INFORMATION",	4,	_info_safety_inform_gl_cb }
+//#endif
 };
 
+static void _usb_debug_cancel_cb(void *data, Evas_Object *obj, void *event_info);
+static void _usb_debug_ok_cb(void *data, Evas_Object *obj, void *event_info);
 static void _usb_debug_popup_cb(void *data, Evas_Object *obj, void *event_info);
 static Eina_Bool _get_imei_serial_info(char *pszBuf, int bufSize);
 
 static Evas_Object *g_info_genlist = NULL;
 static int is_enable_usb_debug = 0;
 static int kor = 0;
+static appdata *temp_ad = NULL;
 
 Eina_Bool _clear_info_cb(void *data, Elm_Object_Item *it)
 {
@@ -77,21 +84,62 @@ void _gl_usb_debug_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
-	if (!is_enable_usb_debug) {
-		_usb_debug_popup_cb(data, obj, event_info);
-	} else {
-		is_enable_usb_debug = DISABLE;
-		set_enable_USB_debugging(is_enable_usb_debug);
-
-		if (g_info_genlist != NULL) {
-			elm_genlist_realized_items_update(g_info_genlist);
-		}
-	}
 }
 
 void _usb_debug_chk_changed_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	/*do nothing */
+    Elm_Object_Item *it = (Elm_Object_Item *)event_info;
+    appdata *ad = temp_ad;
+    Evas_Object *ly;
+    Evas_Object *check = (Evas_Object *)data;
+    int timeout = 0;
+
+    if (ad == NULL) {
+        DBG("%s", "_usb_debug_popup_cb - appdata or check is null");
+        return;
+    }
+
+    if (!get_enable_USB_debugging()) {
+
+        ly = elm_layout_add(ad->nf);
+        elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default5");
+
+        evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+        evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
+
+
+
+        elm_object_part_text_set(ly, "watch_on_text.text1", "Allow Gear to read log data, copy files to and from your PC, and install apps without notification. (development only).");
+
+        Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
+                                                         NULL,
+                                                         NULL, NULL,
+                                                         ly, NULL);
+
+
+        /*evas_object_smart_callback_add(ly, "language,changed", _usb_debug_lange_changed, NULL); */
+
+
+        Evas_Object *btn = NULL;
+        btn = elm_button_add(ly);
+        elm_object_style_set(btn, "default");
+        evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+        elm_object_translatable_text_set(btn, "IDS_COM_SK_CANCEL_A");
+        elm_object_part_content_set(ly, "btn1", btn);
+        evas_object_smart_callback_add(btn, "clicked", _usb_debug_cancel_cb, check);
+
+        btn = elm_button_add(ly);
+        elm_object_style_set(btn, "default");
+        evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+        elm_object_translatable_text_set(btn, "IDS_WNOTI_BUTTON_OK_ABB2");
+        elm_object_part_content_set(ly, "btn2", btn);
+        evas_object_smart_callback_add(btn, "clicked", _usb_debug_ok_cb, check);
+        elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+
+        elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
+    } else {
+        set_enable_USB_debugging(0);
+    }
 }
 
 static void _info_gl_del(void *data, Evas_Object *obj)
@@ -126,14 +174,13 @@ Evas_Object *_gl_info_check_get(void *data, Evas_Object *obj, const char *part)
 
 	if (!strcmp(part, "elm.icon") && index == (ITEM_COUNT - 1)) {
 		check = elm_check_add(obj);
-		elm_object_style_set(check, "list");
+		elm_object_style_set(check, "on&off");
 		is_enable_usb_debug = get_enable_USB_debugging();
 		elm_check_state_set(check, (is_enable_usb_debug) ? EINA_TRUE : EINA_FALSE);
-		evas_object_smart_callback_add(check, "changed", _usb_debug_chk_changed_cb, (void *)1);
+		evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _usb_debug_chk_changed_cb, (void *)check);
 		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
 		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		evas_object_propagate_events_set(check, EINA_FALSE);
-		evas_object_repeat_events_set(check, EINA_TRUE);
+		evas_object_propagate_events_set(check, EINA_TRUE);
 
 		id->check = check;
 
@@ -149,6 +196,9 @@ Evas_Object *_create_info_list(void *data)
 		DBG("%s", "_create_info_list - appdata is null");
 		return NULL;
 	}
+
+    temp_ad = ad;
+
 	Evas_Object *genlist  = NULL;
 	struct _info_menu_item *menu_its = NULL;
 	int idx = 0;
@@ -156,9 +206,9 @@ Evas_Object *_create_info_list(void *data)
 	Elm_Genlist_Item_Class *itc = elm_genlist_item_class_new();
 	itc->item_style = "1text.1icon.1";
 	itc->func.text_get = _gl_info_title_get;
-#ifndef FEATURE_SETTING_SDK
+//#ifndef FEATURE_SETTING_SDK
 	itc->func.content_get = _gl_info_check_get;
-#endif
+//#endif
 	itc->func.del = _info_gl_del;
 
 	Evas_Object *layout = elm_layout_add(ad->nf);
@@ -545,45 +595,24 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 
 static void _usb_debug_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	appdata *ad = (appdata *) data;
-	if (ad == NULL)
-		return;
+	appdata *ad = temp_ad;
+    Evas_Object *check = (Evas_Object *)data;
 
-	is_enable_usb_debug = DISABLE;
+    set_enable_USB_debugging(0);
+    elm_check_state_set(check,  EINA_FALSE);
 
-	if (g_info_genlist != NULL) {
-		elm_genlist_realized_items_update(g_info_genlist);
-	}
-
-	if (ad->popup) {
-		evas_object_del(ad->popup);
-		ad->popup = NULL;
-	}
+    elm_naviframe_item_pop(ad->nf);
 }
 
 static void _usb_debug_ok_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	/*Elm_Object_Item* it = (Elm_Object_Item *)event_info; */
-	appdata *ad = data;
-	/*Evas_Object* check = NULL; */
+	appdata *ad = temp_ad;
+	Evas_Object *check = (Evas_Object *)data;
 
-	if (ad == NULL) {
-		DBG("%s", "_gl_usb_debug_cb : appdata is null");
-		return;
-	}
+	set_enable_USB_debugging(1);
+	elm_check_state_set(check,  EINA_TRUE);
 
-	if (ad->popup) {
-		evas_object_del(ad->popup);
-		ad->popup = NULL;
-	}
-
-	is_enable_usb_debug = ENABLE;
-
-	set_enable_USB_debugging(is_enable_usb_debug);
-
-	if (g_info_genlist != NULL) {
-		elm_genlist_realized_items_update(g_info_genlist);
-	}
+	elm_naviframe_item_pop(ad->nf);
 }
 
 void _usb_debug_lange_changed(void *data, Evas_Object *obj, void *event_info)

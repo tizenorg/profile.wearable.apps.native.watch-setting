@@ -34,6 +34,19 @@ struct _info_menu_item {
 	void (*func)(void *data, Evas_Object *obj, void *event_info);
 };
 
+enum _info_menu_type{
+	ABOUT_DEVICE_MODEL_NUMBER,
+	ABOUT_DEVICE_WIFI_ADDRESS,
+	ABOUT_DEVICE_BLUETOOTH_ADDRESS,
+	ABOUT_DEVICE_TIZEN_VERSION,
+	ABOUT_DEVICE_SOFTWARE_VERSION,
+	ABOUT_DEVICE_SERIAL_NUMBER,
+	ABOUT_DEVICE_STORAGE,
+	ABOUT_DEVICE_BATTERY_CAPACITY,
+	ABOUT_DEVICE_OPEN_SOURCE_LICENSES,
+};
+
+
 typedef struct Info_Item_Data {
 	int index;
 	Elm_Object_Item *item;
