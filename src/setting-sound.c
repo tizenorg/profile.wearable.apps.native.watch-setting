@@ -474,10 +474,10 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 			break;
 #if 0
 		case 5:
-		vconf_get_bool(VCONFKEY_SETAPPL_PERFERED_ARM_LEFT_BOOL, &pref_arm_type);
-		pref_arm_type = (pref_arm_type == TRUE) ? 0 : 1;
-		snprintf(buf, sizeof(buf)-1, "%s", _(pref_arm_str[pref_arm_type % 2]));
-		break;
+			vconf_get_bool(VCONFKEY_SETAPPL_PERFERED_ARM_LEFT_BOOL, &pref_arm_type);
+			pref_arm_type = (pref_arm_type == TRUE) ? 0 : 1;
+			snprintf(buf, sizeof(buf)-1, "%s", _(pref_arm_str[pref_arm_type % 2]));
+			break;
 #endif
 		}
 		index++;
