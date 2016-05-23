@@ -33,7 +33,7 @@ int app_control_set_package(app_control_h app_control, const char *package);
 
 void _bluetooth_cb(void *data, Evas_Object *obj, void *event_info);
 void _wifi_cb(void *data, Evas_Object *obj, void *event_info);
-void _alerts_cb(void *data, Evas_Object *obj, void *event_info);
+//void _alerts_cb(void *data, Evas_Object *obj, void *event_info);
 void _flight_mode_cb(void *data, Evas_Object *obj, void *event_info);
 void _nfc_cb(void *data, Evas_Object *obj, void *event_info);
 
@@ -45,7 +45,7 @@ static struct _connection_menu_item connection_menu_its[] = {
 	{ "Bluetooth",				SETTING_CONNECTION_BLUETOOTH,		_bluetooth_cb },
 	{ "Wi-Fi",					SETTING_CONNECTION_WIFI,			_wifi_cb	},
 	{ "NFC",					SETTING_CONNECTION_NFC,				_nfc_cb	},
-	{ "Alerts",					SETTING_CONNECTION_BT_ALERTS,			_alerts_cb	},
+//	{ "Alerts",					SETTING_CONNECTION_BT_ALERTS,			_alerts_cb	},
 	{ "Flight mode",			SETTING_CONNECTION_FLIGHT_MODE,		_flight_mode_cb	 },
 };
 
@@ -100,7 +100,6 @@ static void _set_flight_mode_cancel_cb(void *data, Evas_Object *obj, void *event
 	vconf_set_bool(VCONFKEY_TELEPHONY_FLIGHT_MODE, is_flight_mode);
 
 	elm_check_state_set(check,	EINA_FALSE);
-	/*	evas_object_repeat_events_set(check, EINA_FALSE); */
 
 	elm_naviframe_item_pop(ad->nf);
 }
@@ -114,7 +113,6 @@ static void _set_flight_mode_ok_clicked_cb(void *data, Evas_Object *obj, void *e
 	vconf_set_bool(VCONFKEY_TELEPHONY_FLIGHT_MODE, is_flight_mode);
 	elm_check_state_set(check,	EINA_TRUE);
 
-	/*	evas_object_repeat_events_set(check, EINA_TRUE); */
 	elm_naviframe_item_pop(ad->nf);
 }
 
@@ -193,12 +191,11 @@ Evas_Object *_gl_connection_check_get(void *data, Evas_Object *obj, const char *
 
 	if (!strcmp(part, "elm.icon")) {
 		check = elm_check_add(obj);
-		elm_object_style_set(check, "on&off");
 
 		switch (index) {
-		case SETTING_CONNECTION_BT_ALERTS:
-			evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _bt_alerts_chk_changed_cb, (void *)check);
-			break;
+//		case SETTING_CONNECTION_BT_ALERTS:
+//			evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _bt_alerts_chk_changed_cb, (void *)check);
+//			break;
 		case SETTING_CONNECTION_FLIGHT_MODE:
 			vconf_get_bool(VCONFKEY_TELEPHONY_FLIGHT_MODE, &is_value);
 			evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _flight_mode_check_cb, (void *)check);
@@ -207,9 +204,10 @@ Evas_Object *_gl_connection_check_get(void *data, Evas_Object *obj, const char *
 
 		elm_check_state_set(check, (is_value) ? EINA_TRUE : EINA_FALSE);	  /*default */
 
+		elm_object_style_set(check, "on&off");
 		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
 		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		evas_object_propagate_events_set(check, EINA_FALSE);
+		evas_object_propagate_events_set(check, EINA_TRUE);
 
 		id->check = check;
 
@@ -301,11 +299,11 @@ void _nfc_cb(void *data, Evas_Object *obj, void *event_info)
 	running_timer = ecore_timer_add(0.5, (Ecore_Task_Cb)_app_ctrl_timer_cb, NULL);
 }
 
-void _alerts_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-}
+//void _alerts_cb(void *data, Evas_Object *obj, void *event_info)
+//{
+//	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+//
+//}
 
 void _flight_mode_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -335,9 +333,9 @@ char *_gl_connection_title_get(void *data, Evas_Object *obj, const char *part)
 			vconf_get_bool(VCONFKEY_NFC_STATE, &tmp_int);
 			snprintf(buf, sizeof(buf) - 1, "%s", tmp_int ? "Off" : "On");
 			break;
-		case SETTING_CONNECTION_BT_ALERTS:
-			snprintf(buf, sizeof(buf) - 1, "Receive BT disconnection alerts.");
-			break;
+//		case SETTING_CONNECTION_BT_ALERTS:
+//			snprintf(buf, sizeof(buf) - 1, "Receive BT disconnection alerts.");
+//			break;
 		}
 	}
 	ERR("_gl_connection_title_get part: %s, %s", part, buf);
@@ -403,9 +401,9 @@ Evas_Object *_create_connection_list(void *data)
 		case SETTING_CONNECTION_NFC:
 			itc_tmp = itc;
 			break;
-		case SETTING_CONNECTION_BT_ALERTS:
-			itc_tmp = text2_icon;
-			break;
+//		case SETTING_CONNECTION_BT_ALERTS:
+//			itc_tmp = text2_icon;
+//			break;
 		case SETTING_CONNECTION_FLIGHT_MODE:
 			itc_tmp = text_icon;
 			break;
