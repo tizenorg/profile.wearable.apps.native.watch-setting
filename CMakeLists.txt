@@ -90,6 +90,8 @@ pkg_check_modules(pkgs REQUIRED elementary ecore-imf appcore-common appcore-efl
 				alarm-service
 				libtzplatform-config
 				efl-extension
+				capi-network-wifi
+				storage
 )
 
 #??

@@ -30,6 +30,7 @@ base_scale: 1.4;
 #include "groups/empty_swallow.edc"
 #include "groups/thumbnail_view.edc"
 #include "groups/setting_indicator.edc"
+#include "groups/open_licences_popup.edc"
 
 	group { name: "scroller_custom_layout";
 	   parts {

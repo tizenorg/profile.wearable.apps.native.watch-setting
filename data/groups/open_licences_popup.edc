@@ -1,0 +1,64 @@
+/*
+ * Copyright (c) 2010 Samsung Electronics, Inc.
+ * All rights reserved.
+ *
+ * This software is a confidential and proprietary information
+ * of Samsung Electronics, Inc. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with Samsung Electronics.
+ */
+
+group { name: "setting/open_licences_popup/default";
+  styles{
+      style { name: "open_licenses_outdoor_style";
+         base: "font=Tizen:style=Condensed font_size="28" align=center color=#FFFFFF text_class=tizen wrap=mixed";
+         tag:  "br" "\n";
+         tag:  "hilight" "+ font_weight=Bold";
+         tag:  "b" "+ font_weight=Bold";
+         tag:  "tab" "\t";
+      }
+  }
+  parts {
+    part { name: "bg";
+      type: RECT;
+      scale: 1;
+      description { state: "default";
+        rel1 { relative: 0.0 0.0; }
+        rel2 { relative: 1.0 1.0; }
+        color: 0 0 0 255;
+      }
+    }
+	part {
+		name: "location_enable_text.text1";
+		type: TEXTBLOCK;
+		scale: 1;
+		description {
+			state: "default" 0.0;
+			fixed: 1 1;
+			rel1 {
+				relative: 0.0 0.0;
+				offset: 6 12;
+			}
+			rel2 {
+				relative: 1.0 1.0;
+				offset: -6 -12;
+			}
+			text {
+				style: "open_licenses_outdoor_style";
+				align: 0.5 0.0;
+			}
+		}
+	}
+	part {
+		name: "scroller";
+		type: SWALLOW;
+		scale: 1;
+		description {
+			state: "default" 0.0;
+		}
+	}
+
+
+  }
+}
