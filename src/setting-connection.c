@@ -288,7 +288,7 @@ void _nfc_cb(void *data, Evas_Object *obj, void *event_info)
 
 	app_control_h service;
 	app_control_create(&service);
-	app_control_set_package(service, "ug-nfc-efl");
+	app_control_set_package(service, "org.tizen.nfc-setting-app");
 	app_control_send_launch_request(service, NULL, NULL);
 	app_control_destroy(service);
 
