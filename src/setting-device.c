@@ -51,6 +51,92 @@ static int device_action_type	 = 0;			/* device_action type */
 
 static Ecore_Timer *device_action_timer = NULL;
 
+static void _set_auto_open_apps_cancel_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = temp_ad;
+	Evas_Object *check = (Evas_Object *)data;
+
+//	vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_auto_open_apps, &timeout);
+//	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
+//
+	elm_check_state_set(check,	EINA_FALSE);
+
+	elm_naviframe_item_pop(ad->nf);
+}
+
+static void _set_auto_open_apps_ok_clicked_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = temp_ad;
+	Evas_Object *check = (Evas_Object *)data;
+
+//	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
+	elm_check_state_set(check,	EINA_TRUE);
+
+	elm_naviframe_item_pop(ad->nf);
+}
+
+static Eina_Bool _back_auto_open_apps_naviframe_cb(void *data, Elm_Object_Item *it)
+{
+	return EINA_TRUE;
+}
+
+static void _auto_open_apps_check_changed_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = temp_ad;
+	Evas_Object *ly;
+	Evas_Object *check = (Evas_Object *)data;
+
+	if (ad == NULL) {
+		DBG("%s", "_auto_open_apps_check_cb - appdata or check is null");
+		return;
+	}
+
+	DBG("_auto_open_apps_check_changed_cb is called!!!!!!!");
+
+	if (1) {
+		ly = elm_layout_add(ad->nf);
+		elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default5");
+		evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
+
+		elm_object_part_text_set(ly, "watch_on_text.text1", "Focusing on icon in Apps screen will open app automatically");
+
+		Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
+														 NULL,
+														 NULL, NULL,
+														 ly, NULL);
+
+		Evas_Object *btn_cancel;
+		btn_cancel = elm_button_add(ly);
+		elm_object_style_set(btn_cancel, "default");
+		evas_object_size_hint_weight_set(btn_cancel, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_translatable_text_set(btn_cancel, "IDS_ST_BUTTON_CANCEL_ABB2");
+		elm_object_part_content_set(ly, "btn1", btn_cancel);
+		evas_object_smart_callback_add(btn_cancel, "clicked", _set_auto_open_apps_cancel_cb, check);
+
+		Evas_Object *btn_ok;
+		btn_ok = elm_button_add(ly);
+		elm_object_style_set(btn_ok, "default");
+		evas_object_size_hint_weight_set(btn_ok, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_translatable_text_set(btn_ok, "IDS_WNOTI_BUTTON_OK_ABB2");
+		elm_object_part_content_set(ly, "btn2", btn_ok);
+		evas_object_smart_callback_add(btn_ok, "clicked", _set_auto_open_apps_ok_clicked_cb, check);
+
+		elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
+		elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+		elm_naviframe_item_pop_cb_set(nf_it, _back_auto_open_apps_naviframe_cb, ad);
+	} else {
+		/* disable watch always off with out popup */
+
+		/*vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_auto_open_apps, &timeout); */
+		//vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
+
+		/*		elm_check_state_set(check,	EINA_FALSE); */
+	}
+
+}
+
+
 void _clear_device_action_resource()
 {
 	if (device_action_timer) {
@@ -95,11 +181,11 @@ Evas_Object *_gl_device_action_check_get(void *data, Evas_Object *obj, const cha
 		}
 
 		elm_check_state_set(check, (is_auto_open_apps) ? EINA_TRUE : EINA_FALSE);	/*default */
-		evas_object_smart_callback_add(check, "changed", _auto_open_apps_chk_changed_cb, (void *)1);
+		evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _auto_open_apps_check_changed_cb, (void *)check);
 		elm_object_style_set(check, "on&off");
 		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
 		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		evas_object_propagate_events_set(check, EINA_FALSE);
+		evas_object_propagate_events_set(check, EINA_TRUE);
 
 		id->check = check;
 
