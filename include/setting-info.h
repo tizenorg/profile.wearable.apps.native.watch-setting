@@ -24,6 +24,7 @@
 #include <libintl.h>
 #include <string.h>
 #include <system_info.h>
+#include <storage.h>
 
 #define ITEM_COUNT			2
 #define ABOUT_ITEM_COUNT	5
@@ -33,6 +34,18 @@ struct _info_menu_item {
 	int type;
 	void (*func)(void *data, Evas_Object *obj, void *event_info);
 };
+
+enum _info_menu_type {
+	ABOUT_DEVICE_MODEL_NUMBER,
+	ABOUT_DEVICE_WIFI_ADDRESS,
+	ABOUT_DEVICE_BLUETOOTH_ADDRESS,
+	ABOUT_DEVICE_TIZEN_VERSION,
+	ABOUT_DEVICE_SOFTWARE_VERSION,
+	ABOUT_DEVICE_SERIAL_NUMBER,
+	ABOUT_DEVICE_STORAGE,
+	ABOUT_DEVICE_OPEN_SOURCE_LICENSES,
+};
+
 
 typedef struct Info_Item_Data {
 	int index;
@@ -45,7 +58,7 @@ char *_gl_info_title_get(void *data, Evas_Object *obj, const char *part);
 Evas_Object *_gl_info_check_get(void *data, Evas_Object *obj, const char *part);
 Evas_Object *_create_info_list(void *data);
 void _gl_usb_debug_cb(void *data, Evas_Object *obj, void *event_info);
-void _usb_debug_chk_changed_cb(void *data, Evas_Object *obj, void *event_info);
+void _usb_debug_chk_changed_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 
 
 void _gl_info_cb(void *data, Evas_Object *obj, void *event_info);

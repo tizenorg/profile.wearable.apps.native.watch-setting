@@ -90,6 +90,8 @@ pkg_check_modules(pkgs REQUIRED elementary ecore-imf appcore-common appcore-efl
 				alarm-service
 				libtzplatform-config
 				efl-extension
+				capi-network-wifi
+				storage
 )
 
 #??
@@ -107,12 +109,7 @@ ELSE(FEATURE_SETTING_EMUL)
 ENDIF(FEATURE_SETTING_EMUL)
 
 # install media-data
-IF(FEATURE_SETTING_EMUL)
-	INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/media-data-sdk/settings DESTINATION /usr/apps/org.tizen.watch-setting/shared/res PATTERN "*")
-ELSE(FEATURE_SETTING_EMUL)
-	INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/media-data-sdk/settings DESTINATION /usr/apps/org.tizen.watch-setting/shared/res PATTERN "*")
-#INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/media-data/settings DESTINATION /opt/usr/share PATTERN "*")
-ENDIF(FEATURE_SETTING_EMUL)
+	INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/media-data-sdk/settings/ DESTINATION ${TZ_SYS_SHARE}/settings PATTERN "*")
 
 # install langlist xml file
 IF(FEATURE_SETTING_EMUL)

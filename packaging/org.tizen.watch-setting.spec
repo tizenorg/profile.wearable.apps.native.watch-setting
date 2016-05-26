@@ -61,6 +61,9 @@ BuildRequires: pkgconfig(alarm-service)
 BuildRequires: pkgconfig(libtzplatform-config)
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(efl-extension)
+BuildRequires: pkgconfig(capi-network-wifi)
+BuildRequires: pkgconfig(storage)
+
 %description
 W watch-setting application
 
@@ -146,10 +149,6 @@ mkdir -p %{buildroot}/%{TZ_SYS_RW_APPS}/org.tizen.watch-setting/data/images
 #resetSecurity
 	rm -rf %{TZ_SYS_DATA}/setting/set_info
 
-if [ -d %{TZ_SYS_SHARE}/settings ]
-then
-	rm -rf %{TZ_SYS_SHARE}/settings
-fi
 
 #ln -s /opt/usr/share/settings /opt/share/settings
 #+ln -s %{TZ_SYS_SHARE}/settings %{TZ_SYS_SHARE}/settings
@@ -159,6 +158,7 @@ mkdir -p %{TZ_SYS_RO_APP}/org.tizen.watch-setting/shared
 mkdir -p %{TZ_SYS_RO_APP}/org.tizen.watch-setting/shared/res
 
 mkdir -p %{TZ_SYS_DATA}/setting
+mkdir -p %{TZ_SYS_SHARE}/settings
 
 %files
 %manifest %{name}.manifest
@@ -171,9 +171,7 @@ mkdir -p %{TZ_SYS_DATA}/setting
 /usr/share/packages/*
 /usr/share/icons/default/small/*
 #/usr/share/packages/%{name}.xml
-#/usr/apps/org.tizen.watch-setting/data/images/*
 %{TZ_SYS_RO_APP}/org.tizen.watch-setting/*
-/usr/apps/org.tizen.watch-setting/shared/res/*
-#/opt/usr/share/settings/*
+%{TZ_SYS_SHARE}/*
 /usr/share/Safety.zip
 /opt/usr/data/setting/*

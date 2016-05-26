@@ -738,6 +738,8 @@ static void _play_sound_all_type(int sound_type, float volume)
 		break;
 	}
 
+	ERR(">>>>> Play Sound path : %s", buf);
+
 	int err = -1;
 
 	if (sound_type == SOUND_TYPE_RINGTONE) {
@@ -762,14 +764,13 @@ static void _play_sound_all_type(int sound_type, float volume)
 			set_looping(TRUE);
 		}
 		is_myself_ringtone_changing = 1;
-	} else if (sound_type == SOUND_TYPE_SYSTEM)	{
-		stop_wav();
+	} else if (sound_type == SOUND_TYPE_SYSTEM || sound_type == SOUND_TYPE_MEDIA)	{
 
-		is_wav_playing_vol = SOUND_STATE_PLAY;
-		wav_player_start(buf, sound_type, NULL, NULL, &sound_id_vol);
+		play_sound(buf, volume, SOUND_TYPE_SYSTEM);
+		set_looping(FALSE);
 		return;
 	} else if (sound_type == SOUND_TYPE_NOTIFICATION) {
-		play_sound(buf, 0.0, SOUND_TYPE_NOTIFICATION);
+		play_sound(buf, volume, SOUND_TYPE_NOTIFICATION);
 		set_looping(FALSE);
 
 		return;
