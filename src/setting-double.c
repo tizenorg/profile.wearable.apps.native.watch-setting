@@ -307,7 +307,7 @@ void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	char buf[1024];
 
-	char *font_size_frame = "<center><font_size=28>%s</font_size></center>";
+	char *font_size_frame = "<text_class=tizen><align=center><font_size=28>%s</font_size></align></text_class>";
 	snprintf(buf, sizeof(buf) - 1, font_size_frame, "<br>&nbsp;<br>&nbsp;<br>&nbsp;Open the last app you used by pressing the Home key twice on watch face.");
 
 	char *txt = strdup(buf);

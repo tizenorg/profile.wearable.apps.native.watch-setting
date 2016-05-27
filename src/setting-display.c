@@ -55,6 +55,8 @@ static void _clock_cb(void *data, Evas_Object *obj, void *event_info);
 static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_info);
 static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object *obj, const char *part);
 static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, void *event_info);
+static void _display_gl_display_noti_indicator_help_cb(void *data, Evas_Object *obj, void *event_info);
+static void _show_noti_indicator_list(void *data);
 
 static struct _display_menu_item display_menu_its[] = {
 	{ "Watch face",				SETTING_DISPLAY_WATCH_FACE,	_clock_cb},
@@ -72,6 +74,11 @@ static struct _display_menu_item display_menu_its[] = {
 static struct _font_menu_item font_menu_its[] = {
 	{ "IDS_ST_BODY_FONT_STYLE",			SETTING_DISPLAY_FONT_STYLE, _display_gl_font_style_cb },
 	{ "IDS_ST_BODY_FONT_SIZE_ABB",		SETTING_DISPLAY_FONT_SIZE,	_display_gl_font_size_cb },
+};
+
+static struct _display_menu_item noti_menu_its[] = {
+	{ "Notification indicator",	SETTING_DISPLAY_NOTIFICATION_INDICATOR_SW,	NULL},
+	{ "Help",	SETTING_DISPLAY_NOTIFICATION_INDICATOR_HELP,	_display_gl_display_noti_indicator_help_cb },
 };
 
 static int timeout_arr[] = {
@@ -387,12 +394,6 @@ Evas_Object *_create_display_list(void *data)
 	itc3->func.content_get = _gl_display_watch_always_check_get;
 	itc3->func.del = _display_gl_del;
 
-	Elm_Genlist_Item_Class *itc4 = elm_genlist_item_class_new();
-	itc4->item_style = "1text.1icon.1";
-	itc4->func.text_get = _gl_display_title_get;
-	itc4->func.content_get = _gl_display_noti_indicator_check_get;
-	itc4->func.del = _display_gl_del;
-
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
@@ -419,9 +420,6 @@ Evas_Object *_create_display_list(void *data)
 			itc_tmp = itc3;
 		}
 		*/
-		if (menu_its[idx].type == SETTING_DISPLAY_NOTIFICATION_INDICATOR) {
-			itc_tmp = itc4;
-		}
 
 		Display_Item_Data *id = calloc(sizeof(Display_Item_Data), 1);
 		if (id) {
@@ -452,7 +450,6 @@ Evas_Object *_create_display_list(void *data)
 	elm_genlist_item_class_free(itc);
 	elm_genlist_item_class_free(itc2);
 	elm_genlist_item_class_free(itc3);
-	elm_genlist_item_class_free(itc4);
 
 	g_display_genlist = genlist;
 
@@ -2295,6 +2292,62 @@ static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, 
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 	DBG("_display_gl_display_noti_indicator_cb is called!!!!!!!");
+	_show_noti_indicator_list(data);
+}
+
+void _noti_indicator_help_popup_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Evas_Object *scroller = NULL;
+	Evas_Object *label = NULL;
+	Evas_Object *ly = NULL;
+
+	appdata *ad = (appdata *) data;
+	if (ad == NULL)
+		return;
+
+	ly = elm_layout_add(ad->nf);
+	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	elm_layout_file_set(ly, EDJE_PATH, "setting/open_licences_popup/default");
+	elm_win_resize_object_add(ad->nf, ly);
+
+
+	scroller = elm_scroller_add(ly);
+	evas_object_size_hint_weight_set(scroller, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_object_content_set(ly, scroller);
+	elm_scroller_bounce_set(scroller, EINA_TRUE, EINA_TRUE);
+	elm_scroller_policy_set(scroller, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
+	elm_object_part_content_set(ly, "scroller", scroller);
+	elm_object_style_set(scroller, "effect");
+	evas_object_show(scroller);
+
+	label = elm_label_add(scroller);
+	elm_label_line_wrap_set(label, ELM_WRAP_MIXED);
+
+	char buf[1024];
+
+	char *font_size_frame = "<text_class=tizen><align=center><font_size=28>%s</font_size></align></text_class>";
+	snprintf(buf, sizeof(buf) - 1, font_size_frame, "&nbsp;<br>&nbsp; Show a yellow indicator <br>on the watch face when <br> there are unread notifications.");
+
+	char *txt = strdup(buf);
+	elm_object_text_set(label, txt);
+	free(txt);
+	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	elm_object_content_set(scroller, label);
+	evas_object_show(label);
+
+	evas_object_show(ly);
+	Elm_Object_Item *nf_it = NULL;
+	nf_it = elm_naviframe_item_push(ad->nf, "Help", NULL, NULL, ly, NULL);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_TRUE, EINA_FALSE);
+}
+
+static void _display_gl_display_noti_indicator_help_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
+	DBG("_display_gl_display_noti_indicator_help_cb is called!!!!!!!");
+	_noti_indicator_help_popup_cb(data, obj, event_info);
 }
 
 static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object *obj, const char *part)
@@ -2322,4 +2375,74 @@ static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object
 }
 
 
+static char *_gl_noti_title_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024] = {0,};
+	Display_Item_Data *id = data;
+	int index = id->index;
+
+	if (!strcmp(part, "elm.text")) {
+		snprintf(buf, sizeof(buf) - 1, "%s", _(noti_menu_its[index].name));
+	}
+	return strdup(buf);
+}
+
+
+static void _show_noti_indicator_list(void *data)
+{
+	appdata *ad = data;
+	if (ad == NULL) {
+		DBG("%s", "_show_font_list - appdata is null");
+		return;
+	}
+
+	Evas_Object *genlist  = NULL;
+	Elm_Object_Item *nf_it = NULL;
+	int idx;
+
+	temp_ad = ad;
+	Elm_Genlist_Item_Class *itc[2];
+	itc[0] = elm_genlist_item_class_new();
+	itc[0]->item_style = "1text.1icon.1";
+	itc[0]->func.text_get = _gl_noti_title_get;
+	itc[0]->func.content_get = _gl_display_noti_indicator_check_get;
+	itc[0]->func.del = _font_size_gl_del;
+
+	itc[1] = elm_genlist_item_class_new();
+	itc[1]->item_style = "1text";
+	itc[1]->func.text_get = _gl_noti_title_get;
+	itc[1]->func.del = _font_size_gl_del;
+
+
+	Evas_Object *layout = elm_layout_add(ad->nf);
+	elm_layout_file_set(layout, EDJE_PATH, "setting/genlist/layout");
+	evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+
+	genlist = elm_genlist_add(layout);
+	elm_genlist_block_count_set(genlist, 14);
+	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	connect_to_wheel_with_genlist(genlist, ad);
+
+	for (idx = 0; idx < 2; idx++) {
+		Item_Data *id = calloc(sizeof(Item_Data), 1);
+		if (id) {
+			id->index = idx;
+			id->item = elm_genlist_item_append(genlist, itc[idx], id, NULL,
+											   ELM_GENLIST_ITEM_NONE, noti_menu_its[idx].func, ad);
+
+		}
+	}
+
+	elm_object_part_content_set(layout, "elm.genlist", genlist);
+
+	elm_genlist_item_class_free(itc[0]);
+	elm_genlist_item_class_free(itc[1]);
+
+	nf_it = elm_naviframe_item_push(ad->nf, "Notification indicator", NULL, NULL, layout, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
+
+}
 
