@@ -27,7 +27,10 @@
 #include "setting_data_vconf.h"
 #include "setting-double.h"
 
-#define VCONFKEY_SETAPPL_NOTI_device_action_auto_open_apps				"db/setting/sound/noti/device_action_auto_open_apps"
+#ifndef VCONFKEY_SETAPPL_AUTO_OPEN_APPS
+#define VCONFKEY_SETAPPL_AUTO_OPEN_APPS				"db/setting/auto_open_apps"
+#endif
+
 #define AUDIO_RESOURCE_EXTENSION	".ogg"
 
 static struct _device_action_menu_item device_action_menu_its[] = {
@@ -55,10 +58,9 @@ static void _set_auto_open_apps_cancel_cb(void *data, Evas_Object *obj, void *ev
 {
 	appdata *ad = temp_ad;
 	Evas_Object *check = (Evas_Object *)data;
+	bool is_auto_open = 0;
+	vconf_set_bool(VCONFKEY_SETAPPL_AUTO_OPEN_APPS, is_auto_open);
 
-//	vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_auto_open_apps, &timeout);
-//	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
-//
 	elm_check_state_set(check,	EINA_FALSE);
 
 	elm_naviframe_item_pop(ad->nf);
@@ -68,8 +70,9 @@ static void _set_auto_open_apps_ok_clicked_cb(void *data, Evas_Object *obj, void
 {
 	appdata *ad = temp_ad;
 	Evas_Object *check = (Evas_Object *)data;
+	bool is_auto_open = 1;
+	vconf_set_bool(VCONFKEY_SETAPPL_AUTO_OPEN_APPS, is_auto_open);
 
-//	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
 	elm_check_state_set(check,	EINA_TRUE);
 
 	elm_naviframe_item_pop(ad->nf);
@@ -160,9 +163,9 @@ void _auto_open_apps_chk_changed_cb(void *data, Evas_Object *obj, void *event_in
 	DBG("Setting - _auto_open_apps_chk_changed_cb() is called!!");
 
 	int is_auto_open_apps = 0;
-	vconf_get_bool(VCONFKEY_SETAPPL_NOTI_device_action_auto_open_apps, &is_auto_open_apps);
+	vconf_get_bool(VCONFKEY_SETAPPL_AUTO_OPEN_APPS, &is_auto_open_apps);
 	is_auto_open_apps =	 !(is_auto_open_apps);
-	vconf_set_bool(VCONFKEY_SETAPPL_NOTI_device_action_auto_open_apps, is_auto_open_apps);
+	vconf_set_bool(VCONFKEY_SETAPPL_AUTO_OPEN_APPS, is_auto_open_apps);
 
 }
 
@@ -176,7 +179,7 @@ Evas_Object *_gl_device_action_check_get(void *data, Evas_Object *obj, const cha
 	if (!strcmp(part, "elm.icon")) {
 		check = elm_check_add(obj);
 
-		if (vconf_get_bool(VCONFKEY_SETAPPL_NOTI_device_action_auto_open_apps, &is_auto_open_apps) < 0) {
+		if (vconf_get_bool(VCONFKEY_SETAPPL_AUTO_OPEN_APPS, &is_auto_open_apps) < 0) {
 			is_auto_open_apps = 0;
 		}
 

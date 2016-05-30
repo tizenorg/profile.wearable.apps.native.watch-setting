@@ -43,7 +43,11 @@
 
 
 /* temporary source code */
+#ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR 
 #define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
+#define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator"
+#endif
+
 
 static int is_changed = 0;
 static bool running = false;
@@ -2350,25 +2354,37 @@ static void _display_gl_display_noti_indicator_help_cb(void *data, Evas_Object *
 	_noti_indicator_help_popup_cb(data, obj, event_info);
 }
 
+static void _display_noti_indicator_check_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = temp_ad;
+
+	if (ad == NULL) {
+		DBG("%s", "_display_noti_indicator_check_cb - appdata or check is null");
+		return;
+	}
+	int nofi_indicator = 0;
+	vconf_get_int(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR, &nofi_indicator);
+	nofi_indicator = !nofi_indicator;
+	vconf_set_bool(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR, nofi_indicator);
+}
+
 static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *check = NULL;
 
-	/*Sound_Item_Data *id = data; */
-	/*int index = id->index; */
-
 	if (!strcmp(part, "elm.icon")) {
+		int nofi_indicator = 0;
 		check = elm_check_add(obj);
 
-		/*elm_check_state_set(check, (sound_menu_its[2].is_enable_touch_sound) ? EINA_TRUE : EINA_FALSE); */
-		/*evas_object_smart_callback_add(check, "changed", _sound_chk_changed_cb, (void *)1); */
+		vconf_get_int(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR , &nofi_indicator);
+		elm_object_style_set(check, "on&off");
+
+		elm_check_state_set(check, (nofi_indicator) ? EINA_TRUE : EINA_FALSE);
+		evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _display_noti_indicator_check_cb, (void *)check);
 		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
 		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 		evas_object_propagate_events_set(check, EINA_FALSE);
 
-		/*id->check = check; */
-
-		/*index++; */
 	}
 
 	return check;
