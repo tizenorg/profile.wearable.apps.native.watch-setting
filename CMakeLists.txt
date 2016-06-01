@@ -8,7 +8,8 @@ SET(SRCS
     src/setting-connection.c
     src/setting-clock.c
     src/setting-homescreen.c
-    src/setting-volume.c
+#    src/setting-volume.c
+    src/setting-volume-page.c
     src/setting-info.c
 #    src/setting-bluetooth.c
 #    src/setting-motion.c
@@ -101,6 +102,8 @@ FIND_LIBRARY(LIB_M m)
 
 #Icon - app
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.png DESTINATION ${ICONDIR})
+
+INSTALL(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/data/images/ DESTINATION ${TZ_SYS_RO_APP}/org.tizen.watch-setting/data/images FILES_MATCHING PATTERN "*")
 
 #Icon - main menu
 IF(FEATURE_SETTING_EMUL)

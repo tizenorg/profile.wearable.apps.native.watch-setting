@@ -298,15 +298,17 @@ void _show_volume_list(void *data)
 
 	_initialize_volume();
 
-	genlist = _create_volume_list(data);
-	if (genlist == NULL) {
-		DBG("%s", "volume cb - genlist is null");
-		return;
-	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, nf_it);
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_volume_cb, ad);
+	_create_volume_page(data);
+
+//	genlist = _create_volume_list(data);
+//	if (genlist == NULL) {
+//		DBG("%s", "volume cb - genlist is null");
+//		return;
+//	}
+//	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+//	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, nf_it);
+//	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+//	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_volume_cb, ad);
 }
 
 void _volume_cb(void *data, Evas_Object *obj, void *event_info)
