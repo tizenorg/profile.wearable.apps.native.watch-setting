@@ -23,12 +23,12 @@
 #include "setting_data_vconf.h"
 #include "util.h"
 
-#ifndef VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY  
-#define VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY  "db/setting/double_press_home_key"
+#ifndef VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY
+#define VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY	"db/setting/double_press_home_key"
 enum {
 	VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE = 0,
-		VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP = 1,
-		VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS = 2
+	VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP = 1,
+	VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS = 2
 };
 #endif
 
@@ -49,13 +49,13 @@ static struct _double_menu_item *_get_selected_app()
 	int val = 0;
 	vconf_get_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, &val);
 
-	switch(val) {
-	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE :
-			return pitem_none;
-	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP :
-			return pitem_recent;
-	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS :
-			return pitem_last;
+	switch (val) {
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE:
+		return pitem_none;
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP:
+		return pitem_recent;
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS:
+		return pitem_last;
 	}
 
 	return NULL;
@@ -341,7 +341,7 @@ static void _gl_double_app_sel_cb(void *data, Evas_Object *obj, void *event_info
 	} else if (id->pitem && id->pitem->index == 1) {
 		int val = VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP ;
 		vconf_set_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, val);
-		_last_app_popup_cb(data,obj, event_info);
+		_last_app_popup_cb(data, obj, event_info);
 	} else if (id->pitem && id->pitem->index == 2) {
 		int val = VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS ;
 		vconf_set_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, val);

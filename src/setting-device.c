@@ -132,7 +132,7 @@ static void _auto_open_apps_check_changed_cb(void *data, Evas *e, Evas_Object *o
 		/* disable watch always off with out popup */
 
 		/*vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_auto_open_apps, &timeout); */
-		//vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout);
+		/*vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, timeout); */
 
 		/*		elm_check_state_set(check,	EINA_FALSE); */
 	}

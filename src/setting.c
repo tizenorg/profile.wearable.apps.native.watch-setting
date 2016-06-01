@@ -275,38 +275,6 @@ void device_cb(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_SOUND;
 }
 
-void volume_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	Evas_Object *genlist = NULL;
-	Elm_Object_Item *nf_it = NULL;
-	appdata *ad = data;
-
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
-
-	if (running) {
-		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-		return;
-	}
-
-	_initialize_volume();
-
-	genlist = _create_volume_list(data);
-	if (genlist == NULL) {
-		DBG("%s", "volume cb - genlist is null");
-		return;
-	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_volume_cb, ad); */
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-	ad->MENU_TYPE = SETTING_VOLUME;
-}
-
 void display_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	Evas_Object *genlist = NULL;

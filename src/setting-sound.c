@@ -30,9 +30,6 @@ static struct _sound_menu_item sound_menu_its[] = {
 	{ "IDS_ST_OPT_VOLUME",					0,		_volume_cb	},
 	{ "IDS_ST_HEADER_VIBRATION_ABB",		0,		_vibrate_cb		},
 	{ "IDS_ST_BODY_TOUCH_SOUNDS_ABB",		0,		_touch_sound_cb },
-	/*	{ "IDS_CST_MBODY_RINGTONES",		0,		_ringtone_cb	}, */
-	/*	{ "IDS_ST_BUTTON_NOTIFICATIONS",		0,		_noti_cb		}, */
-	/*	{ "IDS_ST_BODY_PREFERRED_ARM_ABB",	0,		_preferred_cb	}, */
 	{ NULL, 0, NULL }
 };
 
@@ -287,8 +284,6 @@ static int get_vibration_level()
 
 void _show_volume_list(void *data)
 {
-	Evas_Object *genlist = NULL;
-	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
 	if (ad == NULL) {
@@ -298,15 +293,8 @@ void _show_volume_list(void *data)
 
 	_initialize_volume();
 
-	genlist = _create_volume_list(data);
-	if (genlist == NULL) {
-		DBG("%s", "volume cb - genlist is null");
-		return;
-	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, nf_it);
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_volume_cb, ad);
+	_create_volume_page(data);
+
 }
 
 void _volume_cb(void *data, Evas_Object *obj, void *event_info)
@@ -340,21 +328,6 @@ void _touch_sound_cb(void *data, Evas_Object *obj, void *event_info)
 
 	elm_genlist_item_update(it);
 }
-
-void _ringtone_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-	_show_ringtone_popup_cb(data, obj, event_info);
-}
-
-void _noti_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-	_show_notification_popup_cb(data, obj, event_info);
-}
-
 
 void _vibrate_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -395,13 +368,6 @@ void _vibrate_cb(void *data, Evas_Object *obj, void *event_info)
 /* */
 /*	_show_vibration_popup_cb(data, obj, event_info); */
 /*} */
-
-void _preferred_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-	_show_pref_arm_mode_list(data);
-}
 
 static char *_get_sound_file_name(char *full_name)
 {
