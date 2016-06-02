@@ -23,6 +23,15 @@
 #include "setting_data_vconf.h"
 #include "util.h"
 
+#ifndef VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY  
+#define VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY  "db/setting/double_press_home_key"
+enum {
+	VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE = 0,
+		VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP = 1,
+		VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS = 2
+};
+#endif
+
 static Evas_Object *g_double_genlist = NULL;
 static Evas_Object *g_double_app_genlist = NULL;
 static Eina_List *app_list = NULL;
@@ -34,33 +43,19 @@ struct _double_menu_item *pitem_last = NULL;
 /*pkgmgr_client *pc2 = NULL; */
 static UCollator *coll = NULL;
 
+
 static struct _double_menu_item *_get_selected_app()
 {
-	struct _double_menu_item *pitem = NULL;
-	char *appid = NULL;
+	int val = 0;
+	vconf_get_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, &val);
 
-	appid = vconf_get_str(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING);
-
-	if (appid && strlen(appid)) {
-		if (!strcmp(appid, "none")) {
+	switch(val) {
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE :
 			return pitem_none;
-		} else if (!strcmp(appid, "recent")) {
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP :
 			return pitem_recent;
-		} else if (!strcmp(appid, "last")) {
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS :
 			return pitem_last;
-		} else {
-			Eina_List *list = NULL;
-			EINA_LIST_FOREACH(app_list, list, pitem) {
-				if (pitem->pkgid && pitem->appid) {
-					char buf[1024] = {0, };
-					snprintf(buf, sizeof(buf) - 1, "%s/%s", pitem->pkgid, pitem->appid);
-					if (!strcmp(appid, buf)) {
-						DBG("pkgid/appid for double power key is %s/%s", pitem->pkgid, pitem->appid);
-						return pitem;
-					}
-				}
-			}
-		}
 	}
 
 	return NULL;
@@ -263,6 +258,70 @@ static Evas_Object *_gl_double_app_radio_get(void *data, Evas_Object *obj, const
 	return radio;
 }
 
+
+static void _response_ok_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = data;
+
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+
+}
+
+void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Evas_Object *popup = NULL;
+	Evas_Object *btn = NULL;
+	Evas_Object *scroller = NULL;
+	Evas_Object *label = NULL;
+
+	appdata *ad = (appdata *) data;
+	if (ad == NULL)
+		return;
+
+	popup = elm_popup_add(ad->nf);
+	elm_object_style_set(popup, "circle");
+	evas_object_size_hint_weight_set(popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_win_resize_object_add(ad->nf, popup);
+
+	ad->popup = popup;
+
+	scroller = elm_scroller_add(popup);
+	evas_object_size_hint_weight_set(scroller, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_object_content_set(popup, scroller);
+	elm_scroller_bounce_set(scroller, EINA_TRUE, EINA_TRUE);
+	elm_scroller_policy_set(scroller, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
+	elm_object_style_set(scroller, "effect");
+	evas_object_show(scroller);
+
+	label = elm_label_add(scroller);
+	elm_label_line_wrap_set(label, ELM_WRAP_MIXED);
+
+	char buf[1024];
+
+	char *font_size_frame = "<text_class=tizen><align=center><font_size=28>%s</font_size></align></text_class>";
+	snprintf(buf, sizeof(buf) - 1, font_size_frame, "<br>&nbsp;<br>&nbsp;<br>&nbsp;Open the last app you used by pressing the Home key twice on watch face.");
+
+	char *txt = strdup(buf);
+	elm_object_text_set(label, txt);
+	free(txt);
+	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	elm_object_content_set(scroller, label);
+	evas_object_show(label);
+
+	btn = elm_button_add(popup);
+	elm_object_style_set(btn, "bottom");
+	evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_object_translatable_text_set(btn, "IDS_WNOTI_BUTTON_OK_ABB2");
+	elm_object_part_content_set(popup, "button1", btn);
+	evas_object_smart_callback_add(btn, "clicked", _response_ok_cb, ad);
+
+	evas_object_show(popup);
+}
+
 static void _gl_double_app_sel_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	Elm_Object_Item *item = (Elm_Object_Item *)event_info;
@@ -277,18 +336,15 @@ static void _gl_double_app_sel_cb(void *data, Evas_Object *obj, void *event_info
 	}
 
 	if (id->pitem && id->pitem->index == 0) {
-		char buf[1024] = {0, };
-		snprintf(buf, sizeof(buf) - 1, "none");
-		vconf_set_str(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, buf);
+		int val = VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE ;
+		vconf_set_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, val);
 	} else if (id->pitem && id->pitem->index == 1) {
-		char buf[1024] = {0, };
-		snprintf(buf, sizeof(buf) - 1, "recent");
-		vconf_set_str(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, buf);
-	} else if (id->pitem && id->pitem->appid && strlen(id->pitem->appid)) {
-		char buf[1024] = {0, };
-		DBG("%s/%s is selected", id->pitem->pkgid, id->pitem->appid);
-		snprintf(buf, sizeof(buf) - 1, "%s/%s", id->pitem->pkgid, id->pitem->appid);
-		vconf_set_str(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, buf);
+		int val = VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP ;
+		vconf_set_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, val);
+		_last_app_popup_cb(data,obj, event_info);
+	} else if (id->pitem && id->pitem->index == 2) {
+		int val = VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS ;
+		vconf_set_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, val);
 	}
 
 	elm_naviframe_item_pop(ad->nf);
@@ -502,7 +558,7 @@ void clear_double_app_cb(void *data , Evas *e, Evas_Object *obj, void *event_inf
 	FREE(pitem_recent);
 	FREE(pitem_last);
 	g_double_app_genlist = NULL;
-	unregister_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb);
+	unregister_vconf_changing(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, change_double_pressing_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
 }
 
@@ -549,17 +605,6 @@ Evas_Object *create_double_app_list(void *data)
 		}
 	}
 
-	Double_Item_Data *id_recent = calloc(sizeof(Double_Item_Data), 1);
-	if (id_recent) {
-		id_recent->pitem = pitem_recent;
-		id_recent->item = elm_genlist_item_append(genlist, itc, id_recent, NULL,
-												  ELM_GENLIST_ITEM_NONE,
-												  _gl_double_app_sel_cb, ad);
-
-		if (id_recent->pitem == selected_app) {
-			sel_it = id_recent->item;
-		}
-	}
 
 	Double_Item_Data *id_last = calloc(sizeof(Double_Item_Data), 1);
 	if (id_last) {
@@ -573,20 +618,17 @@ Evas_Object *create_double_app_list(void *data)
 		}
 	}
 
-	/*	Eina_List *list = NULL; */
-	/*	EINA_LIST_FOREACH(app_list, list, pitem) { */
-	/*		Double_Item_Data *id = calloc(sizeof(Double_Item_Data), 1); */
-	/*		if (id) { */
-	/*			id->pitem = pitem; */
-	/*			id->item = elm_genlist_item_append(genlist, itc, id, NULL, */
-	/*											   ELM_GENLIST_ITEM_NONE, */
-	/*											   _gl_double_app_sel_cb, ad); */
-	/* */
-	/*			if (id->pitem == selected_app) { */
-	/*				sel_it = id->item; */
-	/*			} */
-	/*		} */
-	/*	} */
+	Double_Item_Data *id_recent = calloc(sizeof(Double_Item_Data), 1);
+	if (id_recent) {
+		id_recent->pitem = pitem_recent;
+		id_recent->item = elm_genlist_item_append(genlist, itc, id_recent, NULL,
+												  ELM_GENLIST_ITEM_NONE,
+												  _gl_double_app_sel_cb, ad);
+
+		if (id_recent->pitem == selected_app) {
+			sel_it = id_recent->item;
+		}
+	}
 
 	ad->double_rdg = elm_radio_add(genlist);
 	elm_radio_state_value_set(ad->double_rdg, -1);
@@ -730,7 +772,7 @@ void init_double_pressing(void *data)
 	pitem_recent = calloc(sizeof(struct _double_menu_item), 1);
 
 	if (pitem_recent) {
-		pitem_recent->index = 1;
+		pitem_recent->index = 2;
 		pitem_recent->appid = strdup("recent");
 		pitem_recent->pkgid = strdup("recent");
 		pitem_recent->name = strdup("IDS_ST_OPT_RECENT_APPS_ABB");
@@ -739,7 +781,7 @@ void init_double_pressing(void *data)
 	FREE(pitem_last);
 	pitem_last = calloc(sizeof(struct _double_menu_item), 1);
 	if (pitem_last) {
-		pitem_last->index = 2;
+		pitem_last->index = 1;
 		pitem_last->appid = strdup("last");
 		pitem_last->pkgid = strdup("last");
 		pitem_last->name = strdup("Last app");
@@ -782,7 +824,7 @@ void init_double_pressing(void *data)
 
 	_make_app_list(ad);
 
-	register_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb, ad);
+	register_vconf_changing(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, change_double_pressing_cb, ad);
 	register_vconf_changing(VCONFKEY_LANGSET, change_language_cb, ad);
 }
 
@@ -832,7 +874,7 @@ void clear_double_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 	FREE(pitem_last);
 	g_double_genlist = NULL;
 	g_double_app_genlist = NULL;
-	unregister_vconf_changing(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING, change_double_pressing_cb);
+	unregister_vconf_changing(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, change_double_pressing_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
 }
 

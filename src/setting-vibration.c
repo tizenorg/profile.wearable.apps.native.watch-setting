@@ -216,11 +216,7 @@ Evas_Object *_create_vibration_list(void *data)
 
 
 	Elm_Genlist_Item_Class *itc_long_buzz = elm_genlist_item_class_new();
-#ifdef _FIT2
-	itc_long_buzz->item_style = "1text.1icon.3";
-#else
 	itc_long_buzz->item_style = "1text.1icon.1";
-#endif
 	itc_long_buzz->func.text_get = _gl_vibration_title_get;
 	itc_long_buzz->func.content_get = _gl_vibration_check_get;
 	itc_long_buzz->func.del = _sound_gl_del;
@@ -295,11 +291,7 @@ static Evas_Object *_gl_vibration_radio_get(void *data, Evas_Object *obj, const 
 	Item_Data *id = data;
 	int index = id->index;
 
-#ifdef _FIT2
-	if (!strcmp(part, "elm.swallow.icon")) {
-#else
 	if (!strcmp(part, "elm.icon")) {
-#endif
 		radio = elm_radio_add(obj);
 		elm_object_style_set(radio, "list");
 		elm_radio_state_value_set(radio, id->index);
@@ -424,11 +416,7 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Elm_Genlist_Item_Class *itc = NULL;
 	itc = elm_genlist_item_class_new();
-#ifdef _FIT2
-	itc->item_style = "1text.1icon.3";
-#else
 	itc->item_style = "1text.1icon.1";
-#endif
 	itc->func.text_get = _gl_vibration_text_get;
 	itc->func.content_get = _gl_vibration_radio_get;
 
