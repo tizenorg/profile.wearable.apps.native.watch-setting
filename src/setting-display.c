@@ -44,9 +44,9 @@
 
 /* temporary source code */
 #ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR 
-#define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
 #define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator"
 #endif
+#define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
 
 
 static int is_changed = 0;
