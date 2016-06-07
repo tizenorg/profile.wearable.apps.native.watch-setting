@@ -172,6 +172,7 @@ mkdir -p %{TZ_SYS_SHARE}/settings
 /usr/share/icons/default/small/*
 #/usr/share/packages/%{name}.xml
 %{TZ_SYS_RO_APP}/org.tizen.watch-setting/*
+%{TZ_SYS_RO_APP}/org.tizen.watch-setting/data/images/*
 %{TZ_SYS_SHARE}/*
 /usr/share/Safety.zip
 /opt/usr/data/setting/*

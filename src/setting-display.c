@@ -1,5 +1,4 @@
-/*
- * Copyright (c) 2013-2014 Samsung Electronics Co., Ltd All Rights Reserved
+/* * Copyright (c) 2013-2014 Samsung Electronics Co., Ltd All Rights Reserved
  *
  * PROPRIETARY/CONFIDENTIAL
  *
@@ -65,7 +64,7 @@ static void _show_noti_indicator_list(void *data);
 static struct _display_menu_item display_menu_its[] = {
 	{ "Watch face",				SETTING_DISPLAY_WATCH_FACE,	_clock_cb},
 	{ "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB",	SETTING_DISPLAY_SCREEN_TIME,	_display_gl_screen_timeout_cb	},
-/*	{ "watch always on",	SETTING_DISPLAY_WATCH_ALWAYS_ON,	_display_gl_watch_always_on_cb	}, */
+	/*	{ "watch always on",	SETTING_DISPLAY_WATCH_ALWAYS_ON,	_display_gl_watch_always_on_cb	}, */
 	{ "Notification indicator",	SETTING_DISPLAY_NOTIFICATION_INDICATOR,	_display_gl_display_noti_indicator_cb },
 	{ "IDS_ST_BUTTON_BRIGHTNESS",	SETTING_DISPLAY_BRIGTHNESS, _display_brightness_cb	 },
 	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT,	_display_gl_font_cb		},

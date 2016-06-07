@@ -104,3 +104,137 @@ group { name: "setting/bg_thumbnail";
       }
    }
 }
+
+group {
+	name: "sound-volume/index_thumbnail";
+	parts {
+		part {
+			name: "bg";
+			type: RECT;
+			scale: 1;
+			description { state: "default" 0.0;
+				color: 7 7 7 255; /*(Changeable UI) color_class: "B011"; */
+			}
+		}
+		part {
+			name: "scroller";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				min: 360 281;
+				max: 360 281;
+				fixed: 1 1;
+				rel1 {
+					to_x: "bg";
+					to_y: "padding.scroller.top";
+					relative: 0.0 1.0;
+				}
+				rel2 {
+					to_x: "bg";
+					to_y: "padding.scroller.top";
+					relative: 1.0 1.0;
+				}
+				align: 0.5 0.0;
+			}
+		}
+		part {
+			name: "padding.scroller.top";
+			type: SPACER;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				align: 0.5 0.0;
+				min: 0 40;
+				max: -1 40;
+				fixed: 0 1;
+				rel1.to: "bg";
+				rel2.to: "bg";
+				}
+			}
+		part {
+			name: "padding.controller.top";
+			type: SPACER;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				align: 0.5 0.0;
+				min: 0 22;
+				max: -1 22;
+				fixed: 0 1;
+				rel1.to: "bg";
+				rel2.to: "bg";
+				}
+			}
+		part {
+			name: "controller";
+			type: SWALLOW;
+			scale: 1;
+			description {
+				state: "default" 0.0;
+				align: 0.5 0.0;
+				min: 0 40;
+				max: -1 40;
+				fixed: 0 1;
+				rel1.to: "padding.controller.top";
+				rel1.relative: 0.0 1.0;
+				rel2.to: "padding.controller.top";
+				rel2.relative: 1.0 1.0;
+			}
+		}
+	}
+}
+
+group {
+   name: "slider_layout";
+   parts{
+      part { name: "elm.swallow.bg";
+         type: SWALLOW;
+            scale: 1;
+               description { state: "default" 0.0;
+                  }
+      }
+      part { name: "elm.icon";
+         type: SWALLOW;
+            scale: 1;
+               description { state: "default" 0.0;
+					align: 0.4 1.0;
+					fixed: 1 1;
+					rel1.relative: 0.0 0.2;
+					rel2.relative: 1.0 0.9;
+                  }
+      }
+      part { name: "elm.text.slider";
+         type: TEXT;
+         scale: 1;
+         description { state: "default" 0.0;
+			align: 0.4 1.0;
+            fixed: 1 1;
+            rel1.relative: 0.0 0.0;
+            rel2.relative: 1.0 0.4;
+            text {
+               font: "Tizen:style=Regular";
+               size: 24;
+               min: 1 1;
+            }
+            color: 255 255 255 255;
+         }
+      }
+      part { name: "elm.text.bottom";
+         type: TEXT;
+         scale: 1;
+         description { state: "default" 0.0;
+			align: 0.4 0.8;
+            fixed: 1 1;
+            rel1.relative: 0.0 0.9;
+            rel2.relative: 1.0 1.0;
+            text {
+               font: "Tizen:style=Regular";
+               size: 24;
+               min: 1 1;
+            }
+            color: 255 255 255 255;
+         }
+      }
+   }
+}
