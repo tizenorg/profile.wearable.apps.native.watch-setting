@@ -747,18 +747,15 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		ret = pkgmgrinfo_appinfo_get_pkgid(tmp_handle, &pkgid);
 		if (ret != PMINFO_R_OK) {
 			ERR("pkgmgrinfo_appinfo_get_pkgid error");
-			pkgmgrinfo_appinfo_destroy_appinfo(tmp_handle);
 			return -1;
 		}
 		ret = pkgmgrinfo_appinfo_get_label(tmp_handle, &name);
 		if (ret != PMINFO_R_OK) {
 			INFO("pkgmgrinfo_appinfo_get_label error");
-			pkgmgrinfo_appinfo_destroy_appinfo(tmp_handle);
 		}
 		ret = pkgmgrinfo_appinfo_get_icon(tmp_handle, &icon);
 		if (ret != PMINFO_R_OK) {
 			INFO("pkgmgrinfo_appinfo_get_icon error");
-			pkgmgrinfo_appinfo_destroy_appinfo(tmp_handle);
 		}
 		ret = pkgmgrinfo_appinfo_is_preload(tmp_handle, &preload);
 		if (ret != PMINFO_R_OK) {
@@ -767,9 +764,9 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 
 		ret = pkgmgrinfo_appinfo_get_metadata_value(tmp_handle, "clocktype", &m_value);
 		if (ret != PMINFO_R_OK) {
-			ERR("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party");
+			ERR("pkgmgrinfo_appinfo_get_metadata_value error or 3rd party ret=%d ", ret);
 		} else {
-			ERR("pkgmgrinfo_appinfo_get_metadata_value NOT error or 3rd party");
+			ERR("pkgmgrinfo_appinfo_get_metadata_value NOT error or 3rd party ret=%d", ret);
 		}
 
 		Clock_Type_Item *pitem = NULL;
@@ -785,7 +782,7 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		pitem->name = strdup(name);
 		pitem->icon = strdup(icon);
 
-		if (clock_metadata.value && strlen(m_value) > 0) {
+		if (m_value && clock_metadata.value && strlen(m_value) > 0) {
 			if (!strcmp(m_value, "function")) {
 				type = CLOCKTYPE_FUNCTION;
 			} else if (!strcmp(m_value, "style")) {
@@ -814,7 +811,6 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 		}
 	}
 
-	pkgmgrinfo_appinfo_destroy_appinfo(tmp_handle);
 	return 0;
 }
 
