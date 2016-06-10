@@ -42,7 +42,7 @@
 
 
 /* temporary source code */
-#ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR 
+#ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR
 #define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator"
 #endif
 #define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
@@ -1734,7 +1734,6 @@ Evas_Object *g_slider = NULL;
 spin_date *pd = NULL;
 
 static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
-static void _on_spinner_change_cb(void *data, Evas_Object *obj, void *event_info);
 static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
 static void brightness_vconf_changed_cb(keynode_t *key, void *data);
@@ -1778,8 +1777,8 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 	if (layout) {
 		evas_object_event_callback_add(layout, EVAS_CALLBACK_MOUSE_IN, _power_off_popup_dismiss_cb, NULL);
 
-		navi_it = elm_naviframe_item_push(ad->nf, "Brightness", NULL, NULL, layout, NULL);
-		elm_naviframe_item_title_enabled_set(navi_it, EINA_TRUE, EINA_FALSE);
+		navi_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+		elm_naviframe_item_title_enabled_set(navi_it, EINA_FALSE, EINA_FALSE);
 		elm_object_item_domain_text_translatable_set(navi_it, SETTING_PACKAGE, EINA_TRUE);
 		elm_naviframe_item_pop_cb_set(navi_it, _brightness_pop_cb, NULL);
 
@@ -1787,21 +1786,72 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 	}
 }
 
+static Eina_Bool
+_value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info)
+{
+	char buf[1024];
+	Evas_Object *page_layout = (Evas_Object *)data;
+
+	if (info->direction == EEXT_ROTARY_DIRECTION_CLOCKWISE) {
+		if (brightness_index < 10)
+			brightness_index++;
+	} else {
+		if (brightness_index > 0)
+			brightness_index--;
+	}
+	snprintf(buf, sizeof(buf), "-  %02d	 +", brightness_index);
+	ERR("Slider value = %s\n", buf);
+	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
+
+	is_changed = 1;		/* changed flag!! */
+
+	DBG("Setting - brightness_index : %d", brightness_index);
+	/*
+	#if !defined(FEATURE_SETTING_EMUL)
+		if (brightness_index > 0 && brightness_index < 6) {
+			int enable = display_get_hbm();
+			if (enable < 0) {
+				DBG("Setting - dispaly_get_hbm() is fail!!");
+			} else if (enable == TRUE) {
+				DBG("Setting - current HBM mode!!");
+
+				//elm_object_part_text_set(brightness_layout, "elm.text.2", "");
+
+				_set_HBM_mode(FALSE);
+			}
+	*/
+	/*set off sequnce : hbm off -> bright level down */
+	/*
+			int brightness_level = _change_bright_index_to_level(brightness_index);
+			device_set_brightness_to_settings(0, brightness_level);
+			vconf_set_int("db/setting/Brightness", brightness_level);
+		} else if (brightness_index == 6) {
+			DBG("Setting - HBM mode on!!");
+
+			_set_HBM_mode(TRUE);
+
+	//		elm_object_translatable_part_text_set(brightness_layout, "elm.text.2", "IDS_ST_BODY_OUTDOOR_MODE_ABB");
+		}
+	#else
+	*/
+	int brightness_level = _change_bright_index_to_level(brightness_index);
+	device_set_brightness_to_settings(0, brightness_level);
+	vconf_set_int("db/setting/Brightness", brightness_level);
+	/*#endif*/
+
+	return EINA_TRUE;
+}
+
 Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_info)
 {
-	Evas_Object *ly;
-	Evas_Object *btn;
+	char img_path[PATH_MAX];
 	appdata *ad = data;
 	int brightness_level = 0;
+	int real_brightness = 0;
 
 	if (ad == NULL)
 		return NULL;
 
-	temp_ad = ad;
-
-	pd = (spin_date *) malloc(sizeof(spin_date));
-
-	int real_brightness = 0;
 	device_get_brightness(0, &real_brightness);
 	DBG("Setting - Real brightness : %d", real_brightness);
 
@@ -1830,106 +1880,47 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 
 	brightness_origin_level = brightness_level;
 
-	ly = elm_layout_add(ad->nf);
+	Evas_Object *slider = NULL;
+	Evas_Object *img = NULL;
+	Evas_Object *page_layout = elm_layout_add(ad->nf);
 
-	elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default2");
+	evas_object_size_hint_weight_set(page_layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	evas_object_size_hint_align_set(page_layout, 0, EVAS_HINT_FILL);
+	elm_layout_file_set(page_layout, EDJE_PATH, "slider_brightness_layout");
+	evas_object_show(page_layout);
+	brightness_layout = page_layout;
 
-	evas_object_size_hint_min_set(ly, 320, 200);
-	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
-
-	brightness_layout = ly;
-
-	Evas_Object *label = elm_label_add(ly);
-	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
-
-	char tempbuf[128];
-	snprintf(tempbuf, sizeof(tempbuf) - 1, "%d", brightness_index);
-	elm_object_text_set(label, tempbuf);
-	elm_object_part_content_set(ly, "elm.icon.2", label);
-	evas_object_resize(label, 200, 200);
-	evas_object_show(label);
-
-	Evas_Object *slider = eext_circle_object_slider_add(ly, ad->circle_surface);
-
+	/* Add new eext_circle_object_slider with Eext_Circle_Surface object to render.
+	Value is set as 3 which is within range from 0 to 15. */
+	slider = eext_circle_object_slider_add(page_layout, ad->circle_surface);
 	eext_circle_object_value_min_max_set(slider, 0.0, 10.0);
-	eext_circle_object_value_set(slider, brightness_index);
+
+	eext_circle_object_value_set(slider, (float)brightness_index);
+
+	/* Activate Circle slider's rotary object event.
+	Its value increases/decreases its value by 0.5 to clockwise/counter clockwise
+	rotary event. */
+	eext_circle_object_slider_step_set(slider, 1.0);
+
+	char buf[1024];
+	snprintf(buf, sizeof(buf), "-  %02d	 +", brightness_index);
+	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
+
+	Eina_Bool res = eext_rotary_object_event_callback_add(slider, _value_changed_rotary, page_layout);
+	ERR("rotary_event_handler result = %d", res);
+
+	img = elm_image_add(page_layout);
+	snprintf(img_path, sizeof(img_path), "%s/Brightness/b_setting_brightness_06.png", IMG_DIR);
+	elm_image_file_set(img, img_path, NULL);
+	elm_object_part_content_set(page_layout, "elm.icon", img);
+	elm_object_part_text_set(page_layout, "elm.text.bottom", "Brightness");
+
+	/* Make unselect state all of the pages except first one */
+	elm_object_signal_emit(page_layout, "elm,state,thumbnail,unselect", "elm");
 
 	eext_rotary_object_event_activated_set(slider, EINA_TRUE);
-	eext_circle_object_slider_step_set(slider, 1);
-	evas_object_smart_callback_add(slider, "value,changed", _on_spinner_change_cb, label);
 
-	btn = elm_button_add(ly);
-	evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	elm_object_translatable_text_set(btn, "IDS_ST_BUTTON_CANCEL_ABB2");
-	elm_object_part_content_set(ly, "btn1", btn);
-	evas_object_smart_callback_add(btn, "clicked", _set_cancel_cb, ad);
-
-	btn = elm_button_add(ly);
-	evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	elm_object_translatable_text_set(btn, "IDS_WNOTI_BUTTON_OK_ABB2");
-	elm_object_part_content_set(ly, "btn2", btn);
-	evas_object_smart_callback_add(btn, "clicked", _set_brightness_clicked_cb, ad);
-
-	hbm_mode_on_original = enable;	/* backup for cancel */
-
-	pd->spinner = g_slider = slider ;
-
-	return ly;
-}
-
-static void _on_spinner_change_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	DBG("Setting - _on_spinner_change_cb() is called!");
-
-	char buf[PATH_MAX];
-	Evas_Object *label = data;
-
-	snprintf(buf, sizeof(buf), "%.0lf", eext_circle_object_value_get(obj));
-	DBG(">>>>>>>>>>>>>>>>>>>>>>>>>>> Slider value = %s", buf);
-	elm_object_text_set(label, buf);
-
-
-	/*Evas_Coord w;*/
-	/*double min, max; */
-	int idx = (int) eext_circle_object_value_get(obj);
-
-	is_changed = 1;		/* changed flag!! */
-
-	brightness_index = idx;
-
-	DBG("Setting - brightness_index : %d", brightness_index);
-
-	brightness_index = idx;
-#if !defined(FEATURE_SETTING_EMUL)
-	if (brightness_index > 0 && brightness_index < 6) {
-		int enable = display_get_hbm();
-		if (enable < 0) {
-			DBG("Setting - dispaly_get_hbm() is fail!!");
-		} else if (enable == TRUE) {
-			DBG("Setting - current HBM mode!!");
-
-			elm_object_part_text_set(brightness_layout, "elm.text.2", "");
-
-			_set_HBM_mode(FALSE);
-		}
-		/*set off sequnce : hbm off -> bright level down */
-		int brightness_level = _change_bright_index_to_level(brightness_index);
-		device_set_brightness_to_settings(0, brightness_level);
-		vconf_set_int("db/setting/Brightness", brightness_level);
-	} else if (brightness_index == 6) {
-		DBG("Setting - HBM mode on!!");
-
-		_set_HBM_mode(TRUE);
-
-		elm_object_translatable_part_text_set(brightness_layout, "elm.text.2", "IDS_ST_BODY_OUTDOOR_MODE_ABB");
-	}
-#else
-	int brightness_level = _change_bright_index_to_level(brightness_index);
-	device_set_brightness_to_settings(0, brightness_level);
-	vconf_set_int("db/setting/Brightness", brightness_level);
-#endif
+	return page_layout;
 
 }
 

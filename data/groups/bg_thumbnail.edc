@@ -238,3 +238,56 @@ group {
       }
    }
 }
+group {
+   name: "slider_brightness_layout";
+   parts{
+      part { name: "elm.swallow.bg";
+         type: SWALLOW;
+            scale: 1;
+               description { state: "default" 0.0;
+                  }
+      }
+      part { name: "elm.icon";
+         type: SWALLOW;
+            scale: 1;
+               description { state: "default" 0.0;
+					align: 0.5 1.0;
+					fixed: 1 1;
+					rel1.relative: 0.0 0.15;
+					rel2.relative: 1.0 0.85;
+                  }
+      }
+      part { name: "elm.text.slider";
+         type: TEXT;
+         scale: 1;
+         description { state: "default" 0.0;
+			align: 0.4 1.0;
+            fixed: 1 1;
+            rel1.relative: 0.0 0.0;
+            rel2.relative: 1.0 0.4;
+            text {
+               font: "Tizen:style=Regular";
+               size: 24;
+               min: 1 1;
+            }
+            color: 255 255 255 255;
+         }
+      }
+      part { name: "elm.text.bottom";
+         type: TEXT;
+         scale: 1;
+         description { state: "default" 0.0;
+			align: 0.4 0.7;
+            fixed: 1 1;
+            rel1.relative: 0.0 0.7;
+            rel2.relative: 1.0 1.0;
+            text {
+               font: "Tizen:style=Regular";
+               size: 24;
+               min: 1 1;
+            }
+            color: 255 255 255 255;
+         }
+      }
+   }
+}

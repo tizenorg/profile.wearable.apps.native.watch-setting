@@ -841,7 +841,7 @@ static int init_watch_setting(appdata *ad)
 	ad->nf = _create_naviframe_layout(ad->layout_main);
 
 	/* Naviframe Content */
-	_create_view_layout(ad);
+	/*	_create_view_layout(ad); */
 
 	init_values(ad);
 
@@ -1081,10 +1081,9 @@ static void _create_view_layout(appdata *ad)
 	if (ad->nf == NULL) return;
 
 	genlist = _create_mainlist_winset(ad->win_main, ad);
+	connect_to_wheel_with_genlist(genlist, ad);
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _naviframe_back_cb, ad); */
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_MORE, ea_naviframe_more_cb, NULL); */
-
-	connect_to_wheel_with_genlist(genlist, ad);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, btn, NULL, genlist, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -1218,6 +1217,9 @@ void app_terminate(void *data)
 	if (ad->main_genlist) {
 		ad->main_genlist = NULL;
 	}
+	if (ad->main_brightness_ly) {
+		ad->main_brightness_ly = NULL;
+	}
 	if (ad->double_rdg) {
 		ad->double_rdg = NULL;
 	}
@@ -1267,6 +1269,43 @@ void app_resume(void *data)
 		running = false;
 }
 
+void load_brightness_setting(void *data)
+{
+	Evas_Object *brightness_ly = NULL;
+	Elm_Object_Item *nf_it = NULL;
+	appdata *ad = data;
+
+	if (ad == NULL) return;
+	if (ad->nf == NULL) return;
+
+	ad->main_brightness_ly = brightness_ly = _show_brightness_popup(ad, NULL, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, brightness_ly, NULL);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+
+	elm_naviframe_item_pop_cb_set(nf_it, _pop_cb, ad); /* ad->win_main */
+}
+
+void check_direct_brightness_setting(void *data, app_control_h service)
+{
+	char *param = NULL;
+	appdata *ad = data;
+	if (app_control_get_extra_data(service, "launch-type", &param) == APP_CONTROL_ERROR_NONE) {
+		if (!strcmp(param, "brightness")) {
+			load_brightness_setting(data);
+			DBG("Setting - enable direct brightness setting");
+		} else {
+			DBG("Setting - disable direct brightness setting");
+			_create_view_layout(ad);
+			ad->main_brightness_ly = NULL;
+		}
+	} else {
+		_create_view_layout(ad);
+		ad->main_brightness_ly = NULL;
+		DBG("Setting - disable direct brightness setting - CanNOT read the launch-type param");
+	}
+	return;
+}
+
 void app_reset(app_control_h service, void *data)
 {
 	DBG("Setting - app_reset()");
@@ -1275,6 +1314,7 @@ void app_reset(app_control_h service, void *data)
 
 	char *operation = NULL;
 	app_control_get_operation(service, &operation);
+	check_direct_brightness_setting(data, service);
 	DBG("operation : %s", operation);
 	if (!ad->is_first_launch) {
 		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/main")) {
@@ -1302,6 +1342,11 @@ void app_reset(app_control_h service, void *data)
 				}
 				scrl_timer = ecore_timer_add(1, (Ecore_Task_Cb)_scroller_timer_cb, ad->main_genlist);
 			}
+
+			if (ad->main_brightness_ly) {
+				evas_object_show(ad->main_brightness_ly);
+			}
+
 		}
 	} else {
 		ad->is_first_launch = 0;
