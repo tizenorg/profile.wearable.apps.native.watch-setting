@@ -116,6 +116,7 @@ typedef struct _appdata {
 	Elm_Object_Item *language_item;
 
 	Evas_Object *main_genlist;
+	Evas_Object *main_brightness_ly;
 
 	char *device_name;
 
@@ -124,6 +125,7 @@ typedef struct _appdata {
 
 	int is_show_ringtone_toast;
 	int is_show_noti_toast;
+	int is_direct_brightness_setting;
 
 	int is_first_launch;
 
