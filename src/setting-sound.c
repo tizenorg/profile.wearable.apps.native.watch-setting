@@ -107,6 +107,43 @@ static void pm_state_vconf_changed_cb(keynode_t *key, void *data);
 static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info);
 static void stop_wav();
 
+enum {
+	SOUND_TITLE_SOUND,
+	SOUND_TITLE_SOUND_MODE,
+	SOUND_TITLE_RINGTONE,
+	SOUND_TITLE_NOTIFICATION,
+	SOUND_TITLE_VIBRATION,
+	SOUND_TITLE_PREF_ARM_MODE
+};
+
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+	int title_idx = (int)data;
+	switch(title_idx) {
+		case SOUND_TITLE_SOUND:
+		snprintf(buf, 1023, "%s", _("IDS_ST_OPT_SOUND_ABB2"));
+		break;
+		case SOUND_TITLE_SOUND_MODE:
+		snprintf(buf, 1023, "%s", "Sound mode");
+		break;
+		case SOUND_TITLE_RINGTONE:
+		snprintf(buf, 1023, "%s", _("IDS_ST_HEADER_RINGTONES_ABB"));
+		break;
+		case SOUND_TITLE_NOTIFICATION:
+		snprintf(buf, 1023, "%s", _("IDS_ST_BUTTON_NOTIFICATIONS"));
+		break;
+		case SOUND_TITLE_VIBRATION:
+		snprintf(buf, 1023, "%s", _("IDS_ST_HEADER_VIBRATION_ABB"));
+		break;
+		case SOUND_TITLE_PREF_ARM_MODE:
+		snprintf(buf, 1023, "%s", "Pref ARM Mode");
+		break;
+
+	}
+	return strdup(buf);
+}
 
 void _initialize()
 {
@@ -537,6 +574,15 @@ Evas_Object *_create_sound_list(void *data)
 
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _sound_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_SOUND, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	for (idx = 0; idx < ITEM_SIZE; idx++) {
 		if (idx == 0) {
 			itc_tmp = itc_1text;
@@ -563,6 +609,12 @@ Evas_Object *_create_sound_list(void *data)
 			}
 		}
 	}
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _sound_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	elm_genlist_item_class_free(itc_1text);
 	elm_genlist_item_class_free(itc);
 	elm_genlist_item_class_free(itc_touch_snd);
@@ -789,6 +841,14 @@ void _show_sound_mode_list(void *data)
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _sound_mode_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_SOUND_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 	Item_Data *id = calloc(sizeof(Item_Data), 1);
 	if (id) {
 		id->index = 0;
@@ -819,11 +879,18 @@ void _show_sound_mode_list(void *data)
 
 	elm_genlist_item_class_free(itc);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _sound_mode_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
+
 	g_sound_mode_genlist = genlist;
 
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _sound_mode_back_cb, ad);
@@ -1035,6 +1102,14 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _gl_ringtone_radio_get;
+
+	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_RINGTONE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 	DBG("---> ringtone_count %d	 to GENLIST", ringtone_count);
 	for (index = 0; index < ringtone_count; index++) {
 		/*DBG("---> add item to list %d	 to GENLIST", index); */
@@ -1060,6 +1135,12 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	g_ringtone_type_genlist = genlist;
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _gl_ringtone_radio_get;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	elm_object_part_content_set(popup, "elm.genlist", genlist);
 	/*	evas_object_show(popup); */
 	evas_object_show(genlist);
@@ -1078,7 +1159,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(popup, "btn.right", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_ringtone_ok_cb, ad);
 
-	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_RINGTONES_ABB"), NULL, NULL, popup, NULL);
+	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, "empty");
 	back_button_cb_push(&_response_ringtone_cancel_cb, data, btn, g_sound_genlist, nf_it);
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _ringtone_back_cb, ad); */
 
@@ -1261,6 +1342,14 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _gl_notification_radio_get;
+
+	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_NOTIFICATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 
 	for (index = 0; index < notification_count; index++) {
 		Item_Data *item = (Item_Data *)calloc(sizeof(Item_Data), 1);
@@ -1285,6 +1374,12 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	g_notification_type_genlist = genlist;
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _gl_notification_radio_get;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	elm_object_part_content_set(popup, "elm.genlist", genlist);
 	evas_object_show(genlist);
 	elm_genlist_item_class_free(itc);
@@ -1301,7 +1396,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(popup, "btn.right", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_notification_ok_cb, ad);
 
-	Elm_Widget_Item *nf_it = elm_naviframe_item_push(ad->nf, _("IDS_ST_BUTTON_NOTIFICATIONS"), NULL, NULL, popup, NULL);
+	Elm_Widget_Item *nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, "empty");
 	back_button_cb_push(&_response_notification_cancel_cb, data, btn, g_sound_genlist, nf_it);
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _notification_back_cb, ad); */
 
@@ -1495,6 +1590,14 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _gl_vibration_radio_get;
+
+	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_VIBRATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 	int count = sizeof(vibration_str) / sizeof(vibration_str[0]);
 
 	for (index = 0; index < count; index++) {
@@ -1519,6 +1622,13 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	g_vibration_type_genlist = genlist;
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _gl_vibration_radio_get;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(padding);
 	elm_object_part_content_set(popup, "elm.genlist", genlist);
 	evas_object_show(genlist);
 	elm_genlist_item_class_free(itc);
@@ -1538,7 +1648,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(btn, "clicked", _response_vibration_ok_cb, ad);
 
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-													 _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, popup, NULL);
+													 NULL, NULL, NULL, popup, "empty");
 	back_button_cb_push(&_response_vibration_cancel_cb, data, btn, g_sound_genlist, nf_it);
 }
 
@@ -1649,6 +1759,15 @@ void _show_pref_arm_mode_list(void *data)
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _pref_arm_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_PREF_ARM_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	Item_Data *id = calloc(sizeof(Item_Data), 1);
 	if (id) {
 		id->index = 0;
@@ -1671,10 +1790,16 @@ void _show_pref_arm_mode_list(void *data)
 
 	elm_genlist_item_class_free(itc);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _pref_arm_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	g_pref_arm_type_genlist = genlist;
 
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }

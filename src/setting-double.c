@@ -43,6 +43,14 @@ struct _double_menu_item *pitem_last = NULL;
 /*pkgmgr_client *pc2 = NULL; */
 static UCollator *coll = NULL;
 
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+	snprintf(buf, 1023, "%s", "Double Press Home Key");
+	return strdup(buf);
+}
+
 
 static struct _double_menu_item *_get_selected_app()
 {
@@ -593,6 +601,15 @@ Evas_Object *create_double_app_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 	selected_app = _get_selected_app();
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _gl_double_del;
+
+	elm_genlist_item_append(genlist, title_item, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	Double_Item_Data *id_none = calloc(sizeof(Double_Item_Data), 1);
 	if (id_none) {
 		id_none->pitem = pitem_none;
@@ -641,6 +658,13 @@ Evas_Object *create_double_app_list(void *data)
 	evas_object_data_set(genlist, "radio_main", ad->double_rdg);
 
 	elm_genlist_item_show(sel_it, ELM_GENLIST_ITEM_SCROLLTO_TOP);
+
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _gl_double_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 
 	g_double_app_genlist = genlist;
 

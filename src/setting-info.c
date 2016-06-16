@@ -63,6 +63,28 @@ static appdata *temp_ad = NULL;
 #define STORAGEUG_STR_MB "MB"
 #define STORAGEUG_STR_GB "GB"
 
+enum {
+	GEAR_INFO_TITLE_GEAR_INFO,
+	GEAR_INFO_TITLE_ABOUT_GEAR
+};
+
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+	int title_idx = (int)data;
+	switch(title_idx) {
+		case GEAR_INFO_TITLE_GEAR_INFO:
+		snprintf(buf, 1023, "%s", "Gear Info");
+		break;
+		case GEAR_INFO_TITLE_ABOUT_GEAR:
+		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_ABOUT_GEAR_ABB"));
+		break;
+
+	}
+	return strdup(buf);
+}
+
 void storageUg_get_internal_storage_status(double *total, double *avail)
 {
 	int ret;
@@ -332,6 +354,14 @@ Evas_Object *_create_info_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _info_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)GEAR_INFO_TITLE_GEAR_INFO, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 	menu_its = info_menu_its;
 
 	for (idx = 0; idx < sizeof(info_menu_its) / sizeof(struct _info_menu_item); idx++) {
@@ -349,6 +379,12 @@ Evas_Object *_create_info_list(void *data)
 		}
 	}
 	elm_genlist_item_class_free(itc);
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _info_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 
 	g_info_genlist = genlist;
 
@@ -670,6 +706,14 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _info_detail_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)GEAR_INFO_TITLE_ABOUT_GEAR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 	menu_its = _info_detail_menu_list;
 
 	for (idx = 0; idx < sizeof(_info_detail_menu_list) / sizeof(struct _info_menu_item); idx++) {
@@ -711,6 +755,13 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 	elm_genlist_item_class_free(itc);
 	elm_genlist_item_class_free(itc_open_src_info);
+
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _info_detail_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);

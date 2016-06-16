@@ -104,6 +104,16 @@ static Eina_Bool _app_ctrl_timer_cb(void *data);
 static Eina_Bool _scroller_timer_cb(void *data);
 static void _update_main_menu_title(void *data);
 
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+
+	snprintf(buf, 1023, "%s", "Setting");
+	return strdup(buf);
+}
+
+
 void clock_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	Evas_Object *layout = NULL;
@@ -167,7 +177,7 @@ void notification_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "notification_cb - genlist is null");
 		return;
 	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	elm_naviframe_item_pop_cb_set(nf_it, _clear_noti_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -198,7 +208,7 @@ void homescreen_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "homescreen cb - layout is null");
 		return;
 	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_homescreen_cb, ad); */
 	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_homescreen_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -233,7 +243,7 @@ void sound_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _clear_sound_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -266,7 +276,7 @@ void device_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -298,7 +308,7 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "display cb - genlist is null");
 		return;
 	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_display_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -365,7 +375,7 @@ void battery_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "battery cb - layout is null");
 		return;
 	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_battery_list_cb, ad); */
 	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_battery_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -454,7 +464,7 @@ void lockscreen_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	elm_naviframe_item_pop_cb_set(nf_it, clear_privacy_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -486,7 +496,7 @@ void connection_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_connection_resource, ad);
 	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_navi_cb, ad); */
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -521,7 +531,7 @@ void double_pressing_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, clear_double_app_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -567,7 +577,7 @@ void language_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "language cb - genlist is null");
 		return;
 	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_navi_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -598,7 +608,7 @@ void safety_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "safety cb - genlist is null");
 		return;
 	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	elm_naviframe_item_pop_cb_set(nf_it, clear_safety_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -647,7 +657,7 @@ void gear_info_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "info cb - genlist is null");
 		return;
 	}
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	elm_naviframe_item_pop_cb_set(nf_it, _clear_info_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -1001,6 +1011,14 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 		item_count = sizeof(setting_menu_its) / sizeof(struct _menu_item);
 	}
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _gl_del;
+
+	elm_genlist_item_append(genlist, title_item, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 	DBG("Setting - Main menu item count: %d", item_count);
 
 	/*while (menu_its[ idx ].name != NULL) { */
@@ -1020,6 +1038,13 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 	}
 	elm_genlist_item_class_free(itc);
 	elm_genlist_item_class_free(itc_tmp);
+
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 
 	ad->main_genlist = genlist;
 
@@ -1074,7 +1099,6 @@ static void _naviframe_back_cb(void *data, Evas_Object *obj, void *event_info)
 static void _create_view_layout(appdata *ad)
 {
 	Evas_Object *genlist = NULL;
-	Evas_Object *btn  = NULL;
 	Elm_Object_Item *nf_it = NULL;
 
 	if (ad == NULL) return;
@@ -1085,7 +1109,7 @@ static void _create_view_layout(appdata *ad)
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _naviframe_back_cb, ad); */
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_MORE, ea_naviframe_more_cb, NULL); */
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, btn, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_naviframe_item_pop_cb_set(nf_it, _pop_cb, ad); /* ad->win_main */

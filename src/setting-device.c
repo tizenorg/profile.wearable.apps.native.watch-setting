@@ -41,11 +41,6 @@ static struct _device_action_menu_item device_action_menu_its[] = {
 static int DEV_TOP_MENU_SIZE =
 	sizeof(device_action_menu_its) / sizeof(device_action_menu_its[0]);
 
-char *device_action_menu_str[] = {
-	"IDS_ST_BODY_INTENSITY",
-	"WDS_ST_MBODY_auto_open_apps_ABB",
-};
-
 
 static appdata *temp_ad						= NULL;
 static Elm_Object_Item *g_vib_item = NULL;
@@ -53,6 +48,14 @@ static Elm_Object_Item *g_vib_item = NULL;
 static int device_action_type	 = 0;			/* device_action type */
 
 static Ecore_Timer *device_action_timer = NULL;
+
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+	snprintf(buf, 1023, "%s", "Device");
+	return strdup(buf);
+}
 
 static void _set_auto_open_apps_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 {
@@ -218,7 +221,7 @@ void _double_press_home_key_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, clear_double_app_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -301,6 +304,14 @@ Evas_Object *_create_device_action_list(void *data)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 #endif
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _device_action_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 
 	menu_its = device_action_menu_its;
 
@@ -330,6 +341,12 @@ Evas_Object *_create_device_action_list(void *data)
 	elm_genlist_item_class_free(itc_auto_open_apps);
 	elm_genlist_item_class_free(itc);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _device_action_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	/*register_vconf_changing(VCONFKEY_SETAPPL_device_action_STATUS_BOOL, vibrate_vconf_changed_cb, NULL); */
 
 	return genlist;

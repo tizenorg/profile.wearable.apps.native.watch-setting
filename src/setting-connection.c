@@ -57,6 +57,13 @@ static appdata *temp_ad					= NULL;
 static bool running_connection			= false;
 static Ecore_Timer *running_timer = NULL;
 
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+	snprintf(buf, 1023, "%s", "Connection");
+	return strdup(buf);
+}
 
 static Eina_Bool _app_ctrl_timer_cb(void *data)
 {
@@ -392,6 +399,15 @@ Evas_Object *_create_connection_list(void *data)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 #endif
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _connection_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	menu_its = connection_menu_its;
 
 	for (idx = 0; idx < CONNECT_TOP_MENU_SIZE; idx++) {
@@ -430,6 +446,12 @@ Evas_Object *_create_connection_list(void *data)
 	elm_genlist_item_class_free(text2_icon);
 	elm_genlist_item_class_free(itc);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _connection_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 
 	register_vconf_changing(VCONFKEY_BT_STATUS, bt_status_vconf_changed_cb, ad);
 	register_vconf_changing(VCONFKEY_WIFI_STATE, wifi_status_vconf_changed_cb, ad);

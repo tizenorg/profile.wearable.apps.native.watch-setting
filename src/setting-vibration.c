@@ -65,6 +65,28 @@ static Ecore_Timer *vibration_timer = NULL;
 static void vibrate_vconf_changed_cb(keynode_t *key, void *data);
 static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info);
 
+enum {
+	VIBRATION_TITLE_VIBRATION,
+	VIBRATION_TITLE_INTENSITY
+};
+
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+	int title_idx = (int)data;
+	switch(title_idx) {
+		case VIBRATION_TITLE_VIBRATION:
+		snprintf(buf, 1023, "%s", _("IDS_ST_HEADER_VIBRATION_ABB"));
+		break;
+		case VIBRATION_TITLE_INTENSITY:
+		snprintf(buf, 1023, "%s", "Intensity");
+		break;
+
+	}
+	return strdup(buf);
+}
+
 void _clear_vibration_resource()
 {
 	if (vibration_timer) {
@@ -230,6 +252,14 @@ Evas_Object *_create_vibration_list(void *data)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 #endif
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _sound_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)VIBRATION_TITLE_VIBRATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 
 	menu_its = vibration_menu_its;
 
@@ -259,6 +289,12 @@ Evas_Object *_create_vibration_list(void *data)
 	elm_genlist_item_class_free(itc_long_buzz);
 	elm_genlist_item_class_free(itc);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _sound_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	g_sound_genlist = genlist;
 
 	register_vconf_changing(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, vibrate_vconf_changed_cb, NULL);
@@ -419,6 +455,7 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 	itc->item_style = "1text.1icon.1";
 	itc->func.text_get = _gl_vibration_text_get;
 	itc->func.content_get = _gl_vibration_radio_get;
+	itc->func.del = _sound_gl_del;
 
 	Evas_Object *genlist;
 	genlist = elm_genlist_add(popup);
@@ -432,6 +469,14 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 #endif
 
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _sound_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)VIBRATION_TITLE_INTENSITY, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 
 	int count = sizeof(vibration_power_str) / sizeof(vibration_power_str[0]);
 
@@ -455,6 +500,12 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 
 	evas_object_data_set(genlist, "radio_main", ad->vibration_rdg);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _sound_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	g_vibration_type_genlist = genlist;
 
 	elm_object_part_content_set(popup, "elm.genlist", genlist);

@@ -135,6 +135,52 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 static void _set_rotate_screen(const int rotation);
 static int _get_rotate_screen();
 
+enum {
+	DISPLAY_TITLE_DISPLAY,
+	DISPLAY_TITLE_LANGUAGE,
+	DISPLAY_TITLE_SCREEN_TIMEOUT,
+	DISPLAY_TITLE_FONT,
+	DISPLAY_TITLE_FONT_STYLE,
+	DISPLAY_TITLE_FONT_SIZE,
+	DISPLAY_TITLE_NOTIFICATION_INDICATOR,
+	DISPLAY_TITLE_ROTATE,
+};
+
+static char *
+_gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
+{
+	char buf[1024];
+	int title_idx = (int)data;
+	switch(title_idx) {
+		case DISPLAY_TITLE_DISPLAY:
+		snprintf(buf, 1023, "%s", "Display");
+		break;
+		case DISPLAY_TITLE_LANGUAGE:
+		snprintf(buf, 1023, "%s", _("IDS_ST_BUTTON_LANGUAGE"));
+		break;
+		case DISPLAY_TITLE_SCREEN_TIMEOUT:
+		snprintf(buf, 1023, "%s", _("IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"));
+		break;
+		case DISPLAY_TITLE_FONT:
+		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_FONT"));
+		break;
+		case DISPLAY_TITLE_FONT_STYLE:
+		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_FONT_STYLE"));
+		break;
+		case DISPLAY_TITLE_FONT_SIZE:
+		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_FONT_SIZE_ABB"));
+		break;
+		case DISPLAY_TITLE_NOTIFICATION_INDICATOR:
+		snprintf(buf, 1023, "%s", "Notification indicator");
+		break;
+		case DISPLAY_TITLE_ROTATE:
+		snprintf(buf, 1023, "%s", "Rotate");
+		break;
+
+	}
+	return strdup(buf);
+}
+
 void _init_display()
 {
 	register_vconf_changing(VCONFKEY_WMS_WMANAGER_CONNECTED, change_language_enabling, NULL);
@@ -285,7 +331,7 @@ void _display_gl_language_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BUTTON_LANGUAGE", NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_lang_cb, ad);
 #if !defined(FEATURE_SETTING_TELEPHONY)
@@ -405,6 +451,15 @@ Evas_Object *_create_display_list(void *data)
 
 	menu_its = display_menu_its;
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _display_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_DISPLAY, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	int size = sizeof(display_menu_its) / sizeof(struct _display_menu_item);
 
 	for (idx = 0; idx < size; idx++) {
@@ -453,6 +508,13 @@ Evas_Object *_create_display_list(void *data)
 	elm_genlist_item_class_free(itc);
 	elm_genlist_item_class_free(itc2);
 	elm_genlist_item_class_free(itc3);
+
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _display_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 
 	g_display_genlist = genlist;
 
@@ -599,6 +661,15 @@ void _show_screen_timeout_list(void *data)
 	int emul_end = 1;
 #endif
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _screen_timeout_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_SCREEN_TIMEOUT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	for (idx = 0; idx < SCREEN_TIME_COUNT - emul_end; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
@@ -621,11 +692,18 @@ void _show_screen_timeout_list(void *data)
 		elm_genlist_item_show(curr_item, ELM_GENLIST_ITEM_SCROLLTO_TOP);
 	}
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _screen_timeout_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
+
 	g_screen_time_genlist = genlist;
 
 	elm_genlist_item_class_free(itc);
 
-	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB", NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -986,6 +1064,14 @@ void _show_font_list(void *data)
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _font_size_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 	for (idx = 0; idx < 2; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
@@ -1001,9 +1087,16 @@ void _show_font_list(void *data)
 
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _font_size_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
+
 	elm_genlist_item_class_free(itc);
 
-	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT", NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -1252,6 +1345,15 @@ int _show_font_style_list(void *data)
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _font_style_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	FREE(font_name);
 	ret = system_settings_get_value_string(SYSTEM_SETTINGS_KEY_FONT_TYPE, &tmp_name);
 	if (ret != SYSTEM_SETTINGS_ERROR_NONE) {
@@ -1309,6 +1411,13 @@ int _show_font_style_list(void *data)
 		}
 	}
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _font_style_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
+
 	evas_font_reinit();
 	ad->font_style_rdg = elm_radio_add(genlist);
 	elm_radio_state_value_set(ad->font_style_rdg, -1);
@@ -1324,7 +1433,7 @@ int _show_font_style_list(void *data)
 
 	evas_object_smart_callback_add(genlist, "language,changed", _lang_update_font_style_list, ad);
 
-	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT_STYLE", NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -1365,6 +1474,15 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 			ERR("failed to call system_setting_get_value_string with err %d", ret);
 			tmp_name = _get_default_font();
 		}
+
+		Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+		title_item ->func.text_get = _gl_menu_title_text_get;
+		title_item->item_style = "title";
+		title_item->func.del = _font_style_gl_del;
+
+		elm_genlist_item_append(g_font_style_genlist, title_item, (void*)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+		elm_genlist_item_class_free(title_item);
 
 		default_font_name = _get_default_font();
 
@@ -1407,6 +1525,13 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 			evas_object_del(ad->font_style_rdg);
 			ad->font_style_rdg = NULL;
 		}
+
+		Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+		padding->item_style = "padding";
+		padding->func.del = _font_style_gl_del;
+
+		elm_genlist_item_append(g_font_style_genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+		elm_genlist_item_class_free(padding);
 
 		evas_font_reinit();
 		ad->font_style_rdg = elm_radio_add(g_font_style_genlist);
@@ -1453,6 +1578,15 @@ void _show_font_size_list(void *data)
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _font_size_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT_SIZE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	for (idx = 0; idx < FONT_SIZE_COUNT; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
@@ -1467,13 +1601,20 @@ void _show_font_size_list(void *data)
 
 	evas_object_data_set(genlist, "radio_main", ad->font_size_rdg);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _font_size_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
+
 	g_font_size_genlist = genlist;
 
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
 	elm_genlist_item_class_free(itc);
 
-	nf_it = elm_naviframe_item_push(ad->nf, "IDS_ST_BODY_FONT_SIZE_ABB", NULL, NULL, layout, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1590,6 +1731,15 @@ void _show_rotate_screen_list(void *data)
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
 
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _rotate_screen_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_ROTATE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
+
 	for (idx = 0; idx < ROTATE_SCREEN_COUNT; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
@@ -1604,11 +1754,17 @@ void _show_rotate_screen_list(void *data)
 
 	evas_object_data_set(genlist, "radio_main", ad->rotate_screen_rdg);
 
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _rotate_screen_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
 	g_screen_time_genlist = genlist;
 
 	elm_genlist_item_class_free(itc);
 
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
 
@@ -1737,7 +1893,6 @@ static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
 static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
 static void brightness_vconf_changed_cb(keynode_t *key, void *data);
-static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info);
 static void _set_brightness_clicked_cb(void *data, Evas_Object *obj, void *event_info);
 static void sync_brightness(int real_brightness);
 static int _change_bright_lovel_to_index(int level);
@@ -1974,71 +2129,11 @@ static void brightness_vconf_changed_cb(keynode_t *key, void *data)
 	}
 }
 
-static void _set_brightness_clicked_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	appdata *ad = (appdata *) data;
-	if (ad == NULL)
-		return;
-
-#if !defined(FEATURE_SETTING_EMUL)
-	int enable = display_get_hbm();
-	if (enable == TRUE) {
-		char buf[1024];
-		snprintf(buf, sizeof(buf) - 1, _("IDS_IDLE_POP_AFTER_P1SD_MINS_BRIGHTNESS_WILL_BE_RESET_TO_DEFAULT_LEVEL_HP2SD"), 5, 4);
-
-		/* show toast - automatic freed!! */
-		struct _toast_data *toast = _create_toast(ad, buf);
-		if (toast) {
-			_show_toast(ad, toast);
-		}
-	} else {
-		int brightness_level = _change_bright_index_to_level(brightness_index);
-
-		device_set_brightness_to_settings(0, brightness_level);
-	}
-#else
-	int brightness_level = _change_bright_index_to_level(brightness_index);
-	device_set_brightness_to_settings(0, brightness_level);
-	vconf_set_int("db/setting/Brightness", brightness_level);
-#endif
-
-	brightness_layout = NULL;
-
-	if (ad->nf) {
-		elm_naviframe_item_pop(ad->nf);
-	}
-}
-
 static void sync_brightness(int real_brightness)
 {
 	DBG("Setting - Synchronized brightness level");
 
 	vconf_set_int(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, real_brightness);
-}
-
-static void _set_cancel_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	appdata *ad = data;
-	if (ad == NULL)
-		return;
-#if !defined(FEATURE_SETTING_EMUL)
-	int enable = display_get_hbm();
-	if (hbm_mode_on_original) {
-		if (enable == DISABLE) {
-			_set_HBM_mode(TRUE);
-		}
-	} else {
-		if (enable == ENABLE) {
-			_set_HBM_mode(FALSE);
-		}
-	}
-#endif
-
-	device_set_brightness_to_settings(0, brightness_origin_level);
-
-	brightness_layout = NULL;
-
-	elm_naviframe_item_pop(ad->nf);
 }
 
 static int _change_bright_lovel_to_index(int level)
@@ -2393,6 +2488,12 @@ static char *_gl_noti_title_get(void *data, Evas_Object *obj, const char *part)
 	return strdup(buf);
 }
 
+static void _noti_indicator_gl_del(void *data, Evas_Object *obj)
+{
+	Item_Data *id = data;
+	if (id)
+		free(id);
+}
 
 static void _show_noti_indicator_list(void *data)
 {
@@ -2412,12 +2513,12 @@ static void _show_noti_indicator_list(void *data)
 	itc[0]->item_style = "1text.1icon.1";
 	itc[0]->func.text_get = _gl_noti_title_get;
 	itc[0]->func.content_get = _gl_display_noti_indicator_check_get;
-	itc[0]->func.del = _font_size_gl_del;
+	itc[0]->func.del = _noti_indicator_gl_del;
 
 	itc[1] = elm_genlist_item_class_new();
 	itc[1]->item_style = "1text";
 	itc[1]->func.text_get = _gl_noti_title_get;
-	itc[1]->func.del = _font_size_gl_del;
+	itc[1]->func.del = _noti_indicator_gl_del;
 
 
 	Evas_Object *layout = elm_layout_add(ad->nf);
@@ -2429,6 +2530,15 @@ static void _show_noti_indicator_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
+
+	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
+	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->item_style = "title";
+	title_item->func.del = _noti_indicator_gl_del;
+
+	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_NOTIFICATION_INDICATOR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+
+	elm_genlist_item_class_free(title_item);
 
 	for (idx = 0; idx < 2; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
@@ -2445,7 +2555,14 @@ static void _show_noti_indicator_list(void *data)
 	elm_genlist_item_class_free(itc[0]);
 	elm_genlist_item_class_free(itc[1]);
 
-	nf_it = elm_naviframe_item_push(ad->nf, "Notification indicator", NULL, NULL, layout, NULL);
+	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
+	padding->item_style = "padding";
+	padding->func.del = _noti_indicator_gl_del;
+
+	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_class_free(padding);
+
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
