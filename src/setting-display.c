@@ -68,10 +68,11 @@ static struct _display_menu_item display_menu_its[] = {
 	{ "Notification indicator",	SETTING_DISPLAY_NOTIFICATION_INDICATOR,	_display_gl_display_noti_indicator_cb },
 	{ "IDS_ST_BUTTON_BRIGHTNESS",	SETTING_DISPLAY_BRIGTHNESS, _display_brightness_cb	 },
 	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT,	_display_gl_font_cb		},
-	{ "IDS_ST_BUTTON_LANGUAGE",				SETTING_DISPLAY_LANG,	_display_gl_language_cb	},
+/*	{ "IDS_ST_BUTTON_LANGUAGE",				SETTING_DISPLAY_LANG,	_display_gl_language_cb	},
 #if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
 	{ "IDS_ST_MBODY_MANAGE_APPS_ABB",	SETTING_DISPLAY_EDIT_APPS,	_homescreen_gl_edit_apps_cb	},
 #endif
+*/
 };
 
 static struct _font_menu_item font_menu_its[] = {
