@@ -1105,7 +1105,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _gl_ringtone_radio_get;
+	title_item->func.del = _sound_gl_del;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_RINGTONE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1137,7 +1137,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
 	padding->item_style = "padding";
-	padding->func.del = _gl_ringtone_radio_get;
+	padding->func.del = _sound_gl_del;
 
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 	elm_genlist_item_class_free(padding);
@@ -1345,7 +1345,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _gl_notification_radio_get;
+	title_item->func.del = _sound_gl_del;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_NOTIFICATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1376,7 +1376,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
 	padding->item_style = "padding";
-	padding->func.del = _gl_notification_radio_get;
+	padding->func.del = _sound_gl_del;
 
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 	elm_genlist_item_class_free(padding);
@@ -1593,7 +1593,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _gl_vibration_radio_get;
+	title_item->func.del = _sound_gl_del;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_VIBRATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1624,7 +1624,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
 	padding->item_style = "padding";
-	padding->func.del = _gl_vibration_radio_get;
+	padding->func.del = _sound_gl_del;
 
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
