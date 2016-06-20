@@ -529,7 +529,8 @@ static char *_gl_screen_timeout_title_get(void *data, Evas_Object *obj, const ch
 #ifdef FEATURE_SETTING_EMUL
 	int emul_val = 1;
 #else
-	int emul_val = 0;
+/*	int emul_val = 0; */
+	int emul_val = 1;
 #endif
 
 	if (!strcmp(part, "elm.text")) {
@@ -594,7 +595,8 @@ static Evas_Object *_gl_screen_timeout_ridio_get(void *data, Evas_Object *obj, c
 #ifdef FEATURE_SETTING_EMUL
 	int emul_minus = 0;
 #else
-	int emul_minus = 1;
+/*	int emul_minus = 1; */
+	int emul_minus = 0;
 #endif
 
 	if (!strcmp(part, "elm.icon")) {
@@ -659,7 +661,8 @@ void _show_screen_timeout_list(void *data)
 #ifdef FEATURE_SETTING_EMUL
 	int emul_end = 0;
 #else
-	int emul_end = 1;
+/*	int emul_end = 1; */
+	int emul_end = 0;
 #endif
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
@@ -1894,7 +1897,6 @@ static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
 static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
 static void brightness_vconf_changed_cb(keynode_t *key, void *data);
-static void _set_brightness_clicked_cb(void *data, Evas_Object *obj, void *event_info);
 static void sync_brightness(int real_brightness);
 static int _change_bright_lovel_to_index(int level);
 #if !defined(FEATURE_SETTING_EMUL)
