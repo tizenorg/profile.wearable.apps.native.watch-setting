@@ -210,7 +210,6 @@ CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.xml.in ${CMAKE_SOURCE
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.xml DESTINATION /usr/share/packages)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.png DESTINATION  /usr/share/icons/default/small)
 INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting_small.png DESTINATION  /usr/share/icons/default/small)
-INSTALL(FILES ${CMAKE_SOURCE_DIR}/org.tizen.watch-setting.efl DESTINATION  /etc/smack/accesses.d/)
 #INSTALL(FILES ${CMAKE_SOURCE_DIR}/history DESTINATION /opt/usr/apps/org.tizen.watch-setting/data)
 
 #INSTALL fake image

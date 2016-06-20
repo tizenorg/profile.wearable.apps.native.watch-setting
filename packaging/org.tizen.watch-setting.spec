@@ -162,7 +162,6 @@ mkdir -p %{TZ_SYS_SHARE}/settings
 
 %files
 %manifest %{name}.manifest
-/etc/smack/accesses.d/org.tizen.watch-setting.efl
 %defattr(-,root,root,-)
 %attr(-,inhouse,inhouse)
 %dir %{PREFIX}/data
