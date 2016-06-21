@@ -2000,6 +2000,45 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	return EINA_TRUE;
 }
 
+static void _press_plus_brightness_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	char buf[1024];
+	Evas_Object *page_layout = (Evas_Object *)data;
+
+	if(brightness_index<10)
+		brightness_index++;
+	snprintf(buf, sizeof(buf), "%02d", brightness_index);
+	ERR("Pressed Plus btn!! Slider value = %s\n", buf);
+	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
+
+	is_changed = 1;		/* changed flag!! */
+
+	DBG("Setting - brightness_index : %d", brightness_index);
+	int brightness_level = _change_bright_index_to_level(brightness_index);
+	device_set_brightness_to_settings(0, brightness_level);
+	vconf_set_int("db/setting/Brightness", brightness_level);
+
+}
+
+static void _press_minus_brightness_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	char buf[1024];
+	Evas_Object *page_layout = (Evas_Object *)data;
+
+	if(brightness_index>0)
+		brightness_index--;
+	snprintf(buf, sizeof(buf), "%02d", brightness_index);
+	ERR("Pressed Plus btn!! Slider value = %s\n", buf);
+	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
+
+	is_changed = 1;		/* changed flag!! */
+
+	DBG("Setting - brightness_index : %d", brightness_index);
+	int brightness_level = _change_bright_index_to_level(brightness_index);
+	device_set_brightness_to_settings(0, brightness_level);
+	vconf_set_int("db/setting/Brightness", brightness_level);
+}
+
 Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_info)
 {
 	char img_path[PATH_MAX];
@@ -2061,8 +2100,23 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	eext_circle_object_slider_step_set(slider, 1.0);
 
 	char buf[1024];
-	snprintf(buf, sizeof(buf), "-  %02d	 +", brightness_index);
+	snprintf(buf, sizeof(buf), "%02d", brightness_index);
 	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
+
+	Evas_Object *btn_minus;
+	btn_minus = elm_image_add(page_layout);
+	snprintf(img_path, sizeof(img_path), "%s/minus_btn.png", IMG_DIR);
+	elm_image_file_set(btn_minus, img_path, NULL);
+	elm_object_part_content_set(page_layout, "btn1", btn_minus);
+	evas_object_smart_callback_add(btn_minus, "clicked", _press_minus_brightness_cb, page_layout);
+
+	Evas_Object *btn_plus;
+	btn_plus = elm_image_add(page_layout);
+	snprintf(img_path, sizeof(img_path), "%s/plus_btn.png", IMG_DIR);
+	elm_image_file_set(btn_plus, img_path, NULL);
+	elm_object_part_content_set(page_layout, "btn2", btn_plus);
+	evas_object_smart_callback_add(btn_plus, "clicked", _press_plus_brightness_cb, page_layout);
+
 
 	Eina_Bool res = eext_rotary_object_event_callback_add(slider, _value_changed_rotary, page_layout);
 	ERR("rotary_event_handler result = %d", res);

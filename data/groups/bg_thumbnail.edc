@@ -208,7 +208,7 @@ group {
          type: TEXT;
          scale: 1;
          description { state: "default" 0.0;
-			align: 0.4 1.0;
+			align: 0.5 1.0;
             fixed: 1 1;
             rel1.relative: 0.0 0.0;
             rel2.relative: 1.0 0.4;
@@ -220,6 +220,26 @@ group {
             color: 255 255 255 255;
          }
       }
+      part { name: "btn1";
+		 type: SWALLOW;
+		 scale: 1;
+		 description {
+			state: "default" 0.0;
+			fixed: 1 1;
+			rel1.relative: 144/360 58/360;
+			rel2.relative: 168/360 85/360;
+			}
+	 }
+
+	  part { name: "btn2";
+		 type: SWALLOW;
+		 scale: 1;
+		 description {
+		   state: "default" 0.0;
+			rel1.relative: 193/360 58/360;
+			rel2.relative: 217/360 85/360;
+		}
+	 }
       part { name: "elm.text.bottom";
          type: TEXT;
          scale: 1;
@@ -257,11 +277,12 @@ group {
 					rel2.relative: 1.0 0.85;
                   }
       }
+
       part { name: "elm.text.slider";
          type: TEXT;
          scale: 1;
          description { state: "default" 0.0;
-			align: 0.4 1.0;
+			align: 0.5 1.0;
             fixed: 1 1;
             rel1.relative: 0.0 0.0;
             rel2.relative: 1.0 0.4;
@@ -273,6 +294,28 @@ group {
             color: 255 255 255 255;
          }
       }
+
+      part { name: "btn1";
+		 type: SWALLOW;
+		 scale: 1;
+		 description {
+			state: "default" 0.0;
+			fixed: 1 1;
+			rel1.relative: 144/360 58/360;
+			rel2.relative: 168/360 85/360;
+			}
+	 }
+
+	  part { name: "btn2";
+		 type: SWALLOW;
+		 scale: 1;
+		 description {
+		   state: "default" 0.0;
+			rel1.relative: 193/360 58/360;
+			rel2.relative: 217/360 85/360;
+		}
+	 }
+
       part { name: "elm.text.bottom";
          type: TEXT;
          scale: 1;

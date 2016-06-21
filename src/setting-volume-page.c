@@ -380,7 +380,7 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 		if (pd->slider_value[cur_page] > 0)
 			pd->slider_value[cur_page]--;
 	}
-	snprintf(buf, sizeof(buf), "-  %02d	 +", pd->slider_value[cur_page]);
+	snprintf(buf, sizeof(buf), "%02d", pd->slider_value[cur_page]);
 	ERR("Slider value = %s\n", buf);
 	elm_object_part_text_set(pd->page_layout[cur_page], "elm.text.slider", buf);
 
@@ -421,6 +421,66 @@ Eina_Bool _clear_volume_setting_cb(void *data, Elm_Object_Item *it)
 	if (pd) free(pd);
 
 	return EINA_TRUE;
+}
+
+static void _press_plus_volume_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	char buf[1024];
+	/*Evas_Object *layout = (Evas_Object *)data; */
+	page_data *pd = (page_data *)data;
+	int cur_page = 0;
+	elm_scroller_current_page_get(pd->scroller, &cur_page, NULL);
+
+	if (pd->slider_value[cur_page] < 10)
+		pd->slider_value[cur_page]++;
+
+	snprintf(buf, sizeof(buf), "%02d", pd->slider_value[cur_page]);
+	ERR("Slider value = %s\n", buf);
+	elm_object_part_text_set(pd->page_layout[cur_page], "elm.text.slider", buf);
+
+	switch (cur_page) {
+	case 0: /*media */
+		multimedia_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 1: /*nodification */
+		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 2: /*system */
+		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	default:
+		break;
+	}
+}
+
+static void _press_minus_volume_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	char buf[1024];
+	/*Evas_Object *layout = (Evas_Object *)data; */
+	page_data *pd = (page_data *)data;
+	int cur_page = 0;
+	elm_scroller_current_page_get(pd->scroller, &cur_page, NULL);
+
+	if (pd->slider_value[cur_page] > 0)
+		pd->slider_value[cur_page]--;
+
+	snprintf(buf, sizeof(buf), "%02d", pd->slider_value[cur_page]);
+	ERR("Slider value = %s\n", buf);
+	elm_object_part_text_set(pd->page_layout[cur_page], "elm.text.slider", buf);
+
+	switch (cur_page) {
+	case 0: /*media */
+		multimedia_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 1: /*nodification */
+		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 2: /*system */
+		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	default:
+		break;
+	}
 }
 
 void _create_volume_page(void *data)
@@ -530,11 +590,25 @@ void _create_volume_page(void *data)
 		eext_circle_object_slider_step_set(slider, 1.0);
 
 		char buf[1024];
-		snprintf(buf, sizeof(buf), "-  %02d	 +", pd->slider_value[i]);
+		snprintf(buf, sizeof(buf), "%02d", pd->slider_value[i]);
 		elm_object_part_text_set(page_layout, "elm.text.slider", buf);
 
 		Eina_Bool res = eext_rotary_object_event_callback_add(slider, _value_changed_rotary, pd);
 		ERR("rotary_event_handler result = %d", res);
+
+		Evas_Object *btn_minus;
+		btn_minus = elm_image_add(page_layout);
+		snprintf(img_path, sizeof(img_path), "%s/minus_btn.png", IMG_DIR);
+		elm_image_file_set(btn_minus, img_path, NULL);
+		elm_object_part_content_set(page_layout, "btn1", btn_minus);
+		evas_object_smart_callback_add(btn_minus, "clicked", _press_minus_volume_cb, pd);
+
+		Evas_Object *btn_plus;
+		btn_plus = elm_image_add(page_layout);
+		snprintf(img_path, sizeof(img_path), "%s/plus_btn.png", IMG_DIR);
+		elm_image_file_set(btn_plus, img_path, NULL);
+		elm_object_part_content_set(page_layout, "btn2", btn_plus);
+		evas_object_smart_callback_add(btn_plus, "clicked", _press_plus_volume_cb, pd);
 
 		img = elm_image_add(page_layout);
 		snprintf(img_path, sizeof(img_path), "%s/%s", IMG_DIR, img_names[i]);
@@ -686,10 +760,10 @@ static void _play_sound_all_type(int sound_type, float volume)
 
 		sound_manager_set_volume(sound_type, temp_volume_index);
 	} else if (sound_type == SOUND_TYPE_NOTIFICATION) {
-		DBG("Setting - notification safety volume!!");
+		ERR("Setting - notification safety volume!!");
 		sound_manager_set_volume(sound_type, temp_volume_index);
 	} else {
-		DBG("Setting - normal volume!! ----- volume_index : %d ", volume_index);
+		ERR("Setting - normal volume!! ----- volume_index : %d ", volume_index);
 		err = sound_manager_set_volume(sound_type, volume_index);
 		if (err != SOUND_MANAGER_ERROR_NONE) {
 			ERR("Setting - sound_manager_set_volume() is failed! : %d", err);
