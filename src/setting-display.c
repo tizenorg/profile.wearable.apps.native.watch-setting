@@ -708,7 +708,7 @@ void _show_screen_timeout_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
+//	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1279,7 +1279,7 @@ static Eina_List *_get_available_font_list()
 				if (!strncmp((const char *)file, SETTING_FONT_DOWNLOADED_FONT_PATH, download_path_len)) {
 					/* Find proper family name for current locale. */
 					while (locale && family && lang) {
-						/*DBG("locale: %s, family: %s, lang: %s", locale, family, lang); */
+						ERR("locale: %s, family: %s, lang: %s", locale, family, lang);
 
 						if (!strncmp(locale, (char *)lang, strlen((char *)lang))) {
 							family_result = (char *)family;
@@ -1870,9 +1870,9 @@ static void change_screen_time_cb(keynode_t *key, void *data)
 {
 	DBG("Setting - change_screen_time_cb");
 
-	if (screen_time_item) {
-		elm_genlist_item_update(screen_time_item);
-	}
+//	if (screen_time_item) {
+//		elm_genlist_item_update(screen_time_item);
+//	}
 }
 
 static void change_language_cb(keynode_t *key, void *data)
