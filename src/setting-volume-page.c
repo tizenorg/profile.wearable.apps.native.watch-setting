@@ -69,37 +69,17 @@ multimedia_value_changed_page(int idx)
 }
 
 static void
-ringtone_value_changed_page(int idx)
+normal_volume_value_changed_page(int idx)
 {
 	DBG("Setting - ringtone_value_changed() is called!");
-	if (get_sound_mode() == SOUND_MODE_SOUND) {
 
-		if (curr_sound_type != SOUND_TYPE_MEDIA) {
-			if (is_changing_level_by_vconf) {
-				DBG("Setting - is_changing_level_by_vconf!!!!");
+	is_changed = 1;		/* changed flag!! */
 
-				is_changing_level_by_vconf = 0;
-				return;
-			}
-		}
+	volume_index = idx;
 
-		is_changed = 1;		/* changed flag!! */
+	DBG("Setting - volume_index : %d", volume_index);
 
-		volume_index = idx;
-
-		DBG("Setting - volume_index : %d", volume_index);
-
-		if (curr_sound_type == SOUND_TYPE_MEDIA) {
-			if (!is_play_media_sound) {
-				_play_sound_all_type(curr_sound_type, 0.0);
-				is_play_media_sound = 0;
-			} else {
-				is_play_media_sound = 0;
-			}
-		} else {
-			_play_sound_all_type(curr_sound_type, 0.0);
-		}
-	}
+	_play_sound_all_type(curr_sound_type, 0.0);
 }
 
 void _initialize_volume()
@@ -389,10 +369,10 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 		multimedia_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	case 1: /*nodification */
-		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	case 2: /*system */
-		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	default:
 		break;
@@ -443,10 +423,10 @@ static void _press_plus_volume_cb(void *data, Evas_Object *obj, void *event_info
 		multimedia_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	case 1: /*nodification */
-		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	case 2: /*system */
-		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	default:
 		break;
@@ -473,10 +453,10 @@ static void _press_minus_volume_cb(void *data, Evas_Object *obj, void *event_inf
 		multimedia_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	case 1: /*nodification */
-		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	case 2: /*system */
-		ringtone_value_changed_page(pd->slider_value[cur_page]);
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	default:
 		break;
