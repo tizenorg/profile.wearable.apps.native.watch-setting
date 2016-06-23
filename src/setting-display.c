@@ -86,7 +86,7 @@ static struct _display_menu_item noti_menu_its[] = {
 };
 
 static int timeout_arr[] = {
-	0, 10, 15, 30, 60, 300
+	0, 15, 30, 60, 300
 };
 
 static char *font_size_str[] = {
@@ -537,14 +537,12 @@ static char *_gl_screen_timeout_title_get(void *data, Evas_Object *obj, const ch
 		if (emul_val == 1 && id->index == 0) {
 			snprintf(buf, sizeof(buf) - 1, "No off");
 		} else if (id->index == (0 + emul_val)) {
-			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_10SEC"));
-		} else if (id->index == (1 + emul_val)) {
 			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_15SEC"));
-		} else if (id->index == (2 + emul_val)) {
+		} else if (id->index == (1 + emul_val)) {
 			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_30SEC"));
-		} else if (id->index == (3 + emul_val)) {
+		} else if (id->index == (2 + emul_val)) {
 			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_1_MINUTE_ABB2"));
-		} else {
+		} else if (id->index == (3 + emul_val)) {
 			snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_5_MINUTES"));
 		}
 	}
