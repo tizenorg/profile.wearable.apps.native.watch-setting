@@ -42,9 +42,9 @@
 
 
 /* temporary source code */
-#ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR
-#define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator"
-#endif
+//#ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR
+//#define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator"
+//#endif
 #define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
 
 
@@ -1897,7 +1897,7 @@ static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
 static void brightness_vconf_changed_cb(keynode_t *key, void *data);
 static void sync_brightness(int real_brightness);
 static int _change_bright_lovel_to_index(int level);
-#if !defined(FEATURE_SETTING_EMUL)
+#if 0 //!defined(FEATURE_SETTING_EMUL)
 static void _set_HBM_mode(int enable);
 #endif
 static int _change_bright_index_to_level(int index);
@@ -2245,7 +2245,7 @@ static int _change_bright_index_to_level(int index)
 	return level;
 }
 
-#if !defined(FEATURE_SETTING_EMUL)
+#if 0 //!defined(FEATURE_SETTING_EMUL)
 static void _set_HBM_mode(int enable)
 {
 	if (display_enable_hbm(enable, 300) == 0) {	/* after 5 minutes, HBM mode will be off! */
@@ -2503,7 +2503,7 @@ static void _display_noti_indicator_check_cb(void *data, Evas *e, Evas_Object *o
 		return;
 	}
 	int nofi_indicator = 0;
-	vconf_get_int(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR, &nofi_indicator);
+	vconf_get_bool(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR, &nofi_indicator);
 	nofi_indicator = !nofi_indicator;
 	vconf_set_bool(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR, nofi_indicator);
 }
@@ -2513,13 +2513,14 @@ static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object
 	Evas_Object *check = NULL;
 
 	if (!strcmp(part, "elm.icon")) {
-		int nofi_indicator = 0;
+		int noti_indicator = 0;
 		check = elm_check_add(obj);
 
-		vconf_get_int(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR , &nofi_indicator);
+		vconf_get_bool(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR , &noti_indicator);
 		elm_object_style_set(check, "on&off");
+		ERR("notification_indicator : %d", noti_indicator);
 
-		elm_check_state_set(check, (nofi_indicator) ? EINA_TRUE : EINA_FALSE);
+		elm_check_state_set(check, (noti_indicator) ? EINA_TRUE : EINA_FALSE);
 		evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _display_noti_indicator_check_cb, (void *)check);
 		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
 		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
