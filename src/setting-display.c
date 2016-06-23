@@ -622,9 +622,8 @@ static Evas_Object *_gl_screen_timeout_ridio_get(void *data, Evas_Object *obj, c
 
 static void _screen_timeout_gl_del(void *data, Evas_Object *obj)
 {
-	Item_Data *id = data;
-	if (id)
-		free(id);
+	//Item_Data *id = data;
+	//if (id) free(id);
 }
 
 void _show_screen_timeout_list(void *data)
