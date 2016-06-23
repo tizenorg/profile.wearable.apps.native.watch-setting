@@ -532,7 +532,7 @@ void double_pressing_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
-	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, clear_double_app_cb, ad);
+	back_button_cb_push(&clear_double_app_cb, data, NULL,  ad->main_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -658,9 +658,9 @@ void gear_info_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
-	elm_naviframe_item_pop_cb_set(nf_it, _clear_info_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
+	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, nf_it);
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_INFO;

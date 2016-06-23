@@ -46,6 +46,7 @@
 //#define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator"
 //#endif
 #define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
+#define SETTINGS_FIXED_DEFAULT_FONT_NAME "BreezeSans"
 
 
 static int is_changed = 0;
@@ -805,7 +806,10 @@ static char *_gl_font_style_title_get(void *data, Evas_Object *obj, const char *
 	new_name[count] = '\0';
 
 	if (!strcmp(part, "elm.text")) {
-		snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, id->font_name);
+		if(id->index == 0 )
+			snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, "default");
+		else
+			snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, id->font_name);
 	}
 
 	DBG("font  = %s", buf);
@@ -825,7 +829,7 @@ static Evas_Object *_gl_font_style_ridio_get(void *data, Evas_Object *obj, const
 		evas_object_size_hint_weight_set(radio, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 		elm_radio_group_add(radio, radio_main);
 
-		evas_object_smart_callback_add(radio, "clicked", _font_style_gl_cb, (void *)id);
+		evas_object_smart_callback_add(radio, "changed", _font_style_gl_cb, (void *)id);
 		evas_object_propagate_events_set(radio, EINA_FALSE);
 	}
 
@@ -1074,6 +1078,7 @@ void _show_font_list(void *data)
 	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
+
 	for (idx = 0; idx < 2; idx++) {
 		Item_Data *id = calloc(sizeof(Item_Data), 1);
 		if (id) {
@@ -1111,75 +1116,13 @@ void _show_font_list(void *data)
 	}
 }
 
-char *_get_default_font()
+static char *_get_default_font_name()
 {
-	xmlDocPtr doc = NULL;
-	xmlNodePtr cur = NULL;
-	xmlNodePtr cur2 = NULL;
-	xmlNodePtr cur3 = NULL;
-	xmlChar *key = NULL;
-	struct _xmlAttr *properties = NULL;
-	char *default_font_name = NULL;
-
-	doc = xmlParseFile(TZ_SYS_DATA_D"/etc/fonts/conf.avail/99-slp.conf");
-
-	cur = xmlDocGetRootElement(doc);
-
-	if (cur == NULL) {
-		xmlFreeDoc(doc);
-		doc = NULL;
-		return NULL;
-	}
-
-	if (xmlStrcmp(cur->name, (const xmlChar *)"fontconfig")) {
-		xmlFreeDoc(doc);
-		doc = NULL;
-		return NULL;
-	}
-
-	cur = cur->xmlChildrenNode;
-
-	while (cur != NULL) {
-		if ((!xmlStrcmp(cur->name, (const xmlChar *)"match"))) {
-			cur2 = cur->xmlChildrenNode;
-			while (cur2 != NULL) {
-				if ((!xmlStrcmp(cur2->name, (const xmlChar *)"edit"))) {
-					properties = cur2->properties;
-					/*find the "name" property*/
-					while (NULL != properties) {
-						if (!xmlStrcmp(properties->name, (const xmlChar *)"name")) {
-							break;
-						}
-						properties = properties->next;
-					}
-
-					/*If the value of "name" property is "family", then get the child node string,
-					  it shall be the default font type*/
-					if (NULL != properties && !xmlStrcmp(properties->children->content, (const xmlChar *)"family")) {
-						cur3 = cur2->xmlChildrenNode;
-						while (cur3 != NULL) {
-							if ((!xmlStrcmp(cur3->name, (const xmlChar *)"string"))) {
-								key = xmlNodeListGetString(doc, cur3->xmlChildrenNode, 1);
-								default_font_name = (char *)g_strdup((char *)key);
-								xmlFree(key);
-								key = NULL;
-								xmlFreeDoc(doc);
-								doc = NULL;
-								return default_font_name;
-							}
-							cur3 = cur3->next;
-						}
-					}
-				}
-				cur2 = cur2->next;
-			}
-		}
-		cur = cur->next;
-	}
-
-	xmlFreeDoc(doc);
-	doc = NULL;
-	return NULL;
+	char * default_font_name = SETTINGS_FIXED_DEFAULT_FONT_NAME;
+	/* Default font means current font type !! */
+	/* That's reason why I fixed default font */
+	/* system_settings_get_value_string(SYSTEM_SETTINGS_KEY_DEFAULT_FONT_TYPE, &default_font_name);*/
+	return default_font_name;
 }
 
 static Eina_List *_get_available_font_list()
@@ -1360,7 +1303,7 @@ int _show_font_style_list(void *data)
 	ret = system_settings_get_value_string(SYSTEM_SETTINGS_KEY_FONT_TYPE, &tmp_name);
 	if (ret != SYSTEM_SETTINGS_ERROR_NONE) {
 		ERR("failed to call system_setting_get_value_string with err %d", ret);
-		tmp_name = _get_default_font();
+		tmp_name = _get_default_font_name();
 		if (tmp_name == NULL) {
 			ERR("failed to get default font name");
 			return -1;
@@ -1371,9 +1314,10 @@ int _show_font_style_list(void *data)
 		DBG("SYSTEM_SETTINGS_KEY_FONT_TYPE = %s", tmp_name);
 	}
 
-	default_font_name = _get_default_font();
+	default_font_name = _get_default_font_name();
 
 	if (default_font_name) {
+		ERR("default_font_name is >>>> %s", default_font_name);
 		Font_Style_Item_Data *id_default = calloc(sizeof(Font_Style_Item_Data), 1);
 		if (default_font_name && tmp_name && !strcmp(tmp_name, default_font_name)) {
 			matched_idx = idx;
@@ -1390,10 +1334,11 @@ int _show_font_style_list(void *data)
 	}
 
 	/* get font list */
-	Eina_List *font_list = NULL;
 	Eina_List *l = NULL;
 	FcChar8 *font_data = NULL;
+	Eina_List *font_list = NULL;
 	font_list = _get_available_font_list();
+
 	EINA_LIST_FOREACH(font_list, l, font_data) {
 		if (!default_font_name || strcmp((const char *)default_font_name, (const char *)font_data)) {
 			Font_Style_Item_Data *id = calloc(sizeof(Font_Style_Item_Data), 1);
@@ -1474,7 +1419,7 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 		ret = system_settings_get_value_string(SYSTEM_SETTINGS_KEY_FONT_TYPE, &tmp_name);
 		if (ret != SYSTEM_SETTINGS_ERROR_NONE) {
 			ERR("failed to call system_setting_get_value_string with err %d", ret);
-			tmp_name = _get_default_font();
+			tmp_name = _get_default_font_name();
 		}
 
 		Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
@@ -1486,7 +1431,7 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 
 		elm_genlist_item_class_free(title_item);
 
-		default_font_name = _get_default_font();
+		default_font_name = _get_default_font_name();
 
 		Font_Style_Item_Data *id_default = calloc(sizeof(Font_Style_Item_Data), 1);
 		if (default_font_name && tmp_name && !strcmp(tmp_name, default_font_name)) {

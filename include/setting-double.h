@@ -36,7 +36,7 @@ typedef struct Double_Item_Data {
 void init_double_pressing(void *data);
 Evas_Object *create_double_app_list(void *data);
 Evas_Object *create_double_list(void *data);
-void clear_double_app_cb(void *data , Evas *e, Evas_Object *obj, void *event_info);
+void clear_double_app_cb(void *data, Evas_Object *obj, void *event_info);
 void clear_double_cb(void *data , Evas *e, Evas_Object *obj, void *event_info);
 
 #endif /* SETTING_DOUBLE_H_ */

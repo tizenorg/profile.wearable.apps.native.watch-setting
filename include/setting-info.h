@@ -66,7 +66,7 @@ void _info_open_src_gl_cb(void *data, Evas_Object *obj, void *event_info);
 void _info_safety_inform_gl_cb(void *data, Evas_Object *obj, void *event_info);
 void _info_gl_sel_cb(void *data, Evas_Object *obj, void *event_info);
 
-Eina_Bool _clear_info_cb(void *data, Elm_Object_Item *it);
+void _clear_info_cb(void *data, Evas_Object *obj, void *event_info);
 
 
 #endif /* SETTING_INFO_H_ */
