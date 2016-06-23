@@ -255,7 +255,7 @@ Evas_Object *_create_vibration_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _sound_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)VIBRATION_TITLE_VIBRATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -472,7 +472,7 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _sound_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)VIBRATION_TITLE_INTENSITY, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 

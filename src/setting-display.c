@@ -455,7 +455,7 @@ Evas_Object *_create_display_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _display_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_DISPLAY, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -668,7 +668,7 @@ void _show_screen_timeout_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _screen_timeout_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_SCREEN_TIMEOUT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1071,7 +1071,7 @@ void _show_font_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _font_size_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1352,7 +1352,7 @@ int _show_font_style_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _font_style_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1482,7 +1482,7 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 		Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 		title_item ->func.text_get = _gl_menu_title_text_get;
 		title_item->item_style = "title";
-		title_item->func.del = _font_style_gl_del;
+		title_item->func.del = NULL;
 
 		elm_genlist_item_append(g_font_style_genlist, title_item, (void*)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1585,7 +1585,7 @@ void _show_font_size_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _font_size_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT_SIZE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1738,7 +1738,7 @@ void _show_rotate_screen_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _rotate_screen_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_ROTATE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -2591,7 +2591,7 @@ static void _show_noti_indicator_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _noti_indicator_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_NOTIFICATION_INDICATOR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 

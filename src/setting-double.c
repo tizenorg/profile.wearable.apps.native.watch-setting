@@ -60,9 +60,9 @@ static struct _double_menu_item *_get_selected_app()
 	switch (val) {
 	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE:
 		return pitem_none;
-	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP:
-		return pitem_recent;
 	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS:
+		return pitem_recent;
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP:
 		return pitem_last;
 	}
 
@@ -385,7 +385,7 @@ static void change_double_pressing_cb(keynode_t *key, void *data)
 
 		while (item) {
 			Double_Item_Data *id = (Double_Item_Data *)elm_object_item_data_get(item);
-			if (id->pitem == selected_app) {
+			if (id && id->pitem == selected_app) {
 				elm_genlist_item_show(item, ELM_GENLIST_ITEM_SCROLLTO_TOP);
 				break;
 			}
@@ -604,7 +604,7 @@ Evas_Object *create_double_app_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _gl_double_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 

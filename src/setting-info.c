@@ -357,7 +357,7 @@ Evas_Object *_create_info_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _info_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)GEAR_INFO_TITLE_GEAR_INFO, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -709,7 +709,7 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _info_detail_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)GEAR_INFO_TITLE_ABOUT_GEAR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 

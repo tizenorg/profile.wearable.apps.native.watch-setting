@@ -577,7 +577,7 @@ Evas_Object *_create_sound_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _sound_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_SOUND, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -844,7 +844,7 @@ void _show_sound_mode_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _sound_mode_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_SOUND_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1105,7 +1105,7 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _sound_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_RINGTONE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1345,7 +1345,7 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _sound_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_NOTIFICATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1593,7 +1593,7 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _sound_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_VIBRATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
@@ -1762,7 +1762,7 @@ void _show_pref_arm_mode_list(void *data)
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
-	title_item->func.del = _pref_arm_gl_del;
+	title_item->func.del = NULL;
 
 	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_PREF_ARM_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
