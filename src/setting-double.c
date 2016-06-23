@@ -380,6 +380,7 @@ static void change_double_pressing_cb(keynode_t *key, void *data)
 			elm_radio_value_set(ad->double_rdg, -1);
 		}
 
+#if 0
 		Elm_Object_Item *item = NULL;
 		item = elm_genlist_first_item_get(g_double_app_genlist);
 
@@ -391,6 +392,7 @@ static void change_double_pressing_cb(keynode_t *key, void *data)
 			}
 			item = elm_genlist_item_next_get(item);
 		}
+#endif
 	}
 
 	if (g_double_genlist) {
