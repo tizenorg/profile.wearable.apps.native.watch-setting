@@ -1203,7 +1203,7 @@ static Eina_List *_get_available_font_list()
 
 	pat = FcPatternCreate();
 
-	os = FcObjectSetBuild(FC_FAMILY, FC_FILE, FC_FAMILYLANG, (char *) 0);
+	os = FcObjectSetBuild(FC_FULLNAME, FC_FILE, FC_FULLNAMELANG, (char *) 0);
 
 	if (os) {
 		fs = FcFontList(font_config, pat, os);
@@ -1221,7 +1221,7 @@ static Eina_List *_get_available_font_list()
 		DBG("fs->nfont = %d", fs->nfont);
 
 		for (j = 0; j < fs->nfont; j++) {
-			FcChar8 *family = NULL;
+			FcChar8 *fullname = NULL;
 			FcChar8 *file = NULL;
 			FcChar8 *lang = NULL;
 			int id = 0;
@@ -1230,46 +1230,46 @@ static Eina_List *_get_available_font_list()
 				int preload_path_len = strlen(SETTING_FONT_PRELOAD_FONT_PATH);
 				int download_path_len = strlen(SETTING_FONT_DOWNLOADED_FONT_PATH);
 
-				char *family_result = NULL;
+				char *fullname_result = NULL;
 
-				if (FcPatternGetString(fs->fonts[j], FC_FAMILY, 0, &family) != FcResultMatch) {
-					DBG("Family name is invalid");
+				if (FcPatternGetString(fs->fonts[j], FC_FULLNAME, 0, &fullname) != FcResultMatch) {
+					DBG("Fullname name is invalid");
 					continue;
 				}
 
-				if (FcPatternGetString(fs->fonts[j], FC_FAMILYLANG, id, &lang) != FcResultMatch) {
-					DBG("Family lang is invalid");
+				if (FcPatternGetString(fs->fonts[j], FC_FULLNAMELANG, id, &lang) != FcResultMatch) {
+					DBG("Fullname lang is invalid");
 					continue;
 				}
 
 				if (!strncmp((const char *)file, SETTING_FONT_PRELOAD_FONT_PATH, preload_path_len)) {
-					/* Find proper family name for current locale. */
-					while (locale && family && lang) {
-						/*DBG("locale: %s, family: %s, lang: %s", locale, family, lang); */
+					/* Find proper fullname name for current locale. */
+					while (locale && fullname && lang) {
+						DBG("locale: %s, fullname: %s, lang: %s", locale, fullname, lang);
 
 						if (!strncmp(locale, (char *)lang, strlen((char *)lang))) {
-							family_result = (char *)family;
+							fullname_result = (char *)fullname ;
 							break;
 						}
 
-						/* I will set english as default family language. */
-						/* If there is no proper family language for current locale, */
-						/* we have to show the english family name. */
+						/* I will set english as default fullname language. */
+						/* If there is no proper fullname language for current locale, */
+						/* we have to show the english fullname name. */
 						if (!strcmp((const char *)lang, "en")) {
-							family_result = (char *)family;
+							fullname_result = (char *)fullname;
 						}
 						id++;
-						if (FcPatternGetString(fs->fonts[j], FC_FAMILY, id, &family) != FcResultMatch) {
+						if (FcPatternGetString(fs->fonts[j], FC_FULLNAME, id, &fullname) != FcResultMatch) {
 							break;
 						}
-						if (FcPatternGetString(fs->fonts[j], FC_FAMILYLANG, id, &lang) != FcResultMatch) {
+						if (FcPatternGetString(fs->fonts[j], FC_FULLNAMELANG, id, &lang) != FcResultMatch) {
 							break;
 						}
 					}
 
-					if (eina_list_data_find(list, family_result) == NULL) {
-						list = eina_list_append(list, strdup(family_result));
-						DBG("-------- ADDED FONT - family result = %s", (char *)family_result);
+					if (eina_list_data_find(list, fullname_result) == NULL) {
+						list = eina_list_append(list, strdup(fullname_result));
+						DBG("-------- ADDED FONT - fullname result = %s", (char *)fullname_result);
 					}
 				}
 
@@ -1277,33 +1277,33 @@ static Eina_List *_get_available_font_list()
 
 				/* always shown for D/L */
 				if (!strncmp((const char *)file, SETTING_FONT_DOWNLOADED_FONT_PATH, download_path_len)) {
-					/* Find proper family name for current locale. */
-					while (locale && family && lang) {
-						ERR("locale: %s, family: %s, lang: %s", locale, family, lang);
+					/* Find proper fullname name for current locale. */
+					while (locale && fullname && lang) {
+						ERR("locale: %s, fullname : %s, lang: %s", locale, fullname , lang);
 
 						if (!strncmp(locale, (char *)lang, strlen((char *)lang))) {
-							family_result = (char *)family;
+							fullname_result = (char *)fullname;
 							break;
 						}
 
-						/* I will set english as default family language. */
-						/* If there is no proper family language for current locale, */
-						/* we have to show the english family name. */
+						/* I will set english as default fullname language. */
+						/* If there is no proper fullname language for current locale, */
+						/* we have to show the english fullname name. */
 						if (!strcmp((const char *)lang, "en")) {
-							family_result = (char *)family;
+							fullname_result = (char *)fullname;
 						}
 						id++;
-						if (FcPatternGetString(fs->fonts[j], FC_FAMILY, id, &family) != FcResultMatch) {
+						if (FcPatternGetString(fs->fonts[j], FC_FULLNAME, id, &fullname) != FcResultMatch) {
 							break;
 						}
-						if (FcPatternGetString(fs->fonts[j], FC_FAMILYLANG, id, &lang) != FcResultMatch) {
+						if (FcPatternGetString(fs->fonts[j], FC_FULLNAMELANG, id, &lang) != FcResultMatch) {
 							break;
 						}
 					}
 
-					if (eina_list_data_find(list, family_result) == NULL) {
-						list = eina_list_append(list, family_result);
-						DBG("-------- ADDED FONT - family result = %s", (char *)family_result);
+					if (eina_list_data_find(list, fullname_result) == NULL) {
+						list = eina_list_append(list, fullname_result);
+						DBG("-------- ADDED FONT - fullname result = %s", (char *)fullname_result);
 					}
 				}
 			}
