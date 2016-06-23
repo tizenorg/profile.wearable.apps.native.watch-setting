@@ -895,9 +895,8 @@ static Evas_Object *_gl_font_size_ridio_get(void *data, Evas_Object *obj, const 
 
 static void _font_size_gl_del(void *data, Evas_Object *obj)
 {
-	Item_Data *id = data;
-	if (id)
-		free(id);
+//	Item_Data *id = data;
+//	if (id) free(id);
 }
 
 static Ecore_Timer *font_timer = NULL;
