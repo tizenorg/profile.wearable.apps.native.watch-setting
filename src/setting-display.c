@@ -586,7 +586,7 @@ static void _screen_timeout_gl_cb(void *data, Evas_Object *obj, void *event_info
 	}
 }
 
-static Evas_Object *_gl_screen_timeout_ridio_get(void *data, Evas_Object *obj, const char *part)
+static Evas_Object *_gl_screen_timeout_radio_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *radio = NULL;
 	Evas_Object *radio_main = evas_object_data_get(obj, "radio_main");
@@ -643,7 +643,7 @@ void _show_screen_timeout_list(void *data)
 	Elm_Genlist_Item_Class *itc = elm_genlist_item_class_new();
 	itc->item_style = "1text.1icon.1";
 	itc->func.text_get = _gl_screen_timeout_title_get;
-	itc->func.content_get = _gl_screen_timeout_ridio_get;
+	itc->func.content_get = _gl_screen_timeout_radio_get;
 	itc->func.del = _screen_timeout_gl_del;
 
 	genlist = elm_genlist_add(ad->nf);
@@ -687,7 +687,7 @@ void _show_screen_timeout_list(void *data)
 	}
 
 	ad->screen_timeout_rdg = elm_radio_add(genlist);
-	elm_radio_state_value_set(ad->screen_timeout_rdg, 6);
+	elm_radio_state_value_set(ad->screen_timeout_rdg, SCREEN_TIME_COUNT - emul_end);
 	elm_radio_value_set(ad->screen_timeout_rdg, screen_time_index);
 
 	evas_object_data_set(genlist, "radio_main", ad->screen_timeout_rdg);
@@ -708,7 +708,7 @@ void _show_screen_timeout_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
-//	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif

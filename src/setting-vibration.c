@@ -246,11 +246,10 @@ Evas_Object *_create_vibration_list(void *data)
 
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-#ifdef O_TYPE
+
 	Evas_Object *circle_genlist = eext_circle_object_genlist_add(genlist, ad->circle_surface);
 	eext_circle_object_genlist_scroller_policy_set(circle_genlist, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
-#endif
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
@@ -462,11 +461,10 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_style_set(genlist, "popup");
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
-#ifdef O_TYPE
+
 	Evas_Object *circle_genlist = eext_circle_object_genlist_add(genlist, ad->circle_surface);
 	eext_circle_object_genlist_scroller_policy_set(circle_genlist, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
-#endif
 
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
