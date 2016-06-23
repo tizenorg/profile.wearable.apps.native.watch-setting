@@ -41,6 +41,7 @@ static struct _device_action_menu_item device_action_menu_its[] = {
 static int DEV_TOP_MENU_SIZE =
 	sizeof(device_action_menu_its) / sizeof(device_action_menu_its[0]);
 
+Evas_Object * g_device_action_genlist = NULL;
 
 static appdata *temp_ad						= NULL;
 static Elm_Object_Item *g_vib_item = NULL;
@@ -222,7 +223,7 @@ void _double_press_home_key_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
-	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, clear_double_app_cb, ad);
+	back_button_cb_push(&clear_double_app_cb, data, NULL, g_device_action_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_DOUBLE_PRESSING;
@@ -298,11 +299,10 @@ Evas_Object *_create_device_action_list(void *data)
 
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
-#ifdef O_TYPE
+
 	Evas_Object *circle_genlist = eext_circle_object_genlist_add(genlist, ad->circle_surface);
 	eext_circle_object_genlist_scroller_policy_set(circle_genlist, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
-#endif
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item ->func.text_get = _gl_menu_title_text_get;
@@ -344,6 +344,8 @@ Evas_Object *_create_device_action_list(void *data)
 	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
 	padding->item_style = "padding";
 	padding->func.del = _device_action_gl_del;
+
+	g_device_action_genlist = genlist;
 
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 	elm_genlist_item_class_free(padding);

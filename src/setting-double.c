@@ -544,7 +544,7 @@ static int _double_press_check_appinfo(void *data, char *appid)
 }
 #endif
 
-void clear_double_app_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
+void clear_double_app_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	if (coll) {
 		ucol_close(coll);

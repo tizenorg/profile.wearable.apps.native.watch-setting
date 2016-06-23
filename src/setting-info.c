@@ -26,6 +26,7 @@
 #include <bluetooth.h>
 #include <wifi.h>
 
+static Evas_Object *g_about_genlist = NULL;
 static struct _info_menu_item info_menu_its[] = {
 	{ "IDS_ST_BODY_ABOUT_GEAR_ABB",		0,		 _gl_info_cb },
 	/*#ifndef FEATURE_SETTING_SDK */
@@ -193,12 +194,18 @@ void _get_wifi_address_string(char *str, int size)
 }
 
 
-Eina_Bool _clear_info_cb(void *data, Elm_Object_Item *it)
+void _clear_info_cb(void *data, Evas_Object *obj, void *event_info)
 {
+	appdata *ad = (appdata *)data;
+	if (ad) {
+		elm_naviframe_item_pop(ad->nf);
+	} else {
+		ERR("data ptr is NULL");
+	}
+
 	g_info_genlist = NULL;
 	is_enable_usb_debug = 0;
 
-	return EINA_TRUE;
 }
 
 int get_enable_USB_debugging()
@@ -764,6 +771,7 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_item_class_free(padding);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_info_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
 
