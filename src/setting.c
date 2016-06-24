@@ -473,6 +473,18 @@ void lockscreen_cb(void *data, Evas_Object *obj, void *event_info)
 	ad->MENU_TYPE = SETTING_SCREEN_LOCK;
 }
 
+void back_key_connection_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = (appdata *)data;
+	if (ad) {
+		elm_naviframe_item_pop(ad->nf);
+		_clear_connection_resource();
+	} else {
+		ERR("data ptr is NULL");
+	}
+}
+
+
 void connection_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	Evas_Object *layout = NULL;
@@ -497,8 +509,7 @@ void connection_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
-	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_connection_resource, ad);
-	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_navi_cb, ad); */
+	back_button_cb_push(&back_key_connection_cb, data, NULL,  ad->main_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);

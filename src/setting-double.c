@@ -239,7 +239,7 @@ static char *_gl_double_app_title_get(void *data, Evas_Object *obj, const char *
 	Double_Item_Data *id = data;
 
 	if (!strcmp(part, "elm.text")) {
-		return strdup(_(id->pitem->name));
+		return strdup(id->pitem->name);
 	}
 
 	return NULL;
@@ -282,8 +282,6 @@ void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	Evas_Object *popup = NULL;
 	Evas_Object *btn = NULL;
-	Evas_Object *scroller = NULL;
-	Evas_Object *label = NULL;
 
 	appdata *ad = (appdata *) data;
 	if (ad == NULL)
@@ -292,33 +290,19 @@ void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	popup = elm_popup_add(ad->nf);
 	elm_object_style_set(popup, "circle");
 	evas_object_size_hint_weight_set(popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_popup_align_set(popup, ELM_NOTIFY_ALIGN_FILL, 1.0);
 	elm_win_resize_object_add(ad->nf, popup);
 
 	ad->popup = popup;
 
-	scroller = elm_scroller_add(popup);
-	evas_object_size_hint_weight_set(scroller, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	elm_object_content_set(popup, scroller);
-	elm_scroller_bounce_set(scroller, EINA_TRUE, EINA_TRUE);
-	elm_scroller_policy_set(scroller, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
-	elm_object_style_set(scroller, "effect");
-	evas_object_show(scroller);
-
-	label = elm_label_add(scroller);
-	elm_label_line_wrap_set(label, ELM_WRAP_MIXED);
-
 	char buf[1024];
 
 	char *font_size_frame = "<text_class=tizen><align=center><font_size=28>%s</font_size></align></text_class>";
-	snprintf(buf, sizeof(buf) - 1, font_size_frame, "<br>&nbsp;<br>&nbsp;<br>&nbsp;Open the last app you used by pressing the Home key twice on watch face.");
+	snprintf(buf, sizeof(buf) - 1, font_size_frame, "Open the last app you used by pressing the Home key twice on watch face.");
 
 	char *txt = strdup(buf);
-	elm_object_text_set(label, txt);
+	elm_object_text_set(popup, txt);
 	free(txt);
-	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
-	elm_object_content_set(scroller, label);
-	evas_object_show(label);
 
 	btn = elm_button_add(popup);
 	elm_object_style_set(btn, "bottom");
@@ -562,6 +546,13 @@ void clear_double_app_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 #endif
 
+	appdata *ad = (appdata *)data;
+	if (ad) {
+		elm_naviframe_item_pop(ad->nf);
+	} else {
+		ERR("data ptr is NULL");
+	}
+
 	FREE(pitem_none);
 	FREE(pitem_recent);
 	FREE(pitem_last);
@@ -789,7 +780,7 @@ void init_double_pressing(void *data)
 		pitem_none->index = 0;
 		pitem_none->appid = strdup("none");
 		pitem_none->pkgid = strdup("none");
-		pitem_none->name = strdup("IDS_LCKSCN_BODY_NONE");
+		pitem_none->name = strdup(_("IDS_LCKSCN_BODY_NONE"));
 	}
 
 	FREE(pitem_recent);
@@ -799,7 +790,7 @@ void init_double_pressing(void *data)
 		pitem_recent->index = 2;
 		pitem_recent->appid = strdup("recent");
 		pitem_recent->pkgid = strdup("recent");
-		pitem_recent->name = strdup("IDS_ST_OPT_RECENT_APPS_ABB");
+		pitem_recent->name = strdup(_("IDS_ST_OPT_RECENT_APPS_ABB"));
 	}
 
 	FREE(pitem_last);
@@ -873,8 +864,8 @@ Evas_Object *create_double_list(void *data)
 	evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
 	genlist = elm_genlist_add(layout);
-	elm_genlist_block_count_set(genlist, 14);
-	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+//	elm_genlist_block_count_set(genlist, 14);
+//	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
 	connect_to_wheel_with_genlist(genlist, ad);

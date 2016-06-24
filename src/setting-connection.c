@@ -28,6 +28,7 @@
 
 #include <app_control.h>
 int app_control_set_package(app_control_h app_control, const char *package);
+static Evas_Object *g_connection_genlist = NULL;
 
 #define AUDIO_RESOURCE_EXTENSION	".ogg"
 
@@ -108,7 +109,11 @@ static void _set_flight_mode_cancel_cb(void *data, Evas_Object *obj, void *event
 
 	elm_check_state_set(check,	EINA_FALSE);
 
-	elm_naviframe_item_pop(ad->nf);
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+	back_button_cb_pop();
 }
 
 static void _set_flight_mode_ok_clicked_cb(void *data, Evas_Object *obj, void *event_info)
@@ -120,18 +125,31 @@ static void _set_flight_mode_ok_clicked_cb(void *data, Evas_Object *obj, void *e
 	vconf_set_bool(VCONFKEY_TELEPHONY_FLIGHT_MODE, is_flight_mode);
 	elm_check_state_set(check,	EINA_TRUE);
 
-	elm_naviframe_item_pop(ad->nf);
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+	back_button_cb_pop();
 }
 
-static Eina_Bool _back_flight_mode_naviframe_cb(void *data, Elm_Object_Item *it)
+void back_key_flight_mode_popup_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	return EINA_TRUE;
+	int is_flight_mode = 0;
+	Evas_Object *check = (Evas_Object *)data;
+	vconf_set_bool(VCONFKEY_TELEPHONY_FLIGHT_MODE, is_flight_mode);
+	elm_check_state_set(check, EINA_FALSE);
+
+	appdata *ad = (appdata *)temp_ad;
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+	back_button_cb_pop();
 }
 
 static void _flight_mode_check_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = temp_ad;
-	Evas_Object *ly;
 	Evas_Object *check = (Evas_Object *)data;
 	int is_flight_mode = 0;
 
@@ -146,37 +164,60 @@ static void _flight_mode_check_cb(void *data, Evas *e, Evas_Object *obj, void *e
 	DBG("is_flight_mode:%d ", is_flight_mode);
 
 	if (!is_flight_mode) {
-		ly = elm_layout_add(ad->nf);
-		elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default5");
-		evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
+		Evas_Object *popup = NULL;
+		Evas_Object *btn1 = NULL;
+		Evas_Object *btn2 = NULL;
+		Evas_Object *icon;
 
-		elm_object_part_text_set(ly, "watch_on_text.text1", "Flight mode disables calls, messaging and all connections. To use Wi-Fi and Bluetooth go to Settings");
+		popup = elm_popup_add(ad->nf);
+		elm_object_style_set(popup, "circle");
+		evas_object_size_hint_weight_set(popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_win_resize_object_add(ad->nf, popup);
 
-		Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-														 NULL,
-														 NULL, NULL,
-														 ly, NULL);
+		ad->popup = popup;
 
-		Evas_Object *btn_cancel;
-		btn_cancel = elm_button_add(ly);
-		elm_object_style_set(btn_cancel, "default");
-		evas_object_size_hint_weight_set(btn_cancel, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		elm_object_translatable_text_set(btn_cancel, "IDS_ST_BUTTON_CANCEL_ABB2");
-		elm_object_part_content_set(ly, "btn1", btn_cancel);
-		evas_object_smart_callback_add(btn_cancel, "clicked", _set_flight_mode_cancel_cb, check);
+		char buf[1024];
 
-		Evas_Object *btn_ok;
-		btn_ok = elm_button_add(ly);
-		elm_object_style_set(btn_ok, "default");
-		evas_object_size_hint_weight_set(btn_ok, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		elm_object_translatable_text_set(btn_ok, "IDS_WNOTI_BUTTON_OK_ABB2");
-		elm_object_part_content_set(ly, "btn2", btn_ok);
-		evas_object_smart_callback_add(btn_ok, "clicked", _set_flight_mode_ok_clicked_cb, check);
+		char *font_setting = "<text_class=tizen><align=center>%s</align></text_class>";
+		snprintf(buf, sizeof(buf) - 1, font_setting, "Flight mode disables calls, messaging and all connections. To use Wi-Fi and Bluetooth go to Settings");
 
-		elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
-		elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-		elm_naviframe_item_pop_cb_set(nf_it, _back_flight_mode_naviframe_cb, ad);
+		Evas_Object *layout;
+		layout = elm_layout_add(popup);
+		elm_layout_theme_set(layout, "layout", "popup", "content/circle/buttons2");
+
+		char *txt = strdup(buf);
+		elm_object_text_set(layout, txt);
+		elm_object_content_set(popup, layout);
+
+		free(txt);
+
+		btn1 = elm_button_add(popup);
+		elm_object_style_set(btn1, "popup/circle/left");
+		evas_object_size_hint_weight_set(btn1, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(popup, "button1", btn1);
+		evas_object_smart_callback_add(btn1, "clicked", _set_flight_mode_cancel_cb, check);
+
+		icon = elm_image_add(btn1);
+		elm_image_file_set(icon, IMG_DIR"tw_ic_popup_btn_delete.png", NULL);
+		evas_object_size_hint_weight_set(icon, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(btn1, "elm.swallow.content", icon);
+		evas_object_show(icon);
+
+		btn2 = elm_button_add(popup);
+		elm_object_style_set(btn2, "popup/circle/right");
+		evas_object_size_hint_weight_set(btn2, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(popup, "button2", btn2);
+		evas_object_smart_callback_add(btn2, "clicked", _set_flight_mode_ok_clicked_cb, check);
+
+		icon = elm_image_add(btn2);
+		elm_image_file_set(icon, IMG_DIR"tw_ic_popup_btn_check.png", NULL);
+		evas_object_size_hint_weight_set(icon, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(btn2, "elm.swallow.content", icon);
+		evas_object_show(icon);
+
+		evas_object_show(popup);
+		back_button_cb_push(&back_key_flight_mode_popup_cb, check, NULL, g_connection_genlist, NULL);
+
 	} else {
 		/* disable Flight mode off with out popup */
 		int flight_mode = 0;
@@ -451,6 +492,8 @@ Evas_Object *_create_connection_list(void *data)
 
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 	elm_genlist_item_class_free(padding);
+
+	g_connection_genlist = genlist;
 
 	register_vconf_changing(VCONFKEY_BT_STATUS, bt_status_vconf_changed_cb, ad);
 	register_vconf_changing(VCONFKEY_WIFI_STATE, wifi_status_vconf_changed_cb, ad);

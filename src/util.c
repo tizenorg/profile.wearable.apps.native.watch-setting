@@ -43,15 +43,20 @@ void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Evas_
 	cb_data->genlist_obj = genlist_obj;
 	back_button_cb_stack = eina_list_prepend(back_button_cb_stack, cb_data);
 
-	elm_naviframe_item_pop_cb_set(navi_item, _nf_item_pop_cb, data);
+	if(navi_item)
+		elm_naviframe_item_pop_cb_set(navi_item, _nf_item_pop_cb, data);
 }
 
 void back_button_cb_pop(void)
 {
 	back_button_cb_data *cb_data = NULL;
 	cb_data = eina_list_data_get(back_button_cb_stack);
-	DBG("####### back btn pop cb - genlist ptr is %p", cb_data->genlist_obj);
-	eext_rotary_object_event_activated_set(cb_data->genlist_obj, EINA_TRUE);
+	if(!cb_data)
+		return;
+	if(cb_data->genlist_obj){
+		DBG("####### back btn pop cb - genlist ptr is %p", cb_data->genlist_obj);
+		eext_rotary_object_event_activated_set(cb_data->genlist_obj, EINA_TRUE);
+	}
 	back_button_cb_stack = eina_list_remove(back_button_cb_stack, cb_data);
 	free(cb_data);
 }
@@ -60,11 +65,21 @@ void back_button_cb_call(void)
 {
 	back_button_cb_data *cb_data = NULL;
 	cb_data = eina_list_data_get(back_button_cb_stack);
-	if (cb_data) {
+	if (cb_data && cb_data->cb ) {
 		cb_data->cb(cb_data->data, cb_data->obj, NULL);
 	} else {
 		ERR("No callback data!");
 	}
+}
+
+void back_key_popup_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	appdata *ad = (appdata *)data;
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+	back_button_cb_pop();
 }
 
 void back_key_generic_cb(void *data, Evas_Object *obj, void *event_info)

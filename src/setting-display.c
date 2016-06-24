@@ -106,6 +106,7 @@ static Evas_Object *g_screen_time_genlist = NULL;
 static Evas_Object *g_font_size_genlist = NULL;
 static Evas_Object *g_font_style_genlist = NULL;
 static Evas_Object *g_rotate_screen_genlist = NULL;
+static Evas_Object *g_noti_indicator_genlist = NULL;
 
 static int screen_time_index = 1;		/* default: 10 seconds */
 static int font_size_index	 = 1;		/* default: normal */
@@ -2386,50 +2387,38 @@ static void _display_gl_display_noti_indicator_cb(void *data, Evas_Object *obj, 
 
 void _noti_indicator_help_popup_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	Evas_Object *scroller = NULL;
-	Evas_Object *label = NULL;
-	Evas_Object *ly = NULL;
-
 	appdata *ad = (appdata *) data;
 	if (ad == NULL)
 		return;
 
-	ly = elm_layout_add(ad->nf);
-	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
-	elm_layout_file_set(ly, EDJE_PATH, "setting/open_licences_popup/default");
-	elm_win_resize_object_add(ad->nf, ly);
+	Evas_Object *popup = NULL;
 
+	popup = elm_popup_add(ad->nf);
+	elm_object_style_set(popup, "circle");
+	evas_object_size_hint_weight_set(popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_win_resize_object_add(ad->nf, popup);
 
-	scroller = elm_scroller_add(ly);
-	evas_object_size_hint_weight_set(scroller, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	elm_object_content_set(ly, scroller);
-	elm_scroller_bounce_set(scroller, EINA_TRUE, EINA_TRUE);
-	elm_scroller_policy_set(scroller, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
-	elm_object_part_content_set(ly, "scroller", scroller);
-	elm_object_style_set(scroller, "effect");
-	evas_object_show(scroller);
-
-	label = elm_label_add(scroller);
-	elm_label_line_wrap_set(label, ELM_WRAP_MIXED);
+	ad->popup = popup;
 
 	char buf[1024];
 
-	char *font_size_frame = "<text_class=tizen><align=center><font_size=28>%s</font_size></align></text_class>";
-	snprintf(buf, sizeof(buf) - 1, font_size_frame, "&nbsp;<br>&nbsp; Show a yellow indicator <br>on the watch face when <br> there are unread notifications.");
+	char *font_size_frame = "<text_class=tizen><align=center>%s</align></text_class>";
+	snprintf(buf, sizeof(buf) - 1, font_size_frame, "Show a yellow indicator <br>on the watch face when <br> there are unread notifications.");
+
+	Evas_Object *layout;
+	layout = elm_layout_add(popup);
+	elm_layout_theme_set(layout, "layout", "popup", "content/circle/buttons1");
+	elm_object_part_text_set(layout, "elm.text.title", "Help");
 
 	char *txt = strdup(buf);
-	elm_object_text_set(label, txt);
-	free(txt);
-	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
-	elm_object_content_set(scroller, label);
-	evas_object_show(label);
+	elm_object_text_set(layout, txt);
+	elm_object_content_set(popup, layout);
 
-	evas_object_show(ly);
-	Elm_Object_Item *nf_it = NULL;
-	nf_it = elm_naviframe_item_push(ad->nf, "Help", NULL, NULL, ly, NULL);
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_TRUE, EINA_FALSE);
+	free(txt);
+
+	evas_object_show(popup);
+	back_button_cb_push(&back_key_popup_cb, data, NULL, g_noti_indicator_genlist, NULL);
+
 }
 
 static void _display_gl_display_noti_indicator_help_cb(void *data, Evas_Object *obj, void *event_info)
@@ -2559,7 +2548,7 @@ static void _show_noti_indicator_list(void *data)
 	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
 	padding->item_style = "padding";
 	padding->func.del = _noti_indicator_gl_del;
-
+	g_noti_indicator_genlist = genlist;
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 	elm_genlist_item_class_free(padding);
 

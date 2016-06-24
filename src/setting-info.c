@@ -55,6 +55,7 @@ static void _usb_debug_ok_cb(void *data, Evas_Object *obj, void *event_info);
 static Eina_Bool _get_imei_serial_info(char *pszBuf, int bufSize);
 
 static Evas_Object *g_info_genlist = NULL;
+static Evas_Object *g_about_genlist = NULL;
 static int is_enable_usb_debug = 0;
 static int kor = 0;
 static appdata *temp_ad = NULL;
@@ -228,10 +229,23 @@ void _gl_usb_debug_cb(void *data, Evas_Object *obj, void *event_info)
 
 }
 
+void back_key_usb_debug_popup_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Evas_Object *check = (Evas_Object *)data;
+	set_enable_USB_debugging(0);
+	elm_check_state_set(check, EINA_FALSE);
+
+	appdata *ad = (appdata *)temp_ad;
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+	back_button_cb_pop();
+}
+
 void _usb_debug_chk_changed_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = temp_ad;
-	Evas_Object *ly;
 	Evas_Object *check = (Evas_Object *)data;
 
 	if (ad == NULL) {
@@ -241,42 +255,60 @@ void _usb_debug_chk_changed_cb(void *data, Evas *e, Evas_Object *obj, void *even
 
 	if (!get_enable_USB_debugging()) {
 
-		ly = elm_layout_add(ad->nf);
-		elm_layout_file_set(ly, EDJE_PATH, "setting/2finger_popup/default5");
+		Evas_Object *popup = NULL;
+		Evas_Object *btn1 = NULL;
+		Evas_Object *btn2 = NULL;
+		Evas_Object *icon;
 
-		evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
+		popup = elm_popup_add(ad->nf);
+		elm_object_style_set(popup, "circle");
+		evas_object_size_hint_weight_set(popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_win_resize_object_add(ad->nf, popup);
 
+		ad->popup = popup;
 
+		char buf[1024];
 
-		elm_object_part_text_set(ly, "watch_on_text.text1", "Allow Gear to read log data, copy files to and from your PC, and install apps without notification. (development only).");
+		char *font_size_frame = "<text_class=tizen><align=center>%s</align></text_class>";
+		snprintf(buf, sizeof(buf) - 1, font_size_frame, "Allow Gear to read log data, copy files to and from your PC, and install apps without notification. (development only).");
 
-		Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-														 NULL,
-														 NULL, NULL,
-														 ly, NULL);
+		Evas_Object *layout;
+		layout = elm_layout_add(popup);
+		elm_layout_theme_set(layout, "layout", "popup", "content/circle/buttons2");
 
+		char *txt = strdup(buf);
+		elm_object_text_set(layout, txt);
+		elm_object_content_set(popup, layout);
 
-		/*evas_object_smart_callback_add(ly, "language,changed", _usb_debug_lange_changed, NULL); */
+		free(txt);
 
+		btn1 = elm_button_add(popup);
+		elm_object_style_set(btn1, "popup/circle/left");
+		evas_object_size_hint_weight_set(btn1, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(popup, "button1", btn1);
+		evas_object_smart_callback_add(btn1, "clicked", _usb_debug_cancel_cb, check);
 
-		Evas_Object *btn = NULL;
-		btn = elm_button_add(ly);
-		elm_object_style_set(btn, "default");
-		evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		elm_object_translatable_text_set(btn, "IDS_COM_SK_CANCEL_A");
-		elm_object_part_content_set(ly, "btn1", btn);
-		evas_object_smart_callback_add(btn, "clicked", _usb_debug_cancel_cb, check);
+		icon = elm_image_add(btn1);
+		elm_image_file_set(icon, IMG_DIR"tw_ic_popup_btn_delete.png", NULL);
+		evas_object_size_hint_weight_set(icon, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(btn1, "elm.swallow.content", icon);
+		evas_object_show(icon);
 
-		btn = elm_button_add(ly);
-		elm_object_style_set(btn, "default");
-		evas_object_size_hint_weight_set(btn, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		elm_object_translatable_text_set(btn, "IDS_WNOTI_BUTTON_OK_ABB2");
-		elm_object_part_content_set(ly, "btn2", btn);
-		evas_object_smart_callback_add(btn, "clicked", _usb_debug_ok_cb, check);
-		elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+		btn2 = elm_button_add(popup);
+		elm_object_style_set(btn2, "popup/circle/right");
+		evas_object_size_hint_weight_set(btn2, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(popup, "button2", btn2);
+		evas_object_smart_callback_add(btn2, "clicked", _usb_debug_ok_cb, check);
 
-		elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
+		icon = elm_image_add(btn2);
+		elm_image_file_set(icon, IMG_DIR"tw_ic_popup_btn_check.png", NULL);
+		evas_object_size_hint_weight_set(icon, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		elm_object_part_content_set(btn2, "elm.swallow.content", icon);
+		evas_object_show(icon);
+
+		evas_object_show(popup);
+		back_button_cb_push(&back_key_usb_debug_popup_cb, check, NULL, g_info_genlist , NULL);
+
 	} else {
 		set_enable_USB_debugging(0);
 	}
@@ -535,7 +567,7 @@ static char *get_license_str()
 	char *license_str = elm_entry_utf8_to_markup(
 							_("IDS_ST_POP_YOU_CAN_CHECK_ANNOUNCEMENTS_REGARDING_OPEN_SOURCE_LICENCES_BY_FOLLOWING_THE_STEPS_BELOW_N1_GO_TO_SETTINGS_GEAR_INFO_N2_SELECT_USB_MSG"));
 
-	char *font_size_frame = "<font=tizen:style=Condensed><font_size=28>%s</font_size></font>";
+	char *font_size_frame = "<font_class=tizen>%s</font_class>";
 	snprintf(buf, sizeof(buf) - 1, font_size_frame, license_str);
 
 	char *frame = strdup(buf);
@@ -551,64 +583,38 @@ static char *get_license_str()
 	return txt;
 }
 
-void _open_source_licenses_navi_cb(void *data, Evas_Object *obj, void *event_info)
+void _info_open_src_gl_cb(void *data, Evas_Object *obj, void *event_info)
 {
-
-	Evas_Object *scroller = NULL;
-	Evas_Object *label = NULL;
+	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	appdata *ad = (appdata *) data;
 	if (ad == NULL)
 		return;
 
-	Evas_Object *ly;
-	ly = elm_layout_add(ad->nf);
-	elm_layout_file_set(ly, EDJE_PATH, "setting/open_licences_popup/default");
+	Evas_Object *popup = NULL;
 
-	evas_object_size_hint_weight_set(ly, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(ly, EVAS_HINT_FILL, EVAS_HINT_FILL);
+	popup = elm_popup_add(ad->nf);
+	elm_object_style_set(popup, "circle");
+	evas_object_size_hint_weight_set(popup, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+	elm_win_resize_object_add(ad->nf, popup);
 
+	ad->popup = popup;
 
-	scroller = elm_scroller_add(ly);
-	evas_object_size_hint_weight_set(scroller, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	elm_scroller_bounce_set(scroller, EINA_FALSE, EINA_TRUE);
-	elm_scroller_policy_set(scroller, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
-	elm_object_part_content_set(ly, "scroller", scroller);
-	elm_object_style_set(scroller, "effect");
-	evas_object_show(scroller);
-
-	label = elm_label_add(scroller);
-
-	evas_object_smart_callback_add(label, "language,changed", open_sources_licences_lange_changed, NULL);
-	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
-
+	Evas_Object *layout;
+	layout = elm_layout_add(popup);
+	elm_layout_theme_set(layout, "layout", "popup", "content/circle/buttons1");
+	elm_object_part_text_set(layout, "elm.text.title", _("IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"));
 
 	char *txt = get_license_str();
-
-	elm_object_style_set(label, "default");
-	elm_label_line_wrap_set(label, ELM_WRAP_MIXED);
-	elm_object_text_set(label,	txt);
-	elm_object_content_set(scroller, label);
-	evas_object_show(label);
+	elm_object_text_set(layout, txt);
+	elm_object_content_set(popup, layout);
 
 	free(txt);
 
-	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-													 _("IDS_ST_HEADER_OPEN_SOURCE_LICENCES_ABB"),
-													 NULL, NULL,
-													 ly, NULL);
+	evas_object_smart_callback_add(layout, "language,changed", open_sources_licences_lange_changed, NULL);
 
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_TRUE, EINA_FALSE);
-	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
-}
-
-
-void _info_open_src_gl_cb(void *data, Evas_Object *obj, void *event_info)
-{
-	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-	_open_source_licenses_navi_cb(data, obj, event_info);
+	evas_object_show(popup);
+	back_button_cb_push(&back_key_popup_cb, data, NULL, g_about_genlist, NULL);
 }
 
 void safety_inform_lange_changed(void *data, Evas_Object *obj, void *event_info)
@@ -769,6 +775,8 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 	elm_genlist_item_class_free(padding);
 
+	g_about_genlist = genlist;
+
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_info_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -782,7 +790,11 @@ static void _usb_debug_cancel_cb(void *data, Evas_Object *obj, void *event_info)
 	set_enable_USB_debugging(0);
 	elm_check_state_set(check,	EINA_FALSE);
 
-	elm_naviframe_item_pop(ad->nf);
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+	back_button_cb_pop();
 }
 
 static void _usb_debug_ok_cb(void *data, Evas_Object *obj, void *event_info)
@@ -793,7 +805,11 @@ static void _usb_debug_ok_cb(void *data, Evas_Object *obj, void *event_info)
 	set_enable_USB_debugging(1);
 	elm_check_state_set(check,	EINA_TRUE);
 
-	elm_naviframe_item_pop(ad->nf);
+	if (ad && ad->popup) {
+		evas_object_del(ad->popup);
+		ad->popup = NULL;
+	}
+	back_button_cb_pop();
 }
 
 void _usb_debug_lange_changed(void *data, Evas_Object *obj, void *event_info)
