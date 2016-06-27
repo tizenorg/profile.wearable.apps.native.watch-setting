@@ -38,6 +38,6 @@ void _long_buzz_cb(void *data, Evas_Object *obj, void *event_info);
 void _intensity_cb(void *data, Evas_Object *obj, void *event_info);
 void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info);
 
-void _clear_vibration_resource();
+void _clear_vibration_resource(void *data, Evas_Object *obj, void *event_info);
 
 #endif /* SETTING_VIBRATION_H_ */

@@ -51,7 +51,7 @@ char *vibration_power_str[] = {
 };
 
 static appdata *temp_ad						= NULL;
-static Evas_Object *g_sound_genlist				= NULL;
+static Evas_Object *g_vibration_genlist				= NULL;
 static Evas_Object *g_vibration_type_genlist	= NULL;
 static Elm_Object_Item *g_vib_item = NULL;
 
@@ -87,7 +87,7 @@ _gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
 	return strdup(buf);
 }
 
-void _clear_vibration_resource()
+void _clear_vibration_resource(void *data, Evas_Object *obj, void *event_info)
 {
 	if (vibration_timer) {
 		ecore_timer_del(vibration_timer);
@@ -96,8 +96,15 @@ void _clear_vibration_resource()
 
 	_haptic_close();
 
+
+	if (temp_ad) {
+		elm_naviframe_item_pop(temp_ad->nf);
+	} else {
+		ERR("data ptr is NULL");
+	}
+
 	temp_ad = NULL;
-	g_sound_genlist = NULL;
+	g_vibration_genlist = NULL;
 	g_vibration_type_genlist = NULL;
 	g_vib_item = NULL;
 
@@ -294,7 +301,7 @@ Evas_Object *_create_vibration_list(void *data)
 
 	elm_genlist_item_append(genlist, padding, NULL, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 	elm_genlist_item_class_free(padding);
-	g_sound_genlist = genlist;
+	g_vibration_genlist = genlist;
 
 	register_vconf_changing(VCONFKEY_SETAPPL_VIBRATION_STATUS_BOOL, vibrate_vconf_changed_cb, NULL);
 
@@ -512,6 +519,7 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 
 	/*elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, popup, NULL); */
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_vibration_genlist, nf_it);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
 

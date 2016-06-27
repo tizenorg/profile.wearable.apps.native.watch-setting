@@ -1835,11 +1835,9 @@ int brightness_origin_level = 0;
 Evas_Object *brightness_layout = NULL;
 
 Evas_Object *g_slider = NULL;
-spin_date *pd = NULL;
 
-static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
 static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
-static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it);
+static void _brightness_pop_cb(void *data, Evas_Object *obj, void *event_info);
 static void brightness_vconf_changed_cb(keynode_t *key, void *data);
 static void sync_brightness(int real_brightness);
 static int _change_bright_lovel_to_index(int level);
@@ -1882,7 +1880,7 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 		navi_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
 		elm_naviframe_item_title_enabled_set(navi_it, EINA_FALSE, EINA_FALSE);
 		elm_object_item_domain_text_translatable_set(navi_it, SETTING_PACKAGE, EINA_TRUE);
-		elm_naviframe_item_pop_cb_set(navi_it, _brightness_pop_cb, NULL);
+		back_button_cb_push(&_brightness_pop_cb, data, NULL, g_display_genlist, navi_it);
 
 		register_vconf_changing(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, brightness_vconf_changed_cb, NULL);
 	}
@@ -2080,18 +2078,20 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 
 }
 
-static Eina_Bool _brightness_pop_cb(void *data, Elm_Object_Item *it)
+static void _brightness_pop_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("Setting - brightness_pop_cb() is called!");
 
-	if (pd) {
-		DBG("Setting - Free pd!");
-		free(pd);
+	appdata *ad = (appdata *)data;
+	if (ad) {
+		elm_naviframe_item_pop(ad->nf);
+	} else {
+		ERR("data ptr is NULL");
 	}
 
 	unregister_vconf_changing(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, brightness_vconf_changed_cb);
 
-	return EINA_TRUE;
+	return;
 }
 
 static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)

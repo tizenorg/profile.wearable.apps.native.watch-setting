@@ -22,8 +22,32 @@ static void _set_volumn(sound_type_e type, int volume_index, char *vconf_key);
 /*static void _change_to_vibrate_mode(); */
 static void _play_sound_all_type(int sound_type, float volume);
 
+#define NUM_ITEMS			  5
+#define NUM_INDEX			  5
+#define NUM_ITEMS_CIRCLE_EVEN 6
+#define NUM_INDEX_CIRCLE_EVEN 6
 
-static appdata *g_ad;
+typedef struct _page_data page_data;
+struct _page_data {
+	Evas_Object *main_layout;
+	Evas_Object *scroller;
+	Evas_Object *box;
+	Evas_Object *mapbuf[NUM_ITEMS_CIRCLE_EVEN];
+	Evas_Object *slider[NUM_ITEMS_CIRCLE_EVEN];
+	Evas_Object *index;
+	Evas_Object *page_layout[NUM_ITEMS_CIRCLE_EVEN];
+	int cur_page;
+	int prev_page;
+	int slider_value[NUM_ITEMS_CIRCLE_EVEN];
+	Elm_Object_Item *it[NUM_ITEMS_CIRCLE_EVEN];
+
+	Elm_Object_Item *last_it;
+	Elm_Object_Item *new_it;
+	int min_page, max_page;
+};
+
+static appdata *g_ad = NULL;
+static page_data *g_pd = NULL;
 static Evas_Object *g_volume_spinner = NULL;
 static Evas_Object *g_volume_genlist = NULL;
 
@@ -151,31 +175,6 @@ void _clear_volume_resources()
 	is_sound_changed = is_vibrate_changed = 0;
 }
 
-#define NUM_ITEMS			  5
-#define NUM_INDEX			  5
-#define NUM_ITEMS_CIRCLE_EVEN 6
-#define NUM_INDEX_CIRCLE_EVEN 6
-
-typedef struct _page_data page_data;
-struct _page_data {
-	Evas_Object *main_layout;
-	Evas_Object *scroller;
-	Evas_Object *box;
-	Evas_Object *mapbuf[NUM_ITEMS_CIRCLE_EVEN];
-	Evas_Object *slider[NUM_ITEMS_CIRCLE_EVEN];
-	Evas_Object *index;
-	Evas_Object *page_layout[NUM_ITEMS_CIRCLE_EVEN];
-	int cur_page;
-	int prev_page;
-	int slider_value[NUM_ITEMS_CIRCLE_EVEN];
-	Elm_Object_Item *it[NUM_ITEMS_CIRCLE_EVEN];
-
-	Elm_Object_Item *last_it;
-	Elm_Object_Item *new_it;
-	int min_page, max_page;
-};
-
-
 
 static void _index_sync(void *data);
 
@@ -268,13 +267,6 @@ _index_sync(void *data)
 		pd->new_it = it;
 	} else
 		_index_refresh(pd);
-}
-
-static void
-_layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
-{
-	page_data *pd = (page_data *)data;
-	free(pd);
 }
 
 static void
@@ -381,12 +373,22 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	return EINA_TRUE;
 }
 
-Eina_Bool _clear_volume_setting_cb(void *data, Elm_Object_Item *it)
+void _clear_volume_setting_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	page_data *pd = (page_data *)data;
 
 	if (is_created_player()) {
 		_close_player(g_ad, curr_sound_type);
+	}
+
+	if (g_ad == NULL) {
+		DBG("Setting - ad is null");
+		return;
+	}
+
+	if (g_ad) {
+		elm_naviframe_item_pop(g_ad->nf);
+	} else {
+		ERR("g_ad ptr is NULL");
 	}
 
 	stop_wav();
@@ -398,9 +400,10 @@ Eina_Bool _clear_volume_setting_cb(void *data, Elm_Object_Item *it)
 	is_myself_ringtone_changing = 0;
 	is_sound_changed = is_vibrate_changed = 0;
 
-	if (pd) free(pd);
+	if (g_pd) free(g_pd);
+	g_pd = NULL;
 
-	return EINA_TRUE;
+	return;
 }
 
 static void _press_plus_volume_cb(void *data, Evas_Object *obj, void *event_info)
@@ -463,30 +466,29 @@ static void _press_minus_volume_cb(void *data, Evas_Object *obj, void *event_inf
 	}
 }
 
-void _create_volume_page(void *data)
+Evas_Object * _create_volume_page(void *data)
 {
 
 	appdata *ad = data;
 	if (ad == NULL) {
 		DBG("%s", "_create_volume_page - appdata is null");
-		return;
+		return NULL;
 	}
 
 	g_ad = ad;
 
 	Evas_Object *layout, *scroller, *box, *img, *page_layout, *index;
-	Elm_Object_Item *nf_it;
 	char img_path[PATH_MAX];
 	int i, max_items;
 
 	page_data *pd = calloc(1, sizeof(page_data));
+	g_pd = pd;
 
 	/* Create Layout */
 	layout = elm_layout_add(ad->nf);
 	elm_layout_file_set(layout, EDJE_PATH, "sound-volume/index_thumbnail");
 	evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_show(layout);
-	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _layout_del_cb, pd);
 	pd->main_layout = layout;
 
 	/* Create Scroller */
@@ -645,10 +647,7 @@ void _create_volume_page(void *data)
 	evas_object_event_callback_add(index, EVAS_CALLBACK_MOUSE_MOVE, _on_index_mouse_move_cb, pd);
 	evas_object_event_callback_add(index, EVAS_CALLBACK_MOUSE_UP, _on_index_mouse_up_cb, pd);
 
-
-	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-	elm_naviframe_item_pop_cb_set(nf_it, _clear_volume_setting_cb, pd);
+	return layout;
 }
 
 static void _set_volumn(sound_type_e type, int volume_index, char *vconf_key)

@@ -238,7 +238,7 @@ static char *_gl_double_app_title_get(void *data, Evas_Object *obj, const char *
 {
 	Double_Item_Data *id = data;
 
-	if (!strcmp(part, "elm.text")) {
+	if (id && id->pitem && id->pitem->name && !strcmp(part, "elm.text")) {
 		return strdup(id->pitem->name);
 	}
 
@@ -275,6 +275,7 @@ static void _response_ok_cb(void *data, Evas_Object *obj, void *event_info)
 		evas_object_del(ad->popup);
 		ad->popup = NULL;
 	}
+	back_button_cb_pop();
 
 }
 
@@ -310,6 +311,7 @@ void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_translatable_text_set(btn, "IDS_WNOTI_BUTTON_OK_ABB2");
 	elm_object_part_content_set(popup, "button1", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_ok_cb, ad);
+	back_button_cb_push(&back_key_popup_cb, data, NULL, g_double_app_genlist, NULL);
 
 	evas_object_show(popup);
 }

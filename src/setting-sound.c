@@ -330,7 +330,10 @@ void _show_volume_list(void *data)
 
 	_initialize_volume();
 
-	_create_volume_page(data);
+	Evas_Object * layout = _create_volume_page(data);
+	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+	back_button_cb_push(&_clear_volume_setting_cb, NULL, NULL, g_sound_genlist, nf_it);
 
 }
 
@@ -385,14 +388,11 @@ void _vibrate_cb(void *data, Evas_Object *obj, void *event_info)
 		DBG("%s", "sound cb - genlist is null");
 		return;
 	}
-#if 0
-	nf_it = elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, genlist, NULL);
-	elm_naviframe_item_title_enabled_set(nf_it, EINA_TRUE, EINA_FALSE);
-#else
+
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-#endif
 
+	back_button_cb_push(&_clear_vibration_resource, data, NULL, g_sound_genlist, nf_it);
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_SOUND;
