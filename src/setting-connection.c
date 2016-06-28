@@ -154,11 +154,11 @@ static void _flight_mode_check_cb(void *data, Evas *e, Evas_Object *obj, void *e
 	int is_flight_mode = 0;
 
 	if (ad == NULL) {
-		DBG("%s", "_connection_watch_always_check_cb - appdata or check is null");
+		DBG("%s", "_flight_mode_check_cb - appdata or check is null");
 		return;
 	}
 
-	DBG("_connection_watch_always_check_cb is called!!!!!!!");
+	DBG("_flight_mode_check_cb is called!!!!!!!");
 
 	vconf_get_bool(VCONFKEY_TELEPHONY_FLIGHT_MODE, &is_flight_mode);
 	DBG("is_flight_mode:%d ", is_flight_mode);
@@ -216,7 +216,7 @@ static void _flight_mode_check_cb(void *data, Evas *e, Evas_Object *obj, void *e
 		evas_object_show(icon);
 
 		evas_object_show(popup);
-		back_button_cb_push(&back_key_flight_mode_popup_cb, check, NULL, g_connection_genlist, NULL);
+		back_button_cb_push(&back_key_flight_mode_popup_cb, check, NULL, g_connection_genlist, "g_connection_genlist");
 
 	} else {
 		/* disable Flight mode off with out popup */

@@ -311,7 +311,7 @@ void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_translatable_text_set(btn, "IDS_WNOTI_BUTTON_OK_ABB2");
 	elm_object_part_content_set(popup, "button1", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_ok_cb, ad);
-	back_button_cb_push(&back_key_popup_cb, data, NULL, g_double_app_genlist, NULL);
+	back_button_cb_push(&back_key_popup_cb, data, NULL, g_double_app_genlist, "g_double_app_genlist");
 
 	evas_object_show(popup);
 }
@@ -341,7 +341,7 @@ static void _gl_double_app_sel_cb(void *data, Evas_Object *obj, void *event_info
 		vconf_set_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, val);
 	}
 
-	elm_naviframe_item_pop(ad->nf);
+	back_key_generic_cb(data, obj, event_info);
 
 	if (!ad->double_rdg) {
 		evas_object_del(ad->double_rdg);
@@ -530,7 +530,7 @@ static int _double_press_check_appinfo(void *data, char *appid)
 }
 #endif
 
-void clear_double_app_cb(void *data, Evas_Object *obj, void *event_info)
+Eina_Bool clear_double_app_cb(void *data, Elm_Object_Item *it)
 {
 	if (coll) {
 		ucol_close(coll);
@@ -548,19 +548,14 @@ void clear_double_app_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 #endif
 
-	appdata *ad = (appdata *)data;
-	if (ad) {
-		elm_naviframe_item_pop(ad->nf);
-	} else {
-		ERR("data ptr is NULL");
-	}
-
 	FREE(pitem_none);
 	FREE(pitem_recent);
 	FREE(pitem_last);
 	g_double_app_genlist = NULL;
 	unregister_vconf_changing(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, change_double_pressing_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
+
+	return EINA_TRUE;
 }
 
 Evas_Object *create_double_app_list(void *data)

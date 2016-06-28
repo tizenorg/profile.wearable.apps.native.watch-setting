@@ -29,33 +29,65 @@ typedef struct {
 	void *data;
 	Evas_Object *obj;
 	Evas_Object *genlist_obj;
+	char *cur_genlist_name;
 } back_button_cb_data;
 
 static Eina_List *back_button_cb_stack = NULL;
-static Eina_Bool _nf_item_pop_cb(void *data, Elm_Object_Item *it);
 
-void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Evas_Object *genlist_obj, Elm_Naviframe_Item *navi_item)
+void back_button_cb_push(back_btn_cb_ptr cb, void *data, Evas_Object *obj, Evas_Object *genlist_obj, char * genlist_name)
 {
 	back_button_cb_data *cb_data = malloc(sizeof(*cb_data));
 	cb_data->cb = cb;
 	cb_data->data = data;
 	cb_data->obj = obj;
 	cb_data->genlist_obj = genlist_obj;
+	if(strlen(genlist_name))
+		cb_data->cur_genlist_name = strdup(genlist_name);
+	else
+		cb_data->cur_genlist_name = NULL;
 	back_button_cb_stack = eina_list_prepend(back_button_cb_stack, cb_data);
+	DBG("####### back btn push!! %s", (cb_data->cur_genlist_name)?cb_data->cur_genlist_name: "NO name");
 
-	if(navi_item)
-		elm_naviframe_item_pop_cb_set(navi_item, _nf_item_pop_cb, data);
+}
+
+void clear_back_button_list()
+{
+	Eina_List *l;
+	Eina_List *n;
+	back_button_cb_data *item= NULL;
+	EINA_LIST_FOREACH_SAFE(back_button_cb_stack, l, n, item) {
+		if(item){
+			back_button_cb_stack = eina_list_remove(back_button_cb_stack, item);
+			if(item->cur_genlist_name)
+				free(item->cur_genlist_name);
+			free(item);
+		}
+	}
+
+	back_button_cb_stack = NULL;
 }
 
 void back_button_cb_pop(void)
 {
 	back_button_cb_data *cb_data = NULL;
-	cb_data = eina_list_data_get(back_button_cb_stack);
+	if(back_button_cb_stack)
+		cb_data = eina_list_data_get(back_button_cb_stack);
+	else {
+		DBG("####### back btn pop cb - NULL!!!!!! EMPTY");
+		return;
+	}
+
 	if(!cb_data)
 		return;
 	if(cb_data->genlist_obj){
 		DBG("####### back btn pop cb - genlist ptr is %p", cb_data->genlist_obj);
+		if(cb_data->cur_genlist_name)
+			DBG("####### back btn pop cb - genlist name is %s", cb_data->cur_genlist_name);
 		eext_rotary_object_event_activated_set(cb_data->genlist_obj, EINA_TRUE);
+	}
+	if(cb_data->cur_genlist_name) {
+		free(cb_data->cur_genlist_name);
+		cb_data->cur_genlist_name = NULL;
 	}
 	back_button_cb_stack = eina_list_remove(back_button_cb_stack, cb_data);
 	free(cb_data);
@@ -87,6 +119,7 @@ void back_key_generic_cb(void *data, Evas_Object *obj, void *event_info)
 	appdata *ad = (appdata *)data;
 	if (ad) {
 		elm_naviframe_item_pop(ad->nf);
+		back_button_cb_pop();
 	} else {
 		ERR("data ptr is NULL");
 	}
@@ -226,8 +259,3 @@ void connect_to_wheel_with_genlist(Evas_Object *genlist, appdata *ad)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 }
 
-static Eina_Bool _nf_item_pop_cb(void *data, Elm_Object_Item *it)
-{
-	back_button_cb_pop();
-	return EINA_TRUE;
-}
