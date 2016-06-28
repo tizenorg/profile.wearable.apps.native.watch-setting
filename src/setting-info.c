@@ -307,7 +307,7 @@ void _usb_debug_chk_changed_cb(void *data, Evas *e, Evas_Object *obj, void *even
 		evas_object_show(icon);
 
 		evas_object_show(popup);
-		back_button_cb_push(&back_key_usb_debug_popup_cb, check, NULL, g_info_genlist , NULL);
+		back_button_cb_push(&back_key_usb_debug_popup_cb, check, NULL, g_info_genlist, "g_info_genlist");
 
 	} else {
 		set_enable_USB_debugging(0);
@@ -614,7 +614,7 @@ void _info_open_src_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	evas_object_smart_callback_add(layout, "language,changed", open_sources_licences_lange_changed, NULL);
 
 	evas_object_show(popup);
-	back_button_cb_push(&back_key_popup_cb, data, NULL, g_about_genlist, NULL);
+	back_button_cb_push(&back_key_popup_cb, data, NULL, g_about_genlist, "g_about_genlist");
 }
 
 void safety_inform_lange_changed(void *data, Evas_Object *obj, void *event_info)
@@ -778,7 +778,7 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	g_about_genlist = genlist;
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_info_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_info_genlist, "g_info_genlist");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
 

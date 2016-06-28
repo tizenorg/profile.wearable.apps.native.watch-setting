@@ -216,7 +216,7 @@ static void _flight_mode_check_cb(void *data, Evas *e, Evas_Object *obj, void *e
 		evas_object_show(icon);
 
 		evas_object_show(popup);
-		back_button_cb_push(&back_key_flight_mode_popup_cb, check, NULL, g_connection_genlist, NULL);
+		back_button_cb_push(&back_key_flight_mode_popup_cb, check, NULL, g_connection_genlist, "g_connection_genlist");
 
 	} else {
 		/* disable Flight mode off with out popup */

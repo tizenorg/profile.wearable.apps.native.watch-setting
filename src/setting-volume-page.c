@@ -373,7 +373,7 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	return EINA_TRUE;
 }
 
-void _clear_volume_setting_cb(void *data, Evas_Object *obj, void *event_info)
+void _clear_volume_setting_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
 
 	if (is_created_player()) {
@@ -385,11 +385,7 @@ void _clear_volume_setting_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 
-	if (g_ad) {
-		elm_naviframe_item_pop(g_ad->nf);
-	} else {
-		ERR("g_ad ptr is NULL");
-	}
+	back_key_generic_cb(g_ad, obj, event_info);
 
 	stop_wav();
 

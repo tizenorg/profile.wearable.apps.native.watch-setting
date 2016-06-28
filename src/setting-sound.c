@@ -189,7 +189,7 @@ void _clear_sound_resource()
 	is_wav_playing = 0;
 	sound_id = -1;
 
-	_stop_player();
+//	_stop_player();
 
 	/* Unregister sound mode vconf callback */
 	unregister_vconf_changing(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, sound_vconf_changed_cb);
@@ -333,7 +333,8 @@ void _show_volume_list(void *data)
 	Evas_Object * layout = _create_volume_page(data);
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
-	back_button_cb_push(&_clear_volume_setting_cb, NULL, NULL, g_sound_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, "g_sound_genlist");
+	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _clear_volume_setting_cb, ad);
 
 }
 
@@ -392,7 +393,7 @@ void _vibrate_cb(void *data, Evas_Object *obj, void *event_info)
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
-	back_button_cb_push(&_clear_vibration_resource, data, NULL, g_sound_genlist, nf_it);
+	back_button_cb_push(&_clear_vibration_resource, data, NULL, g_sound_genlist, "g_sound_genlist");
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_SOUND;
@@ -757,7 +758,7 @@ static void _sound_mode_gl_cb(void *data, Evas_Object *obj, void *event_info)
 		break;
 	}
 
-	elm_naviframe_item_pop(temp_ad->nf);
+	back_key_generic_cb(temp_ad, obj, event_info);
 	if (!temp_ad->sound_mode_rdg) {
 		evas_object_del(temp_ad->sound_mode_rdg);
 		temp_ad->sound_mode_rdg = NULL;
@@ -891,7 +892,7 @@ void _show_sound_mode_list(void *data)
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, "g_sound_genlist");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _sound_mode_back_cb, ad);
 }
@@ -1159,8 +1160,8 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(popup, "btn.right", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_ringtone_ok_cb, ad);
 
-	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, "empty");
-	back_button_cb_push(&_response_ringtone_cancel_cb, data, btn, g_sound_genlist, nf_it);
+	elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, "empty");
+	back_button_cb_push(&_response_ringtone_cancel_cb, data, obj, g_sound_genlist, "g_sound_genlist");
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _ringtone_back_cb, ad); */
 
 	/*VCONFKEY_PM_STATE */
@@ -1396,8 +1397,8 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(popup, "btn.right", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_notification_ok_cb, ad);
 
-	Elm_Widget_Item *nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, "empty");
-	back_button_cb_push(&_response_notification_cancel_cb, data, btn, g_sound_genlist, nf_it);
+	elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, "empty");
+	back_button_cb_push(&_response_notification_cancel_cb, data, btn, g_sound_genlist, "g_sound_genlist");
 	/*ea_object_event_callback_add(ad->nf, EA_CALLBACK_BACK, _notification_back_cb, ad); */
 
 	/*VCONFKEY_PM_STATE */
@@ -1647,9 +1648,8 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(popup, "btn.right", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_vibration_ok_cb, ad);
 
-	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf,
-													 NULL, NULL, NULL, popup, "empty");
-	back_button_cb_push(&_response_vibration_cancel_cb, data, btn, g_sound_genlist, nf_it);
+	elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, "empty");
+	back_button_cb_push(&_response_vibration_cancel_cb, data, obj, g_sound_genlist, "g_sound_genlist");
 }
 
 static char *_gl_pref_arm_title_get(void *data, Evas_Object *obj, const char *part)

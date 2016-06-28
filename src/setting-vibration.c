@@ -398,7 +398,7 @@ static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info)
 		temp_ad->vibration_rdg = NULL;
 	}
 
-	elm_naviframe_item_pop(temp_ad->nf);
+	back_key_generic_cb(temp_ad, obj, event_info);
 
 	if (g_vib_item != NULL) {
 		elm_genlist_item_update(g_vib_item);
@@ -519,7 +519,7 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 
 	/*elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, popup, NULL); */
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, NULL);
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_vibration_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_vibration_genlist, "g_vibration_genlist");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
 

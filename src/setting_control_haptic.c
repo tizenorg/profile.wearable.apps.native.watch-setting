@@ -83,10 +83,12 @@ void _start_vibration(int level, int feedback_rate, char *res_path)
 
 int _haptic_close()
 {
-	int ret = haptic_close(hnd_hpt);
-	if (ret != 0) {
-		DBG("Setting - Failed haptic_deinitialize");
-		return 0;
+	if(h_data.is_haptic_opened) {
+		int ret = haptic_close(hnd_hpt);
+		if (ret != 0) {
+			DBG("Setting - Failed haptic_deinitialize");
+			return 0;
+		}
 	}
 
 	if (vibration_timer) {

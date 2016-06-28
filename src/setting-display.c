@@ -105,6 +105,7 @@ static Evas_Object *g_display_genlist = NULL;
 static Evas_Object *g_screen_time_genlist = NULL;
 static Evas_Object *g_font_size_genlist = NULL;
 static Evas_Object *g_font_style_genlist = NULL;
+static Evas_Object *g_font_genlist = NULL;
 static Evas_Object *g_rotate_screen_genlist = NULL;
 static Evas_Object *g_noti_indicator_genlist = NULL;
 
@@ -335,7 +336,7 @@ void _display_gl_language_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_lang_cb, ad);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -708,7 +709,7 @@ void _show_screen_timeout_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -973,7 +974,6 @@ static void _font_style_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 
 	/*elm_genlist_realized_items_update(g_font_style_genlist); */
-	elm_naviframe_item_pop(temp_ad->nf);
 
 	if (font_style_item) {
 		elm_genlist_item_update(font_style_item);
@@ -988,6 +988,7 @@ static void _font_style_gl_cb(void *data, Evas_Object *obj, void *event_info)
 		ecore_timer_del(font_timer);
 		font_timer = NULL;
 	}
+	back_key_generic_cb(temp_ad, obj, event_info);
 	font_timer = ecore_timer_add(0.3, (Ecore_Task_Cb) _update_font_style, NULL);
 }
 
@@ -1024,7 +1025,6 @@ static void _font_size_gl_cb(void *data, Evas_Object *obj, void *event_info)
 
 	/*elm_genlist_realized_items_update(g_font_size_genlist); */
 
-	elm_naviframe_item_pop(temp_ad->nf);
 
 	if (!temp_ad->font_size_rdg) {
 		evas_object_del(temp_ad->font_size_rdg);
@@ -1035,6 +1035,8 @@ static void _font_size_gl_cb(void *data, Evas_Object *obj, void *event_info)
 		ecore_timer_del(font_timer);
 		font_timer = NULL;
 	}
+
+	back_key_generic_cb(temp_ad, obj, event_info);
 
 	if (old_font_size != font_size_index) {
 		DBG("Setting - font size is same with old.");
@@ -1103,9 +1105,10 @@ void _show_font_list(void *data)
 	elm_genlist_item_class_free(padding);
 
 	elm_genlist_item_class_free(itc);
+	g_font_genlist = genlist;
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1216,9 +1219,7 @@ static Eina_List *_get_available_font_list()
 				}
 
 				id = 0;
-
-				/* always shown for D/L */
-				if (!strncmp((const char *)file, SETTING_FONT_DOWNLOADED_FONT_PATH, download_path_len)) {
+/* always shown for D/L */ if (!strncmp((const char *)file, SETTING_FONT_DOWNLOADED_FONT_PATH, download_path_len)) {
 					/* Find proper family name for current locale. */
 					while (locale && family && lang) {
 						ERR("locale: %s, family: %s, lang: %s", locale, family, lang);
@@ -1382,12 +1383,11 @@ int _show_font_style_list(void *data)
 	evas_object_smart_callback_add(genlist, "language,changed", _lang_update_font_style_list, ad);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_font_genlist, "g_font_genlist");
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
-	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, setting_font_list_pop_cb, ad);
 
 	return 0;
 }
@@ -1563,6 +1563,7 @@ void _show_font_size_list(void *data)
 	elm_genlist_item_class_free(itc);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_font_genlist, "g_font_genlist");
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1778,7 +1779,7 @@ static void settings_font_style_changed_cb(system_settings_key_e key, void *user
 
 static void setting_font_list_pop_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
-	DBG("setting_font_list_pop_cb");
+	ERR("setting_font_list_pop_cb");
 
 	font_size_item = NULL;
 	font_style_item = NULL;
@@ -1880,7 +1881,7 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 		navi_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
 		elm_naviframe_item_title_enabled_set(navi_it, EINA_FALSE, EINA_FALSE);
 		elm_object_item_domain_text_translatable_set(navi_it, SETTING_PACKAGE, EINA_TRUE);
-		back_button_cb_push(&_brightness_pop_cb, data, NULL, g_display_genlist, navi_it);
+		back_button_cb_push(&_brightness_pop_cb, data, NULL, g_display_genlist, "g_display_genlist");
 
 		register_vconf_changing(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, brightness_vconf_changed_cb, NULL);
 	}
@@ -2417,7 +2418,7 @@ void _noti_indicator_help_popup_cb(void *data, Evas_Object *obj, void *event_inf
 	free(txt);
 
 	evas_object_show(popup);
-	back_button_cb_push(&back_key_popup_cb, data, NULL, g_noti_indicator_genlist, NULL);
+	back_button_cb_push(&back_key_popup_cb, data, NULL, g_noti_indicator_genlist, "g_noti_indicator_genlist");
 
 }
 
@@ -2553,7 +2554,7 @@ static void _show_noti_indicator_list(void *data)
 	elm_genlist_item_class_free(padding);
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
-	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, nf_it);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 
