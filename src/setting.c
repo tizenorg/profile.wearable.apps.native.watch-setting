@@ -479,6 +479,7 @@ void back_key_connection_cb(void *data, Evas_Object *obj, void *event_info)
 	if (ad) {
 		elm_naviframe_item_pop(ad->nf);
 		_clear_connection_resource();
+		back_button_cb_pop();
 	} else {
 		ERR("data ptr is NULL");
 	}
@@ -1350,7 +1351,7 @@ void app_reset(app_control_h service, void *data)
 	char *operation = NULL;
 	app_control_get_operation(service, &operation);
 	check_direct_brightness_setting(data, service);
-	DBG("operation : %s", operation);
+	DBG("operation : %s, ad->is_first_launch :%d ", operation, (ad)?ad->is_first_launch:-1);
 	if (!ad->is_first_launch) {
 		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/main")) {
 			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
@@ -1436,7 +1437,6 @@ int main(int argc, char *argv[])
 
 	ret = ui_app_main(argc, argv, &event_callback, &ad);
 	if (APP_ERROR_NONE != ret) {
-		\
 		ERR("app_main() is failed. err = %d", ret);
 	}
 

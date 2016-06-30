@@ -77,8 +77,10 @@ void back_button_cb_pop(void)
 		return;
 	}
 
-	if(!cb_data)
+	if(!cb_data) {
+		DBG("####### back btn pop cb - cb_data NULL!!!!!! EMPTY");
 		return;
+	}
 	if(cb_data->genlist_obj){
 		DBG("####### back btn pop cb - genlist ptr is %p", cb_data->genlist_obj);
 		if(cb_data->cur_genlist_name)

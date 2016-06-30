@@ -581,6 +581,7 @@ static void _screen_timeout_gl_cb(void *data, Evas_Object *obj, void *event_info
 	elm_genlist_realized_items_update(g_screen_time_genlist);
 
 	elm_naviframe_item_pop(temp_ad->nf);
+	back_button_cb_pop();
 	if (!temp_ad->screen_timeout_rdg) {
 		evas_object_del(temp_ad->screen_timeout_rdg);
 		temp_ad->screen_timeout_rdg = NULL;
@@ -2086,6 +2087,7 @@ static void _brightness_pop_cb(void *data, Evas_Object *obj, void *event_info)
 	appdata *ad = (appdata *)data;
 	if (ad) {
 		elm_naviframe_item_pop(ad->nf);
+		back_button_cb_pop();
 	} else {
 		ERR("data ptr is NULL");
 	}
@@ -2237,6 +2239,7 @@ static void _clock_cb(void *data, Evas_Object *obj, void *event_info)
 		return;
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
+	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
 	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_clock_cb, ad);
 	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_clock_cb, ad); */
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);

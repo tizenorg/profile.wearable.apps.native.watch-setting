@@ -531,6 +531,7 @@ static void _mouse_up_cb(void *data, Evas *evas, Evas_Object *obj, void *event_i
 	if (_set_clock_type(appid)) {
 		if (temp_ad != NULL) {
 			elm_naviframe_item_pop(temp_ad->nf);
+			back_button_cb_pop();
 		}
 
 		/* automatic freed!! */
@@ -577,9 +578,13 @@ static void _page_show(void *data, Evas *e, Evas_Object *obj, void *event_info)
 	elm_scroller_page_show(obj, page, 0);
 }
 
-static Evas_Object *_create_index(Evas_Object *parent)
+static Evas_Object *_create_index(Evas_Object *parent, void *data)
 {
 	Evas_Object *layout, *scroller, *box, *page_layout;
+
+	temp_ad = (appdata *)data;
+	if (temp_ad == NULL)
+		return NULL;
 
 	if (parent == NULL)
 		return NULL;
@@ -612,6 +617,10 @@ static Evas_Object *_create_index(Evas_Object *parent)
 	elm_object_style_set(scroller, "effect");
 	evas_object_show(scroller);
 	g_clock_scroller = scroller;
+
+	Evas_Object *circle_scroller = eext_circle_object_scroller_add(scroller, temp_ad->circle_surface);
+	eext_circle_object_scroller_policy_set(circle_scroller, ELM_SCROLLER_POLICY_OFF, ELM_SCROLLER_POLICY_AUTO);
+	eext_rotary_object_event_activated_set(circle_scroller, EINA_TRUE);
 
 	/* Create Box */
 	box = elm_box_add(scroller);
@@ -827,7 +836,7 @@ Evas_Object *_clock_type_cb(void *data, Evas_Object *obj, void *event_info)
 
 	temp_ad = ad;
 
-	layout_inner = _create_index(ad->nf);
+	layout_inner = _create_index(ad->nf, ad);
 	/*	Elm_Object_Item *it = NULL; */
 	/*it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout_inner, NULL); */
 	/*elm_naviframe_item_title_enabled_set(it, EINA_FALSE, EINA_FALSE); */
@@ -848,7 +857,7 @@ void _clock_type_cb_gen_item(void *data, Evas_Object *obj, void *event_info)
 	temp_ad = ad;
 
 	/*	Evas_Object *layout_inner = NULL; */
-	/* layout_inner = _create_index(ad->nf); */
+	/* layout_inner = _create_index(ad->nf, ad); */
 	/*	Elm_Object_Item *it = NULL; */
 	/*it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout_inner, NULL); */
 	/*elm_naviframe_item_title_enabled_set(it, EINA_FALSE, EINA_FALSE); */
