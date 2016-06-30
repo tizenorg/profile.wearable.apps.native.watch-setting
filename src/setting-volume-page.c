@@ -576,14 +576,14 @@ Evas_Object * _create_volume_page(void *data)
 
 		Evas_Object *btn_minus;
 		btn_minus = elm_image_add(page_layout);
-		snprintf(img_path, sizeof(img_path), "%s/minus_btn.png", IMG_DIR);
+		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus.png", IMG_DIR);
 		elm_image_file_set(btn_minus, img_path, NULL);
 		elm_object_part_content_set(page_layout, "btn1", btn_minus);
 		evas_object_smart_callback_add(btn_minus, "clicked", _press_minus_volume_cb, pd);
 
 		Evas_Object *btn_plus;
 		btn_plus = elm_image_add(page_layout);
-		snprintf(img_path, sizeof(img_path), "%s/plus_btn.png", IMG_DIR);
+		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_plus.png", IMG_DIR);
 		elm_image_file_set(btn_plus, img_path, NULL);
 		elm_object_part_content_set(page_layout, "btn2", btn_plus);
 		evas_object_smart_callback_add(btn_plus, "clicked", _press_plus_volume_cb, pd);

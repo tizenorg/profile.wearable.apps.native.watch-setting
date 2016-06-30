@@ -214,20 +214,21 @@ group {
             rel2.relative: 1.0 0.4;
             text {
                font: "Tizen:style=Regular";
-               size: 24;
+               size: 40;
                min: 1 1;
             }
             color: 255 255 255 255;
          }
       }
+
       part { name: "btn1";
 		 type: SWALLOW;
 		 scale: 1;
 		 description {
 			state: "default" 0.0;
 			fixed: 1 1;
-			rel1.relative: 144/360 58/360;
-			rel2.relative: 168/360 85/360;
+			rel1.relative: 96/360 39/360;
+			rel2.relative: 160/360 103/360;
 			}
 	 }
 
@@ -236,8 +237,8 @@ group {
 		 scale: 1;
 		 description {
 		   state: "default" 0.0;
-			rel1.relative: 193/360 58/360;
-			rel2.relative: 217/360 85/360;
+			rel1.relative: 200/360 39/360;
+			rel2.relative: 264/360 103/360;
 		}
 	 }
       part { name: "elm.text.bottom";
@@ -288,7 +289,7 @@ group {
             rel2.relative: 1.0 0.4;
             text {
                font: "Tizen:style=Regular";
-               size: 24;
+               size: 40;
                min: 1 1;
             }
             color: 255 255 255 255;
@@ -301,8 +302,8 @@ group {
 		 description {
 			state: "default" 0.0;
 			fixed: 1 1;
-			rel1.relative: 144/360 58/360;
-			rel2.relative: 168/360 85/360;
+			rel1.relative: 96/360 39/360;
+			rel2.relative: 160/360 103/360;
 			}
 	 }
 
@@ -311,8 +312,8 @@ group {
 		 scale: 1;
 		 description {
 		   state: "default" 0.0;
-			rel1.relative: 193/360 58/360;
-			rel2.relative: 217/360 85/360;
+			rel1.relative: 200/360 39/360;
+			rel2.relative: 264/360 103/360;
 		}
 	 }
 
