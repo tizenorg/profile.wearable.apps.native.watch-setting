@@ -1367,6 +1367,10 @@ void app_reset(app_control_h service, void *data)
 				top = elm_naviframe_top_item_get(ad->nf);
 			}
 
+			/*reset back button callback stack*/
+			clear_back_button_list();
+			back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
+
 			if (ad->main_genlist) {
 				elm_genlist_item_show(elm_genlist_first_item_get(ad->main_genlist),
 									  ELM_GENLIST_ITEM_SCROLLTO_TOP);
