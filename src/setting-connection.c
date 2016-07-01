@@ -30,6 +30,9 @@
 int app_control_set_package(app_control_h app_control, const char *package);
 static Evas_Object *g_connection_genlist = NULL;
 
+static Elm_Object_Item *g_BT_item = NULL;
+static Elm_Object_Item *g_WIFI_item = NULL;
+static Elm_Object_Item *g_NFC_item = NULL;
 #define AUDIO_RESOURCE_EXTENSION	".ogg"
 
 void _bluetooth_cb(void *data, Evas_Object *obj, void *event_info);
@@ -80,6 +83,11 @@ void _clear_connection_resource()
 		ecore_timer_del(running_timer);
 		running_timer = NULL;
 	}
+
+	g_connection_genlist = NULL;
+	g_BT_item = NULL;
+	g_WIFI_item = NULL;
+	g_NFC_item = NULL;
 
 	temp_ad = NULL;
 
@@ -365,28 +373,30 @@ char *_gl_connection_title_get(void *data, Evas_Object *obj, const char *part)
 	char buf[1024] = {0,};
 	Item_Data *id = data;
 	int index = id->index;
-	int tmp_int = 0;
+	int val = 0;
 
 	if (!strcmp(part, "elm.text")) {
 		snprintf(buf, sizeof(buf) - 1, "%s", _(connection_menu_its[index % CONNECT_TOP_MENU_SIZE].name));
 	} else if (!strcmp(part, "elm.text.1")) {
 		switch (index) {
 		case SETTING_CONNECTION_BLUETOOTH:
-			vconf_get_int(VCONFKEY_BT_STATUS, &tmp_int);
-			snprintf(buf, sizeof(buf) - 1, "%s", tmp_int ? "Off" : "On");
+			vconf_get_int(VCONFKEY_BT_STATUS, &val);
+			snprintf(buf, sizeof(buf) - 1, "%s", val ? "On" : "Off");
+			break;
 		case SETTING_CONNECTION_WIFI:
-			vconf_get_int(VCONFKEY_WIFI_STATE, &tmp_int);
-			snprintf(buf, sizeof(buf) - 1, "%s", tmp_int ? "Off" : "On");
+			vconf_get_int(VCONFKEY_WIFI_STATE, &val);
+			snprintf(buf, sizeof(buf) - 1, "%s", val ? "On" : "Off");
+			break;
 		case SETTING_CONNECTION_NFC:
-			vconf_get_bool(VCONFKEY_NFC_STATE, &tmp_int);
-			snprintf(buf, sizeof(buf) - 1, "%s", tmp_int ? "Off" : "On");
+			vconf_get_bool(VCONFKEY_NFC_STATE, &val);
+			snprintf(buf, sizeof(buf) - 1, "%s", val ? "On" : "Off");
 			break;
 			/*		case SETTING_CONNECTION_BT_ALERTS: */
 			/*			snprintf(buf, sizeof(buf) - 1, "Receive BT disconnection alerts."); */
 			/*			break; */
 		}
 	}
-	ERR("_gl_connection_title_get part: %s, %s", part, buf);
+	ERR("_gl_connection_title_get part: %s, %s get status : %d", part, buf, val);
 	return strdup(buf);
 }
 
@@ -450,6 +460,7 @@ Evas_Object *_create_connection_list(void *data)
 
 	menu_its = connection_menu_its;
 
+
 	for (idx = 0; idx < CONNECT_TOP_MENU_SIZE; idx++) {
 		switch (connection_menu_its[idx].type) {
 		case SETTING_CONNECTION_BLUETOOTH:
@@ -479,7 +490,17 @@ Evas_Object *_create_connection_list(void *data)
 						   ELM_GENLIST_ITEM_NONE,
 						   menu_its[idx].func,	/* call back */
 						   ad);
-
+		switch (connection_menu_its[idx].type) {
+			case SETTING_CONNECTION_BLUETOOTH:
+				g_BT_item = id->item;
+				break;
+			case SETTING_CONNECTION_WIFI:
+				g_WIFI_item = id->item;
+				break;
+			case SETTING_CONNECTION_NFC:
+				g_NFC_item = id->item;
+				break;
+			}
 		}
 	}
 	elm_genlist_item_class_free(text_icon);
@@ -501,18 +522,29 @@ Evas_Object *_create_connection_list(void *data)
 	return genlist;
 }
 
+void _update_connection_list(Elm_Object_Item * item)
+{
+	if (item) {
+		DBG("update connection genlist");
+		elm_genlist_item_update(item);
+	}
+}
+
 static void bt_status_vconf_changed_cb(keynode_t *key, void *data)
 {
 	DBG("Setting - bt_status_vconf_changed_cb() is called!!");
+	_update_connection_list(g_BT_item);
 }
 
 static void wifi_status_vconf_changed_cb(keynode_t *key, void *data)
 {
 	DBG("Setting - wifi_status_vconf_changed_cb() is called!!");
+	_update_connection_list(g_WIFI_item);
 }
 
 static void nfc_status_vconf_changed_cb(keynode_t *key, void *data)
 {
 	DBG("Setting - nfc_status_vconf_changed_cb() is called!!");
+	_update_connection_list(g_NFC_item);
 }
 

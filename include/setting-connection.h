@@ -51,6 +51,7 @@ typedef struct connection_Item_Data {
 
 
 
+void _update_connection_list();
 void _clear_connection_resource();
 Evas_Object *_create_connection_list(void *data);
 
