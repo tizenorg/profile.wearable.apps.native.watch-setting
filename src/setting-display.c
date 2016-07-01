@@ -109,7 +109,7 @@ static Evas_Object *g_font_genlist = NULL;
 static Evas_Object *g_rotate_screen_genlist = NULL;
 static Evas_Object *g_noti_indicator_genlist = NULL;
 
-static int screen_time_index = 1;		/* default: 10 seconds */
+static int g_screen_time_index = 1;		/* default: 10 seconds */
 static int font_size_index	 = 1;		/* default: normal */
 static int rotate_screen_rot  = 0;		/* default: 0(0degree), vconf enum */
 static int rotate_screen_index	= 0;		/* default: 0, list index */
@@ -120,7 +120,7 @@ static int touch_mode = NONE;
 static Elm_Object_Item *lang_item = NULL;
 static Elm_Object_Item *wake_up_item = NULL;
 static Elm_Object_Item *edit_icon_item = NULL;
-static Elm_Object_Item *screen_time_item = NULL;
+static Elm_Object_Item *g_screen_time_item = NULL;
 
 /* Font list item */
 static char *font_name = NULL;
@@ -236,6 +236,7 @@ void _clear_display_cb(void *data, Evas *e, Elm_Object_Item *it, void *event_inf
 	g_font_size_genlist = NULL;
 	g_font_style_genlist = NULL;
 	g_rotate_screen_genlist = NULL;
+	g_screen_time_item = NULL;
 
 	touch_mode = NONE;
 
@@ -380,15 +381,12 @@ char *_gl_display_title_get(void *data, Evas_Object *obj, const char *part)
 				}
 			}
 			FREE(curr_lang);
-		} else if (id->item == screen_time_item) {
+		} else if (id->item == g_screen_time_item) {
 			int time = 0;
 			vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &time);
 			switch (time) {
 			case 0:
 				snprintf(buf, sizeof(buf) - 1, "No off");
-				break;
-			case 10:
-				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_10SEC"));
 				break;
 			case 15:
 				snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_15SEC"));
@@ -505,7 +503,7 @@ Evas_Object *_create_display_list(void *data)
 				edit_icon_item = id->item;
 			} else if (menu_its[idx].type == SETTING_DISPLAY_SCREEN_TIME) {
 				DBG("screen time item@!!!");
-				screen_time_item = id->item;
+				g_screen_time_item = id->item;
 			}
 		}
 	}
@@ -574,9 +572,9 @@ static void _screen_timeout_gl_cb(void *data, Evas_Object *obj, void *event_info
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
-	screen_time_index = (int)data;
+	g_screen_time_index = (int)data;
 
-	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL , timeout_arr[screen_time_index]);
+	vconf_set_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL , timeout_arr[g_screen_time_index]);
 
 	elm_genlist_realized_items_update(g_screen_time_genlist);
 
@@ -612,11 +610,11 @@ static Evas_Object *_gl_screen_timeout_radio_get(void *data, Evas_Object *obj, c
 
 		if (timeout == -1) {
 			vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &timeout);
-			screen_time_index = _get_timeout_index(timeout) - emul_minus;
+			g_screen_time_index = _get_timeout_index(timeout) - emul_minus;
 		}
 
-		if (screen_time_index == id->index) {
-			elm_radio_value_set(radio_main, screen_time_index);
+		if (g_screen_time_index == id->index) {
+			elm_radio_value_set(radio_main, g_screen_time_index);
 		}
 	}
 	return radio;
@@ -656,7 +654,7 @@ void _show_screen_timeout_list(void *data)
 
 	int timeout = 0;
 	vconf_get_int(VCONFKEY_SETAPPL_LCD_TIMEOUT_NORMAL, &timeout);
-	screen_time_index = _get_timeout_index(timeout);
+	g_screen_time_index = _get_timeout_index(timeout);
 
 	Elm_Object_Item *curr_item = NULL;
 
@@ -682,7 +680,7 @@ void _show_screen_timeout_list(void *data)
 			id->index = idx;
 			id->item = elm_genlist_item_append(genlist, itc, id, NULL, ELM_GENLIST_ITEM_NONE, _screen_timeout_gl_cb, (void *)idx);
 
-			if (idx == screen_time_index) {
+			if (idx == g_screen_time_index) {
 				curr_item = id->item;
 			}
 		}
@@ -690,7 +688,7 @@ void _show_screen_timeout_list(void *data)
 
 	ad->screen_timeout_rdg = elm_radio_add(genlist);
 	elm_radio_state_value_set(ad->screen_timeout_rdg, SCREEN_TIME_COUNT - emul_end);
-	elm_radio_value_set(ad->screen_timeout_rdg, screen_time_index);
+	elm_radio_value_set(ad->screen_timeout_rdg, g_screen_time_index);
 
 	evas_object_data_set(genlist, "radio_main", ad->screen_timeout_rdg);
 
@@ -1545,8 +1543,8 @@ void _show_font_size_list(void *data)
 	}
 
 	ad->font_size_rdg = elm_radio_add(genlist);
-	elm_radio_state_value_set(ad->font_size_rdg, 6);
-	elm_radio_value_set(ad->font_size_rdg, screen_time_index);
+	elm_radio_state_value_set(ad->font_size_rdg, 3);
+	elm_radio_value_set(ad->font_size_rdg, font_size_index);
 
 	evas_object_data_set(genlist, "radio_main", ad->font_size_rdg);
 
@@ -1816,9 +1814,9 @@ static void change_screen_time_cb(keynode_t *key, void *data)
 {
 	DBG("Setting - change_screen_time_cb");
 
-//	if (screen_time_item) {
-//		elm_genlist_item_update(screen_time_item);
-//	}
+	if (g_screen_time_item) {
+		elm_genlist_item_update(g_screen_time_item);
+	}
 }
 
 static void change_language_cb(keynode_t *key, void *data)
