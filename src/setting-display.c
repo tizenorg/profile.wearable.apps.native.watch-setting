@@ -757,6 +757,8 @@ static char *_gl_font_title_get(void *data, Evas_Object *obj, const char *part)
 						snprintf(buf, sizeof(buf) - 1, "%s", _("IDS_ST_BODY_UDRGOTHICM_JPN"));
 					} else if (!strcmp(font_name, "TizenSans")) {
 						snprintf(buf, sizeof(buf) - 1, "%s", _("TizenSans"));
+					} else if (!strcmp(font_name, "BreezeSans")) {
+						snprintf(buf, sizeof(buf) - 1, "%s", "default");
 					} else {
 						snprintf(buf, sizeof(buf) - 1, "%s", font_name);
 					}
@@ -2404,8 +2406,8 @@ void _noti_indicator_help_popup_cb(void *data, Evas_Object *obj, void *event_inf
 
 	char buf[1024];
 
-	char *font_size_frame = "<text_class=tizen><align=center>%s</align></text_class>";
-	snprintf(buf, sizeof(buf) - 1, font_size_frame, "Show a yellow indicator <br>on the watch face when <br> there are unread notifications.");
+	char *font_size_frame = "<font=Tizen><style=Thin><font_size=28><align=center>%s</align></font_size></style></font>";
+	snprintf(buf, sizeof(buf) - 1, font_size_frame, "&nbsp;<br>Show a yellow indicator on the watch face when there are unread notifications.");
 
 	Evas_Object *layout;
 	layout = elm_layout_add(popup);
