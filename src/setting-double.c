@@ -488,7 +488,7 @@ static void update_double_app_list(void *data)
 			elm_radio_value_set(ad->double_rdg, -1);
 		}
 
-		elm_genlist_item_show(sel_it, ELM_GENLIST_ITEM_SCROLLTO_TOP);
+//		elm_genlist_item_show(sel_it, ELM_GENLIST_ITEM_SCROLLTO_TOP);
 
 		elm_genlist_item_class_free(itc);
 	}
@@ -570,11 +570,24 @@ Eina_Bool clear_double_app_cb(void *data, Elm_Object_Item *it)
 	FREE(pitem_none);
 	FREE(pitem_recent);
 	FREE(pitem_last);
+
+	Elm_Object_Item *first = elm_genlist_first_item_get(g_double_app_genlist);
+	elm_object_item_signal_emit(first, "elm,action,title,slide,stop", "elm");
+
 	g_double_app_genlist = NULL;
 	unregister_vconf_changing(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, change_double_pressing_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
 
 	return EINA_TRUE;
+}
+
+static void gl_realized_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Elm_Object_Item * item = (Elm_Object_Item *)event_info; 
+	Elm_Object_Item *first = elm_genlist_first_item_get(g_double_app_genlist);
+	if(first == item)
+		elm_object_item_signal_emit(first, "elm,action,title,slide,start", "elm");
+
 }
 
 Evas_Object *create_double_app_list(void *data)
@@ -664,8 +677,6 @@ Evas_Object *create_double_app_list(void *data)
 	}
 	evas_object_data_set(genlist, "radio_main", ad->double_rdg);
 
-	elm_genlist_item_show(sel_it, ELM_GENLIST_ITEM_SCROLLTO_TOP);
-
 	Elm_Genlist_Item_Class *padding = elm_genlist_item_class_new();
 	padding->item_style = "padding";
 	padding->func.del = _gl_double_del;
@@ -678,6 +689,8 @@ Evas_Object *create_double_app_list(void *data)
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
 	elm_genlist_item_class_free(itc);
+
+	evas_object_smart_callback_add(genlist, "realized", gl_realized_cb, NULL);
 
 	return layout;
 }
