@@ -570,6 +570,10 @@ Eina_Bool clear_double_app_cb(void *data, Elm_Object_Item *it)
 	FREE(pitem_none);
 	FREE(pitem_recent);
 	FREE(pitem_last);
+
+	Elm_Object_Item *first = elm_genlist_first_item_get(g_double_app_genlist);
+	elm_object_item_signal_emit(first, "elm,action,title,slide,stop", "elm");
+
 	g_double_app_genlist = NULL;
 	unregister_vconf_changing(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, change_double_pressing_cb);
 	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
@@ -678,6 +682,9 @@ Evas_Object *create_double_app_list(void *data)
 	elm_object_part_content_set(layout, "elm.genlist", genlist);
 
 	elm_genlist_item_class_free(itc);
+
+	Elm_Object_Item *first = elm_genlist_first_item_get(genlist);
+	elm_object_item_signal_emit(first, "elm,action,title,slide,start", "elm");
 
 	return layout;
 }
