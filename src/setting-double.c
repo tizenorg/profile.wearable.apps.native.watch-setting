@@ -51,6 +51,21 @@ _gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
 	return strdup(buf);
 }
 
+char *_get_selected_app_name()
+{
+	int val = 0;
+	vconf_get_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, &val);
+
+	switch (val) {
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE:
+		return _("IDS_LCKSCN_BODY_NONE");
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS:
+		return _("IDS_ST_OPT_RECENT_APPS_ABB");
+	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP:
+		return "Last app";
+	}
+}
+
 
 static struct _double_menu_item *_get_selected_app()
 {
@@ -339,6 +354,10 @@ static void _gl_double_app_sel_cb(void *data, Evas_Object *obj, void *event_info
 	} else if (id->pitem && id->pitem->index == 2) {
 		int val = VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS ;
 		vconf_set_int(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, val);
+	}
+
+	if (ad && ad->double_press_item) {
+		elm_genlist_item_update(ad->double_press_item);
 	}
 
 	back_key_generic_cb(data, obj, event_info);
@@ -878,16 +897,4 @@ Evas_Object *create_double_list(void *data)
 
 	return layout;
 }
-
-void clear_double_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
-{
-	FREE(pitem_none);
-	FREE(pitem_recent);
-	FREE(pitem_last);
-	g_double_genlist = NULL;
-	g_double_app_genlist = NULL;
-	unregister_vconf_changing(VCONFKEY_SETAPPL_DOUBLE_PRESS_HOME_KEY, change_double_pressing_cb);
-	unregister_vconf_changing(VCONFKEY_LANGSET, change_language_cb);
-}
-
 

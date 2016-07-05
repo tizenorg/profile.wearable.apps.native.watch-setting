@@ -1268,6 +1268,9 @@ void app_terminate(void *data)
 	if (ad->language_rdg) {
 		ad->language_rdg = NULL;
 	}
+	if (ad->double_press_item) {
+		ad->double_press_item = NULL;
+	}
 
 	/* unregister motion vconf changed callback */
 	/*unregister_vconf_changing(VCONFKEY_WMS_WMANAGER_CONNECTED, change_language_enabling); */

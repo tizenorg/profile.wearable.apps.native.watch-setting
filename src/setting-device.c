@@ -44,7 +44,6 @@ static int DEV_TOP_MENU_SIZE =
 Evas_Object * g_device_action_genlist = NULL;
 
 static appdata *temp_ad						= NULL;
-static Elm_Object_Item *g_vib_item = NULL;
 
 static int device_action_type	 = 0;			/* device_action type */
 
@@ -196,7 +195,6 @@ void _clear_device_action_resource()
 	_haptic_close();
 
 	temp_ad = NULL;
-	g_vib_item = NULL;
 
 	device_action_type = 0;
 
@@ -275,11 +273,11 @@ char *_gl_device_action_title_get(void *data, Evas_Object *obj, const char *part
 
 	char *appid = NULL;
 
-	appid = vconf_get_str(VCONFKEY_WMS_POWERKEY_DOUBLE_PRESSING);
+	appid = _get_selected_app_name();
 
 	if (!strcmp(part, "elm.text")) {
 		snprintf(buf, sizeof(buf) - 1, "%s", _(device_action_menu_its[index % DEV_TOP_MENU_SIZE].name));
-	} else if (!strcmp(part, "elm.text.sub")) {
+	} else if (!strcmp(part, "elm.text.1")) {
 		switch (index) {
 		case 0:
 			snprintf(buf, sizeof(buf) - 1, "%s", appid);
@@ -320,7 +318,6 @@ Evas_Object *_create_device_action_list(void *data)
 	itc->item_style = "2text";
 	itc->func.text_get = _gl_device_action_title_get;
 	itc->func.del = _device_action_gl_del;
-
 
 	Elm_Genlist_Item_Class *itc_auto_open_apps = elm_genlist_item_class_new();
 	itc_auto_open_apps->item_style = "1text.1icon.1";
@@ -365,7 +362,8 @@ Evas_Object *_create_device_action_list(void *data)
 						   ad);
 
 			if (idx == 0) {
-				g_vib_item = id->item;
+				if(ad)
+					ad->double_press_item = id->item;
 			}
 		}
 	}

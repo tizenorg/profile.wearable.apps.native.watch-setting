@@ -114,6 +114,7 @@ typedef struct _appdata {
 	Elm_Object_Item *dt_genlist_item_of_time;
 	Elm_Object_Item *dt_genlist_item_of_date;
 	Elm_Object_Item *language_item;
+	Elm_Object_Item *double_press_item;
 
 	Evas_Object *main_genlist;
 	Evas_Object *main_brightness_ly;
