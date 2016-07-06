@@ -801,9 +801,6 @@ static int _category_app_list_cb(pkgmgrinfo_appinfo_h handle, void *user_data)
 			type = CLOCKTYPE_3RD;
 		}
 
-		if (clock_metadata.value)
-			free(clock_metadata.value);
-
 		if (preload) {
 			switch (type) {
 			case CLOCKTYPE_FUNCTION:
