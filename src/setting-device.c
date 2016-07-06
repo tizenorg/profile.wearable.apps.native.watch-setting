@@ -41,7 +41,7 @@ static struct _device_action_menu_item device_action_menu_its[] = {
 static int DEV_TOP_MENU_SIZE =
 	sizeof(device_action_menu_its) / sizeof(device_action_menu_its[0]);
 
-Evas_Object * g_device_action_genlist = NULL;
+Evas_Object *g_device_action_genlist = NULL;
 
 static appdata *temp_ad						= NULL;
 
@@ -120,8 +120,7 @@ static void _auto_open_apps_check_changed_cb(void *data, Evas *e, Evas_Object *o
 	vconf_get_bool(VCONFKEY_SETAPPL_AUTO_OPEN_APPS, &is_auto_open);
 
 
-	if(!is_auto_open)
-	{
+	if (!is_auto_open) {
 		Evas_Object *popup = NULL;
 		Evas_Object *btn1 = NULL;
 		Evas_Object *btn2 = NULL;
@@ -333,7 +332,7 @@ Evas_Object *_create_device_action_list(void *data)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = _device_action_gl_del;
 
@@ -362,7 +361,7 @@ Evas_Object *_create_device_action_list(void *data)
 						   ad);
 
 			if (idx == 0) {
-				if(ad)
+				if (ad)
 					ad->double_press_item = id->item;
 			}
 		}

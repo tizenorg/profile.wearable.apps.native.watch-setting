@@ -1107,7 +1107,7 @@ char *_get_str_from_icu(const char *pattern)
 	char locale[32] = {0,};
 	char *p = NULL;
 
-	if (strlen(locale_tmp) < 32)
+	if (locale_tmp && (strlen(locale_tmp) < 32))
 		strcpy(locale, locale_tmp);
 
 	if (locale[0] != '\0') {

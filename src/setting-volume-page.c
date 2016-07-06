@@ -462,7 +462,7 @@ static void _press_minus_volume_cb(void *data, Evas_Object *obj, void *event_inf
 	}
 }
 
-Evas_Object * _create_volume_page(void *data)
+Evas_Object *_create_volume_page(void *data)
 {
 
 	appdata *ad = data;

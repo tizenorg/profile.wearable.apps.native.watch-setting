@@ -48,7 +48,7 @@ int sound_id_vol;
 /*--------------------------------------------------------------// */
 
 char *_gl_volume_title_get(void *data, Evas_Object *obj, const char *part);
-Evas_Object * _create_volume_page(void *data);
+Evas_Object *_create_volume_page(void *data);
 void _clear_volume_setting_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 
 void _show_multimedia_popup(void *data, Evas_Object *obj, void *event_info);

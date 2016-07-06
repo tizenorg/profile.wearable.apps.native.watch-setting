@@ -74,11 +74,11 @@ _gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
 {
 	char buf[1024];
 	int title_idx = (int)data;
-	switch(title_idx) {
-		case GEAR_INFO_TITLE_GEAR_INFO:
+	switch (title_idx) {
+	case GEAR_INFO_TITLE_GEAR_INFO:
 		snprintf(buf, 1023, "%s", "Gear Info");
 		break;
-		case GEAR_INFO_TITLE_ABOUT_GEAR:
+	case GEAR_INFO_TITLE_ABOUT_GEAR:
 		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_ABOUT_GEAR_ABB"));
 		break;
 
@@ -393,11 +393,11 @@ Evas_Object *_create_info_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)GEAR_INFO_TITLE_GEAR_INFO, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)GEAR_INFO_TITLE_GEAR_INFO, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 	menu_its = info_menu_its;
@@ -719,11 +719,11 @@ void _gl_info_cb(void *data, Evas_Object *obj, void *event_info)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)GEAR_INFO_TITLE_ABOUT_GEAR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)GEAR_INFO_TITLE_ABOUT_GEAR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 	menu_its = _info_detail_menu_list;

@@ -121,23 +121,23 @@ _gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
 {
 	char buf[1024];
 	int title_idx = (int)data;
-	switch(title_idx) {
-		case SOUND_TITLE_SOUND:
+	switch (title_idx) {
+	case SOUND_TITLE_SOUND:
 		snprintf(buf, 1023, "%s", _("IDS_ST_OPT_SOUND_ABB2"));
 		break;
-		case SOUND_TITLE_SOUND_MODE:
+	case SOUND_TITLE_SOUND_MODE:
 		snprintf(buf, 1023, "%s", "Sound mode");
 		break;
-		case SOUND_TITLE_RINGTONE:
+	case SOUND_TITLE_RINGTONE:
 		snprintf(buf, 1023, "%s", _("IDS_ST_HEADER_RINGTONES_ABB"));
 		break;
-		case SOUND_TITLE_NOTIFICATION:
+	case SOUND_TITLE_NOTIFICATION:
 		snprintf(buf, 1023, "%s", _("IDS_ST_BUTTON_NOTIFICATIONS"));
 		break;
-		case SOUND_TITLE_VIBRATION:
+	case SOUND_TITLE_VIBRATION:
 		snprintf(buf, 1023, "%s", _("IDS_ST_HEADER_VIBRATION_ABB"));
 		break;
-		case SOUND_TITLE_PREF_ARM_MODE:
+	case SOUND_TITLE_PREF_ARM_MODE:
 		snprintf(buf, 1023, "%s", "Pref ARM Mode");
 		break;
 
@@ -189,7 +189,7 @@ void _clear_sound_resource()
 	is_wav_playing = 0;
 	sound_id = -1;
 
-//	_stop_player();
+	/*	_stop_player(); */
 
 	/* Unregister sound mode vconf callback */
 	unregister_vconf_changing(VCONFKEY_SETAPPL_SOUND_STATUS_BOOL, sound_vconf_changed_cb);
@@ -261,8 +261,10 @@ static void get_sound_file_list(char *dir, int type)
 			&& strlen(replace(result->d_name, ".ogg", "")) < 1024
 			&& strlen(replace(notification_name_arr[notification_count], "_", " ")) < 1024) {
 			if (type) {
+				int name_len = strlen(result->d_name);
 				strncpy(ringtone_arr[ringtone_count], dir, 1024);
-				strncat(ringtone_arr[ringtone_count], result->d_name, 1024);
+				strncat(ringtone_arr[ringtone_count], result->d_name,
+						(name_len > 1024) ? 1024 - strlen(ringtone_arr[ringtone_count]) : name_len);
 
 				strcpy(ringtone_name_arr[ringtone_count], replace(result->d_name, ".ogg", ""));
 
@@ -276,8 +278,10 @@ static void get_sound_file_list(char *dir, int type)
 
 				ringtone_count++;
 			} else {
+				int name_len = strlen(result->d_name);
 				strcpy(notification_arr[notification_count], dir);
-				strcat(notification_arr[notification_count], result->d_name);
+				strncat(notification_arr[notification_count], result->d_name,
+						(name_len > 1024) ? 1024 - strlen(notification_arr[notification_count]) : name_len);
 
 				strcpy(notification_name_arr[notification_count], replace(result->d_name, ".ogg", ""));
 				strcpy(notification_name_arr[notification_count], replace(notification_name_arr[notification_count], "_", " "));
@@ -330,7 +334,7 @@ void _show_volume_list(void *data)
 
 	_initialize_volume();
 
-	Evas_Object * layout = _create_volume_page(data);
+	Evas_Object *layout = _create_volume_page(data);
 	Elm_Object_Item *nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_sound_genlist, "g_sound_genlist");
@@ -576,11 +580,11 @@ Evas_Object *_create_sound_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_SOUND, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)SOUND_TITLE_SOUND, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 
@@ -843,11 +847,11 @@ void _show_sound_mode_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_SOUND_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)SOUND_TITLE_SOUND_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 	Item_Data *id = calloc(sizeof(Item_Data), 1);
@@ -962,7 +966,7 @@ static char *_gl_ringtone_text_get(void *data, Evas_Object *obj, const char *par
 	char buf[1024];
 
 	/*DBG("---> %d ---> %s ", (item->index%ringtone_count), ringtone_name_arr[item->index % ringtone_count]); */
-	sprintf(buf, "%s", ringtone_name_arr[item->index % ringtone_count]);
+	snprintf(buf, sizeof(buf) -1, "%s", ringtone_name_arr[item->index % ringtone_count]);
 
 	return strdup(buf);
 }
@@ -1104,11 +1108,11 @@ void _show_ringtone_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_RINGTONE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)SOUND_TITLE_RINGTONE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 	DBG("---> ringtone_count %d	 to GENLIST", ringtone_count);
@@ -1344,11 +1348,11 @@ void _show_notification_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_NOTIFICATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)SOUND_TITLE_NOTIFICATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 
@@ -1592,11 +1596,11 @@ void _show_vibration_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_VIBRATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)SOUND_TITLE_VIBRATION, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 	int count = sizeof(vibration_str) / sizeof(vibration_str[0]);
@@ -1760,11 +1764,11 @@ void _show_pref_arm_mode_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)SOUND_TITLE_PREF_ARM_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)SOUND_TITLE_PREF_ARM_MODE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 

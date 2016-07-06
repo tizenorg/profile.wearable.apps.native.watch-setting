@@ -64,6 +64,8 @@ char *_get_selected_app_name()
 	case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP:
 		return "Last app";
 	}
+	ERR("abnormal state!!!");
+	return _("IDS_LCKSCN_BODY_NONE");
 }
 
 
@@ -420,7 +422,7 @@ static void update_double_app_list(void *data)
 
 	if (g_double_app_genlist) {
 		struct _double_menu_item *selected_app = NULL;
-		Elm_Object_Item *sel_it = NULL;
+/*		Elm_Object_Item *sel_it = NULL; */
 
 		elm_genlist_clear(g_double_app_genlist);
 
@@ -439,9 +441,9 @@ static void update_double_app_list(void *data)
 													ELM_GENLIST_ITEM_NONE,
 													_gl_double_app_sel_cb, ad);
 
-			if (id_none->pitem == selected_app) {
+			/* if (id_none->pitem == selected_app) {
 				sel_it = id_none->item;
-			}
+			} */
 		}
 
 		Double_Item_Data *id_recent = calloc(sizeof(Double_Item_Data), 1);
@@ -451,9 +453,9 @@ static void update_double_app_list(void *data)
 													  ELM_GENLIST_ITEM_NONE,
 													  _gl_double_app_sel_cb, ad);
 
-			if (id_recent->pitem == selected_app) {
+			/* if (id_recent->pitem == selected_app) {
 				sel_it = id_recent->item;
-			}
+			} */
 		}
 
 		Double_Item_Data *id_last = calloc(sizeof(Double_Item_Data), 1);
@@ -463,9 +465,9 @@ static void update_double_app_list(void *data)
 													ELM_GENLIST_ITEM_NONE,
 													_gl_double_app_sel_cb, ad);
 
-			if (id_last->pitem == selected_app) {
+			/* if (id_last->pitem == selected_app) {
 				sel_it = id_last->item;
-			}
+			} */
 		}
 		/*		struct _double_menu_item *pitem = NULL; */
 		/*		EINA_LIST_FOREACH(app_list, list, pitem) { */
@@ -488,7 +490,7 @@ static void update_double_app_list(void *data)
 			elm_radio_value_set(ad->double_rdg, -1);
 		}
 
-//		elm_genlist_item_show(sel_it, ELM_GENLIST_ITEM_SCROLLTO_TOP);
+		/*		elm_genlist_item_show(sel_it, ELM_GENLIST_ITEM_SCROLLTO_TOP); */
 
 		elm_genlist_item_class_free(itc);
 	}
@@ -583,9 +585,9 @@ Eina_Bool clear_double_app_cb(void *data, Elm_Object_Item *it)
 
 static void gl_realized_cb(void *data, Evas_Object *obj, void *event_info)
 {
-	Elm_Object_Item * item = (Elm_Object_Item *)event_info; 
+	Elm_Object_Item *item = (Elm_Object_Item *)event_info;
 	Elm_Object_Item *first = elm_genlist_first_item_get(g_double_app_genlist);
-	if(first == item)
+	if (first == item)
 		elm_object_item_signal_emit(first, "elm,action,title,slide,start", "elm");
 
 }
@@ -601,7 +603,6 @@ Evas_Object *create_double_app_list(void *data)
 
 	Evas_Object *layout = NULL;
 	Evas_Object *genlist = NULL;
-	Elm_Object_Item *sel_it = NULL;
 
 	struct _double_menu_item *selected_app = NULL;
 
@@ -622,7 +623,7 @@ Evas_Object *create_double_app_list(void *data)
 	selected_app = _get_selected_app();
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
@@ -637,9 +638,6 @@ Evas_Object *create_double_app_list(void *data)
 												ELM_GENLIST_ITEM_NONE,
 												_gl_double_app_sel_cb, ad);
 
-		if (id_none->pitem == selected_app) {
-			sel_it = id_none->item;
-		}
 	}
 
 
@@ -650,9 +648,6 @@ Evas_Object *create_double_app_list(void *data)
 												ELM_GENLIST_ITEM_NONE,
 												_gl_double_app_sel_cb, ad);
 
-		if (id_last->pitem == selected_app) {
-			sel_it = id_last->item;
-		}
 	}
 
 	Double_Item_Data *id_recent = calloc(sizeof(Double_Item_Data), 1);
@@ -661,10 +656,6 @@ Evas_Object *create_double_app_list(void *data)
 		id_recent->item = elm_genlist_item_append(genlist, itc, id_recent, NULL,
 												  ELM_GENLIST_ITEM_NONE,
 												  _gl_double_app_sel_cb, ad);
-
-		if (id_recent->pitem == selected_app) {
-			sel_it = id_recent->item;
-		}
 	}
 
 	ad->double_rdg = elm_radio_add(genlist);
@@ -893,8 +884,8 @@ Evas_Object *create_double_list(void *data)
 	evas_object_size_hint_weight_set(layout, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
 	genlist = elm_genlist_add(layout);
-//	elm_genlist_block_count_set(genlist, 14);
-//	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
+	/*	elm_genlist_block_count_set(genlist, 14); */
+	/*	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS); */
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 
 	connect_to_wheel_with_genlist(genlist, ad);

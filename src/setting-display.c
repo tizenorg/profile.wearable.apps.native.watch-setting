@@ -42,9 +42,9 @@
 
 
 /* temporary source code */
-//#ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR
-//#define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator"
-//#endif
+/*#ifndef VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR */
+/*#define VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR "db/setting/notification_indicator" */
+/*#endif */
 #define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
 #define SETTINGS_FIXED_DEFAULT_FONT_NAME "BreezeSans"
 
@@ -69,11 +69,11 @@ static struct _display_menu_item display_menu_its[] = {
 	{ "Notification indicator",	SETTING_DISPLAY_NOTIFICATION_INDICATOR,	_display_gl_display_noti_indicator_cb },
 	{ "IDS_ST_BUTTON_BRIGHTNESS",	SETTING_DISPLAY_BRIGTHNESS, _display_brightness_cb	 },
 	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT,	_display_gl_font_cb		},
-/*	{ "IDS_ST_BUTTON_LANGUAGE",				SETTING_DISPLAY_LANG,	_display_gl_language_cb	},
-#if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
-	{ "IDS_ST_MBODY_MANAGE_APPS_ABB",	SETTING_DISPLAY_EDIT_APPS,	_homescreen_gl_edit_apps_cb	},
-#endif
-*/
+	/*	{ "IDS_ST_BUTTON_LANGUAGE",				SETTING_DISPLAY_LANG,	_display_gl_language_cb	},
+	#if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
+		{ "IDS_ST_MBODY_MANAGE_APPS_ABB",	SETTING_DISPLAY_EDIT_APPS,	_homescreen_gl_edit_apps_cb	},
+	#endif
+	*/
 };
 
 static struct _font_menu_item font_menu_its[] = {
@@ -155,29 +155,29 @@ _gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
 {
 	char buf[1024];
 	int title_idx = (int)data;
-	switch(title_idx) {
-		case DISPLAY_TITLE_DISPLAY:
+	switch (title_idx) {
+	case DISPLAY_TITLE_DISPLAY:
 		snprintf(buf, 1023, "%s", "Display");
 		break;
-		case DISPLAY_TITLE_LANGUAGE:
+	case DISPLAY_TITLE_LANGUAGE:
 		snprintf(buf, 1023, "%s", _("IDS_ST_BUTTON_LANGUAGE"));
 		break;
-		case DISPLAY_TITLE_SCREEN_TIMEOUT:
+	case DISPLAY_TITLE_SCREEN_TIMEOUT:
 		snprintf(buf, 1023, "%s", _("IDS_ST_MBODY_SCREEN_TIMEOUT_ABB"));
 		break;
-		case DISPLAY_TITLE_FONT:
+	case DISPLAY_TITLE_FONT:
 		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_FONT"));
 		break;
-		case DISPLAY_TITLE_FONT_STYLE:
+	case DISPLAY_TITLE_FONT_STYLE:
 		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_FONT_STYLE"));
 		break;
-		case DISPLAY_TITLE_FONT_SIZE:
+	case DISPLAY_TITLE_FONT_SIZE:
 		snprintf(buf, 1023, "%s", _("IDS_ST_BODY_FONT_SIZE_ABB"));
 		break;
-		case DISPLAY_TITLE_NOTIFICATION_INDICATOR:
+	case DISPLAY_TITLE_NOTIFICATION_INDICATOR:
 		snprintf(buf, 1023, "%s", "Notification indicator");
 		break;
-		case DISPLAY_TITLE_ROTATE:
+	case DISPLAY_TITLE_ROTATE:
 		snprintf(buf, 1023, "%s", "Rotate");
 		break;
 
@@ -454,7 +454,7 @@ Evas_Object *_create_display_list(void *data)
 	menu_its = display_menu_its;
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
@@ -530,7 +530,7 @@ static char *_gl_screen_timeout_title_get(void *data, Evas_Object *obj, const ch
 #ifdef FEATURE_SETTING_EMUL
 	int emul_val = 1;
 #else
-/*	int emul_val = 0; */
+	/*	int emul_val = 0; */
 	int emul_val = 1;
 #endif
 
@@ -595,7 +595,7 @@ static Evas_Object *_gl_screen_timeout_radio_get(void *data, Evas_Object *obj, c
 #ifdef FEATURE_SETTING_EMUL
 	int emul_minus = 0;
 #else
-/*	int emul_minus = 1; */
+	/*	int emul_minus = 1; */
 	int emul_minus = 0;
 #endif
 
@@ -661,16 +661,16 @@ void _show_screen_timeout_list(void *data)
 #ifdef FEATURE_SETTING_EMUL
 	int emul_end = 0;
 #else
-/*	int emul_end = 1; */
+	/*	int emul_end = 1; */
 	int emul_end = 0;
 #endif
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_SCREEN_TIMEOUT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_SCREEN_TIMEOUT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 
@@ -809,7 +809,7 @@ static char *_gl_font_style_title_get(void *data, Evas_Object *obj, const char *
 	new_name[count] = '\0';
 
 	if (!strcmp(part, "elm.text")) {
-		if(id->index == 0 )
+		if (id->index == 0)
 			snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, "default");
 		else
 			snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, id->font_name);
@@ -1075,11 +1075,11 @@ void _show_font_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_FONT, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 
@@ -1123,7 +1123,7 @@ void _show_font_list(void *data)
 
 static char *_get_default_font_name()
 {
-	char * default_font_name = SETTINGS_FIXED_DEFAULT_FONT_NAME;
+	char *default_font_name = SETTINGS_FIXED_DEFAULT_FONT_NAME;
 	/* Default font means current font type !! */
 	/* That's reason why I fixed default font */
 	/* system_settings_get_value_string(SYSTEM_SETTINGS_KEY_DEFAULT_FONT_TYPE, &default_font_name);*/
@@ -1220,7 +1220,7 @@ static Eina_List *_get_available_font_list()
 				}
 
 				id = 0;
-/* always shown for D/L */ if (!strncmp((const char *)file, SETTING_FONT_DOWNLOADED_FONT_PATH, download_path_len)) {
+				/* always shown for D/L */ if (!strncmp((const char *)file, SETTING_FONT_DOWNLOADED_FONT_PATH, download_path_len)) {
 					/* Find proper family name for current locale. */
 					while (locale && family && lang) {
 						ERR("locale: %s, family: %s, lang: %s", locale, family, lang);
@@ -1294,11 +1294,11 @@ int _show_font_style_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 
@@ -1425,11 +1425,11 @@ static void _lang_update_font_style_list(void *data, Evas_Object *obj, void *eve
 		}
 
 		Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-		title_item ->func.text_get = _gl_menu_title_text_get;
+		title_item->func.text_get = _gl_menu_title_text_get;
 		title_item->item_style = "title";
 		title_item->func.del = NULL;
 
-		elm_genlist_item_append(g_font_style_genlist, title_item, (void*)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+		elm_genlist_item_append(g_font_style_genlist, title_item, (void *)DISPLAY_TITLE_FONT_STYLE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 		elm_genlist_item_class_free(title_item);
 
@@ -1528,11 +1528,11 @@ void _show_font_size_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_FONT_SIZE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_FONT_SIZE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 
@@ -1682,11 +1682,11 @@ void _show_rotate_screen_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_ROTATE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_ROTATE, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 
@@ -1843,7 +1843,7 @@ static void _brightness_pop_cb(void *data, Evas_Object *obj, void *event_info);
 static void brightness_vconf_changed_cb(keynode_t *key, void *data);
 static void sync_brightness(int real_brightness);
 static int _change_bright_lovel_to_index(int level);
-#if 0 //!defined(FEATURE_SETTING_EMUL)
+#if 0 /*!defined(FEATURE_SETTING_EMUL) */
 static void _set_HBM_mode(int enable);
 #endif
 static int _change_bright_index_to_level(int index);
@@ -1949,7 +1949,7 @@ static void _press_plus_brightness_cb(void *data, Evas_Object *obj, void *event_
 	char buf[1024];
 	Evas_Object *page_layout = (Evas_Object *)data;
 
-	if(brightness_index<10)
+	if (brightness_index < 10)
 		brightness_index++;
 	snprintf(buf, sizeof(buf), "%02d", brightness_index);
 	ERR("Pressed Plus btn!! Slider value = %s\n", buf);
@@ -1969,7 +1969,7 @@ static void _press_minus_brightness_cb(void *data, Evas_Object *obj, void *event
 	char buf[1024];
 	Evas_Object *page_layout = (Evas_Object *)data;
 
-	if(brightness_index>0)
+	if (brightness_index > 0)
 		brightness_index--;
 	snprintf(buf, sizeof(buf), "%02d", brightness_index);
 	ERR("Pressed Plus btn!! Slider value = %s\n", buf);
@@ -2194,7 +2194,7 @@ static int _change_bright_index_to_level(int index)
 	return level;
 }
 
-#if 0 //!defined(FEATURE_SETTING_EMUL)
+#if 0 /*!defined(FEATURE_SETTING_EMUL) */
 static void _set_HBM_mode(int enable)
 {
 	if (display_enable_hbm(enable, 300) == 0) {	/* after 5 minutes, HBM mode will be off! */
@@ -2526,11 +2526,11 @@ static void _show_noti_indicator_list(void *data)
 	connect_to_wheel_with_genlist(genlist, ad);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = NULL;
 
-	elm_genlist_item_append(genlist, title_item, (void*)DISPLAY_TITLE_NOTIFICATION_INDICATOR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
+	elm_genlist_item_append(genlist, title_item, (void *)DISPLAY_TITLE_NOTIFICATION_INDICATOR, NULL, ELM_GENLIST_ITEM_NONE, NULL, NULL);
 
 	elm_genlist_item_class_free(title_item);
 

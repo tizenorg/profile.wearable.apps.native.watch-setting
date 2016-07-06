@@ -450,7 +450,7 @@ Evas_Object *_create_connection_list(void *data)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = _connection_gl_del;
 
@@ -490,7 +490,7 @@ Evas_Object *_create_connection_list(void *data)
 						   ELM_GENLIST_ITEM_NONE,
 						   menu_its[idx].func,	/* call back */
 						   ad);
-		switch (connection_menu_its[idx].type) {
+			switch (connection_menu_its[idx].type) {
 			case SETTING_CONNECTION_BLUETOOTH:
 				g_BT_item = id->item;
 				break;
@@ -522,7 +522,7 @@ Evas_Object *_create_connection_list(void *data)
 	return genlist;
 }
 
-void _update_connection_list(Elm_Object_Item * item)
+void _update_connection_list(Elm_Object_Item *item)
 {
 	if (item) {
 		DBG("update connection genlist");

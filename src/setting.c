@@ -1024,7 +1024,7 @@ static Evas_Object *_create_mainlist_winset(Evas_Object *parent, appdata *ad)
 	}
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
-	title_item ->func.text_get = _gl_menu_title_text_get;
+	title_item->func.text_get = _gl_menu_title_text_get;
 	title_item->item_style = "title";
 	title_item->func.del = _gl_del;
 
@@ -1354,7 +1354,7 @@ void app_reset(app_control_h service, void *data)
 	char *operation = NULL;
 	app_control_get_operation(service, &operation);
 	check_direct_brightness_setting(data, service);
-	DBG("operation : %s, ad->is_first_launch :%d ", operation, (ad)?ad->is_first_launch:-1);
+	DBG("operation : %s, ad->is_first_launch :%d ", operation, (ad) ? ad->is_first_launch : -1);
 	if (!ad->is_first_launch) {
 		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/main")) {
 			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
