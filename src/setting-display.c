@@ -48,6 +48,8 @@
 #define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
 #define SETTINGS_FIXED_DEFAULT_FONT_NAME "BreezeSans"
 
+Evas_Object *g_btn_plus = NULL;
+Evas_Object *g_btn_minus = NULL;
 
 static int is_changed = 0;
 static bool running = false;
@@ -1838,7 +1840,6 @@ Evas_Object *brightness_layout = NULL;
 
 Evas_Object *g_slider = NULL;
 
-static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info);
 static void _brightness_pop_cb(void *data, Evas_Object *obj, void *event_info);
 static void brightness_vconf_changed_cb(keynode_t *key, void *data);
 static void sync_brightness(int real_brightness);
@@ -1877,7 +1878,6 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 	}
 
 	if (layout) {
-		evas_object_event_callback_add(layout, EVAS_CALLBACK_MOUSE_IN, _power_off_popup_dismiss_cb, NULL);
 
 		navi_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
 		elm_naviframe_item_title_enabled_set(navi_it, EINA_FALSE, EINA_FALSE);
@@ -1888,6 +1888,41 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 	}
 }
 
+static void _change_btn_img(void *data, Evas_Object *btn_obj, char * path, char * btn_str)
+{
+	char img_path[PATH_MAX];
+	Evas_Object *page_layout = (Evas_Object *)data;
+	snprintf(img_path, sizeof(img_path), "%s/%s", IMG_DIR, path);
+	elm_image_file_set(btn_obj, img_path, NULL);
+	elm_object_part_content_set(page_layout, btn_str, btn_obj);
+}
+
+static void _brightness_value_plus(void *data)
+{
+	if (brightness_index < 10) {
+		brightness_index++;
+		_change_btn_img(data, g_btn_minus, "b_slider_icon_minus.png", "btn1");
+	}
+
+	if (brightness_index == 10)	{
+		ERR("disable plus btn2 ");
+		_change_btn_img(data, g_btn_plus, "b_slider_icon_plus_disable.png", "btn2");
+	}
+}
+
+static void _brightness_value_minus(void *data)
+{
+	if (brightness_index > 0) {
+		brightness_index--;
+		_change_btn_img(data, g_btn_plus, "b_slider_icon_plus.png", "btn2");
+	}
+
+	if (brightness_index == 0) {
+		ERR("disable minus btn1");
+		_change_btn_img(data, g_btn_minus, "b_slider_icon_minus_disable.png", "btn1");
+	}
+}
+
 static Eina_Bool
 _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info)
 {
@@ -1895,12 +1930,11 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	Evas_Object *page_layout = (Evas_Object *)data;
 
 	if (info->direction == EEXT_ROTARY_DIRECTION_CLOCKWISE) {
-		if (brightness_index < 10)
-			brightness_index++;
+		_brightness_value_plus(data);
 	} else {
-		if (brightness_index > 0)
-			brightness_index--;
+		_brightness_value_minus(data);
 	}
+
 	snprintf(buf, sizeof(buf), "%02d", brightness_index);
 	ERR("Slider value = %s\n", buf);
 	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
@@ -1949,8 +1983,8 @@ static void _press_plus_brightness_cb(void *data, Evas_Object *obj, void *event_
 	char buf[1024];
 	Evas_Object *page_layout = (Evas_Object *)data;
 
-	if (brightness_index < 10)
-		brightness_index++;
+	_brightness_value_plus(data);
+
 	snprintf(buf, sizeof(buf), "%02d", brightness_index);
 	ERR("Pressed Plus btn!! Slider value = %s\n", buf);
 	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
@@ -1969,8 +2003,8 @@ static void _press_minus_brightness_cb(void *data, Evas_Object *obj, void *event
 	char buf[1024];
 	Evas_Object *page_layout = (Evas_Object *)data;
 
-	if (brightness_index > 0)
-		brightness_index--;
+	_brightness_value_minus(data);
+
 	snprintf(buf, sizeof(buf), "%02d", brightness_index);
 	ERR("Pressed Plus btn!! Slider value = %s\n", buf);
 	elm_object_part_text_set(page_layout, "elm.text.slider", buf);
@@ -2049,18 +2083,29 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 
 	Evas_Object *btn_minus;
 	btn_minus = elm_image_add(page_layout);
-	snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus.png", IMG_DIR);
+
+	if (brightness_index)
+		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus.png", IMG_DIR);
+	else
+		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus_disable.png", IMG_DIR);
+
 	elm_image_file_set(btn_minus, img_path, NULL);
 	elm_object_part_content_set(page_layout, "btn1", btn_minus);
 	evas_object_smart_callback_add(btn_minus, "clicked", _press_minus_brightness_cb, page_layout);
 
 	Evas_Object *btn_plus;
 	btn_plus = elm_image_add(page_layout);
-	snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_plus.png", IMG_DIR);
+	if (brightness_index < 10)
+		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_plus.png", IMG_DIR);
+	else
+		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_plus_disable.png", IMG_DIR);
+
 	elm_image_file_set(btn_plus, img_path, NULL);
 	elm_object_part_content_set(page_layout, "btn2", btn_plus);
 	evas_object_smart_callback_add(btn_plus, "clicked", _press_plus_brightness_cb, page_layout);
 
+	g_btn_plus = btn_plus;
+	g_btn_minus = btn_minus;
 
 	Eina_Bool res = eext_rotary_object_event_callback_add(slider, _value_changed_rotary, page_layout);
 	ERR("rotary_event_handler result = %d", res);
@@ -2097,40 +2142,10 @@ static void _brightness_pop_cb(void *data, Evas_Object *obj, void *event_info)
 	return;
 }
 
-static void _power_off_popup_dismiss_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
-{
-	DBG("Setting - _power_off_popup_dismiss_cb() is called!");
-
-	int brightness_level = 0;
-	vconf_get_int(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, &brightness_level);
-	brightness_index = _change_bright_lovel_to_index(brightness_level);
-
-	if (g_slider) {
-		int enable = display_get_hbm();
-		if (enable) {
-			brightness_index = 6;
-		}
-		eext_circle_object_value_set(g_slider, brightness_index);
-		/*elm_spinner_value_set(g_slider, brightness_index); */
-	}
-}
-
 static void brightness_vconf_changed_cb(keynode_t *key, void *data)
 {
 	DBG("Setting - brightness vconf changed!!");
 
-	int brightness_level = 0;
-	brightness_level = vconf_keynode_get_int(key);
-	brightness_index = _change_bright_lovel_to_index(brightness_level);
-
-	if (g_slider) {
-		int enable = display_get_hbm();
-		if (enable) {
-			brightness_index = 6;
-		}
-		eext_circle_object_value_set(g_slider, brightness_index);
-		/*elm_spinner_value_set(g_slider, brightness_index); */
-	}
 }
 
 static void sync_brightness(int real_brightness)
