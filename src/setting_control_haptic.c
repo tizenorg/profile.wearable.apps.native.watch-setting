@@ -18,6 +18,7 @@ static haptic_device_h hnd_hpt;
 
 int _haptic_open()
 {
+#if 0
 	int haptic_return = 0;
 	haptic_return = haptic_open(HAPTIC_DEVICE_0, &hnd_hpt);
 	if (haptic_return < 0) {
@@ -26,7 +27,7 @@ int _haptic_open()
 	}
 
 	h_data.is_haptic_opened = 1;
-
+#endif
 	return 1;
 }
 
@@ -48,6 +49,7 @@ Eina_Bool __vibration_timeout(void *data)
 
 void _start_vibration(int level, int feedback_rate, char *res_path)
 {
+#if 0
 	if (_is_haptic_open()) {
 		_haptic_close();
 	}
@@ -79,10 +81,12 @@ void _start_vibration(int level, int feedback_rate, char *res_path)
 		}
 		vibration_timer = ecore_timer_add(real_duration, (Ecore_Task_Cb)__vibration_timeout, NULL);
 	}
+#endif
 }
 
 int _haptic_close()
 {
+#if 0
 	if (h_data.is_haptic_opened) {
 		int ret = haptic_close(hnd_hpt);
 		if (ret != 0) {
@@ -97,6 +101,7 @@ int _haptic_close()
 	}
 
 	h_data.is_haptic_opened = 0;
+#endif
 
 	return 1;
 }

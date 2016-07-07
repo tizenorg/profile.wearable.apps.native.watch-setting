@@ -196,7 +196,7 @@ char *_gl_vibration_title_get(void *data, Evas_Object *obj, const char *part)
 
 	if (!strcmp(part, "elm.text")) {
 		snprintf(buf, sizeof(buf) - 1, "%s", _(vibration_menu_its[index % VIB_TOP_MENU_SIZE].name));
-	} else if (!strcmp(part, "elm.text.sub")) {
+	} else if (!strcmp(part, "elm.text.1")) {
 		switch (index) {
 		case 0:
 			vibrate_type = get_vibration_level();
@@ -357,6 +357,7 @@ static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info)
 
 	int level = VIBRATION_LEVEL_LOW_INT;
 	int feedback_rate = SETTING_VIB_MEDIUM_RATE;
+	int vib_type = 0;
 	switch (vibrate_type) {
 	case VIBRATION_LEVEL_NONE:
 		level = VIBRATION_LEVEL_NONE_INT;
@@ -365,10 +366,12 @@ static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	case VIBRATION_LEVEL_LOW:
 		level = VIBRATION_LEVEL_LOW_INT;
 		feedback_rate = SETTING_VIB_WEAK_RATE;
+		vib_type = FEEDBACK_PATTERN_SIP;
 		break;
 	case VIBRATION_LEVEL_HIGH:
 		level = VIBRATION_LEVEL_HIGH_INT;
 		feedback_rate = SETTING_VIB_STRONG_RATE;
+		vib_type = FEEDBACK_PATTERN_TIMER;
 		break;
 	}
 	vconf_set_int(VCONFKEY_SETAPPL_NOTI_VIBRATION_LEVEL_INT, level);
@@ -377,6 +380,8 @@ static void _vibration_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	DBG("Setting - feedback level: %d, rate: %d", level, feedback_rate);
 
 	_start_vibration(level, feedback_rate, SETTING_DEFAULT_NOTIFICATION_GENERAL_PREVIEW_VIB);
+
+	feedback_play_type(FEEDBACK_TYPE_VIBRATION, vib_type);
 	elm_genlist_realized_items_update(g_vibration_type_genlist);
 
 

@@ -9,6 +9,7 @@
  * you entered into with Samsung Electronics.
  */
 
+#include <feedback.h>
 #include <dlog.h>
 #include <vconf.h>
 #include <vconf-keys.h>
@@ -1181,6 +1182,7 @@ bool app_create(void *data)
 
 	DBG("app_create start.");
 
+	feedback_initialize();
 	ad->win_main = create_win(PACKAGE);
 	if (ad->win_main == NULL)
 		return false;
@@ -1233,6 +1235,7 @@ void app_terminate(void *data)
 
 	appdata *ad = data;
 
+	feedback_deinitialize();
 	indicator_unset_vconf_changed_cb();
 
 	if (ad->alert_rdg) {
