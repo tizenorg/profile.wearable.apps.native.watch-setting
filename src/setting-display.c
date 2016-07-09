@@ -48,6 +48,10 @@
 #define VCONFKEY_SETAPPL_LCD_TIMEOUT_BACKUP_FOR_WATCH_ALWAYS_ON "db/setting/lcd_backlight_timeout_backup"
 #define SETTINGS_FIXED_DEFAULT_FONT_NAME "BreezeSans"
 
+#define SETTINGS_DEFAULT_FONT_NAME "Default"
+
+
+
 Evas_Object *g_btn_plus = NULL;
 Evas_Object *g_btn_minus = NULL;
 
@@ -760,7 +764,7 @@ static char *_gl_font_title_get(void *data, Evas_Object *obj, const char *part)
 					} else if (!strcmp(font_name, "TizenSans")) {
 						snprintf(buf, sizeof(buf) - 1, "%s", _("TizenSans"));
 					} else if (!strcmp(font_name, "BreezeSans")) {
-						snprintf(buf, sizeof(buf) - 1, "%s", "default");
+						snprintf(buf, sizeof(buf) - 1, "%s", SETTINGS_DEFAULT_FONT_NAME);
 					} else {
 						snprintf(buf, sizeof(buf) - 1, "%s", font_name);
 					}
@@ -812,7 +816,7 @@ static char *_gl_font_style_title_get(void *data, Evas_Object *obj, const char *
 
 	if (!strcmp(part, "elm.text")) {
 		if (id->index == 0)
-			snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, "default");
+			snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, SETTINGS_DEFAULT_FONT_NAME);
 		else
 			snprintf(buf, sizeof(buf) - 1, "<font=%s>%s</font>", new_name, id->font_name);
 	}
