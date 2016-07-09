@@ -109,8 +109,7 @@ static char *
 _gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
 {
 	char buf[1024];
-
-	snprintf(buf, 1023, "%s", "Setting");
+	snprintf(buf, 1023, "%s", _("IDS_HS_MBODY_SETTINGS_M_APPLICATION_NAME_ABB3"));
 	return strdup(buf);
 }
 
