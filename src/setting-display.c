@@ -2502,6 +2502,18 @@ static void _noti_indicator_gl_del(void *data, Evas_Object *obj)
 	Item_Data *id = data;
 	if (id)
 		free(id);
+
+	Elm_Object_Item *first = elm_genlist_first_item_get(g_noti_indicator_genlist);
+	elm_object_item_signal_emit(first, "elm,action,title,slide,start", "elm");
+}
+
+static void gl_realized_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Elm_Object_Item *item = (Elm_Object_Item *)event_info;
+	Elm_Object_Item *first = elm_genlist_first_item_get(g_noti_indicator_genlist);
+	if (first == item)
+		elm_object_item_signal_emit(first, "elm,action,title,slide,start", "elm");
+
 }
 
 static void _show_noti_indicator_list(void *data)
@@ -2539,6 +2551,8 @@ static void _show_noti_indicator_list(void *data)
 	elm_genlist_mode_set(genlist, ELM_LIST_COMPRESS);
 	evas_object_size_hint_weight_set(genlist, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	connect_to_wheel_with_genlist(genlist, ad);
+
+	evas_object_smart_callback_add(genlist, "realized", gl_realized_cb, NULL);
 
 	Elm_Genlist_Item_Class *title_item = elm_genlist_item_class_new();
 	title_item->func.text_get = _gl_menu_title_text_get;
