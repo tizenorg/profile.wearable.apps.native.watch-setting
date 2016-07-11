@@ -1299,6 +1299,33 @@ void app_pause(void *data)
 		} else if (ad->MENU_TYPE == SETTING_SOUND) {
 			_stop_all_sound_play();
 		}
+	ERR("Setting - DELETE naviframe without main >>>>>>>");
+
+			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
+			Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
+
+			if (ad->popup) {
+				evas_object_del(ad->popup);
+				ad->popup = NULL;
+			}
+
+			while (bottom != top) {
+				elm_object_item_del(top);
+				top = elm_naviframe_top_item_get(ad->nf);
+			}
+
+			if (ad->main_genlist) {
+				elm_genlist_item_show(elm_genlist_first_item_get(ad->main_genlist),
+									  ELM_GENLIST_ITEM_SCROLLTO_TOP);
+				elm_layout_signal_emit(ad->main_genlist, "do-show-vbar", "");
+
+				if (scrl_timer) {
+					ecore_timer_del(scrl_timer);
+					scrl_timer = NULL;
+				}
+				scrl_timer = ecore_timer_add(1, (Ecore_Task_Cb)_scroller_timer_cb, ad->main_genlist);
+			}
+
 	}
 }
 
@@ -1358,40 +1385,58 @@ void app_reset(app_control_h service, void *data)
 	check_direct_brightness_setting(data, service);
 	DBG("operation : %s, ad->is_first_launch :%d ", operation, (ad) ? ad->is_first_launch : -1);
 	if (!ad->is_first_launch) {
+		ERR(">>>> naviframe poping.... >>>>>>>>>>>>>>>>>>>>>>> ");
+		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/default")) {
+		ERR(">>>> naviframe poping.... >>>>>>>DEFAULT!!!! >>>>>>>>>>>>>>>> ");
+		ERR(">>>> naviframe poping.... >>>>>>>DEFAULT!!!! >>>NOTHING!!>>>>>>>>>>>>> ");
+//			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
+//			Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
+//
+//			if (ad->popup) {
+//				evas_object_del(ad->popup);
+//				ad->popup = NULL;
+//			}
+//
+//			while (bottom != top) {
+//				elm_object_item_del(top);
+//				top = elm_naviframe_top_item_get(ad->nf);
+//			}
+		}
 		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/main")) {
-			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
-			Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
-
-			if (ad->popup) {
-				evas_object_del(ad->popup);
-				ad->popup = NULL;
-			}
-
-			while (bottom != top) {
-				elm_object_item_del(top);
-				top = elm_naviframe_top_item_get(ad->nf);
-			}
-
-			/*reset back button callback stack*/
-			clear_back_button_list();
-			back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
-
-			if (ad->main_genlist) {
-				elm_genlist_item_show(elm_genlist_first_item_get(ad->main_genlist),
-									  ELM_GENLIST_ITEM_SCROLLTO_TOP);
-				elm_layout_signal_emit(ad->main_genlist, "do-show-vbar", "");
-
-				if (scrl_timer) {
-					ecore_timer_del(scrl_timer);
-					scrl_timer = NULL;
-				}
-				scrl_timer = ecore_timer_add(1, (Ecore_Task_Cb)_scroller_timer_cb, ad->main_genlist);
-			}
-
-			if (ad->main_brightness_ly) {
-				evas_object_show(ad->main_brightness_ly);
-			}
-
+		DBG(">>>> naviframe poping.... >>>>>>>>>>>>>>>>>>>>>>> ");
+//			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
+//			Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
+//
+//			if (ad->popup) {
+//				evas_object_del(ad->popup);
+//				ad->popup = NULL;
+//			}
+//
+//			while (bottom != top) {
+//				elm_object_item_del(top);
+//				top = elm_naviframe_top_item_get(ad->nf);
+//			}
+//
+//			/*reset back button callback stack*/
+//			clear_back_button_list();
+//			back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
+//
+//			if (ad->main_genlist) {
+//				elm_genlist_item_show(elm_genlist_first_item_get(ad->main_genlist),
+//									  ELM_GENLIST_ITEM_SCROLLTO_TOP);
+//				elm_layout_signal_emit(ad->main_genlist, "do-show-vbar", "");
+//
+//				if (scrl_timer) {
+//					ecore_timer_del(scrl_timer);
+//					scrl_timer = NULL;
+//				}
+//				scrl_timer = ecore_timer_add(1, (Ecore_Task_Cb)_scroller_timer_cb, ad->main_genlist);
+//			}
+//
+//			if (ad->main_brightness_ly) {
+//				evas_object_show(ad->main_brightness_ly);
+//			}
+//
 		}
 	} else {
 		ad->is_first_launch = 0;
