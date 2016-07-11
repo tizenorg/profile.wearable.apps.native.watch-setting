@@ -995,6 +995,7 @@ static void _font_style_gl_cb(void *data, Evas_Object *obj, void *event_info)
 		ecore_timer_del(font_timer);
 		font_timer = NULL;
 	}
+	g_font_style_genlist = NULL;
 	back_key_generic_cb(temp_ad, obj, event_info);
 	font_timer = ecore_timer_add(0.3, (Ecore_Task_Cb) _update_font_style, NULL);
 }
@@ -1041,6 +1042,10 @@ static void _font_size_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	if (font_timer) {
 		ecore_timer_del(font_timer);
 		font_timer = NULL;
+	}
+
+	if (font_size_item ) {
+		elm_genlist_item_update(font_size_item );
 	}
 
 	back_key_generic_cb(temp_ad, obj, event_info);
@@ -1098,6 +1103,9 @@ void _show_font_list(void *data)
 
 			if (idx == 0) {
 				font_style_item = id->item;
+			}
+			if (idx == 1) {
+				font_size_item  = id->item;
 			}
 		}
 	}
