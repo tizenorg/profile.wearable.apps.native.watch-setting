@@ -462,6 +462,7 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 				snprintf(buf, sizeof(buf) - 1, "%s", _get_sound_file_name(pa_cur_ringtone));
 			}
 			break;
+#if 0
 		case 4:
 			pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_MSG_RINGTONE_PATH_STR);
 			if (pa_cur_ringtone == NULL) {
@@ -478,8 +479,8 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 			vibrate_type = get_vibration_level();
 			snprintf(buf, sizeof(buf) - 1, "%s", _(vibration_str[vibrate_type % 2]));
 			break;
-#if 0
-		case 5:
+
+		case 6:
 			vconf_get_bool(VCONFKEY_SETAPPL_PERFERED_ARM_LEFT_BOOL, &pref_arm_type);
 			pref_arm_type = (pref_arm_type == TRUE) ? 0 : 1;
 			snprintf(buf, sizeof(buf)-1, "%s", _(pref_arm_str[pref_arm_type % 2]));
@@ -587,7 +588,7 @@ Evas_Object *_create_sound_list(void *data)
 	elm_genlist_item_class_free(title_item);
 
 	for (idx = 0; idx < ITEM_SIZE; idx++) {
-		if (idx == 0) {
+		if (idx == 0 || idx == 2) {
 			itc_tmp = itc_1text;
 		} else if (idx == 3) {
 			itc_tmp = itc_touch_snd;

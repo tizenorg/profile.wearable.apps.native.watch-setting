@@ -346,7 +346,7 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	elm_scroller_current_page_get(pd->scroller, &cur_page, NULL);
 
 	if (info->direction == EEXT_ROTARY_DIRECTION_CLOCKWISE) {
-		if (pd->slider_value[cur_page] < 10)
+		if (pd->slider_value[cur_page] < 15)
 			pd->slider_value[cur_page]++;
 	} else {
 		if (pd->slider_value[cur_page] > 0)
@@ -410,7 +410,7 @@ static void _press_plus_volume_cb(void *data, Evas_Object *obj, void *event_info
 	int cur_page = 0;
 	elm_scroller_current_page_get(pd->scroller, &cur_page, NULL);
 
-	if (pd->slider_value[cur_page] < 10)
+	if (pd->slider_value[cur_page] < 15)
 		pd->slider_value[cur_page]++;
 
 	snprintf(buf, sizeof(buf), "%02d", pd->slider_value[cur_page]);
@@ -556,7 +556,7 @@ Evas_Object *_create_volume_page(void *data)
 		/* Add new eext_circle_object_slider with Eext_Circle_Surface object to render.
 		Value is set as 3 which is within range from 0 to 15. */
 		pd->slider[i] = slider = eext_circle_object_slider_add(page_layout, ad->circle_surface);
-		eext_circle_object_value_min_max_set(slider, 0.0, 10.0);
+		eext_circle_object_value_min_max_set(slider, 0.0, 15.0);
 		vconf_get_int(vconf_name[i], &pd->slider_value[i]);
 
 		eext_circle_object_value_set(slider, (float)pd->slider_value[i]);
