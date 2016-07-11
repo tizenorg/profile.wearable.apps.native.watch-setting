@@ -14,7 +14,7 @@
 static struct _haptic_data h_data;
 static Ecore_Timer *vibration_timer = NULL;
 
-static haptic_device_h hnd_hpt;
+/* static haptic_device_h hnd_hpt; */
 
 int _haptic_open()
 {

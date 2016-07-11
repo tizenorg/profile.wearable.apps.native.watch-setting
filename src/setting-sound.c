@@ -261,10 +261,9 @@ static void get_sound_file_list(char *dir, int type)
 			&& strlen(replace(result->d_name, ".ogg", "")) < 1024
 			&& strlen(replace(notification_name_arr[notification_count], "_", " ")) < 1024) {
 			if (type) {
-				int name_len = strlen(result->d_name);
 				strncpy(ringtone_arr[ringtone_count], dir, 1024);
 				strncat(ringtone_arr[ringtone_count], result->d_name,
-						(name_len > 1024) ? 1024 - strlen(ringtone_arr[ringtone_count]) : name_len);
+						1024 - strlen(ringtone_arr[ringtone_count]));
 
 				strcpy(ringtone_name_arr[ringtone_count], replace(result->d_name, ".ogg", ""));
 
@@ -278,10 +277,9 @@ static void get_sound_file_list(char *dir, int type)
 
 				ringtone_count++;
 			} else {
-				int name_len = strlen(result->d_name);
-				strcpy(notification_arr[notification_count], dir);
+				strncpy(notification_arr[notification_count], dir, 1024);
 				strncat(notification_arr[notification_count], result->d_name,
-						(name_len > 1024) ? 1024 - strlen(notification_arr[notification_count]) : name_len);
+						  1024 - strlen(notification_arr[notification_count]) );
 
 				strcpy(notification_name_arr[notification_count], replace(result->d_name, ".ogg", ""));
 				strcpy(notification_name_arr[notification_count], replace(notification_name_arr[notification_count], "_", " "));
@@ -469,7 +467,7 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 			if (pa_cur_ringtone == NULL) {
 				pa_cur_ringtone = vconf_get_str(VCONFKEY_SETAPPL_NOTI_RINGTONE_DEFAULT_PATH_STR);
 			}
-			if (strlen(pa_cur_ringtone) < 1024) {
+			if (pa_cur_ringtone && (strlen(pa_cur_ringtone) < 1024)) {
 				strcpy(curr_noti_file_path, pa_cur_ringtone);
 				DBG("Setting - noti's ringtone path : %s", pa_cur_ringtone);
 
