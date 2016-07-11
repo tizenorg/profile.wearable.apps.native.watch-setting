@@ -39,6 +39,8 @@ struct _page_data {
 	int cur_page;
 	int prev_page;
 	int slider_value[NUM_ITEMS_CIRCLE_EVEN];
+	Evas_Object *plus_btn[NUM_ITEMS_CIRCLE_EVEN];
+	Evas_Object *minus_btn[NUM_ITEMS_CIRCLE_EVEN];
 	Elm_Object_Item *it[NUM_ITEMS_CIRCLE_EVEN];
 
 	Elm_Object_Item *last_it;
@@ -336,6 +338,40 @@ _scroll(void *data, Evas_Object *obj, void *ei)
 	}
 }
 
+static void _change_btn_img(Evas_Object *page_layout, Evas_Object *btn_obj, char * path, char * btn_str)
+{
+	char img_path[PATH_MAX];
+	snprintf(img_path, sizeof(img_path), "%s/%s", IMG_DIR, path);
+	elm_image_file_set(btn_obj, img_path, NULL);
+	elm_object_part_content_set(page_layout, btn_str, btn_obj);
+}
+
+static void _volume_value_plus(void *data, int cur_page)
+{
+	page_data *pd = (page_data *)data;
+	if (pd->slider_value[cur_page] < 15) {
+		pd->slider_value[cur_page]++;
+		_change_btn_img(pd->page_layout[cur_page], pd->minus_btn[cur_page], "b_slider_icon_minus.png", "btn1");
+	}
+
+	if (pd->slider_value[cur_page] == 15)	{
+		_change_btn_img(data, pd->plus_btn[cur_page], "b_slider_icon_plus_disable.png", "btn2");
+	}
+}
+
+static void _volume_value_minus(void *data, int cur_page)
+{
+	page_data *pd = (page_data *)data;
+	if (pd->slider_value[cur_page] > 0) {
+		pd->slider_value[cur_page]--;
+		_change_btn_img(pd->page_layout[cur_page], pd->plus_btn[cur_page], "b_slider_icon_plus.png", "btn2");
+	}
+
+	if (pd->slider_value[cur_page] == 0)	{
+		_change_btn_img(data, pd->minus_btn[cur_page], "b_slider_icon_minus_disable.png", "btn1");
+	}
+}
+
 static Eina_Bool
 _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info)
 {
@@ -346,11 +382,9 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	elm_scroller_current_page_get(pd->scroller, &cur_page, NULL);
 
 	if (info->direction == EEXT_ROTARY_DIRECTION_CLOCKWISE) {
-		if (pd->slider_value[cur_page] < 15)
-			pd->slider_value[cur_page]++;
+		_volume_value_plus(data, cur_page);
 	} else {
-		if (pd->slider_value[cur_page] > 0)
-			pd->slider_value[cur_page]--;
+		_volume_value_minus(data, cur_page);
 	}
 	snprintf(buf, sizeof(buf), "%02d", pd->slider_value[cur_page]);
 	ERR("Slider value = %s\n", buf);
@@ -410,8 +444,7 @@ static void _press_plus_volume_cb(void *data, Evas_Object *obj, void *event_info
 	int cur_page = 0;
 	elm_scroller_current_page_get(pd->scroller, &cur_page, NULL);
 
-	if (pd->slider_value[cur_page] < 15)
-		pd->slider_value[cur_page]++;
+	_volume_value_plus(data, cur_page);
 
 	snprintf(buf, sizeof(buf), "%02d", pd->slider_value[cur_page]);
 	ERR("Slider value = %s\n", buf);
@@ -440,8 +473,7 @@ static void _press_minus_volume_cb(void *data, Evas_Object *obj, void *event_inf
 	int cur_page = 0;
 	elm_scroller_current_page_get(pd->scroller, &cur_page, NULL);
 
-	if (pd->slider_value[cur_page] > 0)
-		pd->slider_value[cur_page]--;
+	_volume_value_minus(data, cur_page);
 
 	snprintf(buf, sizeof(buf), "%02d", pd->slider_value[cur_page]);
 	ERR("Slider value = %s\n", buf);
@@ -576,17 +608,28 @@ Evas_Object *_create_volume_page(void *data)
 
 		Evas_Object *btn_minus;
 		btn_minus = elm_image_add(page_layout);
-		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus.png", IMG_DIR);
+		if (pd->slider_value[i] > 0)
+			snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus.png", IMG_DIR);
+		else
+			snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus_disable.png", IMG_DIR);
+
 		elm_image_file_set(btn_minus, img_path, NULL);
 		elm_object_part_content_set(page_layout, "btn1", btn_minus);
 		evas_object_smart_callback_add(btn_minus, "clicked", _press_minus_volume_cb, pd);
 
 		Evas_Object *btn_plus;
 		btn_plus = elm_image_add(page_layout);
-		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_plus.png", IMG_DIR);
+		if (pd->slider_value[i] < 15)
+			snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_plus.png", IMG_DIR);
+		else
+			snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_plus_disable.png", IMG_DIR);
+
 		elm_image_file_set(btn_plus, img_path, NULL);
 		elm_object_part_content_set(page_layout, "btn2", btn_plus);
 		evas_object_smart_callback_add(btn_plus, "clicked", _press_plus_volume_cb, pd);
+
+		pd->minus_btn[i] = btn_minus;
+		pd->plus_btn[i] = btn_plus;
 
 		img = elm_image_add(page_layout);
 		snprintf(img_path, sizeof(img_path), "%s/%s", IMG_DIR, img_names[i]);

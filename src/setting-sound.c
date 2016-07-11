@@ -300,6 +300,7 @@ static void get_sound_file_list(char *dir, int type)
 }
 
 
+#if 0
 static int get_vibration_level()
 {
 	int mode = 1;
@@ -320,6 +321,7 @@ static int get_vibration_level()
 	}
 	return mode;
 }
+#endif
 
 void _show_volume_list(void *data)
 {

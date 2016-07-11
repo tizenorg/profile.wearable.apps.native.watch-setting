@@ -2096,7 +2096,7 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	Evas_Object *btn_minus;
 	btn_minus = elm_image_add(page_layout);
 
-	if (brightness_index)
+	if (brightness_index > 1)
 		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus.png", IMG_DIR);
 	else
 		snprintf(img_path, sizeof(img_path), "%s/b_slider_icon_minus_disable.png", IMG_DIR);
