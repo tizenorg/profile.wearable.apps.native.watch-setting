@@ -1924,12 +1924,12 @@ static void _brightness_value_plus(void *data)
 
 static void _brightness_value_minus(void *data)
 {
-	if (brightness_index > 0) {
+	if (brightness_index > 1) {
 		brightness_index--;
 		_change_btn_img(data, g_btn_plus, "b_slider_icon_plus.png", "btn2");
 	}
 
-	if (brightness_index == 0) {
+	if (brightness_index == 1) {
 		ERR("disable minus btn1");
 		_change_btn_img(data, g_btn_minus, "b_slider_icon_minus_disable.png", "btn1");
 	}
@@ -2080,7 +2080,7 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	/* Add new eext_circle_object_slider with Eext_Circle_Surface object to render.
 	Value is set as 3 which is within range from 0 to 15. */
 	slider = eext_circle_object_slider_add(page_layout, ad->circle_surface);
-	eext_circle_object_value_min_max_set(slider, 0.0, 10.0);
+	eext_circle_object_value_min_max_set(slider, 1.0, 10.0);
 
 	eext_circle_object_value_set(slider, (float)brightness_index);
 
