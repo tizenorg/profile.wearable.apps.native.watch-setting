@@ -299,7 +299,6 @@ static void get_sound_file_list(char *dir, int type)
 	closedir(dp);
 }
 
-
 #if 0
 static int get_vibration_level()
 {
@@ -448,7 +447,7 @@ char *_gl_Sound_title_get(void *data, Evas_Object *obj, const char *part)
 		snprintf(buf, sizeof(buf) - 1, "%s", _(sound_menu_its[index % ITEM_SIZE].name));
 	} else if (!strcmp(part, "elm.text.1")) {
 		switch (index) {
-		case 1:
+		case 0:
 			sound_mode = get_sound_mode();
 			snprintf(buf, sizeof(buf) - 1, "%s", _(sound_mode_str[sound_mode % 3]));
 			break;
@@ -590,7 +589,7 @@ Evas_Object *_create_sound_list(void *data)
 	elm_genlist_item_class_free(title_item);
 
 	for (idx = 0; idx < ITEM_SIZE; idx++) {
-		if (idx == 0 || idx == 2) {
+		if (idx == 1 || idx == 2) {
 			itc_tmp = itc_1text;
 		} else if (idx == 3) {
 			itc_tmp = itc_touch_snd;
