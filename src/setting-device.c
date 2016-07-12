@@ -174,6 +174,7 @@ static void _auto_open_apps_check_changed_cb(void *data, Evas *e, Evas_Object *o
 
 		evas_object_show(popup);
 		back_button_cb_push(&back_key_auto_open_app_popup_cb, check, NULL, g_device_action_genlist, "device_action_genlist");
+		eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 
 	} else {
 		bool is_auto_open = 0;

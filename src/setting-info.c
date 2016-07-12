@@ -308,6 +308,7 @@ void _usb_debug_chk_changed_cb(void *data, Evas *e, Evas_Object *obj, void *even
 
 		evas_object_show(popup);
 		back_button_cb_push(&back_key_usb_debug_popup_cb, check, NULL, g_info_genlist, "g_info_genlist");
+		eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 
 	} else {
 		set_enable_USB_debugging(0);
@@ -615,6 +616,7 @@ void _info_open_src_gl_cb(void *data, Evas_Object *obj, void *event_info)
 
 	evas_object_show(popup);
 	back_button_cb_push(&back_key_popup_cb, data, NULL, g_about_genlist, "g_about_genlist");
+	eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 }
 
 void safety_inform_lange_changed(void *data, Evas_Object *obj, void *event_info)
