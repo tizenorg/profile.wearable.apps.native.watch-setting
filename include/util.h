@@ -172,4 +172,5 @@ bool is_file_exist(char *file_path);
 
 void connect_to_wheel_with_genlist(Evas_Object *genlist, appdata *ad);
 
+void _hw_back_key_cb(void *data, Evas_Object *obj, void *event_info);
 #endif

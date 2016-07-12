@@ -329,6 +329,7 @@ void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_part_content_set(popup, "button1", btn);
 	evas_object_smart_callback_add(btn, "clicked", _response_ok_cb, ad);
 	back_button_cb_push(&back_key_popup_cb, data, NULL, g_double_app_genlist, "g_double_app_genlist");
+	eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 
 	evas_object_show(popup);
 }

@@ -174,6 +174,7 @@ static void _auto_open_apps_check_changed_cb(void *data, Evas *e, Evas_Object *o
 
 		evas_object_show(popup);
 		back_button_cb_push(&back_key_auto_open_app_popup_cb, check, NULL, g_device_action_genlist, "device_action_genlist");
+		eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 
 	} else {
 		bool is_auto_open = 0;
@@ -251,6 +252,7 @@ void _double_press_home_key_cb(void *data, Evas_Object *obj, void *event_info)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_device_action_genlist, "device_action_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_pop_cb_set(nf_it, clear_double_app_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 

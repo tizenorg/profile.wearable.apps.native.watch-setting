@@ -521,6 +521,7 @@ void _show_intensity_list_cb(void *data, Evas_Object *obj, void *event_info)
 	/*elm_naviframe_item_push(ad->nf, _("IDS_ST_HEADER_VIBRATION_ABB"), NULL, NULL, popup, NULL); */
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, popup, NULL);
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_vibration_genlist, "g_vibration_genlist");
+	eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 }
 

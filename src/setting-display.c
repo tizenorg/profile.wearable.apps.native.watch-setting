@@ -344,6 +344,7 @@ void _display_gl_language_cb(void *data, Evas_Object *obj, void *event_info)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
+	eext_object_event_callback_add(genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_lang_cb, ad);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -715,6 +716,7 @@ void _show_screen_timeout_list(void *data)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
+	eext_object_event_callback_add(genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1124,6 +1126,7 @@ void _show_font_list(void *data)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1402,6 +1405,7 @@ int _show_font_style_list(void *data)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_font_genlist, "g_font_genlist");
+	eext_object_event_callback_add(g_font_genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 
 	return 0;
@@ -1579,6 +1583,7 @@ void _show_font_size_list(void *data)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_font_genlist, "g_font_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 #if !defined(FEATURE_SETTING_TELEPHONY)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 #endif
@@ -1895,6 +1900,7 @@ static void _display_brightness_cb(void *data, Evas_Object *obj, void *event_inf
 		elm_naviframe_item_title_enabled_set(navi_it, EINA_FALSE, EINA_FALSE);
 		elm_object_item_domain_text_translatable_set(navi_it, SETTING_PACKAGE, EINA_TRUE);
 		back_button_cb_push(&_brightness_pop_cb, data, NULL, g_display_genlist, "g_display_genlist");
+		eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 
 		register_vconf_changing(VCONFKEY_SETAPPL_LCD_BRIGHTNESS, brightness_vconf_changed_cb, NULL);
 	}
@@ -2267,6 +2273,7 @@ static void _clock_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, NULL);
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	evas_object_event_callback_add(layout, EVAS_CALLBACK_DEL, _clear_clock_cb, ad);
 	/*elm_naviframe_item_pop_cb_set(nf_it, _clear_clock_cb, ad); */
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
@@ -2449,6 +2456,7 @@ void _noti_indicator_help_popup_cb(void *data, Evas_Object *obj, void *event_inf
 
 	evas_object_show(popup);
 	back_button_cb_push(&back_key_popup_cb, data, NULL, g_noti_indicator_genlist, "g_noti_indicator_genlist");
+	eext_object_event_callback_add(popup, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 
 }
 
@@ -2599,6 +2607,7 @@ static void _show_noti_indicator_list(void *data)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, g_display_genlist, "g_display_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 	elm_object_item_domain_text_translatable_set(nf_it, SETTING_PACKAGE, EINA_TRUE);
 

@@ -246,6 +246,7 @@ void sound_cb(void *data, Evas_Object *obj, void *event_info)
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, "main_genlist");
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+	eext_object_event_callback_add(genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	evas_object_event_callback_add(nf_it, EVAS_CALLBACK_DEL, _clear_sound_cb, ad);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -278,6 +279,7 @@ void device_cb(void *data, Evas_Object *obj, void *event_info)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, "main_genlist");
+	eext_object_event_callback_add(genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -310,6 +312,7 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, "main_genlist");
+	eext_object_event_callback_add(genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	evas_object_event_callback_add(genlist, EVAS_CALLBACK_DEL, _clear_display_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -511,6 +514,7 @@ void connection_cb(void *data, Evas_Object *obj, void *event_info)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_connection_cb, data, NULL,  ad->main_genlist, "main_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -545,6 +549,7 @@ void double_pressing_cb(void *data, Evas_Object *obj, void *event_info)
 
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL,  ad->main_genlist, "main_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -591,6 +596,7 @@ void language_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, genlist, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, "main_genlist");
+	eext_object_event_callback_add(genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_pop_cb_set(nf_it, _clear_lang_navi_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -622,6 +628,7 @@ void safety_cb(void *data, Evas_Object *obj, void *event_info)
 	}
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, layout, "empty");
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, "main_genlist");
+	eext_object_event_callback_add(layout, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_naviframe_item_pop_cb_set(nf_it, clear_safety_cb, ad);
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
@@ -673,6 +680,7 @@ void gear_info_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	back_button_cb_push(&back_key_generic_cb, data, NULL, ad->main_genlist, "main_genlist");
+	eext_object_event_callback_add(genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	ad->MENU_TYPE = SETTING_INFO;
@@ -1125,6 +1133,7 @@ static void _create_view_layout(appdata *ad)
 	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
 
 	elm_naviframe_item_pop_cb_set(nf_it, _pop_cb, ad); /* ad->win_main */
+	eext_object_event_callback_add(elm_object_item_widget_get(nf_it), EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 
 	/*register_vconf_changing(VCONFKEY_WMS_WMANAGER_CONNECTED, change_language_enabling, NULL); */
 }
@@ -1160,14 +1169,6 @@ static void _exit_app(void *data, Evas_Object *obj, void *event_info)
 	clear_back_button_list();
 	ui_app_exit();
 }
-
-
-static Eina_Bool _hw_back_key_cb(void *data, int type, void *event)
-{
-	back_button_cb_call();
-	return ECORE_CALLBACK_RENEW;
-}
-
 
 bool app_create(void *data)
 {
@@ -1223,7 +1224,7 @@ bool app_create(void *data)
 	DBG("app_create finish. with skip locale");
 
 	back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
-	ecore_event_handler_add(ECORE_EVENT_KEY_DOWN, _hw_back_key_cb, NULL);
+//	ecore_event_handler_add(ECORE_EVENT_KEY_DOWN, _hw_back_key_cb, NULL);
 
 	return true;
 }
@@ -1377,6 +1378,7 @@ void app_reset(app_control_h service, void *data)
 			back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
 
 			if (ad->main_genlist) {
+				eext_object_event_callback_add(ad->main_genlist, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 				elm_genlist_item_show(elm_genlist_first_item_get(ad->main_genlist),
 									  ELM_GENLIST_ITEM_SCROLLTO_TOP);
 				elm_layout_signal_emit(ad->main_genlist, "do-show-vbar", "");

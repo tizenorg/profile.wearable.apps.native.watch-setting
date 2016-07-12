@@ -261,3 +261,8 @@ void connect_to_wheel_with_genlist(Evas_Object *genlist, appdata *ad)
 	eext_rotary_object_event_activated_set(circle_genlist, EINA_TRUE);
 }
 
+void _hw_back_key_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	back_button_cb_call();
+	return;
+}
