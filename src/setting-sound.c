@@ -509,8 +509,7 @@ void _sound_chk_changed_cb(void *data, Evas_Object *obj, void *event_info)
 static void _sound_gl_del(void *data, Evas_Object *obj)
 {
 	Sound_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_gl_sound_check_get(void *data, Evas_Object *obj, const char *part)
@@ -672,8 +671,7 @@ static Evas_Object *_gl_sound_mode_ridio_get(void *data, Evas_Object *obj, const
 static void _sound_mode_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static int curr_touch_sound = 0;
@@ -1703,8 +1701,7 @@ static Evas_Object *_gl_pref_arm_ridio_get(void *data, Evas_Object *obj, const c
 static void _pref_arm_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static void _pref_arm_gl_cb(void *data, Evas_Object *obj, void *event_info)

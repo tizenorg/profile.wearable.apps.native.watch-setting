@@ -685,8 +685,7 @@ static Evas_Object *_gl_bt_check_get(void *data, Evas_Object *obj, const char *p
 static void _bt_gl_del(void *data, Evas_Object *obj)
 {
 	Bt_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static void init_values()

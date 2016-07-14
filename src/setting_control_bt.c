@@ -30,6 +30,7 @@ int hf_is_connected()
 	if (ret != BLUETOOTH_ERROR_NONE) {
 		printf("Setting - bluetooth_get_bonded_device_list is failed 0x%X\n", ret);
 		g_ptr_array_free(dev_list, TRUE);
+		dev_list = NULL;
 		return FALSE;
 	}
 
@@ -51,6 +52,7 @@ int hf_is_connected()
 
 	g_ptr_array_foreach(dev_list, (GFunc)g_free, NULL);
 	g_ptr_array_free(dev_list, TRUE);
+	dev_list = NULL;
 
 	DBG("Setting - connected? %d", is_connected);
 

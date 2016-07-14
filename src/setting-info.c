@@ -170,9 +170,7 @@ void _get_bluetooth_address_string(char *str, int size)
 		snprintf(str, size, "%s", local_address);
 	}
 
-	if (local_address) {
-		free(local_address);
-	}
+	FREE(local_address);
 }
 
 void _get_wifi_address_string(char *str, int size)
@@ -188,9 +186,7 @@ void _get_wifi_address_string(char *str, int size)
 		snprintf(str, size, "%s", mac_addr);
 	}
 
-	if (mac_addr) {
-		free(mac_addr);
-	}
+	FREE(mac_addr);
 }
 
 
@@ -280,7 +276,7 @@ void _usb_debug_chk_changed_cb(void *data, Evas *e, Evas_Object *obj, void *even
 		elm_object_text_set(layout, txt);
 		elm_object_content_set(popup, layout);
 
-		free(txt);
+		FREE(txt);
 
 		btn1 = elm_button_add(popup);
 		elm_object_style_set(btn1, "popup/circle/left");
@@ -320,8 +316,7 @@ static void _info_gl_del(void *data, Evas_Object *obj)
 	/* FIXME: Unrealized callback can be called after this. */
 	/* Accessing Item_Data can be dangerous on unrealized callback. */
 	Info_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 char *_gl_info_title_get(void *data, Evas_Object *obj, const char *part)
@@ -435,8 +430,7 @@ Evas_Object *_create_info_list(void *data)
 static void _info_detail_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 char *_gl_info__detail_title_get(void *data, Evas_Object *obj, const char *part)
@@ -550,8 +544,8 @@ static void open_sources_licences_lange_changed(void *data, Evas_Object *obj, vo
 		snprintf(buf, sizeof(buf) - 1, frame, file_path, command);
 
 	elm_object_text_set(obj, strdup(buf));
-	free(frame);
-	free(license_str);
+	FREE(frame);
+	FREE(license_str);
 }
 
 static char *get_license_str()
@@ -579,8 +573,8 @@ static char *get_license_str()
 		snprintf(buf, sizeof(buf) - 1, frame, file_path, command);
 
 	char *txt = strdup(buf);
-	free(frame);
-	free(license_str);
+	FREE(frame);
+	FREE(license_str);
 	return txt;
 }
 
@@ -610,7 +604,7 @@ void _info_open_src_gl_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_object_text_set(layout, txt);
 	elm_object_content_set(popup, layout);
 
-	free(txt);
+	FREE(txt);
 
 	evas_object_smart_callback_add(layout, "language,changed", open_sources_licences_lange_changed, NULL);
 
@@ -628,7 +622,7 @@ void safety_inform_lange_changed(void *data, Evas_Object *obj, void *event_info)
 	char buf[1024];
 	snprintf(buf, sizeof(buf), "<font_size=34>%s</font_size>", safety_str);
 	elm_object_text_set(obj, strdup(buf));
-	free(safety_str);
+	FREE(safety_str);
 }
 
 
@@ -668,8 +662,8 @@ void _safety_inform_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	char *txt = strdup(buf);
 	elm_object_text_set(label, txt);
-	free(txt);
-	free(safety_str);
+	FREE(txt);
+	FREE(safety_str);
 	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, 0.0);
 	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
 	elm_object_content_set(scroller, label);
@@ -824,7 +818,7 @@ void _usb_debug_lange_changed(void *data, Evas_Object *obj, void *event_info)
 	snprintf(buf, sizeof(buf), "<font_size=34>%s</font_size>", debug_str);
 	elm_object_text_set(obj, strdup(buf));
 
-	free(debug_str);
+	FREE(debug_str);
 }
 
 /*

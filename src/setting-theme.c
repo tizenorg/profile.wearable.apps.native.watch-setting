@@ -385,8 +385,7 @@ static void setting_theme_layout_del_cb(void *data, Evas *evas, Evas_Object *obj
 	DBG("setting_theme_layout_del_cb");
 
 	Theme_Data *td = data;
-	if (td)
-		free(td);
+	FREE(td);
 
 	int ret;
 	ret = feedback_deinitialize();

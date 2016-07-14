@@ -430,8 +430,7 @@ void _clear_volume_setting_cb(void *data, Evas *e, Evas_Object *obj, void *event
 	is_myself_ringtone_changing = 0;
 	is_sound_changed = is_vibrate_changed = 0;
 
-	if (g_pd) free(g_pd);
-	g_pd = NULL;
+	FREE(g_pd);
 
 	return;
 }

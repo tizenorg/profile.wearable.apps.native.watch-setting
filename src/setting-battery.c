@@ -238,13 +238,13 @@ static Eina_Bool _battery_timeout(void *data)
 			snprintf(buf, sizeof(buf) - 1, "%s%c", ret_str, '\%');
 			char *temp_percent = strdup(buf);
 			elm_object_part_text_set(layout, "text1", temp_percent);
-			free(temp_percent);
+			FREE(temp_percent);
 
 			if (is_charging) {
 				snprintf(buf, sizeof(buf) - 1, "%s%s", _("IDS_COM_BODY_CHARGING_GA"), (is_type_of_charging() == CHARGING_AC) ? "(AC)" : "(USB)");
 				char *temp_charging_msg = strdup(buf);
 				elm_object_part_text_set(layout, "text2", temp_charging_msg);
-				free(temp_charging_msg);
+				FREE(temp_charging_msg);
 			} else {
 				elm_object_part_text_set(layout, "text2", _("IDS_ST_BODY_NOT_CHARGING_ABB"));
 			}
@@ -268,7 +268,7 @@ static Eina_Bool _battery_timeout(void *data)
 	}
 
 	DBG("Setting - check battery state!!");
-	free(ret_str);
+	FREE(ret_str);
 
 	return ECORE_CALLBACK_RENEW;
 }
@@ -294,18 +294,18 @@ void _battery_lang_changed(void *data, Evas_Object *obj, void *event_info)
 		snprintf(buf, sizeof(buf) - 1, "%s%c", ret_str, '\%');
 		char *temp_percent = strdup(buf);
 		elm_object_part_text_set(obj, "text1", temp_percent);
-		free(temp_percent);
+		FREE(temp_percent);
 
 		if (is_charging) {
 			snprintf(buf, sizeof(buf) - 1, "%s%s", _("IDS_COM_BODY_CHARGING_GA"), (is_type_of_charging() == CHARGING_AC) ? "(AC)" : "(USB)");
 			char *temp_charging_msg = strdup(buf);
 			elm_object_part_text_set(obj, "text2", temp_charging_msg);
-			free(temp_charging_msg);
+			FREE(temp_charging_msg);
 		} else {
 			elm_object_part_text_set(obj, "text2", _("IDS_ST_BODY_NOT_CHARGING_ABB"));
 		}
 	}
-	free(ret_str);
+	FREE(ret_str);
 }
 
 Evas_Object *_create_battery_content2(void *data)
@@ -340,7 +340,7 @@ Evas_Object *_create_battery_content2(void *data)
 		charging_text = strdup(buf);
 	}
 	elm_object_part_text_set(layout, "text2", (is_charging) ? charging_text : _("IDS_ST_BODY_NOT_CHARGING_ABB"));
-	free(charging_text);
+	FREE(charging_text);
 
 	prev_charging_state = is_charging;
 
@@ -352,7 +352,7 @@ Evas_Object *_create_battery_content2(void *data)
 
 	_start_timer_for_update(layout);	/* updating timer start! */
 
-	free(ret_str);
+	FREE(ret_str);
 	return layout;
 }
 
@@ -570,8 +570,7 @@ Evas_Object *_gl_battery_check_get(void *data, Evas_Object *obj, const char *par
 void _gl_battery_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_battery_list(void *data)
@@ -716,7 +715,7 @@ void _pws_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	char *txt = strdup(buf);
 	elm_object_text_set(label, txt);
-	free(txt);
+	FREE(txt);
 	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
 	elm_object_content_set(scroller, label);

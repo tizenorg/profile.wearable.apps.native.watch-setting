@@ -28,14 +28,12 @@ Toast_Data *_create_toast(void *data, char *msg)
 void _destroy_toast(Toast_Data *toast)
 {
 	if (toast) {
-		if (toast->str) {
-			free(toast->str);
-		}
+		FREE(toast->str);
 		if (toast->toast_popup) {
 			evas_object_del(toast->toast_popup);
 			toast->toast_popup = NULL;
 		}
-		free(toast);
+		FREE(toast);
 	}
 }
 

@@ -229,8 +229,7 @@ static void _make_app_list(void *data)
 static void _gl_double_del(void *data, Evas_Object *obj)
 {
 	Double_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static char *_gl_double_title_get(void *data, Evas_Object *obj, const char *part)
@@ -320,7 +319,7 @@ void _last_app_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	char *txt = strdup(buf);
 	elm_object_text_set(popup, txt);
-	free(txt);
+	FREE(txt);
 
 	btn = elm_button_add(popup);
 	elm_object_style_set(btn, "bottom");

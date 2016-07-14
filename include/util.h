@@ -49,6 +49,42 @@ char *_get_strnum_from_icu(int number);
 
 #define WIN_SIZE	320
 
+#ifndef retv_if
+#define retv_if(expr, val) do { \
+	if (expr) { \
+		ERR("(%s)", #expr); \
+		return (val); \
+	} \
+} while (0)
+#endif
+
+#ifndef ret_if
+#define ret_if(expr) do { \
+	if (expr) { \
+		ERR("(%s)", #expr); \
+		return ; \
+	} \
+} while (0)
+#endif
+
+#ifndef warn_if
+#define warn_if(expr, fmt, arg...) do { \
+	if (expr) { \
+		ERR(fmt, ##arg); \
+	} \
+} while (0)
+#endif
+
+#define __FREE(del, arg) do { \
+	if (arg) { \
+		/*cast any argument to (void*) to avoid build warring*/\
+		del((void *)(arg)); \
+		arg = NULL; \
+	} \
+} while (0)
+#define FREE(arg) __FREE(free, arg)
+#define G_FREE(arg) __FREE(g_free, arg)
+
 enum {
 	SETTING_CLOCK,
 	SETTING_NOTIFICATION,

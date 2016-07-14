@@ -191,8 +191,7 @@ static void _wake_up_guesture_gl_del(void *data, Evas_Object *obj)
 	/* FIXME: Unrealized callback can be called after this. */
 	/* Accessing Item_Data can be dangerous on unrealized callback. */
 	struct _motion_wake_up_guesture_item *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 void _show_wake_up_guesture_list(void *data)
@@ -333,8 +332,7 @@ static void _motion_gl_del(void *data, Evas_Object *obj)
 	/* FIXME: Unrealized callback can be called after this. */
 	/* Accessing Item_Data can be dangerous on unrealized callback. */
 	Motion_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_motion_list(void *data)

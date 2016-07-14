@@ -93,7 +93,7 @@ void _reset_popup_cb(void *data, Evas_Object *obj, void *event_info)
 
 	char *txt = strdup(buf);
 	elm_object_text_set(label, txt);
-	free(txt);
+	FREE(txt);
 	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
 	evas_object_smart_callback_add(label, "language,changed", _reset_lange_changed, NULL);

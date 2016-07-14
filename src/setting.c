@@ -120,10 +120,7 @@ void clock_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -160,10 +157,7 @@ void notification_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -192,10 +186,7 @@ void homescreen_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -225,10 +216,7 @@ void sound_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -259,16 +247,12 @@ void device_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 		return;
 	}
-
 
 	genlist = _create_device_action_list(data);
 	if (genlist == NULL) {
@@ -291,10 +275,7 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -324,10 +305,7 @@ void keyboard_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		return;
@@ -359,10 +337,7 @@ void battery_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -390,10 +365,7 @@ void bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
 	DBG("bluetooth_cb in");
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	app_control_h service;
 	app_control_create(&service);
@@ -448,10 +420,7 @@ void lockscreen_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -493,10 +462,7 @@ void connection_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -525,10 +491,7 @@ void double_pressing_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -560,10 +523,7 @@ void language_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -602,10 +562,8 @@ void safety_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	appdata *ad = data;
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -631,10 +589,8 @@ void safety_cb(void *data, Evas_Object *obj, void *event_info)
 void reset_gear_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -654,10 +610,7 @@ void gear_info_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -702,10 +655,8 @@ void profile_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("profile cb");
 	appdata *ad = data;
-	if (ad == NULL) {
-		DBG("Setting - ad is null");
-		return;
-	}
+
+	ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -740,6 +691,9 @@ static Eina_Bool _pop_cb(void *data, Elm_Object_Item *it)
 {
 	/* Stop timer and task */
 	appdata *ad = data;
+
+	retv_if(!data, NULL);
+
 	if (running_timer) {
 		ecore_timer_del(running_timer);
 		running_timer = NULL;
@@ -763,7 +717,7 @@ static Evas_Object *_create_bg(Evas_Object *parent)
 {
 	Evas_Object *bg;
 
-	if (parent == NULL) return NULL;
+	retv_if(!parent, NULL);
 
 	bg = elm_bg_add(parent);
 	evas_object_size_hint_weight_set(bg, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -777,7 +731,7 @@ static Evas_Object *_create_conform(Evas_Object *parent)
 {
 	Evas_Object *conform;
 
-	if (parent == NULL) return NULL;
+	retv_if(!parent, NULL);
 
 	conform = elm_conformant_add(parent);
 	evas_object_size_hint_weight_set(conform, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -791,7 +745,7 @@ static Evas_Object *_create_layout_main(Evas_Object *parent)
 {
 	Evas_Object *layout;
 
-	if (parent == NULL) return NULL;
+	retv_if(!parent, NULL);
 
 	layout = elm_layout_add(parent);
 
@@ -833,9 +787,7 @@ static void _window_resize_cb(void *data, Evas *e, Evas_Object *obj, void *event
 
 static void init_values(appdata *ad)
 {
-	if (ad == NULL) {
-		return;
-	}
+	ret_if(!ad);
 
 	ad->is_motion_smart_relay_on = 1;
 	ad->is_motion_wake_up_on = 1;
@@ -845,8 +797,7 @@ static int init_watch_setting(appdata *ad)
 {
 	DBG("init_watch_setting() is called!");
 
-	if (ad == NULL)
-		return EINA_FALSE;
+	retv_if(!ad, EINA_FALSE);
 
 	ad->bg = _create_bg(ad->win_main);
 
@@ -883,7 +834,7 @@ static Evas_Object *_create_naviframe_layout(Evas_Object *parent)
 {
 	Evas_Object *nf = NULL;
 
-	if (parent == NULL) return NULL;
+	retv_if(!parent, NULL);
 
 	nf = elm_naviframe_add(parent);
 	elm_object_part_content_set(parent, "elm.swallow.content", nf);
@@ -898,6 +849,9 @@ static char *_gl_text_get(void *data, Evas_Object *obj, const char *part)
 	char buf[512];
 	Item_Data *id = data;
 	int index = id->index;
+
+	retv_if(!data, NULL);
+
 	/*
 	char expression[32];
 
@@ -947,8 +901,7 @@ static Evas_Object *_gl_icon_get(void *data, Evas_Object *obj, const char *part)
 static void _gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static Evas_Object *_gl_indicator_get(void *data, Evas_Object *obj, const char *part)
@@ -1070,10 +1023,7 @@ static void _update_main_menu_title(void *data)
 	DBG("_update_main_menu_title() is called");
 
 	appdata *ad = data;
-	if (ad == NULL) {
-		DBG("appdata is NULL");
-		return;
-	}
+	ret_if(!ad);
 
 	if (ad->main_genlist) {
 		elm_genlist_realized_items_update(ad->main_genlist);
@@ -1113,8 +1063,8 @@ static void _create_view_layout(appdata *ad)
 	Evas_Object *genlist = NULL;
 	Elm_Object_Item *nf_it = NULL;
 
-	if (ad == NULL) return;
-	if (ad->nf == NULL) return;
+	ret_if(!ad);
+	ret_if(!ad->nf);
 
 	genlist = _create_mainlist_winset(ad->win_main, ad);
 	connect_to_wheel_with_genlist(genlist, ad);
@@ -1172,6 +1122,8 @@ bool app_create(void *data)
 	appdata *ad = (appdata *) data;
 	char *locale;
 
+	ret_if(!data);
+
 	DBG("app_create start.");
 
 	feedback_initialize();
@@ -1227,6 +1179,8 @@ void app_terminate(void *data)
 
 	appdata *ad = data;
 
+	ret_if(!data);
+
 	feedback_deinitialize();
 	indicator_unset_vconf_changed_cb();
 
@@ -1281,6 +1235,8 @@ void app_pause(void *data)
 	DBG("Setting - app_pause()");
 
 	appdata *ad = data;
+	ret_if(!data);
+
 	if (ad) {
 		if (ad->MENU_TYPE == SETTING_VOLUME_2_DEPTH) {
 			_stop_all_volume_sound();
@@ -1299,6 +1255,8 @@ void app_resume(void *data)
 {
 	DBG("Setting - app_resume()");
 
+	ret_if(!data);
+
 	if (running)
 		running = false;
 }
@@ -1309,8 +1267,8 @@ void load_brightness_setting(void *data)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	if (ad == NULL) return;
-	if (ad->nf == NULL) return;
+	ret_if(!ad);
+	ret_if(!ad->nf);
 
 	ad->main_brightness_ly = brightness_ly = _show_brightness_popup(ad, NULL, NULL);
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, brightness_ly, NULL);
@@ -1323,6 +1281,9 @@ void check_direct_brightness_setting(void *data, app_control_h service)
 {
 	char *param = NULL;
 	appdata *ad = data;
+
+	ret_if(!data);
+
 	if (app_control_get_extra_data(service, "launch-type", &param) == APP_CONTROL_ERROR_NONE) {
 		if (!strcmp(param, "brightness")) {
 			load_brightness_setting(data);
@@ -1345,6 +1306,8 @@ void app_reset(app_control_h service, void *data)
 	DBG("Setting - app_reset()");
 
 	appdata *ad = data;
+
+	ret_if(!data);
 
 	char *operation = NULL;
 	app_control_get_operation(service, &operation);

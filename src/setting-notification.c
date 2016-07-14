@@ -104,8 +104,7 @@ Evas_Object *_gl_noti_check_get(void *data, Evas_Object *obj, const char *part)
 static void _noti_gl_del(void *data, Evas_Object *obj)
 {
 	Noti_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_noti_list(void *data)

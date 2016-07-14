@@ -197,7 +197,7 @@ static void _flight_mode_check_cb(void *data, Evas *e, Evas_Object *obj, void *e
 		elm_object_text_set(layout, txt);
 		elm_object_content_set(popup, layout);
 
-		free(txt);
+		FREE(txt);
 
 		btn1 = elm_button_add(popup);
 		elm_object_style_set(btn1, "popup/circle/left");
@@ -405,8 +405,7 @@ char *_gl_connection_title_get(void *data, Evas_Object *obj, const char *part)
 static void _connection_gl_del(void *data, Evas_Object *obj)
 {
 	connection_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 

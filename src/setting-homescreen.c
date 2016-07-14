@@ -264,8 +264,7 @@ Evas_Object *_gl_homescreen_check_get(void *data, Evas_Object *obj, const char *
 void _homescreen_gl_del(void *data, Evas_Object *obj)
 {
 	Homescreen_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_homescreen_list(void *data)
@@ -369,8 +368,7 @@ static Evas_Object *_gl_viewtype_radio_get(void *data, Evas_Object *obj, const c
 static void _viewtype_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static void _viewtype_gl_cb(void *data, Evas_Object *obj, void *event_info)
@@ -457,8 +455,7 @@ static char *_gl_homebg_title_get(void *data, Evas_Object *obj, const char *part
 static void _homebg_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static void _show_homebg_list(void *data)
@@ -511,7 +508,7 @@ static void _show_homebg_list(void *data)
 static void _layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 {
 	page_data *pd = data;
-	free(pd);
+	FREE(pd);
 }
 
 #if 0 /* _NOT_USED_ */

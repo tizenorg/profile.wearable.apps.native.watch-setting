@@ -471,7 +471,7 @@ void _clear_clock_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 static void _layout_del_cb(void *data , Evas *e, Evas_Object *obj, void *event_info)
 {
 	clock_page_data *pd = data;
-	free(pd);
+	FREE(pd);
 
 	int ret;
 	ret = feedback_deinitialize();
@@ -945,7 +945,7 @@ static void _vconf_date_format_changed_cb(keynode_t *node, void *data)
 	Evas_Object *datetime = (Evas_Object *) data;
 	char *dt_fmt = _date_format_get();
 	elm_datetime_format_set(datetime, dt_fmt);
-	free(dt_fmt);
+	FREE(dt_fmt);
 }
 
 static void _vconf_time_format_changed_cb(keynode_t *node, void *data)
@@ -954,7 +954,7 @@ static void _vconf_time_format_changed_cb(keynode_t *node, void *data)
 	Evas_Object *datetime = (Evas_Object *) data;
 	char *dt_fmt = _time_format_get();
 	elm_datetime_format_set(datetime, dt_fmt);
-	free(dt_fmt);
+	FREE(dt_fmt);
 }
 
 #if 0 /* _NOT_USED_ */
@@ -1030,8 +1030,7 @@ char *_gl_clock_title_get(void *data, Evas_Object *obj, const char *part)
 static void _clock_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_clock_list(void *data)
@@ -1203,12 +1202,12 @@ char *_gl_date_and_time_title_get(void *data, Evas_Object *obj, const char *part
 				char *date_buf = NULL;
 				date_buf = _get_date_str();
 				snprintf(buf, sizeof(buf) - 1, expression, date_buf);
-				free(date_buf);
+				FREE(date_buf);
 			} else if (index == 2) {	/* Time */
 				char *time_buf = NULL;
 				time_buf = _get_time_str();
 				snprintf(buf, sizeof(buf) - 1, expression, time_buf);
-				free(time_buf);
+				FREE(time_buf);
 			}
 		}
 		index++;
@@ -1245,8 +1244,7 @@ static Evas_Object *_gl_dt_auto_sync_check_get(void *data, Evas_Object *obj, con
 static void _dt_gl_del(void *data, Evas_Object *obj)
 {
 	DT_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 
 	auto_sync_check = NULL;
 	auto_sync_item = NULL;
@@ -1479,7 +1477,7 @@ static void _datetime_date_cb(void *data, Evas_Object *obj, void *event_info)
 #ifndef DESKTOP
 	dt_fmt = _date_format_get();
 	elm_datetime_format_set(datetime, dt_fmt);
-	free(dt_fmt);
+	FREE(dt_fmt);
 	register_vconf_changing(VCONFKEY_SETAPPL_DATE_FORMAT_INT, _vconf_date_format_changed_cb, datetime);
 	register_vconf_changing(VCONFKEY_SYSTEM_TIME_CHANGED, _vconf_date_format_changed_cb, datetime);
 #endif
@@ -1542,7 +1540,7 @@ static void _datetime_time_cb(void *data, Evas_Object *obj, void *event_info)
 	dt_fmt = _time_format_get();
 	elm_datetime_format_set(datetime, dt_fmt);
 	DBG("datetime time format : %s", dt_fmt);
-	free(dt_fmt);
+	FREE(dt_fmt);
 	register_vconf_changing(VCONFKEY_REGIONFORMAT_TIME1224, _vconf_time_format_changed_cb, datetime);
 	register_vconf_changing(VCONFKEY_SYSTEM_TIME_CHANGED, _vconf_time_format_changed_cb, datetime);
 #endif
@@ -1569,8 +1567,7 @@ static void _datetime_time_cb(void *data, Evas_Object *obj, void *event_info)
 static void _alert_gl_del(void *data, Evas_Object *obj)
 {
 	Alert_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 char *_gl_alert_title_get(void *data, Evas_Object *obj, const char *part)

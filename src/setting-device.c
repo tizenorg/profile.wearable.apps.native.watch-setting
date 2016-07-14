@@ -146,7 +146,7 @@ static void _auto_open_apps_check_changed_cb(void *data, Evas *e, Evas_Object *o
 		elm_object_text_set(layout, txt);
 		elm_object_content_set(popup, layout);
 
-		free(txt);
+		FREE(txt);
 
 		btn1 = elm_button_add(popup);
 		elm_object_style_set(btn1, "popup/circle/left");
@@ -292,8 +292,7 @@ char *_gl_device_action_title_get(void *data, Evas_Object *obj, const char *part
 static void _device_action_gl_del(void *data, Evas_Object *obj)
 {
 	device_action_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 

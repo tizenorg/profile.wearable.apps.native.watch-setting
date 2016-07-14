@@ -95,7 +95,7 @@ void _indicator_set_battery_icon(keynode_t *node, void *data)
 			}
 			elm_object_part_text_set(layout, "txt.battery", buf);
 		}
-		free(level);
+		FREE(level);
 	} else {
 		elm_object_part_text_set(layout, "txt.battery", "");
 	}

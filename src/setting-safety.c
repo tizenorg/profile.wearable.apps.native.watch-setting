@@ -266,9 +266,7 @@ Evas_Object *_gl_safety_check_get(void *data, Evas_Object *obj, const char *part
 static void _gl_safety_del(void *data, Evas_Object *obj)
 {
 	Safety_Item_Data *id = data;
-	if (id) {
-		free(id);
-	}
+	FREE(id);
 }
 
 Evas_Object *create_safety_list(void *data)
@@ -679,7 +677,7 @@ void _help_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_label_line_wrap_set(label, ELM_WRAP_MIXED);
 	char *txt = elm_entry_utf8_to_markup(_("IDS_ST_BODY_THE_HOME_SCREEN_WILL_BE_CHANGED_TO_THE_BLACK_THEME_TO_REDUCE_BATTERY_CONSUMPTION_MSG"));
 	elm_object_text_set(label, txt);
-	free(txt);
+	FREE(txt);
 	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, 0.0);
 	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
 	elm_object_content_set(scroller, label);
@@ -748,7 +746,7 @@ void _disable_emergency_popup_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_label_line_wrap_set(label, ELM_WRAP_MIXED);
 	char *txt = elm_entry_utf8_to_markup(_("IDS_ST_POP_TO_DISABLE_ULTRA_POWER_SAVING_MODE_YOUR_DEVICE_WILL_RESTART"));
 	elm_object_text_set(label, txt);
-	free(txt);
+	FREE(txt);
 	evas_object_size_hint_weight_set(label, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 	evas_object_size_hint_align_set(label, EVAS_HINT_FILL, EVAS_HINT_FILL);
 	elm_object_content_set(scroller, label);

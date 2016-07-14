@@ -58,9 +58,8 @@ void clear_back_button_list()
 	EINA_LIST_FOREACH_SAFE(back_button_cb_stack, l, n, item) {
 		if (item) {
 			back_button_cb_stack = eina_list_remove(back_button_cb_stack, item);
-			if (item->cur_genlist_name)
-				free(item->cur_genlist_name);
-			free(item);
+			FREE(item->cur_genlist_name);
+			FREE(item);
 		}
 	}
 
@@ -87,12 +86,9 @@ void back_button_cb_pop(void)
 			DBG("####### back btn pop cb - genlist name is %s", cb_data->cur_genlist_name);
 		eext_rotary_object_event_activated_set(cb_data->genlist_obj, EINA_TRUE);
 	}
-	if (cb_data->cur_genlist_name) {
-		free(cb_data->cur_genlist_name);
-		cb_data->cur_genlist_name = NULL;
-	}
+	FREE(cb_data->cur_genlist_name);
 	back_button_cb_stack = eina_list_remove(back_button_cb_stack, cb_data);
-	free(cb_data);
+	FREE(cb_data);
 }
 
 void back_button_cb_call(void)

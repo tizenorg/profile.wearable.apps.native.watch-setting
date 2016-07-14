@@ -88,12 +88,9 @@ void _clear_g_lang_menu_items()
 
 	int i;
 	for (i = 0; i < LANGUAGE_ITEM_COUNT; i++) {
-		if (lang_menu_its[i].name)
-			free(lang_menu_its[i].name);
-		if (lang_menu_its[i].sub_name)
-			free(lang_menu_its[i].sub_name);
-		if (lang_menu_its[i].id)
-			free(lang_menu_its[i].id);
+		FREE(lang_menu_its[i].name);
+		FREE(lang_menu_its[i].sub_name);
+		FREE(lang_menu_its[i].id);
 	}
 }
 
@@ -315,7 +312,7 @@ Evas_Object *_gl_lang_ridio_get(void *data, Evas_Object *obj, const char *part)
 				elm_genlist_item_show(id->item, ELM_GENLIST_ITEM_SCROLLTO_TOP);
 			}
 		}
-		free(alt_lang_set);
+		FREE(alt_lang_set);
 
 		snprintf(buf, sizeof(buf) - 1, "%s.UTF8", lang_menu_its[index].id);
 		char *alt_lang_set2 = strdup(buf);
@@ -326,7 +323,7 @@ Evas_Object *_gl_lang_ridio_get(void *data, Evas_Object *obj, const char *part)
 				elm_genlist_item_show(id->item, ELM_GENLIST_ITEM_SCROLLTO_TOP);
 			}
 		}
-		free(alt_lang_set2);
+		FREE(alt_lang_set2);
 
 		DBG("Setting - current language is %s", lang_set);
 
@@ -341,8 +338,7 @@ static void _lang_gl_del(void *data, Evas_Object *obj)
 	/* FIXME: Unrealized callback can be called after this. */
 	/* Accessing Item_Data can be dangerous on unrealized callback. */
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_lang_list(void *data)
@@ -465,12 +461,9 @@ void _langlist_destroy()
 	while (list) {
 		node = (struct _lang_menu_item *) eina_list_data_get(list);
 		if (node) {
-			if (node->name)
-				free(node->name);
-			if (node->sub_name)
-				free(node->sub_name);
-			if (node->id)
-				free(node->id);
+			FREE(node->name);
+			FREE(node->sub_name);
+			FREE(node->id);
 		}
 		list = eina_list_next(list);
 	}
@@ -533,11 +526,11 @@ static void _tree_walk_langlist(xmlNodePtr cur)
 				if (sub_name && pitem->name)
 					pitem->sub_name = (char *)g_strdup(replace(sub_name, pitem->name, ""));
 
-				free(sub_name);
+				FREE(sub_name);
 
 				s_langlist = eina_list_append(s_langlist, pitem);
 			}
-			free(name);
+			FREE(name);
 		}
 	}
 }

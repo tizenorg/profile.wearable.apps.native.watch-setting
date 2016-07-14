@@ -418,8 +418,7 @@ char *_gl_display_title_get(void *data, Evas_Object *obj, const char *part)
 void _display_gl_del(void *data, Evas_Object *obj)
 {
 	Display_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_display_list(void *data)
@@ -629,8 +628,7 @@ static Evas_Object *_gl_screen_timeout_radio_get(void *data, Evas_Object *obj, c
 static void _screen_timeout_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 void _show_screen_timeout_list(void *data)
@@ -850,7 +848,7 @@ static void _font_style_gl_del(void *data, Evas_Object *obj)
 	Font_Style_Item_Data *id = data;
 	if (id) {
 		FREE(id->font_name);
-		free(id);
+		FREE(id);
 	}
 }
 
@@ -907,8 +905,7 @@ static Evas_Object *_gl_font_size_ridio_get(void *data, Evas_Object *obj, const 
 static void _font_size_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static Ecore_Timer *font_timer = NULL;
@@ -1636,8 +1633,7 @@ static Evas_Object *_gl_rotate_screen_radio_get(void *data, Evas_Object *obj, co
 static void _rotate_screen_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 static void _rotate_screen_gl_cb(void *data, Evas_Object *obj, void *event_info)
@@ -2445,7 +2441,7 @@ void _noti_indicator_help_popup_cb(void *data, Evas_Object *obj, void *event_inf
 	elm_object_text_set(layout, txt);
 	elm_object_content_set(popup, layout);
 
-	free(txt);
+	FREE(txt);
 
 	evas_object_show(popup);
 	back_button_cb_push(&back_key_popup_cb, data, NULL, g_noti_indicator_genlist, "g_noti_indicator_genlist");
@@ -2513,8 +2509,7 @@ static char *_gl_noti_title_get(void *data, Evas_Object *obj, const char *part)
 static void _noti_indicator_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 
 	Elm_Object_Item *first = elm_genlist_first_item_get(g_noti_indicator_genlist);
 	elm_object_item_signal_emit(first, "elm,action,title,slide,start", "elm");

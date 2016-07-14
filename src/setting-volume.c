@@ -476,8 +476,7 @@ char *_gl_volume_title_get(void *data, Evas_Object *obj, const char *part)
 static void _volumn_gl_del(void *data, Evas_Object *obj)
 {
 	Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 Evas_Object *_create_volume_list(void *data)

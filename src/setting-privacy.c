@@ -114,8 +114,7 @@ static void _privacy_lock_verify_cb(app_control_h service, app_control_h reply, 
 static void _gl_privacy_del(void *data, Evas_Object *obj)
 {
 	Privacy_Item_Data *id = data;
-	if (id)
-		free(id);
+	FREE(id);
 }
 
 char *_gl_privacy_pattern_title_get(void *data, Evas_Object *obj, const char *part)
