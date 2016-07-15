@@ -65,4 +65,18 @@
 		} \
 	} while (0);
 
+#define setting_retv_if(expr, val) do { \
+	if (expr) { \
+		ERR("(%s)", #expr); \
+		return (val); \
+	} \
+} while (0)
+
+#define setting_ret_if(expr) do { \
+	if (expr) { \
+		ERR("(%s)", #expr); \
+		return ; \
+	} \
+} while (0)
+
 #endif

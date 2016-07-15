@@ -120,7 +120,7 @@ void clock_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -157,7 +157,7 @@ void notification_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -186,7 +186,7 @@ void homescreen_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -216,7 +216,7 @@ void sound_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -247,7 +247,7 @@ void device_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -275,7 +275,7 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -302,10 +302,6 @@ void display_cb(void *data, Evas_Object *obj, void *event_info)
 void keyboard_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
-
-	appdata *ad = data;
-
-	ret_if(!data);
 
 	if (running) {
 		return;
@@ -337,7 +333,7 @@ void battery_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -363,9 +359,6 @@ void bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
 	DBG("bluetooth_cb in");
-	appdata *ad = data;
-
-	ret_if(!data);
 
 	app_control_h service;
 	app_control_create(&service);
@@ -420,7 +413,7 @@ void lockscreen_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -462,7 +455,7 @@ void connection_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -491,7 +484,7 @@ void double_pressing_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -523,7 +516,7 @@ void language_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -563,7 +556,7 @@ void safety_cb(void *data, Evas_Object *obj, void *event_info)
 
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -590,7 +583,7 @@ void reset_gear_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -610,7 +603,7 @@ void gear_info_cb(void *data, Evas_Object *obj, void *event_info)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -654,9 +647,8 @@ static Eina_Bool _scroller_timer_cb(void *data)
 void profile_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	DBG("profile cb");
-	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running) {
 		elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
@@ -692,7 +684,7 @@ static Eina_Bool _pop_cb(void *data, Elm_Object_Item *it)
 	/* Stop timer and task */
 	appdata *ad = data;
 
-	retv_if(!data, NULL);
+	setting_retv_if(!data, EINA_FALSE);
 
 	if (running_timer) {
 		ecore_timer_del(running_timer);
@@ -717,7 +709,7 @@ static Evas_Object *_create_bg(Evas_Object *parent)
 {
 	Evas_Object *bg;
 
-	retv_if(!parent, NULL);
+	setting_retv_if(!parent, NULL);
 
 	bg = elm_bg_add(parent);
 	evas_object_size_hint_weight_set(bg, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -731,7 +723,7 @@ static Evas_Object *_create_conform(Evas_Object *parent)
 {
 	Evas_Object *conform;
 
-	retv_if(!parent, NULL);
+	setting_retv_if(!parent, NULL);
 
 	conform = elm_conformant_add(parent);
 	evas_object_size_hint_weight_set(conform, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
@@ -745,7 +737,7 @@ static Evas_Object *_create_layout_main(Evas_Object *parent)
 {
 	Evas_Object *layout;
 
-	retv_if(!parent, NULL);
+	setting_retv_if(!parent, NULL);
 
 	layout = elm_layout_add(parent);
 
@@ -787,7 +779,7 @@ static void _window_resize_cb(void *data, Evas *e, Evas_Object *obj, void *event
 
 static void init_values(appdata *ad)
 {
-	ret_if(!ad);
+	setting_ret_if(!ad);
 
 	ad->is_motion_smart_relay_on = 1;
 	ad->is_motion_wake_up_on = 1;
@@ -797,7 +789,7 @@ static int init_watch_setting(appdata *ad)
 {
 	DBG("init_watch_setting() is called!");
 
-	retv_if(!ad, EINA_FALSE);
+	setting_retv_if(!ad, EINA_FALSE);
 
 	ad->bg = _create_bg(ad->win_main);
 
@@ -834,7 +826,7 @@ static Evas_Object *_create_naviframe_layout(Evas_Object *parent)
 {
 	Evas_Object *nf = NULL;
 
-	retv_if(!parent, NULL);
+	setting_retv_if(!parent, NULL);
 
 	nf = elm_naviframe_add(parent);
 	elm_object_part_content_set(parent, "elm.swallow.content", nf);
@@ -850,7 +842,7 @@ static char *_gl_text_get(void *data, Evas_Object *obj, const char *part)
 	Item_Data *id = data;
 	int index = id->index;
 
-	retv_if(!data, NULL);
+	setting_retv_if(!data, NULL);
 
 	/*
 	char expression[32];
@@ -1023,7 +1015,7 @@ static void _update_main_menu_title(void *data)
 	DBG("_update_main_menu_title() is called");
 
 	appdata *ad = data;
-	ret_if(!ad);
+	setting_ret_if(!ad);
 
 	if (ad->main_genlist) {
 		elm_genlist_realized_items_update(ad->main_genlist);
@@ -1063,8 +1055,8 @@ static void _create_view_layout(appdata *ad)
 	Evas_Object *genlist = NULL;
 	Elm_Object_Item *nf_it = NULL;
 
-	ret_if(!ad);
-	ret_if(!ad->nf);
+	setting_ret_if(!ad);
+	setting_ret_if(!ad->nf);
 
 	genlist = _create_mainlist_winset(ad->win_main, ad);
 	connect_to_wheel_with_genlist(genlist, ad);
@@ -1122,7 +1114,7 @@ bool app_create(void *data)
 	appdata *ad = (appdata *) data;
 	char *locale;
 
-	ret_if(!data);
+	setting_retv_if(!data, false);
 
 	DBG("app_create start.");
 
@@ -1179,7 +1171,7 @@ void app_terminate(void *data)
 
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	feedback_deinitialize();
 	indicator_unset_vconf_changed_cb();
@@ -1235,7 +1227,7 @@ void app_pause(void *data)
 	DBG("Setting - app_pause()");
 
 	appdata *ad = data;
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (ad) {
 		if (ad->MENU_TYPE == SETTING_VOLUME_2_DEPTH) {
@@ -1255,7 +1247,7 @@ void app_resume(void *data)
 {
 	DBG("Setting - app_resume()");
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	if (running)
 		running = false;
@@ -1267,8 +1259,8 @@ void load_brightness_setting(void *data)
 	Elm_Object_Item *nf_it = NULL;
 	appdata *ad = data;
 
-	ret_if(!ad);
-	ret_if(!ad->nf);
+	setting_ret_if(!ad);
+	setting_ret_if(!ad->nf);
 
 	ad->main_brightness_ly = brightness_ly = _show_brightness_popup(ad, NULL, NULL);
 	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, brightness_ly, NULL);
@@ -1277,28 +1269,38 @@ void load_brightness_setting(void *data)
 	elm_naviframe_item_pop_cb_set(nf_it, _pop_cb, ad); /* ad->win_main */
 }
 
-void check_direct_brightness_setting(void *data, app_control_h service)
+int check_direct_brightness_setting(void *data, app_control_h service)
 {
 	char *param = NULL;
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_retvm_if(!data, 0, "NO App data!!");
 
 	if (app_control_get_extra_data(service, "launch-type", &param) == APP_CONTROL_ERROR_NONE) {
 		if (!strcmp(param, "brightness")) {
+			if(!ad->is_first_launch) {
+				clear_back_button_list();
+				back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
+			} else {
+				eext_object_event_callback_add(ad->nf, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
+			}
+
 			load_brightness_setting(data);
 			DBG("Setting - enable direct brightness setting");
+			return 1;
 		} else {
 			DBG("Setting - disable direct brightness setting");
-			_create_view_layout(ad);
+			if(ad->is_first_launch)
+				_create_view_layout(ad);
 			ad->main_brightness_ly = NULL;
 		}
 	} else {
-		_create_view_layout(ad);
+		if(ad->is_first_launch)
+			_create_view_layout(ad);
 		ad->main_brightness_ly = NULL;
 		DBG("Setting - disable direct brightness setting - CanNOT read the launch-type param");
 	}
-	return;
+	return 0;
 }
 
 void app_reset(app_control_h service, void *data)
@@ -1307,25 +1309,28 @@ void app_reset(app_control_h service, void *data)
 
 	appdata *ad = data;
 
-	ret_if(!data);
+	setting_ret_if(!data);
 
 	char *operation = NULL;
 	app_control_get_operation(service, &operation);
-	check_direct_brightness_setting(data, service);
+
+	if(check_direct_brightness_setting(data, service))
+		return;
+
 	DBG("operation : %s, ad->is_first_launch :%d ", operation, (ad) ? ad->is_first_launch : -1);
 	if (!ad->is_first_launch) {
-		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/main")) {
+		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/default")) {
 			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
 			Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
 
 			if (ad->popup) {
-				evas_object_del(ad->popup);
-				ad->popup = NULL;
+				   evas_object_del(ad->popup);
+				   ad->popup = NULL;
 			}
 
 			while (bottom != top) {
-				elm_object_item_del(top);
-				top = elm_naviframe_top_item_get(ad->nf);
+				   elm_object_item_del(top);
+				   top = elm_naviframe_top_item_get(ad->nf);
 			}
 
 			/*reset back button callback stack*/
@@ -1333,7 +1338,6 @@ void app_reset(app_control_h service, void *data)
 			back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
 
 			if (ad->main_genlist) {
-				eext_object_event_callback_add(ad->nf, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 				elm_genlist_item_show(elm_genlist_first_item_get(ad->main_genlist),
 									  ELM_GENLIST_ITEM_SCROLLTO_TOP);
 				elm_layout_signal_emit(ad->main_genlist, "do-show-vbar", "");
@@ -1343,10 +1347,7 @@ void app_reset(app_control_h service, void *data)
 					scrl_timer = NULL;
 				}
 				scrl_timer = ecore_timer_add(1, (Ecore_Task_Cb)_scroller_timer_cb, ad->main_genlist);
-			}
-
-			if (ad->main_brightness_ly) {
-				evas_object_show(ad->main_brightness_ly);
+				connect_to_wheel_with_genlist(ad->main_genlist, ad);
 			}
 
 		}
