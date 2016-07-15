@@ -34,7 +34,7 @@
 
 static struct _sound_menu_item vibration_menu_its[] = {
 	{ "Intensity",/*"IDS_ST_BODY_INTENSITY",*/					0,		_intensity_cb	},
-	{ "Long Buzz",/*"WDS_ST_MBODY_LONG_BUZZ_ABB",*/					0,		_long_buzz_cb  },
+	{ "Long buzz",/*"WDS_ST_MBODY_LONG_BUZZ_ABB",*/					0,		_long_buzz_cb  },
 };
 
 static int VIB_TOP_MENU_SIZE =
@@ -202,6 +202,9 @@ char *_gl_vibration_title_get(void *data, Evas_Object *obj, const char *part)
 			vibrate_type = get_vibration_level();
 			snprintf(buf, sizeof(buf) - 1, "%s", _(vibration_power_str[vibrate_type % 3]));
 			break;
+		case 1:
+			snprintf(buf, sizeof(buf) - 1, "For notifications");
+			break;
 		}
 		index++;
 	}
@@ -240,7 +243,7 @@ Evas_Object *_create_vibration_list(void *data)
 
 
 	Elm_Genlist_Item_Class *itc_long_buzz = elm_genlist_item_class_new();
-	itc_long_buzz->item_style = "1text.1icon.1";
+	itc_long_buzz->item_style = "2text.1icon.1";
 	itc_long_buzz->func.text_get = _gl_vibration_title_get;
 	itc_long_buzz->func.content_get = _gl_vibration_check_get;
 	itc_long_buzz->func.del = _sound_gl_del;
