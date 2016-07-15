@@ -2458,23 +2458,20 @@ static void _display_gl_display_noti_indicator_help_cb(void *data, Evas_Object *
 
 static void _display_noti_indicator_check_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
 {
-	appdata *ad = temp_ad;
-
-	if (ad == NULL) {
-		DBG("%s", "_display_noti_indicator_check_cb - appdata or check is null");
-		return;
-	}
+	Evas_Object *check = obj;
 	int nofi_indicator = 0;
-	vconf_get_bool(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR, &nofi_indicator);
-	nofi_indicator = !nofi_indicator;
+	nofi_indicator = !elm_check_state_get(check);
 	vconf_set_bool(VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR, nofi_indicator);
+	ERR("Setting VCONFKEY_SETAPPL_NOTIFICATION_INDICATOR : %d", nofi_indicator);
 }
 
 static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object *obj, const char *part)
 {
 	Evas_Object *check = NULL;
+	Item_Data *id = (Item_Data *)data;
 
-	if (!strcmp(part, "elm.icon")) {
+
+	if (!strcmp(part, "elm.icon") && id->index == 0) {
 		int noti_indicator = 0;
 		check = elm_check_add(obj);
 
@@ -2483,7 +2480,7 @@ static Evas_Object *_gl_display_noti_indicator_check_get(void *data, Evas_Object
 		ERR("notification_indicator : %d", noti_indicator);
 
 		elm_check_state_set(check, (noti_indicator) ? EINA_TRUE : EINA_FALSE);
-		evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_DOWN, _display_noti_indicator_check_cb, (void *)check);
+		evas_object_event_callback_add(check, EVAS_CALLBACK_MOUSE_UP, _display_noti_indicator_check_cb, (void *)check);
 		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
 		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
 		evas_object_propagate_events_set(check, EINA_FALSE);
