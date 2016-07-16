@@ -85,7 +85,7 @@ static struct _menu_item setting_menu_its[] = {
 	{ "IDS_ST_MBODY_DISPLAY_ABB",						"b_setting_display.png",		display_cb			},
 	{ "IDS_ST_OPT_SOUND_ABB2",							"b_settings_volume.png",			sound_cb			},
 	{ "Device",							"b_settings_volume.png",			device_cb			},
-	{ "Connection",					"b_settings_volume.png",		connection_cb	},
+	{ "Connections",					"b_settings_volume.png",		connection_cb	},
 	{ "IDS_ST_MBODY_TEXT_INPUT_ABB",					"text_input_icon.png",			keyboard_cb			},
 	{ "IDS_ST_BUTTON_GEAR_INFO",						"b_settings_info.png",			gear_info_cb		},
 	{ NULL, NULL, NULL }

@@ -65,7 +65,7 @@ static char *
 _gl_menu_title_text_get(void *data, Evas_Object *obj, const char *part)
 {
 	char buf[1024];
-	snprintf(buf, 1023, "%s", "Connection");
+	snprintf(buf, 1023, "%s", "Connections");
 	return strdup(buf);
 }
 
