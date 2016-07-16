@@ -254,10 +254,29 @@ static char *_gl_double_app_title_get(void *data, Evas_Object *obj, const char *
 {
 	Double_Item_Data *id = data;
 
-	if (id && id->pitem && id->pitem->name && !strcmp(part, "elm.text")) {
-		return strdup(id->pitem->name);
+	if (id && id->pitem)
+	{
+		if (id->pitem->index >= 0)
+		{
+			DBG("--------------------------------");
+			DBG("index : %d", id->pitem->index);
+			DBG("--------------------------------");
+			if (id->pitem->index >= 0 && id->pitem->name && !strcmp(part, "elm.text")) {
+				switch(id->pitem->index)
+				{
+					case VCONFKEY_DOUBLE_PRESS_HOME_KEY_NONE:
+						return strdup(_("IDS_LCKSCN_BODY_NONE"));
+					case VCONFKEY_DOUBLE_PRESS_HOME_KEY_RECENT_APPS:
+						return strdup(_("IDS_ST_OPT_RECENT_APPS_ABB"));
+					case VCONFKEY_DOUBLE_PRESS_HOME_KEY_LAST_APP:
+						return strdup("Last app");
+				}
+			}
+		} else {
+			DBG("index : %d", id->pitem->index);
+			DBG("Do nothing");
+		}
 	}
-
 	return NULL;
 }
 
