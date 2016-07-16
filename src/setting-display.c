@@ -2429,7 +2429,7 @@ void _noti_indicator_help_popup_cb(void *data, Evas_Object *obj, void *event_inf
 
 	char buf[1024];
 
-	char *font_size_frame = "<font=Tizen><style=Thin><font_size=28><align=center>%s</align></font_size></style></font>";
+	char *font_size_frame = "<font=Tizen><style=Thin><align=center>%s</align></style></font>";
 	snprintf(buf, sizeof(buf) - 1, font_size_frame, "&nbsp;<br>Show a yellow indicator on the watch face when there are unread notifications.");
 
 	Evas_Object *layout;
