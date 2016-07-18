@@ -1271,7 +1271,7 @@ void load_brightness_setting(void *data)
 
 void clear_popup_naviframe(appdata *ad)
 {
-	setting_retvm_if(!ad, 0, "NO App data!!");
+	setting_retm_if(!ad, "NO App data!!");
 
 	Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
 	Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
@@ -1285,6 +1285,8 @@ void clear_popup_naviframe(appdata *ad)
 		   elm_object_item_del(top);
 		   top = elm_naviframe_top_item_get(ad->nf);
 	}
+
+	return;
 
 }
 

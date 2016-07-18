@@ -16,6 +16,18 @@
 #include "setting-common-sound.h"
 #include "setting_data_vconf.h"
 
+char *setting_volume_img_names[3] = {
+	"b_setting_multi_media.png",
+	"b_setting_multi_notification.png",
+	"b_setting_multi_system.png"
+};
+
+char *setting_volume_img_mute_names[3] = {
+	"b_setting_multi_media_mute.png",
+	"b_setting_multi_notification_mute.png",
+	"b_setting_multi_system_mute.png"
+};
+
 EAPI Evas_Object	 *elm_widget_top_get(const Evas_Object *obj);
 
 static void _set_volumn(sound_type_e type, int volume_index, char *vconf_key);
@@ -24,7 +36,7 @@ static void _play_sound_all_type(int sound_type, float volume);
 
 #define NUM_ITEMS			  5
 #define NUM_INDEX			  5
-#define NUM_ITEMS_CIRCLE_EVEN 6
+#define NUM_ITEMS_CIRCLE 6
 #define NUM_INDEX_CIRCLE_EVEN 6
 
 typedef struct _page_data page_data;
@@ -32,16 +44,17 @@ struct _page_data {
 	Evas_Object *main_layout;
 	Evas_Object *scroller;
 	Evas_Object *box;
-	Evas_Object *mapbuf[NUM_ITEMS_CIRCLE_EVEN];
-	Evas_Object *slider[NUM_ITEMS_CIRCLE_EVEN];
+	Evas_Object *mapbuf[NUM_ITEMS_CIRCLE];
+	Evas_Object *slider[NUM_ITEMS_CIRCLE];
 	Evas_Object *index;
-	Evas_Object *page_layout[NUM_ITEMS_CIRCLE_EVEN];
+	Evas_Object *page_layout[NUM_ITEMS_CIRCLE];
 	int cur_page;
 	int prev_page;
-	int slider_value[NUM_ITEMS_CIRCLE_EVEN];
-	Evas_Object *plus_btn[NUM_ITEMS_CIRCLE_EVEN];
-	Evas_Object *minus_btn[NUM_ITEMS_CIRCLE_EVEN];
-	Elm_Object_Item *it[NUM_ITEMS_CIRCLE_EVEN];
+	int slider_value[NUM_ITEMS_CIRCLE];
+	Evas_Object *plus_btn[NUM_ITEMS_CIRCLE];
+	Evas_Object *minus_btn[NUM_ITEMS_CIRCLE];
+	Evas_Object *center_img[NUM_ITEMS_CIRCLE];
+	Elm_Object_Item *it[NUM_ITEMS_CIRCLE];
 
 	Elm_Object_Item *last_it;
 	Elm_Object_Item *new_it;
@@ -308,7 +321,7 @@ _scroll(void *data, Evas_Object *obj, void *ei)
 		printf("scroll: %d\n", pd->cur_page);
 		pd->prev_page = pd->cur_page;
 		pd->cur_page = cur_page;
-		if ((pd->cur_page >= NUM_ITEMS_CIRCLE_EVEN) || (pd->prev_page >= NUM_ITEMS_CIRCLE_EVEN))
+		if ((pd->cur_page >= NUM_ITEMS_CIRCLE) || (pd->prev_page >= NUM_ITEMS_CIRCLE))
 			return;
 		elm_object_signal_emit(pd->page_layout[pd->cur_page], "elm,state,thumbnail,select", "elm");
 		elm_object_signal_emit(pd->page_layout[pd->prev_page], "elm,state,thumbnail,unselect", "elm");
@@ -357,6 +370,8 @@ static void _volume_value_plus(void *data, int cur_page)
 	if (pd->slider_value[cur_page] == 15)	{
 		_change_btn_img(data, pd->plus_btn[cur_page], "b_slider_icon_plus_disable.png", "btn2");
 	}
+
+	_change_btn_img(pd->page_layout[cur_page], pd->center_img[cur_page], setting_volume_img_names[cur_page], "elm.icon");
 }
 
 static void _volume_value_minus(void *data, int cur_page)
@@ -369,6 +384,7 @@ static void _volume_value_minus(void *data, int cur_page)
 
 	if (pd->slider_value[cur_page] == 0)	{
 		_change_btn_img(data, pd->minus_btn[cur_page], "b_slider_icon_minus_disable.png", "btn1");
+		_change_btn_img(pd->page_layout[cur_page], pd->center_img[cur_page], setting_volume_img_mute_names[cur_page], "elm.icon");
 	}
 }
 
@@ -541,11 +557,6 @@ Evas_Object *_create_volume_page(void *data)
 	/* Create Pages */
 	max_items = 3;
 
-	char *img_names[3] = {
-		"b_setting_multi_media.png",
-		"b_setting_multi_notification.png",
-		"b_setting_multi_system.png"
-	};
 
 	char *img_string[3] = {
 		"Media",
@@ -631,10 +642,15 @@ Evas_Object *_create_volume_page(void *data)
 		pd->plus_btn[i] = btn_plus;
 
 		img = elm_image_add(page_layout);
-		snprintf(img_path, sizeof(img_path), "%s/%s", IMG_DIR, img_names[i]);
+		if (pd->slider_value[i] > 0)
+			snprintf(img_path, sizeof(img_path), "%s/%s", IMG_DIR, setting_volume_img_names[i]);
+		else
+			snprintf(img_path, sizeof(img_path), "%s/%s", IMG_DIR, setting_volume_img_mute_names[i]);
+
 		elm_image_file_set(img, img_path, NULL);
 		elm_object_part_content_set(page_layout, "elm.icon", img);
 		elm_object_part_text_set(page_layout, "elm.text.bottom", img_string[i]);
+		pd->center_img[i] = img;
 
 		/* Make unselect state all of the pages except first one */
 		if (i)
