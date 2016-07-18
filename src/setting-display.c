@@ -52,8 +52,9 @@
 
 
 
-Evas_Object *g_btn_plus = NULL;
-Evas_Object *g_btn_minus = NULL;
+static Evas_Object *g_btn_plus = NULL;
+static Evas_Object *g_center_img = NULL;
+static Evas_Object *g_btn_minus = NULL;
 
 static int is_changed = 0;
 static bool running = false;
@@ -1905,6 +1906,13 @@ static void _change_btn_img(void *data, Evas_Object *btn_obj, char * path, char 
 	elm_object_part_content_set(page_layout, btn_str, btn_obj);
 }
 
+static void change_center_img(void *data, int brightness_value)
+{
+	char img_path[PATH_MAX];
+	snprintf(img_path, sizeof(img_path), "Brightness/b_setting_brightness_%02d.png", brightness_value);
+	_change_btn_img(data, g_center_img, img_path, "elm.icon");
+}
+
 static void _brightness_value_plus(void *data)
 {
 	if (brightness_index < 10) {
@@ -1916,6 +1924,8 @@ static void _brightness_value_plus(void *data)
 		ERR("disable plus btn2 ");
 		_change_btn_img(data, g_btn_plus, "b_slider_icon_plus_disable.png", "btn2");
 	}
+
+	change_center_img(data, brightness_index);
 }
 
 static void _brightness_value_minus(void *data)
@@ -1929,6 +1939,8 @@ static void _brightness_value_minus(void *data)
 		ERR("disable minus btn1");
 		_change_btn_img(data, g_btn_minus, "b_slider_icon_minus_disable.png", "btn1");
 	}
+
+	change_center_img(data, brightness_index);
 }
 
 static Eina_Bool
@@ -2119,10 +2131,11 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	ERR("rotary_event_handler result = %d", res);
 
 	img = elm_image_add(page_layout);
-	snprintf(img_path, sizeof(img_path), "%s/Brightness/b_setting_brightness_06.png", IMG_DIR);
+	snprintf(img_path, sizeof(img_path), "%s/Brightness/b_setting_brightness_%02d.png", IMG_DIR, brightness_index);
 	elm_image_file_set(img, img_path, NULL);
 	elm_object_part_content_set(page_layout, "elm.icon", img);
 	elm_object_part_text_set(page_layout, "elm.text.bottom", "Brightness");
+	g_center_img = img;
 
 	/* Make unselect state all of the pages except first one */
 	elm_object_signal_emit(page_layout, "elm,state,thumbnail,unselect", "elm");
