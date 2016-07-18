@@ -291,7 +291,8 @@ void _bluetooth_cb(void *data, Evas_Object *obj, void *event_info)
 	app_control_set_package(service, "org.tizen.bluetooth");
 	app_control_add_extra_data(service, "launch-type", "setting");
 	app_control_send_launch_request(service, NULL, NULL);
-	app_control_destroy(service);
+
+	ad->service_bt = service;
 
 	running_connection = true;
 
@@ -318,7 +319,8 @@ void _wifi_cb(void *data, Evas_Object *obj, void *event_info)
 	app_control_create(&service);
 	app_control_set_package(service, "org.tizen.w-wifi");
 	app_control_send_launch_request(service, NULL, NULL);
-	app_control_destroy(service);
+
+	ad->service_wifi = service;
 
 	running_connection = true;
 
@@ -345,7 +347,8 @@ void _nfc_cb(void *data, Evas_Object *obj, void *event_info)
 	app_control_create(&service);
 	app_control_set_package(service, "org.tizen.nfc-setting-app");
 	app_control_send_launch_request(service, NULL, NULL);
-	app_control_destroy(service);
+
+	ad->service_nfc = service;
 
 	running_connection = true;
 
