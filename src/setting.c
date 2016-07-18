@@ -1269,6 +1269,25 @@ void load_brightness_setting(void *data)
 	elm_naviframe_item_pop_cb_set(nf_it, _pop_cb, ad); /* ad->win_main */
 }
 
+void clear_popup_naviframe(appdata *ad)
+{
+	setting_retvm_if(!ad, 0, "NO App data!!");
+
+	Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
+	Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
+
+	if (ad->popup) {
+		   evas_object_del(ad->popup);
+		   ad->popup = NULL;
+	}
+
+	while (bottom != top) {
+		   elm_object_item_del(top);
+		   top = elm_naviframe_top_item_get(ad->nf);
+	}
+
+}
+
 int check_direct_brightness_setting(void *data, app_control_h service)
 {
 	char *param = NULL;
@@ -1279,6 +1298,7 @@ int check_direct_brightness_setting(void *data, app_control_h service)
 	if (app_control_get_extra_data(service, "launch-type", &param) == APP_CONTROL_ERROR_NONE) {
 		if (!strcmp(param, "brightness")) {
 			if(!ad->is_first_launch) {
+				clear_popup_naviframe(ad);
 				clear_back_button_list();
 				back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
 			} else {
@@ -1320,18 +1340,7 @@ void app_reset(app_control_h service, void *data)
 	DBG("operation : %s, ad->is_first_launch :%d ", operation, (ad) ? ad->is_first_launch : -1);
 	if (!ad->is_first_launch) {
 		if (operation && !strcmp(operation, "http://tizen.org/appcontrol/operation/default")) {
-			Elm_Object_Item *bottom = elm_naviframe_bottom_item_get(ad->nf);
-			Elm_Object_Item *top = elm_naviframe_top_item_get(ad->nf);
-
-			if (ad->popup) {
-				   evas_object_del(ad->popup);
-				   ad->popup = NULL;
-			}
-
-			while (bottom != top) {
-				   elm_object_item_del(top);
-				   top = elm_naviframe_top_item_get(ad->nf);
-			}
+			clear_popup_naviframe(ad);
 
 			/*reset back button callback stack*/
 			clear_back_button_list();
