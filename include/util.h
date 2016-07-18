@@ -47,6 +47,23 @@ char *_get_strnum_from_icu(int number);
 #define REPL(s, o, r)	replace(s, o, r)
 #define ICU_NUM(n)	_get_strnum_from_icu(n)
 
+#define __FREE_SERVICE(arg) do { \
+		if (arg) { \
+			app_control_destroy(arg); \
+			arg = NULL; \
+		} \
+	} while (0);
+
+#define __DISTROY_FREE_SERVICE(arg) do { \
+		if (arg) { \
+			int error_no = 0; \
+			error_no = app_control_send_terminate_request(arg); \
+			ERR( #arg " app_control error no : %d",  error_no); \
+			app_control_destroy(arg); \
+			arg = NULL; \
+		} \
+	} while (0);
+
 #define WIN_SIZE	320
 
 enum {
@@ -134,6 +151,11 @@ typedef struct _appdata {
 
 	Eext_Circle_Surface *circle_surface;
 	Evas_Object *indicator_layout;
+
+	app_control_h service_bt;
+	app_control_h service_nfc;
+	app_control_h service_input;
+	app_control_h service_wifi;
 
 } appdata;
 

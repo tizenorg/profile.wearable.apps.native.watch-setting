@@ -303,6 +303,9 @@ void keyboard_cb(void *data, Evas_Object *obj, void *event_info)
 {
 	elm_genlist_item_selected_set((Elm_Object_Item *)event_info, EINA_FALSE);
 
+	appdata *ad = data;
+	setting_ret_if(!data);
+
 	if (running) {
 		return;
 	}
@@ -313,7 +316,8 @@ void keyboard_cb(void *data, Evas_Object *obj, void *event_info)
 		app_control_add_extra_data(service, "caller", "settings");
 		app_control_set_package(service, "org.tizen.inputmethod-setting-list");
 		app_control_send_launch_request(service, NULL, NULL);
-		app_control_destroy(service);
+
+		ad->service_input = service;
 
 		running = true;
 
@@ -1213,6 +1217,11 @@ void app_terminate(void *data)
 		ad->double_press_item = NULL;
 	}
 
+	__FREE_SERVICE(ad->service_wifi);
+	__FREE_SERVICE(ad->service_nfc);
+	__FREE_SERVICE(ad->service_bt);
+	__FREE_SERVICE(ad->service_input);
+
 	/* unregister motion vconf changed callback */
 	/*unregister_vconf_changing(VCONFKEY_WMS_WMANAGER_CONNECTED, change_language_enabling); */
 
@@ -1285,6 +1294,11 @@ void clear_popup_naviframe(appdata *ad)
 		   elm_object_item_del(top);
 		   top = elm_naviframe_top_item_get(ad->nf);
 	}
+
+	__DISTROY_FREE_SERVICE(ad->service_wifi);
+	__DISTROY_FREE_SERVICE(ad->service_nfc);
+	__DISTROY_FREE_SERVICE(ad->service_bt);
+	__DISTROY_FREE_SERVICE(ad->service_input);
 
 	return;
 
