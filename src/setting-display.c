@@ -2112,6 +2112,7 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	elm_image_file_set(btn_minus, img_path, NULL);
 	elm_object_part_content_set(page_layout, "btn1", btn_minus);
 	evas_object_smart_callback_add(btn_minus, "clicked", _press_minus_brightness_cb, page_layout);
+	evas_object_show(btn_minus);
 
 	Evas_Object *btn_plus;
 	btn_plus = elm_image_add(page_layout);
@@ -2123,6 +2124,7 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	elm_image_file_set(btn_plus, img_path, NULL);
 	elm_object_part_content_set(page_layout, "btn2", btn_plus);
 	evas_object_smart_callback_add(btn_plus, "clicked", _press_plus_brightness_cb, page_layout);
+	evas_object_show(btn_plus);
 
 	g_btn_plus = btn_plus;
 	g_btn_minus = btn_minus;
@@ -2136,6 +2138,7 @@ Evas_Object *_show_brightness_popup(void *data, Evas_Object *obj, void *event_in
 	elm_object_part_content_set(page_layout, "elm.icon", img);
 	elm_object_part_text_set(page_layout, "elm.text.bottom", "Brightness");
 	g_center_img = img;
+	evas_object_show(img);
 
 	/* Make unselect state all of the pages except first one */
 	elm_object_signal_emit(page_layout, "elm,state,thumbnail,unselect", "elm");

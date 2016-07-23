@@ -1157,8 +1157,6 @@ bool app_create(void *data)
 	DBG("[TIME] 4. setting_main_app_create taked %d msec ", appcore_measure_time());
 	/*appcore_measure_start(); */
 
-	evas_object_show(ad->win_main);
-
 	/*int ret = system_settings_set_changed_cb(SYSTEM_SETTINGS_KEY_LOCALE_TIMEZONE, _time_cb, NULL); */
 	/*DBG("ret = %d", ret); */
 	DBG("app_create finish. with skip locale");
@@ -1322,6 +1320,10 @@ int check_direct_brightness_setting(void *data, app_control_h service)
 			}
 
 			load_brightness_setting(data);
+			if (ad->win_main) {
+				evas_object_show(ad->win_main);
+				elm_win_activate(ad->win_main);
+			}
 			DBG("Setting - enable direct brightness setting");
 			return 1;
 		} else {
@@ -1381,6 +1383,7 @@ void app_reset(app_control_h service, void *data)
 	}
 
 	if (ad->win_main) {
+		evas_object_show(ad->win_main);
 		elm_win_activate(ad->win_main);
 	}
 
