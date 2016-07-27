@@ -16,13 +16,15 @@
 #include "setting-common-sound.h"
 #include "setting_data_vconf.h"
 
-static char *setting_volume_img_names[3] = {
+static char *setting_volume_img_names[4] = {
+	"b_setting_multi_media.png",
 	"b_setting_multi_media.png",
 	"b_setting_multi_notification.png",
 	"b_setting_multi_system.png"
 };
 
-static char *setting_volume_img_mute_names[3] = {
+static char *setting_volume_img_mute_names[4] = {
+	"b_setting_multi_media_mute.png",
 	"b_setting_multi_media_mute.png",
 	"b_setting_multi_notification_mute.png",
 	"b_setting_multi_system_mute.png"
@@ -66,10 +68,8 @@ static page_data *g_pd = NULL;
 static Evas_Object *g_volume_spinner = NULL;
 static Evas_Object *g_volume_genlist = NULL;
 
-static int is_changing_level_by_vconf = 0;
 static int is_changed = 0;
 static int is_myself_changing = 0;
-static int is_myself_ringtone_changing = 0;
 
 static int is_sound_changed = 0;
 static int is_vibrate_changed = 0;
@@ -81,15 +81,6 @@ typedef void
 static void
 multimedia_value_changed_page(int idx)
 {
-
-	if (curr_sound_type != SOUND_TYPE_MEDIA) {
-		if (is_changing_level_by_vconf) {
-			DBG("Setting - is_changing_level_by_vconf!!!!");
-
-			is_changing_level_by_vconf = 0;
-			return;
-		}
-	}
 
 	is_changed = 1;		/* changed flag!! */
 	volume_index = idx;
@@ -110,7 +101,7 @@ multimedia_value_changed_page(int idx)
 static void
 normal_volume_value_changed_page(int idx)
 {
-	DBG("Setting - ringtone_value_changed() is called!");
+	DBG("Setting - normal_volume_value_changed() is called!");
 
 	is_changed = 1;		/* changed flag!! */
 
@@ -128,9 +119,7 @@ void _initialize_volume()
 	is_wav_playing_vol = SOUND_STATE_STOP;
 	sound_id_vol = -1;
 	is_changed = 0;
-	is_changing_level_by_vconf = 0;
 	is_myself_changing = 0;
-	is_myself_ringtone_changing = 0;
 
 	is_sound_changed = 0;
 	is_vibrate_changed = 0;
@@ -186,7 +175,6 @@ void _clear_volume_resources()
 	g_volume_genlist = NULL;
 	g_volume_spinner = NULL;
 	is_myself_changing = 0;
-	is_myself_ringtone_changing = 0;
 	is_sound_changed = is_vibrate_changed = 0;
 }
 
@@ -336,13 +324,16 @@ _scroll(void *data, Evas_Object *obj, void *ei)
 		ERR("STOP sound player and wav ");
 		/*change sound mode */
 		switch (cur_page) {
-		case 0: /*media */
+		case 0: /*ringtone*/
+			curr_sound_type = SOUND_TYPE_RINGTONE;
+			break;
+		case 1: /*media */
 			curr_sound_type = SOUND_TYPE_MEDIA;
 			break;
-		case 1: /*nodification */
+		case 2: /*nodification */
 			curr_sound_type = SOUND_TYPE_NOTIFICATION;
 			break;
-		case 2: /*system */
+		case 3: /*system */
 			curr_sound_type = SOUND_TYPE_SYSTEM;
 			break;
 		default:
@@ -407,13 +398,16 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	elm_object_part_text_set(pd->page_layout[cur_page], "elm.text.slider", buf);
 
 	switch (cur_page) {
-	case 0: /*media */
-		multimedia_value_changed_page(pd->slider_value[cur_page]);
-		break;
-	case 1: /*nodification */
+	case 0: /*ringtone*/
 		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
-	case 2: /*system */
+	case 1: /*media */
+		multimedia_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 2: /*nodification */
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 3: /*system */
 		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	default:
@@ -423,7 +417,7 @@ _value_changed_rotary(void *data, Evas_Object *obj, Eext_Rotary_Event_Info *info
 	return EINA_TRUE;
 }
 
-void _clear_volume_setting_cb(void *data, Evas *e, Evas_Object *obj, void *event_info)
+void _clear_volume_setting_cb(void *data, Evas_Object *obj, void *event_info)
 {
 
 	if (is_created_player()) {
@@ -443,7 +437,6 @@ void _clear_volume_setting_cb(void *data, Evas *e, Evas_Object *obj, void *event
 	g_volume_genlist = NULL;
 	g_volume_spinner = NULL;
 	is_myself_changing = 0;
-	is_myself_ringtone_changing = 0;
 	is_sound_changed = is_vibrate_changed = 0;
 
 	FREE(g_pd);
@@ -466,13 +459,16 @@ static void _press_plus_volume_cb(void *data, Evas_Object *obj, void *event_info
 	elm_object_part_text_set(pd->page_layout[cur_page], "elm.text.slider", buf);
 
 	switch (cur_page) {
-	case 0: /*media */
-		multimedia_value_changed_page(pd->slider_value[cur_page]);
-		break;
-	case 1: /*nodification */
+	case 0: /*ringtone*/
 		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
-	case 2: /*system */
+	case 1: /*media */
+		multimedia_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 2: /*nodification */
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 3: /*system */
 		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	default:
@@ -495,13 +491,16 @@ static void _press_minus_volume_cb(void *data, Evas_Object *obj, void *event_inf
 	elm_object_part_text_set(pd->page_layout[cur_page], "elm.text.slider", buf);
 
 	switch (cur_page) {
-	case 0: /*media */
-		multimedia_value_changed_page(pd->slider_value[cur_page]);
-		break;
-	case 1: /*nodification */
+	case 0: /*ringtone*/
 		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
-	case 2: /*system */
+	case 1: /*media */
+		multimedia_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 2: /*nodification */
+		normal_volume_value_changed_page(pd->slider_value[cur_page]);
+		break;
+	case 3: /*system */
 		normal_volume_value_changed_page(pd->slider_value[cur_page]);
 		break;
 	default:
@@ -555,17 +554,19 @@ Evas_Object *_create_volume_page(void *data)
 	pd->box = box;
 
 	/* Create Pages */
-	max_items = 3;
+	max_items = 4;
 
 
-	char *img_string[3] = {
+	char *img_string[4] = {
+		"Ringtone",
 		"Media",
 		"Notifications",
 		"System"
 	};
 
 
-	char *vconf_name[3] = {
+	char *vconf_name[4] = {
+		VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT,
 		VCONFKEY_SETAPPL_MEDIA_SOUND_VOLUME_INT,
 		VCONFKEY_SETAPPL_NOTI_SOUND_VOLUME_INT,
 		VCONFKEY_SETAPPL_TOUCH_FEEDBACK_SOUND_VOLUME_INT
@@ -600,6 +601,7 @@ Evas_Object *_create_volume_page(void *data)
 		pd->slider[i] = slider = eext_circle_object_slider_add(page_layout, ad->circle_surface);
 		eext_circle_object_value_min_max_set(slider, 0.0, 15.0);
 		vconf_get_int(vconf_name[i], &pd->slider_value[i]);
+		ERR("vconf_name : %s = %d", vconf_name[i], pd->slider_value[i]);
 
 		eext_circle_object_value_set(slider, (float)pd->slider_value[i]);
 
@@ -695,7 +697,7 @@ Evas_Object *_create_volume_page(void *data)
 	pd->index = index;
 	pd->last_it = pd->it[0];
 
-	curr_sound_type = SOUND_TYPE_MEDIA;
+	curr_sound_type = SOUND_TYPE_RINGTONE;
 
 	evas_object_event_callback_add(index, EVAS_CALLBACK_MOUSE_DOWN, _on_index_mouse_down_cb, pd);
 	evas_object_event_callback_add(index, EVAS_CALLBACK_MOUSE_MOVE, _on_index_mouse_move_cb, pd);
@@ -736,11 +738,6 @@ static void _set_volumn(sound_type_e type, int volume_index, char *vconf_key)
 
 static void _play_sound_all_type(int sound_type, float volume)
 {
-	if (is_myself_ringtone_changing) {
-		DBG(" is_myself_ringtone_changing !!!!!!!!!!!");
-
-		return;
-	}
 
 	char buf[1024];
 	const char *sound_path = NULL;
@@ -749,8 +746,12 @@ static void _play_sound_all_type(int sound_type, float volume)
 	case SOUND_TYPE_RINGTONE:
 		temp_volume_index = volume_index;
 
-		vconf_set_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, temp_volume_index);
+		int ret_vconf = vconf_set_int(VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, temp_volume_index);
 		vconf_set_int("db/setting/sound/call/rmd_ringtone_volume", temp_volume_index);	/* backup ringtone volume */
+
+		//_set_volumn(sound_type, volume_index, VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT);
+
+		ERR("vconf_name SET INT : %s = %d, ret %d", VCONFKEY_SETAPPL_CALL_RINGTONE_SOUND_VOLUME_INT, temp_volume_index, ret_vconf);
 
 		sound_path = vconf_get_str(VCONFKEY_SETAPPL_CALL_RINGTONE_PATH_STR);
 		if (sound_path) {
@@ -808,7 +809,6 @@ static void _play_sound_all_type(int sound_type, float volume)
 			play_sound(buf, volume, SOUND_TYPE_RINGTONE);
 			set_looping(TRUE);
 		}
-		is_myself_ringtone_changing = 1;
 	} else if (sound_type == SOUND_TYPE_SYSTEM || sound_type == SOUND_TYPE_MEDIA)	{
 
 		play_sound(buf, volume, sound_type);
