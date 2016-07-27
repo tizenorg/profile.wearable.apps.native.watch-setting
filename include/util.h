@@ -135,6 +135,7 @@ typedef struct _appdata {
 
 	Evas_Object *main_genlist;
 	Evas_Object *main_brightness_ly;
+	Evas_Object *main_volume_ly;
 
 	char *device_name;
 

@@ -1199,6 +1199,10 @@ void app_terminate(void *data)
 	if (ad->main_brightness_ly) {
 		ad->main_brightness_ly = NULL;
 	}
+	if (ad->main_volume_ly) {
+		_clear_volume_resources();
+		ad->main_volume_ly = NULL;
+	}
 	if (ad->double_rdg) {
 		ad->double_rdg = NULL;
 	}
@@ -1276,6 +1280,23 @@ void load_brightness_setting(void *data)
 	elm_naviframe_item_pop_cb_set(nf_it, _pop_cb, ad); /* ad->win_main */
 }
 
+void load_volume_setting(void *data)
+{
+	Evas_Object *volume_ly = NULL;
+	Elm_Object_Item *nf_it = NULL;
+	appdata *ad = data;
+
+	setting_ret_if(!ad);
+	setting_ret_if(!ad->nf);
+
+	_initialize_volume();
+	ad->main_volume_ly = volume_ly = _create_volume_page(data);
+	nf_it = elm_naviframe_item_push(ad->nf, NULL, NULL, NULL, volume_ly, NULL);
+	elm_naviframe_item_title_enabled_set(nf_it, EINA_FALSE, EINA_FALSE);
+
+	elm_naviframe_item_pop_cb_set(nf_it, _pop_cb, ad); /* ad->win_main */
+}
+
 void clear_popup_naviframe(appdata *ad)
 {
 	setting_retm_if(!ad, "NO App data!!");
@@ -1302,7 +1323,7 @@ void clear_popup_naviframe(appdata *ad)
 
 }
 
-int check_direct_brightness_setting(void *data, app_control_h service)
+int check_direct_momentbar_setting(void *data, app_control_h service)
 {
 	char *param = NULL;
 	appdata *ad = data;
@@ -1310,33 +1331,31 @@ int check_direct_brightness_setting(void *data, app_control_h service)
 	setting_retvm_if(!data, 0, "NO App data!!");
 
 	if (app_control_get_extra_data(service, "launch-type", &param) == APP_CONTROL_ERROR_NONE) {
-		if (!strcmp(param, "brightness")) {
-			if(!ad->is_first_launch) {
-				clear_popup_naviframe(ad);
-				clear_back_button_list();
-				back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
-			} else {
-				eext_object_event_callback_add(ad->nf, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
-			}
-
-			load_brightness_setting(data);
-			if (ad->win_main) {
-				evas_object_show(ad->win_main);
-				elm_win_activate(ad->win_main);
-			}
-			DBG("Setting - enable direct brightness setting");
-			return 1;
+		if(!ad->is_first_launch) {
+			clear_popup_naviframe(ad);
+			clear_back_button_list();
+			back_button_cb_push(&_exit_app, NULL, NULL, NULL, "EXIT!! NO genlist");
 		} else {
-			DBG("Setting - disable direct brightness setting");
-			if(ad->is_first_launch)
-				_create_view_layout(ad);
-			ad->main_brightness_ly = NULL;
+			eext_object_event_callback_add(ad->nf, EEXT_CALLBACK_BACK, _hw_back_key_cb, NULL);
 		}
+
+		if (!strcmp(param, "brightness")) {
+			load_brightness_setting(data);
+		} else if(!strcmp(param, "volume")) {
+			load_volume_setting(data);
+		}
+		if (ad->win_main) {
+			evas_object_show(ad->win_main);
+			elm_win_activate(ad->win_main);
+		}
+		DBG("Setting - enable direct brightness or volume setting");
+		return 1;
 	} else {
 		if(ad->is_first_launch)
 			_create_view_layout(ad);
 		ad->main_brightness_ly = NULL;
-		DBG("Setting - disable direct brightness setting - CanNOT read the launch-type param");
+		ad->main_volume_ly = NULL;
+		DBG("Setting - disable direct brightness or volume setting - CanNOT read the launch-type param");
 	}
 	return 0;
 }
@@ -1352,7 +1371,7 @@ void app_reset(app_control_h service, void *data)
 	char *operation = NULL;
 	app_control_get_operation(service, &operation);
 
-	if(check_direct_brightness_setting(data, service))
+	if(check_direct_momentbar_setting(data, service))
 		return;
 
 	DBG("operation : %s, ad->is_first_launch :%d ", operation, (ad) ? ad->is_first_launch : -1);
