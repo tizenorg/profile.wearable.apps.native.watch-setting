@@ -46,11 +46,17 @@ static void wifi_status_vconf_changed_cb(keynode_t *key, void *data);
 static void nfc_status_vconf_changed_cb(keynode_t *key, void *data);
 
 static struct _connection_menu_item connection_menu_its[] = {
+#ifndef FEATURE_SETTING_EMUL
 	{ "Bluetooth",				SETTING_CONNECTION_BLUETOOTH,		_bluetooth_cb },
+#endif
+#ifndef FEATURE_SETTING_EMUL
 	{ "Wi-Fi",					SETTING_CONNECTION_WIFI,			_wifi_cb	},
+#endif
 	{ "NFC",					SETTING_CONNECTION_NFC,				_nfc_cb	},
 	/*	{ "Alerts",					SETTING_CONNECTION_BT_ALERTS,			_alerts_cb	}, */
+#ifndef FEATURE_SETTING_EMUL
 	{ "Flight mode",			SETTING_CONNECTION_FLIGHT_MODE,		_flight_mode_cb	 },
+#endif
 };
 
 static int CONNECT_TOP_MENU_SIZE =
