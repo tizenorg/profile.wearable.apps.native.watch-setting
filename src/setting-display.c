@@ -76,6 +76,7 @@ static struct _display_menu_item display_menu_its[] = {
 	{ "IDS_ST_BUTTON_BRIGHTNESS",	SETTING_DISPLAY_BRIGTHNESS, _display_brightness_cb	 },
 	{ "IDS_ST_MBODY_SCREEN_TIMEOUT_ABB",	SETTING_DISPLAY_SCREEN_TIME,	_display_gl_screen_timeout_cb	},
 	{ "IDS_ST_BODY_FONT",					SETTING_DISPLAY_FONT,	_display_gl_font_cb		},
+	{ "Ambient mode", 		SETTING_DISPLAY_AMBIENT_MODE, NULL},
 	/*	{ "IDS_ST_BUTTON_LANGUAGE",				SETTING_DISPLAY_LANG,	_display_gl_language_cb	},
 	#if !defined(FEATURE_SETTING_SDK) && !defined(FEATURE_SETTING_EMUL)
 		{ "IDS_ST_MBODY_MANAGE_APPS_ABB",	SETTING_DISPLAY_EDIT_APPS,	_homescreen_gl_edit_apps_cb	},
@@ -422,6 +423,48 @@ void _display_gl_del(void *data, Evas_Object *obj)
 	FREE(id);
 }
 
+void _display_ambient_mode_cb(void *data, Evas_Object *obj, void *event_info)
+{
+	Elm_Object_Item *it = (Elm_Object_Item *)event_info;
+	Evas_Object *check = obj;
+	int is_enable_ambient_mode = elm_check_state_get(check);
+	int ret = vconf_set_int(VCONFKEY_SETAPPL_AMBIENT_MODE_BOOL, is_enable_ambient_mode);
+	DBG("is_enable_ambient_mode: %d, ret = %d", is_enable_ambient_mode, ret);
+
+	elm_genlist_item_selected_set(it, EINA_FALSE);
+
+	elm_genlist_item_update(it);
+}
+
+
+Evas_Object *_gl_display_check_get(void *data, Evas_Object *obj, const char *part)
+{
+	Evas_Object *check = NULL;
+
+	Display_Item_Data *id = data;
+	int index = id->index;
+	int is_enable_ambient_mode = 0;
+
+	if (!strcmp(part, "elm.icon")) {
+		check = elm_check_add(obj);
+
+		if (vconf_get_int(VCONFKEY_SETAPPL_AMBIENT_MODE_BOOL, &is_enable_ambient_mode) < 0) {
+		//	is_enable_ambient_mode = AMBIENT_MODE_ENABLE;   /*  default value of ambient mode: off */
+		}
+		elm_check_state_set(check, (is_enable_ambient_mode) ? EINA_TRUE : EINA_FALSE);
+		evas_object_smart_callback_add(check, "changed", _display_ambient_mode_cb, (void *)1);
+		evas_object_size_hint_align_set(check, EVAS_HINT_FILL, EVAS_HINT_FILL);
+		evas_object_size_hint_weight_set(check, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+		evas_object_propagate_events_set(check, EINA_FALSE);
+
+		id->check = check;
+
+		index++;
+	}
+
+	return check;
+}
+
 Evas_Object *_create_display_list(void *data)
 {
 	appdata *ad = data;
@@ -451,6 +494,12 @@ Evas_Object *_create_display_list(void *data)
 	itc3->func.content_get = _gl_display_watch_always_check_get;
 	itc3->func.del = _display_gl_del;
 
+	Elm_Genlist_Item_Class *itc_ambient_md = elm_genlist_item_class_new();
+	itc_ambient_md->item_style = "1text.1icon.1";
+	itc_ambient_md->func.text_get = _gl_display_title_get;
+	itc_ambient_md->func.content_get = _gl_display_check_get;
+	itc_ambient_md->func.del = _display_gl_del;
+
 	genlist = elm_genlist_add(ad->nf);
 	elm_genlist_block_count_set(genlist, 14);
 	elm_genlist_homogeneous_set(genlist, EINA_TRUE);
@@ -478,6 +527,8 @@ Evas_Object *_create_display_list(void *data)
 			|| menu_its[idx].type == SETTING_DISPLAY_LANG
 			|| menu_its[idx].type == SETTING_DISPLAY_SCREEN_TIME) {
 			itc_tmp = itc2;
+		} else if (menu_its[idx].type == SETTING_DISPLAY_AMBIENT_MODE) {
+			itc_tmp = itc_ambient_md;
 		} else {
 			itc_tmp = itc;
 		}
